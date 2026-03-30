@@ -33,20 +33,37 @@
 <!-- ═══════════════════════════════════════════
      PROMO BANNER
 ═══════════════════════════════════════════ -->
-<div style="background:#e9c243;text-align:center;padding:10px 0;font-family:'Poppins',sans-serif;font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:#0a1923;">
-  LIVRAISON OFFERTE DÈS 100€ D'ACHAT
-</div>
+<style>
+  .promo-banner{background:#e9c243;text-align:center;padding:10px 0;font-family:'Poppins',sans-serif;font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:#0a1923}
+  .hero-als{position:relative;width:100%;height:85vh;min-height:500px;overflow:hidden;display:flex;align-items:center;justify-content:center}
+  .hero-als img.hero-bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+  .hero-als .hero-overlay{position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.3) 0%,rgba(0,0,0,.55) 100%)}
+  .hero-als .hero-content{position:relative;z-index:2;text-align:center;padding:0 24px;max-width:900px}
+  .hero-als h1{font-family:'Cormorant Garamond',serif;font-size:clamp(36px,7vw,80px);font-weight:300;color:#fff;letter-spacing:.04em;line-height:1.1;margin:0 0 16px}
+  .hero-als .hero-desc{font-family:'Poppins',sans-serif;font-size:clamp(13px,1.5vw,16px);color:rgba(255,255,255,.75);margin:0 0 32px;font-weight:300}
+  .hero-als .hero-btn{display:inline-block;font-family:'Poppins',sans-serif;font-size:12px;font-weight:600;letter-spacing:.15em;text-transform:uppercase;color:#0a1923;background:#fff;padding:16px 48px;border-radius:4px;text-decoration:none;transition:all .3s}
+  .hero-als .hero-btn:hover{background:#e9c243;color:#0a1923}
+  @media(max-width:600px){
+    .promo-banner{font-size:9px;padding:8px 10px;letter-spacing:.08em}
+    .hero-als{height:65vh;min-height:350px}
+    .hero-als h1{font-size:28px;margin-bottom:10px}
+    .hero-als .hero-desc{font-size:12px;margin-bottom:20px}
+    .hero-als .hero-btn{font-size:11px;padding:13px 32px}
+  }
+</style>
+
+<div class="promo-banner">LIVRAISON OFFERTE DÈS 100€ D'ACHAT</div>
 
 <!-- ═══════════════════════════════════════════
      HERO — STYLE LA SAPERIE
 ═══════════════════════════════════════════ -->
-<section style="position:relative;width:100%;height:85vh;min-height:500px;overflow:hidden;display:flex;align-items:center;justify-content:center;">
-  <img src="audemars_piguet_cover.jpg" alt="AllStore Hero" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;">
-  <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.35) 0%,rgba(0,0,0,.55) 100%);"></div>
-  <div style="position:relative;z-index:2;text-align:center;padding:0 20px;">
-    <h1 style="font-family:'Cormorant Garamond',serif;font-size:clamp(36px,7vw,80px);font-weight:300;color:#fff;letter-spacing:.04em;line-height:1.1;margin:0 0 16px;">Le luxe accessible,<br>sans compromis.</h1>
-    <p style="font-family:'Poppins',sans-serif;font-size:clamp(13px,1.5vw,16px);color:rgba(255,255,255,.75);margin:0 0 32px;font-weight:300;">Répliques premium vérifiées. Livraison Europe. Retours 14 jours.</p>
-    <a href="boutique.html" style="display:inline-block;font-family:'Poppins',sans-serif;font-size:12px;font-weight:600;letter-spacing:.15em;text-transform:uppercase;color:#0a1923;background:#fff;padding:16px 48px;border-radius:4px;text-decoration:none;transition:all .3s;">DÉCOUVRIR</a>
+<section class="hero-als">
+  <img src="audemars_piguet_cover.jpg" alt="AllStore Hero" class="hero-bg">
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <h1>Le luxe accessible,<br>sans compromis.</h1>
+    <p class="hero-desc">Répliques premium vérifiées. Livraison Europe. Retours 14 jours.</p>
+    <a href="boutique.html" class="hero-btn">DÉCOUVRIR</a>
   </div>
 </section>
 
@@ -54,43 +71,63 @@
      LA SÉLECTION — PRODUITS PHARES
 ═══════════════════════════════════════════ -->
 <style>
-  .selec-section{padding:60px 0 20px;text-align:center;background:var(--bg2,#f5f2ec)}
+  /* ---- SECTION ---- */
+  .selec-section{padding:60px 0 30px;text-align:center;background:var(--bg2,#f5f2ec)}
   .selec-title{font-family:'Cormorant Garamond',serif;font-size:clamp(24px,3.5vw,38px);font-weight:400;color:var(--noir,#0a1923);margin:0 0 8px}
   .selec-sub{font-family:'Poppins',sans-serif;font-size:13px;color:var(--gris,#6a7a8a);margin:0 0 24px}
+
+  /* ---- FILTERS ---- */
   #selec-filters{display:flex;flex-wrap:wrap;justify-content:center;gap:8px;margin-bottom:32px;padding:0 16px}
   .selec-filter{font-family:'Poppins',sans-serif;font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;padding:10px 24px;border-radius:30px;border:1.5px solid rgba(10,25,35,.15);background:transparent;color:var(--noir,#0a1923);cursor:pointer;transition:all .2s}
   .selec-filter.active{background:var(--noir,#0a1923);color:#fff;border-color:var(--noir,#0a1923)}
-  #selec-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;max-width:1200px;margin:0 auto;padding:0 24px}
+
+  /* ---- GRID — FULL WIDTH on desktop ---- */
+  #selec-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;width:100%;margin:0 auto;padding:0 40px;box-sizing:border-box}
   .selec-card{text-decoration:none;background:#fff;border-radius:10px;overflow:hidden;transition:transform .2s,box-shadow .2s}
   .selec-card:hover{transform:translateY(-4px);box-shadow:0 8px 24px rgba(0,0,0,.08)}
   .selec-card-img{aspect-ratio:1;background:#f8f6f2;display:flex;align-items:center;justify-content:center;padding:16px}
-  .selec-card-img img{max-width:85%;max-height:85%;object-fit:contain}
+  .selec-card-img img{max-width:90%;max-height:90%;object-fit:contain}
   .selec-card-info{padding:12px 14px 16px;text-align:left}
   .selec-card-brand{font-family:'Poppins',sans-serif;font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:.08em;color:var(--gold2,#b89a4a)}
-  .selec-card-name{font-family:'Poppins',sans-serif;font-size:14px;font-weight:600;color:var(--noir,#0a1923);display:block;margin-top:2px}
-  .selec-card-price{font-family:'Poppins',sans-serif;font-size:13px;font-weight:700;color:var(--noir,#0a1923);display:block;margin-top:2px}
-  .selec-card-soon{font-family:'Poppins',sans-serif;font-size:12px;color:var(--gris,#6a7a8a);font-style:italic;display:block;margin-top:2px}
-  .selec-cta-wrap{text-align:center;padding:36px 0 0}
+  .selec-card-name{font-family:'Poppins',sans-serif;font-size:14px;font-weight:600;color:var(--noir,#0a1923);display:block;margin-top:3px}
+  .selec-card-price{font-family:'Poppins',sans-serif;font-size:14px;font-weight:700;color:var(--noir,#0a1923);display:block;margin-top:3px}
+  .selec-card-soon{font-family:'Poppins',sans-serif;font-size:12px;color:var(--gris,#6a7a8a);font-style:italic;display:block;margin-top:3px}
+  .selec-cta-wrap{text-align:center;padding:40px 0 0}
   .selec-cta{display:inline-block;font-family:'Poppins',sans-serif;font-size:12px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--noir,#0a1923);border:1.5px solid var(--noir,#0a1923);padding:14px 40px;border-radius:4px;text-decoration:none;transition:all .2s}
+  .selec-cta:hover{background:var(--noir,#0a1923);color:#fff}
+
+  /* ---- LARGE DESKTOP (> 1400px) ---- */
+  @media(min-width:1400px){
+    #selec-grid{grid-template-columns:repeat(4,1fr);gap:28px;padding:0 60px}
+    .selec-card-name{font-size:15px}
+    .selec-card-price{font-size:15px}
+  }
+
   /* ---- TABLET ---- */
   @media(max-width:900px){
-    #selec-grid{grid-template-columns:repeat(3,1fr);gap:16px;padding:0 16px}
+    #selec-grid{grid-template-columns:repeat(3,1fr);gap:14px;padding:0 16px}
+    .selec-card-info{padding:10px 12px 14px}
   }
-  /* ---- MOBILE ---- */
+
+  /* ---- MOBILE — 2 colonnes comme La Saperie ---- */
   @media(max-width:600px){
-    .selec-section{padding:40px 0 16px}
-    .selec-sub{margin-bottom:16px;font-size:12px}
-    #selec-filters{gap:6px;margin-bottom:20px;padding:0 12px}
-    .selec-filter{font-size:10px;padding:8px 14px;letter-spacing:.05em}
-    #selec-grid{grid-template-columns:repeat(2,1fr);gap:10px;padding:0 12px}
+    .selec-section{padding:32px 0 16px}
+    .selec-title{font-size:22px;margin-bottom:4px}
+    .selec-sub{margin-bottom:14px;font-size:11px}
+    #selec-filters{gap:6px;margin-bottom:18px;padding:0 10px;justify-content:flex-start;overflow-x:auto;flex-wrap:nowrap;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+    #selec-filters::-webkit-scrollbar{display:none}
+    .selec-filter{font-size:10px;padding:7px 14px;letter-spacing:.04em;white-space:nowrap;flex-shrink:0}
+    #selec-grid{grid-template-columns:repeat(2,1fr);gap:8px;padding:0 10px}
     .selec-card{border-radius:8px}
-    .selec-card-img{padding:12px}
-    .selec-card-info{padding:8px 10px 12px}
-    .selec-card-brand{font-size:8px}
-    .selec-card-name{font-size:12px;margin-top:1px}
-    .selec-card-price{font-size:12px}
-    .selec-card-soon{font-size:10px}
-    .selec-cta{font-size:11px;padding:12px 28px}
+    .selec-card-img{padding:10px;aspect-ratio:1}
+    .selec-card-img img{max-width:88%;max-height:88%}
+    .selec-card-info{padding:8px 10px 10px}
+    .selec-card-brand{font-size:8px;letter-spacing:.05em}
+    .selec-card-name{font-size:12px;font-weight:700;margin-top:1px}
+    .selec-card-price{font-size:12px;margin-top:1px}
+    .selec-card-soon{font-size:10px;margin-top:1px}
+    .selec-cta-wrap{padding:24px 0 0}
+    .selec-cta{font-size:10px;padding:12px 24px;letter-spacing:.08em}
   }
 </style>
 
