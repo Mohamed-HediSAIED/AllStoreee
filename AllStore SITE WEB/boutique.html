@@ -717,6 +717,35 @@
       </div>
     </div>
 
+    <!-- CHRISTIAN LOUBOUTIN LOUIS JUNIOR -->
+    <div class="b-card b-card--colorways" data-cat="chaussures" id="louboutin-louis-card" style="cursor:pointer" onclick="if(!event.target.closest('.b-cw,.b-btn-cart,.b-btn-wl')){const c=this.querySelector('.b-cw.active');window.location.href='produit-louboutin-louis.html?color='+(c?.dataset?.color_id||'noir')}">
+      <span class="b-badge">Nouveau</span>
+      <div class="b-img">
+        <img id="louboutin-louis-img" src="louboutin_louis_noir.jpg" alt="Christian Louboutin Louis Junior">
+      </div>
+      <div class="b-body">
+        <span class="b-brand">Christian Louboutin</span>
+        <span class="b-name">Louis Junior</span>
+        <span class="b-colorway-label">Coloris : <strong id="louboutin-louis-color-name">Noir</strong></span>
+        <div class="b-colorway-picker" id="louboutin-louis-picker">
+          <button class="b-cw active" style="background:#1a1a1a" data-color_id="noir" data-color="Noir" onclick="pickLouboutinLouis(this)"></button>
+          <button class="b-cw" style="background:#1a2a4a" data-color_id="marine" data-color="Marine" onclick="pickLouboutinLouis(this)"></button>
+          <button class="b-cw" style="background:#f0ece4;border:1.5px solid #ddd" data-color_id="blanc" data-color="Blanc" onclick="pickLouboutinLouis(this)"></button>
+          <button class="b-cw" style="background:linear-gradient(135deg,#1a2a4a 70%,#c0c0c0 70%)" data-color_id="spikes_marine" data-color="Spikes Marine" onclick="pickLouboutinLouis(this)"></button>
+          <button class="b-cw" style="background:#c8b898" data-color_id="beige" data-color="Beige" onclick="pickLouboutinLouis(this)"></button>
+          <button class="b-cw" style="background:#2a5a3a" data-color_id="vert" data-color="Vert" onclick="pickLouboutinLouis(this)"></button>
+          <button class="b-cw" style="background:#a0754a" data-color_id="camel" data-color="Camel" onclick="pickLouboutinLouis(this)"></button>
+        </div>
+        <span class="b-price">— € <em>Prix bientôt disponible</em></span>
+        <div class="b-actions">
+          <button class="b-btn-cart" disabled style="opacity:.5;cursor:not-allowed">Bientôt disponible</button>
+          <button class="b-btn-wl" id="louboutin-louis-wl-btn" onclick="handleWL(this,'louboutin_louis_noir','Christian Louboutin','Louis Junior — Noir','louboutin_louis_noir.jpg')">
+            <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+          </button>
+        </div>
+      </div>
+    </div>
+
     <!-- LUNETTES MIU MIU -->
     <div class="b-card" data-cat="lunettes" id="lunettes-miumiu-card" style="cursor:pointer" onclick="if(!event.target.closest('.b-btn-cart,.b-btn-wl')){window.location.href='produit-lunettes-miumiu.html'}">
       <span class="b-badge">Nouveau</span>
@@ -1340,6 +1369,23 @@
       wlBtn.setAttribute('onclick', "handleWL(this,'si_pull_" + colorId + "','Stone Island','" + fullName + "','si_pull_" + colorId + ".jpg')");
       wlBtn.classList.remove('wl-active');
       try { var wl = JSON.parse(localStorage.getItem('als_wishlist')) || []; if (wl.some(i => i.id === 'si_pull_' + colorId)) wlBtn.classList.add('wl-active'); } catch {}
+    }
+  }
+
+  // Christian Louboutin Louis Junior color picker
+  function pickLouboutinLouis(btn) {
+    var card = document.getElementById('louboutin-louis-card');
+    card.querySelectorAll('.b-cw').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    var colorId = btn.dataset.color_id;
+    var colorName = btn.dataset.color;
+    document.getElementById('louboutin-louis-img').src = 'louboutin_louis_' + colorId + '.jpg';
+    document.getElementById('louboutin-louis-color-name').textContent = colorName;
+    var wlBtn = document.getElementById('louboutin-louis-wl-btn');
+    if (wlBtn) {
+      wlBtn.setAttribute('onclick', "handleWL(this,'louboutin_louis_" + colorId + "','Christian Louboutin','Louis Junior — " + colorName + "','louboutin_louis_" + colorId + ".jpg')");
+      wlBtn.classList.remove('wl-active');
+      try { var wl = JSON.parse(localStorage.getItem('als_wishlist')) || []; if (wl.some(i => i.id === 'louboutin_louis_' + colorId)) wlBtn.classList.add('wl-active'); } catch {}
     }
   }
 </script>
