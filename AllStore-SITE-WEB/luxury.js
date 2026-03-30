@@ -13,55 +13,14 @@
   /* Smooth scroll disabled — use native scroll for reliability */
 
   /* ══════════════════════════════════════════════════════════════
-     2. PAGE TRANSITIONS — Single panel sweep
+     2. PAGE TRANSITIONS — DISABLED
   ══════════════════════════════════════════════════════════════ */
   (function () {
+    // Remove transition overlay if present
+    const transEl = document.getElementById('lux-transition');
+    if (transEl) transEl.remove();
     const oldWipe = document.getElementById('wipe');
     if (oldWipe) oldWipe.remove();
-
-    // Use element already inlined in HTML (zero-flash), or create it as fallback
-    let transEl = document.getElementById('lux-transition');
-    if (!transEl) {
-      transEl = document.createElement('div');
-      transEl.id = 'lux-transition';
-      transEl.innerHTML = `<div class="lux-t-brand">ALLSTORE</div><div class="lux-t-line"></div>`;
-      document.body.prepend(transEl);
-    }
-
-    // Entry: sweep the panel off the top to reveal new page
-    transEl.classList.add('lux-t-enter');
-    transEl.addEventListener('animationend', () => {
-      transEl.classList.remove('lux-t-enter');
-      // Keep off-screen (above) after entry
-      transEl.style.transform = 'translateY(-100%)';
-      transEl.style.pointerEvents = 'none';
-    }, { once: true });
-
-    // Intercept navigation
-    let isTransitioning = false;
-    document.addEventListener('click', (e) => {
-      if (isTransitioning) return;
-      const a = e.target.closest('a[href]');
-      if (!a) return;
-      const href = a.getAttribute('href');
-      if (!href || href.startsWith('#') || href.startsWith('mailto') ||
-        href.startsWith('tel') || href.startsWith('https://wa.me') ||
-        a.hasAttribute('download') || a.target === '_blank') return;
-      if (a.hostname && a.hostname !== location.hostname) return;
-      if (a.pathname === location.pathname) return;
-      // Skip transition for collection cards — navigate instantly
-      if (a.closest('.ap-card')) return;
-
-      e.preventDefault();
-      isTransitioning = true;
-      const url = a.href;
-
-      // Exit: panel sweeps up from below (animation overrides inline style)
-      transEl.style.transform = '';
-      transEl.style.pointerEvents = 'auto';
-      transEl.classList.add('lux-t-exit');
-      setTimeout(() => { window.location = url; }, 650);
-    });
   })();
 
   /* ══════════════════════════════════════════════════════════════
