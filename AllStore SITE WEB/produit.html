@@ -1,0 +1,725 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Prada America's Cup — Réplique premium 1:1. Qualité vérifiée par nos experts. Livraison sécurisée 7-15 jours.">
+  <meta property="og:title" content="ALLSTORE 24/7 — Sourcing d'Exception">
+  <meta property="og:description" content="Prada America's Cup — Réplique premium 1:1. Qualité vérifiée par nos experts. Livraison sécurisée 7-15 jours.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="shopping_bag_icon.png">
+  <link rel="icon" type="image/png" href="shopping_bag_icon.png">
+  <title>Produit | ALLSTORE 24/7</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="conversion.css">
+  <style>
+    .pdp { padding: 90px 0 60px; margin: 0 auto; }
+
+    .pdp-grid {
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 0;
+      align-items: start;
+      min-height: calc(100vh - 90px);
+    }
+
+    /* ═══ Gallery (left) — full bleed ═══ */
+    .pdp-gallery {
+      position: sticky;
+      top: 90px;
+      height: calc(100vh - 90px);
+      background: #f5f2ec;
+      display: flex;
+      flex-direction: column;
+    }
+    .pdp-main-img {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      position: relative;
+    }
+    .pdp-main-img img {
+      max-width: 95%;
+      max-height: 95%;
+      object-fit: contain;
+      transition: opacity .25s ease;
+    }
+    .pdp-main-img img.fade { opacity: 0; }
+    .pdp-main-img .pdp-counter {
+      position: absolute;
+      bottom: 16px;
+      right: 20px;
+      background: rgba(0,0,0,.45);
+      color: #fff;
+      font-size: 11px;
+      font-weight: 600;
+      padding: 4px 12px;
+      border-radius: 980px;
+      backdrop-filter: blur(8px);
+    }
+
+    /* Arrows */
+    .pdp-arrow {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: rgba(255,255,255,.85);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(0,0,0,.06);
+      font-size: 22px;
+      cursor: pointer;
+      z-index: 2;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 20px rgba(0,0,0,.08);
+      transition: transform .2s, background .2s;
+      color: var(--noir);
+    }
+    .pdp-arrow:hover { background: #fff; transform: translateY(-50%) scale(1.08); }
+    .pdp-prev { left: 20px; }
+    .pdp-next { right: 20px; }
+
+    /* Thumbnails */
+    .pdp-thumbs {
+      display: flex;
+      gap: 6px;
+      padding: 12px 20px 16px;
+      overflow-x: auto;
+      scrollbar-width: none;
+      background: #f5f2ec;
+    }
+    .pdp-thumbs::-webkit-scrollbar { display: none; }
+    .pdp-thumb {
+      width: 64px;
+      height: 64px;
+      border-radius: 10px;
+      overflow: hidden;
+      cursor: pointer;
+      border: 2px solid transparent;
+      flex-shrink: 0;
+      background: #eae6de;
+      transition: border-color .2s, transform .15s;
+    }
+    .pdp-thumb:hover { transform: scale(1.06); }
+    .pdp-thumb.active { border-color: var(--noir); }
+    .pdp-thumb img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: brightness(1.05) contrast(1.04);
+    }
+
+    /* ═══ Info (right) ═══ */
+    .pdp-info {
+      padding: 48px 56px 60px 48px;
+      overflow-y: auto;
+      max-height: calc(100vh - 90px);
+    }
+    .pdp-brand {
+      font-size: 12px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: .15em;
+      color: var(--gold2);
+    }
+    .pdp-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(32px, 4vw, 48px);
+      font-weight: 300;
+      letter-spacing: -.02em;
+      line-height: 1.1;
+      margin: 8px 0 20px;
+    }
+
+    /* Price — prominent */
+    .pdp-price-row {
+      display: flex;
+      align-items: baseline;
+      gap: 12px;
+      margin-bottom: 24px;
+    }
+    .pdp-price {
+      font-size: 36px;
+      font-weight: 700;
+      font-family: 'Cormorant Garamond', serif;
+    }
+    .pdp-price-tag {
+      font-size: 12px;
+      color: var(--gris);
+    }
+
+    /* Badges */
+    .pdp-badges {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 28px;
+    }
+    .pdp-badge {
+      font-size: 10px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: .06em;
+      padding: 5px 14px;
+      border-radius: 980px;
+      background: var(--bg2);
+      color: var(--gris);
+    }
+    .pdp-badge--gold { background: var(--gold); color: var(--noir); }
+
+    /* Colorway section */
+    .pdp-section-title {
+      font-size: 11px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+      color: var(--gris);
+      margin-bottom: 10px;
+    }
+    .pdp-color-name { color: var(--noir); font-weight: 700; }
+    .pdp-colors {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 7px;
+      margin-bottom: 28px;
+      align-items: center;
+    }
+    .pdp-colors.collapsed .pdp-cw { display: none; }
+    .pdp-colors.collapsed .pdp-cw.pdp-cw--visible { display: block; }
+    .pdp-cw {
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      border: 2.5px solid transparent;
+      cursor: pointer;
+      transition: transform .15s, border-color .2s, box-shadow .2s;
+      padding: 0;
+      outline: none;
+    }
+    .pdp-cw:hover { transform: scale(1.18); }
+    .pdp-cw.active { border-color: var(--noir); transform: scale(1.12); box-shadow: 0 0 0 2px rgba(10,25,35,.08); }
+    .pdp-cw-more {
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      border: 1.5px solid rgba(10,25,35,.15);
+      background: var(--bg2);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--gris);
+      font-family: 'Poppins', sans-serif;
+      transition: all .2s;
+      padding: 0;
+      flex-shrink: 0;
+    }
+    .pdp-cw-more:hover { border-color: var(--noir); color: var(--noir); }
+    .pdp-colors:not(.collapsed) .pdp-cw-more { display: none; }
+
+    /* Size selector */
+    .pdp-sizes {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-bottom: 32px;
+    }
+    .pdp-size {
+      padding: 10px 16px;
+      text-align: center;
+      border: 1.5px solid rgba(10,25,35,.1);
+      border-radius: 10px;
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      background: #fff;
+      transition: all .15s;
+      font-family: 'Poppins', sans-serif;
+      min-width: 48px;
+    }
+    .pdp-size:hover { border-color: var(--noir); }
+    .pdp-size.active { background: var(--noir); color: #fff; border-color: var(--noir); }
+
+    /* Actions — large CTA */
+    .pdp-actions { display: flex; gap: 10px; margin-bottom: 28px; }
+    .pdp-btn-cart {
+      flex: 1;
+      background: var(--noir);
+      color: #fff;
+      border: none;
+      border-radius: 14px;
+      padding: 20px;
+      font-size: 15px;
+      font-weight: 600;
+      cursor: pointer;
+      font-family: 'Poppins', sans-serif;
+      letter-spacing: .02em;
+      transition: background .2s, transform .15s, box-shadow .2s;
+    }
+    .pdp-btn-cart:hover { background: #1a3040; transform: translateY(-1px); box-shadow: 0 8px 24px rgba(10,25,35,.15); }
+    .pdp-btn-cart.in-cart { background: var(--gold2); }
+    .pdp-btn-wl {
+      width: 58px;
+      height: 58px;
+      border: 1.5px solid rgba(10,25,35,.12);
+      border-radius: 14px;
+      background: transparent;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      transition: all .2s;
+    }
+    .pdp-btn-wl:hover { border-color: #e74c3c; background: rgba(231,76,60,.04); }
+    .pdp-btn-wl.wl-active svg { fill: #e74c3c; stroke: #e74c3c; }
+    .pdp-btn-wl svg { width: 22px; height: 22px; stroke: var(--gris); fill: none; stroke-width: 2; }
+
+    /* Details */
+    .pdp-details {
+      border-top: 1px solid rgba(10,25,35,.08);
+      padding-top: 24px;
+      margin-top: 8px;
+    }
+    .pdp-detail-row {
+      display: flex;
+      justify-content: space-between;
+      padding: 10px 0;
+      font-size: 13px;
+      border-bottom: 1px solid rgba(10,25,35,.05);
+    }
+    .pdp-detail-label { color: var(--gris); }
+    .pdp-detail-value { font-weight: 600; }
+
+    /* ═══ Responsive ═══ */
+    @media(max-width:1024px){
+      .pdp-grid { grid-template-columns: 1fr 1fr; }
+      .pdp-info { padding: 36px 32px 60px 28px; }
+    }
+    @media(max-width:900px){
+      .pdp { padding-top: 60px; }
+      .pdp-grid { grid-template-columns: 1fr; }
+      .pdp-gallery { position: static; height: auto; min-height: 55vh; }
+      .pdp-main-img { min-height: 55vh; }
+      .pdp-info { padding: 24px 20px 120px; max-height: none; }
+      .pdp-sizes { flex-wrap: wrap; }
+    }
+    @media(max-width:600px){
+      .pdp { padding-top: 50px; }
+      .pdp-main-img img { max-width: 95%; max-height: 95%; }
+      .pdp-arrow { width: 40px; height: 40px; font-size: 20px; }
+      .pdp-prev { left: 8px; }
+      .pdp-next { right: 8px; }
+      .pdp-thumb { width: 56px; height: 56px; border-radius: 8px; }
+      .pdp-thumbs { padding: 10px 16px 14px; }
+      .pdp-back { font-size: 13px; margin-bottom: 16px; }
+      .pdp-brand { font-size: 12px; }
+      .pdp-name { font-size: 26px; }
+      .pdp-price { font-size: 28px; }
+      .pdp-price-tag { font-size: 13px; }
+      .pdp-cw { width: 32px; height: 32px; }
+      .pdp-size { padding: 12px 18px; font-size: 14px; min-width: 52px; }
+      .pdp-btn-cart { padding: 18px; font-size: 16px; }
+      .pdp-btn-wl { width: 56px; height: 56px; }
+      .pdp-section-title { font-size: 12px; }
+      .pdp-badge { font-size: 11px; }
+      .pdp-detail-row { font-size: 14px; }
+      .pdp-info { padding: 20px 18px 120px; }
+    }
+
+    /* Back link */
+    .pdp-back {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--gris);
+      text-decoration: none;
+      margin-bottom: 20px;
+      transition: color .2s;
+    }
+    .pdp-back:hover { color: var(--noir); }
+  </style>
+</head>
+<body>
+<div id="lux-transition"><div class="lux-t-brand">ALLSTORE</div><div class="lux-t-line"></div></div>
+
+<header>
+  <nav>
+    <a href="index.html" class="logo"><img src="shopping_bag_icon.png" alt="ALLSTORE"></a>
+    <ul class="nav-links">
+      <li><a href="index.html">Accueil</a></li>
+      <li><a href="boutique.html">Boutique</a></li>
+      <li><a href="assistant.html">Assistant</a></li>
+      <li><a href="suivi.html">Suivi</a></li>
+      <li><a href="apropos.html">À Propos</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main>
+  <div class="pdp">
+    <div class="pdp-grid">
+      <!-- LEFT: Gallery -->
+      <div class="pdp-gallery">
+        <div class="pdp-main-img">
+          <img id="pdp-img" src="prada_cup_noir_1.jpg" alt="Prada America's Cup">
+          <button class="pdp-arrow pdp-prev" onclick="pdpNav(-1)">&#8249;</button>
+          <button class="pdp-arrow pdp-next" onclick="pdpNav(1)">&#8250;</button>
+          <span class="pdp-counter" id="pdp-counter">1 / 8</span>
+        </div>
+        <div class="pdp-thumbs" id="pdp-thumbs"></div>
+      </div>
+
+      <!-- RIGHT: Info -->
+      <div class="pdp-info">
+        <a href="boutique.html" class="pdp-back">&#8592; Boutique</a>
+        <span class="pdp-brand">Prada</span>
+        <h1 class="pdp-name">America's Cup</h1>
+
+        <div class="pdp-price-row">
+          <span class="pdp-price">105 €</span>
+          <span class="pdp-price-tag">Livraison offerte</span>
+        </div>
+
+        <div class="pdp-badges">
+          <span class="pdp-badge pdp-badge--gold">Réplique Premium</span>
+          <span class="pdp-badge">36-45</span>
+        </div>
+
+        <div class="pdp-section-title">Coloris : <span class="pdp-color-name" id="pdp-color-name">Noir</span></div>
+        <div class="pdp-colors" id="pdp-colors"></div>
+
+        <div class="pdp-section-title">Taille</div>
+        <div class="pdp-sizes" id="pdp-sizes"></div>
+
+        <div class="pdp-actions">
+          <button class="pdp-btn-cart" id="pdp-cart-btn" onclick="pdpAddCart()">Ajouter au panier</button>
+          <button class="pdp-btn-wl" id="pdp-wl-btn" onclick="pdpToggleWL()">
+            <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+          </button>
+        </div>
+
+        <div class="pdp-details">
+          <div class="pdp-detail-row"><span class="pdp-detail-label">Marque</span><span class="pdp-detail-value">Prada</span></div>
+          <div class="pdp-detail-row"><span class="pdp-detail-label">Modèle</span><span class="pdp-detail-value">America's Cup P21122</span></div>
+          <div class="pdp-detail-row"><span class="pdp-detail-label">Matière</span><span class="pdp-detail-value">Cuir verni + Mesh technique</span></div>
+          <div class="pdp-detail-row"><span class="pdp-detail-label">Semelle</span><span class="pdp-detail-value">Caoutchouc antidérapant</span></div>
+          <div class="pdp-detail-row"><span class="pdp-detail-label">Tailles</span><span class="pdp-detail-value">36 — 45</span></div>
+          <div class="pdp-detail-row"><span class="pdp-detail-label">Qualité</span><span class="pdp-detail-value">Réplique Premium 1:1</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+
+<footer>
+  <div class="foot-inner">
+    <div class="foot-brand">ALLSTORE</div>
+    <div class="foot-links">
+      <a href="apropos.html">À Propos</a>
+      <a href="contact.html">Contact</a>
+      <a href="assistant.html">Assistant</a>
+    </div>
+    <div class="foot-tagline">L'introuvable, enfin trouvé.</div>
+    <div class="foot-copy">ALLSTORE 24/7 — Sourcing d'Exception — 2025</div>
+  </div>
+</footer>
+
+<script src="global.js"></script>
+<script src="luxury.js"></script>
+<script src="conversion.js"></script>
+<script>
+  // ═══ Product Data ═══
+  const COLORWAYS = [
+    // ─── Principaux (non-barrés) ───
+    { id: 'noir', name: 'Noir', hex: '#1a1a1a' },
+    { id: 'noir_argent', name: 'Noir / Argent', hex: '#3a3a3a' },
+    { id: 'noir_blanc', name: 'Noir / Blanc', hex: '#1a1a1a', split: '#fff' },
+    { id: 'bleu_marine', name: 'Bleu Marine', hex: '#1b3a5c' },
+    { id: 'bleu_blanc', name: 'Bleu / Blanc', hex: '#1a3f6f', split: '#fff' },
+    { id: 'bleu_royal', name: 'Bleu Royal', hex: '#2563eb' },
+    { id: 'bleu_cobalt', name: 'Bleu Cobalt', hex: '#1a45c0' },
+    { id: 'bleu_clair', name: 'Bleu Clair', hex: '#8ec8e8' },
+    { id: 'bleu_ciel', name: 'Bleu Ciel', hex: '#a8d4f0' },
+    { id: 'vert_menthe', name: 'Vert Menthe', hex: '#98e8c1' },
+    { id: 'vert_emeraude', name: 'Vert Émeraude', hex: '#0f8a4c' },
+    { id: 'vert_foret', name: 'Vert Forêt', hex: '#1a5c3a' },
+    { id: 'gris', name: 'Gris', hex: '#a0a0a0' },
+    { id: 'blanc', name: 'Blanc', hex: '#f0f0f0', border: true },
+    { id: 'blanc_pur', name: 'Blanc Pur', hex: '#f8f8f8', border: true },
+    // ─── Coloris vifs ───
+    { id: 'rouge', name: 'Rouge', hex: '#e23b28' },
+    { id: 'rouge_blanc', name: 'Rouge / Blanc', hex: '#e23b28', split: '#fff' },
+    { id: 'rouge_noir', name: 'Rouge / Noir', hex: '#cc2020', split: '#1a1a1a' },
+    { id: 'vert_fluo', name: 'Vert Fluo', hex: '#00e640' },
+    { id: 'jaune', name: 'Jaune', hex: '#f5c518' },
+    { id: 'orange', name: 'Orange', hex: '#f58218' },
+    { id: 'rose', name: 'Rose Pastel', hex: '#f4b4c8' },
+    { id: 'rose_vif', name: 'Rose Vif', hex: '#e84898' },
+    { id: 'violet_blanc', name: 'Violet / Blanc', hex: '#8b45a6', split: '#fff' },
+    { id: 'violet_noir', name: 'Violet / Noir', hex: '#7b2d8e', split: '#1a1a1a' },
+    { id: 'lavande', name: 'Lavande', hex: '#b894d8' },
+    // ─── Bicolores sombres ───
+    { id: 'argent_rouge', name: 'Argent / Rouge', hex: '#c0c0c0', split: '#e23b28' },
+    { id: 'noir_rouge', name: 'Noir / Rouge', hex: '#1a1a1a', split: '#e23b28' },
+    // noir_rouge2 retiré (image trop sombre)
+    { id: 'marine_rouge', name: 'Marine / Rouge', hex: '#1a2d4a', split: '#e23b28' },
+    { id: 'noir_verni', name: 'Noir Verni', hex: '#0a0a0a', split: '#fff' },
+    { id: 'bordeaux', name: 'Bordeaux', hex: '#6b1a2a', split: '#fff' },
+    { id: 'marron', name: 'Marron', hex: '#4a3020', split: '#fff' },
+    // ─── Pastels & Clairs ───
+    { id: 'gris_clair', name: 'Gris Clair', hex: '#c8c8c8' },
+    // creme retiré (photos manquantes)
+    { id: 'turquoise', name: 'Turquoise', hex: '#40d8b0' },
+    { id: 'vert_sauge', name: 'Vert Sauge', hex: '#88b8a0' },
+    { id: 'rose_fluo', name: 'Rose Fluo', hex: '#ff3090' },
+    { id: 'rose_peche', name: 'Rose Pêche', hex: '#f0b0a0' },
+    { id: 'blanc_verni', name: 'Blanc Verni', hex: '#f0f0f0', border: true },
+    { id: 'orange_blanc', name: 'Orange / Blanc', hex: '#f08020', split: '#fff' },
+    // camel retiré (photos manquantes)
+    { id: 'blanc_noir', name: 'Blanc / Noir', hex: '#f0f0f0', split: '#1a1a1a' },
+    { id: 'emeraude_noir', name: 'Émeraude / Noir', hex: '#0f8a4c', split: '#1a1a1a' },
+    { id: 'noir_total', name: 'Noir Total', hex: '#0a0a0a' },
+    { id: 'rouge_noir2', name: 'Rouge / Noir v2', hex: '#cc2020', split: '#0a0a0a' },
+    { id: 'anthracite', name: 'Anthracite', hex: '#505050' },
+    { id: 'marine_noir', name: 'Marine / Noir', hex: '#1a2d4a', split: '#0a0a0a' },
+    { id: 'bleu_petrole', name: 'Bleu Pétrole', hex: '#1a7080', split: '#fff' },
+    { id: 'noir_blanc2', name: 'Noir Verni / Blanc', hex: '#0a0a0a', split: '#fff' },
+    { id: 'bleu_vif', name: 'Bleu Vif', hex: '#1890e8' },
+    { id: 'bordeaux_blanc', name: 'Bordeaux / Blanc', hex: '#6b1a2a', split: '#fff' },
+    { id: 'marine_cuir', name: 'Marine Cuir', hex: '#2a3d5c' },
+    { id: 'noir_mat', name: 'Noir Mat', hex: '#1a1a1a' },
+    { id: 'noir_verni2', name: 'Noir Verni', hex: '#0a0a0a' },
+    { id: 'blanc_cuir', name: 'Blanc Cuir', hex: '#f5f5f0', border: true },
+  ];
+
+  const PHOTO_COUNT = 8;
+  const SIZES = [36,37,38,39,40,41,42,43,44,45];
+
+  // ═══ State ═══
+  let currentColor = COLORWAYS[0];
+  let currentPhoto = 1;
+  let selectedSize = null;
+
+  // ═══ Init ═══
+  function init() {
+    // Read URL params
+    const params = new URLSearchParams(window.location.search);
+    const colorParam = params.get('color');
+    if (colorParam) {
+      const found = COLORWAYS.find(c => c.id === colorParam);
+      if (found) currentColor = found;
+    }
+
+    renderColors();
+    renderSizes();
+    renderThumbs();
+    updateImage();
+    updateCartState();
+  }
+
+  // ═══ Render Color Dots ═══
+  const VISIBLE_COLORS = 4; // show only 4 colors + "+" button
+  function renderColors() {
+    const container = document.getElementById('pdp-colors');
+    // Ensure active color is always among visible ones
+    const activeIdx = COLORWAYS.findIndex(c => c.id === currentColor.id);
+    const visibleIds = new Set();
+    // Always show first few + active
+    for (let i = 0; i < Math.min(VISIBLE_COLORS, COLORWAYS.length); i++) visibleIds.add(i);
+    if (activeIdx >= 0) visibleIds.add(activeIdx);
+
+    let html = COLORWAYS.map((c, i) => {
+      const activeClass = c.id === currentColor.id ? 'active' : '';
+      let bgStyle;
+      if (c.split) {
+        bgStyle = `background:linear-gradient(135deg, ${c.hex} 50%, ${c.split} 50%)`;
+      } else {
+        bgStyle = `background:${c.hex}`;
+      }
+      const borderStyle = c.border ? ';border:1.5px solid #ddd' : '';
+      return `<button class="pdp-cw ${activeClass}" data-id="${c.id}" onclick="pickPdpColor('${c.id}')" style="${bgStyle}${borderStyle}" title="${c.name}"></button>`;
+    }).join('');
+
+    container.innerHTML = html;
+    document.getElementById('pdp-color-name').textContent = currentColor.name;
+  }
+
+  window.expandColors = function() {
+    const container = document.getElementById('pdp-colors');
+    container.classList.remove('collapsed');
+  };
+
+  // ═══ Render Size Grid ═══
+  function renderSizes() {
+    const container = document.getElementById('pdp-sizes');
+    container.innerHTML = SIZES.map(s => {
+      const activeClass = s === selectedSize ? 'active' : '';
+      return `<button class="pdp-size ${activeClass}" onclick="pickSize(${s})">${s}</button>`;
+    }).join('');
+  }
+
+  // ═══ Render Thumbnails ═══
+  function renderThumbs() {
+    const container = document.getElementById('pdp-thumbs');
+    let html = '';
+    for (let i = 1; i <= PHOTO_COUNT; i++) {
+      const activeClass = i === currentPhoto ? 'active' : '';
+      html += `<div class="pdp-thumb ${activeClass}" onclick="goToPhoto(${i})"><img src="prada_cup_${currentColor.id}_${i}.jpg" alt="Photo ${i}"></div>`;
+    }
+    container.innerHTML = html;
+  }
+
+  // ═══ Update Main Image ═══
+  function updateImage() {
+    const img = document.getElementById('pdp-img');
+    img.classList.add('fade');
+    setTimeout(() => {
+      img.src = `prada_cup_${currentColor.id}_${currentPhoto}.jpg`;
+      img.alt = `Prada America's Cup — ${currentColor.name}`;
+      img.classList.remove('fade');
+    }, 200);
+    document.getElementById('pdp-counter').textContent = `${currentPhoto} / ${PHOTO_COUNT}`;
+
+    // Update thumb active state
+    document.querySelectorAll('.pdp-thumb').forEach((t, i) => {
+      t.classList.toggle('active', i + 1 === currentPhoto);
+    });
+  }
+
+  // ═══ Navigation ═══
+  function pdpNav(dir) {
+    currentPhoto = ((currentPhoto - 1 + dir + PHOTO_COUNT) % PHOTO_COUNT) + 1;
+    updateImage();
+  }
+
+  function goToPhoto(n) {
+    currentPhoto = n;
+    updateImage();
+  }
+
+  // ═══ Pick Color ═══
+  function pickPdpColor(colorId) {
+    currentColor = COLORWAYS.find(c => c.id === colorId) || COLORWAYS[0];
+    currentPhoto = 1;
+    renderColors();
+    renderThumbs();
+    updateImage();
+    updateCartState();
+    // Update URL without reload
+    const url = new URL(window.location);
+    url.searchParams.set('color', colorId);
+    history.replaceState(null, '', url);
+  }
+
+  // ═══ Pick Size ═══
+  function pickSize(size) {
+    selectedSize = size;
+    renderSizes();
+  }
+
+  // ═══ Cart ═══
+  function pdpAddCart() {
+    const CART_KEY = 'als_cart';
+    let cart = [];
+    try { cart = JSON.parse(localStorage.getItem(CART_KEY)) || []; } catch {}
+    const id = 'prada_cup_' + currentColor.id;
+    const already = cart.some(i => i.id === id);
+    if (!already) {
+      cart.push({
+        id: id,
+        brand: 'Prada',
+        name: "America's Cup — " + currentColor.name + (selectedSize ? ' (T.' + selectedSize + ')' : ''),
+        img: 'prada_cup_' + currentColor.id + '_1.jpg',
+        price: '105 €'
+      });
+      localStorage.setItem(CART_KEY, JSON.stringify(cart));
+    } else {
+      window.location.href = 'panier.html';
+      return;
+    }
+    updateCartState();
+    if (window.updateCartUI) updateCartUI();
+    if (window.showToast) showToast(already ? 'Déjà dans le panier' : "America's Cup — " + currentColor.name + ' ajouté');
+  }
+
+  function updateCartState() {
+    const btn = document.getElementById('pdp-cart-btn');
+    try {
+      const cart = JSON.parse(localStorage.getItem('als_cart')) || [];
+      const id = 'prada_cup_' + currentColor.id;
+      if (cart.some(i => i.id === id)) {
+        btn.textContent = '✓ Dans le panier';
+        btn.classList.add('in-cart');
+      } else {
+        btn.textContent = 'Ajouter au panier';
+        btn.classList.remove('in-cart');
+      }
+    } catch {}
+  }
+
+  // ═══ Wishlist ═══
+  function pdpToggleWL() {
+    const id = 'prada_cup_' + currentColor.id;
+    const img = 'prada_cup_' + currentColor.id + '_1.jpg';
+    if (window.toggleWL) {
+      const added = toggleWL(id, 'Prada', "America's Cup — " + currentColor.name, img);
+      document.getElementById('pdp-wl-btn').classList.toggle('wl-active', added);
+    }
+  }
+
+  // ═══ Keyboard navigation ═══
+  document.addEventListener('keydown', e => {
+    if (e.key === 'ArrowLeft') pdpNav(-1);
+    if (e.key === 'ArrowRight') pdpNav(1);
+  });
+
+  // ═══ Touch swipe ═══
+  let touchStartX = 0;
+  document.querySelector('.pdp-main-img')?.addEventListener('touchstart', e => {
+    touchStartX = e.touches[0].clientX;
+  });
+  document.querySelector('.pdp-main-img')?.addEventListener('touchend', e => {
+    const diff = e.changedTouches[0].clientX - touchStartX;
+    if (Math.abs(diff) > 40) pdpNav(diff > 0 ? -1 : 1);
+  });
+
+  // Go
+  init();
+</script>
+
+<!-- BOTTOM NAV -->
+<nav class="bottom-nav">
+  <a href="index.html" class="bn-item">
+    <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+    Accueil
+  </a>
+  <a href="boutique.html" class="bn-item">
+    <svg viewBox="0 0 24 24"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
+    Boutique
+  </a>
+  <a href="assistant.html" class="bn-item">
+    <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+    Assistant
+  </a>
+  <a href="panier.html" class="bn-item" id="bn-panier">
+    <svg viewBox="0 0 24 24"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 002 1.61h9.72a2 2 0 002-1.61L23 6H6"/></svg>
+    Panier
+  </a>
+  <a href="suivi.html" class="bn-item">
+    <svg viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+    Suivi
+  </a>
+</nav>
+</body>
+</html>

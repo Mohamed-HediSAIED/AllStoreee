@@ -1,0 +1,24 @@
+[  108402ms] [ERROR] Access to image at 'http://localhost:3000/prada_cup_noir_1.jpg' from origin 'null' has been blocked by CORS policy: The request client is not a secure context and the resource is in more-private address space `loopback`. @ about:blank:0
+[  108403ms] [ERROR] Failed to load resource: net::ERR_FAILED @ http://localhost:3000/prada_cup_noir_1.jpg:0
+[  108403ms] [ERROR] Access to image at 'http://localhost:3000/prada_cup_rouge_1.jpg' from origin 'null' has been blocked by CORS policy: The request client is not a secure context and the resource is in more-private address space `loopback`. @ about:blank:0
+[  108403ms] [ERROR] Failed to load resource: net::ERR_FAILED @ http://localhost:3000/prada_cup_rouge_1.jpg:0
+[  108403ms] [ERROR] Access to image at 'http://localhost:3000/prada_cup_vert_1.jpg' from origin 'null' has been blocked by CORS policy: The request client is not a secure context and the resource is in more-private address space `loopback`. @ about:blank:0
+[  108403ms] [ERROR] Failed to load resource: net::ERR_FAILED @ http://localhost:3000/prada_cup_vert_1.jpg:0
+[  108403ms] [ERROR] Access to image at 'http://localhost:3000/prada_cup_vert_fonce_1.jpg' from origin 'null' has been blocked by CORS policy: The request client is not a secure context and the resource is in more-private address space `loopback`. @ about:blank:0
+[  108403ms] [ERROR] Failed to load resource: net::ERR_FAILED @ http://localhost:3000/prada_cup_vert_fonce_1.jpg:0
+[  108403ms] [ERROR] Access to image at 'http://localhost:3000/prada_cup_jaune_1.jpg' from origin 'null' has been blocked by CORS policy: The request client is not a secure context and the resource is in more-private address space `loopback`. @ about:blank:0
+[  108403ms] [ERROR] Failed to load resource: net::ERR_FAILED @ http://localhost:3000/prada_cup_jaune_1.jpg:0
+[  108403ms] [ERROR] Access to image at 'http://localhost:3000/prada_cup_orange_1.jpg' from origin 'null' has been blocked by CORS policy: The request client is not a secure context and the resource is in more-private address space `loopback`. @ about:blank:0
+[  108403ms] [ERROR] Failed to load resource: net::ERR_FAILED @ http://localhost:3000/prada_cup_orange_1.jpg:0
+[  108403ms] [ERROR] Access to image at 'http://localhost:3000/prada_cup_rose_1.jpg' from origin 'null' has been blocked by CORS policy: The request client is not a secure context and the resource is in more-private address space `loopback`. @ about:blank:0
+[  108403ms] [ERROR] Failed to load resource: net::ERR_FAILED @ http://localhost:3000/prada_cup_rose_1.jpg:0
+[  108403ms] [ERROR] Access to image at 'http://localhost:3000/prada_cup_bleu_1.jpg' from origin 'null' has been blocked by CORS policy: The request client is not a secure context and the resource is in more-private address space `loopback`. @ about:blank:0
+[  108403ms] [ERROR] Failed to load resource: net::ERR_FAILED @ http://localhost:3000/prada_cup_bleu_1.jpg:0
+[  108403ms] [ERROR] Access to image at 'http://localhost:3000/prada_cup_bleu_ciel_1.jpg' from origin 'null' has been blocked by CORS policy: The request client is not a secure context and the resource is in more-private address space `loopback`. @ about:blank:0
+[  108403ms] [ERROR] Failed to load resource: net::ERR_FAILED @ http://localhost:3000/prada_cup_bleu_ciel_1.jpg:0
+[  108403ms] [ERROR] Access to image at 'http://localhost:3000/prada_cup_gris_1.jpg' from origin 'null' has been blocked by CORS policy: The request client is not a secure context and the resource is in more-private address space `loopback`. @ about:blank:0
+[  108403ms] [ERROR] Failed to load resource: net::ERR_FAILED @ http://localhost:3000/prada_cup_gris_1.jpg:0
+[  108403ms] [ERROR] Access to image at 'http://localhost:3000/prada_cup_blanc_1.jpg' from origin 'null' has been blocked by CORS policy: The request client is not a secure context and the resource is in more-private address space `loopback`. @ about:blank:0
+[  108403ms] [ERROR] Failed to load resource: net::ERR_FAILED @ http://localhost:3000/prada_cup_blanc_1.jpg:0
+[  108403ms] [ERROR] Access to image at 'http://localhost:3000/prada_cup_marine_1.jpg' from origin 'null' has been blocked by CORS policy: The request client is not a secure context and the resource is in more-private address space `loopback`. @ about:blank:0
+[  108403ms] [ERROR] Failed to load resource: net::ERR_FAILED @ http://localhost:3000/prada_cup_marine_1.jpg:0

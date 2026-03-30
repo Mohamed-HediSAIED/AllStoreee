@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/png" href="shopping_bag_icon.png">
+  <title>Commande confirmée | ALLSTORE 24/7</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="conversion.css">
+  <style>
+    .confirm { padding: 140px var(--marge) 80px; max-width: 640px; margin: 0 auto; text-align: center; }
+
+    .confirm-check {
+      width: 72px; height: 72px;
+      border-radius: 50%;
+      background: #25D366;
+      display: flex; align-items: center; justify-content: center;
+      margin: 0 auto 24px;
+      animation: confirmPop .5s cubic-bezier(.16,1,.3,1);
+    }
+    .confirm-check svg { width: 36px; height: 36px; stroke: #fff; fill: none; stroke-width: 2.5; }
+    @keyframes confirmPop {
+      0% { transform: scale(0); opacity: 0; }
+      60% { transform: scale(1.15); }
+      100% { transform: scale(1); opacity: 1; }
+    }
+
+    .confirm-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(28px, 5vw, 40px);
+      font-weight: 300;
+      margin: 0 0 8px;
+    }
+    .confirm-sub {
+      font-size: 15px;
+      color: var(--gris);
+      margin: 0 0 32px;
+      line-height: 1.6;
+    }
+    .confirm-order-id {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--gris);
+      background: var(--bg2);
+      display: inline-block;
+      padding: 8px 20px;
+      border-radius: 980px;
+      margin-bottom: 32px;
+      letter-spacing: .03em;
+    }
+
+    .confirm-card {
+      background: #fff;
+      border-radius: 20px;
+      padding: 28px 24px;
+      text-align: left;
+      border: 1px solid rgba(10,25,35,.06);
+      margin-bottom: 16px;
+    }
+    .confirm-card-title {
+      font-size: 12px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: .06em;
+      color: var(--gris);
+      margin-bottom: 14px;
+    }
+    .confirm-item {
+      display: flex; align-items: center; gap: 12px;
+      padding: 10px 0;
+      border-bottom: 1px solid rgba(10,25,35,.05);
+    }
+    .confirm-item:last-child { border-bottom: none; }
+    .confirm-item-img {
+      width: 48px; height: 48px; border-radius: 10px;
+      background: var(--bg2); overflow: hidden; flex-shrink: 0;
+    }
+    .confirm-item-img img { width: 100%; height: 100%; object-fit: cover; }
+    .confirm-item-info { flex: 1; }
+    .confirm-item-brand { font-size: 10px; text-transform: uppercase; letter-spacing: .06em; color: var(--gris); }
+    .confirm-item-name { font-size: 14px; font-weight: 600; }
+    .confirm-item-price { font-weight: 700; flex-shrink: 0; }
+
+    .confirm-total {
+      display: flex; justify-content: space-between;
+      padding: 12px 0 0;
+      font-size: 18px;
+      font-weight: 700;
+      border-top: 1.5px solid rgba(10,25,35,.08);
+      margin-top: 8px;
+    }
+
+    .confirm-shipping p {
+      font-size: 14px;
+      color: var(--noir);
+      margin: 0;
+      line-height: 1.6;
+    }
+    .confirm-delivery {
+      display: flex; align-items: center; gap: 8px;
+      font-size: 13px; color: var(--gris);
+      margin-top: 12px;
+    }
+    .confirm-delivery svg { width: 16px; height: 16px; stroke: var(--gold); fill: none; stroke-width: 2; }
+
+    .confirm-actions {
+      display: flex; flex-direction: column; gap: 10px;
+      margin-top: 32px;
+    }
+    .confirm-btn {
+      display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+      padding: 16px 28px; border-radius: 14px;
+      font-size: 14px; font-weight: 600;
+      text-decoration: none; transition: all .2s;
+      font-family: 'Poppins', sans-serif;
+    }
+    .confirm-btn-primary { background: var(--noir); color: #fff; }
+    .confirm-btn-primary:hover { background: #1a3040; }
+    .confirm-btn-outline { background: transparent; color: var(--gris); border: 1.5px solid rgba(10,25,35,.1); }
+    .confirm-btn-outline:hover { border-color: var(--noir); color: var(--noir); }
+
+    .confirm-empty {
+      padding: 80px 20px; text-align: center;
+    }
+    .confirm-empty p { font-size: 16px; color: var(--gris); margin: 0 0 24px; }
+
+    @media(max-width:768px) {
+      .confirm { padding: 110px 18px 120px; }
+    }
+  </style>
+</head>
+<body>
+<div id="lux-transition"><div class="lux-t-brand">ALLSTORE</div><div class="lux-t-line"></div></div>
+
+<header>
+  <nav>
+    <a href="index.html" class="logo"><img src="shopping_bag_icon.png" alt="ALLSTORE"></a>
+    <ul class="nav-links">
+      <li><a href="index.html">Accueil</a></li>
+      <li><a href="boutique.html">Boutique</a></li>
+      <li><a href="assistant.html">Assistant</a></li>
+      <li><a href="suivi.html">Suivi</a></li>
+      <li><a href="apropos.html">À Propos</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main>
+  <div class="confirm" id="confirm">
+    <div class="confirm-check">
+      <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+    </div>
+    <h1 class="confirm-title">Commande confirmée</h1>
+    <p class="confirm-sub">Merci pour votre achat. Vous recevrez un email de confirmation avec les détails de suivi.</p>
+    <div class="confirm-order-id" id="confirm-order-id"></div>
+
+    <div class="confirm-card">
+      <div class="confirm-card-title">Articles</div>
+      <div id="confirm-items"></div>
+      <div class="confirm-total" id="confirm-total"></div>
+    </div>
+
+    <div class="confirm-card">
+      <div class="confirm-card-title">Livraison</div>
+      <div class="confirm-shipping" id="confirm-shipping"></div>
+      <div class="confirm-delivery">
+        <svg viewBox="0 0 24 24"><rect x="1" y="3" width="15" height="13" rx="2"/><path d="M16 8h4l3 3v5h-3"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+        Livraison estimée : 7 à 15 jours ouvrés
+      </div>
+    </div>
+
+    <div class="confirm-actions">
+      <a href="boutique.html" class="confirm-btn confirm-btn-primary">Continuer mes achats</a>
+      <a href="suivi.html" class="confirm-btn confirm-btn-outline">Suivre ma commande</a>
+    </div>
+  </div>
+
+  <div class="confirm-empty" id="confirm-empty" style="display:none">
+    <p>Aucune commande à afficher.</p>
+    <a href="boutique.html" class="confirm-btn confirm-btn-primary" style="display:inline-flex">Retour à la boutique</a>
+  </div>
+</main>
+
+<footer>
+  <div class="foot-inner">
+    <div class="foot-brand">ALLSTORE</div>
+    <div class="foot-links">
+      <a href="apropos.html">À Propos</a>
+      <a href="contact.html">Contact</a>
+    </div>
+    <div class="foot-tagline">L'introuvable, enfin trouvé.</div>
+    <div class="foot-copy">ALLSTORE 24/7 &mdash; Sourcing d'Exception &mdash; 2025</div>
+  </div>
+</footer>
+
+<script src="global.js"></script>
+<script src="luxury.js"></script>
+<script src="conversion.js"></script>
+
+<script>
+(function(){
+  var raw = sessionStorage.getItem('als_order');
+  if (!raw) {
+    document.getElementById('confirm').style.display = 'none';
+    document.getElementById('confirm-empty').style.display = 'block';
+    return;
+  }
+
+  var order = JSON.parse(raw);
+  sessionStorage.removeItem('als_order');
+
+  document.getElementById('confirm-order-id').textContent = order.id || '';
+
+  var itemsHtml = (order.items || []).map(function(item) {
+    var price = parseFloat(String(item.price || '0').replace(/[^\d.,]/g, '').replace(',', '.'));
+    return '<div class="confirm-item">' +
+      '<div class="confirm-item-img"><img src="' + (item.img || '') + '" alt="' + (item.name || '') + '"></div>' +
+      '<div class="confirm-item-info"><span class="confirm-item-brand">' + (item.brand || '') + '</span><span class="confirm-item-name">' + (item.name || '') + '</span></div>' +
+      '<span class="confirm-item-price">' + price.toFixed(0) + ' &euro;</span></div>';
+  }).join('');
+  document.getElementById('confirm-items').innerHTML = itemsHtml;
+
+  document.getElementById('confirm-total').innerHTML =
+    '<span>Total payé</span><span>' + (order.total || 0).toFixed(2) + ' &euro;</span>';
+
+  var s = order.shippingInfo || {};
+  document.getElementById('confirm-shipping').innerHTML =
+    '<p>' + (s.prenom || '') + ' ' + (s.nom || '') + '<br>' +
+    (s.adresse || '') + '<br>' +
+    (s.code_postal || '') + ' ' + (s.ville || '') + '<br>' +
+    (s.email || '') + ' &middot; ' + (s.telephone || '') + '</p>';
+})();
+</script>
+
+<!-- BOTTOM NAV -->
+<nav class="bottom-nav">
+  <a href="index.html" class="bn-item">
+    <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+    Accueil
+  </a>
+  <a href="boutique.html" class="bn-item">
+    <svg viewBox="0 0 24 24"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
+    Boutique
+  </a>
+  <a href="assistant.html" class="bn-item">
+    <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+    Assistant
+  </a>
+  <a href="panier.html" class="bn-item" id="bn-panier">
+    <svg viewBox="0 0 24 24"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 001.99 1.61h9.72a2 2 0 001.99-1.61L23 6H6"/></svg>
+    Panier
+  </a>
+  <a href="suivi.html" class="bn-item">
+    <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+    Suivi
+  </a>
+  <a href="contact.html" class="bn-search">
+    <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+  </a>
+</nav>
+
+</body>
+</html>

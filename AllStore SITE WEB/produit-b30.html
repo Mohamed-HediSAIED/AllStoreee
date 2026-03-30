@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Dior B30 — Réplique premium. 16 coloris disponibles. Livraison offerte.">
+  <link rel="icon" type="image/png" href="shopping_bag_icon.png">
+  <title>Dior B30 | ALLSTORE 24/7</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="conversion.css">
+  <style>
+    .pdp { padding: 90px 0 60px; margin: 0 auto; }
+    .pdp-grid { display: grid; grid-template-columns: 1.15fr 0.85fr; gap: 0; align-items: start; min-height: calc(100vh - 90px); }
+    .pdp-gallery { position: sticky; top: 90px; height: calc(100vh - 90px); background: #f5f2ec; display: flex; align-items: center; justify-content: center; overflow: hidden; position: relative; }
+    .pdp-gallery img { max-width: 90%; max-height: 85%; object-fit: contain; transition: opacity .3s ease; }
+    .pdp-gallery img.fade { opacity: 0; }
+    .pdp-gal-arrow { position: absolute; top: 50%; transform: translateY(-50%); width: 40px; height: 40px; border-radius: 50%; background: rgba(255,255,255,.85); border: none; font-size: 22px; cursor: pointer; display: flex; align-items: center; justify-content: center; box-shadow: 0 2px 8px rgba(0,0,0,.12); z-index: 2; opacity: 0; transition: opacity .2s; color: var(--noir); }
+    .pdp-gallery:hover .pdp-gal-arrow { opacity: 1; }
+    .pdp-gal-prev { left: 16px; }
+    .pdp-gal-next { right: 16px; }
+    .pdp-gal-counter { position: absolute; bottom: 16px; right: 20px; background: rgba(0,0,0,.55); color: #fff; font-size: 12px; font-weight: 600; padding: 3px 10px; border-radius: 980px; z-index: 2; }
+    .pdp-thumbs { position: absolute; bottom: 16px; left: 16px; display: flex; gap: 6px; z-index: 2; }
+    .pdp-thumb { width: 48px; height: 48px; border-radius: 8px; object-fit: cover; cursor: pointer; border: 2px solid transparent; opacity: .6; transition: all .2s; }
+    .pdp-thumb.active { border-color: var(--noir); opacity: 1; }
+    .pdp-thumb:hover { opacity: 1; }
+    .pdp-info { padding: 48px 56px 60px 48px; overflow-y: auto; max-height: calc(100vh - 90px); }
+    .pdp-back { display: inline-flex; align-items: center; gap: 6px; font-size: 12px; font-weight: 500; color: var(--gris); text-decoration: none; margin-bottom: 20px; transition: color .2s; }
+    .pdp-back:hover { color: var(--noir); }
+    .pdp-brand { font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: .15em; color: var(--gold2); }
+    .pdp-name { font-family: 'Cormorant Garamond', serif; font-size: clamp(32px, 4vw, 48px); font-weight: 300; letter-spacing: -.02em; line-height: 1.1; margin: 8px 0 20px; }
+    .pdp-price-row { display: flex; align-items: baseline; gap: 12px; margin-bottom: 24px; }
+    .pdp-price { font-size: 36px; font-weight: 700; font-family: 'Cormorant Garamond', serif; }
+    .pdp-price-tag { font-size: 12px; color: var(--gris); }
+    .pdp-badges { display: flex; gap: 8px; margin-bottom: 28px; }
+    .pdp-badge { font-size: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: .06em; padding: 5px 14px; border-radius: 980px; background: var(--bg2); color: var(--gris); }
+    .pdp-badge--gold { background: var(--gold); color: var(--noir); }
+    .pdp-section-title { font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: .08em; color: var(--gris); margin-bottom: 10px; }
+    .pdp-color-name { color: var(--noir); font-weight: 700; }
+    .pdp-colors { display: flex; flex-wrap: wrap; gap: 7px; margin-bottom: 28px; align-items: center; }
+    .pdp-cw { width: 30px; height: 30px; border-radius: 50%; border: 2.5px solid transparent; cursor: pointer; transition: transform .15s, border-color .2s, box-shadow .2s; padding: 0; outline: none; }
+    .pdp-cw:hover { transform: scale(1.18); }
+    .pdp-cw.active { border-color: var(--noir); transform: scale(1.12); box-shadow: 0 0 0 2px rgba(10,25,35,.08); }
+    .pdp-sizes { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 32px; }
+    .pdp-size { padding: 10px 20px; text-align: center; border: 1.5px solid rgba(10,25,35,.1); border-radius: 10px; font-size: 13px; font-weight: 600; cursor: pointer; background: #fff; transition: all .15s; font-family: 'Poppins', sans-serif; }
+    .pdp-size:hover { border-color: var(--noir); }
+    .pdp-size.active { background: var(--noir); color: #fff; border-color: var(--noir); }
+    .pdp-actions { display: flex; gap: 10px; margin-bottom: 28px; }
+    .pdp-btn-cart { flex: 1; background: var(--noir); color: #fff; border: none; border-radius: 14px; padding: 20px; font-size: 15px; font-weight: 600; cursor: pointer; font-family: 'Poppins', sans-serif; letter-spacing: .02em; transition: background .2s, transform .15s, box-shadow .2s; }
+    .pdp-btn-cart:hover { background: #1a3040; transform: translateY(-1px); box-shadow: 0 8px 24px rgba(10,25,35,.15); }
+    .pdp-btn-cart.in-cart { background: var(--gold2); }
+    .pdp-btn-wl { width: 58px; height: 58px; border: 1.5px solid rgba(10,25,35,.12); border-radius: 14px; background: transparent; cursor: pointer; display: flex; align-items: center; justify-content: center; flex-shrink: 0; transition: all .2s; }
+    .pdp-btn-wl:hover { border-color: #e74c3c; background: rgba(231,76,60,.04); }
+    .pdp-btn-wl.wl-active svg { fill: #e74c3c; stroke: #e74c3c; }
+    .pdp-btn-wl svg { width: 22px; height: 22px; stroke: var(--gris); fill: none; stroke-width: 2; }
+    .pdp-details { border-top: 1px solid rgba(10,25,35,.08); padding-top: 24px; margin-top: 8px; }
+    .pdp-detail-row { display: flex; justify-content: space-between; padding: 10px 0; font-size: 13px; border-bottom: 1px solid rgba(10,25,35,.05); }
+    .pdp-detail-label { color: var(--gris); }
+    .pdp-detail-value { font-weight: 600; }
+    @media(max-width:1024px){ .pdp-grid { grid-template-columns: 1fr 1fr; } .pdp-info { padding: 36px 32px 60px 28px; } }
+    @media(max-width:900px){
+      .pdp { padding-top: 60px; }
+      .pdp-grid { grid-template-columns: 1fr; }
+      .pdp-gallery { position: static; height: auto; min-height: 55vh; }
+      .pdp-info { padding: 24px 20px 120px; max-height: none; }
+      .pdp-gal-arrow { opacity: .7; }
+      .pdp-thumbs { display: none; }
+    }
+    @media(max-width:600px){
+      .pdp { padding-top: 50px; }
+      .pdp-gallery { min-height: 50vh; }
+      .pdp-back { font-size: 13px; margin-bottom: 16px; }
+      .pdp-brand { font-size: 12px; }
+      .pdp-name { font-size: 26px; }
+      .pdp-price { font-size: 28px; }
+      .pdp-price-tag { font-size: 13px; }
+      .pdp-cw { width: 32px; height: 32px; }
+      .pdp-size { padding: 12px 18px; font-size: 14px; min-width: 52px; }
+      .pdp-btn-cart { padding: 18px; font-size: 16px; border-radius: 14px; }
+      .pdp-btn-wl { width: 56px; height: 56px; }
+      .pdp-section-title { font-size: 12px; }
+      .pdp-badge { font-size: 11px; }
+      .pdp-detail-row { font-size: 14px; }
+      .pdp-info { padding: 20px 18px 120px; }
+    }
+  </style>
+</head>
+<body>
+<div id="lux-transition"><div class="lux-t-brand">ALLSTORE</div><div class="lux-t-line"></div></div>
+<header>
+  <nav>
+    <a href="index.html" class="logo"><img src="shopping_bag_icon.png" alt="ALLSTORE"></a>
+    <ul class="nav-links">
+      <li><a href="index.html">Accueil</a></li>
+      <li><a href="boutique.html">Boutique</a></li>
+      <li><a href="assistant.html">Assistant</a></li>
+      <li><a href="suivi.html">Suivi</a></li>
+      <li><a href="apropos.html">À Propos</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main>
+  <div class="pdp">
+    <div class="pdp-grid">
+      <div class="pdp-gallery">
+        <img id="pdp-img" src="b30_noir_1.jpg" alt="Dior B30 — Noir">
+        <button class="pdp-gal-arrow pdp-gal-prev" onclick="galPrev()">&#8249;</button>
+        <button class="pdp-gal-arrow pdp-gal-next" onclick="galNext()">&#8250;</button>
+        <span class="pdp-gal-counter" id="pdp-counter">1 / 5</span>
+        <div class="pdp-thumbs" id="pdp-thumbs"></div>
+      </div>
+      <div class="pdp-info">
+        <a href="boutique.html?cat=chaussures" class="pdp-back">&#8592; Boutique</a>
+        <span class="pdp-brand">Dior</span>
+        <h1 class="pdp-name">B30</h1>
+        <div class="pdp-price-row">
+          <span class="pdp-price">105 €</span>
+          <span class="pdp-price-tag">Livraison offerte</span>
+        </div>
+        <div class="pdp-badges">
+          <span class="pdp-badge pdp-badge--gold">Réplique Premium</span>
+          <span class="pdp-badge">36 — 45</span>
+        </div>
+        <div class="pdp-section-title">Coloris : <span class="pdp-color-name" id="pdp-color-name">Noir</span></div>
+        <div class="pdp-colors" id="pdp-colors"></div>
+        <div class="pdp-section-title">Taille</div>
+        <div class="pdp-sizes" id="pdp-sizes"></div>
+        <div class="pdp-actions">
+          <button class="pdp-btn-cart" id="pdp-cart-btn" onclick="pdpAddCart()">Ajouter au panier</button>
+          <button class="pdp-btn-wl" id="pdp-wl-btn" onclick="pdpToggleWL()">
+            <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+          </button>
+        </div>
+        <div class="pdp-details">
+          <div class="pdp-detail-row"><span class="pdp-detail-label">Marque</span><span class="pdp-detail-value">Dior</span></div>
+          <div class="pdp-detail-row"><span class="pdp-detail-label">Modèle</span><span class="pdp-detail-value">B30</span></div>
+          <div class="pdp-detail-row"><span class="pdp-detail-label">Matière</span><span class="pdp-detail-value">Mesh technique & cuir</span></div>
+          <div class="pdp-detail-row"><span class="pdp-detail-label">Semelle</span><span class="pdp-detail-value">Gomme sculptée</span></div>
+          <div class="pdp-detail-row"><span class="pdp-detail-label">Tailles</span><span class="pdp-detail-value">36 — 45</span></div>
+          <div class="pdp-detail-row"><span class="pdp-detail-label">Qualité</span><span class="pdp-detail-value">Réplique Premium 1:1</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+
+<footer>
+  <div class="foot-inner">
+    <div class="foot-brand">ALLSTORE</div>
+    <div class="foot-links">
+      <a href="apropos.html">À Propos</a>
+      <a href="contact.html">Contact</a>
+      <a href="assistant.html">Assistant</a>
+    </div>
+    <div class="foot-tagline">L'introuvable, enfin trouvé.</div>
+    <div class="foot-copy">ALLSTORE 24/7 &mdash; Sourcing d'Exception &mdash; 2025</div>
+  </div>
+</footer>
+
+<script src="global.js"></script>
+<script src="luxury.js"></script>
+<script src="conversion.js"></script>
+<script>
+  const COLORWAYS = [
+    { id: 'noir', name: 'Noir', prefix: 'b30_noir', count: 5, hex: '#1a1a1a' },
+    { id: 'noirblanc', name: 'Noir / Blanc', prefix: 'b30_noirblanc', count: 4, hex: 'linear-gradient(135deg,#1a1a1a 50%,#fff 50%)' },
+    { id: 'blanc', name: 'Blanc', prefix: 'b30_blanc', count: 5, hex: '#f0f0f0', border: true },
+    { id: 'gris', name: 'Gris', prefix: 'b30_gris', count: 5, hex: '#999' },
+    { id: 'grisfonce', name: 'Gris Foncé', prefix: 'b30_grisfonce', count: 3, hex: '#666' },
+    { id: 'grisclair', name: 'Gris Clair', prefix: 'b30_grisclair', count: 2, hex: '#c8c8c8' },
+    { id: 'bleumarine', name: 'Bleu Marine', prefix: 'b30_bleumarine', count: 2, hex: '#2c3e6b' },
+    { id: 'bleuciel', name: 'Bleu Ciel', prefix: 'b30_bleuciel', count: 4, hex: '#7eb4d2' },
+    { id: 'beige', name: 'Beige', prefix: 'b30_beige', count: 3, hex: '#c8b89a' },
+    { id: 'creme', name: 'Crème', prefix: 'b30_creme', count: 4, hex: '#e8e4d4', border: true },
+    { id: 'bordeaux', name: 'Bordeaux', prefix: 'b30_bordeaux', count: 2, hex: '#722f37' },
+    { id: 'rose', name: 'Rose', prefix: 'b30_rose', count: 2, hex: '#d4a69a' },
+    { id: 'rouge', name: 'Rouge', prefix: 'b30_rouge', count: 1, hex: '#cc2222' },
+    { id: 'jaune', name: 'Jaune', prefix: 'b30_jaune', count: 1, hex: '#d4a017' },
+    { id: 'argent', name: 'Argent', prefix: 'b30_argent', count: 2, hex: '#c0c0c0' },
+    { id: 'menthe', name: 'Vert Menthe', prefix: 'b30_menthe', count: 3, hex: '#b8d8c8' },
+  ];
+  const SIZES = [36,37,38,39,40,41,42,43,44,45];
+
+  let currentColor = COLORWAYS[0];
+  let selectedSize = null;
+  let currentPhoto = 1;
+
+  function init() {
+    const params = new URLSearchParams(window.location.search);
+    const colorParam = params.get('color');
+    if (colorParam) {
+      const found = COLORWAYS.find(c => c.id === colorParam);
+      if (found) currentColor = found;
+    }
+    renderColors();
+    renderSizes();
+    currentPhoto = 1;
+    updateGallery();
+    updateCartState();
+  }
+
+  function renderColors() {
+    const container = document.getElementById('pdp-colors');
+    let html = COLORWAYS.map(c => {
+      const activeClass = c.id === currentColor.id ? 'active' : '';
+      const borderStyle = c.border ? ';border:1.5px solid #ddd' : '';
+      const bg = c.hex.includes('gradient') ? c.hex : c.hex;
+      return '<button class="pdp-cw ' + activeClass + '" data-id="' + c.id + '" onclick="pickColor(\'' + c.id + '\')" style="background:' + bg + borderStyle + '" title="' + c.name + '"></button>';
+    }).join('');
+    container.innerHTML = html;
+    document.getElementById('pdp-color-name').textContent = currentColor.name;
+  }
+
+  function renderSizes() {
+    document.getElementById('pdp-sizes').innerHTML = SIZES.map(s => {
+      const cls = s === selectedSize ? 'active' : '';
+      return '<button class="pdp-size ' + cls + '" onclick="pickSize(' + s + ')">' + s + '</button>';
+    }).join('');
+  }
+
+  function updateGallery() {
+    const img = document.getElementById('pdp-img');
+    img.classList.add('fade');
+    setTimeout(() => {
+      img.src = currentColor.prefix + '_' + currentPhoto + '.jpg';
+      img.alt = 'Dior B30 — ' + currentColor.name;
+      img.classList.remove('fade');
+    }, 200);
+    document.getElementById('pdp-counter').textContent = currentPhoto + ' / ' + currentColor.count;
+    // Thumbnails
+    const thumbsEl = document.getElementById('pdp-thumbs');
+    if (currentColor.count <= 1) { thumbsEl.innerHTML = ''; return; }
+    let th = '';
+    for (let i = 1; i <= currentColor.count; i++) {
+      const cls = i === currentPhoto ? 'pdp-thumb active' : 'pdp-thumb';
+      th += '<img class="' + cls + '" src="' + currentColor.prefix + '_' + i + '.jpg" onclick="goToPhoto(' + i + ')">';
+    }
+    thumbsEl.innerHTML = th;
+  }
+
+  window.goToPhoto = function(n) { currentPhoto = n; updateGallery(); };
+  window.galPrev = function() { currentPhoto = currentPhoto <= 1 ? currentColor.count : currentPhoto - 1; updateGallery(); };
+  window.galNext = function() { currentPhoto = currentPhoto >= currentColor.count ? 1 : currentPhoto + 1; updateGallery(); };
+
+  window.pickColor = function(colorId) {
+    currentColor = COLORWAYS.find(c => c.id === colorId) || COLORWAYS[0];
+    currentPhoto = 1;
+    renderColors();
+    updateGallery();
+    updateCartState();
+  };
+
+  window.pickSize = function(size) { selectedSize = size; renderSizes(); };
+
+  window.pdpAddCart = function() {
+    const id = 'b30_' + currentColor.id;
+    const name = 'B30 — ' + currentColor.name + (selectedSize ? ' (' + selectedSize + ')' : '');
+    const img = currentColor.prefix + '_1.jpg';
+    if (window.addToCart) {
+      addToCart(id, 'Dior', name, img, '105 €');
+      updateCartState();
+    }
+  };
+
+  window.pdpToggleWL = function() {
+    const id = 'b30_' + currentColor.id;
+    const name = 'B30 — ' + currentColor.name;
+    const img = currentColor.prefix + '_1.jpg';
+    if (window._wlRemove) {
+      let wl = JSON.parse(localStorage.getItem('als_wishlist') || '[]');
+      const exists = wl.some(i => i.id === id);
+      if (exists) { window._wlRemove(id); }
+      else { wl.push({id, brand:'Dior', name, img}); localStorage.setItem('als_wishlist', JSON.stringify(wl)); }
+      document.getElementById('pdp-wl-btn').classList.toggle('wl-active', !exists);
+    }
+  };
+
+  function updateCartState() {
+    const id = 'b30_' + currentColor.id;
+    const cart = JSON.parse(localStorage.getItem('als_cart') || '[]');
+    const btn = document.getElementById('pdp-cart-btn');
+    if (cart.some(i => i.id === id)) {
+      btn.textContent = '✓ Dans le panier';
+      btn.classList.add('in-cart');
+    } else {
+      btn.textContent = 'Ajouter au panier';
+      btn.classList.remove('in-cart');
+    }
+    const wl = JSON.parse(localStorage.getItem('als_wishlist') || '[]');
+    document.getElementById('pdp-wl-btn').classList.toggle('wl-active', wl.some(i => i.id === id));
+  }
+
+  init();
+</script>
+
+<!-- BOTTOM NAV -->
+<nav class="bottom-nav">
+  <a href="index.html" class="bn-item"><svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>Accueil</a>
+  <a href="boutique.html" class="bn-item"><svg viewBox="0 0 24 24"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>Boutique</a>
+  <a href="assistant.html" class="bn-item"><svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>Assistant</a>
+  <a href="panier.html" class="bn-item" id="bn-panier"><svg viewBox="0 0 24 24"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 001.99 1.61h9.72a2 2 0 001.99-1.61L23 6H6"/></svg>Panier</a>
+  <a href="suivi.html" class="bn-item"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>Suivi</a>
+  <a href="contact.html" class="bn-search"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></a>
+</nav>
+</body>
+</html>

@@ -1,0 +1,18 @@
+{
+  "permissions": {
+    "allow": [
+      "WebFetch(domain:x.yupoo.com)",
+      "mcp__plugin_playwright_playwright__browser_navigate",
+      "mcp__plugin_playwright_playwright__browser_take_screenshot",
+      "mcp__plugin_playwright_playwright__browser_click",
+      "mcp__plugin_playwright_playwright__browser_evaluate",
+      "mcp__Claude_Preview__preview_start",
+      "mcp__plugin_playwright_playwright__browser_run_code",
+      "Bash(rm -f prada_cup_noir.jpg prada_cup_rouge.jpg prada_cup_vert.jpg prada_cup_vert_fonce.jpg prada_cup_jaune.jpg prada_cup_orange.jpg prada_cup_rose.jpg prada_cup_bleu.jpg prada_cup_bleu_ciel.jpg prada_cup_gris.jpg prada_cup_blanc.jpg prada_cup_marine.jpg)",
+      "Bash(ls prada_cup_*_*.jpg)",
+      "Bash(ls -lh \"/c/Users/Mohamed-Hedi/Desktop/TRAVAIL/AllStore/AllStore SITE WEB/prada_cup_noir_\"*.jpg)",
+      "Bash(ls \"/c/Users/Mohamed-Hedi/Desktop/TRAVAIL/AllStore/AllStore SITE WEB/prada_cup_\"*_1.jpg)",
+      "Bash(ls \"/c/Users/Mohamed-Hedi/Desktop/TRAVAIL/AllStore/AllStore SITE WEB/prada_cup_c\"*_1.jpg)"
+    ]
+  }
+}

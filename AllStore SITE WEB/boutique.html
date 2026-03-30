@@ -1,0 +1,1390 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Découvrez notre collection de répliques premium : montres, sacs, chaussures, lunettes et accessoires de luxe. Qualité garantie.">
+  <meta property="og:title" content="ALLSTORE 24/7 — Sourcing d'Exception">
+  <meta property="og:description" content="Découvrez notre collection de répliques premium : montres, sacs, chaussures, lunettes et accessoires de luxe. Qualité garantie.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="shopping_bag_icon.png">
+  <link rel="icon" type="image/png" href="shopping_bag_icon.png">
+  <title>Boutique | ALLSTORE 24/7</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="conversion.css">
+  <style>
+    .boutique-hero {
+      padding: 120px var(--marge) 48px;
+      text-align: center;
+    }
+    .boutique-hero h1 {
+      font-size: clamp(36px, 5vw, 60px);
+      font-weight: 600;
+      letter-spacing: -.025em;
+      line-height: 1.05;
+      margin: 0 0 16px;
+    }
+    .boutique-hero p {
+      font-size: 18px;
+      color: var(--gris);
+    }
+
+    /* Filtres */
+    .boutique-filters {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      padding: 0 var(--marge) 36px;
+      justify-content: center;
+    }
+    .filter-btn {
+      background: var(--bg2);
+      border: 2px solid transparent;
+      border-radius: 980px;
+      padding: 9px 20px;
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      font-family: 'Poppins', sans-serif;
+      color: var(--gris);
+      transition: all .2s;
+    }
+    .filter-btn:hover, .filter-btn.active { background: var(--noir); color: #fff; }
+
+    /* Grille produits */
+    .boutique-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 24px;
+      padding: 0 var(--marge) 100px;
+    }
+
+    .b-card {
+      background: #fff;
+      border-radius: 28px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      transition: transform .35s var(--ease), box-shadow .35s;
+      position: relative;
+    }
+    .b-card:hover { transform: translateY(-6px); box-shadow: 0 20px 48px rgba(0,0,0,.08); }
+
+    .b-img {
+      position: relative;
+      height: 260px;
+      background: var(--bg2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+    .b-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform .5s var(--ease);
+    }
+    .b-card:hover .b-img img { transform: scale(1.07); }
+
+    .b-body {
+      padding: 20px 22px 22px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      flex: 1;
+    }
+    .b-brand {
+      font-size: 11px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: .09em;
+      color: var(--gris);
+    }
+    .b-name {
+      font-size: 17px;
+      font-weight: 600;
+      color: var(--noir);
+      letter-spacing: -.01em;
+    }
+    .b-price {
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--noir);
+      margin-top: 4px;
+    }
+    .b-price em {
+      font-size: 13px;
+      font-weight: 400;
+      color: var(--gris);
+      font-style: normal;
+      margin-left: 4px;
+    }
+    .b-colors {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 5px;
+      margin-top: 4px;
+    }
+    .b-color-dot {
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      cursor: pointer;
+      border: 2px solid transparent;
+      transition: border-color .2s, transform .2s;
+    }
+    .b-color-dot:hover { transform: scale(1.15); }
+    .b-color-dot.active { border-color: var(--noir); }
+
+    .b-actions {
+      display: flex;
+      gap: 10px;
+      margin-top: 14px;
+    }
+    .b-btn-cart {
+      flex: 1;
+      background: var(--noir);
+      color: #fff;
+      border: none;
+      border-radius: 14px;
+      padding: 14px;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      font-family: 'Poppins', sans-serif;
+      transition: background .2s, transform .15s;
+    }
+    .b-btn-cart:hover { background: #1a3040; transform: scale(1.02); }
+    .b-btn-cart.in-cart { background: var(--gold2); }
+    .b-btn-wl {
+      width: 48px;
+      height: 48px;
+      border: 1.5px solid rgba(10,25,35,.15);
+      border-radius: 14px;
+      background: transparent;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      transition: all .2s;
+    }
+    .b-btn-wl:hover { border-color: #e74c3c; }
+    .b-btn-wl.wl-active svg { fill: #e74c3c; stroke: #e74c3c; }
+    .b-btn-wl svg { width: 18px; height: 18px; stroke: var(--gris); fill: none; stroke-width: 2; }
+
+    /* ═══ Colorway Picker (StockX style) ═══ */
+    .b-colorway-label {
+      font-size: 12px;
+      color: var(--gris);
+      margin-top: 2px;
+    }
+    .b-colorway-label strong { color: var(--noir); }
+    .b-colorway-picker {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin: 6px 0 2px;
+      align-items: center;
+    }
+    .b-colorway-picker.b-cw-collapsed .b-cw { display: none; }
+    .b-colorway-picker.b-cw-collapsed .b-cw:nth-child(-n+4),
+    .b-colorway-picker.b-cw-collapsed .b-cw.active { display: block; }
+    .b-cw {
+      width: 26px;
+      height: 26px;
+      border-radius: 50%;
+      border: 2px solid transparent;
+      cursor: pointer;
+      transition: transform .15s, border-color .2s;
+      padding: 0;
+      outline: none;
+    }
+    .b-cw:hover { transform: scale(1.18); }
+    .b-cw.active { border-color: var(--noir); transform: scale(1.15); }
+    .b-cw-more-btn {
+      width: 26px;
+      height: 26px;
+      border-radius: 50%;
+      border: 1.5px solid rgba(10,25,35,.15);
+      background: var(--bg2);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--gris);
+      font-family: 'Poppins', sans-serif;
+      transition: all .2s;
+      padding: 0;
+      flex-shrink: 0;
+    }
+    .b-cw-more-btn:hover { border-color: var(--noir); color: var(--noir); }
+    .b-colorway-picker:not(.b-cw-collapsed) .b-cw-more-btn { display: none; }
+    .b-card--colorways .b-img img {
+      transition: opacity .25s ease, transform .5s var(--ease);
+      filter: brightness(1.12) contrast(1.06);
+    }
+    .b-card--colorways .b-img img.fade { opacity: 0; }
+
+    /* Gallery arrows & counter */
+    .b-gallery { position: relative; }
+    .b-gal-arrow {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: rgba(255,255,255,.85);
+      border: none;
+      font-size: 20px;
+      line-height: 1;
+      cursor: pointer;
+      opacity: 0;
+      transition: opacity .2s, background .15s;
+      z-index: 2;
+      color: var(--noir);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 2px 8px rgba(0,0,0,.12);
+    }
+    .b-gallery:hover .b-gal-arrow { opacity: 1; }
+    .b-gal-arrow:hover { background: #fff; }
+    .b-gal-prev { left: 8px; }
+    .b-gal-next { right: 8px; }
+    .b-gal-counter {
+      position: absolute;
+      bottom: 8px;
+      right: 10px;
+      background: rgba(0,0,0,.55);
+      color: #fff;
+      font-size: 11px;
+      font-weight: 600;
+      padding: 2px 8px;
+      border-radius: 980px;
+      opacity: 0;
+      transition: opacity .2s;
+      z-index: 2;
+    }
+    .b-gallery:hover .b-gal-counter { opacity: 1; }
+
+    @media(max-width:768px){
+      .b-cw { width: 22px; height: 22px; }
+      .b-colorway-label { font-size: 11px; }
+      .b-gal-arrow { opacity: .7; width: 28px; height: 28px; font-size: 17px; }
+      .b-gal-counter { opacity: .8; }
+    }
+
+    .b-badge {
+      position: absolute;
+      top: 14px;
+      left: 14px;
+      z-index: 5;
+      background: var(--gold);
+      color: var(--noir);
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .05em;
+      border-radius: 980px;
+      padding: 4px 12px;
+    }
+
+    /* Tablette */
+    @media(max-width:900px){
+      .boutique-grid { grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 18px; }
+      .filter-bar { flex-wrap: wrap; gap: 8px; padding: 0 var(--marge) 24px; }
+      .filter-btn { padding: 8px 16px; font-size: 12px; }
+    }
+    /* Mobile */
+    @media(max-width:768px){
+      .boutique-hero { padding: 90px 20px 24px; }
+      .boutique-hero h1 { font-size: clamp(26px, 7vw, 36px); margin-bottom: 8px; }
+      .boutique-hero p { font-size: 15px; margin-bottom: 0; }
+      .boutique-hero .eyebrow { display: none; }
+      .boutique-filters {
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+        padding: 0 16px 20px;
+        gap: 8px;
+        justify-content: flex-start;
+      }
+      .boutique-filters::-webkit-scrollbar { display: none; }
+      .filter-btn { flex-shrink: 0; padding: 10px 18px; font-size: 13px; }
+      .boutique-grid { grid-template-columns: 1fr; gap: 16px; padding: 0 16px 100px; }
+      .b-img { height: 260px; }
+      .b-body { padding: 16px 18px 20px; }
+      .b-brand { font-size: 11px; }
+      .b-name { font-size: 16px; }
+      .b-price { font-size: 18px; }
+      .b-price em { font-size: 12px; }
+      .b-actions { flex-direction: row; gap: 10px; }
+      .b-btn-cart { font-size: 14px; padding: 14px 16px; flex: 1; }
+      .b-btn-wl { width: 52px; height: 52px; flex-shrink: 0; }
+      .b-badge { font-size: 10px; padding: 4px 12px; top: 12px; left: 12px; }
+      .b-not-found p { font-size: 15px; }
+      .b-nf-link { font-size: 14px; padding: 14px 24px; }
+      .b-colorway-label { font-size: 12px; }
+      .b-cw { width: 28px; height: 28px; }
+    }
+    .b-not-found {
+      text-align: center;
+      padding: 48px var(--marge) 80px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+    }
+    .b-not-found .b-nf-emoji { font-size: 32px; }
+    .b-not-found p { font-size: 17px; font-weight: 600; color: var(--gris); margin: 0; }
+    .b-nf-link {
+      display: inline-block;
+      margin-top: 6px;
+      padding: 14px 28px;
+      background: var(--noir);
+      color: #fff;
+      border-radius: 980px;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 600;
+      transition: background .2s, transform .15s;
+    }
+    .b-nf-link:hover { background: #1a3040; transform: scale(1.02); }
+  </style>
+</head>
+<body>
+<div id="lux-transition"><div class="lux-t-brand">ALLSTORE</div><div class="lux-t-line"></div></div>
+
+<header>
+  <nav>
+    <a href="index.html" class="logo"><img src="shopping_bag_icon.png" alt="ALLSTORE"></a>
+    <ul class="nav-links">
+      <li><a href="index.html">Accueil</a></li>
+      <li><a href="boutique.html" class="active">Boutique</a></li>
+      <li><a href="assistant.html">Assistant</a></li>
+      <li><a href="suivi.html">Suivi</a></li>
+      <li><a href="apropos.html">À Propos</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main>
+
+  <div class="boutique-hero">
+    <span class="eyebrow reveal">Disponible maintenant</span>
+    <h1 class="reveal d1">La Boutique.<br><em style="font-style:normal;color:var(--gris)">Répliques haut de gamme.</em></h1>
+    <p class="reveal d2">Vérifiées, prêtes à commander.</p>
+  </div>
+
+  <div class="boutique-filters">
+    <button class="filter-btn active" onclick="filterCat(this,'all')">Tout</button>
+    <button class="filter-btn" onclick="filterCat(this,'vetements')">Vêtements</button>
+    <button class="filter-btn" onclick="filterCat(this,'chaussures')">Chaussures</button>
+    <button class="filter-btn" onclick="filterCat(this,'sacs')">Sacs</button>
+    <button class="filter-btn" onclick="filterCat(this,'montres')">Montres</button>
+    <button class="filter-btn" onclick="filterCat(this,'lunettes')">Lunettes</button>
+    <button class="filter-btn" onclick="filterCat(this,'accessoires')">Accessoires</button>
+    <button class="filter-btn" onclick="filterCat(this,'tech')">Tech</button>
+    <button class="filter-btn" onclick="filterCat(this,'parfum')">Parfum</button>
+  </div>
+
+  <div class="boutique-grid" id="boutique-grid">
+
+    <div class="b-card b-card--colorways" data-cat="chaussures" id="prada-cup-card" style="cursor:pointer" onclick="if(!event.target.closest('.b-cw,.b-gal-arrow,.b-btn-cart,.b-btn-wl')){const c=this.querySelector('.b-cw.active');window.location.href='produit.html?color='+(c?.dataset?.prefix?.replace('prada_cup_','')||'noir')}">
+      <span class="b-badge">Nouveau</span>
+      <div class="b-img b-gallery">
+        <img id="prada-cup-img" src="prada_cup_noir_1.jpg" alt="Prada America's Cup">
+        <button class="b-gal-arrow b-gal-prev" onclick="galNav(this,-1)">&#8249;</button>
+        <button class="b-gal-arrow b-gal-next" onclick="galNav(this,1)">&#8250;</button>
+        <span class="b-gal-counter" id="prada-cup-counter">1 / 8</span>
+      </div>
+      <div class="b-body">
+        <span class="b-brand">Prada</span>
+        <span class="b-name">America's Cup</span>
+        <span class="b-colorway-label">Coloris : <strong id="prada-cup-color-name">Noir</strong></span>
+        <div class="b-colorway-picker b-cw-collapsed" id="prada-cup-picker">
+          <button class="b-cw active" data-prefix="prada_cup_noir" data-count="8" data-color="Noir" data-id="prada_cup_noir" onclick="pickColor(this)" style="background:#1a1a1a" title="Noir"></button>
+          <button class="b-cw" data-prefix="prada_cup_noir_blanc" data-count="8" data-color="Noir / Blanc" data-id="prada_cup_noir_blanc" onclick="pickColor(this)" style="background:linear-gradient(135deg,#1a1a1a 50%,#fff 50%)" title="Noir / Blanc"></button>
+          <button class="b-cw" data-prefix="prada_cup_bleu_marine" data-count="8" data-color="Bleu Marine" data-id="prada_cup_bleu_marine" onclick="pickColor(this)" style="background:#1b3a5c" title="Bleu Marine"></button>
+          <button class="b-cw" data-prefix="prada_cup_bleu_royal" data-count="8" data-color="Bleu Royal" data-id="prada_cup_bleu_royal" onclick="pickColor(this)" style="background:#2563eb" title="Bleu Royal"></button>
+          <button class="b-cw" data-prefix="prada_cup_bleu_cobalt" data-count="8" data-color="Bleu Cobalt" data-id="prada_cup_bleu_cobalt" onclick="pickColor(this)" style="background:#1a45c0" title="Bleu Cobalt"></button>
+          <button class="b-cw" data-prefix="prada_cup_bleu_clair" data-count="8" data-color="Bleu Clair" data-id="prada_cup_bleu_clair" onclick="pickColor(this)" style="background:#8ec8e8" title="Bleu Clair"></button>
+          <button class="b-cw" data-prefix="prada_cup_bleu_ciel" data-count="8" data-color="Bleu Ciel" data-id="prada_cup_bleu_ciel" onclick="pickColor(this)" style="background:#a8d4f0" title="Bleu Ciel"></button>
+          <button class="b-cw" data-prefix="prada_cup_vert_menthe" data-count="8" data-color="Vert Menthe" data-id="prada_cup_vert_menthe" onclick="pickColor(this)" style="background:#98e8c1" title="Vert Menthe"></button>
+          <button class="b-cw" data-prefix="prada_cup_vert_emeraude" data-count="8" data-color="Vert Émeraude" data-id="prada_cup_vert_emeraude" onclick="pickColor(this)" style="background:#0f8a4c" title="Vert Émeraude"></button>
+          <button class="b-cw" data-prefix="prada_cup_gris" data-count="8" data-color="Gris" data-id="prada_cup_gris" onclick="pickColor(this)" style="background:#a0a0a0" title="Gris"></button>
+          <button class="b-cw" data-prefix="prada_cup_blanc" data-count="8" data-color="Blanc" data-id="prada_cup_blanc" onclick="pickColor(this)" style="background:#f0f0f0;border:1.5px solid #ddd" title="Blanc"></button>
+          <button class="b-cw" data-prefix="prada_cup_blanc_pur" data-count="8" data-color="Blanc Pur" data-id="prada_cup_blanc_pur" onclick="pickColor(this)" style="background:#f8f8f8;border:1.5px solid #ddd" title="Blanc Pur"></button>
+          <button class="b-cw" data-prefix="prada_cup_rouge" data-count="8" data-color="Rouge" data-id="prada_cup_rouge" onclick="pickColor(this)" style="background:#e23b28" title="Rouge"></button>
+          <button class="b-cw" data-prefix="prada_cup_rouge_blanc" data-count="8" data-color="Rouge / Blanc" data-id="prada_cup_rouge_blanc" onclick="pickColor(this)" style="background:linear-gradient(135deg,#e23b28 50%,#fff 50%)" title="Rouge / Blanc"></button>
+          <button class="b-cw" data-prefix="prada_cup_rouge_noir" data-count="8" data-color="Rouge / Noir" data-id="prada_cup_rouge_noir" onclick="pickColor(this)" style="background:linear-gradient(135deg,#cc2020 50%,#1a1a1a 50%)" title="Rouge / Noir"></button>
+          <button class="b-cw" data-prefix="prada_cup_vert_fluo" data-count="8" data-color="Vert Fluo" data-id="prada_cup_vert_fluo" onclick="pickColor(this)" style="background:#00e640" title="Vert Fluo"></button>
+          <button class="b-cw" data-prefix="prada_cup_vert_foret" data-count="8" data-color="Vert Forêt" data-id="prada_cup_vert_foret" onclick="pickColor(this)" style="background:#1a5c3a" title="Vert Forêt"></button>
+          <button class="b-cw" data-prefix="prada_cup_jaune" data-count="8" data-color="Jaune" data-id="prada_cup_jaune" onclick="pickColor(this)" style="background:#f5c518" title="Jaune"></button>
+          <button class="b-cw" data-prefix="prada_cup_orange" data-count="8" data-color="Orange" data-id="prada_cup_orange" onclick="pickColor(this)" style="background:#f58218" title="Orange"></button>
+          <button class="b-cw" data-prefix="prada_cup_rose" data-count="8" data-color="Rose" data-id="prada_cup_rose" onclick="pickColor(this)" style="background:#f4b4c8" title="Rose"></button>
+          <button class="b-cw" data-prefix="prada_cup_rose_vif" data-count="8" data-color="Rose Vif" data-id="prada_cup_rose_vif" onclick="pickColor(this)" style="background:#e84898" title="Rose Vif"></button>
+          <button class="b-cw" data-prefix="prada_cup_violet_blanc" data-count="8" data-color="Violet / Blanc" data-id="prada_cup_violet_blanc" onclick="pickColor(this)" style="background:linear-gradient(135deg,#8b45a6 50%,#fff 50%)" title="Violet / Blanc"></button>
+          <button class="b-cw" data-prefix="prada_cup_violet_noir" data-count="8" data-color="Violet / Noir" data-id="prada_cup_violet_noir" onclick="pickColor(this)" style="background:linear-gradient(135deg,#7b2d8e 50%,#1a1a1a 50%)" title="Violet / Noir"></button>
+          <button class="b-cw" data-prefix="prada_cup_lavande" data-count="8" data-color="Lavande" data-id="prada_cup_lavande" onclick="pickColor(this)" style="background:#b894d8" title="Lavande"></button>
+          <button class="b-cw" data-prefix="prada_cup_argent_rouge" data-count="8" data-color="Argent / Rouge" data-id="prada_cup_argent_rouge" onclick="pickColor(this)" style="background:linear-gradient(135deg,#c0c0c0 50%,#e23b28 50%)" title="Argent / Rouge"></button>
+          <button class="b-cw" data-prefix="prada_cup_noir_rouge" data-count="8" data-color="Noir / Rouge" data-id="prada_cup_noir_rouge" onclick="pickColor(this)" style="background:linear-gradient(135deg,#1a1a1a 50%,#e23b28 50%)" title="Noir / Rouge"></button>
+          <button class="b-cw" data-prefix="prada_cup_marine_rouge" data-count="8" data-color="Marine / Rouge" data-id="prada_cup_marine_rouge" onclick="pickColor(this)" style="background:linear-gradient(135deg,#1a2d4a 50%,#e23b28 50%)" title="Marine / Rouge"></button>
+          <button class="b-cw" data-prefix="prada_cup_noir_argent" data-count="8" data-color="Noir / Argent" data-id="prada_cup_noir_argent" onclick="pickColor(this)" style="background:#3a3a3a" title="Noir / Argent"></button>
+          <button class="b-cw" data-prefix="prada_cup_bleu_blanc" data-count="8" data-color="Bleu / Blanc" data-id="prada_cup_bleu_blanc" onclick="pickColor(this)" style="background:linear-gradient(135deg,#1a3f6f 50%,#fff 50%)" title="Bleu / Blanc"></button>
+          <button class="b-cw-more-btn" onclick="event.stopPropagation();this.closest('.b-colorway-picker').classList.remove('b-cw-collapsed')" title="Voir tous les coloris">+</button>
+        </div>
+        <span class="b-price">105 € <em>Réplique Premium</em></span>
+        <div class="b-actions">
+          <button class="b-btn-cart" id="prada-cup-cart-btn" onclick="handleCart(this,'prada_cup_noir','Prada','America\'s Cup — Noir','prada_cup_noir_1.jpg','105 €')">Ajouter au panier</button>
+          <button class="b-btn-wl" id="prada-cup-wl-btn" onclick="handleWL(this,'prada_cup_noir','Prada','America\'s Cup — Noir','prada_cup_noir_1.jpg')">
+            <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- ALO YOGA ACCOLADE -->
+    <div class="b-card b-card--colorways" data-cat="vetements" id="alo-card" style="cursor:pointer" onclick="if(!event.target.closest('.b-cw,.b-btn-cart,.b-btn-wl')){const c=this.querySelector('.b-cw.active');window.location.href='produit-alo.html?color='+(c?.dataset?.color_id||'black')}">
+      <span class="b-badge">Nouveau</span>
+      <div class="b-img">
+        <img id="alo-img" src="alo_black.jpg" alt="Alo Yoga Accolade">
+      </div>
+      <div class="b-body">
+        <span class="b-brand">Alo Yoga</span>
+        <span class="b-name">Accolade Crew Neck Pullover</span>
+        <span class="b-colorway-label">Coloris : <strong id="alo-color-name">Black</strong></span>
+        <div class="b-colorway-picker b-cw-collapsed" id="alo-picker">
+          <button class="b-cw active" data-color_id="black" data-color="Black" onclick="pickAloColor(this)" style="background:#1a1a1a" title="Black"></button>
+          <button class="b-cw" data-color_id="brown" data-color="Brown" onclick="pickAloColor(this)" style="background:#6b4226" title="Brown"></button>
+          <button class="b-cw" data-color_id="charcoal" data-color="Charcoal" onclick="pickAloColor(this)" style="background:#4a4a4a" title="Charcoal"></button>
+          <button class="b-cw" data-color_id="dustypink" data-color="Dusty Pink" onclick="pickAloColor(this)" style="background:#d4a0a0" title="Dusty Pink"></button>
+          <button class="b-cw" data-color_id="espresso" data-color="Espresso" onclick="pickAloColor(this)" style="background:#3c2415" title="Espresso"></button>
+          <button class="b-cw" data-color_id="gravel" data-color="Gravel" onclick="pickAloColor(this)" style="background:#8a8070" title="Gravel"></button>
+          <button class="b-cw" data-color_id="green" data-color="Green" onclick="pickAloColor(this)" style="background:#4a7c59" title="Green"></button>
+          <button class="b-cw" data-color_id="grey" data-color="Grey" onclick="pickAloColor(this)" style="background:#9a9a9a" title="Grey"></button>
+          <button class="b-cw" data-color_id="ivory" data-color="Ivory" onclick="pickAloColor(this)" style="background:#f5f0e6;border:1.5px solid #ddd" title="Ivory"></button>
+          <button class="b-cw" data-color_id="navy" data-color="Navy" onclick="pickAloColor(this)" style="background:#1a2d4a" title="Navy"></button>
+          <button class="b-cw" data-color_id="nude" data-color="Nude" onclick="pickAloColor(this)" style="background:#d4b8a0" title="Nude"></button>
+          <button class="b-cw" data-color_id="oatmeal" data-color="Oatmeal" onclick="pickAloColor(this)" style="background:#c8bca8;border:1.5px solid #ddd" title="Oatmeal"></button>
+          <button class="b-cw" data-color_id="pink" data-color="Pink" onclick="pickAloColor(this)" style="background:#e8a0b0" title="Pink"></button>
+          <button class="b-cw" data-color_id="purple" data-color="Purple" onclick="pickAloColor(this)" style="background:#7b5ea7" title="Purple"></button>
+          <button class="b-cw" data-color_id="steel" data-color="Steel" onclick="pickAloColor(this)" style="background:#71797E" title="Steel"></button>
+          <button class="b-cw" data-color_id="white" data-color="White" onclick="pickAloColor(this)" style="background:#f8f8f8;border:1.5px solid #ddd" title="White"></button>
+          <button class="b-cw-more-btn" onclick="event.stopPropagation();this.closest('.b-colorway-picker').classList.remove('b-cw-collapsed')" title="Voir tous les coloris">+</button>
+        </div>
+        <span class="b-price">75 € <em>Réplique Premium</em></span>
+        <div class="b-actions">
+          <button class="b-btn-cart" id="alo-cart-btn" onclick="handleCart(this,'alo_black','Alo Yoga','Accolade Pullover — Black','alo_black.jpg','75 €')">Ajouter au panier</button>
+          <button class="b-btn-wl" id="alo-wl-btn" onclick="handleWL(this,'alo_black','Alo Yoga','Accolade Pullover — Black','alo_black.jpg')">
+            <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- GERARD DAREL 24H -->
+    <div class="b-card b-card--colorways" data-cat="sacs" id="gd24h-card" style="cursor:pointer" onclick="if(!event.target.closest('.b-cw,.b-btn-cart,.b-btn-wl')){const c=this.querySelector('.b-cw.active');window.location.href='produit-gd24h.html?color='+(c?.dataset?.color_id||'noir')}">
+      <span class="b-badge">Nouveau</span>
+      <div class="b-img">
+        <img id="gd24h-img" src="gd24h_noir.webp" alt="Gerard Darel 24H">
+      </div>
+      <div class="b-body">
+        <span class="b-brand">Gerard Darel</span>
+        <span class="b-name">Sac 24H</span>
+        <span class="b-colorway-label">Coloris : <strong id="gd24h-color-name">Noir</strong></span>
+        <div class="b-colorway-picker b-cw-collapsed" id="gd24h-picker">
+          <button class="b-cw active" data-color_id="noir" data-color="Noir" onclick="pickGD24H(this)" style="background:#1a1a1a" title="Noir"></button>
+          <button class="b-cw" data-color_id="bordeaux" data-color="Bordeaux" onclick="pickGD24H(this)" style="background:#4a1c24" title="Bordeaux"></button>
+          <button class="b-cw" data-color_id="kaki" data-color="Kaki" onclick="pickGD24H(this)" style="background:#4a4a2a" title="Kaki"></button>
+          <button class="b-cw" data-color_id="marine" data-color="Bleu Marine" onclick="pickGD24H(this)" style="background:#2a3a4a" title="Bleu Marine"></button>
+          <button class="b-cw" data-color_id="anthracite" data-color="Anthracite" onclick="pickGD24H(this)" style="background:#5a5a5a" title="Anthracite"></button>
+          <button class="b-cw" data-color_id="bronze" data-color="Bronze" onclick="pickGD24H(this)" style="background:#7a6050" title="Bronze"></button>
+          <button class="b-cw-more-btn" onclick="event.stopPropagation();this.closest('.b-colorway-picker').classList.remove('b-cw-collapsed')" title="Voir tous les coloris">+</button>
+        </div>
+        <span class="b-price">— € <em>Prix bientôt disponible</em></span>
+        <div class="b-actions">
+          <button class="b-btn-cart" id="gd24h-cart-btn" disabled style="opacity:.5;cursor:not-allowed">Bientôt disponible</button>
+          <button class="b-btn-wl" id="gd24h-wl-btn" onclick="handleWL(this,'gd24h_noir','Gerard Darel','Sac 24H — Noir','gd24h_noir.webp')">
+            <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- BURBERRY HOODIE -->
+    <div class="b-card b-card--colorways" data-cat="vetements" id="burberry-hoodie-card" style="cursor:pointer" onclick="if(!event.target.closest('.b-cw,.b-btn-cart,.b-btn-wl')){const c=this.querySelector('.b-cw.active');window.location.href='produit-burberry-hoodie.html?color='+(c?.dataset?.color_id||'gris')}">
+      <span class="b-badge">Nouveau</span>
+      <div class="b-img">
+        <img id="burberry-hoodie-img" src="burberry_hoodie_gris.jpg" alt="Burberry Zip Hoodie">
+      </div>
+      <div class="b-body">
+        <span class="b-brand">Burberry</span>
+        <span class="b-name">Letter Graphic Zip Hoodie</span>
+        <span class="b-colorway-label">Coloris : <strong id="burberry-hoodie-color-name">Gris Clair</strong></span>
+        <div class="b-colorway-picker" id="burberry-hoodie-picker">
+          <button class="b-cw active" data-color_id="gris" data-color="Gris Clair" onclick="pickBurberry(this)" style="background:#c0b8b0" title="Gris Clair"></button>
+          <button class="b-cw" data-color_id="noir" data-color="Noir" onclick="pickBurberry(this)" style="background:#1a1a1a" title="Noir"></button>
+          <button class="b-cw" data-color_id="marine" data-color="Marine" onclick="pickBurberry(this)" style="background:#1a2a3a" title="Marine"></button>
+        </div>
+        <span class="b-price">65 € <em>Réplique Premium</em></span>
+        <div class="b-actions">
+          <button class="b-btn-cart" id="burberry-hoodie-cart-btn" onclick="handleCart(this,'burberry_hoodie_gris','Burberry','Zip Hoodie — Gris Clair','burberry_hoodie_gris.jpg','65 €')">Ajouter au panier</button>
+          <button class="b-btn-wl" id="burberry-hoodie-wl-btn" onclick="handleWL(this,'burberry_hoodie_gris','Burberry','Zip Hoodie — Gris Clair','burberry_hoodie_gris.jpg')">
+            <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- ISABEL MARANT BECKETT -->
+    <div class="b-card b-card--colorways" data-cat="chaussures" id="im-beckett-card" style="cursor:pointer" onclick="if(!event.target.closest('.b-cw,.b-btn-cart,.b-btn-wl')){const c=this.querySelector('.b-cw.active');window.location.href='produit-im-beckett.html?color='+(c?.dataset?.color_id||'noir')}">
+      <span class="b-badge">Nouveau</span>
+      <div class="b-img">
+        <img id="im-beckett-img" src="im_beckett_noir.jpg" alt="Isabel Marant Beckett">
+      </div>
+      <div class="b-body">
+        <span class="b-brand">Isabel Marant</span>
+        <span class="b-name">Beckett</span>
+        <span class="b-colorway-label">Coloris : <strong id="im-beckett-color-name">Noir</strong></span>
+        <div class="b-colorway-picker" id="im-beckett-picker">
+          <button class="b-cw active" data-color_id="noir" data-color="Noir" onclick="pickIMBeckett(this)" style="background:#1a1a1a" title="Noir"></button>
+          <button class="b-cw" data-color_id="ecru" data-color="Écru" onclick="pickIMBeckett(this)" style="background:#e8e0d0;border:1.5px solid #ddd" title="Écru"></button>
+          <button class="b-cw" data-color_id="taupe" data-color="Taupe" onclick="pickIMBeckett(this)" style="background:#8a7a60" title="Taupe"></button>
+          <button class="b-cw" data-color_id="leopard" data-color="Léopard" onclick="pickIMBeckett(this)" style="background:linear-gradient(135deg,#1a1a1a 50%,#c07830 50%)" title="Léopard"></button>
+          <button class="b-cw" data-color_id="chalk" data-color="Chalk" onclick="pickIMBeckett(this)" style="background:#f0ece4;border:1.5px solid #ddd" title="Chalk"></button>
+        </div>
+        <span class="b-price">125 € <em>Réplique Premium</em></span>
+        <div class="b-actions">
+          <button class="b-btn-cart" id="im-beckett-cart-btn" onclick="handleCart(this,'im_beckett_noir','Isabel Marant','Beckett — Noir','im_beckett_noir.jpg','125 €')">Ajouter au panier</button>
+          <button class="b-btn-wl" id="im-beckett-wl-btn" onclick="handleWL(this,'im_beckett_noir','Isabel Marant','Beckett — Noir','im_beckett_noir.jpg')">
+            <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- BAPE TEE -->
+    <div class="b-card b-card--colorways" data-cat="vetements" id="bape-tee-card" style="cursor:pointer" onclick="if(!event.target.closest('.b-cw,.b-btn-cart,.b-btn-wl')){const c=this.querySelector('.b-cw.active');window.location.href='produit-bape-tee.html?color='+(c?.dataset?.color_id||'noir_vert')}">
+      <span class="b-badge">Nouveau</span>
+      <div class="b-img">
+        <img id="bape-tee-img" src="bape_noir_vert.jpg" alt="Bape Camo Tee">
+      </div>
+      <div class="b-body">
+        <span class="b-brand">A Bathing Ape</span>
+        <span class="b-name">Camo Big Ape Head Tee</span>
+        <span class="b-colorway-label">Coloris : <strong id="bape-tee-color-name">Noir / Vert</strong></span>
+        <div class="b-colorway-picker" id="bape-tee-picker">
+          <button class="b-cw active" data-color_id="noir_vert" data-color="Noir / Vert" onclick="pickBape(this)" style="background:linear-gradient(135deg,#1a1a1a 50%,#2d5a27 50%)" title="Noir / Vert"></button>
+          <button class="b-cw" data-color_id="blanc_vert" data-color="Blanc / Vert" onclick="pickBape(this)" style="background:linear-gradient(135deg,#f0f0f0 50%,#2d5a27 50%)" title="Blanc / Vert"></button>
+          <button class="b-cw" data-color_id="noir_rose" data-color="Noir / Rose" onclick="pickBape(this)" style="background:linear-gradient(135deg,#1a1a1a 50%,#e84080 50%)" title="Noir / Rose"></button>
+          <button class="b-cw" data-color_id="blanc_rose" data-color="Blanc / Rose" onclick="pickBape(this)" style="background:linear-gradient(135deg,#f0f0f0 50%,#e84080 50%)" title="Blanc / Rose"></button>
+          <button class="b-cw" data-color_id="noir_bleu" data-color="Noir / Bleu" onclick="pickBape(this)" style="background:linear-gradient(135deg,#1a1a1a 50%,#2060a0 50%)" title="Noir / Bleu"></button>
+          <button class="b-cw" data-color_id="blanc_bleu" data-color="Blanc / Bleu" onclick="pickBape(this)" style="background:linear-gradient(135deg,#f0f0f0 50%,#2060a0 50%)" title="Blanc / Bleu"></button>
+        </div>
+        <span class="b-price">— € <em>Prix bientôt disponible</em></span>
+        <div class="b-actions">
+          <button class="b-btn-cart" id="bape-tee-cart-btn" disabled style="opacity:.5;cursor:not-allowed">Bientôt disponible</button>
+          <button class="b-btn-wl" id="bape-tee-wl-btn" onclick="handleWL(this,'bape_noir_vert','Bape','Camo Tee — Noir / Vert','bape_noir_vert.jpg')">
+            <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- PRADA SLINGBACK -->
+    <div class="b-card b-card--colorways" data-cat="chaussures" id="prada-sling-card" style="cursor:pointer" onclick="if(!event.target.closest('.b-cw,.b-btn-cart,.b-btn-wl')){const c=this.querySelector('.b-cw.active');window.location.href='produit-prada-sling.html?color='+(c?.dataset?.color_id||'noir')}">
+      <span class="b-badge">Nouveau</span>
+      <div class="b-img">
+        <img id="prada-sling-img" src="prada_sling_noir.jpg" alt="Prada Slingback">
+      </div>
+      <div class="b-body">
+        <span class="b-brand">Prada</span>
+        <span class="b-name">Escarpins Slingback</span>
+        <span class="b-colorway-label">Coloris : <strong id="prada-sling-color-name">Noir</strong></span>
+        <div class="b-colorway-picker" id="prada-sling-picker">
+          <button class="b-cw active" data-color_id="noir" data-color="Noir" onclick="pickPradaSling(this)" style="background:#1a1a1a" title="Noir"></button>
+          <button class="b-cw" data-color_id="blanc" data-color="Blanc" onclick="pickPradaSling(this)" style="background:#f0f0f0;border:1.5px solid #ddd" title="Blanc"></button>
+          <button class="b-cw" data-color_id="rouge" data-color="Rouge" onclick="pickPradaSling(this)" style="background:#cc2222" title="Rouge"></button>
+          <button class="b-cw" data-color_id="rose" data-color="Rose Pétale" onclick="pickPradaSling(this)" style="background:#f0a0b0" title="Rose Pétale"></button>
+        </div>
+        <span class="b-price">— € <em>Prix bientôt disponible</em></span>
+        <div class="b-actions">
+          <button class="b-btn-cart" id="prada-sling-cart-btn" disabled style="opacity:.5;cursor:not-allowed">Bientôt disponible</button>
+          <button class="b-btn-wl" id="prada-sling-wl-btn" onclick="handleWL(this,'prada_sling_noir','Prada','Slingback — Noir','prada_sling_noir.jpg')">
+            <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- STONE ISLAND PULL -->
+    <div class="b-card b-card--colorways" data-cat="vetements" id="si-pull-card" style="cursor:pointer" onclick="if(!event.target.closest('.b-cw,.b-btn-cart,.b-btn-wl')){const c=this.querySelector('.b-cw.active');window.location.href='produit-si-pull.html?color='+(c?.dataset?.color_id||'noir')}">
+      <span class="b-badge">Nouveau</span>
+      <div class="b-img">
+        <img id="si-pull-img" src="si_pull_noir.jpg" alt="Stone Island Pull">
+      </div>
+      <div class="b-body">
+        <span class="b-brand">Stone Island</span>
+        <span class="b-name">Crewneck Sweatshirt</span>
+        <span class="b-colorway-label">Coloris : <strong id="si-pull-color-name">Noir</strong></span>
+        <div class="b-colorway-picker" id="si-pull-picker">
+          <button class="b-cw active" data-color_id="noir" data-color="Noir" onclick="pickSI(this)" style="background:#1a1a1a" title="Noir"></button>
+          <button class="b-cw" data-color_id="blanc" data-color="Blanc" onclick="pickSI(this)" style="background:#f0ece4;border:1.5px solid #ddd" title="Blanc"></button>
+        </div>
+        <span class="b-price">65 € <em>Réplique Premium</em></span>
+        <div class="b-actions">
+          <button class="b-btn-cart" id="si-pull-cart-btn" onclick="handleCart(this,'si_pull_noir','Stone Island','Crewneck — Noir','si_pull_noir.jpg','65 €')">Ajouter au panier</button>
+          <button class="b-btn-wl" id="si-pull-wl-btn" onclick="handleWL(this,'si_pull_noir','Stone Island','Crewneck — Noir','si_pull_noir.jpg')">
+            <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- LORO PIANA CASQUETTE -->
+    <div class="b-card b-card--colorways" data-cat="accessoires" id="lp-casquette-card" style="cursor:pointer" onclick="if(!event.target.closest('.b-cw,.b-btn-cart,.b-btn-wl')){const c=this.querySelector('.b-cw.active');window.location.href='produit-lp-casquette.html?color='+(c?.dataset?.color_id||'noir')}">
+      <span class="b-badge">Nouveau</span>
+      <div class="b-img">
+        <img id="lp-casquette-img" src="lp_casquette_noir.jpg" alt="Loro Piana Casquette">
+      </div>
+      <div class="b-body">
+        <span class="b-brand">Loro Piana</span>
+        <span class="b-name">Casquette Baseball</span>
+        <span class="b-colorway-label">Coloris : <strong id="lp-casquette-color-name">Noir</strong></span>
+        <div class="b-colorway-picker b-cw-collapsed" id="lp-casquette-picker">
+          <button class="b-cw active" data-color_id="noir" data-color="Noir" onclick="pickLPCasquette(this)" style="background:#1e2328" title="Noir"></button>
+          <button class="b-cw" data-color_id="blanc" data-color="Blanc" onclick="pickLPCasquette(this)" style="background:#f0ede6;border:1.5px solid #ddd" title="Blanc"></button>
+          <button class="b-cw" data-color_id="creme" data-color="Crème" onclick="pickLPCasquette(this)" style="background:#e8e2d4;border:1.5px solid #ddd" title="Crème"></button>
+          <button class="b-cw" data-color_id="sable" data-color="Sable" onclick="pickLPCasquette(this)" style="background:#c8b48c" title="Sable"></button>
+          <button class="b-cw" data-color_id="beige" data-color="Beige" onclick="pickLPCasquette(this)" style="background:#b5a48a" title="Beige"></button>
+          <button class="b-cw" data-color_id="camel" data-color="Camel" onclick="pickLPCasquette(this)" style="background:#c08a40" title="Camel"></button>
+          <button class="b-cw" data-color_id="cognac" data-color="Cognac" onclick="pickLPCasquette(this)" style="background:#a06830" title="Cognac"></button>
+          <button class="b-cw" data-color_id="taupe" data-color="Taupe" onclick="pickLPCasquette(this)" style="background:#7a6860" title="Taupe"></button>
+          <button class="b-cw" data-color_id="marron" data-color="Marron" onclick="pickLPCasquette(this)" style="background:#5a4a40" title="Marron"></button>
+          <button class="b-cw" data-color_id="brun" data-color="Brun Foncé" onclick="pickLPCasquette(this)" style="background:#3a3230" title="Brun Foncé"></button>
+          <button class="b-cw" data-color_id="brique" data-color="Brique" onclick="pickLPCasquette(this)" style="background:#9a4a3a" title="Brique"></button>
+          <button class="b-cw" data-color_id="bordeaux" data-color="Bordeaux" onclick="pickLPCasquette(this)" style="background:#7a3030" title="Bordeaux"></button>
+          <button class="b-cw" data-color_id="olive" data-color="Olive" onclick="pickLPCasquette(this)" style="background:#4a5a30" title="Olive"></button>
+          <button class="b-cw" data-color_id="vert_foret" data-color="Vert Forêt" onclick="pickLPCasquette(this)" style="background:#2a3a20" title="Vert Forêt"></button>
+          <button class="b-cw" data-color_id="bleu_marine" data-color="Bleu Marine" onclick="pickLPCasquette(this)" style="background:#2a3a60" title="Bleu Marine"></button>
+          <button class="b-cw" data-color_id="bleu_gris" data-color="Bleu Gris" onclick="pickLPCasquette(this)" style="background:#7a90a8" title="Bleu Gris"></button>
+          <button class="b-cw" data-color_id="bleu_ciel" data-color="Bleu Ciel" onclick="pickLPCasquette(this)" style="background:#6a8a9a" title="Bleu Ciel"></button>
+          <button class="b-cw" data-color_id="anthracite" data-color="Anthracite" onclick="pickLPCasquette(this)" style="background:#3a3a3a" title="Anthracite"></button>
+          <button class="b-cw-more-btn" onclick="event.stopPropagation();this.closest('.b-colorway-picker').classList.remove('b-cw-collapsed')" title="Voir tous les coloris">+</button>
+        </div>
+        <span class="b-price">45 € <em>Réplique Premium</em></span>
+        <div class="b-actions">
+          <button class="b-btn-cart" id="lp-casquette-cart-btn" onclick="handleCart(this,'lp_casquette_noir','Loro Piana','Casquette — Noir','lp_casquette_noir.jpg','45 €')">Ajouter au panier</button>
+          <button class="b-btn-wl" id="lp-casquette-wl-btn" onclick="handleWL(this,'lp_casquette_noir','Loro Piana','Casquette — Noir','lp_casquette_noir.jpg')">
+            <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- APPLE AIRPODS MAX -->
+    <div class="b-card b-card--colorways" data-cat="tech" id="airpods-max-card" style="cursor:pointer" onclick="if(!event.target.closest('.b-cw,.b-btn-cart,.b-btn-wl')){const c=this.querySelector('.b-cw.active');window.location.href='produit-airpods-max.html?color='+(c?.dataset?.color_id||'noir')}">
+      <span class="b-badge">Nouveau</span>
+      <div class="b-img">
+        <img id="airpods-max-img" src="airpods_max_noir.jpg" alt="AirPods Max">
+      </div>
+      <div class="b-body">
+        <span class="b-brand">Apple</span>
+        <span class="b-name">AirPods Max</span>
+        <span class="b-colorway-label">Coloris : <strong id="airpods-max-color-name">Noir</strong></span>
+        <div class="b-colorway-picker" id="airpods-max-picker">
+          <button class="b-cw active" data-color_id="noir" data-color="Noir" onclick="pickAirpodsMax(this)" style="background:#2a2e32" title="Noir"></button>
+          <button class="b-cw" data-color_id="starlight" data-color="Starlight" onclick="pickAirpodsMax(this)" style="background:#e8e0d0;border:1.5px solid #ddd" title="Starlight"></button>
+          <button class="b-cw" data-color_id="bleu_ciel" data-color="Bleu Ciel" onclick="pickAirpodsMax(this)" style="background:#7ca8c0" title="Bleu Ciel"></button>
+          <button class="b-cw" data-color_id="rose" data-color="Rose" onclick="pickAirpodsMax(this)" style="background:#e0a898" title="Rose"></button>
+          <button class="b-cw" data-color_id="violet" data-color="Violet" onclick="pickAirpodsMax(this)" style="background:#b8a0c8" title="Violet"></button>
+        </div>
+        <span class="b-price">185 € <em>Réplique Premium</em></span>
+        <div class="b-actions">
+          <button class="b-btn-cart" id="airpods-max-cart-btn" onclick="handleCart(this,'airpods_max_noir','Apple','AirPods Max — Noir','airpods_max_noir.jpg','185 €')">Ajouter au panier</button>
+          <button class="b-btn-wl" id="airpods-max-wl-btn" onclick="handleWL(this,'airpods_max_noir','Apple','AirPods Max — Noir','airpods_max_noir.jpg')">
+            <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- LUNETTES MIU MIU -->
+    <div class="b-card" data-cat="lunettes" id="lunettes-miumiu-card" style="cursor:pointer" onclick="if(!event.target.closest('.b-btn-cart,.b-btn-wl')){window.location.href='produit-lunettes-miumiu.html'}">
+      <span class="b-badge">Nouveau</span>
+      <div class="b-img">
+        <img src="lunettes_miumiu_noir.jpg" alt="Lunettes Miu Miu">
+      </div>
+      <div class="b-body">
+        <span class="b-brand">Miu Miu</span>
+        <span class="b-name">Lunettes MU 09WS</span>
+        <span class="b-price">— € <em>Prix bientôt disponible</em></span>
+        <div class="b-actions">
+          <button class="b-btn-cart" disabled style="opacity:.5;cursor:not-allowed">Bientôt disponible</button>
+          <button class="b-btn-wl" onclick="handleWL(this,'lunettes_miumiu_noir','Miu Miu','Lunettes MU 09WS','lunettes_miumiu_noir.jpg')">
+            <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- MIHARA YASUHIRO HANK -->
+    <div class="b-card b-card--colorways" data-cat="chaussures" id="mihara-hank-card" style="cursor:pointer" onclick="if(!event.target.closest('.b-cw,.b-btn-cart,.b-btn-wl')){const c=this.querySelector('.b-cw.active');window.location.href='produit-mihara-hank.html?color='+(c?.dataset?.color_id||'noir')}">
+      <span class="b-badge">Nouveau</span>
+      <div class="b-img">
+        <img id="mihara-hank-img" src="mihara_hank_noir.jpg" alt="Mihara Yasuhiro Hank">
+      </div>
+      <div class="b-body">
+        <span class="b-brand">Maison Mihara Yasuhiro</span>
+        <span class="b-name">Hank OG Sole Canvas</span>
+        <span class="b-colorway-label">Coloris : <strong id="mihara-hank-color-name">Noir</strong></span>
+        <div class="b-colorway-picker" id="mihara-hank-picker">
+          <button class="b-cw active" data-color_id="noir" data-color="Noir" onclick="pickMiharaHank(this)" style="background:#1a1a1a" title="Noir"></button>
+          <button class="b-cw" data-color_id="blanc" data-color="Blanc" onclick="pickMiharaHank(this)" style="background:#f0ece4;border:1.5px solid #ddd" title="Blanc"></button>
+          <button class="b-cw" data-color_id="bleu" data-color="Bleu" onclick="pickMiharaHank(this)" style="background:#2a7a8a" title="Bleu"></button>
+          <button class="b-cw" data-color_id="rouge" data-color="Rouge" onclick="pickMiharaHank(this)" style="background:#c83030" title="Rouge"></button>
+          <button class="b-cw" data-color_id="menthe" data-color="Menthe" onclick="pickMiharaHank(this)" style="background:#a0e8d8" title="Menthe"></button>
+          <button class="b-cw" data-color_id="rose" data-color="Rose" onclick="pickMiharaHank(this)" style="background:#e8a0a8" title="Rose"></button>
+          <button class="b-cw" data-color_id="vert" data-color="Vert" onclick="pickMiharaHank(this)" style="background:#20a060" title="Vert"></button>
+          <button class="b-cw" data-color_id="violet" data-color="Violet" onclick="pickMiharaHank(this)" style="background:#4a2870" title="Violet"></button>
+        </div>
+        <span class="b-price">— € <em>Prix bientôt disponible</em></span>
+        <div class="b-actions">
+          <button class="b-btn-cart" disabled style="opacity:.5;cursor:not-allowed">Bientôt disponible</button>
+          <button class="b-btn-wl" id="mihara-hank-wl-btn" onclick="handleWL(this,'mihara_hank_noir','Mihara Yasuhiro','Hank — Noir','mihara_hank_noir.jpg')">
+            <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- BALENCIAGA RUNNER -->
+    <div class="b-card b-card--colorways" data-cat="chaussures" id="balenciaga-runner-card" style="cursor:pointer" onclick="if(!event.target.closest('.b-cw,.b-btn-cart,.b-btn-wl')){const c=this.querySelector('.b-cw.active');window.location.href='produit-balenciaga-runner.html?color='+(c?.dataset?.color_id||'noir_argent')}">
+      <span class="b-badge">Nouveau</span>
+      <div class="b-img">
+        <img id="balenciaga-runner-img" src="balenciaga_runner_noir_argent.jpg" alt="Balenciaga Runner">
+      </div>
+      <div class="b-body">
+        <span class="b-brand">Balenciaga</span>
+        <span class="b-name">Runner</span>
+        <span class="b-colorway-label">Coloris : <strong id="balenciaga-runner-color-name">Noir / Argent</strong></span>
+        <div class="b-colorway-picker" id="balenciaga-runner-picker">
+          <button class="b-cw active" data-color_id="noir_argent" data-color="Noir / Argent" data-ext="jpg" onclick="pickBalenciagaRunner(this)" style="background:linear-gradient(135deg,#1a1a1a 50%,#c0c0c0 50%)" title="Noir / Argent"></button>
+          <button class="b-cw" data-color_id="noir_blanc" data-color="Noir / Blanc" data-ext="jpg" onclick="pickBalenciagaRunner(this)" style="background:linear-gradient(135deg,#1a1a1a 50%,#f0f0f0 50%)" title="Noir / Blanc"></button>
+          <button class="b-cw" data-color_id="gris" data-color="Gris" data-ext="jpg" onclick="pickBalenciagaRunner(this)" style="background:#6a7a8a" title="Gris"></button>
+          <button class="b-cw" data-color_id="rouge" data-color="Rouge" data-ext="webp" onclick="pickBalenciagaRunner(this)" style="background:#cc2020" title="Rouge"></button>
+          <button class="b-cw" data-color_id="bleu_orange" data-color="Bleu / Orange" data-ext="webp" onclick="pickBalenciagaRunner(this)" style="background:linear-gradient(135deg,#2060c0 50%,#e08020 50%)" title="Bleu / Orange"></button>
+          <button class="b-cw" data-color_id="bleu_gris" data-color="Bleu / Gris" data-ext="webp" onclick="pickBalenciagaRunner(this)" style="background:linear-gradient(135deg,#3060a0 50%,#c0c0c0 50%)" title="Bleu / Gris"></button>
+          <button class="b-cw" data-color_id="blanc" data-color="Blanc" data-ext="webp" onclick="pickBalenciagaRunner(this)" style="background:#f0ece4;border:1.5px solid #ddd" title="Blanc"></button>
+          <button class="b-cw" data-color_id="kaki" data-color="Kaki" data-ext="webp" onclick="pickBalenciagaRunner(this)" style="background:#3a4a20" title="Kaki"></button>
+          <button class="b-cw" data-color_id="multicolore" data-color="Multicolore" data-ext="jpg" onclick="pickBalenciagaRunner(this)" style="background:linear-gradient(135deg,#e8e0d8 33%,#3a8a6a 66%,#d060a0 100%)" title="Multicolore"></button>
+          <button class="b-cw" data-color_id="rose_orange" data-color="Rose / Orange" data-ext="jpg" onclick="pickBalenciagaRunner(this)" style="background:linear-gradient(135deg,#e06080 50%,#f09040 50%)" title="Rose / Orange"></button>
+          <button class="b-cw" data-color_id="vert_menthe" data-color="Vert Menthe" data-ext="jpg" onclick="pickBalenciagaRunner(this)" style="background:linear-gradient(135deg,#c0c0c0 50%,#40c090 50%)" title="Vert Menthe"></button>
+          <button class="b-cw" data-color_id="rainbow" data-color="Rainbow" data-ext="jpg" onclick="pickBalenciagaRunner(this)" style="background:linear-gradient(135deg,#e0a020 25%,#d060a0 50%,#4080e0 75%,#40c040 100%)" title="Rainbow"></button>
+        </div>
+        <span class="b-price">— € <em>Prix bientôt disponible</em></span>
+        <div class="b-actions">
+          <button class="b-btn-cart" disabled style="opacity:.5;cursor:not-allowed">Bientôt disponible</button>
+          <button class="b-btn-wl" id="balenciaga-runner-wl-btn" onclick="handleWL(this,'balenciaga_runner_noir_argent','Balenciaga','Runner — Noir / Argent','balenciaga_runner_noir_argent.jpg')">
+            <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- PORTE-CARTES MIU MIU -->
+    <div class="b-card b-card--colorways" data-cat="accessoires" id="miumiu-carte-card" style="cursor:pointer" onclick="if(!event.target.closest('.b-cw,.b-btn-cart,.b-btn-wl')){const c=this.querySelector('.b-cw.active');window.location.href='produit-miumiu-carte.html?color='+(c?.dataset?.color_id||'noir')}">
+      <span class="b-badge">Nouveau</span>
+      <div class="b-img">
+        <img id="miumiu-carte-img" src="miumiu_carte_noir.jpg" alt="Porte-Cartes Miu Miu">
+      </div>
+      <div class="b-body">
+        <span class="b-brand">Miu Miu</span>
+        <span class="b-name">Porte-Cartes Matelassé</span>
+        <span class="b-colorway-label">Coloris : <strong id="miumiu-carte-color-name">Noir</strong></span>
+        <div class="b-colorway-picker b-cw-collapsed" id="miumiu-carte-picker">
+          <button class="b-cw active" data-color_id="noir" data-color="Noir" onclick="pickMiuMiuCarte(this)" style="background:#1a1a1a" title="Noir"></button>
+          <button class="b-cw" data-color_id="bordeaux" data-color="Bordeaux" onclick="pickMiuMiuCarte(this)" style="background:#4a1a20" title="Bordeaux"></button>
+          <button class="b-cw" data-color_id="rouge" data-color="Rouge" onclick="pickMiuMiuCarte(this)" style="background:#c02020" title="Rouge"></button>
+          <button class="b-cw" data-color_id="rose" data-color="Rose" onclick="pickMiuMiuCarte(this)" style="background:#d890a0" title="Rose"></button>
+          <button class="b-cw" data-color_id="nude" data-color="Nude" onclick="pickMiuMiuCarte(this)" style="background:#c8a898" title="Nude"></button>
+          <button class="b-cw" data-color_id="camel" data-color="Camel" onclick="pickMiuMiuCarte(this)" style="background:#a08050" title="Camel"></button>
+          <button class="b-cw" data-color_id="blanc" data-color="Blanc" onclick="pickMiuMiuCarte(this)" style="background:#f0ece4;border:1.5px solid #ddd" title="Blanc"></button>
+          <button class="b-cw" data-color_id="lavande" data-color="Lavande" onclick="pickMiuMiuCarte(this)" style="background:#a098b0" title="Lavande"></button>
+          <button class="b-cw" data-color_id="bleu_ciel" data-color="Bleu Ciel" onclick="pickMiuMiuCarte(this)" style="background:#a0b0c0" title="Bleu Ciel"></button>
+          <button class="b-cw" data-color_id="sauge" data-color="Sauge" onclick="pickMiuMiuCarte(this)" style="background:#7a9a90" title="Sauge"></button>
+          <button class="b-cw" data-color_id="bleu_canard" data-color="Bleu Canard" onclick="pickMiuMiuCarte(this)" style="background:#2a7080" title="Bleu Canard"></button>
+          <button class="b-cw-more-btn" onclick="event.stopPropagation();this.closest('.b-colorway-picker').classList.remove('b-cw-collapsed')" title="Voir tous les coloris">+</button>
+        </div>
+        <span class="b-price">— € <em>Prix bientôt disponible</em></span>
+        <div class="b-actions">
+          <button class="b-btn-cart" disabled style="opacity:.5;cursor:not-allowed">Bientôt disponible</button>
+          <button class="b-btn-wl" id="miumiu-carte-wl-btn" onclick="handleWL(this,'miumiu_carte_noir','Miu Miu','Porte-Cartes — Noir','miumiu_carte_noir.jpg')">
+            <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- DIOR B30 — MASQUÉ TEMPORAIREMENT
+    <div class="b-card b-card--colorways" data-cat="chaussures" id="b30-card" style="cursor:pointer" onclick="if(!event.target.closest('.b-cw,.b-gal-arrow,.b-btn-cart,.b-btn-wl')){const c=this.querySelector('.b-cw.active');window.location.href='produit-b30.html?color='+(c?.dataset?.color_id||'noir')}">
+      ...B30 card content...
+    </div>
+    FIN MASQUÉ B30 -->
+
+  </div>
+  <div class="b-not-found reveal">
+    <span class="b-nf-emoji">🔍</span>
+    <p>Vous ne trouvez pas votre article ?</p>
+    <a href="assistant.html" class="b-nf-link">Contactez-nous, on le source pour vous →</a>
+  </div>
+</main>
+
+<footer>
+  <div class="foot-inner">
+    <div class="foot-brand">ALLSTORE</div>
+    <div class="foot-links">
+      <a href="apropos.html">À Propos</a>
+      <a href="contact.html">Contact</a>
+      <a href="assistant.html">Assistant</a>
+    </div>
+    <div class="foot-tagline">L'introuvable, enfin trouvé.</div>
+    <div class="foot-copy">ALLSTORE 24/7 — Sourcing d'Exception — 2025</div>
+  </div>
+</footer>
+
+<script src="global.js"></script>
+<script src="luxury.js"></script>
+<script src="conversion.js"></script>
+<script>
+  // Filtre catégories
+  function filterCat(btn, cat) {
+    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    document.querySelectorAll('.b-card').forEach(card => {
+      card.style.display = (cat === 'all' || card.dataset.cat === cat) ? '' : 'none';
+    });
+  }
+
+  // Auto-filtre via URL ?cat=xxx
+  (function() {
+    const params = new URLSearchParams(window.location.search);
+    const cat = params.get('cat');
+    if (cat) {
+      const btn = document.querySelector(`.filter-btn[onclick*="'${cat}'"]`);
+      if (btn) filterCat(btn, cat);
+    }
+  })();
+
+  // Gérer ajout panier
+  function handleCart(btn, id, brand, name, img, price) {
+    const CART_KEY = 'als_cart';
+    let cart = [];
+    try { cart = JSON.parse(localStorage.getItem(CART_KEY)) || []; } catch {}
+    const already = cart.some(i => i.id === id);
+    if (!already) {
+      cart.push({id, brand, name, img, price});
+      localStorage.setItem(CART_KEY, JSON.stringify(cart));
+      btn.textContent = '✓ Dans le panier';
+      btn.classList.add('in-cart');
+    } else {
+      window.location.href = 'panier.html';
+    }
+    if (window.updateCartUI) updateCartUI();
+    if (window.showToast) showToast(already ? 'Déjà dans le panier — Voir le panier' : name + ' ajouté au panier');
+  }
+
+  // Gérer liste de souhait
+  function handleWL(btn, id, brand, name, img) {
+    if (window.toggleWL) {
+      const added = toggleWL(id, brand, name, img);
+      btn.classList.toggle('wl-active', added);
+    }
+  }
+
+  // Alo Yoga color picker
+  function pickAloColor(btn) {
+    const card = btn.closest('.b-card--colorways');
+    if (!card) return;
+    const img = card.querySelector('.b-img img');
+    const label = card.querySelector('.b-colorway-label strong');
+    const cartBtn = card.querySelector('.b-btn-cart');
+    const wlBtn = card.querySelector('.b-btn-wl');
+    const colorId = btn.dataset.color_id;
+    const colorName = btn.dataset.color;
+
+    // Update active dot
+    card.querySelectorAll('.b-cw').forEach(c => c.classList.remove('active'));
+    btn.classList.add('active');
+
+    // Swap image
+    img.classList.add('fade');
+    setTimeout(() => {
+      img.src = 'alo_' + colorId + '.jpg';
+      img.alt = 'Alo Yoga Accolade — ' + colorName;
+      img.classList.remove('fade');
+    }, 180);
+
+    if (label) label.textContent = colorName;
+
+    // Update cart/wl buttons
+    const fullName = 'Accolade Pullover — ' + colorName;
+    const itemId = 'alo_' + colorId;
+    if (cartBtn) {
+      cartBtn.setAttribute('onclick',
+        "handleCart(this,'" + itemId + "','Alo Yoga','" + fullName.replace(/'/g, "\\'") + "','alo_" + colorId + ".jpg','75 €')");
+      // Reset cart button state
+      const cart = JSON.parse(localStorage.getItem('als_cart') || '[]');
+      if (cart.some(i => i.id === itemId)) {
+        cartBtn.textContent = '✓ Dans le panier';
+        cartBtn.classList.add('in-cart');
+      } else {
+        cartBtn.textContent = 'Ajouter au panier';
+        cartBtn.classList.remove('in-cart');
+      }
+    }
+    if (wlBtn) {
+      wlBtn.setAttribute('onclick',
+        "handleWL(this,'" + itemId + "','Alo Yoga','" + fullName.replace(/'/g, "\\'") + "','alo_" + colorId + ".jpg')");
+    }
+  }
+
+  // Restaurer états depuis localStorage au chargement
+  (function(){
+    const CART_KEY = 'als_cart';
+    const WL_KEY = 'als_wishlist';
+    let cart = []; let wl = [];
+    try { cart = JSON.parse(localStorage.getItem(CART_KEY)) || []; } catch {}
+    try { wl = JSON.parse(localStorage.getItem(WL_KEY)) || []; } catch {}
+    document.querySelectorAll('.b-btn-cart').forEach(btn => {
+      const onclick = btn.getAttribute('onclick');
+      if (!onclick) return;
+      const id = onclick.match(/'([^']+)'/)?.[1];
+      if (id && cart.some(i => i.id === id)) {
+        btn.textContent = '✓ Dans le panier';
+        btn.classList.add('in-cart');
+      }
+    });
+    document.querySelectorAll('.b-btn-wl').forEach(btn => {
+      const onclick = btn.getAttribute('onclick');
+      if (!onclick) return;
+      const id = onclick.match(/'([^']+)'/)?.[1];
+      if (id && wl.some(i => i.id === id)) btn.classList.add('wl-active');
+    });
+  })();
+
+  // ═══ Gallery state ═══
+  var galState = {}; // { cardId: { prefix, count, current } }
+
+  // ═══ Gallery Navigation (arrows) ═══
+  function galNav(arrowBtn, dir) {
+    const card = arrowBtn.closest('.b-card--colorways');
+    if (!card) return;
+    const cardId = card.id;
+    const s = galState[cardId];
+    if (!s) return;
+
+    s.current = ((s.current - 1 + dir + s.count) % s.count) + 1;
+    const img = card.querySelector('.b-img img');
+    const counter = card.querySelector('.b-gal-counter');
+
+    img.classList.add('fade');
+    setTimeout(() => {
+      img.src = s.prefix + '_' + s.current + '.jpg';
+      img.classList.remove('fade');
+    }, 180);
+    if (counter) counter.textContent = s.current + ' / ' + s.count;
+  }
+
+  // ═══ Colorway Picker (StockX style) ═══
+  function pickColor(btn) {
+    const card = btn.closest('.b-card--colorways');
+    if (!card) return;
+    const img = card.querySelector('.b-img img');
+    const label = card.querySelector('.b-colorway-label strong');
+    const cartBtn = card.querySelector('.b-btn-cart');
+    const wlBtn = card.querySelector('.b-btn-wl');
+    const counter = card.querySelector('.b-gal-counter');
+    const prefix = btn.dataset.prefix;
+    const count = parseInt(btn.dataset.count) || 9;
+    const colorName = btn.dataset.color;
+    const colorId = btn.dataset.id;
+    const cardId = card.id;
+
+    // Reset gallery to photo 1
+    galState[cardId] = { prefix: prefix, count: count, current: 1 };
+
+    // Animate image swap
+    img.classList.add('fade');
+    setTimeout(() => {
+      img.src = prefix + '_1.jpg';
+      img.alt = 'Prada America\'s Cup — ' + colorName;
+      img.classList.remove('fade');
+    }, 200);
+
+    // Update counter
+    if (counter) counter.textContent = '1 / ' + count;
+
+    // Update active state
+    card.querySelectorAll('.b-cw').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+
+    // Update label
+    if (label) label.textContent = colorName;
+
+    // Update cart/WL buttons
+    const fullName = "America's Cup — " + colorName;
+    if (cartBtn) {
+      cartBtn.className = 'b-btn-cart';
+      cartBtn.textContent = 'Ajouter au panier';
+      cartBtn.setAttribute('onclick',
+        "handleCart(this,'" + colorId + "','Prada','" + fullName.replace(/'/g, "\\'") + "','" + prefix + "_1.jpg','105 €')"
+      );
+      try {
+        const cart = JSON.parse(localStorage.getItem('als_cart')) || [];
+        if (cart.some(i => i.id === colorId)) {
+          cartBtn.textContent = '✓ Dans le panier';
+          cartBtn.classList.add('in-cart');
+        }
+      } catch {}
+    }
+    if (wlBtn) {
+      wlBtn.setAttribute('onclick',
+        "handleWL(this,'" + colorId + "','Prada','" + fullName.replace(/'/g, "\\'") + "','" + prefix + "_1.jpg')"
+      );
+      wlBtn.classList.remove('wl-active');
+      try {
+        const wl = JSON.parse(localStorage.getItem('als_wishlist')) || [];
+        if (wl.some(i => i.id === colorId)) wlBtn.classList.add('wl-active');
+      } catch {}
+    }
+  }
+
+  // Init gallery state for Prada Cup
+  galState['prada-cup-card'] = { prefix: 'prada_cup_noir', count: 8, current: 1 };
+
+  // Init gallery state for Dior B30
+  galState['b30-card'] = { prefix: 'b30_noir', count: 5, current: 1 };
+
+  // B30 color picker
+  function pickB30Color(btn) {
+    var card = document.getElementById('b30-card');
+    card.querySelectorAll('.b-cw').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    var prefix = btn.dataset.prefix;
+    var count = parseInt(btn.dataset.count) || 1;
+    var colorName = btn.dataset.color;
+    var colorId = btn.dataset.color_id;
+    document.getElementById('b30-img').src = prefix + '_1.jpg';
+    document.getElementById('b30-color-name').textContent = colorName;
+    document.getElementById('b30-counter').textContent = '1 / ' + count;
+    galState['b30-card'] = { prefix: prefix, count: count, current: 1 };
+    var fullName = 'B30 — ' + colorName;
+    var cartBtn = document.getElementById('b30-cart-btn');
+    var wlBtn = document.getElementById('b30-wl-btn');
+    if (cartBtn) {
+      cartBtn.setAttribute('onclick',
+        "handleCart(this,'" + colorId + "','Dior','" + fullName.replace(/'/g, "\\'") + "','" + prefix + "_1.jpg','105 €')"
+      );
+      cartBtn.textContent = 'Ajouter au panier';
+      cartBtn.classList.remove('in-cart');
+      try {
+        var cart = JSON.parse(localStorage.getItem('als_cart')) || [];
+        if (cart.some(i => i.id === colorId)) {
+          cartBtn.textContent = '✓ Dans le panier';
+          cartBtn.classList.add('in-cart');
+        }
+      } catch {}
+    }
+    if (wlBtn) {
+      wlBtn.setAttribute('onclick',
+        "handleWL(this,'" + colorId + "','Dior','" + fullName.replace(/'/g, "\\'") + "','" + prefix + "_1.jpg')"
+      );
+      wlBtn.classList.remove('wl-active');
+      try {
+        var wl = JSON.parse(localStorage.getItem('als_wishlist')) || [];
+        if (wl.some(i => i.id === colorId)) wlBtn.classList.add('wl-active');
+      } catch {}
+    }
+  }
+
+  // Gerard Darel 24H color picker
+  function pickGD24H(btn) {
+    var card = document.getElementById('gd24h-card');
+    card.querySelectorAll('.b-cw').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    var colorId = btn.dataset.color_id;
+    var colorName = btn.dataset.color;
+    document.getElementById('gd24h-img').src = 'gd24h_' + colorId + '.webp';
+    document.getElementById('gd24h-color-name').textContent = colorName;
+    var wlBtn = document.getElementById('gd24h-wl-btn');
+    if (wlBtn) {
+      wlBtn.setAttribute('onclick',
+        "handleWL(this,'gd24h_" + colorId + "','Gerard Darel','Sac 24H — " + colorName + "','gd24h_" + colorId + ".webp')"
+      );
+      wlBtn.classList.remove('wl-active');
+      try {
+        var wl = JSON.parse(localStorage.getItem('als_wishlist')) || [];
+        if (wl.some(i => i.id === 'gd24h_' + colorId)) wlBtn.classList.add('wl-active');
+      } catch {}
+    }
+  }
+
+  // Isabel Marant Beckett color picker
+  function pickIMBeckett(btn) {
+    var card = document.getElementById('im-beckett-card');
+    card.querySelectorAll('.b-cw').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    var colorId = btn.dataset.color_id;
+    var colorName = btn.dataset.color;
+    document.getElementById('im-beckett-img').src = 'im_beckett_' + colorId + '.jpg';
+    document.getElementById('im-beckett-color-name').textContent = colorName;
+    var fullName = 'Beckett — ' + colorName;
+    var cartBtn = document.getElementById('im-beckett-cart-btn');
+    var wlBtn = document.getElementById('im-beckett-wl-btn');
+    if (cartBtn) {
+      cartBtn.setAttribute('onclick', "handleCart(this,'im_beckett_" + colorId + "','Isabel Marant','" + fullName.replace(/'/g,"\\'") + "','im_beckett_" + colorId + ".jpg','125 €')");
+      cartBtn.textContent = 'Ajouter au panier'; cartBtn.classList.remove('in-cart');
+      try { var cart = JSON.parse(localStorage.getItem('als_cart')) || []; if (cart.some(i => i.id === 'im_beckett_' + colorId)) { cartBtn.textContent = '✓ Dans le panier'; cartBtn.classList.add('in-cart'); } } catch {}
+    }
+    if (wlBtn) {
+      wlBtn.setAttribute('onclick', "handleWL(this,'im_beckett_" + colorId + "','Isabel Marant','" + fullName.replace(/'/g,"\\'") + "','im_beckett_" + colorId + ".jpg')");
+      wlBtn.classList.remove('wl-active');
+      try { var wl = JSON.parse(localStorage.getItem('als_wishlist')) || []; if (wl.some(i => i.id === 'im_beckett_' + colorId)) wlBtn.classList.add('wl-active'); } catch {}
+    }
+  }
+
+  // Bape Tee color picker
+  function pickBape(btn) {
+    var card = document.getElementById('bape-tee-card');
+    card.querySelectorAll('.b-cw').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    var colorId = btn.dataset.color_id;
+    var colorName = btn.dataset.color;
+    document.getElementById('bape-tee-img').src = 'bape_' + colorId + '.jpg';
+    document.getElementById('bape-tee-color-name').textContent = colorName;
+    var wlBtn = document.getElementById('bape-tee-wl-btn');
+    if (wlBtn) {
+      wlBtn.setAttribute('onclick', "handleWL(this,'bape_" + colorId + "','Bape','Camo Tee — " + colorName + "','bape_" + colorId + ".jpg')");
+      wlBtn.classList.remove('wl-active');
+      try { var wl = JSON.parse(localStorage.getItem('als_wishlist')) || []; if (wl.some(i => i.id === 'bape_' + colorId)) wlBtn.classList.add('wl-active'); } catch {}
+    }
+  }
+
+  // Prada Slingback color picker
+  function pickPradaSling(btn) {
+    var card = document.getElementById('prada-sling-card');
+    card.querySelectorAll('.b-cw').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    var colorId = btn.dataset.color_id, colorName = btn.dataset.color;
+    document.getElementById('prada-sling-img').src = 'prada_sling_' + colorId + '.jpg';
+    document.getElementById('prada-sling-color-name').textContent = colorName;
+    var wlBtn = document.getElementById('prada-sling-wl-btn');
+    if (wlBtn) {
+      wlBtn.setAttribute('onclick', "handleWL(this,'prada_sling_" + colorId + "','Prada','Slingback — " + colorName + "','prada_sling_" + colorId + ".jpg')");
+      wlBtn.classList.remove('wl-active');
+      try { var wl = JSON.parse(localStorage.getItem('als_wishlist')) || []; if (wl.some(i => i.id === 'prada_sling_' + colorId)) wlBtn.classList.add('wl-active'); } catch {}
+    }
+  }
+
+  // Mihara Yasuhiro Hank color picker
+  function pickMiharaHank(btn) {
+    var card = document.getElementById('mihara-hank-card');
+    card.querySelectorAll('.b-cw').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    var colorId = btn.dataset.color_id;
+    var colorName = btn.dataset.color;
+    document.getElementById('mihara-hank-img').src = 'mihara_hank_' + colorId + '.jpg';
+    document.getElementById('mihara-hank-color-name').textContent = colorName;
+    var wlBtn = document.getElementById('mihara-hank-wl-btn');
+    if (wlBtn) {
+      wlBtn.setAttribute('onclick', "handleWL(this,'mihara_hank_" + colorId + "','Mihara Yasuhiro','Hank — " + colorName + "','mihara_hank_" + colorId + ".jpg')");
+      wlBtn.classList.remove('wl-active');
+      try { var wl = JSON.parse(localStorage.getItem('als_wishlist')) || []; if (wl.some(i => i.id === 'mihara_hank_' + colorId)) wlBtn.classList.add('wl-active'); } catch {}
+    }
+  }
+
+  // Balenciaga Runner color picker
+  function pickBalenciagaRunner(btn) {
+    var card = document.getElementById('balenciaga-runner-card');
+    card.querySelectorAll('.b-cw').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    var colorId = btn.dataset.color_id;
+    var colorName = btn.dataset.color;
+    var ext = btn.dataset.ext || 'jpg';
+    document.getElementById('balenciaga-runner-img').src = 'balenciaga_runner_' + colorId + '.' + ext;
+    document.getElementById('balenciaga-runner-color-name').textContent = colorName;
+    var wlBtn = document.getElementById('balenciaga-runner-wl-btn');
+    if (wlBtn) {
+      wlBtn.setAttribute('onclick', "handleWL(this,'balenciaga_runner_" + colorId + "','Balenciaga','Runner — " + colorName + "','balenciaga_runner_" + colorId + "." + ext + "')");
+      wlBtn.classList.remove('wl-active');
+      try { var wl = JSON.parse(localStorage.getItem('als_wishlist')) || []; if (wl.some(i => i.id === 'balenciaga_runner_' + colorId)) wlBtn.classList.add('wl-active'); } catch {}
+    }
+  }
+
+  // Burberry Hoodie color picker
+  function pickBurberry(btn) {
+    var card = document.getElementById('burberry-hoodie-card');
+    card.querySelectorAll('.b-cw').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    var colorId = btn.dataset.color_id;
+    var colorName = btn.dataset.color;
+    document.getElementById('burberry-hoodie-img').src = 'burberry_hoodie_' + colorId + '.jpg';
+    document.getElementById('burberry-hoodie-color-name').textContent = colorName;
+    var fullName = 'Zip Hoodie — ' + colorName;
+    var cartBtn = document.getElementById('burberry-hoodie-cart-btn');
+    var wlBtn = document.getElementById('burberry-hoodie-wl-btn');
+    if (cartBtn) {
+      cartBtn.setAttribute('onclick', "handleCart(this,'burberry_hoodie_" + colorId + "','Burberry','" + fullName + "','burberry_hoodie_" + colorId + ".jpg','65 €')");
+      cartBtn.textContent = 'Ajouter au panier'; cartBtn.classList.remove('in-cart');
+      try { var cart = JSON.parse(localStorage.getItem('als_cart')) || []; if (cart.some(i => i.id === 'burberry_hoodie_' + colorId)) { cartBtn.textContent = '✓ Dans le panier'; cartBtn.classList.add('in-cart'); } } catch {}
+    }
+    if (wlBtn) {
+      wlBtn.setAttribute('onclick', "handleWL(this,'burberry_hoodie_" + colorId + "','Burberry','" + fullName + "','burberry_hoodie_" + colorId + ".jpg')");
+      wlBtn.classList.remove('wl-active');
+      try { var wl = JSON.parse(localStorage.getItem('als_wishlist')) || []; if (wl.some(i => i.id === 'burberry_hoodie_' + colorId)) wlBtn.classList.add('wl-active'); } catch {}
+    }
+  }
+
+  // Miu Miu Porte-Cartes color picker
+  function pickMiuMiuCarte(btn) {
+    var card = document.getElementById('miumiu-carte-card');
+    card.querySelectorAll('.b-cw').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    var colorId = btn.dataset.color_id;
+    var colorName = btn.dataset.color;
+    document.getElementById('miumiu-carte-img').src = 'miumiu_carte_' + colorId + '.jpg';
+    document.getElementById('miumiu-carte-color-name').textContent = colorName;
+    var wlBtn = document.getElementById('miumiu-carte-wl-btn');
+    if (wlBtn) {
+      wlBtn.setAttribute('onclick', "handleWL(this,'miumiu_carte_" + colorId + "','Miu Miu','Porte-Cartes — " + colorName + "','miumiu_carte_" + colorId + ".jpg')");
+      wlBtn.classList.remove('wl-active');
+      try { var wl = JSON.parse(localStorage.getItem('als_wishlist')) || []; if (wl.some(i => i.id === 'miumiu_carte_' + colorId)) wlBtn.classList.add('wl-active'); } catch {}
+    }
+  }
+
+  // AirPods Max color picker
+  function pickAirpodsMax(btn) {
+    var card = document.getElementById('airpods-max-card');
+    card.querySelectorAll('.b-cw').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    var colorId = btn.dataset.color_id;
+    var colorName = btn.dataset.color;
+    document.getElementById('airpods-max-img').src = 'airpods_max_' + colorId + '.jpg';
+    document.getElementById('airpods-max-color-name').textContent = colorName;
+    var fullName = 'AirPods Max — ' + colorName;
+    var cartBtn = document.getElementById('airpods-max-cart-btn');
+    var wlBtn = document.getElementById('airpods-max-wl-btn');
+    if (cartBtn) {
+      cartBtn.setAttribute('onclick', "handleCart(this,'airpods_max_" + colorId + "','Apple','" + fullName + "','airpods_max_" + colorId + ".jpg','185 €')");
+      cartBtn.textContent = 'Ajouter au panier'; cartBtn.classList.remove('in-cart');
+      try { var cart = JSON.parse(localStorage.getItem('als_cart')) || []; if (cart.some(i => i.id === 'airpods_max_' + colorId)) { cartBtn.textContent = '✓ Dans le panier'; cartBtn.classList.add('in-cart'); } } catch {}
+    }
+    if (wlBtn) {
+      wlBtn.setAttribute('onclick', "handleWL(this,'airpods_max_" + colorId + "','Apple','" + fullName + "','airpods_max_" + colorId + ".jpg')");
+      wlBtn.classList.remove('wl-active');
+      try { var wl = JSON.parse(localStorage.getItem('als_wishlist')) || []; if (wl.some(i => i.id === 'airpods_max_' + colorId)) wlBtn.classList.add('wl-active'); } catch {}
+    }
+  }
+
+  // Loro Piana Casquette color picker
+  function pickLPCasquette(btn) {
+    var card = document.getElementById('lp-casquette-card');
+    card.querySelectorAll('.b-cw').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    var colorId = btn.dataset.color_id;
+    var colorName = btn.dataset.color;
+    document.getElementById('lp-casquette-img').src = 'lp_casquette_' + colorId + '.jpg';
+    document.getElementById('lp-casquette-color-name').textContent = colorName;
+    var fullName = 'Casquette — ' + colorName;
+    var cartBtn = document.getElementById('lp-casquette-cart-btn');
+    var wlBtn = document.getElementById('lp-casquette-wl-btn');
+    if (cartBtn) {
+      cartBtn.setAttribute('onclick', "handleCart(this,'lp_casquette_" + colorId + "','Loro Piana','" + fullName + "','lp_casquette_" + colorId + ".jpg','45 €')");
+      cartBtn.textContent = 'Ajouter au panier'; cartBtn.classList.remove('in-cart');
+      try { var cart = JSON.parse(localStorage.getItem('als_cart')) || []; if (cart.some(i => i.id === 'lp_casquette_' + colorId)) { cartBtn.textContent = '✓ Dans le panier'; cartBtn.classList.add('in-cart'); } } catch {}
+    }
+    if (wlBtn) {
+      wlBtn.setAttribute('onclick', "handleWL(this,'lp_casquette_" + colorId + "','Loro Piana','" + fullName + "','lp_casquette_" + colorId + ".jpg')");
+      wlBtn.classList.remove('wl-active');
+      try { var wl = JSON.parse(localStorage.getItem('als_wishlist')) || []; if (wl.some(i => i.id === 'lp_casquette_' + colorId)) wlBtn.classList.add('wl-active'); } catch {}
+    }
+  }
+
+  // Stone Island color picker
+  function pickSI(btn) {
+    var card = document.getElementById('si-pull-card');
+    card.querySelectorAll('.b-cw').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    var colorId = btn.dataset.color_id;
+    var colorName = btn.dataset.color;
+    document.getElementById('si-pull-img').src = 'si_pull_' + colorId + '.jpg';
+    document.getElementById('si-pull-color-name').textContent = colorName;
+    var fullName = 'Crewneck — ' + colorName;
+    var cartBtn = document.getElementById('si-pull-cart-btn');
+    var wlBtn = document.getElementById('si-pull-wl-btn');
+    if (cartBtn) {
+      cartBtn.setAttribute('onclick', "handleCart(this,'si_pull_" + colorId + "','Stone Island','" + fullName + "','si_pull_" + colorId + ".jpg','65 €')");
+      cartBtn.textContent = 'Ajouter au panier'; cartBtn.classList.remove('in-cart');
+      try { var cart = JSON.parse(localStorage.getItem('als_cart')) || []; if (cart.some(i => i.id === 'si_pull_' + colorId)) { cartBtn.textContent = '✓ Dans le panier'; cartBtn.classList.add('in-cart'); } } catch {}
+    }
+    if (wlBtn) {
+      wlBtn.setAttribute('onclick', "handleWL(this,'si_pull_" + colorId + "','Stone Island','" + fullName + "','si_pull_" + colorId + ".jpg')");
+      wlBtn.classList.remove('wl-active');
+      try { var wl = JSON.parse(localStorage.getItem('als_wishlist')) || []; if (wl.some(i => i.id === 'si_pull_' + colorId)) wlBtn.classList.add('wl-active'); } catch {}
+    }
+  }
+</script>
+
+<!-- BOTTOM NAV -->
+<nav class="bottom-nav">
+  <a href="index.html" class="bn-item">
+    <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+    Accueil
+  </a>
+  <a href="boutique.html" class="bn-item active">
+    <svg viewBox="0 0 24 24"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
+    Boutique
+  </a>
+  <a href="assistant.html" class="bn-item">
+    <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+    Assistant
+  </a>
+  <a href="panier.html" class="bn-item" id="bn-panier">
+    <svg viewBox="0 0 24 24"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 001.99 1.61h9.72a2 2 0 001.99-1.61L23 6H6"/></svg>
+    Panier
+  </a>
+  <a href="suivi.html" class="bn-item">
+    <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+    Suivi
+  </a>
+  <a href="contact.html" class="bn-search">
+    <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+  </a>
+</nav>
+
+<script>
+// Hide product cards with missing images
+document.querySelectorAll('.b-card').forEach(function(card){
+  var imgs = card.querySelectorAll('.b-img img');
+  imgs.forEach(function(img){
+    img.addEventListener('error', function(){
+      card.style.display = 'none';
+    });
+    // Also check if already failed (cached)
+    if(img.complete && img.naturalWidth === 0){
+      card.style.display = 'none';
+    }
+  });
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Finalisez votre commande ALLSTORE. Paiement sécurisé par carte bancaire ou Apple Pay.">
+  <link rel="icon" type="image/png" href="shopping_bag_icon.png">
+  <title>Paiement | ALLSTORE 24/7</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="conversion.css">
+  <link rel="stylesheet" href="checkout.css">
+</head>
+<body>
+<div id="lux-transition"><div class="lux-t-brand">ALLSTORE</div><div class="lux-t-line"></div></div>
+
+<header>
+  <nav>
+    <a href="index.html" class="logo"><img src="shopping_bag_icon.png" alt="ALLSTORE"></a>
+    <ul class="nav-links">
+      <li><a href="index.html">Accueil</a></li>
+      <li><a href="boutique.html">Boutique</a></li>
+      <li><a href="assistant.html">Assistant</a></li>
+      <li><a href="suivi.html">Suivi</a></li>
+      <li><a href="apropos.html">À Propos</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main>
+  <div class="checkout" id="checkout">
+    <!-- Progress -->
+    <div class="ck-steps" id="ck-steps">
+      <div class="ck-step active" data-step="1"><span class="ck-step-num">1</span><span>Commande</span></div>
+      <div class="ck-step-line"></div>
+      <div class="ck-step" data-step="2"><span class="ck-step-num">2</span><span>Livraison</span></div>
+      <div class="ck-step-line"></div>
+      <div class="ck-step" data-step="3"><span class="ck-step-num">3</span><span>Paiement</span></div>
+    </div>
+
+    <!-- Error banner -->
+    <div class="ck-error-banner" id="ck-error"></div>
+
+    <!-- STEP 1: Order Summary -->
+    <div class="ck-section active" id="ck-step-1">
+      <h1 class="ck-title">Votre commande</h1>
+      <p class="ck-subtitle">Vérifiez vos articles avant de continuer.</p>
+      <div class="ck-items" id="ck-items"></div>
+      <div class="ck-totals" id="ck-totals"></div>
+      <div class="ck-promo">
+        <div class="ck-promo-row" id="ck-promo-row">
+          <input class="ck-input ck-promo-input" id="ck-promo-input" type="text" placeholder="Code promo" autocomplete="off" spellcheck="false">
+          <button class="ck-promo-btn" id="ck-promo-btn" type="button" onclick="applyPromo()">Appliquer</button>
+        </div>
+        <div class="ck-promo-msg" id="ck-promo-msg"></div>
+      </div>
+      <button class="ck-btn ck-btn-primary" onclick="goToStep(2)">
+        <span class="ck-btn-text">Continuer</span>
+      </button>
+      <a href="panier.html" class="ck-btn ck-btn-back" style="text-decoration:none;text-align:center">Retour au panier</a>
+    </div>
+
+    <!-- STEP 2: Shipping Info -->
+    <div class="ck-section" id="ck-step-2">
+      <h2 class="ck-title">Livraison</h2>
+      <p class="ck-subtitle">Où devons-nous livrer votre commande ?</p>
+      <div class="ck-form" id="ck-shipping-form">
+        <div class="ck-row">
+          <div class="ck-field">
+            <label class="ck-label" for="ck-prenom">Prénom</label>
+            <input class="ck-input" id="ck-prenom" type="text" placeholder="Jean" required>
+            <span class="ck-input-error">Requis</span>
+          </div>
+          <div class="ck-field">
+            <label class="ck-label" for="ck-nom">Nom</label>
+            <input class="ck-input" id="ck-nom" type="text" placeholder="Dupont" required>
+            <span class="ck-input-error">Requis</span>
+          </div>
+        </div>
+        <div class="ck-row">
+          <div class="ck-field">
+            <label class="ck-label" for="ck-email">Email</label>
+            <input class="ck-input" id="ck-email" type="email" placeholder="jean@email.com" required>
+            <span class="ck-input-error">Email invalide</span>
+          </div>
+          <div class="ck-field">
+            <label class="ck-label" for="ck-tel">Téléphone</label>
+            <input class="ck-input" id="ck-tel" type="tel" placeholder="+33 6 12 34 56 78" required>
+            <span class="ck-input-error">Requis</span>
+          </div>
+        </div>
+        <div class="ck-field">
+          <label class="ck-label" for="ck-adresse">Adresse</label>
+          <input class="ck-input" id="ck-adresse" type="text" placeholder="12 rue de la Paix" required>
+          <span class="ck-input-error">Requis</span>
+        </div>
+        <div class="ck-row">
+          <div class="ck-field">
+            <label class="ck-label" for="ck-ville">Ville</label>
+            <input class="ck-input" id="ck-ville" type="text" placeholder="Paris" required>
+            <span class="ck-input-error">Requis</span>
+          </div>
+          <div class="ck-field">
+            <label class="ck-label" for="ck-cp">Code postal</label>
+            <input class="ck-input" id="ck-cp" type="text" placeholder="75001" required>
+            <span class="ck-input-error">Requis</span>
+          </div>
+        </div>
+        <div class="ck-field">
+          <label class="ck-label" for="ck-pays">Pays</label>
+          <select class="ck-input" id="ck-pays">
+            <option value="FR" selected>France</option>
+            <option value="BE">Belgique</option>
+            <option value="CH">Suisse</option>
+            <option value="LU">Luxembourg</option>
+            <option value="DE">Allemagne</option>
+            <option value="ES">Espagne</option>
+            <option value="IT">Italie</option>
+            <option value="NL">Pays-Bas</option>
+            <option value="PT">Portugal</option>
+            <option value="GB">Royaume-Uni</option>
+          </select>
+        </div>
+      </div>
+      <button class="ck-btn ck-btn-primary" onclick="validateShippingAndContinue()" style="margin-top:24px">
+        <span class="ck-btn-text">Continuer vers le paiement</span>
+      </button>
+      <button class="ck-btn ck-btn-back" onclick="goToStep(1)">Retour</button>
+    </div>
+
+    <!-- STEP 3: Payment -->
+    <div class="ck-section" id="ck-step-3">
+      <h2 class="ck-title">Paiement</h2>
+      <p class="ck-subtitle">Choisissez votre moyen de paiement.</p>
+
+      <!-- Recap mini -->
+      <div class="ck-totals" id="ck-totals-mini" style="margin-bottom:24px"></div>
+
+      <!-- Payment options -->
+      <div class="ck-payment-options">
+        <div class="ck-pay-option selected" onclick="selectPayment('stripe')" id="pay-opt-stripe">
+          <div class="ck-pay-option-radio"></div>
+          <div class="ck-pay-option-info">
+            <div class="ck-pay-option-title">Carte bancaire</div>
+            <div class="ck-pay-option-desc">Visa, Mastercard, CB</div>
+          </div>
+          <div class="ck-pay-option-icons">
+            <span class="ck-pay-icon">Visa</span>
+            <span class="ck-pay-icon">MC</span>
+          </div>
+        </div>
+        <div class="ck-pay-option" onclick="selectPayment('applepay')" id="pay-opt-applepay" style="display:none">
+          <div class="ck-pay-option-radio"></div>
+          <div class="ck-pay-option-info">
+            <div class="ck-pay-option-title" id="applepay-title">Apple Pay</div>
+            <div class="ck-pay-option-desc" id="applepay-desc">Paiement express sécurisé</div>
+          </div>
+          <div class="ck-pay-option-icons">
+            <span class="ck-pay-icon ck-pay-icon-apple"><svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M17.05 20.28c-.98.95-2.05.88-3.08.4-1.09-.5-2.08-.48-3.24 0-1.44.62-2.2.44-3.06-.4C2.79 15.25 3.51 7.59 9.05 7.31c1.35.07 2.29.74 3.08.8 1.18-.24 2.31-.93 3.57-.84 1.51.12 2.65.72 3.4 1.8-3.12 1.87-2.38 5.98.48 7.13-.57 1.5-1.31 2.99-2.54 4.09zM12.03 7.25c-.15-2.23 1.66-4.07 3.74-4.25.29 2.58-2.34 4.5-3.74 4.25z"/></svg></span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Stripe card input -->
+      <div class="ck-stripe-container active" id="stripe-container">
+        <div id="stripe-card-element"></div>
+        <div class="ck-stripe-error" id="stripe-error"></div>
+        <button class="ck-btn ck-btn-pay" id="stripe-pay-btn" onclick="payWithStripe()">
+          <span class="ck-spinner"></span>
+          <span class="ck-btn-text">Payer <span id="stripe-total"></span></span>
+        </button>
+      </div>
+
+
+      <!-- Apple Pay / Google Pay button -->
+      <div class="ck-applepay-container" id="applepay-container">
+        <div id="payment-request-button"></div>
+      </div>
+
+      <button class="ck-btn ck-btn-back" onclick="goToStep(2)">Retour</button>
+
+      <div class="ck-secure">
+        <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        Paiement 100% sécurisé — Vos données sont chiffrées
+      </div>
+    </div>
+
+    <!-- Empty cart -->
+    <div class="ck-empty" id="ck-empty" style="display:none">
+      <div class="ck-empty-icon">🛒</div>
+      <p>Votre panier est vide.</p>
+      <a href="boutique.html">Découvrir la boutique</a>
+    </div>
+  </div>
+</main>
+
+<footer>
+  <div class="foot-inner">
+    <div class="foot-brand">ALLSTORE</div>
+    <div class="foot-links">
+      <a href="apropos.html">À Propos</a>
+      <a href="contact.html">Contact</a>
+      <a href="assistant.html">Assistant</a>
+    </div>
+    <div class="foot-tagline">L'introuvable, enfin trouvé.</div>
+    <div class="foot-copy">ALLSTORE 24/7 &mdash; Sourcing d'Exception &mdash; 2025</div>
+  </div>
+</footer>
+
+<!-- Stripe JS -->
+<script src="https://js.stripe.com/v3/"></script>
+
+<script src="global.js"></script>
+<script src="luxury.js"></script>
+<script src="conversion.js"></script>
+<script src="checkout.js"></script>
+
+<!-- BOTTOM NAV -->
+<nav class="bottom-nav">
+  <a href="index.html" class="bn-item">
+    <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+    Accueil
+  </a>
+  <a href="boutique.html" class="bn-item">
+    <svg viewBox="0 0 24 24"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
+    Boutique
+  </a>
+  <a href="assistant.html" class="bn-item">
+    <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+    Assistant
+  </a>
+  <a href="panier.html" class="bn-item" id="bn-panier">
+    <svg viewBox="0 0 24 24"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 001.99 1.61h9.72a2 2 0 001.99-1.61L23 6H6"/></svg>
+    Panier
+  </a>
+  <a href="suivi.html" class="bn-item">
+    <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+    Suivi
+  </a>
+  <a href="contact.html" class="bn-search">
+    <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+  </a>
+</nav>
+
+</body>
+</html>

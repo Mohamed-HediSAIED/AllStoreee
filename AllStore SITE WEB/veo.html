@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Visualisation produit ALLSTORE 24/7. Explorez nos pièces en détail avant votre achat.">
+  <meta property="og:title" content="ALLSTORE 24/7 — Sourcing d'Exception">
+  <meta property="og:description" content="Visualisation produit ALLSTORE 24/7. Explorez nos pièces en détail avant votre achat.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="shopping_bag_icon.png">
+  <link rel="icon" type="image/png" href="shopping_bag_icon.png">
+    <title>Veo Studio | ALLSTORE 24/7</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .veo-page {
+            padding: 120px var(--marge) 100px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .veo-hero {
+            text-align: center;
+            margin-bottom: 70px;
+        }
+        .veo-hero .eyebrow {
+            color: var(--gold);
+            font-size: 13px;
+            font-weight: 600;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            display: block;
+            margin-bottom: 20px;
+        }
+        .veo-hero h1 {
+            font-size: clamp(40px, 5.5vw, 68px);
+            font-weight: 600;
+            letter-spacing: -0.02em;
+            line-height: 1.05;
+            margin: 0 0 22px;
+        }
+        .veo-hero p {
+            font-size: 21px;
+            color: var(--gris);
+            max-width: 660px;
+            margin: 0 auto;
+            line-height: 1.5;
+        }
+
+        /* API Key notice */
+        #api-key-prompt {
+            display: none;
+            background: #fff;
+            border-radius: 24px;
+            padding: 48px 40px;
+            max-width: 520px;
+            margin: 0 auto 60px;
+            text-align: center;
+            box-shadow: 0 12px 40px rgba(0,0,0,0.05);
+        }
+        #api-key-prompt h3 { font-size: 24px; margin: 0 0 12px; }
+        #api-key-prompt p { font-size: 16px; color: var(--gris); margin: 0 0 28px; line-height: 1.55; }
+
+        /* Studio Grid */
+        .studio-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 28px;
+            transition: opacity 0.3s;
+        }
+
+        .studio-panel {
+            background: #fff;
+            border-radius: 28px;
+            padding: 40px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.03);
+            border: 1px solid rgba(0,0,0,0.05);
+        }
+
+        .studio-panel h2 {
+            font-size: 20px;
+            font-weight: 600;
+            margin: 0 0 24px;
+            letter-spacing: -0.01em;
+        }
+
+        /* Ratio Tabs */
+        .ratio-tabs {
+            display: flex;
+            background: var(--bg2);
+            border-radius: 14px;
+            padding: 4px;
+            gap: 4px;
+            margin-bottom: 24px;
+        }
+        .ratio-tab {
+            flex: 1;
+            padding: 12px;
+            border: none;
+            border-radius: 10px;
+            background: transparent;
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--gris);
+            cursor: pointer;
+            font-family: 'Poppins', sans-serif;
+            transition: all 0.2s;
+        }
+        .ratio-tab.active {
+            background: #fff;
+            color: var(--noir);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+        }
+
+        /* Upload Area */
+        .upload-area {
+            aspect-ratio: 4/3;
+            border: 2px dashed rgba(10,25,35,0.15);
+            border-radius: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+            background: var(--bg2);
+            text-align: center;
+            gap: 10px;
+        }
+        .upload-area:hover {
+            border-color: var(--gold);
+            background: rgba(233, 194, 67, 0.05);
+        }
+        .upload-area .upload-icon {
+            font-size: 36px;
+            opacity: 0.4;
+        }
+        .upload-area .upload-text {
+            font-size: 15px;
+            font-weight: 600;
+            color: var(--noir);
+        }
+        .upload-area .upload-hint {
+            font-size: 13px;
+            color: var(--gris);
+        }
+        .upload-area img#preview-img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            padding: 16px;
+            box-sizing: border-box;
+        }
+
+        /* Generate Button */
+        .generate-btn {
+            width: 100%;
+            margin-top: 20px;
+            background: var(--noir);
+            color: #fff;
+            border: none;
+            border-radius: 16px;
+            padding: 18px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            font-family: 'Poppins', sans-serif;
+            transition: background 0.2s, transform 0.2s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+        .generate-btn:hover:not(:disabled) { background: #1a3040; transform: scale(1.01); }
+        .generate-btn:disabled { background: rgba(10,25,35,0.2); cursor: not-allowed; }
+
+        /* Result Area */
+        .result-area {
+            aspect-ratio: 4/3;
+            background: var(--bg2);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            position: relative;
+        }
+        .result-area video {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            display: none;
+        }
+        .result-placeholder {
+            text-align: center;
+            padding: 40px;
+        }
+        .result-placeholder .placeholder-icon {
+            font-size: 48px;
+            opacity: 0.3;
+            display: block;
+            margin-bottom: 14px;
+        }
+        .result-placeholder p {
+            font-size: 15px;
+            color: var(--gris);
+            line-height: 1.55;
+            margin: 0;
+        }
+
+        .veo-status {
+            margin-top: 16px;
+            font-size: 14px;
+            color: var(--gris);
+            text-align: center;
+            min-height: 20px;
+            font-weight: 600;
+        }
+
+        /* Loading dots */
+        .loading-dots::after {
+            content: '';
+            animation: dots 1.5s steps(4, end) infinite;
+        }
+        @keyframes dots {
+            0%   { content: ''; }
+            25%  { content: '.'; }
+            50%  { content: '..'; }
+            75%  { content: '...'; }
+            100% { content: ''; }
+        }
+
+        /* Download Button */
+        .download-btn {
+            display: none;
+            width: 100%;
+            margin-top: 20px;
+            background: var(--gold);
+            color: var(--noir);
+            border: none;
+            border-radius: 16px;
+            padding: 18px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            font-family: 'Poppins', sans-serif;
+            text-align: center;
+            text-decoration: none;
+            transition: background 0.2s, transform 0.2s;
+        }
+        .download-btn:hover { background: #d4b03a; transform: scale(1.01); }
+
+        /* Feature Tags */
+        .feature-tags {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-top: 28px;
+        }
+        .feature-tag {
+            background: var(--bg2);
+            border-radius: 980px;
+            padding: 8px 16px;
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--gris);
+        }
+
+        @media (max-width: 900px) {
+            .studio-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <nav>
+            <a href="index.html" class="logo"><img src="shopping_bag_icon.png" alt="ALLSTORE"></a>
+            <ul class="nav-links">
+                <li><a href="index.html">Accueil</a></li>
+                <li><a href="boutique.html">Boutique</a></li>
+                <li><a href="assistant.html">Assistant</a></li>
+                <li><a href="suivi.html">Suivi</a></li>
+                <li><a href="apropos.html">À Propos</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="veo-page">
+
+        <div class="veo-hero">
+            <span class="eyebrow">Veo Studio — Propulsé par Google AI</span>
+            <h1>Animez vos produits.</h1>
+            <p>Transformez une simple photo en une présentation vidéo cinématographique grâce à notre IA de génération vidéo de pointe.</p>
+            <div class="feature-tags" style="justify-content: center;">
+                <span class="feature-tag">🎬 Veo 3.1 Fast</span>
+                <span class="feature-tag">✨ Qualité 720p</span>
+                <span class="feature-tag">📐 16:9 & 9:16</span>
+                <span class="feature-tag">⚡ Quelques minutes</span>
+            </div>
+        </div>
+
+        <!-- API Key Prompt -->
+        <div id="api-key-prompt">
+            <p style="font-size:40px; margin: 0 0 16px;">🔑</p>
+            <h3>Clé API requise</h3>
+            <p>Pour utiliser la génération vidéo Veo, vous devez sélectionner une clé API Gemini avec facturation activée.</p>
+            <button id="select-key-btn" class="generate-btn" style="max-width: 280px; margin: 0 auto;">Sélectionner une clé API</button>
+        </div>
+
+        <!-- Studio App -->
+        <div id="veo-app" class="studio-grid">
+
+            <!-- Panneau Source -->
+            <div class="studio-panel">
+                <h2>1. Votre photo</h2>
+
+                <div class="ratio-tabs">
+                    <button class="ratio-tab active" data-ratio="16:9">Landscape 16:9</button>
+                    <button class="ratio-tab" data-ratio="9:16">Portrait 9:16</button>
+                </div>
+
+                <div class="upload-area" id="upload-area">
+                    <div id="upload-placeholder">
+                        <span class="upload-icon">📷</span>
+                        <span class="upload-text">Cliquez ou glissez une photo</span>
+                        <span class="upload-hint">PNG, JPG · jusqu'à 10 MB</span>
+                    </div>
+                    <img id="preview-img" alt="Aperçu du produit" style="display: none;">
+                    <input type="file" id="file-input" style="display: none;" accept="image/*">
+                </div>
+
+                <button id="generate-btn" class="generate-btn" disabled>
+                    <span>🎬</span> Générer la vidéo
+                </button>
+            </div>
+
+            <!-- Panneau Résultat -->
+            <div class="studio-panel">
+                <h2>2. Votre vidéo</h2>
+
+                <div class="result-area" id="result-area">
+                    <div class="result-placeholder" id="result-placeholder">
+                        <span class="placeholder-icon">🎞️</span>
+                        <p>Votre vidéo cinématographique<br>apparaîtra ici après génération.</p>
+                    </div>
+                    <video id="result-video" controls loop></video>
+                </div>
+
+                <p class="veo-status" id="veo-status"></p>
+
+                <a id="download-btn" class="download-btn" download="allstore-veo.mp4">
+                    ⬇️ &nbsp;Télécharger la vidéo
+                </a>
+            </div>
+
+        </div>
+
+    </main>
+
+    <footer>
+      <div class="foot-inner">
+        <div class="foot-brand">ALLSTORE</div>
+        <div class="foot-links">
+          <a href="index.html">Store</a>
+          <a href="contact.html">Contact</a>
+          <a href="assistant.html">Assistant</a>
+        </div>
+        <div class="foot-tagline">L'introuvable, enfin trouvé.</div>
+        <div class="foot-copy">ALLSTORE 24/7 — Veo Studio — 2025</div>
+      </div>
+    </footer>
+
+    <script type="module">
+        import { GoogleGenAI } from "https://esm.run/@google/genai";
+
+        const apiKeyPrompt = document.getElementById('api-key-prompt');
+        const veoApp = document.getElementById('veo-app');
+        const selectKeyBtn = document.getElementById('select-key-btn');
+        const uploadArea = document.getElementById('upload-area');
+        const fileInput = document.getElementById('file-input');
+        const previewImg = document.getElementById('preview-img');
+        const uploadPlaceholder = document.getElementById('upload-placeholder');
+        const generateBtn = document.getElementById('generate-btn');
+        const resultVideo = document.getElementById('result-video');
+        const resultPlaceholder = document.getElementById('result-placeholder');
+        const veoStatus = document.getElementById('veo-status');
+        const downloadBtn = document.getElementById('download-btn');
+        const ratioTabs = document.querySelectorAll('.ratio-tab');
+
+        let selectedImage = null;
+        let selectedRatio = '16:9';
+
+        // API Key Check
+        async function checkApiKey() {
+            if (window.aistudio) {
+                const hasKey = await window.aistudio.hasSelectedApiKey();
+                if (!hasKey) {
+                    apiKeyPrompt.style.display = 'block';
+                    veoApp.style.opacity = '0.3';
+                    veoApp.style.pointerEvents = 'none';
+                } else {
+                    apiKeyPrompt.style.display = 'none';
+                    veoApp.style.opacity = '1';
+                    veoApp.style.pointerEvents = 'auto';
+                }
+            }
+        }
+
+        if (selectKeyBtn) {
+            selectKeyBtn.addEventListener('click', async () => {
+                await window.aistudio.openSelectKey();
+                checkApiKey();
+            });
+        }
+
+        checkApiKey();
+
+        // Ratio Tabs
+        ratioTabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                ratioTabs.forEach(t => t.classList.remove('active'));
+                tab.classList.add('active');
+                selectedRatio = tab.dataset.ratio;
+            });
+        });
+
+        // Upload
+        uploadArea.addEventListener('click', () => fileInput.click());
+
+        uploadArea.addEventListener('dragover', (e) => {
+            e.preventDefault();
+            uploadArea.style.borderColor = 'var(--gold)';
+        });
+
+        uploadArea.addEventListener('dragleave', () => {
+            uploadArea.style.borderColor = '';
+        });
+
+        uploadArea.addEventListener('drop', (e) => {
+            e.preventDefault();
+            uploadArea.style.borderColor = '';
+            const file = e.dataTransfer.files[0];
+            if (file && file.type.startsWith('image/')) loadFile(file);
+        });
+
+        fileInput.addEventListener('change', (e) => {
+            const file = e.target.files[0];
+            if (file) loadFile(file);
+        });
+
+        function loadFile(file) {
+            const reader = new FileReader();
+            reader.onload = (event) => {
+                selectedImage = event.target.result;
+                previewImg.src = selectedImage;
+                previewImg.style.display = 'block';
+                uploadPlaceholder.style.display = 'none';
+                generateBtn.disabled = false;
+            };
+            reader.readAsDataURL(file);
+        }
+
+        // Generation
+        generateBtn.addEventListener('click', async () => {
+            if (!selectedImage) return;
+
+            generateBtn.disabled = true;
+            generateBtn.innerHTML = '<span class="loading-dots">Génération en cours</span>';
+            veoStatus.textContent = '';
+            resultPlaceholder.style.display = 'flex';
+            resultPlaceholder.querySelector('p').textContent = 'Analyse de l\'image et génération en cours…\nCela peut prendre quelques minutes.';
+            resultVideo.style.display = 'none';
+            downloadBtn.style.display = 'none';
+
+            try {
+                const ai = new GoogleGenAI({ apiKey: "YOUR_API_KEY" });
+                const base64Data = selectedImage.split(',')[1];
+
+                let operation = await ai.models.generateVideos({
+                    model: 'veo-3.1-fast-generate-preview',
+                    prompt: 'Cinematic product showcase, luxury item presentation, elegant smooth camera movement, soft studio lighting, high-end commercial style',
+                    image: {
+                        imageBytes: base64Data,
+                        mimeType: 'image/png',
+                    },
+                    config: {
+                        numberOfVideos: 1,
+                        resolution: '720p',
+                        aspectRatio: selectedRatio
+                    }
+                });
+
+                while (!operation.done) {
+                    const pct = operation.metadata?.progressPercentage;
+                    veoStatus.textContent = pct ? `Génération : ${pct}%` : 'En cours…';
+                    await new Promise(r => setTimeout(r, 5000));
+                    operation = await ai.operations.getVideosOperation({ operation });
+                }
+
+                const uri = operation.response?.generatedVideos?.[0]?.video?.uri;
+                if (uri) {
+                    const response = await fetch(uri, {
+                        headers: { 'x-goog-api-key': "YOUR_API_KEY" }
+                    });
+                    const blob = await response.blob();
+                    const url = URL.createObjectURL(blob);
+                    resultVideo.src = url;
+                    resultVideo.style.display = 'block';
+                    resultPlaceholder.style.display = 'none';
+                    downloadBtn.href = url;
+                    downloadBtn.style.display = 'block';
+                    veoStatus.textContent = '✓ Vidéo générée avec succès';
+                }
+            } catch (err) {
+                console.error(err);
+                veoStatus.textContent = 'Erreur : ' + err.message;
+                resultPlaceholder.querySelector('p').textContent = 'Une erreur est survenue. Veuillez réessayer.';
+            } finally {
+                generateBtn.disabled = false;
+                generateBtn.innerHTML = '<span>🎬</span> Générer la vidéo';
+            }
+        });
+    </script>
+
+    <script src="global.js"></script>
+    <script src="luxury.js"></script>
+
+<!-- BOTTOM NAV -->
+<nav class="bottom-nav">
+  <a href="index.html" class="bn-item">
+    <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+    Accueil
+  </a>
+  <a href="boutique.html" class="bn-item">
+    <svg viewBox="0 0 24 24"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
+    Boutique
+  </a>
+  <a href="assistant.html" class="bn-item">
+    <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+    Assistant
+  </a>
+  <a href="panier.html" class="bn-item" id="bn-panier">
+    <svg viewBox="0 0 24 24"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 001.99 1.61h9.72a2 2 0 001.99-1.61L23 6H6"/></svg>
+    Panier
+  </a>
+  <a href="suivi.html" class="bn-item">
+    <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+    Suivi
+  </a>
+  <a href="contact.html" class="bn-search">
+    <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+  </a>
+</nav>
+
+</body>
+</html>

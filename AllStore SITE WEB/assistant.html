@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Assistant de sourcing ALLSTORE. Demandez n'importe quelle pièce de luxe, nos experts la trouvent pour vous en 48h.">
+  <meta property="og:title" content="ALLSTORE 24/7 — Sourcing d'Exception">
+  <meta property="og:description" content="Assistant de sourcing ALLSTORE. Demandez n'importe quelle pièce de luxe, nos experts la trouvent pour vous en 48h.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="shopping_bag_icon.png">
+  <link rel="icon" type="image/png" href="shopping_bag_icon.png">
+    <title>Assistant | ALLSTORE 24/7</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .assistant-wrap{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:100px var(--marge) 60px}
+        .assistant-card{background:#fff;border-radius:32px;padding:56px 52px;width:100%;max-width:640px;box-shadow:0 24px 60px rgba(0,0,0,.06)}
+        .progress-wrap{margin-bottom:36px}
+        .progress-bar{display:flex;gap:5px;margin-bottom:10px}
+        .progress-step{height:3px;flex:1;border-radius:2px;background:rgba(10,25,35,.1);transition:background .4s}
+        .progress-step.active{background:var(--gold)}
+        .progress-step.done{background:var(--noir)}
+        .progress-label{font-size:12px;color:var(--gris);font-weight:600;letter-spacing:1px;text-transform:uppercase}
+        .step-panel{display:none;animation:fadeIn .3s ease}
+        .step-panel.visible{display:block}
+        @keyframes fadeIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+        .step-eyebrow{font-size:12px;font-weight:600;color:var(--gold);text-transform:uppercase;letter-spacing:1.5px;display:block;margin-bottom:10px}
+        .step-title{font-size:30px;font-weight:600;letter-spacing:-.02em;margin:0 0 8px;line-height:1.1}
+        .step-sub{font-size:15px;color:var(--gris);margin:0 0 28px;line-height:1.5}
+        .recap-pills{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:24px}
+        .recap-pill{background:var(--bg2);border-radius:980px;padding:6px 14px;font-size:13px;font-weight:600;color:var(--noir)}
+        .chips-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+        .chip{padding:18px 16px;background:var(--bg2);border-radius:16px;text-align:center;cursor:pointer;border:2px solid transparent;transition:all .22s;font-size:15px;font-weight:600;color:var(--noir);display:flex;flex-direction:column;align-items:center;gap:6px}
+        .chip .chip-icon{font-size:24px}
+        .chip:hover{background:#e5dccf;transform:translateY(-2px)}
+        .chip.selected{border-color:var(--noir);background:var(--noir);color:#fff}
+        .opt-list{display:flex;flex-direction:column;gap:10px;max-height:420px;overflow-y:auto;padding-right:4px;scrollbar-width:thin;scrollbar-color:#d4ccc0 transparent}
+        .opt-list::-webkit-scrollbar{width:4px}
+        .opt-list::-webkit-scrollbar-thumb{background:#d4ccc0;border-radius:4px}
+        .opt-item{display:flex;align-items:center;justify-content:space-between;padding:18px 22px;background:var(--bg2);border-radius:16px;cursor:pointer;border:2px solid transparent;transition:all .22s;font-size:16px;font-weight:600}
+        .opt-item:hover{background:#e5dccf}
+        .opt-item.selected{border-color:var(--noir);background:var(--noir);color:#fff}
+        .opt-item .opt-arrow{opacity:.3;font-size:14px;transition:opacity .2s}
+        .opt-item:hover .opt-arrow{opacity:1}
+        .size-tabs{display:flex;background:var(--bg2);border-radius:14px;padding:4px;gap:4px;margin-bottom:20px}
+        .size-tab{flex:1;padding:11px;border:none;border-radius:10px;background:transparent;font-size:13px;font-weight:600;color:var(--gris);cursor:pointer;font-family:'Poppins',sans-serif;transition:all .2s}
+        .size-tab.active{background:#fff;color:var(--noir);box-shadow:0 2px 8px rgba(0,0,0,.08)}
+        .size-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:8px}
+        .size-chip{padding:14px 8px;background:var(--bg2);border-radius:12px;text-align:center;cursor:pointer;border:2px solid transparent;font-size:14px;font-weight:600;transition:all .2s}
+        .size-chip:hover{background:#e5dccf}
+        .size-chip.selected{border-color:var(--noir);background:var(--noir);color:#fff}
+        .color-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+        .color-chip{padding:14px 10px;background:var(--bg2);border-radius:14px;text-align:center;cursor:pointer;border:2px solid transparent;font-size:14px;font-weight:600;transition:all .2s;display:flex;flex-direction:column;align-items:center;gap:6px}
+        .color-dot{width:26px;height:26px;border-radius:50%;border:2px solid rgba(0,0,0,.08)}
+        .color-chip:hover{background:#e5dccf;transform:translateY(-2px)}
+        .color-chip.selected{border-color:var(--gold);background:var(--noir);color:#fff}
+        .color-chip.selected .color-dot{border:3px solid rgba(255,255,255,.85);box-shadow:0 0 0 2px rgba(233,194,67,.6)}
+        .form-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+        .form-grid .full{grid-column:1/-1}
+        .form-group label{display:block;font-size:12px;font-weight:600;color:var(--gris);text-transform:uppercase;letter-spacing:.08em;margin-bottom:7px}
+        .form-control{width:100%;box-sizing:border-box;background:var(--bg2);border:2px solid transparent;border-radius:14px;padding:15px 16px;font-size:15px;font-family:'Poppins',sans-serif;color:var(--noir);outline:none;transition:all .2s}
+        .form-control:focus{background:#fff;border-color:var(--noir)}
+        .form-control::placeholder{color:rgba(90,102,112,.5)}
+        select.form-control{cursor:pointer;-webkit-appearance:none;appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%235a6670' stroke-width='2.5'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 16px center;padding-right:40px}
+        .btn-row{display:flex;gap:12px;margin-top:28px}
+        .btn-primary{flex:1;background:var(--noir);color:#fff;border:none;border-radius:980px;padding:18px;font-size:16px;font-weight:600;cursor:pointer;font-family:'Poppins',sans-serif;transition:all .2s}
+        .btn-primary:hover:not(:disabled){background:#1a3040;transform:scale(1.02)}
+        .btn-primary:disabled{opacity:.3;cursor:not-allowed}
+        .btn-back{background:transparent;border:1px solid rgba(10,25,35,.15);border-radius:980px;padding:18px 22px;font-size:15px;font-weight:600;cursor:pointer;font-family:'Poppins',sans-serif;color:var(--gris);transition:all .2s}
+        .btn-back:hover{border-color:var(--noir);color:var(--noir)}
+        .confirm-wrap{text-align:center}
+        .confirm-icon{width:80px;height:80px;background:var(--gold);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 28px;font-size:36px}
+        .summary-box{background:var(--bg2);border-radius:20px;padding:24px 28px;text-align:left;margin:28px 0}
+        .summary-row{display:flex;justify-content:space-between;align-items:center;padding:10px 0;border-bottom:1px solid rgba(10,25,35,.06);font-size:14px}
+        .summary-row:last-child{border-bottom:none}
+        .summary-row .lbl{color:var(--gris);font-weight:600}
+        .summary-row .val{color:var(--noir);font-weight:600;text-align:right;max-width:60%}
+        .channel-btns{display:flex;flex-direction:column;gap:12px;margin-top:28px}
+        .channel-btn{display:flex;align-items:center;justify-content:center;gap:12px;padding:20px;border-radius:18px;text-decoration:none;font-size:16px;font-weight:600;transition:transform .2s,opacity .2s}
+        .channel-btn:hover{transform:scale(1.02);opacity:.9}
+        .channel-btn.whatsapp{background:#25D366;color:#fff}
+        .channel-btn.email{background:var(--bg2);color:var(--noir)}
+        .status-live{margin-top:20px;font-size:13px;color:var(--gris)}
+        .dot-green{display:inline-block;width:8px;height:8px;border-radius:50%;background:#25D366;margin-right:6px;animation:blink 2s infinite}
+        @keyframes blink{0%,100%{opacity:1}50%{opacity:.3}}
+        /* Tablette */
+        @media(max-width:900px){
+          .assistant-wrap{padding:90px 24px 60px}
+          .assistant-card{max-width:580px;padding:44px 40px}
+        }
+        /* Mobile */
+        @media(max-width:768px){
+          .assistant-wrap{padding:80px 16px 40px}
+          .assistant-card{padding:36px 24px;border-radius:24px}
+          .step-title{font-size:clamp(22px,6vw,30px)}
+          .step-sub{font-size:14px}
+          .chips-grid{grid-template-columns:1fr 1fr;gap:8px}
+          .chip{padding:14px 12px;font-size:14px}
+          .chip .chip-icon{font-size:20px}
+          .opt-list{max-height:340px}
+          .opt-item{padding:14px 18px;font-size:15px}
+          .size-grid{grid-template-columns:repeat(4,1fr);gap:6px}
+          .size-chip{padding:12px 6px;font-size:13px}
+          .color-grid{grid-template-columns:repeat(3,1fr);gap:8px}
+          .color-chip{padding:12px 8px;font-size:13px}
+          .color-dot{width:22px;height:22px}
+          .form-grid{grid-template-columns:1fr}
+          .form-grid .full{grid-column:1}
+          .form-control{padding:13px 14px;font-size:14px}
+          .btn-primary{padding:16px;font-size:15px}
+          .btn-back{padding:16px 18px;font-size:14px}
+          .btn-row{flex-direction:column;gap:10px}
+          .recap-pills{gap:6px}
+          .recap-pill{font-size:12px;padding:5px 12px}
+          .summary-row{font-size:13px}
+          .channel-btn{padding:16px;font-size:15px}
+          .progress-label{font-size:11px}
+        }
+        /* Petit mobile */
+        @media(max-width:380px){
+          .assistant-card{padding:28px 18px}
+          .chips-grid{grid-template-columns:1fr}
+          .color-grid{grid-template-columns:repeat(2,1fr)}
+          .size-grid{grid-template-columns:repeat(3,1fr)}
+        }
+    </style>
+</head>
+<body>
+<div id="lux-transition"><div class="lux-t-brand">ALLSTORE</div><div class="lux-t-line"></div></div>
+<header>
+    <nav>
+        <a href="index.html" class="logo"><img src="shopping_bag_icon.png" alt="Logo"></a>
+        <ul class="nav-links">
+            <li><a href="index.html">Accueil</a></li>
+            <li><a href="boutique.html">Boutique</a></li>
+            <li><a href="assistant.html" class="active">Assistant</a></li>
+            <li><a href="suivi.html">Suivi</a></li>
+            <li><a href="apropos.html">À Propos</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </nav>
+</header>
+
+<main class="assistant-wrap">
+<div class="assistant-card">
+
+    <div class="progress-wrap">
+        <div class="progress-bar" id="progressBar"></div>
+        <span class="progress-label" id="progressLabel">Étape 1 sur 6</span>
+    </div>
+
+    <!-- ÉTAPE 1 -->
+    <div class="step-panel visible" id="step1">
+        <span class="step-eyebrow">Étape 1 — Article</span>
+        <h2 class="step-title">Quel type d'article ?</h2>
+        <p class="step-sub">Sélectionnez la catégorie qui correspond à votre recherche.</p>
+        <div class="chips-grid" id="typeGrid">
+            <div class="chip" data-type="Vêtements"><span class="chip-icon">👕</span>Vêtements</div>
+            <div class="chip" data-type="Chaussures"><span class="chip-icon">👟</span>Chaussures</div>
+            <div class="chip" data-type="Sacs"><span class="chip-icon">👜</span>Sacs</div>
+            <div class="chip" data-type="Accessoires"><span class="chip-icon">🕶️</span>Accessoires</div>
+            <div class="chip" data-type="Horlogerie"><span class="chip-icon">⌚</span>Horlogerie</div>
+            <div class="chip" data-type="High-Tech"><span class="chip-icon">🎧</span>High-Tech</div>
+            <div class="chip" data-type="Parfums"><span class="chip-icon">🌸</span>Parfums</div>
+        </div>
+    </div>
+
+    <!-- ÉTAPE 2 -->
+    <div class="step-panel" id="step2">
+        <span class="step-eyebrow">Étape 2 — Marque</span>
+        <h2 class="step-title">Quelle marque ?</h2>
+        <p class="step-sub">Choisissez parmi les marques disponibles.</p>
+        <div class="recap-pills" id="recap2"></div>
+        <div class="opt-list" id="brandList"></div>
+        <div class="btn-row">
+            <button class="btn-back" onclick="goStep(1)">← Retour</button>
+        </div>
+    </div>
+
+    <!-- ÉTAPE 3 : dynamique -->
+    <div class="step-panel" id="step3">
+        <span class="step-eyebrow" id="s3eyebrow">Étape 3</span>
+        <h2 class="step-title" id="s3title">Quelle taille ?</h2>
+        <p class="step-sub" id="s3sub">Sélectionnez.</p>
+        <div class="recap-pills" id="recap3"></div>
+        <div id="sizeGrid" class="size-grid"></div>
+        <div class="btn-row">
+            <button class="btn-back" onclick="goStep(2)">← Retour</button>
+            <button class="btn-primary" id="btnStep3" onclick="goStep(4)" disabled>Continuer →</button>
+        </div>
+    </div>
+
+    <!-- ÉTAPE 4 : Couleur -->
+    <div class="step-panel" id="step4">
+        <span class="step-eyebrow" id="s4eyebrow">Étape 4 — Couleur</span>
+        <h2 class="step-title">Quelle couleur ?</h2>
+        <p class="step-sub">Précisez la teinte souhaitée.</p>
+        <div class="recap-pills" id="recap4"></div>
+        <div class="color-grid" id="colorGrid">
+            <div class="color-chip" data-color="Noir"><div class="color-dot" style="background:#1a1a1a"></div>Noir</div>
+            <div class="color-chip" data-color="Blanc"><div class="color-dot" style="background:#f0f0f0;border-color:#ccc"></div>Blanc</div>
+            <div class="color-chip" data-color="Gris"><div class="color-dot" style="background:#9e9e9e"></div>Gris</div>
+            <div class="color-chip" data-color="Marine"><div class="color-dot" style="background:#1a2a5e"></div>Marine</div>
+            <div class="color-chip" data-color="Beige"><div class="color-dot" style="background:#d4b896"></div>Beige</div>
+            <div class="color-chip" data-color="Marron"><div class="color-dot" style="background:#6b3a2a"></div>Marron</div>
+            <div class="color-chip" data-color="Rouge"><div class="color-dot" style="background:#c0392b"></div>Rouge</div>
+            <div class="color-chip" data-color="Vert"><div class="color-dot" style="background:#27ae60"></div>Vert</div>
+            <div class="color-chip" data-color="Bleu ciel"><div class="color-dot" style="background:#5dade2"></div>Bleu ciel</div>
+            <div class="color-chip" data-color="Rose"><div class="color-dot" style="background:#f4a7b9"></div>Rose</div>
+            <div class="color-chip" data-color="Jaune"><div class="color-dot" style="background:#f1c40f"></div>Jaune</div>
+            <div class="color-chip" data-color="Multicolore"><div class="color-dot" style="background:conic-gradient(red,yellow,green,blue,red)"></div>Multi</div>
+        </div>
+        <div class="btn-row">
+            <button class="btn-back" id="btnBackStep4" onclick="backFromStep4()">← Retour</button>
+            <button class="btn-primary" id="btnStep4" onclick="goStep(5)" disabled>Continuer →</button>
+        </div>
+    </div>
+
+    <!-- ÉTAPE 5 : Précisions -->
+    <div class="step-panel" id="step5">
+        <span class="step-eyebrow" id="s5eyebrow">Étape 5 — Précisions</span>
+        <h2 class="step-title">Des précisions ?</h2>
+        <p class="step-sub">Référence exacte, modèle, budget… Plus c'est précis, mieux on cible.</p>
+        <div class="recap-pills" id="recap5"></div>
+        <div style="display:flex;flex-direction:column;gap:14px">
+            <div class="form-group">
+                <label>Référence / Modèle exact (facultatif)</label>
+                <input type="text" class="form-control" id="refInput" placeholder="Ex : Air Force 1 Low 07, réf. CW2288-111">
+            </div>
+            <div class="form-group">
+                <label>Budget maximum</label>
+                <select class="form-control" id="budgetInput">
+                    <option value="">Sélectionner…</option>
+                    <option>Moins de 100€</option>
+                    <option>100€ – 300€</option>
+                    <option>300€ – 600€</option>
+                    <option>600€ – 1 500€</option>
+                    <option>1 500€ – 5 000€</option>
+                    <option>Plus de 5 000€</option>
+                </select>
+            </div>
+        </div>
+        <div class="btn-row">
+            <button class="btn-back" onclick="goStep(4)">← Retour</button>
+            <button class="btn-primary" onclick="goStep(6)">Continuer →</button>
+        </div>
+    </div>
+
+    <!-- ÉTAPE 6 : Livraison -->
+    <div class="step-panel" id="step6">
+        <span class="step-eyebrow">Étape 6 — Livraison</span>
+        <h2 class="step-title">Où livrer ?</h2>
+        <p class="step-sub">Renseignez vos coordonnées pour que notre agent finalise la commande.</p>
+        <div class="form-grid">
+            <div class="form-group"><label>Prénom</label><input type="text" class="form-control" id="fPrenom" placeholder="Jean"></div>
+            <div class="form-group"><label>Nom</label><input type="text" class="form-control" id="fNom" placeholder="Dupont"></div>
+            <div class="form-group full"><label>Adresse</label><input type="text" class="form-control" id="fAdresse" placeholder="12 rue de la Paix"></div>
+            <div class="form-group"><label>Ville</label><input type="text" class="form-control" id="fVille" placeholder="Paris"></div>
+            <div class="form-group"><label>Code postal</label><input type="text" class="form-control" id="fCP" placeholder="75001"></div>
+            <div class="form-group"><label>Région / État</label><input type="text" class="form-control" id="fRegion" placeholder="Île-de-France"></div>
+            <div class="form-group">
+                <label>Pays</label>
+                <select class="form-control" id="fPays">
+                    <option value="">Sélectionner…</option>
+                    <option>France</option><option>Belgique</option><option>Suisse</option>
+                    <option>Luxembourg</option><option>Canada</option><option>Maroc</option>
+                    <option>Algérie</option><option>Tunisie</option><option>Sénégal</option>
+                    <option>Côte d'Ivoire</option><option>Autre</option>
+                </select>
+            </div>
+            <div class="form-group"><label>Téléphone</label><input type="tel" class="form-control" id="fTel" placeholder="+33 6 00 00 00 00"></div>
+            <div class="form-group full"><label>Email</label><input type="email" class="form-control" id="fEmail" placeholder="jean.dupont@email.com"></div>
+        </div>
+        <div class="btn-row">
+            <button class="btn-back" onclick="goStep(5)">← Retour</button>
+            <button class="btn-primary" onclick="submitOrder()">Envoyer ma commande →</button>
+        </div>
+    </div>
+
+    <!-- CONFIRMATION -->
+    <div class="step-panel" id="step7">
+        <div class="confirm-wrap">
+            <div class="confirm-icon">✓</div>
+            <h2 class="step-title" style="text-align:center">Commande transmise !</h2>
+            <p class="step-sub" style="text-align:center">Un agent privé a reçu votre demande. Récapitulatif :</p>
+            <div class="summary-box" id="summaryBox"></div>
+            <div class="channel-btns">
+                <a id="waLink" href="#" class="channel-btn whatsapp">💬 &nbsp;Suivre sur WhatsApp</a>
+                <a href="/cdn-cgi/l/email-protection#24474b4a504547506445484857504b56411610130a474b49" class="channel-btn email">✉️ &nbsp;Confirmation par email</a>
+            </div>
+            <p class="status-live"><span class="dot-green"></span>Agent disponible · Réponse sous 60 min</p>
+        </div>
+    </div>
+
+</div>
+</main>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+const TOTAL = 6;
+const order = { type:'', brand:'', size:'', color:'', ref:'', budget:'', prenom:'', nom:'', adresse:'', ville:'', cp:'', region:'', pays:'', tel:'', email:'' };
+let skipStep3 = false;
+
+// ── Données ──────────────────────────────────────────────────
+const brandsByType = {
+  'Vêtements': ['Stone Island','Maison Margiela','Off-White','Ami Paris','A.P.C.','Ralph Lauren','Polo Ralph Lauren','Carhartt WIP','The North Face','Moncler','Canada Goose','Palm Angels','Fear of God','Essentials (FOG)','Balenciaga','Vetements','Acne Studios','Jacquemus','Isabel Marant','Loro Piana','Brunello Cucinelli','Zegna','Kiton','Brioni','Bottega Veneta','Valentino','Givenchy','Alexander McQueen','Burberry','Vivienne Westwood','Comme des Garçons','Yohji Yamamoto','Issey Miyake','Rick Owens','Ann Demeulemeester','Dries Van Noten','Haider Ackermann','Marni','Lanvin','Sandro','Maje','Stüssy','Supreme','Bape (A Bathing Ape)','Palace','Kith','Noah','Sporty & Rich','Casablanca','Rhude','Gallery Dept.','Human Made','Neighborhood','Undercover','Helmut Lang','Calvin Klein','Tommy Hilfiger','Lacoste','Fred Perry','C.P. Company','Barbour','Patagonia','Arc\'teryx','Autre'],
+  'Chaussures': ['Nike','Nike SB','Air Jordan','Adidas','Adidas Originals','Adidas Yeezy','New Balance','ASICS','Salomon','On Running','Hoka','Brooks','Mizuno','Puma','Reebok','Vans','Converse','DC Shoes','Maison Margiela (Tabi)','Isabel Marant','Jacquemus','Ami Paris','Balenciaga','Bottega Veneta','Valentino','Givenchy','Alexander McQueen','Gucci','Prada','Louis Vuitton','Dior','Hermès','Celine','Loewe','Saint Laurent (YSL)','Miu Miu','Burberry','Vivienne Westwood','Rick Owens','Comme des Garçons','Common Projects','Axel Arigato','Filling Pieces','Saucony','Karhu','Diemme','Buttero','Paraboot','Clarks','Church\'s','Berluti','John Lobb','Edward Green','Grenson','Timberland','UGG','Birkenstock','Mephisto','Merrell','Crocs','Moon Boot','Autre'],
+  'Sacs': ['Louis Vuitton','Chanel','Hermès','Gucci','Prada','Dior','Celine','Bottega Veneta','Balenciaga','Saint Laurent (YSL)','Givenchy','Loewe','Burberry','Valentino','Fendi','Miu Miu','Jacquemus','Chloé','Mulberry','Strathberry','Polène','Wandler','A.P.C.','Ami Paris','Acne Studios','Staud','Cult Gaia','By Far','Mansur Gavriel','DeMellier','Cafuné','Parisa Wang','Ganni','Nanushka','Tumi','Rimowa','Globe-Trotter','Goyard','Moynat','Off-White','Palm Angels','Kenzo','Coach','Kate Spade','Michael Kors','Marc Jacobs','Furla','Longchamp','Lancel','Autre'],
+  'Accessoires': ['Louis Vuitton','Hermès','Chanel','Gucci','Prada','Dior','Bottega Veneta','Balenciaga','Saint Laurent (YSL)','Fendi','Burberry','Valentino','Miu Miu','Celine','Loewe','Givenchy','Cartier','Tiffany & Co.','Boucheron','Van Cleef & Arpels','Bulgari','Chopard','Piaget','Pomellato','Messika','Loro Piana','Brunello Cucinelli','Acne Studios','Ami Paris','Jacquemus','Isabel Marant','Rick Owens','Maison Margiela','Off-White','Supreme','Palace','Stüssy','Carhartt WIP','Ray-Ban','Persol','Oliver Peoples','Gentle Monster','Celine Eyewear','Linda Farrow','Mykita','Oakley','Tom Ford','Dita','Autre'],
+  'Horlogerie': ['Rolex','Audemars Piguet','Patek Philippe','Cartier','Richard Mille','Omega','Hublot','IWC Schaffhausen','Jaeger-LeCoultre','Breguet','A. Lange & Söhne','Blancpain','Vacheron Constantin','Piaget','Chopard','Panerai','Breitling','TAG Heuer','Zenith','Girard-Perregaux','Ulysse Nardin','Bulgari','Montblanc','Frederique Constant','Grand Seiko','Seiko','Citizen','Casio (G-Shock)','Casio (Edifice)','Swatch','Longines','Tissot','Hamilton','Rado','Mido','Apple Watch','Garmin','Samsung (Galaxy Watch)','Autre'],
+  'High-Tech': ['Apple','Samsung','Sony','Microsoft','Google','OnePlus','Xiaomi','Oppo','Huawei','Nothing','Asus (ROG)','Razer','Alienware (Dell)','Dyson','Philips','De\'Longhi','Nespresso','Vitamix','Bose','Bang & Olufsen','Sonos','Sennheiser','Focal','Devialet','JBL','Marshall','Beats','AKG','LG','Panasonic','Hisense','Bravia (Sony TV)','GoPro','DJI','Canon','Nikon','Sony (Alpha)','Meta (Quest)','PlayStation','Xbox','Nintendo','Autre'],
+  'Parfums': ['Chanel','Dior','Hermès','Louis Vuitton','Gucci','Prada','Givenchy','Valentino','Yves Saint Laurent (YSL)','Balenciaga','Burberry','Bvlgari','Cartier','Van Cleef & Arpels','Tiffany & Co.','Bottega Veneta','Creed','Maison Francis Kurkdjian (MFK)','Maison Margiela (Replica)','Byredo','Le Labo','Diptyque','Frederic Malle','Serge Lutens','Acqua di Parma','Santa Maria Novella','Penhaligons','Amouage','Clive Christian','Roja Parfums','Xerjoff','Parfums de Marly','Initio Parfums','Kilian Paris','Ex Nihilo','Memo Paris','Juliette Has a Gun','Histoires de Parfums','Nishane','Orto Parisi','Nasomatto','BDK Parfums','D.S. & Durga','Thierry Mugler','Jean Paul Gaultier','Christian Louboutin Beauté','Viktor & Rolf','Paco Rabanne','Lancôme','Giorgio Armani','Dolce & Gabbana','Versace','Montblanc','Carolina Herrera','Narciso Rodriguez','Marc Jacobs','Issey Miyake','Kenzo','Autre']
+};
+
+const step3Config = {
+  'Vêtements':  { mode:'clothes',  eyebrow:'Étape 3 — Taille vêtement', title:'Quelle est votre taille ?',     sub:'Sélectionnez votre taille habituelle.',           sizes:['XS','S','M','L','XL','XXL','3XL'],                                     cols:4 },
+  'Chaussures': { mode:'shoes',    eyebrow:'Étape 3 — Pointure',         title:'Quelle est votre pointure ?',  sub:'Sélectionnez votre pointure européenne.',          sizes:['36','37','38','39','40','41','42','43','44','45','46','47'],             cols:5 },
+  'Sacs':       { mode:'format',   eyebrow:'Étape 3 — Format',           title:'Quel format de sac ?',         sub:'Choisissez le gabarit qui vous convient.',          sizes:['Mini','Small','Medium','Large','Cabas / XL'],                           cols:3 },
+  'Accessoires':{ mode:'skip' },
+  'Horlogerie': { mode:'diameter', eyebrow:'Étape 3 — Diamètre',         title:'Quel diamètre de boîtier ?',   sub:'Sélectionnez la taille de cadran souhaitée.',      sizes:['36mm','38mm','40mm','41mm','42mm','44mm','45mm','46mm','49mm+'],        cols:3 },
+  'High-Tech':  { mode:'skip' },
+  'Parfums':    { mode:'volume',   eyebrow:'Étape 3 — Contenance',       title:'Quelle contenance ?',          sub:'Sélectionnez le volume du flacon souhaité.',       sizes:['10ml','15ml','30ml','50ml','75ml','100ml','125ml','150ml','200ml'],     cols:3 }
+};
+
+function getSizeLabel() {
+  const mode = step3Config[order.type] && step3Config[order.type].mode;
+  if (mode === 'volume')   return 'Contenance';
+  if (mode === 'diameter') return 'Diamètre';
+  if (mode === 'format')   return 'Format';
+  return 'Taille';
+}
+
+// ── Progress bar ─────────────────────────────────────────────
+(function() {
+  const bar = document.getElementById('progressBar');
+  for (let i = 1; i <= TOTAL; i++) {
+    const el = document.createElement('div');
+    el.className = 'progress-step' + (i === 1 ? ' active' : '');
+    el.id = 'pb' + i;
+    bar.appendChild(el);
+  }
+})();
+
+function updateProgress(n) {
+  for (let i = 1; i <= TOTAL; i++) {
+    const el = document.getElementById('pb' + i);
+    if (!el) continue;
+    el.className = 'progress-step' + (i < n ? ' done' : i === n ? ' active' : '');
+  }
+  document.getElementById('progressLabel').textContent =
+    n <= TOTAL ? 'Étape ' + n + ' sur ' + TOTAL : 'Commande transmise ✓';
+}
+
+function goStep(n) {
+  document.querySelectorAll('.step-panel').forEach(function(p) { p.classList.remove('visible'); });
+  document.getElementById('step' + n).classList.add('visible');
+  updateProgress(n);
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function buildRecap(id, items) {
+  const el = document.getElementById(id);
+  if (el) el.innerHTML = items.map(function(i) { return '<span class="recap-pill">' + i.l + ' : <strong>' + i.v + '</strong></span>'; }).join('');
+}
+
+// ── Étape 1 : délégation d'événement sur la grille des types ──
+document.getElementById('typeGrid').addEventListener('click', function(e) {
+  const chip = e.target.closest('.chip');
+  if (!chip) return;
+  const type = chip.dataset.type;
+  order.type = type;
+
+  // Construire la liste des marques (data-brand pour éviter les pb d'apostrophes)
+  const brands = brandsByType[type] || [];
+  const list = document.getElementById('brandList');
+  list.innerHTML = brands.map(function(b) {
+    return '<div class="opt-item" data-brand="' + b.replace(/"/g, '&quot;') + '">' + b + '<span class="opt-arrow">→</span></div>';
+  }).join('');
+
+  buildRecap('recap2', [{ l:'Article', v:type }]);
+  goStep(2);
+});
+
+// ── Étape 2 : délégation d'événement sur la liste des marques ──
+document.getElementById('brandList').addEventListener('click', function(e) {
+  const item = e.target.closest('.opt-item');
+  if (!item) return;
+  const brand = item.dataset.brand;
+  order.brand = brand;
+
+  const cfg = step3Config[order.type] || { mode:'skip' };
+
+  if (cfg.mode === 'skip') {
+    skipStep3 = true;
+    order.size = '—';
+    buildRecap('recap4', [{ l:'Article', v:order.type }, { l:'Marque', v:brand }]);
+    goStep(4);
+  } else {
+    skipStep3 = false;
+    // Configurer l'étape 3
+    document.getElementById('s3eyebrow').textContent = cfg.eyebrow;
+    document.getElementById('s3title').textContent = cfg.title;
+    document.getElementById('s3sub').textContent = cfg.sub;
+    document.getElementById('btnStep3').disabled = true;
+    order.size = '';
+
+    const grid = document.getElementById('sizeGrid');
+    grid.style.gridTemplateColumns = 'repeat(' + (cfg.cols || 5) + ', 1fr)';
+    grid.innerHTML = cfg.sizes.map(function(s) {
+      return '<div class="size-chip" data-size="' + s + '">' + s + '</div>';
+    }).join('');
+
+    buildRecap('recap3', [{ l:'Article', v:order.type }, { l:'Marque', v:brand }]);
+    goStep(3);
+  }
+});
+
+// ── Étape 3 : délégation d'événement sur la grille des tailles ──
+document.getElementById('sizeGrid').addEventListener('click', function(e) {
+  const chip = e.target.closest('.size-chip');
+  if (!chip) return;
+  document.querySelectorAll('#sizeGrid .size-chip').forEach(function(c) { c.classList.remove('selected'); });
+  chip.classList.add('selected');
+  order.size = chip.dataset.size;
+  document.getElementById('btnStep3').disabled = false;
+  buildRecap('recap4', [
+    { l:'Article', v:order.type },
+    { l:'Marque', v:order.brand },
+    { l:getSizeLabel(), v:order.size }
+  ]);
+});
+
+// ── Étape 4 : délégation d'événement sur la grille des couleurs ──
+document.getElementById('colorGrid').addEventListener('click', function(e) {
+  const chip = e.target.closest('.color-chip');
+  if (!chip) return;
+  document.querySelectorAll('.color-chip').forEach(function(c) { c.classList.remove('selected'); });
+  chip.classList.add('selected');
+  order.color = chip.dataset.color;
+  document.getElementById('btnStep4').disabled = false;
+  const sizeEntry = order.size && order.size !== '—' ? [{ l:getSizeLabel(), v:order.size }] : [];
+  buildRecap('recap5', [
+    { l:'Article', v:order.type },
+    { l:'Marque', v:order.brand }
+  ].concat(sizeEntry).concat([{ l:'Couleur', v:order.color }]));
+});
+
+function backFromStep4() {
+  goStep(skipStep3 ? 2 : 3);
+}
+
+// ── Submit ────────────────────────────────────────────────────
+function submitOrder() {
+  order.ref    = document.getElementById('refInput').value || '—';
+  order.budget = document.getElementById('budgetInput').value || '—';
+  order.prenom = document.getElementById('fPrenom').value;
+  order.nom    = document.getElementById('fNom').value;
+  if(order.prenom) localStorage.setItem('als_name', order.prenom);
+  order.adresse= document.getElementById('fAdresse').value;
+  order.ville  = document.getElementById('fVille').value;
+  order.cp     = document.getElementById('fCP').value;
+  order.region = document.getElementById('fRegion').value;
+  order.pays   = document.getElementById('fPays').value;
+  order.tel    = document.getElementById('fTel').value;
+  order.email  = document.getElementById('fEmail').value;
+
+  const sl = getSizeLabel();
+  const sizeRow = order.size && order.size !== '—' ? [{ lbl:sl, val:order.size }] : [];
+
+  const rows = [
+    { lbl:'Article',   val:order.type   },
+    { lbl:'Marque',    val:order.brand  }
+  ].concat(sizeRow).concat([
+    { lbl:'Couleur',   val:order.color  },
+    { lbl:'Référence', val:order.ref    },
+    { lbl:'Budget',    val:order.budget },
+    { lbl:'Nom',       val:order.prenom + ' ' + order.nom },
+    { lbl:'Adresse',   val:order.adresse + ', ' + order.cp + ' ' + order.ville },
+    { lbl:'Région',    val:order.region },
+    { lbl:'Pays',      val:order.pays   },
+    { lbl:'Téléphone', val:order.tel    },
+    { lbl:'Email',     val:order.email  }
+  ]);
+
+  document.getElementById('summaryBox').innerHTML = rows.map(function(r) {
+    return '<div class="summary-row"><span class="lbl">' + r.lbl + '</span><span class="val">' + (r.val || '—') + '</span></div>';
+  }).join('');
+
+  const sizeMsg = order.size && order.size !== '—' ? '\n• ' + sl + ' : ' + order.size : '';
+  const msg = encodeURIComponent(
+    '🛍️ Nouvelle commande AllStore 24/7\n\n' +
+    '• Article : ' + order.type + '\n' +
+    '• Marque : ' + order.brand + sizeMsg + '\n' +
+    '• Couleur : ' + order.color + '\n' +
+    '• Référence : ' + order.ref + '\n' +
+    '• Budget : ' + order.budget + '\n\n' +
+    '📦 Livraison :\n' +
+    '• Nom : ' + order.prenom + ' ' + order.nom + '\n' +
+    '• Adresse : ' + order.adresse + ', ' + order.cp + ' ' + order.ville + '\n' +
+    '• Région : ' + order.region + '\n' +
+    '• Pays : ' + order.pays + '\n' +
+    '• Tél : ' + order.tel + '\n' +
+    '• Email : ' + order.email
+  );
+  document.getElementById('waLink').href = 'https://wa.me/33626587984?text=' + msg;
+  goStep(7);
+}
+</script>
+
+<script src="global.js"></script>
+<script src="luxury.js"></script>
+
+<!-- BOTTOM NAV -->
+<nav class="bottom-nav">
+  <a href="index.html" class="bn-item">
+    <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+    Accueil
+  </a>
+  <a href="boutique.html" class="bn-item">
+    <svg viewBox="0 0 24 24"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
+    Boutique
+  </a>
+  <a href="assistant.html" class="bn-item active">
+    <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+    Assistant
+  </a>
+  <a href="panier.html" class="bn-item" id="bn-panier">
+    <svg viewBox="0 0 24 24"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 001.99 1.61h9.72a2 2 0 001.99-1.61L23 6H6"/></svg>
+    Panier
+  </a>
+  <a href="suivi.html" class="bn-item">
+    <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+    Suivi
+  </a>
+  <a href="contact.html" class="bn-search">
+    <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+  </a>
+</nav>
+
+</body>
+</html>

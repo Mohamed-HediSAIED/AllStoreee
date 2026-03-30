@@ -1,0 +1,5 @@
+[      99ms] TypeError: Cannot read properties of null (reading 'match')
+    at https://allstore-phi.vercel.app/boutique.html:899:45
+    at NodeList.forEach (<anonymous>)
+    at https://allstore-phi.vercel.app/boutique.html:898:46
+    at https://allstore-phi.vercel.app/boutique.html:909:5
