@@ -53,52 +53,93 @@
 <!-- ═══════════════════════════════════════════
      LA SÉLECTION — PRODUITS PHARES
 ═══════════════════════════════════════════ -->
-<section style="padding:60px 0 20px;text-align:center;background:var(--bg2,#f5f2ec);">
-  <h2 style="font-family:'Cormorant Garamond',serif;font-size:clamp(24px,3.5vw,38px);font-weight:400;color:var(--noir,#0a1923);margin:0 0 8px;"><strong>LA SÉLECTION</strong> ALLSTORE</h2>
-  <p style="font-family:'Poppins',sans-serif;font-size:13px;color:var(--gris,#6a7a8a);margin:0 0 28px;">Nos pièces les plus demandées</p>
-  <div id="selec-filters" style="display:flex;flex-wrap:wrap;justify-content:center;gap:8px;margin-bottom:40px;padding:0 20px;">
-    <button class="selec-filter active" data-filter="all" style="font-family:'Poppins',sans-serif;font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;padding:10px 24px;border-radius:30px;border:1.5px solid var(--noir,#0a1923);background:var(--noir,#0a1923);color:#fff;cursor:pointer;transition:all .2s;">TOUT</button>
-    <button class="selec-filter" data-filter="chaussures" style="font-family:'Poppins',sans-serif;font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;padding:10px 24px;border-radius:30px;border:1.5px solid rgba(10,25,35,.15);background:transparent;color:var(--noir,#0a1923);cursor:pointer;transition:all .2s;">CHAUSSURES</button>
-    <button class="selec-filter" data-filter="accessoires" style="font-family:'Poppins',sans-serif;font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;padding:10px 24px;border-radius:30px;border:1.5px solid rgba(10,25,35,.15);background:transparent;color:var(--noir,#0a1923);cursor:pointer;transition:all .2s;">ACCESSOIRES</button>
-    <button class="selec-filter" data-filter="vetements" style="font-family:'Poppins',sans-serif;font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;padding:10px 24px;border-radius:30px;border:1.5px solid rgba(10,25,35,.15);background:transparent;color:var(--noir,#0a1923);cursor:pointer;transition:all .2s;">VÊTEMENTS</button>
-    <button class="selec-filter" data-filter="tech" style="font-family:'Poppins',sans-serif;font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;padding:10px 24px;border-radius:30px;border:1.5px solid rgba(10,25,35,.15);background:transparent;color:var(--noir,#0a1923);cursor:pointer;transition:all .2s;">TECH</button>
+<style>
+  .selec-section{padding:60px 0 20px;text-align:center;background:var(--bg2,#f5f2ec)}
+  .selec-title{font-family:'Cormorant Garamond',serif;font-size:clamp(24px,3.5vw,38px);font-weight:400;color:var(--noir,#0a1923);margin:0 0 8px}
+  .selec-sub{font-family:'Poppins',sans-serif;font-size:13px;color:var(--gris,#6a7a8a);margin:0 0 24px}
+  #selec-filters{display:flex;flex-wrap:wrap;justify-content:center;gap:8px;margin-bottom:32px;padding:0 16px}
+  .selec-filter{font-family:'Poppins',sans-serif;font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;padding:10px 24px;border-radius:30px;border:1.5px solid rgba(10,25,35,.15);background:transparent;color:var(--noir,#0a1923);cursor:pointer;transition:all .2s}
+  .selec-filter.active{background:var(--noir,#0a1923);color:#fff;border-color:var(--noir,#0a1923)}
+  #selec-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;max-width:1200px;margin:0 auto;padding:0 24px}
+  .selec-card{text-decoration:none;background:#fff;border-radius:10px;overflow:hidden;transition:transform .2s,box-shadow .2s}
+  .selec-card:hover{transform:translateY(-4px);box-shadow:0 8px 24px rgba(0,0,0,.08)}
+  .selec-card-img{aspect-ratio:1;background:#f8f6f2;display:flex;align-items:center;justify-content:center;padding:16px}
+  .selec-card-img img{max-width:85%;max-height:85%;object-fit:contain}
+  .selec-card-info{padding:12px 14px 16px;text-align:left}
+  .selec-card-brand{font-family:'Poppins',sans-serif;font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:.08em;color:var(--gold2,#b89a4a)}
+  .selec-card-name{font-family:'Poppins',sans-serif;font-size:14px;font-weight:600;color:var(--noir,#0a1923);display:block;margin-top:2px}
+  .selec-card-price{font-family:'Poppins',sans-serif;font-size:13px;font-weight:700;color:var(--noir,#0a1923);display:block;margin-top:2px}
+  .selec-card-soon{font-family:'Poppins',sans-serif;font-size:12px;color:var(--gris,#6a7a8a);font-style:italic;display:block;margin-top:2px}
+  .selec-cta-wrap{text-align:center;padding:36px 0 0}
+  .selec-cta{display:inline-block;font-family:'Poppins',sans-serif;font-size:12px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--noir,#0a1923);border:1.5px solid var(--noir,#0a1923);padding:14px 40px;border-radius:4px;text-decoration:none;transition:all .2s}
+  /* ---- TABLET ---- */
+  @media(max-width:900px){
+    #selec-grid{grid-template-columns:repeat(3,1fr);gap:16px;padding:0 16px}
+  }
+  /* ---- MOBILE ---- */
+  @media(max-width:600px){
+    .selec-section{padding:40px 0 16px}
+    .selec-sub{margin-bottom:16px;font-size:12px}
+    #selec-filters{gap:6px;margin-bottom:20px;padding:0 12px}
+    .selec-filter{font-size:10px;padding:8px 14px;letter-spacing:.05em}
+    #selec-grid{grid-template-columns:repeat(2,1fr);gap:10px;padding:0 12px}
+    .selec-card{border-radius:8px}
+    .selec-card-img{padding:12px}
+    .selec-card-info{padding:8px 10px 12px}
+    .selec-card-brand{font-size:8px}
+    .selec-card-name{font-size:12px;margin-top:1px}
+    .selec-card-price{font-size:12px}
+    .selec-card-soon{font-size:10px}
+    .selec-cta{font-size:11px;padding:12px 28px}
+  }
+</style>
+
+<section class="selec-section">
+  <h2 class="selec-title"><strong>LA SÉLECTION</strong> ALLSTORE</h2>
+  <p class="selec-sub">Nos pièces les plus demandées</p>
+  <div id="selec-filters">
+    <button class="selec-filter active" data-filter="all">TOUT</button>
+    <button class="selec-filter" data-filter="chaussures">CHAUSSURES</button>
+    <button class="selec-filter" data-filter="accessoires">ACCESSOIRES</button>
+    <button class="selec-filter" data-filter="vetements">VÊTEMENTS</button>
+    <button class="selec-filter" data-filter="tech">TECH</button>
   </div>
-  <div id="selec-grid" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:24px;max-width:1200px;margin:0 auto;padding:0 24px;">
-    <a href="produit-louboutin-louis.html" class="selec-card" data-cat="chaussures" style="text-decoration:none;background:#fff;border-radius:12px;overflow:hidden;transition:transform .2s,box-shadow .2s;">
-      <div style="aspect-ratio:1;background:#f8f6f2;display:flex;align-items:center;justify-content:center;padding:20px;"><img src="louboutin_louis_noir.jpg" alt="Louboutin Louis Junior" style="max-width:85%;max-height:85%;object-fit:contain;"></div>
-      <div style="padding:14px 16px 18px;text-align:left;"><span style="font-family:'Poppins',sans-serif;font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:.08em;color:var(--gold2,#b89a4a);">Christian Louboutin</span><br><span style="font-family:'Poppins',sans-serif;font-size:14px;font-weight:600;color:var(--noir,#0a1923);">Louis Junior</span><br><span style="font-family:'Poppins',sans-serif;font-size:13px;color:var(--gris,#6a7a8a);font-style:italic;">Bientôt disponible</span></div>
+  <div id="selec-grid">
+    <a href="produit-louboutin-louis.html" class="selec-card" data-cat="chaussures">
+      <div class="selec-card-img"><img src="louboutin_louis_noir.jpg" alt="Louboutin Louis Junior"></div>
+      <div class="selec-card-info"><span class="selec-card-brand">Christian Louboutin</span><span class="selec-card-name">Louis Junior</span><span class="selec-card-soon">Bientôt disponible</span></div>
     </a>
-    <a href="produit-balenciaga-runner.html" class="selec-card" data-cat="chaussures" style="text-decoration:none;background:#fff;border-radius:12px;overflow:hidden;transition:transform .2s,box-shadow .2s;">
-      <div style="aspect-ratio:1;background:#f8f6f2;display:flex;align-items:center;justify-content:center;padding:20px;"><img src="balenciaga_runner_noir_argent.jpg" alt="Balenciaga Runner" style="max-width:85%;max-height:85%;object-fit:contain;"></div>
-      <div style="padding:14px 16px 18px;text-align:left;"><span style="font-family:'Poppins',sans-serif;font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:.08em;color:var(--gold2,#b89a4a);">Balenciaga</span><br><span style="font-family:'Poppins',sans-serif;font-size:14px;font-weight:600;color:var(--noir,#0a1923);">Runner</span><br><span style="font-family:'Poppins',sans-serif;font-size:13px;color:var(--gris,#6a7a8a);font-style:italic;">Bientôt disponible</span></div>
+    <a href="produit-balenciaga-runner.html" class="selec-card" data-cat="chaussures">
+      <div class="selec-card-img"><img src="balenciaga_runner_noir_argent.jpg" alt="Balenciaga Runner"></div>
+      <div class="selec-card-info"><span class="selec-card-brand">Balenciaga</span><span class="selec-card-name">Runner</span><span class="selec-card-soon">Bientôt disponible</span></div>
     </a>
-    <a href="produit-mihara-hank.html" class="selec-card" data-cat="chaussures" style="text-decoration:none;background:#fff;border-radius:12px;overflow:hidden;transition:transform .2s,box-shadow .2s;">
-      <div style="aspect-ratio:1;background:#f8f6f2;display:flex;align-items:center;justify-content:center;padding:20px;"><img src="mihara_hank_noir.jpg" alt="Mihara Yasuhiro Hank" style="max-width:85%;max-height:85%;object-fit:contain;"></div>
-      <div style="padding:14px 16px 18px;text-align:left;"><span style="font-family:'Poppins',sans-serif;font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:.08em;color:var(--gold2,#b89a4a);">Maison Mihara Yasuhiro</span><br><span style="font-family:'Poppins',sans-serif;font-size:14px;font-weight:600;color:var(--noir,#0a1923);">Hank OG Sole</span><br><span style="font-family:'Poppins',sans-serif;font-size:13px;color:var(--gris,#6a7a8a);font-style:italic;">Bientôt disponible</span></div>
+    <a href="produit-mihara-hank.html" class="selec-card" data-cat="chaussures">
+      <div class="selec-card-img"><img src="mihara_hank_noir.jpg" alt="Mihara Yasuhiro Hank"></div>
+      <div class="selec-card-info"><span class="selec-card-brand">Maison Mihara Yasuhiro</span><span class="selec-card-name">Hank OG Sole</span><span class="selec-card-soon">Bientôt disponible</span></div>
     </a>
-    <a href="produit-lp-casquette.html" class="selec-card" data-cat="accessoires" style="text-decoration:none;background:#fff;border-radius:12px;overflow:hidden;transition:transform .2s,box-shadow .2s;">
-      <div style="aspect-ratio:1;background:#f8f6f2;display:flex;align-items:center;justify-content:center;padding:20px;"><img src="lp_casquette_beige.jpg" alt="Loro Piana Casquette" style="max-width:85%;max-height:85%;object-fit:contain;"></div>
-      <div style="padding:14px 16px 18px;text-align:left;"><span style="font-family:'Poppins',sans-serif;font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:.08em;color:var(--gold2,#b89a4a);">Loro Piana</span><br><span style="font-family:'Poppins',sans-serif;font-size:14px;font-weight:600;color:var(--noir,#0a1923);">Casquette</span><br><span style="font-family:'Poppins',sans-serif;font-size:13px;font-weight:700;color:var(--noir,#0a1923);">45 €</span></div>
+    <a href="produit-lp-casquette.html" class="selec-card" data-cat="accessoires">
+      <div class="selec-card-img"><img src="lp_casquette_beige.jpg" alt="Loro Piana Casquette"></div>
+      <div class="selec-card-info"><span class="selec-card-brand">Loro Piana</span><span class="selec-card-name">Casquette</span><span class="selec-card-price">45 €</span></div>
     </a>
-    <a href="produit-burberry-hoodie.html" class="selec-card" data-cat="vetements" style="text-decoration:none;background:#fff;border-radius:12px;overflow:hidden;transition:transform .2s,box-shadow .2s;">
-      <div style="aspect-ratio:1;background:#f8f6f2;display:flex;align-items:center;justify-content:center;padding:20px;"><img src="burberry_hoodie_noir.jpg" alt="Burberry Zip Hoodie" style="max-width:85%;max-height:85%;object-fit:contain;"></div>
-      <div style="padding:14px 16px 18px;text-align:left;"><span style="font-family:'Poppins',sans-serif;font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:.08em;color:var(--gold2,#b89a4a);">Burberry</span><br><span style="font-family:'Poppins',sans-serif;font-size:14px;font-weight:600;color:var(--noir,#0a1923);">Zip Hoodie</span><br><span style="font-family:'Poppins',sans-serif;font-size:13px;font-weight:700;color:var(--noir,#0a1923);">65 €</span></div>
+    <a href="produit-burberry-hoodie.html" class="selec-card" data-cat="vetements">
+      <div class="selec-card-img"><img src="burberry_hoodie_noir.jpg" alt="Burberry Zip Hoodie"></div>
+      <div class="selec-card-info"><span class="selec-card-brand">Burberry</span><span class="selec-card-name">Zip Hoodie</span><span class="selec-card-price">65 €</span></div>
     </a>
-    <a href="produit-airpods-max.html" class="selec-card" data-cat="tech" style="text-decoration:none;background:#fff;border-radius:12px;overflow:hidden;transition:transform .2s,box-shadow .2s;">
-      <div style="aspect-ratio:1;background:#f8f6f2;display:flex;align-items:center;justify-content:center;padding:20px;"><img src="airpods_max_noir.jpg" alt="AirPods Max" style="max-width:85%;max-height:85%;object-fit:contain;"></div>
-      <div style="padding:14px 16px 18px;text-align:left;"><span style="font-family:'Poppins',sans-serif;font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:.08em;color:var(--gold2,#b89a4a);">Apple</span><br><span style="font-family:'Poppins',sans-serif;font-size:14px;font-weight:600;color:var(--noir,#0a1923);">AirPods Max</span><br><span style="font-family:'Poppins',sans-serif;font-size:13px;font-weight:700;color:var(--noir,#0a1923);">185 €</span></div>
+    <a href="produit-airpods-max.html" class="selec-card" data-cat="tech">
+      <div class="selec-card-img"><img src="airpods_max_noir.jpg" alt="AirPods Max"></div>
+      <div class="selec-card-info"><span class="selec-card-brand">Apple</span><span class="selec-card-name">AirPods Max</span><span class="selec-card-price">185 €</span></div>
     </a>
-    <a href="produit-miumiu-carte.html" class="selec-card" data-cat="accessoires" style="text-decoration:none;background:#fff;border-radius:12px;overflow:hidden;transition:transform .2s,box-shadow .2s;">
-      <div style="aspect-ratio:1;background:#f8f6f2;display:flex;align-items:center;justify-content:center;padding:20px;"><img src="porte_carte_miumiu.jpg" alt="Miu Miu Porte-Cartes" style="max-width:85%;max-height:85%;object-fit:contain;"></div>
-      <div style="padding:14px 16px 18px;text-align:left;"><span style="font-family:'Poppins',sans-serif;font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:.08em;color:var(--gold2,#b89a4a);">Miu Miu</span><br><span style="font-family:'Poppins',sans-serif;font-size:14px;font-weight:600;color:var(--noir,#0a1923);">Porte-Cartes Matelassé</span><br><span style="font-family:'Poppins',sans-serif;font-size:13px;color:var(--gris,#6a7a8a);font-style:italic;">Bientôt disponible</span></div>
+    <a href="produit-miumiu-carte.html" class="selec-card" data-cat="accessoires">
+      <div class="selec-card-img"><img src="porte_carte_miumiu.jpg" alt="Miu Miu Porte-Cartes"></div>
+      <div class="selec-card-info"><span class="selec-card-brand">Miu Miu</span><span class="selec-card-name">Porte-Cartes Matelassé</span><span class="selec-card-soon">Bientôt disponible</span></div>
     </a>
-    <a href="produit-si-pull.html" class="selec-card" data-cat="vetements" style="text-decoration:none;background:#fff;border-radius:12px;overflow:hidden;transition:transform .2s,box-shadow .2s;">
-      <div style="aspect-ratio:1;background:#f8f6f2;display:flex;align-items:center;justify-content:center;padding:20px;"><img src="si_pull_noir.jpg" alt="Stone Island Crewneck" style="max-width:85%;max-height:85%;object-fit:contain;"></div>
-      <div style="padding:14px 16px 18px;text-align:left;"><span style="font-family:'Poppins',sans-serif;font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:.08em;color:var(--gold2,#b89a4a);">Stone Island</span><br><span style="font-family:'Poppins',sans-serif;font-size:14px;font-weight:600;color:var(--noir,#0a1923);">Crewneck</span><br><span style="font-family:'Poppins',sans-serif;font-size:13px;font-weight:700;color:var(--noir,#0a1923);">65 €</span></div>
+    <a href="produit-si-pull.html" class="selec-card" data-cat="vetements">
+      <div class="selec-card-img"><img src="si_pull_noir.jpg" alt="Stone Island Crewneck"></div>
+      <div class="selec-card-info"><span class="selec-card-brand">Stone Island</span><span class="selec-card-name">Crewneck</span><span class="selec-card-price">65 €</span></div>
     </a>
   </div>
-  <div style="text-align:center;padding:40px 0 0;">
-    <a href="boutique.html" style="display:inline-block;font-family:'Poppins',sans-serif;font-size:12px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--noir,#0a1923);border:1.5px solid var(--noir,#0a1923);padding:14px 40px;border-radius:4px;text-decoration:none;transition:all .2s;">VOIR TOUTE LA BOUTIQUE →</a>
+  <div class="selec-cta-wrap">
+    <a href="boutique.html" class="selec-cta">VOIR TOUTE LA BOUTIQUE →</a>
   </div>
 </section>
 
@@ -553,14 +594,8 @@
   var cards = document.querySelectorAll('.selec-card');
   btns.forEach(function(btn){
     btn.addEventListener('click', function(){
-      btns.forEach(function(b){
-        b.style.background='transparent';
-        b.style.color='var(--noir,#0a1923)';
-        b.style.borderColor='rgba(10,25,35,.15)';
-      });
-      btn.style.background='var(--noir,#0a1923)';
-      btn.style.color='#fff';
-      btn.style.borderColor='var(--noir,#0a1923)';
+      btns.forEach(function(b){ b.classList.remove('active'); });
+      btn.classList.add('active');
       var f = btn.getAttribute('data-filter');
       cards.forEach(function(c){
         if(f==='all' || c.getAttribute('data-cat')===f){
