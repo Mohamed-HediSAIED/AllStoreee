@@ -235,38 +235,84 @@
 
 <style>
   .bnav{position:fixed;bottom:16px;left:50%;transform:translateX(-50%);z-index:9000;display:flex;align-items:center;background:rgba(255,255,255,.12);backdrop-filter:blur(20px) saturate(150%);-webkit-backdrop-filter:blur(20px) saturate(150%);border-radius:50px;padding:6px 8px;border:1px solid rgba(255,255,255,.25);box-shadow:0 4px 24px rgba(0,0,0,.15)}
-  .bnav-item{display:flex;flex-direction:column;align-items:center;gap:3px;padding:8px 16px;border-radius:40px;text-decoration:none;color:rgba(0,0,0,.5);font-family:'Poppins',sans-serif;font-size:9px;font-weight:500;letter-spacing:.03em;transition:all .2s;cursor:pointer;white-space:nowrap;position:relative}
+  .bnav-pill{position:relative;display:flex;align-items:center}
+  .bnav-blob{position:absolute;height:100%;background:rgba(255,255,255,.45);border-radius:40px;transition:left .4s cubic-bezier(.4,.0,.2,1), width .4s cubic-bezier(.4,.0,.2,1);z-index:0;pointer-events:none}
+  .bnav-blob.slime{transition:left .35s cubic-bezier(.5,.0,.2,1.3), width .35s cubic-bezier(.5,.0,.2,1.3)}
+  .bnav-item{display:flex;flex-direction:column;align-items:center;gap:3px;padding:8px 16px;border-radius:40px;text-decoration:none;color:rgba(0,0,0,.5);font-family:'Poppins',sans-serif;font-size:9px;font-weight:500;letter-spacing:.03em;transition:color .2s;cursor:pointer;white-space:nowrap;position:relative;z-index:1;background:transparent}
   .bnav-item svg{width:20px;height:20px;stroke:currentColor;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;transition:all .2s}
   .bnav-item:hover{color:rgba(0,0,0,.8)}
-  .bnav-item.active{color:var(--noir,#0a1923);background:rgba(255,255,255,.45)}
+  .bnav-item.active{color:var(--noir,#0a1923)}
   .bnav-item.active svg{stroke:var(--noir,#0a1923);fill:none;stroke-width:2}
   .bnav-badge{position:absolute;top:2px;right:8px;background:#e9c243;color:#0a1923;font-size:8px;font-weight:700;min-width:15px;height:15px;border-radius:8px;display:none;align-items:center;justify-content:center;padding:0 4px;line-height:1}
   @media(min-width:1025px){.bnav{display:none!important}}
-  @media(max-width:380px){.bnav{bottom:10px;padding:4px 6px}.bnav-item{padding:6px 10px;font-size:8px;gap:2px}.bnav-item svg{width:18px;height:18px}}
+  @media(max-width:400px){.bnav{bottom:10px;padding:4px 6px}.bnav-item{padding:6px 10px;font-size:8px;gap:2px}.bnav-item svg{width:18px;height:18px}}
 </style>
 <nav class="bnav">
-  <a href="index.html" class="bnav-item ">
-    <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
-    Accueil
-  </a>
-  <a href="boutique.html" class="bnav-item ">
-    <svg viewBox="0 0 24 24"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
-    Boutique
-  </a>
-  <a href="assistant.html" class="bnav-item ">
-    <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
-    Assistant
-  </a>
-  <a href="panier.html" class="bnav-item active" id="bn-panier">
-    <svg viewBox="0 0 24 24"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 001.99 1.61h9.72a2 2 0 001.99-1.61L23 6H6"/></svg>
-    Panier
-    <span class="bnav-badge" id="bnav-badge"></span>
-  </a>
-  <a href="suivi.html" class="bnav-item ">
-    <svg viewBox="0 0 24 24"><path d="M12 22s-8-4.5-8-11.8A8 8 0 0112 2a8 8 0 018 8.2c0 7.3-8 11.8-8 11.8z"/><circle cx="12" cy="10" r="3"/></svg>
-    Suivi
-  </a>
+  <div class="bnav-pill">
+    <div class="bnav-blob" id="bnav-blob"></div>
+    <a href="index.html" class="bnav-item" data-nav="0">
+      <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+      Accueil
+    </a>
+    <a href="boutique.html" class="bnav-item" data-nav="1">
+      <svg viewBox="0 0 24 24"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
+      Boutique
+    </a>
+    <a href="assistant.html" class="bnav-item" data-nav="2">
+      <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+      Assistant
+    </a>
+    <a href="panier.html" class="bnav-item active" data-nav="3" id="bn-panier">
+      <svg viewBox="0 0 24 24"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 001.99 1.61h9.72a2 2 0 001.99-1.61L23 6H6"/></svg>
+      Panier
+      <span class="bnav-badge" id="bnav-badge"></span>
+    </a>
+    <a href="suivi.html" class="bnav-item" data-nav="4">
+      <svg viewBox="0 0 24 24"><path d="M12 22s-8-4.5-8-11.8A8 8 0 0112 2a8 8 0 018 8.2c0 7.3-8 11.8-8 11.8z"/><circle cx="12" cy="10" r="3"/></svg>
+      Suivi
+    </a>
+  </div>
 </nav>
+<script>
+(function(){
+  var blob = document.getElementById('bnav-blob');
+  var items = document.querySelectorAll('.bnav-item');
+  var pill = document.querySelector('.bnav-pill');
+  if(!blob || !pill || !items.length) return;
+  function positionBlob(el, animate){
+    var pr = pill.getBoundingClientRect();
+    var er = el.getBoundingClientRect();
+    if(animate) blob.classList.add('slime');
+    else blob.classList.remove('slime');
+    blob.style.left = (er.left - pr.left) + 'px';
+    blob.style.width = er.width + 'px';
+    blob.style.height = er.height + 'px';
+  }
+  var fromIdx = sessionStorage.getItem('bnav_from');
+  var activeEl = document.querySelector('.bnav-item.active');
+  if(fromIdx !== null && activeEl){
+    var fromEl = items[parseInt(fromIdx)];
+    if(fromEl && fromEl !== activeEl){
+      positionBlob(fromEl, false);
+      requestAnimationFrame(function(){ requestAnimationFrame(function(){ positionBlob(activeEl, true); }); });
+    } else { positionBlob(activeEl, false); }
+    sessionStorage.removeItem('bnav_from');
+  } else if(activeEl){ positionBlob(activeEl, false); }
+  items.forEach(function(item){
+    item.addEventListener('click', function(e){
+      if(item.classList.contains('active')) return;
+      e.preventDefault();
+      var href = item.getAttribute('href');
+      var currentActive = document.querySelector('.bnav-item.active');
+      sessionStorage.setItem('bnav_from', currentActive ? currentActive.dataset.nav : '0');
+      positionBlob(item, true);
+      items.forEach(function(i){ i.classList.remove('active'); });
+      item.classList.add('active');
+      setTimeout(function(){ window.location.href = href; }, 350);
+    });
+  });
+})();
+</script>
 
 </body>
 </html>
