@@ -94,11 +94,12 @@
   .als-insta-vid video{width:100%;height:100%;object-fit:cover}
   .als-insta-vid .als-insta-tag{position:absolute;top:14px;left:14px;display:flex;align-items:center;gap:6px}
   .als-insta-vid .als-insta-tag span{font-family:'Poppins',sans-serif;font-size:9px;font-weight:600;letter-spacing:.06em;color:#fff;background:rgba(0,0,0,.45);backdrop-filter:blur(6px);padding:5px 10px;border-radius:20px}
-  .als-insta-pcard{display:flex;flex-direction:column;align-items:center;background:#fbfbfd;border-radius:16px;padding:6px 6px 10px;text-decoration:none;border:1px solid rgba(0,0,0,.03)}
-  .als-insta-pcard-img{width:100%;display:flex;align-items:center;justify-content:center;overflow:hidden;padding:8px}
-  .als-insta-pcard-img img{width:100%;height:auto;object-fit:contain;mix-blend-mode:multiply}
+  .als-insta-pcard{display:flex;flex-direction:column;align-items:center;background:#fbfbfd;border-radius:16px;padding:6px 6px 12px;text-decoration:none;border:1px solid rgba(0,0,0,.03)}
+  .als-insta-pcard-img{width:100%;aspect-ratio:1;display:flex;align-items:center;justify-content:center;overflow:hidden;padding:8px}
+  .als-insta-pcard-img img{max-width:90%;max-height:90%;object-fit:contain;mix-blend-mode:multiply}
   .als-insta-pcard-name{font-family:'Poppins',sans-serif;font-size:11px;font-weight:700;text-transform:uppercase;color:var(--noir,#0a1923);text-align:center;margin-top:6px}
   .als-insta-pcard-price{font-family:'Poppins',sans-serif;font-size:12px;font-weight:400;color:#86868b;text-align:center;margin-top:4px}
+  .als-insta-pcard-btn{font-family:'Poppins',sans-serif;font-size:9px;font-weight:600;letter-spacing:.05em;text-transform:uppercase;color:var(--noir,#0a1923);background:rgba(10,25,35,.06);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border:1px solid rgba(10,25,35,.08);padding:6px 20px;border-radius:20px;margin-top:8px;display:inline-block}
 
   /* ---------- ARTICLES RARES — scroll horizontal ---------- */
   .als-rare-grid{display:flex;gap:15px;overflow-x:auto;padding:0 20px 12px;scroll-behavior:smooth;-webkit-overflow-scrolling:touch;scrollbar-width:none}
@@ -304,6 +305,7 @@
         <div class="als-insta-pcard-img"><img src="burberry_hoodie_gris.jpg" alt="Burberry Hoodie Gris"></div>
         <span class="als-insta-pcard-name">VESTE BURBERRY GRIS</span>
         <span class="als-insta-pcard-price">65,00€</span>
+        <span class="als-insta-pcard-btn">VOIR</span>
       </a>
     </div>
     <div class="als-insta-col">
@@ -315,6 +317,7 @@
         <div class="als-insta-pcard-img"><img src="airpods_max_insta.jpg" alt="AirPods Max"></div>
         <span class="als-insta-pcard-name">AIRPODS MAX</span>
         <span class="als-insta-pcard-price">185,00€</span>
+        <span class="als-insta-pcard-btn">VOIR</span>
       </a>
     </div>
   </div>
