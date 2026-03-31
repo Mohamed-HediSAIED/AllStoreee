@@ -696,25 +696,10 @@
     blob.style.height = er.height + 'px';
   }
 
-  // Position on active item at load (from sessionStorage or .active)
-  var fromIdx = sessionStorage.getItem('bnav_from');
+  // Position blob directly on active item (no animation on load)
   var activeEl = document.querySelector('.bnav-item.active');
-  if(fromIdx !== null && activeEl){
-    var fromEl = items[parseInt(fromIdx)];
-    if(fromEl && fromEl !== activeEl){
-      positionBlob(fromEl, false);
-      requestAnimationFrame(function(){
-        requestAnimationFrame(function(){
-          positionBlob(activeEl, true);
-        });
-      });
-    } else {
-      positionBlob(activeEl, false);
-    }
-    sessionStorage.removeItem('bnav_from');
-  } else if(activeEl){
-    positionBlob(activeEl, false);
-  }
+  if(activeEl){ positionBlob(activeEl, false); }
+  sessionStorage.removeItem('bnav_from');
 
   // Click handler — animate then navigate
   items.forEach(function(item){
