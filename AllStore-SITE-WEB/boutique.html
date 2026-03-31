@@ -51,6 +51,27 @@
     }
     .filter-btn:hover, .filter-btn.active { background: var(--noir); color: #fff; }
 
+    .boutique-search {
+      padding: 0 var(--marge) 20px;
+      display: flex;
+      justify-content: center;
+    }
+    .boutique-search input {
+      width: 100%;
+      max-width: 500px;
+      padding: 12px 20px;
+      border-radius: 980px;
+      border: 2px solid rgba(10,25,35,.15);
+      background: #fff;
+      font-family: 'Poppins', sans-serif;
+      font-size: 14px;
+      color: var(--noir);
+      outline: none;
+      transition: border-color .2s;
+    }
+    .boutique-search input:focus { border-color: var(--noir); }
+    .boutique-search input::placeholder { color: var(--gris); font-weight: 400; }
+
     /* Grille produits */
     .boutique-grid {
       display: grid;
@@ -318,17 +339,19 @@
       .boutique-hero h1 { font-size: clamp(26px, 7vw, 36px); margin-bottom: 8px; }
       .boutique-hero p { font-size: 15px; margin-bottom: 0; }
       .boutique-hero .eyebrow { display: none; }
+      .boutique-search { padding: 0 16px 16px; }
+      .boutique-search input { font-size: 13px; padding: 10px 16px; }
       .boutique-filters {
         flex-wrap: nowrap;
         overflow-x: auto;
         -webkit-overflow-scrolling: touch;
         scrollbar-width: none;
-        padding: 0 16px 20px;
+        padding: 0 16px 12px;
         gap: 8px;
         justify-content: flex-start;
       }
       .boutique-filters::-webkit-scrollbar { display: none; }
-      .filter-btn { flex-shrink: 0; padding: 10px 18px; font-size: 13px; }
+      .filter-btn { flex-shrink: 0; padding: 8px 14px; font-size: 12px; }
       .boutique-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; padding: 0 12px 100px; }
       .b-card { border-radius: 18px; }
       .b-img { height: 160px; }
@@ -391,22 +414,33 @@
 <main>
 
   <div class="boutique-hero">
-    <span class="eyebrow reveal">Disponible maintenant</span>
     <h1 class="reveal d1">La Boutique.<br><em style="font-style:normal;color:var(--gris)">Répliques haut de gamme.</em></h1>
     <p class="reveal d2">Vérifiées, prêtes à commander.</p>
   </div>
 
-  <div class="boutique-filters">
-    <button class="filter-btn active" onclick="filterCat(this,'all')">Tout</button>
-    <button class="filter-btn" onclick="filterCat(this,'vetements')">Vêtements</button>
-    <button class="filter-btn" onclick="filterCat(this,'chaussures')">Chaussures</button>
-    <button class="filter-btn" onclick="filterCat(this,'sacs')">Sacs</button>
-    <button class="filter-btn" onclick="filterCat(this,'montres')">Montres</button>
-    <button class="filter-btn" onclick="filterCat(this,'lunettes')">Lunettes</button>
-    <button class="filter-btn" onclick="filterCat(this,'accessoires')">Accessoires</button>
-    <button class="filter-btn" onclick="filterCat(this,'tech')">Tech</button>
-    <button class="filter-btn" onclick="filterCat(this,'parfum')">Parfum</button>
+  <!-- Barre de recherche -->
+  <div class="boutique-search">
+    <input type="text" id="search-input" placeholder="Rechercher un modèle..." oninput="searchProducts()">
   </div>
+
+  <!-- Filtres par catégorie -->
+  <div class="boutique-filters" id="cat-filters">
+    <button class="filter-btn active" onclick="filterLevel('cat',this,'all')">Tout</button>
+    <button class="filter-btn" onclick="filterLevel('cat',this,'chaussures')">Chaussures</button>
+    <button class="filter-btn" onclick="filterLevel('cat',this,'vetements')">Vêtements</button>
+    <button class="filter-btn" onclick="filterLevel('cat',this,'sacs')">Sacs</button>
+    <button class="filter-btn" onclick="filterLevel('cat',this,'montres')">Montres</button>
+    <button class="filter-btn" onclick="filterLevel('cat',this,'lunettes')">Lunettes</button>
+    <button class="filter-btn" onclick="filterLevel('cat',this,'accessoires')">Accessoires</button>
+    <button class="filter-btn" onclick="filterLevel('cat',this,'tech')">Tech</button>
+    <button class="filter-btn" onclick="filterLevel('cat',this,'parfum')">Parfum</button>
+  </div>
+
+  <!-- Filtres par marque (apparaissent après sélection catégorie) -->
+  <div class="boutique-filters" id="brand-filters" style="display:none"></div>
+
+  <!-- Filtres par modèle (apparaissent après sélection marque) -->
+  <div class="boutique-filters" id="model-filters" style="display:none"></div>
 
   <div class="boutique-grid" id="boutique-grid">
 
@@ -1640,22 +1674,106 @@
 <script src="luxury.js"></script>
 <script src="conversion.js"></script>
 <script>
-  // Filtre catégories
-  function filterCat(btn, cat) {
-    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+  // État des filtres
+  let currentCat = 'all';
+  let currentBrand = 'all';
+  let currentModel = 'all';
+
+  function getAllCards() { return document.querySelectorAll('.b-card'); }
+
+  // Filtre par niveau
+  function filterLevel(level, btn, value) {
+    // Activer le bouton
+    btn.parentElement.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
     btn.classList.add('active');
-    document.querySelectorAll('.b-card').forEach(card => {
-      card.style.display = (cat === 'all' || card.dataset.cat === cat) ? '' : 'none';
+
+    if (level === 'cat') {
+      currentCat = value;
+      currentBrand = 'all';
+      currentModel = 'all';
+      document.getElementById('model-filters').style.display = 'none';
+      // Afficher les marques pour cette catégorie
+      if (value === 'all') {
+        document.getElementById('brand-filters').style.display = 'none';
+      } else {
+        showBrands(value);
+      }
+    } else if (level === 'brand') {
+      currentBrand = value;
+      currentModel = 'all';
+      if (value === 'all') {
+        document.getElementById('model-filters').style.display = 'none';
+      } else {
+        showModels(currentCat, value);
+      }
+    } else if (level === 'model') {
+      currentModel = value;
+    }
+    applyFilters();
+  }
+
+  function showBrands(cat) {
+    const brands = new Set();
+    getAllCards().forEach(card => {
+      if (card.dataset.cat === cat) {
+        const b = card.querySelector('.b-brand');
+        if (b && b.textContent.trim()) brands.add(b.textContent.trim());
+      }
+    });
+    const container = document.getElementById('brand-filters');
+    container.innerHTML = '<button class="filter-btn active" onclick="filterLevel(\'brand\',this,\'all\')">Toutes</button>';
+    [...brands].sort().forEach(brand => {
+      container.innerHTML += `<button class="filter-btn" onclick="filterLevel('brand',this,'${brand}')">${brand}</button>`;
+    });
+    container.style.display = brands.size > 0 ? 'flex' : 'none';
+  }
+
+  function showModels(cat, brand) {
+    const models = new Set();
+    getAllCards().forEach(card => {
+      if (card.dataset.cat === cat) {
+        const b = card.querySelector('.b-brand');
+        const n = card.querySelector('.b-name');
+        if (b && b.textContent.trim() === brand && n && n.textContent.trim()) {
+          models.add(n.textContent.trim());
+        }
+      }
+    });
+    const container = document.getElementById('model-filters');
+    container.innerHTML = '<button class="filter-btn active" onclick="filterLevel(\'model\',this,\'all\')">Tous</button>';
+    [...models].sort().forEach(model => {
+      container.innerHTML += `<button class="filter-btn" onclick="filterLevel('model',this,'${model}')">${model}</button>`;
+    });
+    container.style.display = models.size > 1 ? 'flex' : 'none';
+  }
+
+  function applyFilters() {
+    const search = document.getElementById('search-input').value.toLowerCase().trim();
+    getAllCards().forEach(card => {
+      const cat = card.dataset.cat;
+      const brand = card.querySelector('.b-brand')?.textContent.trim() || '';
+      const name = card.querySelector('.b-name')?.textContent.trim() || '';
+      const text = (brand + ' ' + name).toLowerCase();
+
+      let show = true;
+      if (currentCat !== 'all' && cat !== currentCat) show = false;
+      if (currentBrand !== 'all' && brand !== currentBrand) show = false;
+      if (currentModel !== 'all' && name !== currentModel) show = false;
+      if (search && !text.includes(search)) show = false;
+
+      card.style.display = show ? '' : 'none';
     });
   }
+
+  function searchProducts() { applyFilters(); }
 
   // Auto-filtre via URL ?cat=xxx
   (function() {
     const params = new URLSearchParams(window.location.search);
     const cat = params.get('cat');
     if (cat) {
-      const btn = document.querySelector(`.filter-btn[onclick*="'${cat}'"]`);
-      if (btn) filterCat(btn, cat);
+      const btn = document.querySelector(`#cat-filters .filter-btn[onclick*="'${cat}'"]`);
+      if (btn) filterLevel('cat', btn, cat);
     }
   })();
 
