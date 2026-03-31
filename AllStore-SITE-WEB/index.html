@@ -87,16 +87,15 @@
 
   /* ---------- VU SUR INSTAGRAM ---------- */
   .als-insta-section{padding:0;background:var(--bg2,#f5f2ec)}
-  .als-insta-featured{position:relative;margin:0 20px;border-radius:16px;overflow:hidden;aspect-ratio:4/5}
-  .als-insta-featured img{width:100%;height:100%;object-fit:cover}
+  .als-insta-row{display:flex;gap:12px;padding:0 20px;align-items:stretch}
+  .als-insta-featured{position:relative;flex:1;border-radius:16px;overflow:hidden;min-height:400px}
+  .als-insta-featured video,.als-insta-featured img{width:100%;height:100%;object-fit:cover}
   .als-insta-featured .als-insta-badge{position:absolute;bottom:20px;left:16px;font-family:'Poppins',sans-serif;font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:.06em;color:#fff;background:rgba(0,0,0,.45);backdrop-filter:blur(6px);padding:6px 14px;border-radius:20px;display:flex;align-items:center;gap:6px}
   .als-insta-featured .als-insta-badge svg{width:14px;height:14px;fill:#fff}
   .als-insta-featured .als-insta-tag{position:absolute;top:16px;left:16px;display:flex;align-items:center;gap:6px}
   .als-insta-featured .als-insta-tag span{font-family:'Poppins',sans-serif;font-size:10px;font-weight:600;letter-spacing:.06em;color:#fff;background:rgba(0,0,0,.45);backdrop-filter:blur(6px);padding:6px 12px;border-radius:20px}
-  .als-insta-products{display:flex;gap:12px;padding:20px;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none}
-  .als-insta-products::-webkit-scrollbar{display:none}
-  .als-insta-pcard{flex:0 0 calc(50% - 6px);text-decoration:none;background:#fff;border-radius:16px;overflow:hidden;border:1px solid rgba(0,0,0,.06)}
-  .als-insta-pcard-img{aspect-ratio:1;background:#fff;display:flex;align-items:center;justify-content:center;overflow:hidden}
+  .als-insta-pcard{flex:1;text-decoration:none;background:#fff;border-radius:16px;overflow:hidden;border:1px solid rgba(0,0,0,.06);display:flex;flex-direction:column}
+  .als-insta-pcard-img{flex:1;background:#fff;display:flex;align-items:center;justify-content:center;overflow:hidden}
   .als-insta-pcard-img img{width:100%;height:100%;object-fit:cover}
   .als-insta-pcard-info{padding:12px 14px 16px;text-align:center}
   .als-insta-pcard-name{font-family:'Poppins',sans-serif;font-size:13px;font-weight:700;color:var(--noir,#0a1923);display:block}
@@ -141,9 +140,8 @@
     .als-hcard-price{font-size:12px}
     .als-coll-grid{padding:0 16px 8px;gap:10px}
     .als-coll-card{flex:0 0 calc(50% - 5px)}
-    .als-insta-featured{margin:0 16px}
-    .als-insta-products{padding:16px;gap:10px}
-    .als-insta-pcard{flex:0 0 calc(50% - 5px)}
+    .als-insta-row{flex-direction:column;padding:0 16px;gap:10px}
+    .als-insta-featured{min-height:300px}
     .als-rare-grid{padding:0 16px 12px;gap:10px}
     .als-rare-card{flex:0 0 calc(50% - 5px)}
     .als-collab-row{gap:24px;padding:0 16px}
@@ -158,9 +156,7 @@
     .als-hcard{flex:0 0 calc(33.33% - 10px)}
     .als-coll-grid{padding:0 24px 8px;gap:14px}
     .als-coll-card{flex:0 0 calc(33.33% - 10px);aspect-ratio:4/5}
-    .als-insta-featured{margin:0 24px;aspect-ratio:16/9}
-    .als-insta-products{padding:16px 24px;gap:14px}
-    .als-insta-pcard{flex:0 0 calc(33.33% - 10px)}
+    .als-insta-row{padding:0 24px;gap:14px}
     .als-rare-grid{padding:0 24px 12px;gap:14px}
     .als-rare-card{flex:0 0 calc(33.33% - 10px)}
   }
@@ -185,11 +181,8 @@
     .als-coll-card .als-coll-name{font-size:11px}
     .als-coll-card .als-coll-btn{font-size:8px;padding:5px 12px}
     .als-insta-section .als-sec-head{padding:0 48px}
-    .als-insta-featured{margin:0 48px;aspect-ratio:21/9;border-radius:14px}
-    .als-insta-products{padding:18px 48px;gap:16px}
-    .als-insta-pcard{flex:0 0 calc(20% - 13px)}
-    .als-insta-pcard-img{padding:0}
-    .als-insta-pcard-img img{width:100%;height:100%;object-fit:cover}
+    .als-insta-row{padding:0 48px;gap:16px}
+    .als-insta-featured{min-height:500px}
     .als-insta-pcard-info{padding:10px 12px 14px}
     .als-insta-pcard-name{font-size:12px}
     .als-insta-pcard-price{font-size:12px}
@@ -319,19 +312,19 @@
   <div class="als-sec-head">
     <h2 class="als-sec-title">VU SUR <em>INSTAGRAM</em></h2>
   </div>
-  <div class="als-insta-featured">
-    <video src="allstore_insta.mp4" autoplay muted loop playsinline style="width:100%;height:100%;object-fit:cover"></video>
-    <div class="als-insta-tag"><span>@ALLSTORE.24.7</span></div>
-    <div class="als-insta-badge">
-      <svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1.5"/></svg>
-      NOUVEAUTÉ
+  <div class="als-insta-row">
+    <div class="als-insta-featured">
+      <video src="allstore_insta.mp4" autoplay muted loop playsinline></video>
+      <div class="als-insta-tag"><span>@ALLSTORE.24.7</span></div>
+      <div class="als-insta-badge">
+        <svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1.5"/></svg>
+        NOUVEAUTÉ
+      </div>
     </div>
-  </div>
-  <div class="als-insta-products">
     <a href="produit-burberry-hoodie.html" class="als-insta-pcard">
       <div class="als-insta-pcard-img"><img src="burberry_hoodie_noir.jpg" alt="Burberry Hoodie"></div>
       <div class="als-insta-pcard-info">
-        <span class="als-insta-pcard-name">BURBERRY HOODIE</span>
+        <span class="als-insta-pcard-name">VESTE BURBERRY</span>
         <span class="als-insta-pcard-price">65,00€</span>
         <span class="als-insta-pcard-btn">DÉCOUVRIR</span>
       </div>
@@ -339,7 +332,7 @@
     <a href="produit-si-pull.html" class="als-insta-pcard">
       <div class="als-insta-pcard-img"><img src="si_pull_noir.jpg" alt="Stone Island Crewneck"></div>
       <div class="als-insta-pcard-info">
-        <span class="als-insta-pcard-name">STONE ISLAND CREWNECK</span>
+        <span class="als-insta-pcard-name">VESTE BURBERRY NOIR</span>
         <span class="als-insta-pcard-price">65,00€</span>
         <span class="als-insta-pcard-btn">DÉCOUVRIR</span>
       </div>
