@@ -64,50 +64,47 @@
   .als-pill.active{background:var(--noir,#0a1923);color:#fff;border-color:var(--noir,#0a1923)}
 
   /* ---------- LA SÉLECTION — scroll horizontal ---------- */
-  .als-hscroll{display:flex;gap:12px;overflow-x:auto;padding:0 20px 16px;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+  .als-hscroll{display:flex;gap:15px;overflow-x:auto;padding:0 20px 8px;scroll-behavior:smooth;-webkit-overflow-scrolling:touch;scrollbar-width:none}
   .als-hscroll::-webkit-scrollbar{display:none}
-  .als-hcard{flex:0 0 calc(50% - 6px);scroll-snap-align:start;text-decoration:none;background:#fff;border-radius:14px;overflow:hidden;border:1px solid rgba(0,0,0,.06)}
-  .als-hcard-img{aspect-ratio:1;background:#fff;display:flex;align-items:center;justify-content:center;overflow:hidden}
-  .als-hcard-img img{width:100%;height:100%;object-fit:cover}
-  .als-hcard-info{padding:12px 14px 14px}
-  .als-hcard-name{font-family:'Poppins',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:var(--noir,#0a1923);display:block;line-height:1.3}
-  .als-hcard-price{font-family:'Poppins',sans-serif;font-size:13px;color:var(--gris,#6a7a8a);display:block;margin-top:3px}
-  .als-hcard-soon{font-family:'Poppins',sans-serif;font-size:12px;color:var(--gris,#6a7a8a);font-style:italic;display:block;margin-top:3px}
+  .als-hcard{flex:0 0 190px;scroll-snap-align:start;text-decoration:none;background:#fbfbfd;border-radius:20px;overflow:hidden;padding:15px;transition:.3s ease}
+  .als-hcard-img{width:100%;aspect-ratio:1;display:flex;align-items:center;justify-content:center;margin-bottom:10px}
+  .als-hcard-img img{width:100%;height:auto;object-fit:contain;mix-blend-mode:multiply}
+  .als-hcard-info{padding:0}
+  .als-hcard-name{font-family:'Poppins',sans-serif;font-size:12px;font-weight:700;text-transform:uppercase;color:var(--noir,#0a1923);display:block;line-height:1.3}
+  .als-hcard-price{font-family:'Poppins',sans-serif;font-size:13px;color:#86868b;display:block;margin-top:3px;font-weight:400}
+  .als-hcard-soon{font-family:'Poppins',sans-serif;font-size:12px;color:#86868b;font-style:italic;display:block;margin-top:3px}
   .als-scroll-bar{width:60px;height:3px;background:var(--noir,#0a1923);margin:0 auto;border-radius:2px}
 
   /* ---------- NOS COLLECTIONS — cartes avec overlay ---------- */
-  .als-coll-grid{display:flex;gap:12px;overflow-x:auto;padding:0 20px 8px;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+  .als-coll-grid{display:flex;gap:15px;overflow-x:auto;padding:0 20px 8px;scroll-behavior:smooth;-webkit-overflow-scrolling:touch;scrollbar-width:none}
   .als-coll-grid::-webkit-scrollbar{display:none}
-  .als-coll-card{flex:0 0 calc(50% - 6px);scroll-snap-align:start;position:relative;border-radius:14px;overflow:hidden;text-decoration:none;aspect-ratio:4/5;background:#1a1a1a}
+  .als-coll-card{flex:0 0 220px;scroll-snap-align:start;position:relative;border-radius:25px;overflow:hidden;text-decoration:none;height:320px;background:#1a1a1a;box-shadow:0 15px 35px rgba(0,0,0,.05)}
   .als-coll-card img{width:100%;height:100%;object-fit:cover}
   .als-coll-card .als-coll-overlay{position:absolute;inset:0;background:linear-gradient(0deg,rgba(0,0,0,.55) 0%,transparent 50%)}
-  .als-coll-card .als-coll-label{position:absolute;bottom:14px;left:12px;right:12px;display:flex;align-items:center;justify-content:space-between}
-  .als-coll-card .als-coll-name{font-family:'Poppins',sans-serif;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:#fff}
-  .als-coll-card .als-coll-btn{font-family:'Poppins',sans-serif;font-size:9px;font-weight:600;text-transform:uppercase;color:#fff;background:rgba(255,255,255,.2);backdrop-filter:blur(4px);padding:6px 14px;border-radius:20px}
+  .als-coll-card .als-coll-label{position:absolute;bottom:20px;left:18px;right:18px;padding:14px;border-radius:18px;background:rgba(255,255,255,.1);backdrop-filter:blur(15px);border:1px solid rgba(255,255,255,.2);display:flex;align-items:center;justify-content:space-between}
+  .als-coll-card .als-coll-name{font-family:'Poppins',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:#fff}
+  .als-coll-card .als-coll-btn{font-family:'Poppins',sans-serif;font-size:9px;font-weight:600;text-transform:uppercase;color:#fff;background:rgba(255,255,255,.2);padding:6px 14px;border-radius:20px}
 
   /* ---------- VU SUR INSTAGRAM ---------- */
   .als-insta-section{padding:0;background:var(--bg2,#f5f2ec)}
-  .als-insta-row{display:flex;gap:16px;padding:0 20px;align-items:stretch;max-width:1000px;margin:0 auto;height:420px}
-  .als-insta-featured{position:relative;flex:0 0 35%;border-radius:16px;overflow:hidden}
-  .als-insta-featured video,.als-insta-featured img{width:100%;height:100%;object-fit:cover}
-  .als-insta-featured .als-insta-badge{position:absolute;bottom:16px;left:14px;font-family:'Poppins',sans-serif;font-size:9px;font-weight:600;text-transform:uppercase;letter-spacing:.06em;color:#fff;background:rgba(0,0,0,.45);backdrop-filter:blur(6px);padding:5px 12px;border-radius:20px;display:flex;align-items:center;gap:5px}
-  .als-insta-featured .als-insta-badge svg{width:12px;height:12px;fill:#fff}
-  .als-insta-featured .als-insta-tag{position:absolute;top:14px;left:14px;display:flex;align-items:center;gap:6px}
-  .als-insta-featured .als-insta-tag span{font-family:'Poppins',sans-serif;font-size:9px;font-weight:600;letter-spacing:.06em;color:#fff;background:rgba(0,0,0,.45);backdrop-filter:blur(6px);padding:5px 10px;border-radius:20px}
-  .als-insta-pcard{flex:1;background:#fff;border-radius:16px;overflow:hidden;border:1px solid rgba(0,0,0,.06);display:flex;flex-direction:column;align-items:center;padding-bottom:16px}
-  .als-insta-pcard-img{width:100%;flex:1;background:#fff;display:flex;align-items:center;justify-content:center;overflow:hidden;padding:24px}
-  .als-insta-pcard-img img{max-width:80%;max-height:80%;object-fit:contain}
-  .als-insta-pcard-name{font-family:'Poppins',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:var(--noir,#0a1923);text-align:center;margin-top:4px}
-  .als-insta-pcard-price{font-family:'Poppins',sans-serif;font-size:14px;font-weight:500;color:var(--noir,#0a1923);text-align:center;margin-top:6px}
-  .als-insta-pcard-btn{display:block;width:80%;font-family:'Poppins',sans-serif;font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.06em;color:#fff;background:var(--noir,#0a1923);padding:12px 0;border-radius:6px;text-decoration:none;text-align:center;margin-top:12px;transition:background .2s}
-  .als-insta-pcard-btn:hover{background:#1a3040}
+  .als-insta-row{display:flex;gap:12px;padding:0 20px;max-width:1000px;margin:0 auto}
+  .als-insta-col{flex:1;display:flex;flex-direction:column;gap:12px}
+  .als-insta-vid{position:relative;border-radius:20px;overflow:hidden;aspect-ratio:9/16}
+  .als-insta-vid video{width:100%;height:100%;object-fit:cover}
+  .als-insta-vid .als-insta-tag{position:absolute;top:14px;left:14px;display:flex;align-items:center;gap:6px}
+  .als-insta-vid .als-insta-tag span{font-family:'Poppins',sans-serif;font-size:9px;font-weight:600;letter-spacing:.06em;color:#fff;background:rgba(0,0,0,.45);backdrop-filter:blur(6px);padding:5px 10px;border-radius:20px}
+  .als-insta-pcard{display:flex;flex-direction:column;align-items:center;background:#fbfbfd;border-radius:16px;padding:6px 6px 10px;text-decoration:none;border:1px solid rgba(0,0,0,.03)}
+  .als-insta-pcard-img{width:100%;display:flex;align-items:center;justify-content:center;overflow:hidden;padding:8px}
+  .als-insta-pcard-img img{width:100%;height:auto;object-fit:contain;mix-blend-mode:multiply}
+  .als-insta-pcard-name{font-family:'Poppins',sans-serif;font-size:11px;font-weight:700;text-transform:uppercase;color:var(--noir,#0a1923);text-align:center;margin-top:6px}
+  .als-insta-pcard-price{font-family:'Poppins',sans-serif;font-size:12px;font-weight:400;color:#86868b;text-align:center;margin-top:4px}
 
   /* ---------- ARTICLES RARES — scroll horizontal ---------- */
-  .als-rare-grid{display:flex;gap:12px;overflow-x:auto;padding:0 20px 12px;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+  .als-rare-grid{display:flex;gap:15px;overflow-x:auto;padding:0 20px 12px;scroll-behavior:smooth;-webkit-overflow-scrolling:touch;scrollbar-width:none}
   .als-rare-grid::-webkit-scrollbar{display:none}
-  .als-rare-card{flex:0 0 calc(50% - 6px);scroll-snap-align:start;text-decoration:none;background:#fff;border-radius:16px;overflow:hidden;border:1px solid rgba(0,0,0,.06)}
-  .als-rare-img{aspect-ratio:1;background:#fff;display:flex;align-items:center;justify-content:center;overflow:hidden}
-  .als-rare-img img{width:100%;height:100%;object-fit:cover}
+  .als-rare-card{flex:0 0 190px;scroll-snap-align:start;text-decoration:none;background:#fbfbfd;border-radius:20px;overflow:hidden;padding:15px;transition:.3s ease}
+  .als-rare-img{width:100%;aspect-ratio:1;display:flex;align-items:center;justify-content:center;margin-bottom:10px}
+  .als-rare-img img{width:100%;height:auto;object-fit:contain;mix-blend-mode:multiply}
   .als-rare-info{padding:12px 14px 16px;text-align:left}
   .als-rare-brand{font-family:'Poppins',sans-serif;font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:.04em;color:var(--noir,#0a1923)}
   .als-rare-name{font-family:'Poppins',sans-serif;font-size:12px;color:var(--gris,#6a7a8a);display:block;margin-top:2px}
@@ -126,24 +123,23 @@
     .hero-als h1{font-size:26px;margin-bottom:10px}
     .hero-als .hero-desc{font-size:11px;margin-bottom:20px}
     .hero-als .hero-btn{font-size:10px;padding:14px 32px}
-    .als-sec{padding:32px 0 28px}
+    .als-sec{padding:30px 0 24px}
     .als-sec-head{padding:0 16px;margin-bottom:16px}
     .als-sec-title{font-size:20px}
     .als-filters{padding:0 16px;margin-bottom:16px;gap:6px}
     .als-pill{font-size:11px;padding:9px 18px}
-    .als-hscroll{padding:0 16px 16px;gap:10px}
-    .als-hcard{flex:0 0 calc(50% - 5px)}
-    .als-hcard-img{padding:0}
-    .als-hcard-info{padding:12px 14px 14px}
-    .als-hcard-name{font-size:12px}
+    .als-hscroll{padding:0 16px 8px;gap:10px}
+    .als-hcard{flex:0 0 160px;padding:12px}
+    .als-hcard-name{font-size:11px}
     .als-hcard-price{font-size:12px}
     .als-coll-grid{padding:0 16px 8px;gap:10px}
-    .als-coll-card{flex:0 0 calc(50% - 5px)}
-    .als-insta-row{flex-wrap:wrap;padding:0 16px;gap:10px;height:auto}
-    .als-insta-featured{flex:0 0 100%;height:280px;min-height:auto}
-    .als-insta-pcard{flex:0 0 calc(50% - 5px)}
+    .als-coll-card{flex:0 0 180px;height:260px;border-radius:20px}
+    .als-coll-card .als-coll-label{bottom:14px;left:12px;right:12px;padding:10px;border-radius:14px}
+    .als-coll-card .als-coll-name{font-size:11px}
+    .als-insta-row{padding:0 16px;gap:8px}
+    .als-insta-vid{border-radius:16px}
     .als-rare-grid{padding:0 16px 12px;gap:10px}
-    .als-rare-card{flex:0 0 calc(50% - 5px)}
+    .als-rare-card{flex:0 0 160px;padding:12px}
     .als-collab-row{gap:24px;padding:0 16px}
     .als-collab-item{font-size:18px}
   }
@@ -152,43 +148,38 @@
   @media(min-width:601px) and (max-width:900px){
     .als-sec-head{padding:0 24px}
     .als-filters{padding:0 24px}
-    .als-hscroll{padding:0 24px 16px;gap:14px}
-    .als-hcard{flex:0 0 calc(33.33% - 10px)}
-    .als-coll-grid{padding:0 24px 8px;gap:14px}
-    .als-coll-card{flex:0 0 calc(33.33% - 10px);aspect-ratio:4/5}
-    .als-insta-row{flex-wrap:wrap;padding:0 24px;gap:14px;height:auto}
-    .als-insta-featured{flex:0 0 100%;min-height:300px}
-    .als-insta-pcard{flex:0 0 calc(50% - 7px)}
-    .als-rare-grid{padding:0 24px 12px;gap:14px}
-    .als-rare-card{flex:0 0 calc(33.33% - 10px)}
+    .als-hscroll{padding:0 24px 8px;gap:15px}
+    .als-hcard{flex:0 0 190px}
+    .als-coll-grid{padding:0 24px 8px;gap:15px}
+    .als-coll-card{flex:0 0 260px;height:380px}
+    .als-insta-row{padding:0 24px;gap:12px;max-width:600px;margin:0 auto}
+    .als-insta-vid{border-radius:20px}
+    .als-rare-grid{padding:0 24px 12px;gap:15px}
+    .als-rare-card{flex:0 0 190px}
   }
 
   /* ---------- DESKTOP > 900px ---------- */
   @media(min-width:901px){
     .als-sec{padding:36px 0 32px}
-    .als-sec-head{padding:0 48px;margin-bottom:18px}
+    .als-sec-head{padding:0 80px;margin-bottom:18px}
     .als-sec-title{font-size:22px}
-    .als-filters{padding:0 48px}
+    .als-filters{padding:0 80px}
     .als-pill{font-size:11px;padding:8px 20px}
-    .als-hscroll{padding:0 48px 18px;gap:14px;flex-wrap:nowrap}
-    .als-hcard{flex:0 0 calc(14.28% - 12px)}
-    .als-hcard-img{padding:0}
-    .als-hcard-img img{width:100%;height:100%;object-fit:cover}
-    .als-hcard-info{padding:10px 12px 12px}
+    .als-hscroll{padding:0 80px 10px;gap:15px;flex-wrap:nowrap}
+    .als-hcard{flex:0 0 220px}
     .als-hcard-name{font-size:12px}
-    .als-hcard-price{font-size:12px}
+    .als-hcard-price{font-size:13px}
     .als-hcard-soon{font-size:11px}
-    .als-coll-grid{padding:0 48px 10px;gap:16px}
-    .als-coll-card{flex:0 0 calc(20% - 13px);aspect-ratio:4/5}
-    .als-coll-card .als-coll-name{font-size:11px}
-    .als-coll-card .als-coll-btn{font-size:8px;padding:5px 12px}
-    .als-insta-section .als-sec-head{padding:0 48px}
-    .als-insta-row{padding:0 48px;gap:16px;height:420px;max-width:1000px;margin:0 auto}
-    .als-rare-grid{padding:0 48px 14px;gap:16px}
-    .als-rare-card{flex:0 0 calc(20% - 13px)}
-    .als-rare-img{padding:0}
-    .als-rare-img img{width:100%;height:100%;object-fit:cover}
-    .als-rare-info{padding:10px 12px 14px}
+    .als-coll-grid{padding:0 80px 10px;gap:25px}
+    .als-coll-card{flex:0 0 340px;height:480px;border-radius:35px}
+    .als-coll-card .als-coll-label{bottom:30px;left:25px;right:25px;padding:20px;border-radius:25px}
+    .als-coll-card .als-coll-name{font-size:14px}
+    .als-coll-card .als-coll-btn{font-size:9px;padding:6px 14px}
+    .als-insta-section .als-sec-head{padding:0 80px}
+    .als-insta-row{padding:0 80px;gap:20px;max-width:700px;margin:0 auto}
+    .als-insta-vid{border-radius:24px}
+    .als-rare-grid{padding:0 80px 14px;gap:15px}
+    .als-rare-card{flex:0 0 220px}
     .als-rare-brand{font-size:10px}
     .als-rare-name{font-size:11px}
     .als-rare-price{font-size:12px}
@@ -197,7 +188,7 @@
 
   /* ---------- LARGE DESKTOP > 1400px ---------- */
   @media(min-width:1400px){
-    .als-insta-featured{max-width:1320px;margin-left:auto;margin-right:auto}
+    .als-insta-row{max-width:700px;margin-left:auto;margin-right:auto}
   }
 </style>
 
@@ -310,25 +301,27 @@
     <h2 class="als-sec-title">VU SUR <em>INSTAGRAM</em></h2>
   </div>
   <div class="als-insta-row">
-    <div class="als-insta-featured">
-      <video src="allstore_insta.mp4" autoplay muted loop playsinline></video>
-      <div class="als-insta-tag"><span>@ALLSTORE.24.7</span></div>
-      <div class="als-insta-badge">
-        <svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1.5"/></svg>
-        NOUVEAUTÉ
+    <div class="als-insta-col">
+      <div class="als-insta-vid">
+        <video src="allstore_insta.mp4" autoplay muted loop playsinline></video>
+        <div class="als-insta-tag"><span>@ALLSTORE.24.7</span></div>
       </div>
+      <a href="produit-burberry-hoodie.html?color=gris" class="als-insta-pcard">
+        <div class="als-insta-pcard-img"><img src="burberry_hoodie_gris.jpg" alt="Burberry Hoodie Gris"></div>
+        <span class="als-insta-pcard-name">VESTE BURBERRY GRIS</span>
+        <span class="als-insta-pcard-price">65,00€</span>
+      </a>
     </div>
-    <div class="als-insta-pcard">
-      <div class="als-insta-pcard-img"><img src="burberry_hoodie_gris.jpg" alt="Burberry Hoodie Gris"></div>
-      <span class="als-insta-pcard-name">VESTE BURBERRY GRIS</span>
-      <span class="als-insta-pcard-price">65,00€</span>
-      <a href="produit-burberry-hoodie.html?color=gris" class="als-insta-pcard-btn">DÉCOUVRIR</a>
-    </div>
-    <div class="als-insta-pcard">
-      <div class="als-insta-pcard-img"><img src="burberry_hoodie_noir.jpg" alt="Burberry Hoodie Noir"></div>
-      <span class="als-insta-pcard-name">VESTE BURBERRY NOIR</span>
-      <span class="als-insta-pcard-price">65,00€</span>
-      <a href="produit-burberry-hoodie.html?color=noir" class="als-insta-pcard-btn">DÉCOUVRIR</a>
+    <div class="als-insta-col">
+      <div class="als-insta-vid">
+        <video src="allstore_insta2.mov" autoplay muted loop playsinline></video>
+        <div class="als-insta-tag"><span>@ALLSTORE.24.7</span></div>
+      </div>
+      <a href="produit-airpods-max.html" class="als-insta-pcard">
+        <div class="als-insta-pcard-img"><img src="airpods_max_1.jpg" alt="AirPods Max"></div>
+        <span class="als-insta-pcard-name">AIRPODS MAX</span>
+        <span class="als-insta-pcard-price">185,00€</span>
+      </a>
     </div>
   </div>
 </section>
