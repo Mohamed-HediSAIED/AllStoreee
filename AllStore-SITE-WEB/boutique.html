@@ -229,6 +229,18 @@
     }
     .b-card--colorways .b-img img.fade { opacity: 0; }
 
+    /* New products - perfect centering */
+    .b-card--new .b-img {
+      background: #f5f1ea;
+      padding: 16px;
+    }
+    .b-card--new .b-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      object-position: center;
+    }
+
     /* Gallery arrows & counter */
     .b-gallery { position: relative; }
     .b-gal-arrow {
@@ -718,35 +730,6 @@
       </div>
     </div>
 
-    <!-- CHRISTIAN LOUBOUTIN LOUIS JUNIOR -->
-    <div class="b-card b-card--colorways" data-cat="chaussures" id="louboutin-louis-card" style="cursor:pointer" onclick="if(!event.target.closest('.b-cw,.b-btn-cart,.b-btn-wl')){const c=this.querySelector('.b-cw.active');window.location.href='produit-louboutin-louis.html?color='+(c?.dataset?.color_id||'noir')}">
-      <span class="b-badge">Nouveau</span>
-      <div class="b-img">
-        <img id="louboutin-louis-img" src="louboutin_louis_noir.jpg" alt="Christian Louboutin Louis Junior">
-      </div>
-      <div class="b-body">
-        <span class="b-brand">Christian Louboutin</span>
-        <span class="b-name">Louis Junior</span>
-        <span class="b-colorway-label">Coloris : <strong id="louboutin-louis-color-name">Noir</strong></span>
-        <div class="b-colorway-picker" id="louboutin-louis-picker">
-          <button class="b-cw active" style="background:#1a1a1a" data-color_id="noir" data-color="Noir" onclick="pickLouboutinLouis(this)"></button>
-          <button class="b-cw" style="background:#1a2a4a" data-color_id="marine" data-color="Marine" onclick="pickLouboutinLouis(this)"></button>
-          <button class="b-cw" style="background:#f0ece4;border:1.5px solid #ddd" data-color_id="blanc" data-color="Blanc" onclick="pickLouboutinLouis(this)"></button>
-          <button class="b-cw" style="background:linear-gradient(135deg,#1a2a4a 70%,#c0c0c0 70%)" data-color_id="spikes_marine" data-color="Spikes Marine" onclick="pickLouboutinLouis(this)"></button>
-          <button class="b-cw" style="background:#c8b898" data-color_id="beige" data-color="Beige" onclick="pickLouboutinLouis(this)"></button>
-          <button class="b-cw" style="background:#2a5a3a" data-color_id="vert" data-color="Vert" onclick="pickLouboutinLouis(this)"></button>
-          <button class="b-cw" style="background:#a0754a" data-color_id="camel" data-color="Camel" onclick="pickLouboutinLouis(this)"></button>
-        </div>
-        <span class="b-price">— € <em>Prix bientôt disponible</em></span>
-        <div class="b-actions">
-          <button class="b-btn-cart" disabled style="opacity:.5;cursor:not-allowed">Bientôt disponible</button>
-          <button class="b-btn-wl" id="louboutin-louis-wl-btn" onclick="handleWL(this,'louboutin_louis_noir','Christian Louboutin','Louis Junior — Noir','louboutin_louis_noir.jpg')">
-            <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
-          </button>
-        </div>
-      </div>
-    </div>
-
     <!-- LUNETTES MIU MIU -->
     <div class="b-card" data-cat="lunettes" id="lunettes-miumiu-card" style="cursor:pointer" onclick="if(!event.target.closest('.b-btn-cart,.b-btn-wl')){window.location.href='produit-lunettes-miumiu.html'}">
       <span class="b-badge">Nouveau</span>
@@ -869,6 +852,768 @@
       ...B30 card content...
     </div>
     FIN MASQUÉ B30 -->
+
+    <!-- BALENCIAGA 3XL -->
+    <div class="b-card b-card--new b-card--colorways" data-cat="chaussures" id="bal3xl-card">
+      <span class="b-badge">Nouveau</span>
+      <div class="b-img">
+        <img id="bal3xl-img" src="772774W3RMU1100_F.jpg" alt="Article">
+      </div>
+      <div class="b-body">
+        <span class="b-brand"></span>
+        <span class="b-name"></span>
+        <span class="b-colorway-label">Coloris : <strong id="bal3xl-color-name">—</strong></span>
+        <div class="b-colorway-picker" id="bal3xl-picker">
+          <button class="b-cw active" data-img="772774W3RMU1044_F.jpg" data-color="Coloris 1" onclick="pickBal3xl(this)" style="background:#888" title="Coloris 1"></button>
+          <button class="b-cw" data-img="772774W3RMU1100_F.jpg" data-color="Coloris 2" onclick="pickBal3xl(this)" style="background:#f0f0f0" title="Coloris 2"></button>
+          <button class="b-cw" data-img="772774W3RMU1340_F.jpg" data-color="Coloris 3" onclick="pickBal3xl(this)" style="background:#c8b090" title="Coloris 3"></button>
+          <button class="b-cw" data-img="772774W3RMU8123_F.jpg" data-color="Coloris 4" onclick="pickBal3xl(this)" style="background:#333" title="Coloris 4"></button>
+          <button class="b-cw" data-img="772774W3RMU9010_F.jpg" data-color="Coloris 5" onclick="pickBal3xl(this)" style="background:#e0d8c8" title="Coloris 5"></button>
+          <button class="b-cw" data-img="772774W3RMU9756_F.jpg" data-color="Coloris 6" onclick="pickBal3xl(this)" style="background:#5a7080" title="Coloris 6"></button>
+          <button class="b-cw" data-img="772774W3RMU9934_F.jpg" data-color="Coloris 7" onclick="pickBal3xl(this)" style="background:#a0a0a0" title="Coloris 7"></button>
+        </div>
+        <span class="b-price">— € <em>Prix bientôt disponible</em></span>
+        <div class="b-actions">
+          <button class="b-btn-cart" disabled style="opacity:.5;cursor:not-allowed">Bientôt disponible</button>
+          <button class="b-btn-wl" onclick="handleWL(this,'bal3xl','','Article','772774W3RMU1100_F.jpg')"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></button>
+        </div>
+      </div>
+    </div>
+    <!-- PRODUIT 1 -->
+    <div class="b-card b-card--new" data-cat="chaussures" id="prod-06d4c0bc">
+      <div class="b-img">
+        <img src="06d4c0bc.jpg" alt="Article" onerror="this.closest('.b-card').style.display='none'">
+      </div>
+      <div class="b-body">
+        <span class="b-brand"></span>
+        <span class="b-name"></span>
+        <span class="b-price">— € <em>Prix bientôt disponible</em></span>
+        <div class="b-actions">
+          <button class="b-btn-cart" disabled style="opacity:.5;cursor:not-allowed">Bientôt disponible</button>
+          <button class="b-btn-wl" onclick="handleWL(this,'06d4c0bc','','Article','06d4c0bc.jpg')"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></button>
+        </div>
+      </div>
+    </div>
+    <!-- PRODUIT 2 -->
+    <div class="b-card b-card--new" data-cat="chaussures" id="prod-07f89871">
+      <div class="b-img">
+        <img src="07f89871.jpg" alt="Article" onerror="this.closest('.b-card').style.display='none'">
+      </div>
+      <div class="b-body">
+        <span class="b-brand"></span>
+        <span class="b-name"></span>
+        <span class="b-price">— € <em>Prix bientôt disponible</em></span>
+        <div class="b-actions">
+          <button class="b-btn-cart" disabled style="opacity:.5;cursor:not-allowed">Bientôt disponible</button>
+          <button class="b-btn-wl" onclick="handleWL(this,'07f89871','','Article','07f89871.jpg')"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></button>
+        </div>
+      </div>
+    </div>
+    <!-- PRODUIT 3 -->
+    <div class="b-card b-card--new" data-cat="chaussures" id="prod-0a0f026c">
+      <div class="b-img">
+        <img src="0a0f026c.jpg" alt="Article" onerror="this.closest('.b-card').style.display='none'">
+      </div>
+      <div class="b-body">
+        <span class="b-brand"></span>
+        <span class="b-name"></span>
+        <span class="b-price">— € <em>Prix bientôt disponible</em></span>
+        <div class="b-actions">
+          <button class="b-btn-cart" disabled style="opacity:.5;cursor:not-allowed">Bientôt disponible</button>
+          <button class="b-btn-wl" onclick="handleWL(this,'0a0f026c','','Article','0a0f026c.jpg')"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></button>
+        </div>
+      </div>
+    </div>
+    <!-- PRODUIT 4 -->
+    <div class="b-card b-card--new" data-cat="chaussures" id="prod-15b14e03">
+      <div class="b-img">
+        <img src="15b14e03.jpg" alt="Article" onerror="this.closest('.b-card').style.display='none'">
+      </div>
+      <div class="b-body">
+        <span class="b-brand"></span>
+        <span class="b-name"></span>
+        <span class="b-price">— € <em>Prix bientôt disponible</em></span>
+        <div class="b-actions">
+          <button class="b-btn-cart" disabled style="opacity:.5;cursor:not-allowed">Bientôt disponible</button>
+          <button class="b-btn-wl" onclick="handleWL(this,'15b14e03','','Article','15b14e03.jpg')"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></button>
+        </div>
+      </div>
+    </div>
+    <!-- PRODUIT 5 -->
+    <div class="b-card b-card--new" data-cat="chaussures" id="prod-1feacc05">
+      <div class="b-img">
+        <img src="1feacc05.jpg" alt="Article" onerror="this.closest('.b-card').style.display='none'">
+      </div>
+      <div class="b-body">
+        <span class="b-brand"></span>
+        <span class="b-name"></span>
+        <span class="b-price">— € <em>Prix bientôt disponible</em></span>
+        <div class="b-actions">
+          <button class="b-btn-cart" disabled style="opacity:.5;cursor:not-allowed">Bientôt disponible</button>
+          <button class="b-btn-wl" onclick="handleWL(this,'1feacc05','','Article','1feacc05.jpg')"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></button>
+        </div>
+      </div>
+    </div>
+    <!-- PRODUIT 6 -->
+    <div class="b-card b-card--new" data-cat="chaussures" id="prod-2c3a4a77">
+      <div class="b-img">
+        <img src="2c3a4a77.jpg" alt="Article" onerror="this.closest('.b-card').style.display='none'">
+      </div>
+      <div class="b-body">
+        <span class="b-brand"></span>
+        <span class="b-name"></span>
+        <span class="b-price">— € <em>Prix bientôt disponible</em></span>
+        <div class="b-actions">
+          <button class="b-btn-cart" disabled style="opacity:.5;cursor:not-allowed">Bientôt disponible</button>
+          <button class="b-btn-wl" onclick="handleWL(this,'2c3a4a77','','Article','2c3a4a77.jpg')"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></button>
+        </div>
+      </div>
+    </div>
+    <!-- PRODUIT 7 -->
+    <div class="b-card b-card--new" data-cat="chaussures" id="prod-31b6ff3c">
+      <div class="b-img">
+        <img src="31b6ff3c.jpg" alt="Article" onerror="this.closest('.b-card').style.display='none'">
+      </div>
+      <div class="b-body">
+        <span class="b-brand"></span>
+        <span class="b-name"></span>
+        <span class="b-price">— € <em>Prix bientôt disponible</em></span>
+        <div class="b-actions">
+          <button class="b-btn-cart" disabled style="opacity:.5;cursor:not-allowed">Bientôt disponible</button>
+          <button class="b-btn-wl" onclick="handleWL(this,'31b6ff3c','','Article','31b6ff3c.jpg')"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></button>
+        </div>
+      </div>
+    </div>
+    <!-- PRODUIT 8 -->
+    <div class="b-card b-card--new" data-cat="chaussures" id="prod-337f8006">
+      <div class="b-img">
+        <img src="337f8006.jpg" alt="Article" onerror="this.closest('.b-card').style.display='none'">
+      </div>
+      <div class="b-body">
+        <span class="b-brand"></span>
+        <span class="b-name"></span>
+        <span class="b-price">— € <em>Prix bientôt disponible</em></span>
+        <div class="b-actions">
+          <button class="b-btn-cart" disabled style="opacity:.5;cursor:not-allowed">Bientôt disponible</button>
+          <button class="b-btn-wl" onclick="handleWL(this,'337f8006','','Article','337f8006.jpg')"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></button>
+        </div>
+      </div>
+    </div>
+    <!-- PRODUIT 9 -->
+    <div class="b-card b-card--new" data-cat="chaussures" id="prod-349432e0">
+      <div class="b-img">
+        <img src="349432e0.jpg" alt="Article" onerror="this.closest('.b-card').style.display='none'">
+      </div>
+      <div class="b-body">
+        <span class="b-brand"></span>
+        <span class="b-name"></span>
+        <span class="b-price">— € <em>Prix bientôt disponible</em></span>
+        <div class="b-actions">
+          <button class="b-btn-cart" disabled style="opacity:.5;cursor:not-allowed">Bientôt disponible</button>
+          <button class="b-btn-wl" onclick="handleWL(this,'349432e0','','Article','349432e0.jpg')"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></button>
+        </div>
+      </div>
+    </div>
+    <!-- PRODUIT 10 -->
+    <div class="b-card b-card--new" data-cat="chaussures" id="prod-3a4313a3">
+      <div class="b-img">
+        <img src="3a4313a3.jpg" alt="Article" onerror="this.closest('.b-card').style.display='none'">
+      </div>
+      <div class="b-body">
+        <span class="b-brand"></span>
+        <span class="b-name"></span>
+        <span class="b-price">— € <em>Prix bientôt disponible</em></span>
+        <div class="b-actions">
+          <button class="b-btn-cart" disabled style="opacity:.5;cursor:not-allowed">Bientôt disponible</button>
+          <button class="b-btn-wl" onclick="handleWL(this,'3a4313a3','','Article','3a4313a3.jpg')"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></button>
+        </div>
+      </div>
+    </div>
+    <!-- PRODUIT 11 -->
+    <div class="b-card b-card--new" data-cat="chaussures" id="prod-40029c12">
+      <div class="b-img">
+        <img src="40029c12.jpg" alt="Article" onerror="this.closest('.b-card').style.display='none'">
+      </div>
+      <div class="b-body">
+        <span class="b-brand"></span>
+        <span class="b-name"></span>
+        <span class="b-price">— € <em>Prix bientôt disponible</em></span>
+        <div class="b-actions">
+          <button class="b-btn-cart" disabled style="opacity:.5;cursor:not-allowed">Bientôt disponible</button>
+          <button class="b-btn-wl" onclick="handleWL(this,'40029c12','','Article','40029c12.jpg')"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></button>
+        </div>
+      </div>
+    </div>
+    <!-- PRODUIT 12 -->
+    <div class="b-card b-card--new" data-cat="chaussures" id="prod-44330bad">
+      <div class="b-img">
+        <img src="44330bad.jpg" alt="Article" onerror="this.closest('.b-card').style.display='none'">
+      </div>
+      <div class="b-body">
+        <span class="b-brand"></span>
+        <span class="b-name"></span>
+        <span class="b-price">— € <em>Prix bientôt disponible</em></span>
+        <div class="b-actions">
+          <button class="b-btn-cart" disabled style="opacity:.5;cursor:not-allowed">Bientôt disponible</button>
+          <button class="b-btn-wl" onclick="handleWL(this,'44330bad','','Article','44330bad.jpg')"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></button>
+        </div>
+      </div>
+    </div>
+    <!-- PRODUIT 13 -->
+    <div class="b-card b-card--new" data-cat="chaussures" id="prod-4799b7af">
+      <div class="b-img">
+        <img src="4799b7af.jpg" alt="Article" onerror="this.closest('.b-card').style.display='none'">
+      </div>
+      <div class="b-body">
+        <span class="b-brand"></span>
+        <span class="b-name"></span>
+        <span class="b-price">— € <em>Prix bientôt disponible</em></span>
+        <div class="b-actions">
+          <button class="b-btn-cart" disabled style="opacity:.5;cursor:not-allowed">Bientôt disponible</button>
+          <button class="b-btn-wl" onclick="handleWL(this,'4799b7af','','Article','4799b7af.jpg')"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></button>
+        </div>
+      </div>
+    </div>
+    <!-- PRODUIT 14 -->
+    <div class="b-card b-card--new" data-cat="chaussures" id="prod-4eeb5c15">
+      <div class="b-img">
+        <img src="4eeb5c15.jpg" alt="Article" onerror="this.closest('.b-card').style.display='none'">
+      </div>
+      <div class="b-body">
+        <span class="b-brand"></span>
+        <span class="b-name"></span>
+        <span class="b-price">— € <em>Prix bientôt disponible</em></span>
+        <div class="b-actions">
+          <button class="b-btn-cart" disabled style="opacity:.5;cursor:not-allowed">Bientôt disponible</button>
+          <button class="b-btn-wl" onclick="handleWL(this,'4eeb5c15','','Article','4eeb5c15.jpg')"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></button>
+        </div>
+      </div>
+    </div>
+    <!-- PRODUIT 15 -->
+    <div class="b-card b-card--new" data-cat="chaussures" id="prod-50f0779f">
+      <div class="b-img">
+        <img src="50f0779f.jpg" alt="Article" onerror="this.closest('.b-card').style.display='none'">
+      </div>
+      <div class="b-body">
+        <span class="b-brand"></span>
+        <span class="b-name"></span>
+        <span class="b-price">— € <em>Prix bientôt disponible</em></span>
+        <div class="b-actions">
+          <button class="b-btn-cart" disabled style="opacity:.5;cursor:not-allowed">Bientôt disponible</button>
+          <button class="b-btn-wl" onclick="handleWL(this,'50f0779f','','Article','50f0779f.jpg')"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></button>
+        </div>
+      </div>
+    </div>
+    <!-- PRODUIT 16 -->
+    <div class="b-card b-card--new" data-cat="chaussures" id="prod-54218037">
+      <div class="b-img">
+        <img src="54218037.jpg" alt="Article" onerror="this.closest('.b-card').style.display='none'">
+      </div>
+      <div class="b-body">
+        <span class="b-brand"></span>
+        <span class="b-name"></span>
+        <span class="b-price">— € <em>Prix bientôt disponible</em></span>
+        <div class="b-actions">
+          <button class="b-btn-cart" disabled style="opacity:.5;cursor:not-allowed">Bientôt disponible</button>
+          <button class="b-btn-wl" onclick="handleWL(this,'54218037','','Article','54218037.jpg')"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></button>
+        </div>
+      </div>
+    </div>
+    <!-- PRODUIT 17 -->
+    <div class="b-card b-card--new" data-cat="chaussures" id="prod-5d5c1056">
+      <div class="b-img">
+        <img src="5d5c1056.jpg" alt="Article" onerror="this.closest('.b-card').style.display='none'">
+      </div>
+      <div class="b-body">
+        <span class="b-brand"></span>
+        <span class="b-name"></span>
+        <span class="b-price">— € <em>Prix bientôt disponible</em></span>
+        <div class="b-actions">
+          <button class="b-btn-cart" disabled style="opacity:.5;cursor:not-allowed">Bientôt disponible</button>
+          <button class="b-btn-wl" onclick="handleWL(this,'5d5c1056','','Article','5d5c1056.jpg')"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></button>
+        </div>
+      </div>
+    </div>
+    <!-- PRODUIT 18 -->
+    <div class="b-card b-card--new" data-cat="chaussures" id="prod-5eadff56">
+      <div class="b-img">
+        <img src="5eadff56.jpg" alt="Article" onerror="this.closest('.b-card').style.display='none'">
+      </div>
+      <div class="b-body">
+        <span class="b-brand"></span>
+        <span class="b-name"></span>
+        <span class="b-price">— € <em>Prix bientôt disponible</em></span>
+        <div class="b-actions">
+          <button class="b-btn-cart" disabled style="opacity:.5;cursor:not-allowed">Bientôt disponible</button>
+          <button class="b-btn-wl" onclick="handleWL(this,'5eadff56','','Article','5eadff56.jpg')"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></button>
+        </div>
+      </div>
+    </div>
+    <!-- PRODUIT 19 -->
+    <div class="b-card b-card--new" data-cat="chaussures" id="prod-6bd4b430">
+      <div class="b-img">
+        <img src="6bd4b430.jpg" alt="Article" onerror="this.closest('.b-card').style.display='none'">
+      </div>
+      <div class="b-body">
+        <span class="b-brand"></span>
+        <span class="b-name"></span>
+        <span class="b-price">— € <em>Prix bientôt disponible</em></span>
+        <div class="b-actions">
+          <button class="b-btn-cart" disabled style="opacity:.5;cursor:not-allowed">Bientôt disponible</button>
+          <button class="b-btn-wl" onclick="handleWL(this,'6bd4b430','','Article','6bd4b430.jpg')"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></button>
+        </div>
+      </div>
+    </div>
+    <!-- PRODUIT 20 -->
+    <div class="b-card b-card--new" data-cat="chaussures" id="prod-6c496287">
+      <div class="b-img">
+        <img src="6c496287.jpg" alt="Article" onerror="this.closest('.b-card').style.display='none'">
+      </div>
+      <div class="b-body">
+        <span class="b-brand"></span>
+        <span class="b-name"></span>
+        <span class="b-price">— € <em>Prix bientôt disponible</em></span>
+        <div class="b-actions">
+          <button class="b-btn-cart" disabled style="opacity:.5;cursor:not-allowed">Bientôt disponible</button>
+          <button class="b-btn-wl" onclick="handleWL(this,'6c496287','','Article','6c496287.jpg')"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></button>
+        </div>
+      </div>
+    </div>
+    <!-- PRODUIT 21 -->
+    <div class="b-card b-card--new" data-cat="chaussures" id="prod-6cb494f3">
+      <div class="b-img">
+        <img src="6cb494f3.jpg" alt="Article" onerror="this.closest('.b-card').style.display='none'">
+      </div>
+      <div class="b-body">
+        <span class="b-brand"></span>
+        <span class="b-name"></span>
+        <span class="b-price">— € <em>Prix bientôt disponible</em></span>
+        <div class="b-actions">
+          <button class="b-btn-cart" disabled style="opacity:.5;cursor:not-allowed">Bientôt disponible</button>
+          <button class="b-btn-wl" onclick="handleWL(this,'6cb494f3','','Article','6cb494f3.jpg')"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></button>
+        </div>
+      </div>
+    </div>
+    <!-- PRODUIT 22 -->
+    <div class="b-card b-card--new" data-cat="chaussures" id="prod-6e32e831">
+      <div class="b-img">
+        <img src="6e32e831.jpg" alt="Article" onerror="this.closest('.b-card').style.display='none'">
+      </div>
+      <div class="b-body">
+        <span class="b-brand"></span>
+        <span class="b-name"></span>
+        <span class="b-price">— € <em>Prix bientôt disponible</em></span>
+        <div class="b-actions">
+          <button class="b-btn-cart" disabled style="opacity:.5;cursor:not-allowed">Bientôt disponible</button>
+          <button class="b-btn-wl" onclick="handleWL(this,'6e32e831','','Article','6e32e831.jpg')"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></button>
+        </div>
+      </div>
+    </div>
+    <!-- PRODUIT 23 -->
+    <div class="b-card b-card--new" data-cat="chaussures" id="prod-73fa3aa2">
+      <div class="b-img">
+        <img src="73fa3aa2.jpg" alt="Article" onerror="this.closest('.b-card').style.display='none'">
+      </div>
+      <div class="b-body">
+        <span class="b-brand"></span>
+        <span class="b-name"></span>
+        <span class="b-price">— € <em>Prix bientôt disponible</em></span>
+        <div class="b-actions">
+          <button class="b-btn-cart" disabled style="opacity:.5;cursor:not-allowed">Bientôt disponible</button>
+          <button class="b-btn-wl" onclick="handleWL(this,'73fa3aa2','','Article','73fa3aa2.jpg')"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></button>
+        </div>
+      </div>
+    </div>
+    <!-- PRODUIT 24 -->
+    <div class="b-card b-card--new" data-cat="chaussures" id="prod-74dd6df5">
+      <div class="b-img">
+        <img src="74dd6df5.jpg" alt="Article" onerror="this.closest('.b-card').style.display='none'">
+      </div>
+      <div class="b-body">
+        <span class="b-brand"></span>
+        <span class="b-name"></span>
+        <span class="b-price">— € <em>Prix bientôt disponible</em></span>
+        <div class="b-actions">
+          <button class="b-btn-cart" disabled style="opacity:.5;cursor:not-allowed">Bientôt disponible</button>
+          <button class="b-btn-wl" onclick="handleWL(this,'74dd6df5','','Article','74dd6df5.jpg')"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></button>
+        </div>
+      </div>
+    </div>
+    <!-- PRODUIT 25 -->
+    <div class="b-card b-card--new" data-cat="chaussures" id="prod-7c3f0f51">
+      <div class="b-img">
+        <img src="7c3f0f51.jpg" alt="Article" onerror="this.closest('.b-card').style.display='none'">
+      </div>
+      <div class="b-body">
+        <span class="b-brand"></span>
+        <span class="b-name"></span>
+        <span class="b-price">— € <em>Prix bientôt disponible</em></span>
+        <div class="b-actions">
+          <button class="b-btn-cart" disabled style="opacity:.5;cursor:not-allowed">Bientôt disponible</button>
+          <button class="b-btn-wl" onclick="handleWL(this,'7c3f0f51','','Article','7c3f0f51.jpg')"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></button>
+        </div>
+      </div>
+    </div>
+    <!-- PRODUIT 26 -->
+    <div class="b-card b-card--new" data-cat="chaussures" id="prod-7dee1ddf">
+      <div class="b-img">
+        <img src="7dee1ddf.jpg" alt="Article" onerror="this.closest('.b-card').style.display='none'">
+      </div>
+      <div class="b-body">
+        <span class="b-brand"></span>
+        <span class="b-name"></span>
+        <span class="b-price">— € <em>Prix bientôt disponible</em></span>
+        <div class="b-actions">
+          <button class="b-btn-cart" disabled style="opacity:.5;cursor:not-allowed">Bientôt disponible</button>
+          <button class="b-btn-wl" onclick="handleWL(this,'7dee1ddf','','Article','7dee1ddf.jpg')"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></button>
+        </div>
+      </div>
+    </div>
+    <!-- PRODUIT 27 -->
+    <div class="b-card b-card--new" data-cat="chaussures" id="prod-7f417dd3">
+      <div class="b-img">
+        <img src="7f417dd3.jpg" alt="Article" onerror="this.closest('.b-card').style.display='none'">
+      </div>
+      <div class="b-body">
+        <span class="b-brand"></span>
+        <span class="b-name"></span>
+        <span class="b-price">— € <em>Prix bientôt disponible</em></span>
+        <div class="b-actions">
+          <button class="b-btn-cart" disabled style="opacity:.5;cursor:not-allowed">Bientôt disponible</button>
+          <button class="b-btn-wl" onclick="handleWL(this,'7f417dd3','','Article','7f417dd3.jpg')"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></button>
+        </div>
+      </div>
+    </div>
+    <!-- PRODUIT 28 -->
+    <div class="b-card b-card--new" data-cat="chaussures" id="prod-958913e4">
+      <div class="b-img">
+        <img src="958913e4.jpg" alt="Article" onerror="this.closest('.b-card').style.display='none'">
+      </div>
+      <div class="b-body">
+        <span class="b-brand"></span>
+        <span class="b-name"></span>
+        <span class="b-price">— € <em>Prix bientôt disponible</em></span>
+        <div class="b-actions">
+          <button class="b-btn-cart" disabled style="opacity:.5;cursor:not-allowed">Bientôt disponible</button>
+          <button class="b-btn-wl" onclick="handleWL(this,'958913e4','','Article','958913e4.jpg')"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></button>
+        </div>
+      </div>
+    </div>
+    <!-- PRODUIT 29 -->
+    <div class="b-card b-card--new" data-cat="chaussures" id="prod-97c1ac00">
+      <div class="b-img">
+        <img src="97c1ac00.jpg" alt="Article" onerror="this.closest('.b-card').style.display='none'">
+      </div>
+      <div class="b-body">
+        <span class="b-brand"></span>
+        <span class="b-name"></span>
+        <span class="b-price">— € <em>Prix bientôt disponible</em></span>
+        <div class="b-actions">
+          <button class="b-btn-cart" disabled style="opacity:.5;cursor:not-allowed">Bientôt disponible</button>
+          <button class="b-btn-wl" onclick="handleWL(this,'97c1ac00','','Article','97c1ac00.jpg')"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></button>
+        </div>
+      </div>
+    </div>
+    <!-- PRODUIT 30 -->
+    <div class="b-card b-card--new" data-cat="chaussures" id="prod-98463b2b">
+      <div class="b-img">
+        <img src="98463b2b.jpg" alt="Article" onerror="this.closest('.b-card').style.display='none'">
+      </div>
+      <div class="b-body">
+        <span class="b-brand"></span>
+        <span class="b-name"></span>
+        <span class="b-price">— € <em>Prix bientôt disponible</em></span>
+        <div class="b-actions">
+          <button class="b-btn-cart" disabled style="opacity:.5;cursor:not-allowed">Bientôt disponible</button>
+          <button class="b-btn-wl" onclick="handleWL(this,'98463b2b','','Article','98463b2b.jpg')"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></button>
+        </div>
+      </div>
+    </div>
+    <!-- PRODUIT 31 -->
+    <div class="b-card b-card--new" data-cat="chaussures" id="prod-9be1b427">
+      <div class="b-img">
+        <img src="9be1b427.jpg" alt="Article" onerror="this.closest('.b-card').style.display='none'">
+      </div>
+      <div class="b-body">
+        <span class="b-brand"></span>
+        <span class="b-name"></span>
+        <span class="b-price">— € <em>Prix bientôt disponible</em></span>
+        <div class="b-actions">
+          <button class="b-btn-cart" disabled style="opacity:.5;cursor:not-allowed">Bientôt disponible</button>
+          <button class="b-btn-wl" onclick="handleWL(this,'9be1b427','','Article','9be1b427.jpg')"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></button>
+        </div>
+      </div>
+    </div>
+    <!-- PRODUIT 32 -->
+    <div class="b-card b-card--new" data-cat="chaussures" id="prod-9d7597be">
+      <div class="b-img">
+        <img src="9d7597be.jpg" alt="Article" onerror="this.closest('.b-card').style.display='none'">
+      </div>
+      <div class="b-body">
+        <span class="b-brand"></span>
+        <span class="b-name"></span>
+        <span class="b-price">— € <em>Prix bientôt disponible</em></span>
+        <div class="b-actions">
+          <button class="b-btn-cart" disabled style="opacity:.5;cursor:not-allowed">Bientôt disponible</button>
+          <button class="b-btn-wl" onclick="handleWL(this,'9d7597be','','Article','9d7597be.jpg')"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></button>
+        </div>
+      </div>
+    </div>
+    <!-- PRODUIT 33 -->
+    <div class="b-card b-card--new" data-cat="chaussures" id="prod-a7f6393b">
+      <div class="b-img">
+        <img src="a7f6393b.jpg" alt="Article" onerror="this.closest('.b-card').style.display='none'">
+      </div>
+      <div class="b-body">
+        <span class="b-brand"></span>
+        <span class="b-name"></span>
+        <span class="b-price">— € <em>Prix bientôt disponible</em></span>
+        <div class="b-actions">
+          <button class="b-btn-cart" disabled style="opacity:.5;cursor:not-allowed">Bientôt disponible</button>
+          <button class="b-btn-wl" onclick="handleWL(this,'a7f6393b','','Article','a7f6393b.jpg')"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></button>
+        </div>
+      </div>
+    </div>
+    <!-- PRODUIT 34 -->
+    <div class="b-card b-card--new" data-cat="chaussures" id="prod-ab62f36f">
+      <div class="b-img">
+        <img src="ab62f36f.jpg" alt="Article" onerror="this.closest('.b-card').style.display='none'">
+      </div>
+      <div class="b-body">
+        <span class="b-brand"></span>
+        <span class="b-name"></span>
+        <span class="b-price">— € <em>Prix bientôt disponible</em></span>
+        <div class="b-actions">
+          <button class="b-btn-cart" disabled style="opacity:.5;cursor:not-allowed">Bientôt disponible</button>
+          <button class="b-btn-wl" onclick="handleWL(this,'ab62f36f','','Article','ab62f36f.jpg')"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></button>
+        </div>
+      </div>
+    </div>
+    <!-- PRODUIT 35 -->
+    <div class="b-card b-card--new" data-cat="chaussures" id="prod-b4a45954">
+      <div class="b-img">
+        <img src="b4a45954.jpg" alt="Article" onerror="this.closest('.b-card').style.display='none'">
+      </div>
+      <div class="b-body">
+        <span class="b-brand"></span>
+        <span class="b-name"></span>
+        <span class="b-price">— € <em>Prix bientôt disponible</em></span>
+        <div class="b-actions">
+          <button class="b-btn-cart" disabled style="opacity:.5;cursor:not-allowed">Bientôt disponible</button>
+          <button class="b-btn-wl" onclick="handleWL(this,'b4a45954','','Article','b4a45954.jpg')"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></button>
+        </div>
+      </div>
+    </div>
+    <!-- PRODUIT 36 -->
+    <div class="b-card b-card--new" data-cat="chaussures" id="prod-bc0c0e5a">
+      <div class="b-img">
+        <img src="bc0c0e5a.jpg" alt="Article" onerror="this.closest('.b-card').style.display='none'">
+      </div>
+      <div class="b-body">
+        <span class="b-brand"></span>
+        <span class="b-name"></span>
+        <span class="b-price">— € <em>Prix bientôt disponible</em></span>
+        <div class="b-actions">
+          <button class="b-btn-cart" disabled style="opacity:.5;cursor:not-allowed">Bientôt disponible</button>
+          <button class="b-btn-wl" onclick="handleWL(this,'bc0c0e5a','','Article','bc0c0e5a.jpg')"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></button>
+        </div>
+      </div>
+    </div>
+    <!-- PRODUIT 37 -->
+    <div class="b-card b-card--new" data-cat="chaussures" id="prod-bfad4f57">
+      <div class="b-img">
+        <img src="bfad4f57.jpg" alt="Article" onerror="this.closest('.b-card').style.display='none'">
+      </div>
+      <div class="b-body">
+        <span class="b-brand"></span>
+        <span class="b-name"></span>
+        <span class="b-price">— € <em>Prix bientôt disponible</em></span>
+        <div class="b-actions">
+          <button class="b-btn-cart" disabled style="opacity:.5;cursor:not-allowed">Bientôt disponible</button>
+          <button class="b-btn-wl" onclick="handleWL(this,'bfad4f57','','Article','bfad4f57.jpg')"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></button>
+        </div>
+      </div>
+    </div>
+    <!-- PRODUIT 38 -->
+    <div class="b-card b-card--new" data-cat="chaussures" id="prod-ca221390">
+      <div class="b-img">
+        <img src="ca221390.jpg" alt="Article" onerror="this.closest('.b-card').style.display='none'">
+      </div>
+      <div class="b-body">
+        <span class="b-brand"></span>
+        <span class="b-name"></span>
+        <span class="b-price">— € <em>Prix bientôt disponible</em></span>
+        <div class="b-actions">
+          <button class="b-btn-cart" disabled style="opacity:.5;cursor:not-allowed">Bientôt disponible</button>
+          <button class="b-btn-wl" onclick="handleWL(this,'ca221390','','Article','ca221390.jpg')"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></button>
+        </div>
+      </div>
+    </div>
+    <!-- PRODUIT 39 -->
+    <div class="b-card b-card--new" data-cat="chaussures" id="prod-cbae56d5">
+      <div class="b-img">
+        <img src="cbae56d5.jpg" alt="Article" onerror="this.closest('.b-card').style.display='none'">
+      </div>
+      <div class="b-body">
+        <span class="b-brand"></span>
+        <span class="b-name"></span>
+        <span class="b-price">— € <em>Prix bientôt disponible</em></span>
+        <div class="b-actions">
+          <button class="b-btn-cart" disabled style="opacity:.5;cursor:not-allowed">Bientôt disponible</button>
+          <button class="b-btn-wl" onclick="handleWL(this,'cbae56d5','','Article','cbae56d5.jpg')"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></button>
+        </div>
+      </div>
+    </div>
+    <!-- PRODUIT 40 -->
+    <div class="b-card b-card--new" data-cat="chaussures" id="prod-ccd6269f">
+      <div class="b-img">
+        <img src="ccd6269f.jpg" alt="Article" onerror="this.closest('.b-card').style.display='none'">
+      </div>
+      <div class="b-body">
+        <span class="b-brand"></span>
+        <span class="b-name"></span>
+        <span class="b-price">— € <em>Prix bientôt disponible</em></span>
+        <div class="b-actions">
+          <button class="b-btn-cart" disabled style="opacity:.5;cursor:not-allowed">Bientôt disponible</button>
+          <button class="b-btn-wl" onclick="handleWL(this,'ccd6269f','','Article','ccd6269f.jpg')"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></button>
+        </div>
+      </div>
+    </div>
+    <!-- PRODUIT 41 -->
+    <div class="b-card b-card--new" data-cat="chaussures" id="prod-cfa8746d">
+      <div class="b-img">
+        <img src="cfa8746d.jpg" alt="Article" onerror="this.closest('.b-card').style.display='none'">
+      </div>
+      <div class="b-body">
+        <span class="b-brand"></span>
+        <span class="b-name"></span>
+        <span class="b-price">— € <em>Prix bientôt disponible</em></span>
+        <div class="b-actions">
+          <button class="b-btn-cart" disabled style="opacity:.5;cursor:not-allowed">Bientôt disponible</button>
+          <button class="b-btn-wl" onclick="handleWL(this,'cfa8746d','','Article','cfa8746d.jpg')"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></button>
+        </div>
+      </div>
+    </div>
+    <!-- PRODUIT 42 -->
+    <div class="b-card b-card--new" data-cat="chaussures" id="prod-d101056b">
+      <div class="b-img">
+        <img src="d101056b.jpg" alt="Article" onerror="this.closest('.b-card').style.display='none'">
+      </div>
+      <div class="b-body">
+        <span class="b-brand"></span>
+        <span class="b-name"></span>
+        <span class="b-price">— € <em>Prix bientôt disponible</em></span>
+        <div class="b-actions">
+          <button class="b-btn-cart" disabled style="opacity:.5;cursor:not-allowed">Bientôt disponible</button>
+          <button class="b-btn-wl" onclick="handleWL(this,'d101056b','','Article','d101056b.jpg')"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></button>
+        </div>
+      </div>
+    </div>
+    <!-- PRODUIT 43 -->
+    <div class="b-card b-card--new" data-cat="chaussures" id="prod-d8d4bfc0">
+      <div class="b-img">
+        <img src="d8d4bfc0.jpg" alt="Article" onerror="this.closest('.b-card').style.display='none'">
+      </div>
+      <div class="b-body">
+        <span class="b-brand"></span>
+        <span class="b-name"></span>
+        <span class="b-price">— € <em>Prix bientôt disponible</em></span>
+        <div class="b-actions">
+          <button class="b-btn-cart" disabled style="opacity:.5;cursor:not-allowed">Bientôt disponible</button>
+          <button class="b-btn-wl" onclick="handleWL(this,'d8d4bfc0','','Article','d8d4bfc0.jpg')"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></button>
+        </div>
+      </div>
+    </div>
+    <!-- PRODUIT 44 -->
+    <div class="b-card b-card--new" data-cat="chaussures" id="prod-da5a7672">
+      <div class="b-img">
+        <img src="da5a7672.jpg" alt="Article" onerror="this.closest('.b-card').style.display='none'">
+      </div>
+      <div class="b-body">
+        <span class="b-brand"></span>
+        <span class="b-name"></span>
+        <span class="b-price">— € <em>Prix bientôt disponible</em></span>
+        <div class="b-actions">
+          <button class="b-btn-cart" disabled style="opacity:.5;cursor:not-allowed">Bientôt disponible</button>
+          <button class="b-btn-wl" onclick="handleWL(this,'da5a7672','','Article','da5a7672.jpg')"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></button>
+        </div>
+      </div>
+    </div>
+    <!-- PRODUIT 45 -->
+    <div class="b-card b-card--new" data-cat="chaussures" id="prod-e238a327">
+      <div class="b-img">
+        <img src="e238a327.jpg" alt="Article" onerror="this.closest('.b-card').style.display='none'">
+      </div>
+      <div class="b-body">
+        <span class="b-brand"></span>
+        <span class="b-name"></span>
+        <span class="b-price">— € <em>Prix bientôt disponible</em></span>
+        <div class="b-actions">
+          <button class="b-btn-cart" disabled style="opacity:.5;cursor:not-allowed">Bientôt disponible</button>
+          <button class="b-btn-wl" onclick="handleWL(this,'e238a327','','Article','e238a327.jpg')"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></button>
+        </div>
+      </div>
+    </div>
+    <!-- PRODUIT 46 -->
+    <div class="b-card b-card--new" data-cat="chaussures" id="prod-e60758b0">
+      <div class="b-img">
+        <img src="e60758b0.jpg" alt="Article" onerror="this.closest('.b-card').style.display='none'">
+      </div>
+      <div class="b-body">
+        <span class="b-brand"></span>
+        <span class="b-name"></span>
+        <span class="b-price">— € <em>Prix bientôt disponible</em></span>
+        <div class="b-actions">
+          <button class="b-btn-cart" disabled style="opacity:.5;cursor:not-allowed">Bientôt disponible</button>
+          <button class="b-btn-wl" onclick="handleWL(this,'e60758b0','','Article','e60758b0.jpg')"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></button>
+        </div>
+      </div>
+    </div>
+    <!-- PRODUIT 47 -->
+    <div class="b-card b-card--new" data-cat="chaussures" id="prod-ef1aa3dc">
+      <div class="b-img">
+        <img src="ef1aa3dc.jpg" alt="Article" onerror="this.closest('.b-card').style.display='none'">
+      </div>
+      <div class="b-body">
+        <span class="b-brand"></span>
+        <span class="b-name"></span>
+        <span class="b-price">— € <em>Prix bientôt disponible</em></span>
+        <div class="b-actions">
+          <button class="b-btn-cart" disabled style="opacity:.5;cursor:not-allowed">Bientôt disponible</button>
+          <button class="b-btn-wl" onclick="handleWL(this,'ef1aa3dc','','Article','ef1aa3dc.jpg')"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></button>
+        </div>
+      </div>
+    </div>
+    <!-- PRODUIT 48 -->
+    <div class="b-card b-card--new" data-cat="chaussures" id="prod-f17ec31e">
+      <div class="b-img">
+        <img src="f17ec31e.jpg" alt="Article" onerror="this.closest('.b-card').style.display='none'">
+      </div>
+      <div class="b-body">
+        <span class="b-brand"></span>
+        <span class="b-name"></span>
+        <span class="b-price">— € <em>Prix bientôt disponible</em></span>
+        <div class="b-actions">
+          <button class="b-btn-cart" disabled style="opacity:.5;cursor:not-allowed">Bientôt disponible</button>
+          <button class="b-btn-wl" onclick="handleWL(this,'f17ec31e','','Article','f17ec31e.jpg')"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></button>
+        </div>
+      </div>
+    </div>
+    <!-- PRODUIT 49 -->
+    <div class="b-card b-card--new" data-cat="chaussures" id="prod-f556b043">
+      <div class="b-img">
+        <img src="f556b043.jpg" alt="Article" onerror="this.closest('.b-card').style.display='none'">
+      </div>
+      <div class="b-body">
+        <span class="b-brand"></span>
+        <span class="b-name"></span>
+        <span class="b-price">— € <em>Prix bientôt disponible</em></span>
+        <div class="b-actions">
+          <button class="b-btn-cart" disabled style="opacity:.5;cursor:not-allowed">Bientôt disponible</button>
+          <button class="b-btn-wl" onclick="handleWL(this,'f556b043','','Article','f556b043.jpg')"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></button>
+        </div>
+      </div>
+    </div>
 
   </div>
   <div class="b-not-found reveal">
@@ -1373,47 +2118,45 @@
     }
   }
 
-  // Christian Louboutin Louis Junior color picker
-  function pickLouboutinLouis(btn) {
-    var card = document.getElementById('louboutin-louis-card');
+  // ═══ Balenciaga 3XL colorway picker ═══
+  function pickBal3xl(btn) {
+    var card = document.getElementById('bal3xl-card');
     card.querySelectorAll('.b-cw').forEach(b => b.classList.remove('active'));
     btn.classList.add('active');
-    var colorId = btn.dataset.color_id;
-    var colorName = btn.dataset.color;
-    document.getElementById('louboutin-louis-img').src = 'louboutin_louis_' + colorId + '.jpg';
-    document.getElementById('louboutin-louis-color-name').textContent = colorName;
-    var wlBtn = document.getElementById('louboutin-louis-wl-btn');
-    if (wlBtn) {
-      wlBtn.setAttribute('onclick', "handleWL(this,'louboutin_louis_" + colorId + "','Christian Louboutin','Louis Junior — " + colorName + "','louboutin_louis_" + colorId + ".jpg')");
-      wlBtn.classList.remove('wl-active');
-      try { var wl = JSON.parse(localStorage.getItem('als_wishlist')) || []; if (wl.some(i => i.id === 'louboutin_louis_' + colorId)) wlBtn.classList.add('wl-active'); } catch {}
-    }
+    var img = document.getElementById('bal3xl-img');
+    img.classList.add('fade');
+    setTimeout(function() {
+      img.src = btn.dataset.img;
+      img.classList.remove('fade');
+    }, 180);
+    document.getElementById('bal3xl-color-name').textContent = btn.dataset.color;
   }
 </script>
 
 <!-- BOTTOM NAV -->
-<style>.bnav{position:fixed;bottom:16px;left:50%;transform:translateX(-50%);z-index:9000;display:flex;align-items:center;background:rgba(18,18,20,.92);backdrop-filter:blur(24px) saturate(180%);-webkit-backdrop-filter:blur(24px) saturate(180%);border-radius:50px;padding:6px 8px;border:1px solid rgba(255,255,255,.08);box-shadow:0 4px 24px rgba(0,0,0,.4)}.bnav-item{display:flex;flex-direction:column;align-items:center;gap:3px;padding:8px 16px;border-radius:40px;text-decoration:none;color:rgba(255,255,255,.45);font-family:'Poppins',sans-serif;font-size:9px;font-weight:500;letter-spacing:.03em;transition:all .2s;cursor:pointer;white-space:nowrap;position:relative}.bnav-item svg{width:20px;height:20px;stroke:currentColor;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;transition:all .2s}.bnav-item:hover{color:rgba(255,255,255,.75)}.bnav-item.active{color:#fff;background:rgba(255,255,255,.12)}.bnav-item.active svg{stroke:#e9c243;fill:none;stroke-width:2}.bnav-badge{position:absolute;top:2px;right:8px;background:#e9c243;color:#0a1923;font-size:8px;font-weight:700;min-width:15px;height:15px;border-radius:8px;display:none;align-items:center;justify-content:center;padding:0 4px;line-height:1}@media(min-width:1025px){.bnav{display:none!important}}@media(max-width:400px){.bnav{bottom:10px;padding:4px 6px}.bnav-item{padding:6px 10px;font-size:8px;gap:2px}.bnav-item svg{width:18px;height:18px}}</style>
-<nav class="bnav">
-  <a href="index.html" class="bnav-item">
+<nav class="bottom-nav">
+  <a href="index.html" class="bn-item">
     <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
     Accueil
   </a>
-  <a href="boutique.html" class="bnav-item active">
+  <a href="boutique.html" class="bn-item active">
     <svg viewBox="0 0 24 24"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
     Boutique
   </a>
-  <a href="assistant.html" class="bnav-item">
+  <a href="assistant.html" class="bn-item">
     <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
     Assistant
   </a>
-  <a href="panier.html" class="bnav-item" id="bn-panier">
+  <a href="panier.html" class="bn-item" id="bn-panier">
     <svg viewBox="0 0 24 24"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 001.99 1.61h9.72a2 2 0 001.99-1.61L23 6H6"/></svg>
     Panier
-    <span class="bnav-badge" id="bnav-badge"></span>
   </a>
-  <a href="suivi.html" class="bnav-item">
-    <svg viewBox="0 0 24 24"><path d="M12 22s-8-4.5-8-11.8A8 8 0 0112 2a8 8 0 018 8.2c0 7.3-8 11.8-8 11.8z"/><circle cx="12" cy="10" r="3"/></svg>
+  <a href="suivi.html" class="bn-item">
+    <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
     Suivi
+  </a>
+  <a href="contact.html" class="bn-search">
+    <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
   </a>
 </nav>
 
