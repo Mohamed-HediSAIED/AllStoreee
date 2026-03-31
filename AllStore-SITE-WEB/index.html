@@ -87,21 +87,21 @@
 
   /* ---------- VU SUR INSTAGRAM ---------- */
   .als-insta-section{padding:0;background:var(--bg2,#f5f2ec)}
-  .als-insta-row{display:flex;gap:14px;padding:0 48px;align-items:stretch;max-width:1200px;margin:0 auto;height:420px}
-  .als-insta-featured{position:relative;flex:1;border-radius:16px;overflow:hidden}
+  .als-insta-row{display:flex;gap:16px;padding:0 20px;align-items:stretch;max-width:900px;margin:0 auto;height:380px}
+  .als-insta-featured{position:relative;flex:0 0 42%;border-radius:16px;overflow:hidden}
   .als-insta-featured video,.als-insta-featured img{width:100%;height:100%;object-fit:cover}
-  .als-insta-featured .als-insta-badge{position:absolute;bottom:20px;left:16px;font-family:'Poppins',sans-serif;font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:.06em;color:#fff;background:rgba(0,0,0,.45);backdrop-filter:blur(6px);padding:6px 14px;border-radius:20px;display:flex;align-items:center;gap:6px}
-  .als-insta-featured .als-insta-badge svg{width:14px;height:14px;fill:#fff}
-  .als-insta-featured .als-insta-tag{position:absolute;top:16px;left:16px;display:flex;align-items:center;gap:6px}
-  .als-insta-featured .als-insta-tag span{font-family:'Poppins',sans-serif;font-size:10px;font-weight:600;letter-spacing:.06em;color:#fff;background:rgba(0,0,0,.45);backdrop-filter:blur(6px);padding:6px 12px;border-radius:20px}
+  .als-insta-featured .als-insta-badge{position:absolute;bottom:16px;left:14px;font-family:'Poppins',sans-serif;font-size:9px;font-weight:600;text-transform:uppercase;letter-spacing:.06em;color:#fff;background:rgba(0,0,0,.45);backdrop-filter:blur(6px);padding:5px 12px;border-radius:20px;display:flex;align-items:center;gap:5px}
+  .als-insta-featured .als-insta-badge svg{width:12px;height:12px;fill:#fff}
+  .als-insta-featured .als-insta-tag{position:absolute;top:14px;left:14px;display:flex;align-items:center;gap:6px}
+  .als-insta-featured .als-insta-tag span{font-family:'Poppins',sans-serif;font-size:9px;font-weight:600;letter-spacing:.06em;color:#fff;background:rgba(0,0,0,.45);backdrop-filter:blur(6px);padding:5px 10px;border-radius:20px}
   .als-insta-pcard{flex:1;text-decoration:none;background:#fff;border-radius:16px;overflow:hidden;border:1px solid rgba(0,0,0,.06);display:flex;flex-direction:column}
-  .als-insta-pcard-img{flex:1;background:#fff;display:flex;align-items:center;justify-content:center;overflow:hidden}
-  .als-insta-pcard-img img{width:100%;height:100%;object-fit:cover}
-  .als-insta-pcard-info{padding:12px 14px 16px;text-align:center}
-  .als-insta-pcard-name{font-family:'Poppins',sans-serif;font-size:13px;font-weight:700;color:var(--noir,#0a1923);display:block}
-  .als-insta-pcard-price{font-family:'Poppins',sans-serif;font-size:13px;color:var(--noir,#0a1923);display:block;margin-top:4px}
-  .als-insta-pcard-btn{display:block;font-family:'Poppins',sans-serif;font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.06em;color:#fff;background:var(--noir,#0a1923);padding:12px 0;border-radius:30px;text-decoration:none;text-align:center;margin-top:12px;transition:background .2s}
-  .als-insta-pcard-btn:hover{background:var(--gold2,#b89a4a)}
+  .als-insta-pcard-img{flex:1;background:#fff;display:flex;align-items:center;justify-content:center;overflow:hidden;padding:16px}
+  .als-insta-pcard-img img{max-width:85%;max-height:85%;object-fit:contain}
+  .als-insta-pcard-info{padding:14px 16px 18px;text-align:center}
+  .als-insta-pcard-name{font-family:'Poppins',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;color:var(--noir,#0a1923);display:block}
+  .als-insta-pcard-price{font-family:'Poppins',sans-serif;font-size:14px;color:var(--noir,#0a1923);display:block;margin-top:6px}
+  .als-insta-pcard-btn{display:block;font-family:'Poppins',sans-serif;font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.06em;color:#fff;background:var(--noir,#0a1923);padding:12px 0;border-radius:6px;text-decoration:none;text-align:center;margin-top:12px;transition:background .2s}
+  .als-insta-pcard-btn:hover{background:#1a3040}
 
   /* ---------- ARTICLES RARES — scroll horizontal ---------- */
   .als-rare-grid{display:flex;gap:12px;overflow-x:auto;padding:0 20px 12px;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;scrollbar-width:none}
@@ -181,11 +181,7 @@
     .als-coll-card .als-coll-name{font-size:11px}
     .als-coll-card .als-coll-btn{font-size:8px;padding:5px 12px}
     .als-insta-section .als-sec-head{padding:0 48px}
-    .als-insta-row{padding:0 48px;gap:16px;height:420px;max-width:1200px;margin:0 auto}
-    .als-insta-pcard-info{padding:10px 12px 14px}
-    .als-insta-pcard-name{font-size:12px}
-    .als-insta-pcard-price{font-size:12px}
-    .als-insta-pcard-btn{font-size:10px;padding:10px 0;margin-top:8px}
+    .als-insta-row{padding:0 48px;gap:16px;height:380px;max-width:900px;margin:0 auto}
     .als-rare-grid{padding:0 48px 14px;gap:16px}
     .als-rare-card{flex:0 0 calc(20% - 13px)}
     .als-rare-img{padding:0}
