@@ -457,7 +457,7 @@ body.has-promo .trust-bar { top: var(--trust-top, 114px); }
   display: flex;
   align-items: center;
   justify-content: center;
-  font-family: 'Cormorant Garamond', serif;
+  font-family: 'Cormorant', serif;
 }
 .how-it-works--dark .hiw-num {
   width: auto;
@@ -476,7 +476,7 @@ body.has-promo .trust-bar { top: var(--trust-top, 114px); }
 }
 .how-it-works--dark .hiw-step-title {
   font-size: 18px;
-  font-family: 'Cormorant Garamond', serif;
+  font-family: 'Cormorant', serif;
   font-weight: 500;
   font-size: 22px;
 }
@@ -524,7 +524,7 @@ body.has-promo .trust-bar { top: var(--trust-top, 114px); }
 }
 .testimonials-header-right { text-align: right; }
 .testimonials-rating-big {
-  font-family: 'Cormorant Garamond', serif;
+  font-family: 'Cormorant', serif;
   font-size: 48px;
   font-weight: 300;
   color: var(--gold);
@@ -574,7 +574,7 @@ body.has-promo .trust-bar { top: var(--trust-top, 114px); }
   background: rgba(255,255,255,.04);
 }
 .testimonial-quote {
-  font-family: 'Cormorant Garamond', serif;
+  font-family: 'Cormorant', serif;
   font-size: 56px;
   line-height: 1;
   color: rgba(233,194,67,.2);

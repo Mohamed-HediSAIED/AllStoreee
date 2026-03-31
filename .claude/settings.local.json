@@ -1,7 +1,11 @@
 {
   "permissions": {
     "allow": [
-      "mcp__Claude_Preview__preview_start"
+      "mcp__Claude_Preview__preview_start",
+      "WebFetch(domain:la-saperie.fr)",
+      "mcp__8585bd2f-2704-4421-ab82-2f2d78b35c21__get_project",
+      "Bash(vercel --prod --yes)",
+      "Bash(npx vercel:*)"
     ]
   }
 }

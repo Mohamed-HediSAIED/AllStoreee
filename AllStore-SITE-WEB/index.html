@@ -47,7 +47,7 @@
   .hero-als img.hero-bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
   .hero-als .hero-overlay{position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.25) 0%,rgba(0,0,0,.55) 100%)}
   .hero-als .hero-content{position:relative;z-index:2;text-align:center;padding:0 24px;max-width:900px}
-  .hero-als h1{font-family:'Cormorant Garamond',serif;font-size:clamp(32px,7vw,80px);font-weight:300;color:#fff;letter-spacing:.04em;line-height:1.1;margin:0 0 16px}
+  .hero-als h1{font-family:'Cormorant',serif;font-size:clamp(32px,7vw,80px);font-weight:300;color:#fff;letter-spacing:.04em;line-height:1.1;margin:0 0 16px}
   .hero-als .hero-desc{font-family:'Poppins',sans-serif;font-size:clamp(12px,1.5vw,16px);color:rgba(255,255,255,.75);margin:0 0 32px;font-weight:300}
   .hero-als .hero-btn{display:inline-block;font-family:'Poppins',sans-serif;font-size:12px;font-weight:600;letter-spacing:.15em;text-transform:uppercase;color:#0a1923;background:#fff;padding:16px 48px;border-radius:0;text-decoration:none;transition:all .3s}
   .hero-als .hero-btn:hover{background:#e9c243}
@@ -56,7 +56,7 @@
   .als-sec{padding:40px 0 36px;background:var(--bg2,#f5f2ec)}
   .als-sec-head{text-align:center;margin-bottom:20px;padding:0 20px}
   .als-sec-title{font-family:'Poppins',sans-serif;font-size:22px;font-weight:800;text-transform:uppercase;color:var(--noir,#0a1923);margin:0;letter-spacing:.02em}
-  .als-sec-title em{font-weight:300;font-style:normal;color:var(--gris,#6a7a8a)}
+  .als-sec-title em{font-family:'Cormorant',serif;font-weight:500;font-style:italic;color:var(--gris,#6a7a8a)}
 
   /* ---------- FILTERS ---------- */
   .als-filters{display:flex;gap:8px;padding:0 20px;margin-bottom:20px;flex-wrap:wrap;justify-content:center}
@@ -113,7 +113,7 @@
 
   /* ---------- NOS MARQUES ---------- */
   .als-collab-row{display:flex;align-items:center;justify-content:center;gap:40px;flex-wrap:wrap;padding:0 20px}
-  .als-collab-item{font-family:'Cormorant Garamond',serif;font-size:clamp(20px,3vw,32px);font-weight:300;color:var(--noir,#0a1923);opacity:.45;transition:opacity .2s;letter-spacing:.04em}
+  .als-collab-item{font-family:'Cormorant',serif;font-size:clamp(20px,3vw,32px);font-weight:300;color:var(--noir,#0a1923);opacity:.45;transition:opacity .2s;letter-spacing:.04em}
   .als-collab-item:hover{opacity:1}
 
   /* ---------- MOBILE < 600px ---------- */
@@ -215,14 +215,7 @@
 ═══════════════════════════════════════════ -->
 <section class="als-sec">
   <div class="als-sec-head">
-    <h2 class="als-sec-title">LA SÉLECTION <em>ALLSTORE</em></h2>
-  </div>
-  <div class="als-filters" id="selec-filters">
-    <button class="als-pill active" data-filter="all">TOUT</button>
-    <button class="als-pill" data-filter="chaussures">CHAUSSURES</button>
-    <button class="als-pill" data-filter="accessoires">ACCESSOIRES</button>
-    <button class="als-pill" data-filter="vetements">VÊTEMENTS</button>
-    <button class="als-pill" data-filter="tech">TECH</button>
+    <h2 class="als-sec-title">VENDU <em>RÉCEMMENT</em></h2>
   </div>
   <div class="als-hscroll" id="selec-grid">
     <a href="produit-louboutin-louis.html" class="als-hcard selec-card" data-cat="chaussures">
@@ -302,10 +295,10 @@
   </div>
   <div class="als-insta-row">
     <div class="als-insta-col">
-      <div class="als-insta-vid">
+      <a href="https://www.instagram.com/reel/DT04-k2jAIT/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==" target="_blank" class="als-insta-vid">
         <video src="allstore_insta.mp4" autoplay muted loop playsinline></video>
-        <div class="als-insta-tag"><span>@ALLSTORE.24.7</span></div>
-      </div>
+        <div class="als-insta-tag"><span>@ALLSTORE.TM</span></div>
+      </a>
       <a href="produit-burberry-hoodie.html?color=gris" class="als-insta-pcard">
         <div class="als-insta-pcard-img"><img src="burberry_hoodie_gris.jpg" alt="Burberry Hoodie Gris"></div>
         <span class="als-insta-pcard-name">VESTE BURBERRY GRIS</span>
@@ -313,10 +306,10 @@
       </a>
     </div>
     <div class="als-insta-col">
-      <div class="als-insta-vid">
+      <a href="https://www.instagram.com/reel/DTOCiNXjO-x/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==" target="_blank" class="als-insta-vid">
         <video src="allstore_insta2.mov" autoplay muted loop playsinline></video>
-        <div class="als-insta-tag"><span>@ALLSTORE.24.7</span></div>
-      </div>
+        <div class="als-insta-tag"><span>@ALLSTORE.TM</span></div>
+      </a>
       <a href="produit-airpods-max.html" class="als-insta-pcard">
         <div class="als-insta-pcard-img"><img src="airpods_max_1.jpg" alt="AirPods Max"></div>
         <span class="als-insta-pcard-name">AIRPODS MAX</span>

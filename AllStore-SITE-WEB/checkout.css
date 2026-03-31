@@ -58,7 +58,7 @@
 .ck-section.active { display: block; }
 
 .ck-title {
-  font-family: 'Cormorant Garamond', serif;
+  font-family: 'Cormorant', serif;
   font-size: clamp(24px, 4vw, 32px);
   font-weight: 300;
   margin: 0 0 8px;
