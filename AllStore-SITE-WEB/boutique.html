@@ -1828,13 +1828,24 @@
 
   function searchProducts() { applyFilters(); }
 
-  // Auto-filtre via URL ?cat=xxx
+  // Auto-filtre via URL ?cat=xxx&brand=yyy
   (function() {
     const params = new URLSearchParams(window.location.search);
     const cat = params.get('cat');
+    const brand = params.get('brand');
     if (cat) {
       const btn = document.querySelector(`#cat-filters .filter-btn[onclick*="'${cat}'"]`);
       if (btn) filterLevel('cat', btn, cat);
+      if (brand) {
+        setTimeout(function() {
+          var brandBtns = document.querySelectorAll('#brand-filters .filter-btn');
+          brandBtns.forEach(function(b) {
+            if (b.textContent.trim() === brand) {
+              filterLevel('brand', b, brand);
+            }
+          });
+        }, 50);
+      }
     }
   })();
 
