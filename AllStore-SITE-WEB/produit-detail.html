@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="ALLSTORE 24/7 — Produit Premium">
+  <link rel="icon" type="image/png" href="shopping_bag_icon.png">
+  <title>Produit | ALLSTORE 24/7</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="conversion.css">
+  <style>
+    .pdp{padding:90px 0 60px;margin:0 auto}
+    .pdp-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:0;align-items:start;min-height:calc(100vh - 90px)}
+    .pdp-gallery{position:sticky;top:90px;height:calc(100vh - 90px);background:#f5f2ec;display:flex;align-items:center;justify-content:center;overflow:hidden}
+    .pdp-gallery img{max-width:90%;max-height:90%;object-fit:contain;mix-blend-mode:multiply}
+    .pdp-info{padding:48px 56px 60px 48px;overflow-y:auto;max-height:calc(100vh - 90px)}
+    .pdp-back{display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:500;color:var(--gris);text-decoration:none;margin-bottom:20px;transition:color .2s}
+    .pdp-back:hover{color:var(--noir)}
+    .pdp-brand{font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:.15em;color:var(--gold2)}
+    .pdp-name{font-family:'Poppins',sans-serif;font-size:clamp(28px,4vw,42px);font-weight:600;letter-spacing:-.02em;line-height:1.15;margin:8px 0 6px}
+    .pdp-color{font-family:'Poppins',sans-serif;font-size:14px;color:var(--gris);margin-bottom:20px}
+    .pdp-price-row{display:flex;align-items:baseline;gap:12px;margin-bottom:24px}
+    .pdp-price{font-size:32px;font-weight:700;font-family:'Poppins',sans-serif}
+    .pdp-price-tag{font-size:12px;color:var(--gris)}
+    .pdp-badges{display:flex;gap:8px;margin-bottom:28px}
+    .pdp-badge{font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:.06em;padding:5px 14px;border-radius:980px;background:var(--bg2);color:var(--gris)}
+    .pdp-badge--gold{background:var(--gold);color:var(--noir)}
+    .pdp-actions{display:flex;gap:10px;margin-bottom:28px}
+    .pdp-btn-cart{flex:1;background:var(--noir);color:#fff;border:none;border-radius:14px;padding:20px;font-size:15px;font-weight:600;cursor:pointer;font-family:'Poppins',sans-serif;transition:background .2s}
+    .pdp-btn-cart:hover{background:#1a3040}
+    .pdp-btn-cart:disabled{opacity:.5;cursor:not-allowed}
+    .pdp-btn-cart.in-cart{background:#1a5c3a}
+    .pdp-btn-wl{width:58px;height:58px;border:1.5px solid rgba(10,25,35,.12);border-radius:14px;background:transparent;cursor:pointer;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:all .2s;font-size:22px}
+    .pdp-btn-wl:hover{border-color:#e74c3c}
+    .pdp-btn-wl.wl-active{color:#e74c3c;border-color:#e74c3c}
+    .pdp-details{border-top:1px solid rgba(10,25,35,.08);padding-top:24px;margin-top:8px}
+    .pdp-detail-row{display:flex;justify-content:space-between;padding:10px 0;font-size:13px;border-bottom:1px solid rgba(10,25,35,.05)}
+    .pdp-detail-label{color:var(--gris)}
+    .pdp-detail-value{font-weight:600}
+    .pdp-guarantee{display:flex;flex-direction:column;gap:8px;margin-top:20px}
+    .pdp-guarantee-item{display:flex;align-items:center;gap:8px;font-size:12px;color:var(--gris)}
+    .pdp-guarantee-item svg{width:16px;height:16px;stroke:var(--gold2);fill:none;stroke-width:2.5;flex-shrink:0}
+    @media(max-width:1024px){.pdp-grid{grid-template-columns:1fr 1fr}.pdp-info{padding:36px 32px 60px 28px}}
+    @media(max-width:900px){.pdp{padding-top:60px}.pdp-grid{grid-template-columns:1fr}.pdp-gallery{position:static;height:auto;min-height:55vh}.pdp-info{padding:24px 20px 120px;max-height:none}}
+    @media(max-width:600px){.pdp{padding-top:50px}.pdp-gallery{min-height:50vh}.pdp-name{font-size:24px}.pdp-price{font-size:26px}.pdp-btn-cart{padding:18px;font-size:16px}.pdp-btn-wl{width:56px;height:56px}.pdp-info{padding:20px 18px 120px}}
+  </style>
+</head>
+<body>
+<header><nav><a href="index.html" class="logo"><img src="shopping_bag_icon.png" alt="ALLSTORE"></a><ul class="nav-links"><li><a href="index.html">Accueil</a></li><li><a href="boutique.html">Boutique</a></li><li><a href="assistant.html">Assistant</a></li><li><a href="suivi.html">Suivi</a></li><li><a href="apropos.html">À Propos</a></li><li><a href="contact.html">Contact</a></li></ul></nav></header>
+<main>
+  <div class="pdp"><div class="pdp-grid">
+    <div class="pdp-gallery"><img id="pdp-img" src="" alt=""></div>
+    <div class="pdp-info">
+      <a href="boutique.html" class="pdp-back" id="pdp-back">&#8592; Boutique</a>
+      <span class="pdp-brand" id="pdp-brand"></span>
+      <h1 class="pdp-name" id="pdp-name"></h1>
+      <p class="pdp-color" id="pdp-color"></p>
+      <div class="pdp-price-row"><span class="pdp-price" id="pdp-price"></span><span class="pdp-price-tag" id="pdp-tag"></span></div>
+      <div class="pdp-badges"><span class="pdp-badge pdp-badge--gold">Réplique Premium</span></div>
+      <div class="pdp-actions">
+        <button class="pdp-btn-cart" id="pdp-cart-btn">Ajouter au panier</button>
+        <button class="pdp-btn-wl" id="pdp-wl-btn">&#9825;</button>
+      </div>
+      <div class="pdp-details" id="pdp-details"></div>
+      <div class="pdp-guarantee">
+        <div class="pdp-guarantee-item"><svg viewBox="0 0 24 24"><path d="M5 12l5 5L20 7"/></svg>Qualité vérifiée par nos experts</div>
+        <div class="pdp-guarantee-item"><svg viewBox="0 0 24 24"><path d="M5 12l5 5L20 7"/></svg>Livraison offerte en Europe</div>
+        <div class="pdp-guarantee-item"><svg viewBox="0 0 24 24"><path d="M5 12l5 5L20 7"/></svg>Paiement 100% sécurisé</div>
+      </div>
+    </div>
+  </div></div>
+</main>
+<footer><div class="foot-inner"><div class="foot-brand">ALLSTORE</div><div class="foot-links"><a href="apropos.html">À Propos</a><a href="contact.html">Contact</a><a href="assistant.html">Assistant</a></div><div class="foot-tagline">L'introuvable, enfin trouvé.</div><div class="foot-copy">ALLSTORE 24/7 &mdash; Sourcing d'Exception &mdash; 2025</div></div></footer>
+
+<style>
+  .bnav{position:fixed;bottom:16px;left:50%;transform:translateX(-50%);z-index:9000;display:flex;align-items:center;background:rgba(255,255,255,.12);backdrop-filter:blur(20px) saturate(150%);-webkit-backdrop-filter:blur(20px) saturate(150%);border-radius:50px;padding:6px 8px;border:1px solid rgba(255,255,255,.25);box-shadow:0 4px 24px rgba(0,0,0,.15)}
+  .bnav-pill{position:relative;display:flex;align-items:center}
+  .bnav-blob{position:absolute;height:100%;background:rgba(255,255,255,.45);border-radius:40px;transition:left .4s cubic-bezier(.4,.0,.2,1), width .4s cubic-bezier(.4,.0,.2,1);z-index:0;pointer-events:none}
+  .bnav-blob.slime{transition:left .35s cubic-bezier(.5,.0,.2,1.3), width .35s cubic-bezier(.5,.0,.2,1.3)}
+  .bnav-item{display:flex;flex-direction:column;align-items:center;gap:3px;padding:8px 16px;border-radius:40px;text-decoration:none;color:rgba(0,0,0,.5);font-family:'Poppins',sans-serif;font-size:9px;font-weight:500;letter-spacing:.03em;transition:color .2s;cursor:pointer;white-space:nowrap;position:relative;z-index:1;background:transparent}
+  .bnav-item svg{width:20px;height:20px;stroke:currentColor;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;transition:all .2s}
+  .bnav-item:hover{color:rgba(0,0,0,.8)}
+  .bnav-item.active{color:var(--noir,#0a1923)}
+  .bnav-item.active svg{stroke:var(--noir,#0a1923);fill:none;stroke-width:2}
+  .bnav-badge{position:absolute;top:2px;right:8px;background:#e9c243;color:#0a1923;font-size:8px;font-weight:700;min-width:15px;height:15px;border-radius:8px;display:none;align-items:center;justify-content:center;padding:0 4px;line-height:1}
+  @media(min-width:1025px){.bnav{display:none!important}}
+  @media(max-width:400px){.bnav{bottom:10px;padding:4px 6px}.bnav-item{padding:6px 10px;font-size:8px;gap:2px}.bnav-item svg{width:18px;height:18px}}
+</style>
+<nav class="bnav">
+  <div class="bnav-pill">
+    <div class="bnav-blob" id="bnav-blob"></div>
+    <a href="index.html" class="bnav-item" data-nav="0">
+      <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+      Accueil
+    </a>
+    <a href="boutique.html" class="bnav-item" data-nav="1">
+      <svg viewBox="0 0 24 24"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
+      Boutique
+    </a>
+    <a href="assistant.html" class="bnav-item" data-nav="2">
+      <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+      Assistant
+    </a>
+    <a href="panier.html" class="bnav-item" data-nav="3" id="bn-panier">
+      <svg viewBox="0 0 24 24"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 001.99 1.61h9.72a2 2 0 001.99-1.61L23 6H6"/></svg>
+      Panier
+      <span class="bnav-badge" id="bnav-badge"></span>
+    </a>
+    <a href="suivi.html" class="bnav-item" data-nav="4">
+      <svg viewBox="0 0 24 24"><path d="M12 22s-8-4.5-8-11.8A8 8 0 0112 2a8 8 0 018 8.2c0 7.3-8 11.8-8 11.8z"/><circle cx="12" cy="10" r="3"/></svg>
+      Suivi
+    </a>
+  </div>
+</nav>
+<script>
+(function(){
+  var blob = document.getElementById('bnav-blob');
+  var items = document.querySelectorAll('.bnav-item');
+  var pill = document.querySelector('.bnav-pill');
+  if(!blob || !pill || !items.length) return;
+  function positionBlob(el, animate){
+    var pr = pill.getBoundingClientRect();
+    var er = el.getBoundingClientRect();
+    if(animate) blob.classList.add('slime');
+    else blob.classList.remove('slime');
+    blob.style.left = (er.left - pr.left) + 'px';
+    blob.style.width = er.width + 'px';
+    blob.style.height = er.height + 'px';
+  }
+  var activeEl = document.querySelector('.bnav-item.active');
+  if(activeEl){ positionBlob(activeEl, false); }
+  sessionStorage.removeItem('bnav_from');
+  items.forEach(function(item){
+    item.addEventListener('click', function(e){
+      if(item.classList.contains('active')) return;
+      e.preventDefault();
+      var href = item.getAttribute('href');
+      var currentActive = document.querySelector('.bnav-item.active');
+      sessionStorage.setItem('bnav_from', currentActive ? currentActive.dataset.nav : '0');
+      positionBlob(item, true);
+      items.forEach(function(i){ i.classList.remove('active'); });
+      item.classList.add('active');
+      setTimeout(function(){ window.location.href = href; }, 350);
+    });
+  });
+})();
+</script>
+
+<script src="global.js"></script>
+<script src="luxury.js"></script>
+<script src="products-data.js"></script>
+<script>
+(function(){
+  var params = new URLSearchParams(window.location.search);
+  var id = params.get('id');
+  if (!id || !PRODUCTS[id]) {
+    document.querySelector('.pdp-name').textContent = 'Produit introuvable';
+    return;
+  }
+  var p = PRODUCTS[id];
+  var fullName = p.name + (p.color ? ' — ' + p.color : '');
+  var hasPrice = p.price && p.price !== '0';
+
+  document.title = p.brand + ' ' + p.name + ' | ALLSTORE 24/7';
+  document.getElementById('pdp-img').src = p.img;
+  document.getElementById('pdp-img').alt = fullName;
+  document.getElementById('pdp-brand').textContent = p.brand;
+  document.getElementById('pdp-name').textContent = p.name;
+  document.getElementById('pdp-color').textContent = 'Coloris : ' + (p.color || '');
+  document.getElementById('pdp-price').textContent = hasPrice ? p.price + ' €' : '— €';
+  document.getElementById('pdp-tag').textContent = hasPrice ? 'Réplique Premium' : 'Prix bientôt disponible';
+  document.getElementById('pdp-back').href = 'boutique.html?cat=' + p.cat + (p.brand ? '&brand=' + encodeURIComponent(p.brand) : '');
+
+  // Details
+  var details = document.getElementById('pdp-details');
+  details.innerHTML = '<div class="pdp-detail-row"><span class="pdp-detail-label">Marque</span><span class="pdp-detail-value">' + p.brand + '</span></div>'
+    + '<div class="pdp-detail-row"><span class="pdp-detail-label">Modèle</span><span class="pdp-detail-value">' + p.name + '</span></div>'
+    + '<div class="pdp-detail-row"><span class="pdp-detail-label">Coloris</span><span class="pdp-detail-value">' + (p.color || 'Unique') + '</span></div>'
+    + '<div class="pdp-detail-row"><span class="pdp-detail-label">Qualité</span><span class="pdp-detail-value">Réplique Premium 1:1</span></div>';
+
+  // Cart button
+  var cartBtn = document.getElementById('pdp-cart-btn');
+  if (!hasPrice) {
+    cartBtn.textContent = 'Bientôt disponible';
+    cartBtn.disabled = true;
+  } else {
+    var cart = JSON.parse(localStorage.getItem('als_cart') || '[]');
+    var inCart = cart.some(function(i){ return i.id === id; });
+    if (inCart) {
+      cartBtn.textContent = '✓ Dans le panier';
+      cartBtn.classList.add('in-cart');
+    }
+    cartBtn.addEventListener('click', function(){
+      var cart = JSON.parse(localStorage.getItem('als_cart') || '[]');
+      var exists = cart.some(function(i){ return i.id === id; });
+      if (exists) {
+        window.location.href = 'panier.html';
+      } else {
+        cart.push({id: id, brand: p.brand, name: fullName, img: p.img, price: p.price + ' €'});
+        localStorage.setItem('als_cart', JSON.stringify(cart));
+        cartBtn.textContent = '✓ Dans le panier';
+        cartBtn.classList.add('in-cart');
+        if (window.updateCartUI) updateCartUI();
+        if (window.showToast) showToast(fullName + ' ajouté au panier');
+      }
+    });
+  }
+
+  // Wishlist
+  var wlBtn = document.getElementById('pdp-wl-btn');
+  var wl = JSON.parse(localStorage.getItem('als_wishlist') || '[]');
+  if (wl.some(function(i){ return i.id === id; })) wlBtn.classList.add('wl-active');
+  wlBtn.addEventListener('click', function(){
+    var wl = JSON.parse(localStorage.getItem('als_wishlist') || '[]');
+    var idx = wl.findIndex(function(i){ return i.id === id; });
+    if (idx >= 0) {
+      wl.splice(idx, 1);
+      wlBtn.classList.remove('wl-active');
+    } else {
+      wl.push({id: id, brand: p.brand, name: fullName, img: p.img});
+      wlBtn.classList.add('wl-active');
+    }
+    localStorage.setItem('als_wishlist', JSON.stringify(wl));
+  });
+})();
+</script>
+</body>
+</html>
