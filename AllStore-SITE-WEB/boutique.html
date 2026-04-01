@@ -1839,14 +1839,21 @@
       const btn = document.querySelector(`#cat-filters .filter-btn[onclick*="'${cat}'"]`);
       if (btn) filterLevel('cat', btn, cat);
       if (brand) {
-        setTimeout(function() {
+        var decoded = decodeURIComponent(brand);
+        function trySelectBrand(attempts) {
           var brandBtns = document.querySelectorAll('#brand-filters .filter-btn');
+          var found = false;
           brandBtns.forEach(function(b) {
-            if (b.textContent.trim() === brand) {
-              filterLevel('brand', b, brand);
+            if (b.textContent.trim() === decoded) {
+              filterLevel('brand', b, decoded);
+              found = true;
             }
           });
-        }, 50);
+          if (!found && attempts < 10) {
+            setTimeout(function() { trySelectBrand(attempts + 1); }, 100);
+          }
+        }
+        setTimeout(function() { trySelectBrand(0); }, 100);
       }
     }
   })();
