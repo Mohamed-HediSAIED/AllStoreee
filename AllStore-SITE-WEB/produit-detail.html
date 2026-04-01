@@ -181,8 +181,8 @@
   // Cart button
   var cartBtn = document.getElementById('pdp-cart-btn');
   if (!hasPrice) {
-    cartBtn.textContent = 'Bientôt disponible';
-    cartBtn.disabled = true;
+    cartBtn.textContent = 'Nous contacter';
+    cartBtn.addEventListener('click', function(){ window.location.href = 'contact.html'; });
   } else {
     var cart = JSON.parse(localStorage.getItem('als_cart') || '[]');
     var inCart = cart.some(function(i){ return i.id === id; });
