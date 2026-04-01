@@ -386,3 +386,38 @@
   })();
 
 })();
+
+// Newsletter signup
+window.submitNewsletter = function() {
+  var input = document.getElementById('nl-email');
+  var msg = document.getElementById('nl-msg');
+  if (!input || !msg) return;
+  var email = input.value.trim();
+  if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+    msg.textContent = 'Veuillez entrer un email valide';
+    msg.style.color = '#e74c3c';
+    return;
+  }
+  msg.textContent = 'Inscription...';
+  msg.style.color = 'rgba(255,255,255,.6)';
+  fetch('/api/register-email', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ email: email, source: 'signup' })
+  })
+  .then(function(r) { return r.json(); })
+  .then(function(data) {
+    if (data.ok) {
+      msg.textContent = 'Merci ! Vous recevrez nos offres exclusives.';
+      msg.style.color = '#4caf50';
+      input.value = '';
+    } else {
+      msg.textContent = data.error || 'Erreur, reessayez';
+      msg.style.color = '#e74c3c';
+    }
+  })
+  .catch(function() {
+    msg.textContent = 'Erreur de connexion';
+    msg.style.color = '#e74c3c';
+  });
+};

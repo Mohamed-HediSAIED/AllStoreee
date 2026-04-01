@@ -451,6 +451,15 @@
       }).catch(function() {});
     } catch(e) {}
 
+    // Auto-register client email (fire and forget)
+    try {
+      fetch('/api/register-email', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email: shippingInfo.email, source: 'purchase' }),
+      }).catch(function() {});
+    } catch(e) {}
+
     // Redirect to confirmation
     window.location.href = 'confirmation.html';
   }

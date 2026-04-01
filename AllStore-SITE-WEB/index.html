@@ -439,8 +439,12 @@
       <h3 class="foot-nl-title">Recevez nos<br><em>dernières nouveautés</em></h3>
     </div>
     <div class="foot-nl-right">
-      <p class="foot-nl-desc">Soyez les premiers à découvrir nos nouvelles pièces, nos arrivages exclusifs et nos offres réservées aux membres.</p>
-      <a href="contact.html" class="foot-nl-btn">S'abonner</a>
+      <p class="foot-nl-desc">Soyez les premiers à découvrir nos nouvelles pièces et offres exclusives.</p>
+      <div class="foot-nl-form">
+        <input type="email" id="nl-email" class="foot-nl-input" placeholder="Votre adresse email" onkeydown="if(event.key==='Enter')submitNewsletter()">
+        <button class="foot-nl-btn" onclick="submitNewsletter()">S'inscrire</button>
+      </div>
+      <p id="nl-msg" class="foot-nl-msg"></p>
     </div>
   </div>
 
