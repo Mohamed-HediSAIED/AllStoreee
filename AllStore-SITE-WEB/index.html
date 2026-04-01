@@ -118,6 +118,17 @@
   .als-collab-item{font-family:'Cormorant',serif;font-size:clamp(20px,3vw,32px);font-weight:300;color:var(--noir,#0a1923);opacity:.45;transition:opacity .2s;letter-spacing:.04em}
   .als-collab-item:hover{opacity:1}
 
+  /* ---------- SCROLL ARROWS (desktop) ---------- */
+  .als-scroll-wrap{position:relative}
+  .als-scroll-arrow{position:absolute;top:50%;transform:translateY(-50%);z-index:10;width:40px;height:40px;border-radius:50%;background:rgba(255,255,255,.7);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border:1px solid rgba(0,0,0,.08);display:flex;align-items:center;justify-content:center;cursor:pointer;opacity:0;transition:opacity .25s;box-shadow:0 2px 12px rgba(0,0,0,.1);pointer-events:none}
+  .als-scroll-wrap:hover .als-scroll-arrow{opacity:1;pointer-events:auto}
+  .als-scroll-arrow:hover{background:rgba(255,255,255,.95)}
+  .als-scroll-arrow.left{left:6px}
+  .als-scroll-arrow.right{right:6px}
+  .als-scroll-arrow svg{width:16px;height:16px;stroke:var(--noir,#0a1923);stroke-width:2.5;fill:none;stroke-linecap:round;stroke-linejoin:round}
+  .als-scroll-arrow.hidden{opacity:0!important;pointer-events:none!important}
+  @media(max-width:1024px){.als-scroll-arrow{display:none}}
+
   /* ---------- MOBILE < 600px ---------- */
   @media(max-width:600px){
     .promo-banner{font-size:9px;padding:8px 12px;letter-spacing:.06em}
@@ -219,6 +230,9 @@
   <div class="als-sec-head">
     <h2 class="als-sec-title">VENDU <em>RÉCEMMENT</em></h2>
   </div>
+  <div class="als-scroll-wrap">
+  <div class="als-scroll-arrow left" onclick="scrollRow(this,-1)"><svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg></div>
+  <div class="als-scroll-arrow right" onclick="scrollRow(this,1)"><svg viewBox="0 0 24 24"><polyline points="9 6 15 12 9 18"/></svg></div>
   <div class="als-hscroll" id="selec-grid">
     <a href="#" class="als-hcard selec-card" data-cat="chaussures">
       <div class="als-hcard-img"><img src="margiela_replica.jpg" alt="Margiela Replica"></div>
@@ -249,6 +263,7 @@
       <div class="als-hcard-info"><span class="als-hcard-name">LOUBOUTIN KATE</span><span class="als-hcard-soon">Bientôt disponible</span></div>
     </a>
   </div>
+  </div>
   <div class="als-scroll-bar"></div>
 </section>
 
@@ -259,6 +274,9 @@
   <div class="als-sec-head">
     <h2 class="als-sec-title">NOS <em>COLLECTIONS</em></h2>
   </div>
+  <div class="als-scroll-wrap">
+  <div class="als-scroll-arrow left" onclick="scrollRow(this,-1)"><svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg></div>
+  <div class="als-scroll-arrow right" onclick="scrollRow(this,1)"><svg viewBox="0 0 24 24"><polyline points="9 6 15 12 9 18"/></svg></div>
   <div class="als-coll-grid">
     <a href="boutique.html?cat=sacs" class="als-coll-card">
       <img src="sac_chloe.png" alt="Chloé">
@@ -285,6 +303,7 @@
       <div class="als-coll-overlay"></div>
       <div class="als-coll-label"><span class="als-coll-name">MONTRES</span><span class="als-coll-btn">VOIR</span></div>
     </a>
+  </div>
   </div>
 </section>
 
@@ -330,6 +349,9 @@
   <div class="als-sec-head">
     <h2 class="als-sec-title">ARTICLES <em>RARES</em></h2>
   </div>
+  <div class="als-scroll-wrap">
+  <div class="als-scroll-arrow left" onclick="scrollRow(this,-1)"><svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg></div>
+  <div class="als-scroll-arrow right" onclick="scrollRow(this,1)"><svg viewBox="0 0 24 24"><polyline points="9 6 15 12 9 18"/></svg></div>
   <div class="als-rare-grid">
     <a href="#" class="als-rare-card">
       <div class="als-rare-img"><img src="givenchy_shark_lock.jpg" alt="Givenchy Shark Lock"></div>
@@ -363,6 +385,7 @@
       <div class="als-rare-img"><img src="casablanca_chemise.jpg" alt="Casablanca Casa Way"></div>
       <div class="als-rare-info"><span class="als-rare-brand">CASABLANCA</span><span class="als-rare-name">Chemise Casa Way</span><span class="als-rare-soon">Bientôt disponible</span></div>
     </a>
+  </div>
   </div>
 </section>
 
@@ -580,6 +603,15 @@
     requestAnimationFrame(step);
   });
 })();
+
+// Scroll arrows for desktop
+function scrollRow(arrow, dir) {
+  var wrap = arrow.closest('.als-scroll-wrap');
+  var row = wrap.querySelector('.als-hscroll, .als-coll-grid, .als-rare-grid');
+  if (!row) return;
+  var amount = row.clientWidth * 0.6;
+  row.scrollBy({ left: dir * amount, behavior: 'smooth' });
+}
 </script>
 
 <script src="global.js"></script>
