@@ -2583,10 +2583,18 @@
       }
     });
     const container = document.getElementById('brand-filters');
-    container.innerHTML = '<button class="filter-btn active" onclick="filterLevel(\'brand\',this,\'all\')">Toutes</button>';
+    container.innerHTML = '';
+    var allBtn = document.createElement('button');
+    allBtn.className = 'filter-btn active';
+    allBtn.textContent = 'Toutes';
+    allBtn.addEventListener('click', function(){ filterLevel('brand', this, 'all'); });
+    container.appendChild(allBtn);
     [...brands].sort().forEach(brand => {
-      var safe = brand.replace(/'/g, '&#39;');
-      container.innerHTML += `<button class="filter-btn" onclick="filterLevel('brand',this,'${safe}')">${brand}</button>`;
+      var btn = document.createElement('button');
+      btn.className = 'filter-btn';
+      btn.textContent = brand;
+      btn.addEventListener('click', function(){ filterLevel('brand', this, brand); });
+      container.appendChild(btn);
     });
     container.style.display = brands.size > 0 ? 'flex' : 'none';
   }
@@ -2605,10 +2613,18 @@
       }
     });
     const container = document.getElementById('model-filters');
-    container.innerHTML = '<button class="filter-btn active" onclick="filterLevel(\'model\',this,\'all\')">Tous</button>';
+    container.innerHTML = '';
+    var allBtn = document.createElement('button');
+    allBtn.className = 'filter-btn active';
+    allBtn.textContent = 'Tous';
+    allBtn.addEventListener('click', function(){ filterLevel('model', this, 'all'); });
+    container.appendChild(allBtn);
     [...models].sort().forEach(model => {
-      var safe = model.replace(/'/g, '&#39;');
-      container.innerHTML += `<button class="filter-btn" onclick="filterLevel('model',this,'${safe}')">${model}</button>`;
+      var btn = document.createElement('button');
+      btn.className = 'filter-btn';
+      btn.textContent = model;
+      btn.addEventListener('click', function(){ filterLevel('model', this, model); });
+      container.appendChild(btn);
     });
     container.style.display = models.size > 1 ? 'flex' : 'none';
   }
