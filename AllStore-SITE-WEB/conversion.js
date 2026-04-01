@@ -180,7 +180,7 @@
     g.className='pdp-guarantee';
     g.innerHTML=`
       <div class="pdp-guarantee-item"><svg viewBox="0 0 24 24"><path d="M5 12l5 5L20 7"/></svg>Qualité vérifiée par nos experts</div>
-      <div class="pdp-guarantee-item"><svg viewBox="0 0 24 24"><path d="M5 12l5 5L20 7"/></svg>Retour gratuit sous 14 jours</div>
+      <div class="pdp-guarantee-item"><svg viewBox="0 0 24 24"><path d="M5 12l5 5L20 7"/></svg>Livraison offerte en Europe</div>
       <div class="pdp-guarantee-item"><svg viewBox="0 0 24 24"><path d="M5 12l5 5L20 7"/></svg>Paiement 100% sécurisé</div>
     `;
     actions.parentNode.insertBefore(g,actions.nextSibling);
