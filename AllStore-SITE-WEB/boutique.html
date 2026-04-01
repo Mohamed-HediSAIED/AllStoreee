@@ -2467,7 +2467,9 @@
         const b = card.querySelector('.b-brand');
         const n = card.querySelector('.b-name');
         if (b && b.textContent.trim() === brand && n && n.textContent.trim()) {
-          models.add(n.textContent.trim());
+          var fullName = n.textContent.trim();
+          var modelName = fullName.split(' — ')[0].split(' - ')[0];
+          models.add(modelName);
         }
       }
     });
@@ -2490,7 +2492,7 @@
       let show = true;
       if (currentCat !== 'all' && cat !== currentCat) show = false;
       if (currentBrand !== 'all' && brand !== currentBrand) show = false;
-      if (currentModel !== 'all' && name !== currentModel) show = false;
+      if (currentModel !== 'all' && !name.startsWith(currentModel)) show = false;
       if (search && !text.includes(search)) show = false;
 
       card.style.display = show ? '' : 'none';
