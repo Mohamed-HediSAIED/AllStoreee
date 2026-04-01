@@ -88,6 +88,8 @@
       flex-direction: column;
       transition: transform .35s var(--ease), box-shadow .35s;
       position: relative;
+      content-visibility: auto;
+      contain-intrinsic-size: 0 400px;
     }
     .b-card:hover { transform: translateY(-6px); box-shadow: 0 20px 48px rgba(0,0,0,.08); }
 
@@ -399,7 +401,7 @@
 
 <header>
   <nav>
-    <a href="index.html" class="logo"><img src="shopping_bag_icon.png" alt="ALLSTORE"></a>
+    <a href="index.html" class="logo"><img loading="lazy" decoding="async" src="shopping_bag_icon.png" alt="ALLSTORE"></a>
     <ul class="nav-links">
       <li><a href="index.html">Accueil</a></li>
       <li><a href="boutique.html" class="active">Boutique</a></li>
@@ -447,7 +449,7 @@
     <div class="b-card b-card--colorways" data-cat="chaussures" id="prada-cup-card" style="cursor:pointer" onclick="if(!event.target.closest('.b-cw,.b-gal-arrow,.b-btn-cart,.b-btn-wl')){const c=this.querySelector('.b-cw.active');window.location.href='produit.html?color='+(c?.dataset?.prefix?.replace('prada_cup_','')||'noir')}">
       <span class="b-badge">Nouveau</span>
       <div class="b-img b-gallery">
-        <img id="prada-cup-img" src="prada_cup_noir_1.jpg" alt="Prada America's Cup">
+        <img loading="lazy" decoding="async" id="prada-cup-img" src="prada_cup_noir_1.jpg" alt="Prada America's Cup">
         <button class="b-gal-arrow b-gal-prev" onclick="galNav(this,-1)">&#8249;</button>
         <button class="b-gal-arrow b-gal-next" onclick="galNav(this,1)">&#8250;</button>
         <span class="b-gal-counter" id="prada-cup-counter">1 / 8</span>
@@ -502,7 +504,7 @@
     <div class="b-card b-card--colorways" data-cat="vetements" id="alo-card" style="cursor:pointer" onclick="if(!event.target.closest('.b-cw,.b-btn-cart,.b-btn-wl')){const c=this.querySelector('.b-cw.active');window.location.href='produit-alo.html?color='+(c?.dataset?.color_id||'black')}">
       <span class="b-badge">Nouveau</span>
       <div class="b-img">
-        <img id="alo-img" src="alo_black.jpg" alt="Alo Yoga Accolade">
+        <img loading="lazy" decoding="async" id="alo-img" src="alo_black.jpg" alt="Alo Yoga Accolade">
       </div>
       <div class="b-body">
         <span class="b-brand">Alo Yoga</span>
@@ -541,7 +543,7 @@
     <div class="b-card b-card--colorways" data-cat="sacs" id="gd24h-card" style="cursor:pointer" onclick="if(!event.target.closest('.b-cw,.b-btn-cart,.b-btn-wl')){const c=this.querySelector('.b-cw.active');window.location.href='produit-gd24h.html?color='+(c?.dataset?.color_id||'noir')}">
       <span class="b-badge">Nouveau</span>
       <div class="b-img">
-        <img id="gd24h-img" src="gd24h_noir.webp" alt="Gerard Darel 24H">
+        <img loading="lazy" decoding="async" id="gd24h-img" src="gd24h_noir.webp" alt="Gerard Darel 24H">
       </div>
       <div class="b-body">
         <span class="b-brand">Gerard Darel</span>
@@ -570,7 +572,7 @@
     <div class="b-card b-card--colorways" data-cat="vetements" id="burberry-hoodie-card" style="cursor:pointer" onclick="if(!event.target.closest('.b-cw,.b-btn-cart,.b-btn-wl')){const c=this.querySelector('.b-cw.active');window.location.href='produit-burberry-hoodie.html?color='+(c?.dataset?.color_id||'gris')}">
       <span class="b-badge">Nouveau</span>
       <div class="b-img">
-        <img id="burberry-hoodie-img" src="burberry_hoodie_gris.jpg" alt="Burberry Zip Hoodie">
+        <img loading="lazy" decoding="async" id="burberry-hoodie-img" src="burberry_hoodie_gris.jpg" alt="Burberry Zip Hoodie">
       </div>
       <div class="b-body">
         <span class="b-brand">Burberry</span>
@@ -595,7 +597,7 @@
     <div class="b-card b-card--colorways" data-cat="chaussures" id="im-beckett-card" style="cursor:pointer" onclick="if(!event.target.closest('.b-cw,.b-btn-cart,.b-btn-wl')){const c=this.querySelector('.b-cw.active');window.location.href='produit-im-beckett.html?color='+(c?.dataset?.color_id||'noir')}">
       <span class="b-badge">Nouveau</span>
       <div class="b-img">
-        <img id="im-beckett-img" src="im_beckett_noir.jpg" alt="Isabel Marant Beckett">
+        <img loading="lazy" decoding="async" id="im-beckett-img" src="im_beckett_noir.jpg" alt="Isabel Marant Beckett">
       </div>
       <div class="b-body">
         <span class="b-brand">Isabel Marant</span>
@@ -622,7 +624,7 @@
     <div class="b-card b-card--colorways" data-cat="vetements" id="bape-tee-card" style="cursor:pointer" onclick="if(!event.target.closest('.b-cw,.b-btn-cart,.b-btn-wl')){const c=this.querySelector('.b-cw.active');window.location.href='produit-bape-tee.html?color='+(c?.dataset?.color_id||'noir_vert')}">
       <span class="b-badge">Nouveau</span>
       <div class="b-img">
-        <img id="bape-tee-img" src="bape_noir_vert.jpg" alt="Bape Camo Tee">
+        <img loading="lazy" decoding="async" id="bape-tee-img" src="bape_noir_vert.jpg" alt="Bape Camo Tee">
       </div>
       <div class="b-body">
         <span class="b-brand">A Bathing Ape</span>
@@ -650,7 +652,7 @@
     <div class="b-card b-card--colorways" data-cat="chaussures" id="prada-sling-card" style="cursor:pointer" onclick="if(!event.target.closest('.b-cw,.b-btn-cart,.b-btn-wl')){const c=this.querySelector('.b-cw.active');window.location.href='produit-prada-sling.html?color='+(c?.dataset?.color_id||'noir')}">
       <span class="b-badge">Nouveau</span>
       <div class="b-img">
-        <img id="prada-sling-img" src="prada_sling_noir.jpg" alt="Prada Slingback">
+        <img loading="lazy" decoding="async" id="prada-sling-img" src="prada_sling_noir.jpg" alt="Prada Slingback">
       </div>
       <div class="b-body">
         <span class="b-brand">Prada</span>
@@ -676,7 +678,7 @@
     <div class="b-card b-card--colorways" data-cat="vetements" id="si-pull-card" style="cursor:pointer" onclick="if(!event.target.closest('.b-cw,.b-btn-cart,.b-btn-wl')){const c=this.querySelector('.b-cw.active');window.location.href='produit-si-pull.html?color='+(c?.dataset?.color_id||'noir')}">
       <span class="b-badge">Nouveau</span>
       <div class="b-img">
-        <img id="si-pull-img" src="si_pull_noir.jpg" alt="Stone Island Pull">
+        <img loading="lazy" decoding="async" id="si-pull-img" src="si_pull_noir.jpg" alt="Stone Island Pull">
       </div>
       <div class="b-body">
         <span class="b-brand">Stone Island</span>
@@ -700,7 +702,7 @@
     <div class="b-card b-card--colorways" data-cat="accessoires" id="lp-casquette-card" style="cursor:pointer" onclick="if(!event.target.closest('.b-cw,.b-btn-cart,.b-btn-wl')){const c=this.querySelector('.b-cw.active');window.location.href='produit-lp-casquette.html?color='+(c?.dataset?.color_id||'noir')}">
       <span class="b-badge">Nouveau</span>
       <div class="b-img">
-        <img id="lp-casquette-img" src="lp_casquette_noir.jpg" alt="Loro Piana Casquette">
+        <img loading="lazy" decoding="async" id="lp-casquette-img" src="lp_casquette_noir.jpg" alt="Loro Piana Casquette">
       </div>
       <div class="b-body">
         <span class="b-brand">Loro Piana</span>
@@ -741,7 +743,7 @@
     <div class="b-card b-card--colorways" data-cat="tech" id="airpods-max-card" style="cursor:pointer" onclick="if(!event.target.closest('.b-cw,.b-btn-cart,.b-btn-wl')){const c=this.querySelector('.b-cw.active');window.location.href='produit-airpods-max.html?color='+(c?.dataset?.color_id||'noir')}">
       <span class="b-badge">Nouveau</span>
       <div class="b-img">
-        <img id="airpods-max-img" src="airpods_max_noir.jpg" alt="AirPods Max">
+        <img loading="lazy" decoding="async" id="airpods-max-img" src="airpods_max_noir.jpg" alt="AirPods Max">
       </div>
       <div class="b-body">
         <span class="b-brand">Apple</span>
@@ -768,7 +770,7 @@
     <div class="b-card" data-cat="lunettes" id="lunettes-miumiu-card" style="cursor:pointer" onclick="if(!event.target.closest('.b-btn-cart,.b-btn-wl')){window.location.href='produit-lunettes-miumiu.html'}">
       <span class="b-badge">Nouveau</span>
       <div class="b-img">
-        <img src="lunettes_miumiu_noir.jpg" alt="Lunettes Miu Miu">
+        <img loading="lazy" decoding="async" src="lunettes_miumiu_noir.jpg" alt="Lunettes Miu Miu">
       </div>
       <div class="b-body">
         <span class="b-brand">Miu Miu</span>
@@ -787,7 +789,7 @@
     <div class="b-card b-card--colorways" data-cat="chaussures" id="mihara-hank-card" style="cursor:pointer" onclick="if(!event.target.closest('.b-cw,.b-btn-cart,.b-btn-wl')){const c=this.querySelector('.b-cw.active');window.location.href='produit-mihara-hank.html?color='+(c?.dataset?.color_id||'noir')}">
       <span class="b-badge">Nouveau</span>
       <div class="b-img">
-        <img id="mihara-hank-img" src="mihara_hank_noir.jpg" alt="Mihara Yasuhiro Hank">
+        <img loading="lazy" decoding="async" id="mihara-hank-img" src="mihara_hank_noir.jpg" alt="Mihara Yasuhiro Hank">
       </div>
       <div class="b-body">
         <span class="b-brand">Maison Mihara Yasuhiro</span>
@@ -817,7 +819,7 @@
     <div class="b-card b-card--colorways" data-cat="chaussures" id="balenciaga-runner-card" style="cursor:pointer" onclick="if(!event.target.closest('.b-cw,.b-btn-cart,.b-btn-wl')){const c=this.querySelector('.b-cw.active');window.location.href='produit-balenciaga-runner.html?color='+(c?.dataset?.color_id||'noir_argent')}">
       <span class="b-badge">Nouveau</span>
       <div class="b-img">
-        <img id="balenciaga-runner-img" src="balenciaga_runner_noir_argent.jpg" alt="Balenciaga Runner">
+        <img loading="lazy" decoding="async" id="balenciaga-runner-img" src="balenciaga_runner_noir_argent.jpg" alt="Balenciaga Runner">
       </div>
       <div class="b-body">
         <span class="b-brand">Balenciaga</span>
@@ -851,7 +853,7 @@
     <div class="b-card b-card--colorways" data-cat="accessoires" id="miumiu-carte-card" style="cursor:pointer" onclick="if(!event.target.closest('.b-cw,.b-btn-cart,.b-btn-wl')){const c=this.querySelector('.b-cw.active');window.location.href='produit-miumiu-carte.html?color='+(c?.dataset?.color_id||'noir')}">
       <span class="b-badge">Nouveau</span>
       <div class="b-img">
-        <img id="miumiu-carte-img" src="miumiu_carte_noir.jpg" alt="Porte-Cartes Miu Miu">
+        <img loading="lazy" decoding="async" id="miumiu-carte-img" src="miumiu_carte_noir.jpg" alt="Porte-Cartes Miu Miu">
       </div>
       <div class="b-body">
         <span class="b-brand">Miu Miu</span>
@@ -891,7 +893,7 @@
     <div class="b-card b-card--new b-card--colorways" data-cat="chaussures" id="bal3xl-card">
       <span class="b-badge">Nouveau</span>
       <div class="b-img">
-        <img id="bal3xl-img" src="772774W3RMU1100_F.jpg" alt="Article">
+        <img loading="lazy" decoding="async" id="bal3xl-img" src="772774W3RMU1100_F.jpg" alt="Article">
       </div>
       <div class="b-body">
         <span class="b-brand"></span>
@@ -916,7 +918,7 @@
     <!-- MAISON MARGIELA REPLICA (cercle rouge) -->
     <div class="b-card b-card--new" data-cat="chaussures" id="prod-margiela-rouge">
       <div class="b-img" style="background:#fff">
-        <img src="16071945_31303830_1000.webp" alt="Maison Margiela Replica" style="object-fit:contain">
+        <img loading="lazy" decoding="async" src="16071945_31303830_1000.webp" alt="Maison Margiela Replica" style="object-fit:contain">
       </div>
       <div class="b-body">
         <span class="b-brand">Maison Margiela</span>
@@ -933,7 +935,7 @@
     <!-- MAISON MARGIELA REPLICA (cercle jaune) -->
     <div class="b-card b-card--new" data-cat="chaussures" id="prod-margiela-jaune">
       <div class="b-img" style="background:#fff">
-        <img src="16071988_30985491_1000.webp" alt="Maison Margiela Replica" style="object-fit:contain">
+        <img loading="lazy" decoding="async" src="16071988_30985491_1000.webp" alt="Maison Margiela Replica" style="object-fit:contain">
       </div>
       <div class="b-body">
         <span class="b-brand">Maison Margiela</span>
@@ -950,7 +952,7 @@
     <!-- MAISON MARGIELA REPLICA (cercle bleu-clair) -->
     <div class="b-card b-card--new" data-cat="chaussures" id="prod-margiela-bleu-clair">
       <div class="b-img" style="background:#fff">
-        <img src="16871996_52836839_1000.webp" alt="Maison Margiela Replica" style="object-fit:contain">
+        <img loading="lazy" decoding="async" src="16871996_52836839_1000.webp" alt="Maison Margiela Replica" style="object-fit:contain">
       </div>
       <div class="b-body">
         <span class="b-brand">Maison Margiela</span>
@@ -967,7 +969,7 @@
     <!-- MAISON MARGIELA REPLICA (cercle rose) -->
     <div class="b-card b-card--new" data-cat="chaussures" id="prod-margiela-rose">
       <div class="b-img" style="background:#fff">
-        <img src="18907110_43873448_1000.webp" alt="Maison Margiela Replica" style="object-fit:contain">
+        <img loading="lazy" decoding="async" src="18907110_43873448_1000.webp" alt="Maison Margiela Replica" style="object-fit:contain">
       </div>
       <div class="b-body">
         <span class="b-brand">Maison Margiela</span>
@@ -984,7 +986,7 @@
     <!-- MAISON MARGIELA REPLICA (cercle vert-clair) -->
     <div class="b-card b-card--new" data-cat="chaussures" id="prod-margiela-vert-clair">
       <div class="b-img" style="background:#fff">
-        <img src="23869079_53843387_1000.webp" alt="Maison Margiela Replica" style="object-fit:contain">
+        <img loading="lazy" decoding="async" src="23869079_53843387_1000.webp" alt="Maison Margiela Replica" style="object-fit:contain">
       </div>
       <div class="b-body">
         <span class="b-brand">Maison Margiela</span>
@@ -1001,7 +1003,7 @@
     <!-- MAISON MARGIELA REPLICA (cercle bleu-fonce) -->
     <div class="b-card b-card--new" data-cat="chaussures" id="prod-margiela-bleu-fonce">
       <div class="b-img" style="background:#fff">
-        <img src="25895209_56074287_1000.webp" alt="Maison Margiela Replica" style="object-fit:contain">
+        <img loading="lazy" decoding="async" src="25895209_56074287_1000.webp" alt="Maison Margiela Replica" style="object-fit:contain">
       </div>
       <div class="b-body">
         <span class="b-brand">Maison Margiela</span>
@@ -1018,7 +1020,7 @@
     <!-- MAISON MARGIELA REPLICA (cercle vert-fonce) -->
     <div class="b-card b-card--new" data-cat="chaussures" id="prod-margiela-vert-fonce">
       <div class="b-img" style="background:#fff">
-        <img src="29997887_59237229_1000.webp" alt="Maison Margiela Replica" style="object-fit:contain">
+        <img loading="lazy" decoding="async" src="29997887_59237229_1000.webp" alt="Maison Margiela Replica" style="object-fit:contain">
       </div>
       <div class="b-body">
         <span class="b-brand">Maison Margiela</span>
@@ -1035,7 +1037,7 @@
     <!-- MAISON MARGIELA REPLICA (cercle marron) -->
     <div class="b-card b-card--new" data-cat="chaussures" id="prod-margiela-marron">
       <div class="b-img" style="background:#fff">
-        <img src="29997862_59117220_1000.webp" alt="Maison Margiela Replica" style="object-fit:contain">
+        <img loading="lazy" decoding="async" src="29997862_59117220_1000.webp" alt="Maison Margiela Replica" style="object-fit:contain">
       </div>
       <div class="b-body">
         <span class="b-brand">Maison Margiela</span>
@@ -1052,7 +1054,7 @@
     <!-- MAISON MARGIELA REPLICA (cercle rouge2) -->
     <div class="b-card b-card--new" data-cat="chaussures" id="prod-margiela-rouge2">
       <div class="b-img" style="background:#fff">
-        <img src="32878141_63320542_1000.webp" alt="Maison Margiela Replica" style="object-fit:contain">
+        <img loading="lazy" decoding="async" src="32878141_63320542_1000.webp" alt="Maison Margiela Replica" style="object-fit:contain">
       </div>
       <div class="b-body">
         <span class="b-brand">Maison Margiela</span>
@@ -1069,7 +1071,7 @@
     <!-- PRADA AMERICA'S CUP BLACK -->
     <div class="b-card b-card--new" data-cat="chaussures" id="prod-prada-cup-black">
       <div class="b-img" style="background:#fff">
-        <img src="prada_cup_black.webp" alt="Prada America's Cup" style="object-fit:contain;transform:scale(1.15)">
+        <img loading="lazy" decoding="async" src="prada_cup_black.webp" alt="Prada America's Cup" style="object-fit:contain;transform:scale(1.15)">
       </div>
       <div class="b-body">
         <span class="b-brand">Prada</span>
@@ -1086,7 +1088,7 @@
     <!-- PRADA AMERICA'S CUP NAVY -->
     <div class="b-card b-card--new" data-cat="chaussures" id="prod-prada-cup-navy">
       <div class="b-img" style="background:#fff">
-        <img src="prada_cup_navy.webp" alt="Prada America's Cup" style="object-fit:contain">
+        <img loading="lazy" decoding="async" src="prada_cup_navy.webp" alt="Prada America's Cup" style="object-fit:contain">
       </div>
       <div class="b-body">
         <span class="b-brand">Prada</span>
@@ -1103,7 +1105,7 @@
     <!-- PRADA AMERICA'S CUP BORDEAUX -->
     <div class="b-card b-card--new" data-cat="chaussures" id="prod-prada-cup-bordeaux">
       <div class="b-img" style="background:#fff">
-        <img src="prada_cup_bordeaux.webp" alt="Prada America's Cup" style="object-fit:contain">
+        <img loading="lazy" decoding="async" src="prada_cup_bordeaux.webp" alt="Prada America's Cup" style="object-fit:contain">
       </div>
       <div class="b-body">
         <span class="b-brand">Prada</span>
@@ -1120,7 +1122,7 @@
     <!-- PRADA AMERICA'S CUP GREY -->
     <div class="b-card b-card--new" data-cat="chaussures" id="prod-prada-cup-grey">
       <div class="b-img" style="background:#fff">
-        <img src="prada_cup_grey.webp" alt="Prada America's Cup" style="object-fit:contain">
+        <img loading="lazy" decoding="async" src="prada_cup_grey.webp" alt="Prada America's Cup" style="object-fit:contain">
       </div>
       <div class="b-body">
         <span class="b-brand">Prada</span>
@@ -1137,7 +1139,7 @@
     <!-- PRADA AMERICA'S CUP OLIVE -->
     <div class="b-card b-card--new" data-cat="chaussures" id="prod-prada-cup-olive">
       <div class="b-img" style="background:#fff">
-        <img src="prada_cup_olive.webp" alt="Prada America's Cup" style="object-fit:contain">
+        <img loading="lazy" decoding="async" src="prada_cup_olive.webp" alt="Prada America's Cup" style="object-fit:contain">
       </div>
       <div class="b-body">
         <span class="b-brand">Prada</span>
@@ -1154,7 +1156,7 @@
     <!-- PRADA AMERICA'S CUP - VERT -->
     <div class="b-card b-card--new" data-cat="chaussures" id="prod-prada-cup-vert">
       <div class="b-img" style="background:#fff">
-        <img src="27917097_57617931_1000.webp" alt="Prada America's Cup" style="object-fit:contain">
+        <img loading="lazy" decoding="async" src="27917097_57617931_1000.webp" alt="Prada America's Cup" style="object-fit:contain">
       </div>
       <div class="b-body">
         <span class="b-brand">Prada</span>
@@ -1171,7 +1173,7 @@
     <!-- NIKE MIND 001 (cercle rouge) -->
     <div class="b-card b-card--new" data-cat="chaussures" id="prod-nike-mind-r2">
       <div class="b-img" style="background:#fff">
-        <img src="32778953_65548955_1000.webp" alt="Nike Mind 001" style="object-fit:contain">
+        <img loading="lazy" decoding="async" src="32778953_65548955_1000.webp" alt="Nike Mind 001" style="object-fit:contain">
       </div>
       <div class="b-body">
         <span class="b-brand">Nike</span>
@@ -1188,7 +1190,7 @@
     <!-- PRADA AMERICA'S CUP - ROUGE -->
     <div class="b-card b-card--new" data-cat="chaussures" id="prod-prada-cup-rouge">
       <div class="b-img" style="background:#fff">
-        <img src="32954507_63357531_1000.webp" alt="Prada America's Cup" style="object-fit:contain">
+        <img loading="lazy" decoding="async" src="32954507_63357531_1000.webp" alt="Prada America's Cup" style="object-fit:contain">
       </div>
       <div class="b-body">
         <span class="b-brand">Prada</span>
@@ -1205,7 +1207,7 @@
     <!-- NIKE MIND 001 (cercle jaune) -->
     <div class="b-card b-card--new" data-cat="chaussures" id="prod-nike-mind-j1">
       <div class="b-img" style="background:#fff">
-        <img src="33494273_64429580_1000.webp" alt="Nike Mind 001" style="object-fit:contain">
+        <img loading="lazy" decoding="async" src="33494273_64429580_1000.webp" alt="Nike Mind 001" style="object-fit:contain">
       </div>
       <div class="b-body">
         <span class="b-brand">Nike</span>
@@ -1222,7 +1224,7 @@
     <!-- NIKE MIND 001 (cercle bleu) -->
     <div class="b-card b-card--new" data-cat="chaussures" id="prod-nike-mind-b2">
       <div class="b-img" style="background:#fff">
-        <img src="32778986_65549175_1000.webp" alt="Nike Mind 001" style="object-fit:contain">
+        <img loading="lazy" decoding="async" src="32778986_65549175_1000.webp" alt="Nike Mind 001" style="object-fit:contain">
       </div>
       <div class="b-body">
         <span class="b-brand">Nike</span>
@@ -1239,7 +1241,7 @@
     <!-- NIKE MIND 001 (cercle vert) -->
     <div class="b-card b-card--new" data-cat="chaussures" id="prod-nike-mind-v2">
       <div class="b-img" style="background:#fff">
-        <img src="32778950_65549011_1000.webp" alt="Nike Mind 001" style="object-fit:contain">
+        <img loading="lazy" decoding="async" src="32778950_65549011_1000.webp" alt="Nike Mind 001" style="object-fit:contain">
       </div>
       <div class="b-body">
         <span class="b-brand">Nike</span>
@@ -1256,7 +1258,7 @@
     <!-- NIKE MIND 001 (cercle vert) -->
     <div class="b-card b-card--new" data-cat="chaussures" id="prod-nike-mind-g3">
       <div class="b-img" style="background:#fff">
-        <img src="34939617_66705441_1000.webp" alt="Nike Mind 001" style="object-fit:contain">
+        <img loading="lazy" decoding="async" src="34939617_66705441_1000.webp" alt="Nike Mind 001" style="object-fit:contain">
       </div>
       <div class="b-body">
         <span class="b-brand">Nike</span>
@@ -1274,7 +1276,7 @@
     <!-- PRADA AMERICA'S CUP - BLEU -->
     <div class="b-card b-card--new" data-cat="chaussures" id="prod-prada-cup-bleu">
       <div class="b-img" style="background:#fff">
-        <img src="32967461_63356470_1000.webp" alt="Prada America's Cup" style="object-fit:contain">
+        <img loading="lazy" decoding="async" src="32967461_63356470_1000.webp" alt="Prada America's Cup" style="object-fit:contain">
       </div>
       <div class="b-body">
         <span class="b-brand">Prada</span>
@@ -1291,7 +1293,7 @@
     <!-- NIKE MIND 001 (cercle rouge) -->
     <div class="b-card b-card--new" data-cat="chaussures" id="prod-nike-mind-r3">
       <div class="b-img" style="background:#fff">
-        <img src="34940952_66705593_1000.webp" alt="Nike Mind 001" style="object-fit:contain">
+        <img loading="lazy" decoding="async" src="34940952_66705593_1000.webp" alt="Nike Mind 001" style="object-fit:contain">
       </div>
       <div class="b-body">
         <span class="b-brand">Nike</span>
@@ -1308,7 +1310,7 @@
     <!-- MAISON MARGIELA REPLICA (cercle jaune2) -->
     <div class="b-card b-card--new" data-cat="chaussures" id="prod-margiela-jaune2">
       <div class="b-img" style="background:#fff">
-        <img src="29997903_59479760_1000.webp" alt="Maison Margiela Replica" style="object-fit:contain">
+        <img loading="lazy" decoding="async" src="29997903_59479760_1000.webp" alt="Maison Margiela Replica" style="object-fit:contain">
       </div>
       <div class="b-body">
         <span class="b-brand">Maison Margiela</span>
@@ -1325,7 +1327,7 @@
     <!-- MAISON MARGIELA REPLICA (cercle bleu-clair2) -->
     <div class="b-card b-card--new" data-cat="chaussures" id="prod-margiela-bleu-clair2">
       <div class="b-img" style="background:#fff">
-        <img src="18948254_41189030_1000.webp" alt="Maison Margiela Replica" style="object-fit:contain">
+        <img loading="lazy" decoding="async" src="18948254_41189030_1000.webp" alt="Maison Margiela Replica" style="object-fit:contain">
       </div>
       <div class="b-body">
         <span class="b-brand">Maison Margiela</span>
@@ -1342,7 +1344,7 @@
     <!-- MAISON MARGIELA REPLICA (cercle rose2) -->
     <div class="b-card b-card--new" data-cat="chaussures" id="prod-margiela-rose2">
       <div class="b-img" style="background:#fff">
-        <img src="25891282_56074255_1000.webp" alt="Maison Margiela Replica" style="object-fit:contain">
+        <img loading="lazy" decoding="async" src="25891282_56074255_1000.webp" alt="Maison Margiela Replica" style="object-fit:contain">
       </div>
       <div class="b-body">
         <span class="b-brand">Maison Margiela</span>
@@ -1359,7 +1361,7 @@
     <!-- MAISON MARGIELA REPLICA (cercle vert-clair2) -->
     <div class="b-card b-card--new" data-cat="chaussures" id="prod-margiela-vert-clair2">
       <div class="b-img" style="background:#fff">
-        <img src="30197695_59215425_1000.webp" alt="Maison Margiela Replica" style="object-fit:contain">
+        <img loading="lazy" decoding="async" src="30197695_59215425_1000.webp" alt="Maison Margiela Replica" style="object-fit:contain">
       </div>
       <div class="b-body">
         <span class="b-brand">Maison Margiela</span>
@@ -1376,7 +1378,7 @@
     <!-- MAISON MARGIELA REPLICA (cercle bleu-fonce2) -->
     <div class="b-card b-card--new" data-cat="chaussures" id="prod-margiela-bleu-fonce2">
       <div class="b-img" style="background:#fff">
-        <img src="30011871_59237993_1000.webp" alt="Maison Margiela Replica" style="object-fit:contain">
+        <img loading="lazy" decoding="async" src="30011871_59237993_1000.webp" alt="Maison Margiela Replica" style="object-fit:contain">
       </div>
       <div class="b-body">
         <span class="b-brand">Maison Margiela</span>
@@ -1393,7 +1395,7 @@
     <!-- MAISON MARGIELA REPLICA (cercle vert-fonce2) -->
     <div class="b-card b-card--new" data-cat="chaussures" id="prod-margiela-vert-fonce2">
       <div class="b-img" style="background:#fff">
-        <img src="34013703_65116448_1000.webp" alt="Maison Margiela Replica" style="object-fit:contain">
+        <img loading="lazy" decoding="async" src="34013703_65116448_1000.webp" alt="Maison Margiela Replica" style="object-fit:contain">
       </div>
       <div class="b-body">
         <span class="b-brand">Maison Margiela</span>
@@ -1410,7 +1412,7 @@
     <!-- MAISON MARGIELA REPLICA (cercle marron2) -->
     <div class="b-card b-card--new" data-cat="chaussures" id="prod-margiela-marron2">
       <div class="b-img" style="background:#fff">
-        <img src="17454809_39017711_1000.webp" alt="Maison Margiela Replica" style="object-fit:contain">
+        <img loading="lazy" decoding="async" src="17454809_39017711_1000.webp" alt="Maison Margiela Replica" style="object-fit:contain">
       </div>
       <div class="b-body">
         <span class="b-brand">Maison Margiela</span>
@@ -1427,7 +1429,7 @@
     <!-- PRODUIT 31 -->
     <div class="b-card b-card--new" data-cat="chaussures" id="prod-9be1b427">
       <div class="b-img">
-        <img src="9be1b427.jpg" alt="Article" onerror="this.closest('.b-card').style.display='none'">
+        <img loading="lazy" decoding="async" src="9be1b427.jpg" alt="Article" onerror="this.closest('.b-card').style.display='none'">
       </div>
       <div class="b-body">
         <span class="b-brand"></span>
@@ -1442,7 +1444,7 @@
     <!-- PRODUIT 32 -->
     <div class="b-card b-card--new" data-cat="chaussures" id="prod-9d7597be">
       <div class="b-img">
-        <img src="9d7597be.jpg" alt="Article" onerror="this.closest('.b-card').style.display='none'">
+        <img loading="lazy" decoding="async" src="9d7597be.jpg" alt="Article" onerror="this.closest('.b-card').style.display='none'">
       </div>
       <div class="b-body">
         <span class="b-brand"></span>
@@ -1457,7 +1459,7 @@
     <!-- PRODUIT 33 -->
     <div class="b-card b-card--new" data-cat="chaussures" id="prod-a7f6393b">
       <div class="b-img">
-        <img src="a7f6393b.jpg" alt="Article" onerror="this.closest('.b-card').style.display='none'">
+        <img loading="lazy" decoding="async" src="a7f6393b.jpg" alt="Article" onerror="this.closest('.b-card').style.display='none'">
       </div>
       <div class="b-body">
         <span class="b-brand"></span>
@@ -1472,7 +1474,7 @@
     <!-- PRODUIT 34 -->
     <div class="b-card b-card--new" data-cat="chaussures" id="prod-ab62f36f">
       <div class="b-img">
-        <img src="ab62f36f.jpg" alt="Article" onerror="this.closest('.b-card').style.display='none'">
+        <img loading="lazy" decoding="async" src="ab62f36f.jpg" alt="Article" onerror="this.closest('.b-card').style.display='none'">
       </div>
       <div class="b-body">
         <span class="b-brand"></span>
@@ -1487,7 +1489,7 @@
     <!-- PRODUIT 35 -->
     <div class="b-card b-card--new" data-cat="chaussures" id="prod-b4a45954">
       <div class="b-img">
-        <img src="b4a45954.jpg" alt="Article" onerror="this.closest('.b-card').style.display='none'">
+        <img loading="lazy" decoding="async" src="b4a45954.jpg" alt="Article" onerror="this.closest('.b-card').style.display='none'">
       </div>
       <div class="b-body">
         <span class="b-brand"></span>
@@ -1502,7 +1504,7 @@
     <!-- PRODUIT 36 -->
     <div class="b-card b-card--new" data-cat="chaussures" id="prod-bc0c0e5a">
       <div class="b-img">
-        <img src="bc0c0e5a.jpg" alt="Article" onerror="this.closest('.b-card').style.display='none'">
+        <img loading="lazy" decoding="async" src="bc0c0e5a.jpg" alt="Article" onerror="this.closest('.b-card').style.display='none'">
       </div>
       <div class="b-body">
         <span class="b-brand"></span>
@@ -1517,7 +1519,7 @@
     <!-- PRODUIT 37 -->
     <div class="b-card b-card--new" data-cat="chaussures" id="prod-bfad4f57">
       <div class="b-img">
-        <img src="bfad4f57.jpg" alt="Article" onerror="this.closest('.b-card').style.display='none'">
+        <img loading="lazy" decoding="async" src="bfad4f57.jpg" alt="Article" onerror="this.closest('.b-card').style.display='none'">
       </div>
       <div class="b-body">
         <span class="b-brand"></span>
@@ -1532,7 +1534,7 @@
     <!-- PRODUIT 38 -->
     <div class="b-card b-card--new" data-cat="chaussures" id="prod-ca221390">
       <div class="b-img">
-        <img src="ca221390.jpg" alt="Article" onerror="this.closest('.b-card').style.display='none'">
+        <img loading="lazy" decoding="async" src="ca221390.jpg" alt="Article" onerror="this.closest('.b-card').style.display='none'">
       </div>
       <div class="b-body">
         <span class="b-brand"></span>
@@ -1547,7 +1549,7 @@
     <!-- PRODUIT 39 -->
     <div class="b-card b-card--new" data-cat="chaussures" id="prod-cbae56d5">
       <div class="b-img">
-        <img src="cbae56d5.jpg" alt="Article" onerror="this.closest('.b-card').style.display='none'">
+        <img loading="lazy" decoding="async" src="cbae56d5.jpg" alt="Article" onerror="this.closest('.b-card').style.display='none'">
       </div>
       <div class="b-body">
         <span class="b-brand"></span>
@@ -1562,7 +1564,7 @@
     <!-- PRODUIT 40 -->
     <div class="b-card b-card--new" data-cat="chaussures" id="prod-ccd6269f">
       <div class="b-img">
-        <img src="ccd6269f.jpg" alt="Article" onerror="this.closest('.b-card').style.display='none'">
+        <img loading="lazy" decoding="async" src="ccd6269f.jpg" alt="Article" onerror="this.closest('.b-card').style.display='none'">
       </div>
       <div class="b-body">
         <span class="b-brand"></span>
@@ -1577,7 +1579,7 @@
     <!-- PRODUIT 41 -->
     <div class="b-card b-card--new" data-cat="chaussures" id="prod-cfa8746d">
       <div class="b-img">
-        <img src="cfa8746d.jpg" alt="Article" onerror="this.closest('.b-card').style.display='none'">
+        <img loading="lazy" decoding="async" src="cfa8746d.jpg" alt="Article" onerror="this.closest('.b-card').style.display='none'">
       </div>
       <div class="b-body">
         <span class="b-brand"></span>
@@ -1592,7 +1594,7 @@
     <!-- PRODUIT 42 -->
     <div class="b-card b-card--new" data-cat="chaussures" id="prod-d101056b">
       <div class="b-img">
-        <img src="d101056b.jpg" alt="Article" onerror="this.closest('.b-card').style.display='none'">
+        <img loading="lazy" decoding="async" src="d101056b.jpg" alt="Article" onerror="this.closest('.b-card').style.display='none'">
       </div>
       <div class="b-body">
         <span class="b-brand"></span>
@@ -1607,7 +1609,7 @@
     <!-- PRODUIT 43 -->
     <div class="b-card b-card--new" data-cat="chaussures" id="prod-d8d4bfc0">
       <div class="b-img">
-        <img src="d8d4bfc0.jpg" alt="Article" onerror="this.closest('.b-card').style.display='none'">
+        <img loading="lazy" decoding="async" src="d8d4bfc0.jpg" alt="Article" onerror="this.closest('.b-card').style.display='none'">
       </div>
       <div class="b-body">
         <span class="b-brand"></span>
@@ -1622,7 +1624,7 @@
     <!-- PRODUIT 44 -->
     <div class="b-card b-card--new" data-cat="chaussures" id="prod-da5a7672">
       <div class="b-img">
-        <img src="da5a7672.jpg" alt="Article" onerror="this.closest('.b-card').style.display='none'">
+        <img loading="lazy" decoding="async" src="da5a7672.jpg" alt="Article" onerror="this.closest('.b-card').style.display='none'">
       </div>
       <div class="b-body">
         <span class="b-brand"></span>
@@ -1637,7 +1639,7 @@
     <!-- PRODUIT 45 -->
     <div class="b-card b-card--new" data-cat="chaussures" id="prod-e238a327">
       <div class="b-img">
-        <img src="e238a327.jpg" alt="Article" onerror="this.closest('.b-card').style.display='none'">
+        <img loading="lazy" decoding="async" src="e238a327.jpg" alt="Article" onerror="this.closest('.b-card').style.display='none'">
       </div>
       <div class="b-body">
         <span class="b-brand"></span>
@@ -1652,7 +1654,7 @@
     <!-- PRODUIT 46 -->
     <div class="b-card b-card--new" data-cat="chaussures" id="prod-e60758b0">
       <div class="b-img">
-        <img src="e60758b0.jpg" alt="Article" onerror="this.closest('.b-card').style.display='none'">
+        <img loading="lazy" decoding="async" src="e60758b0.jpg" alt="Article" onerror="this.closest('.b-card').style.display='none'">
       </div>
       <div class="b-body">
         <span class="b-brand"></span>
@@ -1667,7 +1669,7 @@
     <!-- PRODUIT 47 -->
     <div class="b-card b-card--new" data-cat="chaussures" id="prod-ef1aa3dc">
       <div class="b-img">
-        <img src="ef1aa3dc.jpg" alt="Article" onerror="this.closest('.b-card').style.display='none'">
+        <img loading="lazy" decoding="async" src="ef1aa3dc.jpg" alt="Article" onerror="this.closest('.b-card').style.display='none'">
       </div>
       <div class="b-body">
         <span class="b-brand"></span>
@@ -1682,7 +1684,7 @@
     <!-- PRODUIT 48 -->
     <div class="b-card b-card--new" data-cat="chaussures" id="prod-f17ec31e">
       <div class="b-img">
-        <img src="f17ec31e.jpg" alt="Article" onerror="this.closest('.b-card').style.display='none'">
+        <img loading="lazy" decoding="async" src="f17ec31e.jpg" alt="Article" onerror="this.closest('.b-card').style.display='none'">
       </div>
       <div class="b-body">
         <span class="b-brand"></span>
@@ -1697,7 +1699,7 @@
     <!-- PRODUIT 49 -->
     <div class="b-card b-card--new" data-cat="chaussures" id="prod-f556b043">
       <div class="b-img">
-        <img src="f556b043.jpg" alt="Article" onerror="this.closest('.b-card').style.display='none'">
+        <img loading="lazy" decoding="async" src="f556b043.jpg" alt="Article" onerror="this.closest('.b-card').style.display='none'">
       </div>
       <div class="b-body">
         <span class="b-brand"></span>
