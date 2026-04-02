@@ -41,7 +41,7 @@ module.exports = async (req, res) => {
     for (let i = 0; i < emails.length; i += 50) {
       const batch = emails.slice(i, i + 50);
       const messages = batch.map(email => ({
-        from: 'AllStore <onboarding@resend.dev>',
+        from: 'AllStore <no-reply@allstore-tm.fr>',
         to: email,
         subject: subject,
         html: htmlBody,
