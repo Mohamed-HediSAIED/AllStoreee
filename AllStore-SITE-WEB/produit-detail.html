@@ -11,9 +11,12 @@
   <style>
     .pdp{padding:90px 0 60px;margin:0 auto}
     .pdp-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:0;align-items:start;min-height:calc(100vh - 90px)}
-    .pdp-gallery{position:sticky;top:90px;height:calc(100vh - 90px);background:#f5f2ec;display:flex;align-items:center;justify-content:center;overflow:hidden}
-    .pdp-gallery img{max-width:90%;max-height:90%;object-fit:contain;mix-blend-mode:multiply}
-    .pdp-info{padding:48px 56px 60px 48px;overflow-y:auto;max-height:calc(100vh - 90px)}
+    .pdp-gallery{display:flex;flex-direction:column;gap:4px;background:#fff}
+    .pdp-gallery-item{background:#f5f2ec;display:flex;align-items:center;justify-content:center;min-height:500px;padding:20px}
+    .pdp-gallery-item img{max-width:90%;max-height:90%;object-fit:contain;mix-blend-mode:multiply}
+    .pdp-gallery--single{position:sticky;top:90px;height:calc(100vh - 90px);overflow:hidden}
+    .pdp-gallery--single .pdp-gallery-item{height:100%;min-height:auto}
+    .pdp-info{padding:48px 56px 60px 48px;position:sticky;top:90px;overflow-y:auto;max-height:calc(100vh - 90px)}
     .pdp-back{display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:500;color:var(--gris);text-decoration:none;margin-bottom:20px;transition:color .2s}
     .pdp-back:hover{color:var(--noir)}
     .pdp-brand{font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:.15em;color:var(--gold2)}
@@ -41,7 +44,7 @@
     .pdp-guarantee-item{display:flex;align-items:center;gap:8px;font-size:12px;color:var(--gris)}
     .pdp-guarantee-item svg{width:16px;height:16px;stroke:var(--gold2);fill:none;stroke-width:2.5;flex-shrink:0}
     @media(max-width:1024px){.pdp-grid{grid-template-columns:1fr 1fr}.pdp-info{padding:36px 32px 60px 28px}}
-    @media(max-width:900px){.pdp{padding-top:60px}.pdp-grid{grid-template-columns:1fr}.pdp-gallery{position:static;height:auto;min-height:55vh}.pdp-info{padding:24px 20px 120px;max-height:none}}
+    @media(max-width:900px){.pdp{padding-top:60px}.pdp-grid{grid-template-columns:1fr}.pdp-gallery{position:static;height:auto}.pdp-gallery--single .pdp-gallery-item{min-height:55vh}.pdp-gallery-item{min-height:350px}.pdp-info{padding:24px 20px 120px;max-height:none;position:static}}
     @media(max-width:600px){.pdp{padding-top:50px}.pdp-gallery{min-height:50vh}.pdp-name{font-size:24px}.pdp-price{font-size:26px}.pdp-btn-cart{padding:18px;font-size:16px}.pdp-btn-wl{width:56px;height:56px}.pdp-info{padding:20px 18px 120px}}
   </style>
 </head>
@@ -49,7 +52,7 @@
 <header><nav><a href="index.html" class="logo"><img src="shopping_bag_icon.png" alt="ALLSTORE"></a><ul class="nav-links"><li><a href="index.html">Accueil</a></li><li><a href="boutique.html">Boutique</a></li><li><a href="assistant.html">Assistant</a></li><li><a href="suivi.html">Suivi</a></li><li><a href="apropos.html">À Propos</a></li><li><a href="contact.html">Contact</a></li></ul></nav></header>
 <main>
   <div class="pdp"><div class="pdp-grid">
-    <div class="pdp-gallery"><img id="pdp-img" src="" alt=""></div>
+    <div class="pdp-gallery" id="pdp-gallery"><div class="pdp-gallery-item"><img id="pdp-img" src="" alt=""></div></div>
     <div class="pdp-info">
       <a href="boutique.html" class="pdp-back" id="pdp-back">&#8592; Boutique</a>
       <span class="pdp-brand" id="pdp-brand"></span>
@@ -162,8 +165,26 @@
   var hasPrice = p.price && p.price !== '0';
 
   document.title = p.brand + ' ' + p.name + ' | ALLSTORE 24/7';
-  document.getElementById('pdp-img').src = p.img;
-  document.getElementById('pdp-img').alt = fullName;
+
+  // Gallery: if product has gallery array, show multiple images
+  var gallery = document.getElementById('pdp-gallery');
+  if (p.gallery && p.gallery.length > 1) {
+    gallery.innerHTML = '';
+    p.gallery.forEach(function(imgSrc, i) {
+      var item = document.createElement('div');
+      item.className = 'pdp-gallery-item';
+      var img = document.createElement('img');
+      img.src = imgSrc;
+      img.alt = fullName + ' - Photo ' + (i + 1);
+      img.loading = i === 0 ? 'eager' : 'lazy';
+      item.appendChild(img);
+      gallery.appendChild(item);
+    });
+  } else {
+    gallery.classList.add('pdp-gallery--single');
+    document.getElementById('pdp-img').src = p.img;
+    document.getElementById('pdp-img').alt = fullName;
+  }
   document.getElementById('pdp-brand').textContent = p.brand;
   document.getElementById('pdp-name').textContent = p.name;
   document.getElementById('pdp-color').textContent = 'Coloris : ' + (p.color || '');
