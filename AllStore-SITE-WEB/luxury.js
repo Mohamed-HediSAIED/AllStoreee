@@ -376,7 +376,7 @@
      11. SECTION STAGGER ENTRANCE — 3D flip-in for grids
   ══════════════════════════════════════════════════════════════ */
   (function () {
-    const grids = document.querySelectorAll('.temoignages-grid, .boutique-grid, .grid-svc, .val-grid, .ap-temo-grid');
+    const grids = document.querySelectorAll('.temoignages-grid, .grid-svc, .val-grid, .ap-temo-grid');
     grids.forEach(grid => {
       const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
