@@ -158,20 +158,34 @@
     updateWLUI();
   };
 
-  // Injecter le bouton Liste de souhait dans la nav + le tiroir
+  // Injecter les icônes nav (recherche, compte, panier) dans un wrapper
   (function(){
     const nav=document.querySelector('nav');if(!nav)return;
-    // Bouton liste de souhait
-    const btn=document.createElement('button');
-    btn.id='wl-nav-btn';btn.setAttribute('aria-label','Liste de souhait');
-    btn.onclick=window._toggleWLDrawer;
-    btn.innerHTML=`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg><span id="wl-count" style="display:none">0</span>`;
-    nav.appendChild(btn);
-    // Bouton panier
+    // Wrapper pour les icônes à droite
+    const iconsWrap=document.createElement('div');
+    iconsWrap.className='nav-icons';
+    // Bouton recherche
+    const searchBtn=document.createElement('a');
+    searchBtn.id='search-nav-btn';searchBtn.href='boutique.html';searchBtn.setAttribute('aria-label','Rechercher');
+    searchBtn.innerHTML=`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>`;
+    iconsWrap.appendChild(searchBtn);
+    // Bouton compte
+    const accountBtn=document.createElement('a');
+    accountBtn.id='account-nav-btn';accountBtn.href='compte.html';accountBtn.setAttribute('aria-label','Mon compte');
+    accountBtn.innerHTML=`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>`;
+    iconsWrap.appendChild(accountBtn);
+    // Bouton panier (icône sac shopping)
     const cartBtn=document.createElement('a');
     cartBtn.id='cart-nav-btn';cartBtn.href='panier.html';cartBtn.setAttribute('aria-label','Mon panier');
-    cartBtn.innerHTML=`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 001.99 1.61h9.72a2 2 0 001.99-1.61L23 6H6"/></svg><span id="cart-count" style="display:none">0</span>`;
-    nav.appendChild(cartBtn);
+    cartBtn.innerHTML=`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg><span id="cart-count" style="display:none">0</span>`;
+    iconsWrap.appendChild(cartBtn);
+    nav.appendChild(iconsWrap);
+    // Bouton favoris caché (gardé pour le drawer)
+    const wlBtn=document.createElement('button');
+    wlBtn.id='wl-nav-btn';wlBtn.setAttribute('aria-label','Liste de souhait');wlBtn.style.display='none';
+    wlBtn.onclick=window._toggleWLDrawer;
+    wlBtn.innerHTML=`<span id="wl-count" style="display:none">0</span>`;
+    nav.appendChild(wlBtn);
     const ov=document.createElement('div');ov.id='wl-overlay';ov.onclick=window._toggleWLDrawer;
     const dr=document.createElement('div');dr.id='wl-drawer';
     dr.innerHTML=`<div class="wl-drawer-inner"><div class="wl-drawer-head"><span>Liste de souhait</span><button class="wl-close" onclick="window._toggleWLDrawer()">\u2715</button></div><div id="wl-items"></div><a href="panier.html" class="wl-cta-all">Voir le panier \u2192</a></div>`;
