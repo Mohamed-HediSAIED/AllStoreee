@@ -131,6 +131,25 @@
     .amb-product-price{font-size:10px}
   }
 
+  /* ---------- CTA Collaborer ---------- */
+  .amb-cta-card{flex:0 0 200px;scroll-snap-align:start;text-decoration:none;display:flex;flex-direction:column}
+  .amb-cta-wrap{width:100%;aspect-ratio:9/16;border-radius:16px;overflow:hidden;background:linear-gradient(135deg,var(--noir) 0%,#1a2e3a 100%);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;padding:24px;text-align:center;border:1.5px dashed rgba(233,194,67,.25);transition:border-color .3s,background .3s}
+  .amb-cta-card:hover .amb-cta-wrap{border-color:var(--gold);background:linear-gradient(135deg,#0d1b26 0%,#1a2e3a 100%)}
+  .amb-cta-icon{width:48px;height:48px;border-radius:50%;background:rgba(233,194,67,.1);display:flex;align-items:center;justify-content:center}
+  .amb-cta-icon svg{width:22px;height:22px;stroke:var(--gold);fill:none;stroke-width:1.8}
+  .amb-cta-title{font-family:'Poppins',sans-serif;font-size:14px;font-weight:700;color:#fff;line-height:1.3}
+  .amb-cta-title span{color:var(--gold)}
+  .amb-cta-sub{font-family:'Poppins',sans-serif;font-size:10px;color:rgba(255,255,255,.45);line-height:1.5}
+  .amb-cta-btn{font-family:'Poppins',sans-serif;font-size:9px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--noir);background:var(--gold);padding:10px 22px;border-radius:30px;transition:background .2s,transform .2s}
+  .amb-cta-card:hover .amb-cta-btn{background:var(--gold2);transform:scale(1.03)}
+  @media(max-width:768px){
+    .amb-cta-card{flex:0 0 160px}
+    .amb-cta-title{font-size:12px}
+    .amb-cta-btn{font-size:8px;padding:8px 16px}
+    .amb-cta-icon{width:40px;height:40px}
+    .amb-cta-icon svg{width:18px;height:18px}
+  }
+
   /* ---------- ARTICLES RARES — scroll horizontal ---------- */
   .als-rare-grid{display:flex;gap:15px;overflow-x:auto;padding:0 20px 12px;scroll-behavior:smooth;-webkit-overflow-scrolling:touch;scrollbar-width:none}
   .als-rare-grid::-webkit-scrollbar{display:none}
@@ -446,83 +465,13 @@
       </div>
     </a>
 
-    <!-- Ambassadeur 2 -->
-    <a href="boutique.html" class="amb-card">
-      <div class="amb-video-wrap">
-        <div class="amb-placeholder"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg></div>
-        <span class="amb-username">@bientot</span>
-      </div>
-      <div class="amb-product">
-        <div class="amb-product-img"><img src="shopping_bag_icon.png" alt=""></div>
-        <div class="amb-product-info">
-          <span class="amb-product-name">BIENTOT DISPONIBLE</span>
-          <span class="amb-product-price">--</span>
-        </div>
-        <button class="amb-product-add" onclick="event.preventDefault()"><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button>
-      </div>
-    </a>
-
-    <!-- Ambassadeur 3 -->
-    <a href="boutique.html" class="amb-card">
-      <div class="amb-video-wrap">
-        <div class="amb-placeholder"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg></div>
-        <span class="amb-username">@bientot</span>
-      </div>
-      <div class="amb-product">
-        <div class="amb-product-img"><img src="shopping_bag_icon.png" alt=""></div>
-        <div class="amb-product-info">
-          <span class="amb-product-name">BIENTOT DISPONIBLE</span>
-          <span class="amb-product-price">--</span>
-        </div>
-        <button class="amb-product-add" onclick="event.preventDefault()"><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button>
-      </div>
-    </a>
-
-    <!-- Ambassadeur 4 -->
-    <a href="boutique.html" class="amb-card">
-      <div class="amb-video-wrap">
-        <div class="amb-placeholder"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg></div>
-        <span class="amb-username">@bientot</span>
-      </div>
-      <div class="amb-product">
-        <div class="amb-product-img"><img src="shopping_bag_icon.png" alt=""></div>
-        <div class="amb-product-info">
-          <span class="amb-product-name">BIENTOT DISPONIBLE</span>
-          <span class="amb-product-price">--</span>
-        </div>
-        <button class="amb-product-add" onclick="event.preventDefault()"><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button>
-      </div>
-    </a>
-
-    <!-- Ambassadeur 5 -->
-    <a href="boutique.html" class="amb-card">
-      <div class="amb-video-wrap">
-        <div class="amb-placeholder"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg></div>
-        <span class="amb-username">@bientot</span>
-      </div>
-      <div class="amb-product">
-        <div class="amb-product-img"><img src="shopping_bag_icon.png" alt=""></div>
-        <div class="amb-product-info">
-          <span class="amb-product-name">BIENTOT DISPONIBLE</span>
-          <span class="amb-product-price">--</span>
-        </div>
-        <button class="amb-product-add" onclick="event.preventDefault()"><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button>
-      </div>
-    </a>
-
-    <!-- Ambassadeur 6 -->
-    <a href="boutique.html" class="amb-card">
-      <div class="amb-video-wrap">
-        <div class="amb-placeholder"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg></div>
-        <span class="amb-username">@bientot</span>
-      </div>
-      <div class="amb-product">
-        <div class="amb-product-img"><img src="shopping_bag_icon.png" alt=""></div>
-        <div class="amb-product-info">
-          <span class="amb-product-name">BIENTOT DISPONIBLE</span>
-          <span class="amb-product-price">--</span>
-        </div>
-        <button class="amb-product-add" onclick="event.preventDefault()"><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button>
+    <!-- CTA Collaborer -->
+    <a href="contact.html" class="amb-cta-card">
+      <div class="amb-cta-wrap">
+        <div class="amb-cta-icon"><svg viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="8.5" cy="7" r="4"/><line x1="20" y1="8" x2="20" y2="14"/><line x1="23" y1="11" x2="17" y2="11"/></svg></div>
+        <div class="amb-cta-title">Tu veux aussi <span>collaborer</span> ?</div>
+        <div class="amb-cta-sub">Rejoins l'aventure AllStore et partage tes looks.</div>
+        <div class="amb-cta-btn">Contacte-nous</div>
       </div>
     </a>
 
