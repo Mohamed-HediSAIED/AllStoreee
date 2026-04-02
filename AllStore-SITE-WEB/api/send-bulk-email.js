@@ -42,9 +42,10 @@ module.exports = async (req, res) => {
       const batch = emails.slice(i, i + 50);
       const messages = batch.map(email => ({
         from: 'AllStore <no-reply@allstore-tm.fr>',
+        replyTo: 'allstore.24.7.tm@gmail.com',
         to: email,
         subject: subject,
-        html: htmlBody,
+        html: htmlBody + `<br><br><p style="color:#999;font-size:11px;text-align:center;">AllStore — Le luxe accessible.<br><a href="https://allstore-tm.fr" style="color:#999;">allstore-tm.fr</a><br>Pour vous désabonner, répondez à cet email avec "STOP".</p>`,
       }));
 
       try {
