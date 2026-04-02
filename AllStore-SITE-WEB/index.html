@@ -101,6 +101,36 @@
   .als-insta-pcard-price{font-family:'Poppins',sans-serif;font-size:12px;font-weight:400;color:#86868b;text-align:center;margin-top:4px}
   .als-insta-pcard-btn{font-family:'Poppins',sans-serif;font-size:9px;font-weight:600;letter-spacing:.05em;text-transform:uppercase;color:var(--noir,#0a1923);background:rgba(10,25,35,.06);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border:1px solid rgba(10,25,35,.08);padding:6px 20px;border-radius:20px;margin-top:8px;display:inline-block}
 
+  /* ---------- NOS AMBASSADEURS — carrousel vidéos ---------- */
+  .amb-sec{padding:40px 0 36px;background:var(--bg,#f7f2e8)}
+  .amb-sec .als-sec-head{text-align:left;padding:0 20px;margin-bottom:20px}
+  .amb-sec .als-sec-title{font-size:22px}
+  .amb-scroll{display:flex;gap:14px;overflow-x:auto;padding:0 20px 12px;scroll-behavior:smooth;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+  .amb-scroll::-webkit-scrollbar{display:none}
+  .amb-card{flex:0 0 200px;scroll-snap-align:start;text-decoration:none;display:flex;flex-direction:column;gap:10px}
+  .amb-video-wrap{position:relative;width:100%;aspect-ratio:9/16;border-radius:16px;overflow:hidden;background:#1a1a1a}
+  .amb-video-wrap video,.amb-video-wrap img{width:100%;height:100%;object-fit:cover}
+  .amb-placeholder{width:100%;height:100%;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,#1a1a1a 0%,#2a2a2a 100%)}
+  .amb-placeholder svg{width:40px;height:40px;stroke:rgba(255,255,255,.2);fill:none;stroke-width:1.5}
+  .amb-username{position:absolute;top:12px;left:12px;font-family:'Poppins',sans-serif;font-size:10px;font-weight:600;color:#fff;background:rgba(0,0,0,.45);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);padding:5px 12px;border-radius:20px;letter-spacing:.02em}
+  .amb-mute{position:absolute;top:12px;right:12px;width:28px;height:28px;border-radius:50%;background:rgba(0,0,0,.4);backdrop-filter:blur(6px);display:flex;align-items:center;justify-content:center;border:none;cursor:pointer}
+  .amb-mute svg{width:14px;height:14px;stroke:#fff;fill:none;stroke-width:2}
+  .amb-product{display:flex;align-items:center;gap:10px;padding:0 2px}
+  .amb-product-img{width:36px;height:36px;border-radius:10px;background:#f0ece4;overflow:hidden;flex-shrink:0;display:flex;align-items:center;justify-content:center}
+  .amb-product-img img{width:90%;height:90%;object-fit:contain}
+  .amb-product-info{flex:1;min-width:0}
+  .amb-product-name{font-family:'Poppins',sans-serif;font-size:10px;font-weight:700;text-transform:uppercase;color:var(--noir,#0a1923);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;display:block}
+  .amb-product-price{font-family:'Poppins',sans-serif;font-size:11px;color:#86868b;display:block}
+  .amb-product-add{width:28px;height:28px;border-radius:50%;border:1.5px solid rgba(10,25,35,.12);background:none;display:flex;align-items:center;justify-content:center;cursor:pointer;flex-shrink:0;transition:all .2s}
+  .amb-product-add svg{width:12px;height:12px;stroke:var(--noir,#0a1923);fill:none;stroke-width:2.5}
+  .amb-product-add:hover{border-color:var(--gold);background:var(--gold)}
+  @media(max-width:768px){
+    .amb-card{flex:0 0 160px}
+    .amb-product-img{width:30px;height:30px;border-radius:8px}
+    .amb-product-name{font-size:9px}
+    .amb-product-price{font-size:10px}
+  }
+
   /* ---------- ARTICLES RARES — scroll horizontal ---------- */
   .als-rare-grid{display:flex;gap:15px;overflow-x:auto;padding:0 20px 12px;scroll-behavior:smooth;-webkit-overflow-scrolling:touch;scrollbar-width:none}
   .als-rare-grid::-webkit-scrollbar{display:none}
@@ -389,6 +419,129 @@
   </div>
 </section>
 
+
+<!-- ═══════════════════════════════════════════
+     5) NOS AMBASSADEURS — Carrousel vidéos
+═══════════════════════════════════════════ -->
+<section class="amb-sec">
+  <div class="als-sec-head">
+    <h2 class="als-sec-title">NOS <em>AMBASSADEURS</em></h2>
+  </div>
+  <div class="amb-scroll">
+
+    <!-- Ambassadeur 1 — @lou.mrr_ -->
+    <a href="boutique.html?brand=Burberry" class="amb-card">
+      <div class="amb-video-wrap">
+        <video src="amb_lou_mrr.mp4" loop muted playsinline preload="metadata"></video>
+        <span class="amb-username">@lou.mrr_</span>
+        <button class="amb-mute" onclick="event.preventDefault();this.closest('.amb-video-wrap').querySelector('video').muted=!this.closest('.amb-video-wrap').querySelector('video').muted"><svg viewBox="0 0 24 24"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><line x1="23" y1="9" x2="17" y2="15"/><line x1="17" y1="9" x2="23" y2="15"/></svg></button>
+      </div>
+      <div class="amb-product">
+        <div class="amb-product-img"><img src="vesteblouson-burberry-en-coton-gris-40310052-1_2.webp" alt="Veste Burberry Gris"></div>
+        <div class="amb-product-info">
+          <span class="amb-product-name">VESTE BURBERRY GRIS</span>
+          <span class="amb-product-price">65,00&euro;</span>
+        </div>
+        <button class="amb-product-add" onclick="event.preventDefault()"><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button>
+      </div>
+    </a>
+
+    <!-- Ambassadeur 2 -->
+    <a href="boutique.html" class="amb-card">
+      <div class="amb-video-wrap">
+        <div class="amb-placeholder"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg></div>
+        <span class="amb-username">@bientot</span>
+      </div>
+      <div class="amb-product">
+        <div class="amb-product-img"><img src="shopping_bag_icon.png" alt=""></div>
+        <div class="amb-product-info">
+          <span class="amb-product-name">BIENTOT DISPONIBLE</span>
+          <span class="amb-product-price">--</span>
+        </div>
+        <button class="amb-product-add" onclick="event.preventDefault()"><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button>
+      </div>
+    </a>
+
+    <!-- Ambassadeur 3 -->
+    <a href="boutique.html" class="amb-card">
+      <div class="amb-video-wrap">
+        <div class="amb-placeholder"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg></div>
+        <span class="amb-username">@bientot</span>
+      </div>
+      <div class="amb-product">
+        <div class="amb-product-img"><img src="shopping_bag_icon.png" alt=""></div>
+        <div class="amb-product-info">
+          <span class="amb-product-name">BIENTOT DISPONIBLE</span>
+          <span class="amb-product-price">--</span>
+        </div>
+        <button class="amb-product-add" onclick="event.preventDefault()"><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button>
+      </div>
+    </a>
+
+    <!-- Ambassadeur 4 -->
+    <a href="boutique.html" class="amb-card">
+      <div class="amb-video-wrap">
+        <div class="amb-placeholder"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg></div>
+        <span class="amb-username">@bientot</span>
+      </div>
+      <div class="amb-product">
+        <div class="amb-product-img"><img src="shopping_bag_icon.png" alt=""></div>
+        <div class="amb-product-info">
+          <span class="amb-product-name">BIENTOT DISPONIBLE</span>
+          <span class="amb-product-price">--</span>
+        </div>
+        <button class="amb-product-add" onclick="event.preventDefault()"><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button>
+      </div>
+    </a>
+
+    <!-- Ambassadeur 5 -->
+    <a href="boutique.html" class="amb-card">
+      <div class="amb-video-wrap">
+        <div class="amb-placeholder"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg></div>
+        <span class="amb-username">@bientot</span>
+      </div>
+      <div class="amb-product">
+        <div class="amb-product-img"><img src="shopping_bag_icon.png" alt=""></div>
+        <div class="amb-product-info">
+          <span class="amb-product-name">BIENTOT DISPONIBLE</span>
+          <span class="amb-product-price">--</span>
+        </div>
+        <button class="amb-product-add" onclick="event.preventDefault()"><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button>
+      </div>
+    </a>
+
+    <!-- Ambassadeur 6 -->
+    <a href="boutique.html" class="amb-card">
+      <div class="amb-video-wrap">
+        <div class="amb-placeholder"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg></div>
+        <span class="amb-username">@bientot</span>
+      </div>
+      <div class="amb-product">
+        <div class="amb-product-img"><img src="shopping_bag_icon.png" alt=""></div>
+        <div class="amb-product-info">
+          <span class="amb-product-name">BIENTOT DISPONIBLE</span>
+          <span class="amb-product-price">--</span>
+        </div>
+        <button class="amb-product-add" onclick="event.preventDefault()"><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button>
+      </div>
+    </a>
+
+  </div>
+</section>
+<script>
+// Autoplay ambassador videos when visible
+(function(){
+  const vids=document.querySelectorAll('.amb-video-wrap video');
+  if(!vids.length)return;
+  const io=new IntersectionObserver(entries=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting){e.target.play().catch(()=>{});}
+      else{e.target.pause();}
+    });
+  },{threshold:.3});
+  vids.forEach(v=>io.observe(v));
+})();
+</script>
 
 <!-- ═══════════════════════════════════════════
      COMMENT ÇA MARCHE — 3 étapes
