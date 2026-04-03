@@ -58,22 +58,54 @@
 
     /* ═══ Trending section ═══ */
     .b-trending {
-      padding: 0 var(--marge) 40px;
+      padding: 0 0 40px;
     }
     .b-trending h2 {
       font-size: clamp(18px, 2.5vw, 24px);
       font-weight: 600;
       letter-spacing: -.02em;
       margin: 0 0 16px;
+      padding: 0 var(--marge);
     }
+    .b-trending-wrap {
+      position: relative;
+    }
+    .b-trending-wrap:hover .b-scroll-arrow { opacity: 1; pointer-events: auto; }
+    .b-scroll-arrow {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      z-index: 10;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: rgba(255,255,255,.7);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border: 1px solid rgba(0,0,0,.08);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      opacity: 0;
+      transition: opacity .25s;
+      box-shadow: 0 2px 12px rgba(0,0,0,.1);
+      pointer-events: none;
+    }
+    .b-scroll-arrow:hover { background: rgba(255,255,255,.95); }
+    .b-scroll-arrow.left { left: 10px; }
+    .b-scroll-arrow.right { right: 10px; }
+    .b-scroll-arrow svg { width: 16px; height: 16px; stroke: var(--noir); stroke-width: 2.5; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+    @media(max-width:1024px) { .b-scroll-arrow { display: none; } }
     .b-trending-scroll {
       display: flex;
       gap: 15px;
       overflow-x: auto;
       scroll-snap-type: x mandatory;
+      scroll-behavior: smooth;
       -webkit-overflow-scrolling: touch;
       scrollbar-width: none;
-      padding-bottom: 8px;
+      padding: 0 var(--marge) 8px;
     }
     .b-trending-scroll::-webkit-scrollbar { display: none; }
     .b-trending-card {
@@ -448,8 +480,9 @@
       .b-breadcrumb { margin-top: 80px; padding: 0 16px 16px; font-size: 13px; }
       .b-trending { padding: 0 16px 40px; }
       .b-trending h2 { font-size: 22px; margin-bottom: 16px; }
-      .b-trending { padding: 0 16px 28px; }
-      .b-trending h2 { font-size: 17px; margin-bottom: 12px; }
+      .b-trending { padding: 0 0 28px; }
+      .b-trending h2 { font-size: 17px; margin-bottom: 12px; padding: 0 16px; }
+      .b-trending-scroll { padding: 0 16px 8px; }
       .b-trending-card { flex: 0 0 140px; border-radius: 14px; }
       .b-trending-card .b-tc-img { height: 140px; }
       .b-trending-card .b-tc-body { padding: 10px 12px 12px; }
@@ -528,7 +561,11 @@
 
     <div class="b-trending">
       <h2>En ce moment</h2>
-      <div class="b-trending-scroll" id="trending-scroll"></div>
+      <div class="b-trending-wrap">
+        <div class="b-scroll-arrow left" onclick="scrollTrending(-1)"><svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg></div>
+        <div class="b-scroll-arrow right" onclick="scrollTrending(1)"><svg viewBox="0 0 24 24"><polyline points="9 6 15 12 9 18"/></svg></div>
+        <div class="b-trending-scroll" id="trending-scroll"></div>
+      </div>
     </div>
 
     <div class="b-categories" id="category-grid"></div>
@@ -987,6 +1024,12 @@
 
   // Expose for breadcrumb onclick
   window.showView = showView;
+
+  // Scroll arrows for trending
+  window.scrollTrending = function(dir) {
+    var row = document.getElementById('trending-scroll');
+    if (row) row.scrollBy({ left: dir * row.clientWidth * 0.6, behavior: 'smooth' });
+  };
 
   // ═══ Hide cards with broken images ═══
   var observer = new MutationObserver(function() {
