@@ -70,7 +70,6 @@
     .b-trending-wrap {
       position: relative;
     }
-    .b-trending-wrap:hover .b-scroll-arrow { opacity: 1; pointer-events: auto; }
     .b-scroll-arrow {
       position: absolute;
       top: 50%;
@@ -79,7 +78,7 @@
       width: 40px;
       height: 40px;
       border-radius: 50%;
-      background: rgba(255,255,255,.7);
+      background: rgba(255,255,255,.75);
       backdrop-filter: blur(10px);
       -webkit-backdrop-filter: blur(10px);
       border: 1px solid rgba(0,0,0,.08);
@@ -87,16 +86,15 @@
       align-items: center;
       justify-content: center;
       cursor: pointer;
-      opacity: 0;
-      transition: opacity .25s;
+      opacity: 1;
+      transition: opacity .25s, background .2s;
       box-shadow: 0 2px 12px rgba(0,0,0,.1);
-      pointer-events: none;
     }
     .b-scroll-arrow:hover { background: rgba(255,255,255,.95); }
     .b-scroll-arrow.left { left: 10px; }
     .b-scroll-arrow.right { right: 10px; }
     .b-scroll-arrow svg { width: 16px; height: 16px; stroke: var(--noir); stroke-width: 2.5; fill: none; stroke-linecap: round; stroke-linejoin: round; }
-    @media(max-width:1024px) { .b-scroll-arrow { display: none; } }
+    @media(max-width:768px) { .b-scroll-arrow { width: 32px; height: 32px; } .b-scroll-arrow svg { width: 13px; height: 13px; } }
     .b-trending-scroll {
       display: flex;
       gap: 15px;

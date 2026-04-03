@@ -184,14 +184,13 @@
 
   /* ---------- SCROLL ARROWS (desktop) ---------- */
   .als-scroll-wrap{position:relative}
-  .als-scroll-arrow{position:absolute;top:50%;transform:translateY(-50%);z-index:10;width:40px;height:40px;border-radius:50%;background:rgba(255,255,255,.7);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border:1px solid rgba(0,0,0,.08);display:flex;align-items:center;justify-content:center;cursor:pointer;opacity:0;transition:opacity .25s;box-shadow:0 2px 12px rgba(0,0,0,.1);pointer-events:none}
-  .als-scroll-wrap:hover .als-scroll-arrow{opacity:1;pointer-events:auto}
+  .als-scroll-arrow{position:absolute;top:50%;transform:translateY(-50%);z-index:10;width:40px;height:40px;border-radius:50%;background:rgba(255,255,255,.75);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border:1px solid rgba(0,0,0,.08);display:flex;align-items:center;justify-content:center;cursor:pointer;opacity:1;transition:opacity .25s,background .2s;box-shadow:0 2px 12px rgba(0,0,0,.1)}
   .als-scroll-arrow:hover{background:rgba(255,255,255,.95)}
   .als-scroll-arrow.left{left:6px}
   .als-scroll-arrow.right{right:6px}
   .als-scroll-arrow svg{width:16px;height:16px;stroke:var(--noir,#0a1923);stroke-width:2.5;fill:none;stroke-linecap:round;stroke-linejoin:round}
   .als-scroll-arrow.hidden{opacity:0!important;pointer-events:none!important}
-  @media(max-width:1024px){.als-scroll-arrow{display:none}}
+  @media(max-width:768px){.als-scroll-arrow{width:32px;height:32px}.als-scroll-arrow svg{width:13px;height:13px}}
 
   /* ---------- MOBILE < 600px ---------- */
   @media(max-width:600px){
