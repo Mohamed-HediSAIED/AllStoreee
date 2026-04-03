@@ -441,8 +441,6 @@
   <!-- Filtres par marque (apparaissent après sélection catégorie) -->
   <div class="boutique-filters" id="brand-filters" style="display:none"></div>
 
-  <!-- Filtres par modèle (apparaissent après sélection marque) -->
-  <div class="boutique-filters" id="model-filters" style="display:none"></div>
 
   <div class="boutique-grid" id="boutique-grid">
 
@@ -3175,22 +3173,17 @@
   // État des filtres
   let currentCat = 'all';
   let currentBrand = 'all';
-  let currentModel = 'all';
 
   function getAllCards() { return document.querySelectorAll('.b-card'); }
 
-  // Filtre par niveau
+  // Filtre par niveau (2 niveaux : catégorie → marque)
   function filterLevel(level, btn, value) {
-    // Activer le bouton
     btn.parentElement.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
     btn.classList.add('active');
 
     if (level === 'cat') {
       currentCat = value;
       currentBrand = 'all';
-      currentModel = 'all';
-      document.getElementById('model-filters').style.display = 'none';
-      // Afficher les marques pour cette catégorie
       if (value === 'all') {
         document.getElementById('brand-filters').style.display = 'none';
       } else {
@@ -3198,14 +3191,6 @@
       }
     } else if (level === 'brand') {
       currentBrand = value;
-      currentModel = 'all';
-      if (value === 'all') {
-        document.getElementById('model-filters').style.display = 'none';
-      } else {
-        showModels(currentCat, value);
-      }
-    } else if (level === 'model') {
-      currentModel = value;
     }
     applyFilters();
   }
@@ -3235,36 +3220,6 @@
     container.style.display = brands.size > 0 ? 'flex' : 'none';
   }
 
-  function showModels(cat, brand) {
-    const models = new Set();
-    getAllCards().forEach(card => {
-      if (card.dataset.cat === cat) {
-        const b = card.querySelector('.b-brand');
-        const n = card.querySelector('.b-name');
-        if (b && b.textContent.trim() === brand && n && n.textContent.trim()) {
-          var fullName = n.textContent.trim();
-          var modelName = fullName.split(' — ')[0].split(' - ')[0];
-          models.add(modelName);
-        }
-      }
-    });
-    const container = document.getElementById('model-filters');
-    container.innerHTML = '';
-    var allBtn = document.createElement('button');
-    allBtn.className = 'filter-btn active';
-    allBtn.textContent = 'Tous';
-    allBtn.addEventListener('click', function(){ filterLevel('model', this, 'all'); });
-    container.appendChild(allBtn);
-    [...models].sort().forEach(model => {
-      var btn = document.createElement('button');
-      btn.className = 'filter-btn';
-      btn.textContent = model;
-      btn.addEventListener('click', function(){ filterLevel('model', this, model); });
-      container.appendChild(btn);
-    });
-    container.style.display = models.size > 1 ? 'flex' : 'none';
-  }
-
   function applyFilters() {
     const search = document.getElementById('search-input').value.toLowerCase().trim();
     getAllCards().forEach(card => {
@@ -3276,7 +3231,6 @@
       let show = true;
       if (currentCat !== 'all' && cat !== currentCat) show = false;
       if (currentBrand !== 'all' && brand !== currentBrand) show = false;
-      if (currentModel !== 'all' && !name.startsWith(currentModel)) show = false;
       if (search && !text.includes(search)) show = false;
 
       card.style.display = show ? '' : 'none';
