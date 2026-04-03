@@ -342,7 +342,7 @@
     if(document.querySelector('.payment-methods'))return;
     var pm=document.createElement('div');
     pm.className='payment-methods';
-    pm.innerHTML='<span>Visa</span><span>Mastercard</span><span>PayPal</span><span>Virement</span>';
+    pm.innerHTML='<span>Visa</span><span>Mastercard</span><span>Apple Pay</span>';
     last.parentNode.insertBefore(pm,last);
   })();
 
