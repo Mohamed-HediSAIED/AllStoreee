@@ -93,19 +93,19 @@
   .als-insta-col{flex:1;display:flex;flex-direction:column;gap:12px}
   .als-insta-vid{position:relative;border-radius:20px;overflow:hidden;aspect-ratio:9/16}
   .als-insta-vid video{width:100%;height:100%;object-fit:cover}
-  /* Desktop: 4 items in a row, all 9:16 portrait, full width */
+  /* Desktop: 4 items in a row, fixed height like collections */
   @media(min-width:1025px){
     .als-insta-section{padding:60px 0}
-    .als-insta-row{flex-direction:row;gap:18px;max-width:none;padding:0 60px}
+    .als-insta-row{flex-direction:row;gap:18px;justify-content:center}
     .als-insta-col{flex-direction:row;gap:18px}
-    .als-insta-col>*{flex:1;min-width:0}
-    .als-insta-vid{aspect-ratio:9/16;height:auto}
-    .als-insta-pcard{aspect-ratio:9/16;height:auto;justify-content:center;padding:30px 20px;border-radius:20px;overflow:hidden;box-sizing:border-box}
+    .als-insta-col>*{flex:0 0 auto;width:240px}
+    .als-insta-vid{aspect-ratio:auto;height:420px}
+    .als-insta-pcard{aspect-ratio:auto;height:420px;justify-content:center;padding:24px 16px;border-radius:20px;overflow:hidden;box-sizing:border-box}
     .als-insta-pcard-img{flex:1;display:flex;align-items:center;justify-content:center;overflow:hidden}
-    .als-insta-pcard-img img{max-width:85%;max-height:65%;object-fit:contain}
-    .als-insta-pcard-name{font-size:14px;margin-top:16px}
-    .als-insta-pcard-price{font-size:15px;margin-top:6px}
-    .als-insta-pcard-btn{margin-top:14px;padding:10px 28px;font-size:11px}
+    .als-insta-pcard-img img{max-width:85%;max-height:60%;object-fit:contain}
+    .als-insta-pcard-name{font-size:13px;margin-top:14px}
+    .als-insta-pcard-price{font-size:14px;margin-top:6px}
+    .als-insta-pcard-btn{margin-top:12px;padding:8px 24px;font-size:10px}
   }
   .als-insta-vid .als-insta-tag{position:absolute;top:14px;left:14px;display:flex;align-items:center;gap:6px}
   .als-insta-vid .als-insta-tag span{font-family:'Poppins',sans-serif;font-size:9px;font-weight:600;letter-spacing:.06em;color:#fff;background:rgba(0,0,0,.45);backdrop-filter:blur(6px);padding:5px 10px;border-radius:20px}
