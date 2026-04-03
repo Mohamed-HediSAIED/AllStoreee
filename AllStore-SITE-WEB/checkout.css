@@ -3,8 +3,8 @@
 ══════════════════════════════════════════════════════════════ */
 
 .checkout {
-  padding: 120px var(--marge) 80px;
-  max-width: 720px;
+  padding: 100px var(--marge) 140px;
+  max-width: 820px;
   margin: 0 auto;
 }
 
@@ -55,7 +55,14 @@
 
 /* ── Sections ── */
 .ck-section { display: none; }
-.ck-section.active { display: block; }
+.ck-section.active {
+  display: block;
+  background: #fff;
+  border-radius: 28px;
+  padding: 36px 32px;
+  box-shadow: 0 4px 24px rgba(0,0,0,.04);
+  border: 1px solid rgba(10,25,35,.04);
+}
 
 .ck-title {
   font-family: 'Cormorant', serif;
@@ -113,7 +120,7 @@
 
 .ck-totals {
   background: var(--bg2);
-  border-radius: 18px;
+  border-radius: 20px;
   padding: 20px 24px;
   margin-bottom: 28px;
 }
@@ -150,9 +157,9 @@
   color: var(--gris);
 }
 .ck-input {
-  background: #fff;
-  border: 1.5px solid rgba(10,25,35,.1);
-  border-radius: 12px;
+  background: var(--bg2, #f5f3ee);
+  border: 1.5px solid rgba(10,25,35,.08);
+  border-radius: 14px;
   padding: 14px 16px;
   font-size: 14px;
   font-family: 'Poppins', sans-serif;
@@ -165,6 +172,7 @@
 .ck-input:focus {
   border-color: var(--noir);
   box-shadow: 0 0 0 3px rgba(10,25,35,.06);
+  background: #fff;
 }
 .ck-input.error {
   border-color: #e74c3c;
@@ -198,13 +206,13 @@ select.ck-input {
   gap: 16px;
   padding: 20px 24px;
   border: 2px solid rgba(10,25,35,.08);
-  border-radius: 16px;
+  border-radius: 20px;
   cursor: pointer;
-  transition: all .2s;
-  background: #fff;
+  transition: all .25s;
+  background: var(--bg2, #f5f3ee);
 }
-.ck-pay-option:hover { border-color: rgba(10,25,35,.2); }
-.ck-pay-option.selected { border-color: var(--noir); background: rgba(10,25,35,.02); }
+.ck-pay-option:hover { border-color: rgba(10,25,35,.2); transform: translateY(-1px); }
+.ck-pay-option.selected { border-color: var(--noir); background: #fff; }
 .ck-pay-option-radio {
   width: 20px;
   height: 20px;
@@ -363,6 +371,7 @@ select.ck-input {
 .ck-btn-primary {
   background: var(--noir);
   color: #fff;
+  border-radius: 16px;
 }
 .ck-btn-primary:hover { background: #1a3040; transform: translateY(-1px); box-shadow: 0 8px 24px rgba(10,25,35,.12); }
 .ck-btn-primary:disabled {
@@ -459,7 +468,8 @@ select.ck-input {
 
 /* ── Responsive ── */
 @media(max-width:768px) {
-  .checkout { padding: 80px 18px 120px; }
+  .checkout { padding: 90px 16px 140px; }
+  .ck-section.active { padding: 28px 22px; border-radius: 22px; }
   .ck-steps { gap: 0; flex-wrap: nowrap; justify-content: center; }
   .ck-step { padding: 6px 8px; font-size: 12px; }
   .ck-step-num { width: 28px; height: 28px; font-size: 12px; }

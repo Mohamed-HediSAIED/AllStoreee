@@ -12,9 +12,199 @@
   <title>Comment ça marche | ALLSTORE 24/7</title>
   <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="conversion.css">
+  <style>
+    /* ============================================================
+       COMMENT CA MARCHE PAGE
+    ============================================================ */
+    .comment-wrap {
+      padding: 100px var(--marge) 140px;
+      max-width: 820px;
+      margin: 0 auto;
+    }
+
+    /* ── Hero ── */
+    .comment-hero {
+      text-align: center;
+      margin-bottom: 56px;
+    }
+    .comment-eyebrow {
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 12px;
+      display: block;
+    }
+    .comment-title {
+      font-family: 'Cormorant', serif;
+      font-size: clamp(32px, 5vw, 48px);
+      font-weight: 300;
+      color: var(--noir);
+      margin: 0 0 12px;
+      letter-spacing: -.02em;
+    }
+    .comment-sub {
+      font-size: 14px;
+      color: var(--gris);
+      line-height: 1.6;
+    }
+
+    /* ── Step Card ── */
+    .comment-card {
+      background: #fff;
+      border-radius: 28px;
+      padding: 36px 32px;
+      margin-bottom: 20px;
+      box-shadow: 0 4px 24px rgba(0,0,0,.04);
+      border: 1px solid rgba(10,25,35,.04);
+      transition: box-shadow .3s, border-color .3s, transform .3s;
+    }
+    .comment-card:hover {
+      box-shadow: 0 8px 32px rgba(0,0,0,.07);
+      border-color: rgba(10,25,35,.08);
+      transform: translateY(-2px);
+    }
+
+    .comment-card-header {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 18px;
+    }
+
+    .comment-icon {
+      width: 52px;
+      height: 52px;
+      border-radius: 16px;
+      background: linear-gradient(135deg, rgba(233,194,67,.12), rgba(233,194,67,.06));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .comment-icon svg {
+      width: 26px;
+      height: 26px;
+      stroke: var(--gold2, #c9a83e);
+      fill: none;
+      stroke-width: 1.8;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .comment-step {
+      font-family: 'Poppins', sans-serif;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: var(--gold2, #c9a83e);
+      display: block;
+      margin-bottom: 2px;
+    }
+
+    .comment-card-title {
+      font-family: 'Poppins', sans-serif;
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--noir);
+      margin: 0;
+      letter-spacing: -.01em;
+    }
+
+    .comment-card-body {
+      font-size: 14px;
+      color: var(--gris);
+      line-height: 1.75;
+    }
+    .comment-card-body p {
+      margin: 0;
+    }
+
+    /* ── Gold card (Service Or) ── */
+    .comment-card--gold {
+      background: linear-gradient(135deg, var(--noir) 0%, #1a3040 100%);
+      border-color: rgba(233,194,67,.2);
+    }
+    .comment-card--gold:hover {
+      border-color: rgba(233,194,67,.4);
+      box-shadow: 0 8px 32px rgba(0,0,0,.15);
+    }
+    .comment-card--gold .comment-icon {
+      background: linear-gradient(135deg, rgba(233,194,67,.25), rgba(233,194,67,.12));
+    }
+    .comment-card--gold .comment-step {
+      color: var(--gold);
+    }
+    .comment-card--gold .comment-card-title {
+      color: #fff;
+    }
+    .comment-card--gold .comment-card-body {
+      color: rgba(255,255,255,.65);
+    }
+
+    /* ── CTA ── */
+    .comment-cta {
+      text-align: center;
+      margin-top: 48px;
+      padding: 40px 24px;
+      background: #fff;
+      border-radius: 28px;
+      box-shadow: 0 4px 24px rgba(0,0,0,.04);
+    }
+    .comment-cta p {
+      font-size: 15px;
+      color: var(--gris);
+      margin: 0 0 20px;
+      line-height: 1.6;
+    }
+    .comment-cta-btns {
+      display: flex;
+      gap: 10px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    .comment-cta-btn {
+      font-family: 'Poppins', sans-serif;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: .04em;
+      text-transform: uppercase;
+      padding: 14px 28px;
+      border-radius: 30px;
+      text-decoration: none;
+      transition: all .25s var(--ease);
+    }
+    .comment-cta-btn--primary {
+      background: var(--noir);
+      color: #fff;
+      border: 1.5px solid var(--noir);
+    }
+    .comment-cta-btn--primary:hover { background: #1a3040; }
+    .comment-cta-btn--secondary {
+      background: transparent;
+      color: var(--noir);
+      border: 1.5px solid rgba(10,25,35,.15);
+    }
+    .comment-cta-btn--secondary:hover { border-color: var(--noir); }
+
+    /* ── Mobile ── */
+    @media(max-width:768px) {
+      .comment-wrap { padding: 90px 16px 140px; }
+      .comment-card { padding: 28px 22px; border-radius: 22px; }
+      .comment-card-header { gap: 12px; }
+      .comment-icon { width: 44px; height: 44px; border-radius: 12px; }
+      .comment-icon svg { width: 22px; height: 22px; }
+      .comment-card-title { font-size: 16px; }
+      .comment-card-body { font-size: 13px; }
+      .comment-cta { padding: 32px 20px; border-radius: 22px; }
+      .comment-cta-btns { flex-direction: column; }
+      .comment-cta-btn { width: 100%; text-align: center; }
+    }
+  </style>
 </head>
 <body>
-
 
 <header>
   <nav>
@@ -24,74 +214,110 @@
       <li><a href="boutique.html">Boutique</a></li>
       <li><a href="assistant.html">Assistant</a></li>
       <li><a href="suivi.html">Suivi</a></li>
-      <li><a href="apropos.html">À Propos</a></li>
+      <li><a href="apropos.html">A Propos</a></li>
       <li><a href="contact.html">Contact</a></li>
     </ul>
   </nav>
 </header>
 
-<main>
-  <div class="page-hero">
-    <span class="eyebrow reveal">Simple & Rapide</span>
-    <h1 class="reveal d1">Comment ça <em style="color:var(--gris)">marche ?</em></h1>
+<main class="comment-wrap">
+
+  <!-- HERO -->
+  <div class="comment-hero reveal">
+    <span class="comment-eyebrow">Simple & Rapide</span>
+    <h1 class="comment-title">Comment ça marche ?</h1>
+    <p class="comment-sub">Un processus simple et transparent en 4 étapes pour recevoir l'article de vos rêves.</p>
   </div>
 
-  <section class="section" style="padding-top:28px">
-    <div class="sw">
-      <button class="arrow pv" onclick="scrollSection(this,-1)" aria-label="Précédent">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><polyline points="15 18 9 12 15 6"/></svg>
-      </button>
-      <div class="ps">
-        <div class="ac dm">
-          <div class="cc">
-            <span class="at" data-step="1">Agent IA — Étape 1</span>
-            <h3 class="ah">Décrivez l'article<br>que vous souhaitez.</h3>
-            <p class="as">Notre IA analyse les stocks mondiaux en temps réel.</p>
-          </div>
-          <div class="aic"><img src="humain_ia.png" alt="Agent IA"></div>
-        </div>
-        <div class="ac">
-          <div class="cc">
-            <span class="at" data-step="2">Étape 2</span>
-            <h3 class="ah">Recevez toutes<br>les informations.</h3>
-            <p class="as">Prix, disponibilité, délai. Tout, instantanément.</p>
-          </div>
-          <div class="aic"><img src="conv_etape_2.png" alt="Étape 2"></div>
-        </div>
-        <div class="ac dm">
-          <div class="cc">
-            <span class="at" data-step="3">Étape 3</span>
-            <h3 class="ah">Validation et<br>Expédition.</h3>
-            <p class="as">Expédition internationale express depuis n'importe où.</p>
-          </div>
-          <div class="aic"><img src="fedex_avion.png" alt="FedEx"></div>
-        </div>
-        <div class="ac">
-          <div class="cc">
-            <span class="at" data-step="4">Étape 4</span>
-            <h3 class="ah">Recevez<br>votre article.</h3>
-            <p class="as">Livré chez vous, soigneusement emballé.</p>
-          </div>
-          <div class="aic"><img src="carton_client.jpg" alt="Livraison"></div>
-        </div>
-        <a href="contact.html" class="ac sor">
-          <div class="cc">
-            <span class="at" style="color:var(--gold)">Service Or</span>
-            <h3 class="ah" style="color:var(--noir)">Une question ?<br>Nos experts sont là.</h3>
-            <p class="as" style="color:var(--gris)">Réponse moyenne en moins de 5 minutes.</p>
-          </div>
-          <div class="aic sor-img"><img src="logo_whatsapp.png" alt="WhatsApp"></div>
-        </a>
+  <!-- ═══════ ÉTAPE 1 ═══════ -->
+  <div class="comment-card reveal">
+    <div class="comment-card-header">
+      <div class="comment-icon">
+        <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
       </div>
-      <button class="arrow nx" onclick="scrollSection(this,1)" aria-label="Suivant">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><polyline points="9 18 15 12 9 6"/></svg>
-      </button>
+      <div>
+        <span class="comment-step">Étape 1</span>
+        <h2 class="comment-card-title">Décrivez l'article que vous souhaitez</h2>
+      </div>
     </div>
-  </section>
-
-  <div style="text-align:center;padding:60px var(--marge) 100px">
-    <a href="assistant.html" class="btn btn-glow">Commencer ma recherche →</a>
+    <div class="comment-card-body">
+      <p>Utilisez notre assistant IA ou parcourez la boutique. Décrivez l'article que vous recherchez — marque, modèle, taille, coloris. Notre technologie analyse les stocks mondiaux en temps réel pour le localiser.</p>
+    </div>
   </div>
+
+  <!-- ═══════ ÉTAPE 2 ═══════ -->
+  <div class="comment-card reveal d1">
+    <div class="comment-card-header">
+      <div class="comment-icon">
+        <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+      </div>
+      <div>
+        <span class="comment-step">Étape 2</span>
+        <h2 class="comment-card-title">Recevez toutes les informations</h2>
+      </div>
+    </div>
+    <div class="comment-card-body">
+      <p>Prix, disponibilité, délai de livraison — vous recevez toutes les informations instantanément. Pas de surprises, tout est transparent avant votre achat.</p>
+    </div>
+  </div>
+
+  <!-- ═══════ ÉTAPE 3 ═══════ -->
+  <div class="comment-card reveal d2">
+    <div class="comment-card-header">
+      <div class="comment-icon">
+        <svg viewBox="0 0 24 24"><rect x="1" y="3" width="15" height="13" rx="2"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+      </div>
+      <div>
+        <span class="comment-step">Étape 3</span>
+        <h2 class="comment-card-title">Validation et expédition</h2>
+      </div>
+    </div>
+    <div class="comment-card-body">
+      <p>Une fois votre commande validée, nous nous occupons de tout. Votre article est sourcé, authentifié et expédié avec un suivi international express depuis n'importe où dans le monde.</p>
+    </div>
+  </div>
+
+  <!-- ═══════ ÉTAPE 4 ═══════ -->
+  <div class="comment-card reveal d3">
+    <div class="comment-card-header">
+      <div class="comment-icon">
+        <svg viewBox="0 0 24 24"><path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg>
+      </div>
+      <div>
+        <span class="comment-step">Étape 4</span>
+        <h2 class="comment-card-title">Recevez votre article</h2>
+      </div>
+    </div>
+    <div class="comment-card-body">
+      <p>Livré chez vous, soigneusement emballé. Chaque article est protégé individuellement pour garantir une réception parfaite, comme en boutique.</p>
+    </div>
+  </div>
+
+  <!-- ═══════ SERVICE OR ═══════ -->
+  <div class="comment-card comment-card--gold reveal d4">
+    <div class="comment-card-header">
+      <div class="comment-icon">
+        <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+      </div>
+      <div>
+        <span class="comment-step">Service Or</span>
+        <h2 class="comment-card-title">Une question ? Nos experts sont là.</h2>
+      </div>
+    </div>
+    <div class="comment-card-body">
+      <p>Notre équipe répond en moyenne en moins de 5 minutes. Email, Instagram ou formulaire — choisissez le canal qui vous convient.</p>
+    </div>
+  </div>
+
+  <!-- ═══════ CTA ═══════ -->
+  <div class="comment-cta reveal">
+    <p>Prêt à trouver l'article de vos rêves ?<br>Notre assistant IA est disponible 24/7.</p>
+    <div class="comment-cta-btns">
+      <a href="assistant.html" class="comment-cta-btn comment-cta-btn--primary">Commencer ma recherche</a>
+      <a href="boutique.html" class="comment-cta-btn comment-cta-btn--secondary">Parcourir la boutique</a>
+    </div>
+  </div>
+
 </main>
 
 <footer>
@@ -109,6 +335,7 @@
 
 <script src="global.js"></script>
 <script src="luxury.js"></script>
+<script src="conversion.js"></script>
 
 <style>
   .bnav{position:fixed;bottom:16px;left:50%;transform:translateX(-50%);z-index:9000;display:flex;align-items:center;background:rgba(255,255,255,.12);backdrop-filter:blur(20px) saturate(150%);-webkit-backdrop-filter:blur(20px) saturate(150%);border-radius:50px;padding:6px 8px;border:1px solid rgba(255,255,255,.25);box-shadow:0 4px 24px rgba(0,0,0,.15)}
