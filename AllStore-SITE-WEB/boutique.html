@@ -3252,13 +3252,17 @@
   }
 
   function showBrands(cat) {
-    const brands = new Set();
+    const brandCount = {};
     getAllCards().forEach(card => {
       if (card.dataset.cat === cat) {
         const b = card.querySelector('.b-brand');
-        if (b && b.textContent.trim()) brands.add(b.textContent.trim());
+        if (b && b.textContent.trim()) {
+          const name = b.textContent.trim();
+          brandCount[name] = (brandCount[name] || 0) + 1;
+        }
       }
     });
+    const sorted = Object.keys(brandCount).sort((a, b) => brandCount[b] - brandCount[a] || a.localeCompare(b));
     const container = document.getElementById('brand-filters');
     container.innerHTML = '';
     var allBtn = document.createElement('button');
@@ -3266,14 +3270,14 @@
     allBtn.textContent = 'Toutes';
     allBtn.addEventListener('click', function(){ filterLevel('brand', this, 'all'); });
     container.appendChild(allBtn);
-    [...brands].sort().forEach(brand => {
+    sorted.forEach(brand => {
       var btn = document.createElement('button');
       btn.className = 'filter-btn';
       btn.textContent = brand;
       btn.addEventListener('click', function(){ filterLevel('brand', this, brand); });
       container.appendChild(btn);
     });
-    container.style.display = brands.size > 0 ? 'flex' : 'none';
+    container.style.display = sorted.length > 0 ? 'flex' : 'none';
   }
 
   function applyFilters() {
