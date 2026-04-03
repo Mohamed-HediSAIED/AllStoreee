@@ -2927,6 +2927,19 @@
 
   function searchProducts() { applyFilters(); }
 
+  // Mélange aléatoire des cartes au chargement (onglet "Tout")
+  (function shuffleCards() {
+    var grid = document.querySelector('.boutique-grid, .b-grid');
+    if (!grid) { var cards = document.querySelectorAll('.b-card'); if (cards.length) grid = cards[0].parentElement; }
+    if (!grid) return;
+    var items = Array.from(grid.children);
+    for (var i = items.length - 1; i > 0; i--) {
+      var j = Math.floor(Math.random() * (i + 1));
+      grid.appendChild(items[j]);
+      items.splice(j, 1, items[i]);
+    }
+  })();
+
   // Auto-filtre via URL ?cat=xxx&brand=yyy
   (function() {
     const params = new URLSearchParams(window.location.search);
