@@ -62,7 +62,7 @@
       <h1 class="pdp-name" id="pdp-name"></h1>
       <p class="pdp-color" id="pdp-color"></p>
       <div class="pdp-price-row"><span class="pdp-price" id="pdp-price"></span><span class="pdp-price-tag" id="pdp-tag"></span></div>
-      <div class="pdp-badges"><span class="pdp-badge pdp-badge--gold">Réplique Premium</span></div>
+      <div class="pdp-badges"></div>
       <div class="pdp-actions">
         <button class="pdp-btn-cart" id="pdp-cart-btn">Ajouter au panier</button>
         <button class="pdp-btn-wl" id="pdp-wl-btn">&#9825;</button>
@@ -193,7 +193,7 @@
   document.getElementById('pdp-name').textContent = p.name;
   document.getElementById('pdp-color').textContent = 'Coloris : ' + (p.color || '');
   document.getElementById('pdp-price').textContent = hasPrice ? p.price + ' €' : '— €';
-  document.getElementById('pdp-tag').textContent = hasPrice ? 'Réplique Premium' : 'Prix bientôt disponible';
+  document.getElementById('pdp-tag').textContent = hasPrice ? '' : 'Prix bientôt disponible';
   document.getElementById('pdp-back').href = 'boutique.html?cat=' + p.cat + (p.brand ? '&brand=' + encodeURIComponent(p.brand) : '');
 
   // Details
@@ -201,7 +201,7 @@
   details.innerHTML = '<div class="pdp-detail-row"><span class="pdp-detail-label">Marque</span><span class="pdp-detail-value">' + p.brand + '</span></div>'
     + '<div class="pdp-detail-row"><span class="pdp-detail-label">Modèle</span><span class="pdp-detail-value">' + p.name + '</span></div>'
     + '<div class="pdp-detail-row"><span class="pdp-detail-label">Coloris</span><span class="pdp-detail-value">' + (p.color || 'Unique') + '</span></div>'
-    + '<div class="pdp-detail-row"><span class="pdp-detail-label">Qualité</span><span class="pdp-detail-value">Réplique Premium 1:1</span></div>';
+;
 
   // Cart button
   var cartBtn = document.getElementById('pdp-cart-btn');
