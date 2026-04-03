@@ -681,7 +681,7 @@
         '<div class="b-tc-img"><img loading="lazy" decoding="async" src="' + p.img + '" alt="' + p.brand + ' ' + p.name + '"></div>' +
         '<div class="b-tc-body">' +
           '<div class="b-tc-brand">' + p.brand + '</div>' +
-          '<div class="b-tc-name">' + p.name + ' — ' + p.color + '</div>' +
+          '<div class="b-tc-name">' + displayName(p) + '</div>' +
           '<div class="b-tc-price">' + priceHTML + '</div>' +
         '</div>';
       scroll.appendChild(card);
@@ -822,7 +822,7 @@
       var esc = escAttr;
       var cartId = esc(key);
       var cartBrand = esc(p.brand);
-      var cartName = esc(p.name + ' — ' + p.color);
+      var cartName = esc(displayName(p));
       var cartImg = esc(p.img);
       var cartPrice = esc(p.price);
       btnHTML = '<button class="b-btn-cart" onclick="handleCart(this,\'' + cartId + '\',\'' + cartBrand + '\',\'' + cartName + '\',\'' + cartImg + '\',\'' + cartPrice + '\')">Ajouter au panier</button>';
@@ -831,7 +831,7 @@
 
     var wlId = escAttr(key);
     var wlBrand = escAttr(p.brand);
-    var wlName = escAttr(p.name + ' — ' + p.color);
+    var wlName = escAttr(displayName(p));
     var wlImg = escAttr(p.img);
 
     card.innerHTML =
@@ -840,7 +840,7 @@
       '</div>' +
       '<div class="b-body">' +
         '<span class="b-brand">' + p.brand + '</span>' +
-        '<span class="b-name">' + p.name + ' — ' + p.color + '</span>' +
+        '<span class="b-name">' + displayName(p) + '</span>' +
         '<span class="b-price">' + priceHTML + '</span>' +
         '<div class="b-actions">' +
           btnHTML +
@@ -856,6 +856,7 @@
   }
 
   function escAttr(s) { return String(s).replace(/'/g, "\\'").replace(/"/g, '&quot;'); }
+  function displayName(p) { return (p.cat === 'chaussures' && BRAND_TIER[p.brand] === 'luxe') ? p.name : p.name + ' — ' + p.color; }
 
   function restoreCardState(card, key) {
     try {
