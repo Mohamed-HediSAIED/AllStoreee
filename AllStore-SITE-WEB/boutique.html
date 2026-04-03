@@ -944,7 +944,21 @@
     });
   }
 
+  // Images fixes pour les cartes Luxe / Streetwear (par catégorie)
+  var TIER_IMAGES = {
+    'chaussures-luxe':  '16071988_30985491_1000.jpg',
+    'chaussures-street': '',
+    'vetements-luxe':   '',
+    'vetements-street': '',
+    'accessoires-luxe': '',
+    'accessoires-street': ''
+  };
+
   function getRepImage(cat, tier) {
+    // Vérifier d'abord l'image fixe
+    var fixed = TIER_IMAGES[cat + '-' + tier];
+    if (fixed) return fixed;
+    // Sinon prendre la première image du catalogue
     var keys = Object.keys(PRODUCTS);
     for (var i = 0; i < keys.length; i++) {
       var p = PRODUCTS[keys[i]];
