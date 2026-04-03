@@ -431,3 +431,48 @@ window.submitNewsletter = function() {
     msg.style.color = '#e74c3c';
   });
 };
+
+/* ══════════════════════════════════════════════════════════════
+   PREFETCH — precharge les pages pour navigation instantanee
+══════════════════════════════════════════════════════════════ */
+(function(){
+  if(!('connection' in navigator) || !navigator.connection.saveData){
+    // Pages principales a precharger
+    var pages = [
+      'index.html','boutique.html','assistant.html','suivi.html',
+      'apropos.html','contact.html','panier.html','produit-detail.html',
+      'comment.html','faq.html','livraison.html','checkout.html'
+    ];
+    var current = location.pathname.split('/').pop() || 'index.html';
+
+    // Prefetch apres chargement complet de la page (basse priorite)
+    window.addEventListener('load', function(){
+      setTimeout(function(){
+        pages.forEach(function(p){
+          if(p === current) return;
+          var link = document.createElement('link');
+          link.rel = 'prefetch';
+          link.href = p;
+          link.as = 'document';
+          document.head.appendChild(link);
+        });
+      }, 2000); // attendre 2s pour ne pas ralentir le chargement initial
+    });
+
+    // Prefetch au hover sur les liens (haute priorite)
+    var prefetched = {};
+    document.addEventListener('mouseover', function(e){
+      var a = e.target.closest('a[href]');
+      if(!a) return;
+      var href = a.getAttribute('href');
+      if(!href || href.startsWith('http') || href.startsWith('#') || href.startsWith('mailto')) return;
+      if(prefetched[href]) return;
+      prefetched[href] = true;
+      var link = document.createElement('link');
+      link.rel = 'prefetch';
+      link.href = href;
+      link.as = 'document';
+      document.head.appendChild(link);
+    }, {passive: true});
+  }
+})();
