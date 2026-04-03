@@ -380,6 +380,38 @@
     @media(max-width:380px) {
       .ct-card { padding: 22px 16px; }
     }
+
+    /* Toast notification */
+    .ct-toast {
+      display: none;
+      margin-top: 12px;
+      padding: 14px 18px;
+      border-radius: 14px;
+      font-size: 13px;
+      font-weight: 600;
+      font-family: 'Poppins', sans-serif;
+      text-align: center;
+      animation: ctToastIn .3s ease;
+    }
+    .ct-toast.show { display: block; }
+    .ct-toast.success {
+      background: rgba(39,174,96,.1);
+      color: #27ae60;
+      border: 1px solid rgba(39,174,96,.2);
+    }
+    .ct-toast.error {
+      background: rgba(231,76,60,.1);
+      color: #e74c3c;
+      border: 1px solid rgba(231,76,60,.2);
+    }
+    @keyframes ctToastIn {
+      from { opacity: 0; transform: translateY(-8px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .ct-submit:disabled {
+      opacity: .5;
+      cursor: not-allowed;
+    }
   </style>
 </head>
 <body>
@@ -475,18 +507,19 @@
 
     <div class="ct-fgrp">
       <label>Votre nom</label>
-      <input type="text" placeholder="Prénom Nom">
+      <input type="text" id="ct-name" placeholder="Prénom Nom" required>
     </div>
     <div class="ct-fgrp">
       <label>Email</label>
-      <input type="email" placeholder="votre@email.com">
+      <input type="email" id="ct-email" placeholder="votre@email.com" required>
     </div>
     <div class="ct-fgrp">
       <label>Votre demande</label>
-      <textarea rows="4" placeholder="Je recherche une Rolex Daytona cadran blanc, réf. 116500LN..."></textarea>
+      <textarea id="ct-message" rows="4" placeholder="Je recherche une Rolex Daytona cadran blanc, réf. 116500LN..." required></textarea>
     </div>
 
-    <button class="ct-submit">Envoyer ma demande</button>
+    <button class="ct-submit" id="ct-submit-btn">Envoyer ma demande</button>
+    <div class="ct-toast" id="ct-toast"></div>
 
     <div class="ct-divider">ou via nos réseaux</div>
 
@@ -520,6 +553,64 @@
 <script src="global.js"></script>
 <script src="luxury.js"></script>
 <script src="conversion.js"></script>
+
+<script>
+(function(){
+  var btn = document.getElementById('ct-submit-btn');
+  var toast = document.getElementById('ct-toast');
+  if(!btn) return;
+
+  btn.addEventListener('click', function(){
+    var name = document.getElementById('ct-name').value.trim();
+    var email = document.getElementById('ct-email').value.trim();
+    var message = document.getElementById('ct-message').value.trim();
+
+    // Validation
+    if(!name || !email || !message){
+      showToast('Veuillez remplir tous les champs.', 'error');
+      return;
+    }
+    if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){
+      showToast('Veuillez entrer un email valide.', 'error');
+      return;
+    }
+
+    // Disable button
+    btn.disabled = true;
+    btn.textContent = 'Envoi en cours...';
+
+    fetch('/api/send-contact-message', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ name: name, email: email, message: message })
+    })
+    .then(function(r){ return r.json(); })
+    .then(function(data){
+      if(data.success){
+        showToast('Message envoyé avec succès ! Nous vous répondrons rapidement.', 'success');
+        document.getElementById('ct-name').value = '';
+        document.getElementById('ct-email').value = '';
+        document.getElementById('ct-message').value = '';
+      } else {
+        showToast('Erreur lors de l\'envoi. Réessayez ou contactez-nous sur Instagram.', 'error');
+      }
+    })
+    .catch(function(){
+      showToast('Erreur de connexion. Réessayez ou contactez-nous sur Instagram.', 'error');
+    })
+    .finally(function(){
+      btn.disabled = false;
+      btn.textContent = 'Envoyer ma demande';
+    });
+  });
+
+  function showToast(msg, type){
+    toast.textContent = msg;
+    toast.className = 'ct-toast show ' + type;
+    setTimeout(function(){ toast.className = 'ct-toast'; }, 5000);
+  }
+})();
+</script>
 
 <style>
   .bnav{position:fixed;bottom:16px;left:50%;transform:translateX(-50%);z-index:9000;display:flex;align-items:center;background:rgba(255,255,255,.12);backdrop-filter:blur(20px) saturate(150%);-webkit-backdrop-filter:blur(20px) saturate(150%);border-radius:50px;padding:6px 8px;border:1px solid rgba(255,255,255,.25);box-shadow:0 4px 24px rgba(0,0,0,.15)}
