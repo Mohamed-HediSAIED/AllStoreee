@@ -92,16 +92,16 @@
   .als-insta-col{flex:1;display:flex;flex-direction:column;gap:12px}
   .als-insta-vid{position:relative;border-radius:20px;overflow:hidden;aspect-ratio:9/16}
   .als-insta-vid video{width:100%;height:100%;object-fit:cover}
-  /* Desktop: 4 items in a row, tall portrait */
+  /* Desktop: 4 items in a row, all 9:16 portrait */
   @media(min-width:1025px){
     .als-insta-section{padding:40px 0}
     .als-insta-row{flex-direction:row;gap:16px;max-width:1300px;padding:0 40px}
     .als-insta-col{flex-direction:row;gap:16px}
     .als-insta-col>*{flex:1;min-width:0}
-    .als-insta-vid{aspect-ratio:9/16;height:580px}
-    .als-insta-pcard{height:580px;justify-content:center;padding:30px 20px;border-radius:20px}
-    .als-insta-pcard-img{flex:1;display:flex;align-items:center;justify-content:center}
-    .als-insta-pcard-img img{max-width:85%;max-height:70%}
+    .als-insta-vid{aspect-ratio:9/16;height:auto}
+    .als-insta-pcard{aspect-ratio:9/16;height:auto;justify-content:center;padding:30px 20px;border-radius:20px;overflow:hidden;box-sizing:border-box}
+    .als-insta-pcard-img{flex:1;display:flex;align-items:center;justify-content:center;overflow:hidden}
+    .als-insta-pcard-img img{max-width:85%;max-height:65%;object-fit:contain}
     .als-insta-pcard-name{font-size:13px;margin-top:16px}
     .als-insta-pcard-price{font-size:14px;margin-top:6px}
     .als-insta-pcard-btn{margin-top:12px;padding:8px 24px;font-size:10px}
