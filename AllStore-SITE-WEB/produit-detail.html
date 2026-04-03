@@ -28,7 +28,10 @@
     .pdp-badges{display:flex;gap:8px;margin-bottom:28px}
     .pdp-badge{font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:.06em;padding:5px 14px;border-radius:980px;background:var(--bg2);color:var(--gris)}
     .pdp-badge--gold{background:var(--gold);color:var(--noir)}
-    .pdp-actions{display:flex;gap:10px;margin-bottom:28px}
+    .pdp-actions{display:flex;gap:10px;margin-bottom:12px}
+    .pdp-buy-now{width:100%;background:var(--gold);color:var(--noir);border:none;border-radius:14px;padding:18px;font-size:14px;font-weight:700;cursor:pointer;font-family:'Poppins',sans-serif;letter-spacing:.04em;text-transform:uppercase;transition:all .25s;margin-bottom:28px}
+    .pdp-buy-now:hover{background:#d4af37;transform:translateY(-1px);box-shadow:0 4px 16px rgba(233,194,67,.35)}
+    .pdp-buy-now:disabled{opacity:.4;cursor:not-allowed;transform:none;box-shadow:none}
     .pdp-btn-cart{flex:1;background:var(--noir);color:#fff;border:none;border-radius:14px;padding:20px;font-size:15px;font-weight:600;cursor:pointer;font-family:'Poppins',sans-serif;transition:background .2s}
     .pdp-btn-cart:hover{background:#1a3040}
     .pdp-btn-cart:disabled{opacity:.5;cursor:not-allowed}
@@ -64,6 +67,7 @@
         <button class="pdp-btn-cart" id="pdp-cart-btn">Ajouter au panier</button>
         <button class="pdp-btn-wl" id="pdp-wl-btn">&#9825;</button>
       </div>
+      <button class="pdp-buy-now" id="pdp-buy-now">Acheter maintenant</button>
       <div class="pdp-details" id="pdp-details"></div>
       <div class="pdp-guarantee">
         <div class="pdp-guarantee-item"><svg viewBox="0 0 24 24"><path d="M5 12l5 5L20 7"/></svg>Qualité vérifiée par nos experts</div>
@@ -224,6 +228,23 @@
         if (window.updateCartUI) updateCartUI();
         if (window.showToast) showToast(fullName + ' ajouté au panier');
       }
+    });
+  }
+
+  // Buy now button
+  var buyNowBtn = document.getElementById('pdp-buy-now');
+  if (!hasPrice) {
+    buyNowBtn.style.display = 'none';
+  } else {
+    buyNowBtn.addEventListener('click', function(){
+      var cart = JSON.parse(localStorage.getItem('als_cart') || '[]');
+      var exists = cart.some(function(i){ return i.id === id; });
+      if (!exists) {
+        cart.push({id: id, brand: p.brand, name: fullName, img: p.img, price: p.price + ' €'});
+        localStorage.setItem('als_cart', JSON.stringify(cart));
+        if (window.updateCartUI) updateCartUI();
+      }
+      window.location.href = 'checkout.html';
     });
   }
 
