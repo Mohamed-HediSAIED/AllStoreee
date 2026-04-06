@@ -175,25 +175,21 @@
       height: 200px;
       display: flex;
       align-items: center;
-      background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
     }
     .b-cat-card img {
       position: absolute;
-      right: 0;
-      top: 0;
-      width: 55%;
+      inset: 0;
+      width: 100%;
       height: 100%;
       object-fit: cover;
       transition: transform .6s var(--ease);
-      mask-image: linear-gradient(to right, transparent 0%, rgba(0,0,0,.4) 20%, rgba(0,0,0,1) 50%);
-      -webkit-mask-image: linear-gradient(to right, transparent 0%, rgba(0,0,0,.4) 20%, rgba(0,0,0,1) 50%);
     }
     .b-cat-card:hover img { transform: scale(1.05); }
     .b-cat-card::after {
       content: '';
       position: absolute;
       inset: 0;
-      background: transparent;
+      background: linear-gradient(to right, rgba(0,0,0,.75) 0%, rgba(0,0,0,.45) 40%, rgba(0,0,0,.15) 70%, transparent 100%);
       z-index: 1;
     }
     .b-cat-label {
@@ -623,9 +619,9 @@
     accessoires:{ label: 'Accessoires', sub: 'Sacs, lunettes, tech' }
   };
   var CAT_IMAGES = {
-    chaussures:  '29565149_58855346_1000.webp',
-    vetements:   '33185446_63931703_1000.webp',
-    accessoires: '35215043_66590949_1000.webp'
+    chaussures:  'b30_noir_1.jpg',
+    vetements:   'vesteblouson-burberry-en-coton-gris-40310052-1_2.webp',
+    accessoires: 'bracelet_dior.webp'
   };
   var TIER_LABELS = { luxe: 'Luxe', street: 'Streetwear' };
 
