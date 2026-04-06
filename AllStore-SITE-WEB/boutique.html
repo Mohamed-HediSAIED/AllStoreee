@@ -161,54 +161,58 @@
       margin-left: 3px;
     }
 
-    /* ═══ Category cards ═══ */
+    /* ═══ Category cards (Nike-style banners) ═══ */
     .b-categories {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 15px;
-      padding: 0 var(--marge) 60px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      padding: 0 0 60px;
     }
     .b-cat-card {
       position: relative;
-      border-radius: 22px;
       overflow: hidden;
       cursor: pointer;
-      height: 320px;
+      height: 200px;
       display: flex;
-      align-items: flex-end;
+      align-items: center;
+      background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
     }
     .b-cat-card img {
       position: absolute;
-      inset: 0;
-      width: 100%;
+      right: 0;
+      top: 0;
+      width: 55%;
       height: 100%;
       object-fit: cover;
       transition: transform .6s var(--ease);
+      mask-image: linear-gradient(to right, transparent 0%, rgba(0,0,0,.4) 20%, rgba(0,0,0,1) 50%);
+      -webkit-mask-image: linear-gradient(to right, transparent 0%, rgba(0,0,0,.4) 20%, rgba(0,0,0,1) 50%);
     }
     .b-cat-card:hover img { transform: scale(1.05); }
     .b-cat-card::after {
       content: '';
       position: absolute;
       inset: 0;
-      background: linear-gradient(to top, rgba(0,0,0,.6) 0%, rgba(0,0,0,.08) 50%, transparent 100%);
+      background: transparent;
       z-index: 1;
     }
     .b-cat-label {
       position: relative;
       z-index: 2;
-      padding: 18px 22px;
-      width: 100%;
+      padding: 30px 40px;
+      width: 50%;
     }
     .b-cat-label h3 {
-      font-size: clamp(17px, 2vw, 22px);
-      font-weight: 600;
+      font-size: clamp(22px, 3vw, 32px);
+      font-weight: 700;
       color: #fff;
-      margin: 0 0 3px;
-      letter-spacing: -.01em;
+      margin: 0 0 8px;
+      letter-spacing: -.02em;
     }
     .b-cat-label span {
-      font-size: 12px;
-      color: rgba(255,255,255,.7);
+      font-size: 13px;
+      color: rgba(255,255,255,.55);
+      letter-spacing: .02em;
     }
 
     /* ═══ Tier cards (Luxe / Streetwear) ═══ */
@@ -462,8 +466,8 @@
     /* ═══ Tablette ═══ */
     @media(max-width:900px){
       .boutique-grid { grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 18px; }
-      .b-categories { grid-template-columns: repeat(3, 1fr); gap: 12px; }
-      .b-cat-card { height: 260px; }
+      .b-categories { gap: 5px; }
+      .b-cat-card { height: 180px; }
       .b-tier-cards { grid-template-columns: repeat(2, 1fr); gap: 12px; }
       .b-tier-card { height: 280px; }
       .b-trending-card { flex: 0 0 170px; }
@@ -487,10 +491,11 @@
       .b-trending-card .b-tc-brand { font-size: 8px; }
       .b-trending-card .b-tc-name { font-size: 11px; }
       .b-trending-card .b-tc-price { font-size: 12px; }
-      .b-categories { grid-template-columns: 1fr; gap: 10px; padding: 0 16px 50px; }
-      .b-cat-card { height: 180px; border-radius: 16px; }
-      .b-cat-label { padding: 14px 16px; }
-      .b-cat-label h3 { font-size: 18px; }
+      .b-categories { gap: 4px; padding: 0 0 40px; }
+      .b-cat-card { height: 150px; }
+      .b-cat-card img { width: 60%; }
+      .b-cat-label { padding: 20px 20px; width: 55%; }
+      .b-cat-label h3 { font-size: 20px; }
       .b-cat-label span { font-size: 11px; }
       .b-tier-cards { grid-template-columns: 1fr; gap: 10px; padding: 0 16px 50px; }
       .b-tier-card { height: 200px; border-radius: 16px; }
@@ -687,7 +692,7 @@
       scroll.appendChild(card);
     });
 
-    // Categories
+    // Categories (Nike-style banners)
     var grid = document.getElementById('category-grid');
     grid.innerHTML = '';
     ['chaussures', 'vetements', 'accessoires'].forEach(function(cat) {
@@ -700,7 +705,7 @@
         '<img loading="lazy" decoding="async" src="' + CAT_IMAGES[cat] + '" alt="' + info.label + '">' +
         '<div class="b-cat-label">' +
           '<h3>' + info.label + '</h3>' +
-          '<span>' + count + ' articles — ' + info.sub + '</span>' +
+          '<span>' + count + ' articles</span>' +
         '</div>';
       grid.appendChild(card);
     });
