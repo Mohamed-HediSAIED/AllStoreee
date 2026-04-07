@@ -556,7 +556,7 @@ textarea.form-control{resize:none}
 /* ═══════════════════════════════════════════
    À PROPOS
 ═══════════════════════════════════════════ */
-.ap-hero{padding:160px var(--marge) 90px;max-width:980px;position:relative}
+.ap-hero{padding:160px var(--marge) 90px;max-width:1200px;position:relative}
 .ap-hero h1{font-family:'Cormorant',serif;font-size:clamp(44px,6.5vw,82px);font-weight:300;letter-spacing:-.025em;line-height:1.04;margin:0 0 30px}
 .ap-hero .lead{font-size:21px;line-height:1.55;color:var(--noir);margin:0 0 18px;max-width:740px;font-weight:300}
 .ap-hero .sub{font-size:17px;line-height:1.65;color:var(--gris);max-width:640px;font-weight:300}
@@ -593,7 +593,7 @@ textarea.form-control{resize:none}
    CONTACT
 ═══════════════════════════════════════════ */
 .ct-wrap{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:100px var(--marge) 80px}
-.ct-inner{width:100%;max-width:1080px;display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center}
+.ct-inner{width:100%;max-width:1300px;display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center}
 .ct-text h1{font-family:'Cormorant',serif;font-size:clamp(38px,5vw,62px);font-weight:300;letter-spacing:-.025em;line-height:1.06;margin:0 0 20px}
 .ct-text p{font-size:17px;color:var(--gris);line-height:1.6;margin:0 0 44px;max-width:420px;font-weight:300}
 .ct-item{display:flex;align-items:flex-start;gap:16px;margin-bottom:24px}
@@ -617,7 +617,7 @@ textarea.form-control{resize:none}
 /* ═══════════════════════════════════════════
    VEO
 ═══════════════════════════════════════════ */
-.veo-wrap{max-width:1000px;margin:140px auto 80px;padding:0 20px}
+.veo-wrap{max-width:1200px;margin:140px auto 80px;padding:0 20px}
 .veo-grid{display:grid;grid-template-columns:1fr 1fr;gap:36px;margin-top:36px}
 .veo-card{background:#fff;border-radius:30px;padding:36px;box-shadow:0 4px 20px rgba(0,0,0,.03);border:1px solid rgba(0,0,0,.05)}
 .veo-upload{aspect-ratio:1;border:2px dashed #ddd;border-radius:22px;display:flex;flex-direction:column;align-items:center;justify-content:center;cursor:pointer;transition:.3s;position:relative;overflow:hidden}
