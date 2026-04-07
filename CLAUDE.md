@@ -53,3 +53,30 @@ Les produits avec `price:"0"` affichent automatiquement "Prix bientôt disponibl
 - Toujours fournir les URLs local + production après un changement
 - Local : http://localhost:3000
 - Production : https://allstore-tm.fr
+
+## Langage marketing AllStore — TOUJOURS APPLIQUER
+
+Ces règles s'appliquent à TOUT texte visible par les clients (site, réseaux, messages, descriptions).
+
+| Ne dis pas | Dis plutôt |
+|---|---|
+| Acheter | Recevoir le mien |
+| Pas cher | Accessible |
+| Meilleur | N°1 des avis |
+| En promo | Offre limitée |
+| Inscris-toi | Commence maintenant |
+| Seulement ici | Exclusif |
+| Soldes | Offre spéciale |
+| Indispensable | Essentiel |
+| De qualité | Conçu pour durer |
+| Garanti | Satisfait ou remboursé |
+| On est les meilleurs | +10 000 clients satisfaits |
+| Profitez-en | Avant rupture |
+| Livraison rapide | Chez toi en 48h |
+| Nouveau | Enfin disponible |
+| Cliquez ici | Découvre comment |
+| Newsletter | Accès VIP |
+| Gratuit | Offert |
+| Dépêchez-vous | Plus que X places |
+| Abonnez-vous | Rejoins la communauté |
+| Contactez-nous | On en parle ? |
