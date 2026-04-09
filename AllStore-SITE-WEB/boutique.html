@@ -127,7 +127,7 @@
     .b-trending-card .b-tc-img img {
       width: 100%;
       height: 100%;
-      object-fit: contain;
+      object-fit: cover;
       transition: transform .5s var(--ease);
     }
     .b-trending-card:hover .b-tc-img img { transform: scale(1.05); }
@@ -346,9 +346,9 @@
       overflow: hidden;
     }
     .b-img img {
-      width: 115%;
-      height: 115%;
-      object-fit: contain;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
       object-position: center;
       transition: transform .5s var(--ease);
     }
@@ -842,7 +842,7 @@
 
     card.innerHTML =
       '<div class="b-img" style="background:#fff">' +
-        '<img loading="lazy" decoding="async" src="' + p.img + '" alt="' + p.brand + ' ' + p.name + ' ' + p.color + '" style="object-fit:contain">' +
+        '<img loading="lazy" decoding="async" src="' + p.img + '" alt="' + p.brand + ' ' + p.name + ' ' + p.color + '" style="object-fit:cover">' +
       '</div>' +
       '<div class="b-body">' +
         '<span class="b-brand">' + p.brand + '</span>' +

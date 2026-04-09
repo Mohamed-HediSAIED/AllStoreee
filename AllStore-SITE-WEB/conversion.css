@@ -331,7 +331,7 @@ body.has-promo .trust-bar { top: var(--trust-top, 114px); }
 .cross-sell-img img {
   max-width: 85%;
   max-height: 85%;
-  object-fit: contain;
+  object-fit: cover;
   transition: transform .5s var(--ease);
 }
 .cross-sell-card:hover .cross-sell-img img { transform: scale(1.06); }
