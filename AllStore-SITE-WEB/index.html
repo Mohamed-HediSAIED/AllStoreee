@@ -418,6 +418,85 @@
 </section>
 
 <!-- ═══════════════════════════════════════════
+     SÉLECTIONS CHAUSSURES
+═══════════════════════════════════════════ -->
+<div id="selections-chaussures"></div>
+
+<!-- ═══════════════════════════════════════════
+     SÉLECTIONS VÊTEMENTS
+═══════════════════════════════════════════ -->
+<div id="selections-vetements"></div>
+
+<!-- ═══════════════════════════════════════════
+     SÉLECTIONS ACCESSOIRES
+═══════════════════════════════════════════ -->
+<div id="selections-accessoires"></div>
+
+<script src="products-data.js"></script>
+<script>
+(function(){
+  // Define which brands/models to show per category
+  var selections = {
+    chaussures: [
+      {title:'MAISON MARGIELA', filter:function(p){return p.brand==='Maison Margiela'&&p.cat==='chaussures'}},
+      {title:'PRADA CUP', filter:function(p){return p.brand==='Prada'&&p.cat==='chaussures'}},
+      {title:'ON', filter:function(p){return p.brand==='On'&&p.cat==='chaussures'}},
+      {title:'NIKE 001', filter:function(p){return p.brand==='Nike'&&p.cat==='chaussures'}}
+    ],
+    vetements: [
+      {title:'BURBERRY', filter:function(p){return p.brand==='Burberry'&&p.cat==='vetements'}},
+      {title:'CASABLANCA', filter:function(p){return p.brand==='Casablanca'&&p.cat==='vetements'}},
+      {title:'BAPE', filter:function(p){return p.brand==='A Bathing Ape'&&p.cat==='vetements'}}
+    ],
+    accessoires: [
+      {title:'LORO PIANA', filter:function(p){return p.brand==='Loro Piana'&&p.cat==='accessoires'}},
+      {title:'GUCCI', filter:function(p){return p.brand==='Gucci'&&p.cat==='accessoires'}},
+      {title:'DIOR', filter:function(p){return p.brand==='Dior'&&p.cat==='accessoires'}}
+    ]
+  };
+
+  function buildCard(id, p) {
+    var priceHtml = p.price==='0'
+      ? '<span class="als-hcard-soon">Bientôt disponible</span>'
+      : '<span class="als-hcard-price">'+p.price+',00€</span>';
+    return '<a href="produit-detail.html?id='+id+'" class="als-hcard">'
+      +'<div class="als-hcard-img"><img src="'+p.img+'" alt="'+p.brand+' '+p.name+' '+p.color+'" loading="lazy"></div>'
+      +'<div class="als-hcard-info"><span class="als-hcard-name">'+p.brand.toUpperCase()+' '+p.name.toUpperCase()+' — '+p.color.toUpperCase()+'</span>'
+      +priceHtml+'</div></a>';
+  }
+
+  function buildSection(title, products) {
+    var cards = '';
+    Object.keys(products).forEach(function(id){
+      cards += buildCard(id, products[id]);
+    });
+    return '<section class="als-sec">'
+      +'<div class="als-sec-head"><h2 class="als-sec-title">SÉLECTION <em>'+title+'</em></h2></div>'
+      +'<div class="als-scroll-wrap">'
+      +'<div class="als-scroll-arrow left" onclick="scrollRow(this,-1)"><svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg></div>'
+      +'<div class="als-scroll-arrow right" onclick="scrollRow(this,1)"><svg viewBox="0 0 24 24"><polyline points="9 6 15 12 9 18"/></svg></div>'
+      +'<div class="als-hscroll">'+cards+'</div>'
+      +'</div></section>';
+  }
+
+  ['chaussures','vetements','accessoires'].forEach(function(cat){
+    var container = document.getElementById('selections-'+cat);
+    var html = '';
+    selections[cat].forEach(function(sel){
+      var filtered = {};
+      Object.keys(PRODUCTS).forEach(function(id){
+        if(sel.filter(PRODUCTS[id])) filtered[id] = PRODUCTS[id];
+      });
+      if(Object.keys(filtered).length > 0){
+        html += buildSection(sel.title, filtered);
+      }
+    });
+    container.innerHTML = html;
+  });
+})();
+</script>
+
+<!-- ═══════════════════════════════════════════
      4) ARTICLES RARES
 ═══════════════════════════════════════════ -->
 <section class="als-sec">
