@@ -172,11 +172,18 @@
 
     <!-- ÉTAPE 2 -->
     <div class="step-panel" id="step2">
-        <span class="step-eyebrow">Étape 2 — Marque</span>
-        <h2 class="step-title">Quelle marque ?</h2>
-        <p class="step-sub">Choisissez parmi les marques disponibles.</p>
+        <span class="step-eyebrow" id="s2eyebrow">Étape 2 — Marque</span>
+        <h2 class="step-title" id="s2title">Quelle marque ?</h2>
+        <p class="step-sub" id="s2sub">Choisissez parmi les marques disponibles.</p>
         <div class="recap-pills" id="recap2"></div>
         <div class="opt-list" id="brandList"></div>
+        <div id="autreDescWrap" style="display:none">
+            <div class="form-group">
+                <label>Décrivez l'article recherché</label>
+                <textarea class="form-control" id="autreDescInput" rows="4" placeholder="Marque, modèle, référence, couleur… Donnez-nous un maximum de détails." style="border-radius:14px;padding:14px 18px;font-size:15px;border:1.5px solid rgba(10,25,35,.12);width:100%;resize:vertical"></textarea>
+            </div>
+            <button class="btn-primary" id="btnAutreDesc" style="margin-top:12px;width:100%" disabled>Continuer →</button>
+        </div>
         <div class="btn-row">
             <button class="btn-back" onclick="goStep(1)">← Retour</button>
         </div>
@@ -390,6 +397,14 @@ document.getElementById('typeGrid').addEventListener('click', function(e) {
 
   document.getElementById('autreTypeWrap').style.display = 'none';
   order.type = type;
+  order._isAutre = false;
+
+  // Remettre l'étape 2 en mode normal (liste de marques)
+  document.getElementById('brandList').style.display = '';
+  document.getElementById('autreDescWrap').style.display = 'none';
+  document.getElementById('s2eyebrow').textContent = 'Étape 2 — Marque';
+  document.getElementById('s2title').textContent = 'Quelle marque ?';
+  document.getElementById('s2sub').textContent = 'Choisissez parmi les marques disponibles.';
 
   // Construire la liste des marques (data-brand pour éviter les pb d'apostrophes)
   const brands = brandsByType[type] || [];
@@ -410,13 +425,35 @@ document.getElementById('btnAutreType').addEventListener('click', function() {
   const val = document.getElementById('autreTypeInput').value.trim();
   if (!val) return;
   order.type = val;
+  order._isAutre = true;
 
-  // Pour "Autre", proposer un champ marque libre
-  const list = document.getElementById('brandList');
-  list.innerHTML = '<div class="opt-item" data-brand="Autre">Autre / Préciser<span class="opt-arrow">→</span></div>';
+  // Pour "Autre", afficher un textarea au lieu de la liste de marques
+  document.getElementById('brandList').style.display = 'none';
+  document.getElementById('autreDescWrap').style.display = 'block';
+  document.getElementById('s2eyebrow').textContent = 'Étape 2 — Votre demande';
+  document.getElementById('s2title').textContent = 'Décrivez votre demande';
+  document.getElementById('s2sub').textContent = 'Plus c\'est précis, plus on trouve vite.';
+  document.getElementById('autreDescInput').value = '';
+  document.getElementById('btnAutreDesc').disabled = true;
 
   buildRecap('recap2', [{ l:'Article', v:val }]);
   goStep(2);
+});
+
+// ── Étape 2 "Autre" : textarea + skip vers coordonnées ──
+document.getElementById('autreDescInput').addEventListener('input', function() {
+  document.getElementById('btnAutreDesc').disabled = !this.value.trim();
+});
+document.getElementById('btnAutreDesc').addEventListener('click', function() {
+  const desc = document.getElementById('autreDescInput').value.trim();
+  if (!desc) return;
+  order.brand = desc;
+  order.size = '—';
+  order.color = '—';
+  order.ref = '';
+  order.budget = '';
+  // Aller directement aux coordonnées (étape 6)
+  goStep(6);
 });
 
 // ── Étape 2 : délégation d'événement sur la liste des marques ──
