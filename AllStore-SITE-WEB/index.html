@@ -444,17 +444,19 @@ function filterSel(secId, pill) {
   sec.querySelectorAll('.als-hcard').forEach(function(card){
     card.style.display = (card.dataset.brand === val) ? '' : 'none';
   });
+  var t = sec.querySelector('.als-sec-title');
+  if(t) t.innerHTML = pill.textContent+' <em>SELECTION</em>';
 }
 
 (function(){
   var brandLabels = {'A Bathing Ape':'BAPE'};
   var cats = [
-    {id:'selections-chaussures', title:'CHAUSSURES', cat:'chaussures',
-     brands:['Maison Margiela','Prada','On','Nike']},
-    {id:'selections-vetements', title:'VÊTEMENTS', cat:'vetements',
-     brands:['Burberry','Casablanca','A Bathing Ape']},
-    {id:'selections-accessoires', title:'ACCESSOIRES', cat:'accessoires',
-     brands:['Loro Piana','Gucci','Dior']}
+    {id:'selections-chaussures', cat:'chaussures',
+     brands:[{n:'Maison Margiela'},{n:'Prada'},{n:'On'},{n:'Nike'}]},
+    {id:'selections-vetements', cat:'vetements',
+     brands:[{n:'Casablanca'},{n:'Burberry',filter:function(p){return p.name.indexOf('Pull')!==-1}},{n:'A Bathing Ape'}]},
+    {id:'selections-accessoires', cat:'accessoires',
+     brands:[{n:'Loro Piana'},{n:'Gucci'},{n:'Dior'}]}
   ];
 
   function buildCard(id, p) {
@@ -471,16 +473,17 @@ function filterSel(secId, pill) {
   cats.forEach(function(c, ci){
     var container = document.getElementById(c.id);
     var sid = 'sel-'+ci;
-    var cards = '', activeBrands = [];
-    c.brands.forEach(function(brand){
+    var cards = '', activeBrands = [], firstLabel = '';
+    c.brands.forEach(function(b){
       var has = false;
       Object.keys(PRODUCTS).forEach(function(id){
         var p = PRODUCTS[id];
-        if(p.brand===brand && p.cat===c.cat){ cards += buildCard(id, p); has = true; }
+        if(p.brand===b.n && p.cat===c.cat && (!b.filter||b.filter(p))){ cards += buildCard(id, p); has = true; }
       });
-      if(has) activeBrands.push(brand);
+      if(has) activeBrands.push(b.n);
     });
     if(!activeBrands.length) return;
+    firstLabel = brandLabels[activeBrands[0]] || activeBrands[0].toUpperCase();
     var pills = '<div class="als-filters">';
     activeBrands.forEach(function(b, i){
       var label = brandLabels[b] || b.toUpperCase();
@@ -488,7 +491,7 @@ function filterSel(secId, pill) {
     });
     pills += '</div>';
     container.innerHTML = '<section class="als-sec" id="'+sid+'">'
-      +'<div class="als-sec-head"><h2 class="als-sec-title">'+c.title+' <em>SELECTION</em></h2></div>'
+      +'<div class="als-sec-head"><h2 class="als-sec-title">'+firstLabel+' <em>SELECTION</em></h2></div>'
       +pills
       +'<div class="als-scroll-wrap">'
       +'<div class="als-scroll-arrow left" onclick="scrollRow(this,-1)"><svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg></div>'
