@@ -413,8 +413,10 @@ document.getElementById('typeGrid').addEventListener('click', function(e) {
   document.getElementById('s2title').textContent = 'Quelle marque ?';
   document.getElementById('s2sub').textContent = 'Choisissez parmi les marques disponibles.';
 
-  // Construire la liste des marques (data-brand pour éviter les pb d'apostrophes)
-  const brands = brandsByType[type] || [];
+  // Construire la liste des marques triées par ordre alphabétique
+  const brands = (brandsByType[type] || []).slice().sort(function(a, b) {
+    return a.localeCompare(b, 'fr', { sensitivity: 'base' });
+  });
   const list = document.getElementById('brandList');
   list.innerHTML = brands.map(function(b) {
     return '<div class="opt-item" data-brand="' + b.replace(/"/g, '&quot;') + '">' + b + '<span class="opt-arrow">→</span></div>';
