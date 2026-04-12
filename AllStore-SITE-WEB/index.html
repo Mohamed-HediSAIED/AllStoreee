@@ -479,9 +479,11 @@
       +'</div></section>';
   }
 
+  var catTitles = {chaussures:'CHAUSSURES', vetements:'VÊTEMENTS', accessoires:'ACCESSOIRES'};
+
   ['chaussures','vetements','accessoires'].forEach(function(cat){
     var container = document.getElementById('selections-'+cat);
-    var html = '';
+    var html = '<div class="als-sec-head" style="padding-top:40px"><h2 class="als-sec-title" style="font-size:2rem;letter-spacing:0.15em">NOS <em>'+catTitles[cat]+'</em></h2></div>';
     selections[cat].forEach(function(sel){
       var filtered = {};
       Object.keys(PRODUCTS).forEach(function(id){
