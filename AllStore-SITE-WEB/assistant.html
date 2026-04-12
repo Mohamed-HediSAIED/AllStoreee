@@ -164,10 +164,6 @@
             <div class="chip" data-type="Parfums"><span class="chip-icon">🌸</span>Parfums</div>
             <div class="chip" data-type="Autre" id="chipAutre"><span class="chip-icon">✨</span>Autre</div>
         </div>
-        <div id="autreTypeWrap" style="display:none;margin-top:16px">
-            <input type="text" id="autreTypeInput" class="form-control" placeholder="Précisez votre recherche…" style="border-radius:14px;padding:14px 18px;font-size:15px;border:1.5px solid rgba(10,25,35,.12);width:100%">
-            <button class="btn-next" id="btnAutreType" style="margin-top:12px;width:100%" disabled>Continuer →</button>
-        </div>
     </div>
 
     <!-- ÉTAPE 2 -->
@@ -390,12 +386,23 @@ document.getElementById('typeGrid').addEventListener('click', function(e) {
   const type = chip.dataset.type;
 
   if (type === 'Autre') {
-    document.getElementById('autreTypeWrap').style.display = 'block';
-    document.getElementById('autreTypeInput').focus();
+    order.type = 'Autre';
+    order._isAutre = true;
+
+    // Afficher le textarea au lieu de la liste de marques
+    document.getElementById('brandList').style.display = 'none';
+    document.getElementById('autreDescWrap').style.display = 'block';
+    document.getElementById('s2eyebrow').textContent = 'Étape 2 — Votre demande';
+    document.getElementById('s2title').textContent = 'Décrivez votre demande';
+    document.getElementById('s2sub').textContent = 'Plus c\'est précis, plus on trouve vite.';
+    document.getElementById('autreDescInput').value = '';
+    document.getElementById('btnAutreDesc').disabled = true;
+
+    buildRecap('recap2', [{ l:'Article', v:'Autre' }]);
+    goStep(2);
     return;
   }
 
-  document.getElementById('autreTypeWrap').style.display = 'none';
   order.type = type;
   order._isAutre = false;
 
@@ -417,28 +424,6 @@ document.getElementById('typeGrid').addEventListener('click', function(e) {
   goStep(2);
 });
 
-// ── Étape 1 : gestion du type "Autre" ──
-document.getElementById('autreTypeInput').addEventListener('input', function() {
-  document.getElementById('btnAutreType').disabled = !this.value.trim();
-});
-document.getElementById('btnAutreType').addEventListener('click', function() {
-  const val = document.getElementById('autreTypeInput').value.trim();
-  if (!val) return;
-  order.type = val;
-  order._isAutre = true;
-
-  // Pour "Autre", afficher un textarea au lieu de la liste de marques
-  document.getElementById('brandList').style.display = 'none';
-  document.getElementById('autreDescWrap').style.display = 'block';
-  document.getElementById('s2eyebrow').textContent = 'Étape 2 — Votre demande';
-  document.getElementById('s2title').textContent = 'Décrivez votre demande';
-  document.getElementById('s2sub').textContent = 'Plus c\'est précis, plus on trouve vite.';
-  document.getElementById('autreDescInput').value = '';
-  document.getElementById('btnAutreDesc').disabled = true;
-
-  buildRecap('recap2', [{ l:'Article', v:val }]);
-  goStep(2);
-});
 
 // ── Étape 2 "Autre" : textarea + skip vers coordonnées ──
 document.getElementById('autreDescInput').addEventListener('input', function() {
