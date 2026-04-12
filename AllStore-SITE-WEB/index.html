@@ -456,7 +456,7 @@ function filterSel(secId, pill) {
     {id:'selections-vetements', cat:'vetements',
      brands:[{n:'Casablanca'},{n:'Burberry',filter:function(p){return p.name.indexOf('Pull')!==-1}},{n:'A Bathing Ape'}]},
     {id:'selections-accessoires', cat:'accessoires',
-     brands:[{n:'Loro Piana'},{n:'Alo Yoga'}]}
+     brands:[{n:'Loro Piana'},{n:'Alo Yoga'},{n:'Miu Miu',filter:function(p){return p.name==='Porte-Cartes'}},{n:'Gerard Darel'}]}
   ];
 
   function buildCard(id, p) {
@@ -478,7 +478,8 @@ function filterSel(secId, pill) {
       var has = false;
       Object.keys(PRODUCTS).forEach(function(id){
         var p = PRODUCTS[id];
-        if(p.brand===b.n && p.cat===c.cat && (!b.filter||b.filter(p))){ cards += buildCard(id, p); has = true; }
+        var catOk = p.cat===c.cat||(typeof CAT_MAP!=='undefined'&&CAT_MAP[p.cat]===c.cat);
+        if(p.brand===b.n && catOk && (!b.filter||b.filter(p))){ cards += buildCard(id, p); has = true; }
       });
       if(has) activeBrands.push(b.n);
     });
