@@ -438,94 +438,72 @@
 <script>
 function filterSel(secId, pill) {
   var sec = document.getElementById(secId);
-  var model = pill.dataset.model;
+  var val = pill.dataset.brand;
   sec.querySelectorAll('.als-pill').forEach(function(p){ p.classList.remove('active'); });
   pill.classList.add('active');
   sec.querySelectorAll('.als-hcard').forEach(function(card){
-    card.style.display = (card.dataset.model === model) ? '' : 'none';
+    card.style.display = (card.dataset.brand === val) ? '' : 'none';
   });
 }
 
 (function(){
-  var selections = {
-    chaussures: [
-      {title:'MAISON MARGIELA', filter:function(p){return p.brand==='Maison Margiela'&&p.cat==='chaussures'}},
-      {title:'PRADA', filter:function(p){return p.brand==='Prada'&&p.cat==='chaussures'}},
-      {title:'ON', filter:function(p){return p.brand==='On'&&p.cat==='chaussures'}},
-      {title:'NIKE', filter:function(p){return p.brand==='Nike'&&p.cat==='chaussures'}}
-    ],
-    vetements: [
-      {title:'BURBERRY', filter:function(p){return p.brand==='Burberry'&&p.cat==='vetements'}},
-      {title:'CASABLANCA', filter:function(p){return p.brand==='Casablanca'&&p.cat==='vetements'}},
-      {title:'BAPE', filter:function(p){return p.brand==='A Bathing Ape'&&p.cat==='vetements'}}
-    ],
-    accessoires: [
-      {title:'LORO PIANA', filter:function(p){return p.brand==='Loro Piana'&&p.cat==='accessoires'}},
-      {title:'GUCCI', filter:function(p){return p.brand==='Gucci'&&p.cat==='accessoires'}},
-      {title:'DIOR', filter:function(p){return p.brand==='Dior'&&p.cat==='accessoires'}}
-    ]
-  };
-
-  var secN = 0;
+  var brandLabels = {'A Bathing Ape':'BAPE'};
+  var cats = [
+    {id:'selections-chaussures', title:'CHAUSSURES', cat:'chaussures',
+     brands:['Maison Margiela','Prada','On','Nike']},
+    {id:'selections-vetements', title:'VÊTEMENTS', cat:'vetements',
+     brands:['Burberry','Casablanca','A Bathing Ape']},
+    {id:'selections-accessoires', title:'ACCESSOIRES', cat:'accessoires',
+     brands:['Loro Piana','Gucci','Dior']}
+  ];
 
   function buildCard(id, p) {
     var priceHtml = p.price==='0'
       ? '<span class="als-hcard-soon">Bientôt disponible</span>'
       : '<span class="als-hcard-price">'+p.price+',00€</span>';
-    return '<a href="produit-detail.html?id='+id+'" class="als-hcard" data-model="'+p.name.replace(/"/g,'&quot;')+'">'
+    return '<a href="produit-detail.html?id='+id+'" class="als-hcard" data-brand="'+p.brand.replace(/"/g,'&quot;')+'">'
       +'<div class="als-hcard-img"><span class="als-badge">TOP VENTES</span><img src="'+p.img+'" alt="'+p.brand+' '+p.name+' '+p.color+'" loading="lazy"></div>'
       +'<div class="als-hcard-info"><span class="als-hcard-name">'+p.brand.toUpperCase()+' '+p.name.toUpperCase()+'</span>'
       +'<span class="als-hcard-desc">'+p.name+' '+p.color+'</span>'
       +priceHtml+'</div></a>';
   }
 
-  function buildSection(title, products) {
-    var sid = 'sel-'+(secN++);
-    var models = [], seen = {};
-    Object.keys(products).forEach(function(id){
-      var n = products[id].name;
-      if(!seen[n]){ seen[n]=true; models.push(n); }
-    });
-    var cards = '';
-    Object.keys(products).forEach(function(id){ cards += buildCard(id, products[id]); });
-    var pills = '';
-    if(models.length > 1){
-      pills = '<div class="als-filters">';
-      models.forEach(function(m, i){
-        pills += '<button class="als-pill'+(i===0?' active':'')+'" data-model="'+m.replace(/"/g,'&quot;')+'" onclick="filterSel(\''+sid+'\',this)">'+m.toUpperCase()+'</button>';
+  cats.forEach(function(c, ci){
+    var container = document.getElementById(c.id);
+    var sid = 'sel-'+ci;
+    var cards = '', activeBrands = [];
+    c.brands.forEach(function(brand){
+      var has = false;
+      Object.keys(PRODUCTS).forEach(function(id){
+        var p = PRODUCTS[id];
+        if(p.brand===brand && p.cat===c.cat){ cards += buildCard(id, p); has = true; }
       });
-      pills += '</div>';
-    }
-    return '<section class="als-sec" id="'+sid+'">'
-      +'<div class="als-sec-head"><h2 class="als-sec-title">'+title+' <em>SELECTION</em></h2></div>'
+      if(has) activeBrands.push(brand);
+    });
+    if(!activeBrands.length) return;
+    var pills = '<div class="als-filters">';
+    activeBrands.forEach(function(b, i){
+      var label = brandLabels[b] || b.toUpperCase();
+      pills += '<button class="als-pill'+(i===0?' active':'')+'" data-brand="'+b.replace(/"/g,'&quot;')+'" onclick="filterSel(\''+sid+'\',this)">'+label+'</button>';
+    });
+    pills += '</div>';
+    container.innerHTML = '<section class="als-sec" id="'+sid+'">'
+      +'<div class="als-sec-head"><h2 class="als-sec-title">'+c.title+' <em>SELECTION</em></h2></div>'
       +pills
       +'<div class="als-scroll-wrap">'
       +'<div class="als-scroll-arrow left" onclick="scrollRow(this,-1)"><svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg></div>'
       +'<div class="als-scroll-arrow right" onclick="scrollRow(this,1)"><svg viewBox="0 0 24 24"><polyline points="9 6 15 12 9 18"/></svg></div>'
       +'<div class="als-hscroll">'+cards+'</div>'
       +'</div></section>';
-  }
-
-  ['chaussures','vetements','accessoires'].forEach(function(cat){
-    var container = document.getElementById('selections-'+cat);
-    var html = '';
-    selections[cat].forEach(function(sel){
-      var filtered = {};
-      Object.keys(PRODUCTS).forEach(function(id){
-        if(sel.filter(PRODUCTS[id])) filtered[id] = PRODUCTS[id];
-      });
-      if(Object.keys(filtered).length > 0) html += buildSection(sel.title, filtered);
-    });
-    container.innerHTML = html;
   });
 
-  // Initial filter: show only first model for sections with pills
+  // Initial filter: show only first brand
   document.querySelectorAll('.als-sec[id^="sel-"]').forEach(function(sec){
     var ap = sec.querySelector('.als-pill.active');
     if(ap){
-      var model = ap.dataset.model;
+      var val = ap.dataset.brand;
       sec.querySelectorAll('.als-hcard').forEach(function(c){
-        c.style.display = (c.dataset.model===model)?'':'none';
+        c.style.display = (c.dataset.brand===val)?'':'none';
       });
     }
   });
