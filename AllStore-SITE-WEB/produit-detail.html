@@ -169,8 +169,6 @@
   var hasPrice = p.price && p.price !== '0';
 
   document.title = p.brand + ' ' + p.name + ' | ALLSTORE 24/7';
-  document.querySelector('meta[name="description"]').setAttribute('content',
-    p.brand+' '+fullName+' — Qualité vérifiée, livraison offerte en Europe. Découvrez sur ALLSTORE 24/7.');
 
   // Gallery: if product has gallery array, show multiple images
   var gallery = document.getElementById('pdp-gallery');
