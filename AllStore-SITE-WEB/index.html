@@ -53,6 +53,33 @@
   .hero-als .hero-btn{display:inline-block;font-family:'Poppins',sans-serif;font-size:12px;font-weight:600;letter-spacing:.15em;text-transform:uppercase;color:#fff;background:rgba(255,255,255,.12);backdrop-filter:blur(15px);-webkit-backdrop-filter:blur(15px);border:1px solid rgba(255,255,255,.25);padding:16px 48px;border-radius:30px;text-decoration:none;transition:all .3s}
   .hero-als .hero-btn:hover{background:rgba(255,255,255,.25)}
 
+  /* ---------- SEARCH BAR ---------- */
+  .als-search-sec{padding:20px 20px 10px;background:var(--bg2,#f5f2ec)}
+  .als-search-wrap{max-width:600px;margin:0 auto;position:relative}
+  .als-search-input{width:100%;font-family:'Poppins',sans-serif;font-size:14px;background:rgba(255,255,255,.7);backdrop-filter:blur(10px);border:1.5px solid rgba(10,25,35,.1);border-radius:30px;padding:16px 20px 16px 48px;outline:none;transition:all .2s;box-sizing:border-box;color:var(--noir,#0a1923)}
+  .als-search-input::placeholder{color:#aaa;font-weight:300}
+  .als-search-input:focus{border-color:var(--gold2,#c5a44e);box-shadow:0 0 0 3px rgba(197,164,78,.12)}
+  .als-search-icon{position:absolute;left:18px;top:50%;transform:translateY(-50%);width:18px;height:18px;stroke:var(--gris,#6a7a8a);fill:none;stroke-width:2;pointer-events:none}
+  .als-search-results{display:none;position:absolute;top:calc(100% + 8px);left:0;right:0;background:#fff;border-radius:20px;box-shadow:0 8px 32px rgba(0,0,0,.12);max-height:400px;overflow-y:auto;z-index:100;padding:8px 0}
+  .als-search-results.open{display:block}
+  .als-search-item{display:flex;align-items:center;gap:14px;padding:10px 18px;text-decoration:none;color:inherit;transition:background .15s}
+  .als-search-item:hover{background:rgba(10,25,35,.04)}
+  .als-search-item-img{width:48px;height:48px;border-radius:10px;overflow:hidden;background:var(--bg2,#f5f2ec);flex-shrink:0;display:flex;align-items:center;justify-content:center}
+  .als-search-item-img img{width:100%;height:100%;object-fit:cover;mix-blend-mode:multiply}
+  .als-search-item-info{flex:1;min-width:0}
+  .als-search-item-brand{font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:.08em;color:var(--gold2,#c5a44e)}
+  .als-search-item-name{font-family:'Poppins',sans-serif;font-size:13px;font-weight:600;color:var(--noir,#0a1923);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .als-search-item-price{font-family:'Poppins',sans-serif;font-size:13px;font-weight:700;flex-shrink:0}
+  .als-search-empty{padding:20px;text-align:center;font-family:'Poppins',sans-serif;font-size:13px;color:var(--gris,#6a7a8a)}
+
+  /* ---------- AVIS CLIENTS ---------- */
+  .als-review-card{flex:0 0 300px;background:#fbfbfd;border-radius:20px;padding:24px 24px 20px;scroll-snap-align:start}
+  .als-review-stars{color:#e9c243;font-size:16px;letter-spacing:2px;margin-bottom:12px}
+  .als-review-text{font-family:'Poppins',sans-serif;font-size:13px;color:var(--gris,#6a7a8a);font-style:italic;line-height:1.6;margin:0 0 16px}
+  .als-review-author{font-family:'Poppins',sans-serif;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--noir,#0a1923);display:block}
+  .als-review-product{font-family:'Poppins',sans-serif;font-size:11px;color:var(--gris,#6a7a8a);display:block;margin-top:2px}
+  @media(max-width:600px){.als-review-card{flex:0 0 260px;padding:20px}}
+
   /* ---------- SECTIONS ---------- */
   .als-sec{padding:40px 0 36px;background:var(--bg2,#f5f2ec)}
   .als-sec-head{text-align:center;margin-bottom:20px;padding:0 20px}
@@ -289,6 +316,17 @@
 </section>
 
 <!-- ═══════════════════════════════════════════
+     SEARCH BAR
+═══════════════════════════════════════════ -->
+<div class="als-search-sec">
+  <div class="als-search-wrap">
+    <svg class="als-search-icon" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+    <input class="als-search-input" id="als-search" type="text" placeholder="Rechercher un article..." autocomplete="off">
+    <div class="als-search-results" id="als-search-results"></div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════
      1) LA SÉLECTION — Scroll horizontal
 ═══════════════════════════════════════════ -->
 <section class="als-sec">
@@ -463,7 +501,7 @@ function filterSel(secId, pill) {
     var priceHtml = p.price==='0'
       ? '<span class="als-hcard-soon">Bientôt disponible</span>'
       : '<span class="als-hcard-price">'+p.price+',00€</span>';
-    return '<a href="produit-detail.html?id='+id+'" class="als-hcard" data-brand="'+p.brand.replace(/"/g,'&quot;')+'">'
+    return '<a href="assistant.html?product='+id+'" class="als-hcard" data-brand="'+p.brand.replace(/"/g,'&quot;')+'">'
       +'<div class="als-hcard-img"><span class="als-badge">TOP VENTES</span><img src="'+p.img+'" alt="'+p.brand+' '+p.name+' '+p.color+'" loading="lazy"></div>'
       +'<div class="als-hcard-info"><span class="als-hcard-name">'+p.brand.toUpperCase()+' '+p.name.toUpperCase()+'</span>'
       +'<span class="als-hcard-desc">'+p.name+' '+p.color+'</span>'
@@ -510,6 +548,49 @@ function filterSel(secId, pill) {
         c.style.display = (c.dataset.brand===val)?'':'none';
       });
     }
+  });
+})();
+</script>
+
+<!-- Search bar logic -->
+<script>
+(function(){
+  var input = document.getElementById('als-search');
+  var results = document.getElementById('als-search-results');
+  if(!input || !results || typeof PRODUCTS==='undefined') return;
+  var timer;
+  input.addEventListener('input', function(){
+    clearTimeout(timer);
+    timer = setTimeout(doSearch, 150);
+  });
+  function doSearch(){
+    var q = input.value.trim().toLowerCase();
+    if(q.length < 2){ results.classList.remove('open'); results.innerHTML=''; return; }
+    var matches = [];
+    Object.keys(PRODUCTS).forEach(function(id){
+      if(matches.length >= 8) return;
+      var p = PRODUCTS[id];
+      var haystack = (p.brand+' '+p.name+' '+(p.color||'')).toLowerCase();
+      if(haystack.indexOf(q) !== -1) matches.push({id:id, p:p});
+    });
+    if(!matches.length){
+      results.innerHTML='<div class="als-search-empty">Aucun résultat</div>';
+      results.classList.add('open'); return;
+    }
+    var html = '';
+    matches.forEach(function(m){
+      var pr = m.p.price==='0' ? 'Bientôt' : m.p.price+' €';
+      html += '<a href="produit-detail.html?id='+m.id+'" class="als-search-item">'
+        +'<div class="als-search-item-img"><img src="'+m.p.img+'" alt="" loading="lazy"></div>'
+        +'<div class="als-search-item-info"><span class="als-search-item-brand">'+m.p.brand+'</span>'
+        +'<span class="als-search-item-name">'+m.p.name+(m.p.color?' — '+m.p.color:'')+'</span></div>'
+        +'<span class="als-search-item-price">'+pr+'</span></a>';
+    });
+    results.innerHTML = html;
+    results.classList.add('open');
+  }
+  document.addEventListener('click', function(e){
+    if(!e.target.closest('.als-search-wrap')) results.classList.remove('open');
   });
 })();
 </script>
@@ -561,6 +642,56 @@ function filterSel(secId, pill) {
   </div>
 </section>
 
+<!-- ═══════════════════════════════════════════
+     AVIS CLIENTS
+═══════════════════════════════════════════ -->
+<section class="als-sec">
+  <div class="als-sec-head">
+    <h2 class="als-sec-title">AVIS <em>CLIENTS</em></h2>
+  </div>
+  <div class="als-scroll-wrap">
+  <div class="als-scroll-arrow left" onclick="scrollRow(this,-1)"><svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg></div>
+  <div class="als-scroll-arrow right" onclick="scrollRow(this,1)"><svg viewBox="0 0 24 24"><polyline points="9 6 15 12 9 18"/></svg></div>
+  <div class="als-hscroll">
+    <div class="als-review-card">
+      <div class="als-review-stars">★★★★★</div>
+      <p class="als-review-text">"Replica Margiela reçues en 3 jours, qualité irréprochable. Je ne m'attendais pas à ce niveau de finition à ce prix."</p>
+      <span class="als-review-author">ALEXANDRE T.</span>
+      <span class="als-review-product">Maison Margiela Replica</span>
+    </div>
+    <div class="als-review-card">
+      <div class="als-review-stars">★★★★★</div>
+      <p class="als-review-text">"Mon pull Burberry EKD est magnifique, la laine est douce et le logo parfaitement brodé. Chez moi en 48h, service au top."</p>
+      <span class="als-review-author">SARAH M.</span>
+      <span class="als-review-product">Burberry Pull EKD</span>
+    </div>
+    <div class="als-review-card">
+      <div class="als-review-stars">★★★★★</div>
+      <p class="als-review-text">"Casquette Loro Piana Summer Walk, c'est exactement comme sur les photos. L'assistant m'a guidé pour la bonne taille."</p>
+      <span class="als-review-author">MEHDI B.</span>
+      <span class="als-review-product">Loro Piana Summer Walk Cap</span>
+    </div>
+    <div class="als-review-card">
+      <div class="als-review-stars">★★★★★</div>
+      <p class="als-review-text">"Deuxième commande chez AllStore, cette fois un t-shirt Casablanca. Toujours satisfait, les couleurs sont éclatantes."</p>
+      <span class="als-review-author">LÉNA D.</span>
+      <span class="als-review-product">Casablanca T-Shirt Casa Way</span>
+    </div>
+    <div class="als-review-card">
+      <div class="als-review-stars">★★★★★</div>
+      <p class="als-review-text">"Prada Cup reçues hier, le cuir est souple et la boîte impeccable. Livraison offerte en Europe, rien à redire."</p>
+      <span class="als-review-author">JULIEN R.</span>
+      <span class="als-review-product">Prada Cup</span>
+    </div>
+    <div class="als-review-card">
+      <div class="als-review-stars">★★★★★</div>
+      <p class="als-review-text">"Le porte-cartes Miu Miu est sublime. Compact, élégant, et l'emballage était soigné. Je recommande à 100%."</p>
+      <span class="als-review-author">CAMILLE P.</span>
+      <span class="als-review-product">Miu Miu Porte-Cartes</span>
+    </div>
+  </div>
+  </div>
+</section>
 
 <!-- ═══════════════════════════════════════════
      5) NOS AMBASSADEURS — Carrousel vidéos

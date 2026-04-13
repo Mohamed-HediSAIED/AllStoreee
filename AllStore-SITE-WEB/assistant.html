@@ -123,6 +123,13 @@
           .color-grid{gap:5px}
           .size-grid{grid-template-columns:repeat(3,1fr)}
         }
+        /* Product recap card */
+        .als-product-recap{display:flex;align-items:center;gap:16px;background:var(--bg2);border-radius:18px;padding:14px 18px;margin-bottom:24px}
+        .als-product-recap img{width:64px;height:64px;border-radius:12px;object-fit:cover;background:#fff;flex-shrink:0}
+        .als-product-recap-info{flex:1;min-width:0}
+        .als-product-recap-brand{font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:.1em;color:var(--gold2);display:block}
+        .als-product-recap-name{font-family:'Poppins',sans-serif;font-size:14px;font-weight:600;color:var(--noir);display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+        .als-product-recap-price{font-family:'Poppins',sans-serif;font-size:14px;font-weight:700;color:var(--noir);display:block;margin-top:2px}
     </style>
 </head>
 <body>
@@ -143,6 +150,15 @@
 
 <main class="assistant-wrap">
 <div class="assistant-card">
+
+    <div id="productRecap" class="als-product-recap" style="display:none">
+        <img id="recapImg" src="" alt="">
+        <div class="als-product-recap-info">
+            <span class="als-product-recap-brand" id="recapBrand"></span>
+            <span class="als-product-recap-name" id="recapName"></span>
+            <span class="als-product-recap-price" id="recapPrice"></span>
+        </div>
+    </div>
 
     <div class="progress-wrap">
         <div class="progress-bar" id="progressBar"></div>
@@ -312,6 +328,7 @@
 </div>
 </main>
 
+<script src="products-data.js"></script>
 <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
 const TOTAL = 6;
 const order = { type:'', brand:'', size:'', color:'', ref:'', budget:'', prenom:'', nom:'', adresse:'', ville:'', cp:'', region:'', pays:'', tel:'', email:'' };
@@ -567,6 +584,73 @@ function submitOrder() {
   // WhatsApp removed - contact via Instagram/email only
   goStep(7);
 }
+
+// ── URL product pre-selection ────────────────────────────────
+(function(){
+  if(typeof PRODUCTS === 'undefined') return;
+  var params = new URLSearchParams(window.location.search);
+  var pid = params.get('product');
+  if(!pid || !PRODUCTS[pid]) return;
+  var p = PRODUCTS[pid];
+
+  var catToType = {
+    'chaussures':'Chaussures','vetements':'Vêtements','sacs':'Sacs',
+    'accessoires':'Accessoires','lunettes':'Accessoires','tech':'High-Tech',
+    'montres':'Horlogerie','parfums':'Parfums'
+  };
+  var type = catToType[p.cat] || 'Autre';
+
+  // Show recap card
+  document.getElementById('recapImg').src = p.img;
+  document.getElementById('recapBrand').textContent = p.brand;
+  document.getElementById('recapName').textContent = p.name + (p.color ? ' — ' + p.color : '');
+  document.getElementById('recapPrice').textContent = (p.price && p.price !== '0') ? p.price + ' €' : 'Prix bientôt disponible';
+  document.getElementById('productRecap').style.display = '';
+
+  // Pre-fill order
+  order.type = type;
+  order.brand = p.brand;
+  order.ref = p.name;
+  document.getElementById('refInput').value = p.name;
+
+  var cfg = step3Config[type] || { mode:'skip' };
+
+  if(cfg.mode === 'skip'){
+    skipStep3 = true;
+    order.size = '—';
+    // Try to match color
+    var matched = false;
+    if(p.color){
+      var pc = p.color.toLowerCase();
+      document.querySelectorAll('#colorGrid .color-chip').forEach(function(chip){
+        var cc = chip.dataset.color.toLowerCase();
+        if(!matched && (pc.indexOf(cc) !== -1 || cc.indexOf(pc) !== -1)){
+          chip.classList.add('selected');
+          order.color = chip.dataset.color;
+          document.getElementById('btnStep4').disabled = false;
+          matched = true;
+        }
+      });
+    }
+    buildRecap('recap4', [{ l:'Article', v:type }, { l:'Marque', v:p.brand }]);
+    buildRecap('recap5', [{ l:'Article', v:type }, { l:'Marque', v:p.brand }]);
+    goStep(4);
+  } else {
+    skipStep3 = false;
+    document.getElementById('s3eyebrow').textContent = cfg.eyebrow;
+    document.getElementById('s3title').textContent = cfg.title;
+    document.getElementById('s3sub').textContent = cfg.sub;
+    document.getElementById('btnStep3').disabled = true;
+    order.size = '';
+    var grid = document.getElementById('sizeGrid');
+    grid.style.gridTemplateColumns = 'repeat(' + (cfg.cols || 5) + ', 1fr)';
+    grid.innerHTML = cfg.sizes.map(function(s){
+      return '<div class="size-chip" data-size="' + s + '">' + s + '</div>';
+    }).join('');
+    buildRecap('recap3', [{ l:'Article', v:type }, { l:'Marque', v:p.brand }]);
+    goStep(3);
+  }
+})();
 </script>
 
 <script src="global.js"></script>
