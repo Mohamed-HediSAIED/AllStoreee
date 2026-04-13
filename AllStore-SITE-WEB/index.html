@@ -1019,27 +1019,6 @@ function scrollRow(arrow, dir) {
 })();
 </script>
 
-<!-- FILTER JS FOR LA SÉLECTION -->
-<script>
-(function(){
-  var btns = document.querySelectorAll('.als-pill');
-  var cards = document.querySelectorAll('.selec-card');
-  btns.forEach(function(btn){
-    btn.addEventListener('click', function(){
-      btns.forEach(function(b){ b.classList.remove('active'); });
-      btn.classList.add('active');
-      var f = btn.getAttribute('data-filter');
-      cards.forEach(function(c){
-        if(f==='all' || c.getAttribute('data-cat')===f){
-          c.style.display='';
-        } else {
-          c.style.display='none';
-        }
-      });
-    });
-  });
-})();
-</script>
 
 <!-- BOTTOM NAV — Redesigned -->
 <style>
