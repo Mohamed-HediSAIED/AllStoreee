@@ -13,8 +13,9 @@
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="conversion.css">
     <style>
-        .assistant-wrap{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:100px var(--marge) 60px}
-        .assistant-card{background:#fff;border-radius:32px;padding:56px 52px;width:100%;max-width:640px;box-shadow:0 24px 60px rgba(0,0,0,.06)}
+        .assistant-wrap{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:100px var(--marge) 60px;background:url('assistant_bg.jpeg') center/cover no-repeat fixed;position:relative}
+        .assistant-wrap::before{content:'';position:absolute;inset:0;background:rgba(0,0,0,.45)}
+        .assistant-card{background:#fff;border-radius:32px;padding:56px 52px;width:100%;max-width:640px;box-shadow:0 24px 60px rgba(0,0,0,.06);position:relative;z-index:1}
         .progress-wrap{margin-bottom:36px}
         .progress-bar{display:flex;gap:5px;margin-bottom:10px}
         .progress-step{height:3px;flex:1;border-radius:2px;background:rgba(10,25,35,.1);transition:background .4s}
