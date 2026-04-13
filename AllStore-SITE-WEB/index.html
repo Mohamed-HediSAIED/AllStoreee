@@ -337,31 +337,31 @@
   <div class="als-scroll-arrow left" onclick="scrollRow(this,-1)"><svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg></div>
   <div class="als-scroll-arrow right" onclick="scrollRow(this,1)"><svg viewBox="0 0 24 24"><polyline points="9 6 15 12 9 18"/></svg></div>
   <div class="als-hscroll" id="selec-grid">
-    <a href="boutique.html?cat=chaussures&brand=Maison Margiela" class="als-hcard selec-card" data-cat="chaussures">
+    <a href="assistant.html" class="als-hcard selec-card" data-cat="chaussures">
       <div class="als-hcard-img"><img src="margiela_replica.jpg" alt="Margiela Replica"></div>
       <div class="als-hcard-info"><span class="als-hcard-name">MARGIELA REPLICA</span><span class="als-hcard-price">129,00€</span></div>
     </a>
-    <a href="boutique.html?cat=sacs&brand=Ganni" class="als-hcard selec-card" data-cat="sacs">
+    <a href="assistant.html" class="als-hcard selec-card" data-cat="sacs">
       <div class="als-hcard-img"><img src="ganni_bou.webp" alt="Ganni Bou" style="object-fit:cover"></div>
       <div class="als-hcard-info"><span class="als-hcard-name">GANNI BOU</span><span class="als-hcard-price">121,00€</span></div>
     </a>
-    <a href="boutique.html?cat=vetements&brand=Courrèges" class="als-hcard selec-card" data-cat="vetements">
+    <a href="assistant.html" class="als-hcard selec-card" data-cat="vetements">
       <div class="als-hcard-img"><img src="courreges_veste.webp" alt="Courrèges Veste" style="object-fit:cover"></div>
       <div class="als-hcard-info"><span class="als-hcard-name">COURRÈGES VESTE</span><span class="als-hcard-price">327,00€</span></div>
     </a>
-    <a href="boutique.html?cat=chaussures&brand=Nike" class="als-hcard selec-card" data-cat="chaussures">
+    <a href="assistant.html" class="als-hcard selec-card" data-cat="chaussures">
       <div class="als-hcard-img"><img src="nike_mind_001.webp" alt="Nike Mind 001" style="object-fit:cover"></div>
       <div class="als-hcard-info"><span class="als-hcard-name">NIKE MIND 001</span><span class="als-hcard-price">92,00€</span></div>
     </a>
-    <a href="boutique.html?cat=sacs&brand=Louis Vuitton" class="als-hcard selec-card" data-cat="sacs">
+    <a href="assistant.html" class="als-hcard selec-card" data-cat="sacs">
       <div class="als-hcard-img"><img src="lv_keepall.webp" alt="Louis Vuitton Keepall" style="object-fit:cover"></div>
       <div class="als-hcard-info"><span class="als-hcard-name">LV KEEPALL PRE-OWNED</span><span class="als-hcard-price">142,00€</span></div>
     </a>
-    <a href="boutique.html?cat=accessoires&brand=Loro Piana" class="als-hcard selec-card" data-cat="accessoires">
+    <a href="assistant.html" class="als-hcard selec-card" data-cat="accessoires">
       <div class="als-hcard-img"><img src="loropiana_casquette.jpg" alt="Casquette Loro Piana"></div>
       <div class="als-hcard-info"><span class="als-hcard-name">CASQUETTE LORO PIANA</span><span class="als-hcard-price">43,00€</span></div>
     </a>
-    <a href="boutique.html?cat=chaussures" class="als-hcard selec-card" data-cat="chaussures">
+    <a href="assistant.html" class="als-hcard selec-card" data-cat="chaussures">
       <div class="als-hcard-img"><img src="louboutin_kate.jpg" alt="Louboutin Kate"></div>
       <div class="als-hcard-info"><span class="als-hcard-name">LOUBOUTIN KATE</span><span class="als-hcard-price">107,00€</span></div>
     </a>
@@ -580,7 +580,7 @@ function filterSel(secId, pill) {
     var html = '';
     matches.forEach(function(m){
       var pr = m.p.price==='0' ? 'Bientôt' : m.p.price+' €';
-      html += '<a href="produit-detail.html?id='+m.id+'" class="als-search-item">'
+      html += '<a href="assistant.html?product='+m.id+'" class="als-search-item">'
         +'<div class="als-search-item-img"><img src="'+m.p.img+'" alt="" loading="lazy"></div>'
         +'<div class="als-search-item-info"><span class="als-search-item-brand">'+m.p.brand+'</span>'
         +'<span class="als-search-item-name">'+m.p.name+(m.p.color?' — '+m.p.color:'')+'</span></div>'
@@ -606,35 +606,35 @@ function filterSel(secId, pill) {
   <div class="als-scroll-arrow left" onclick="scrollRow(this,-1)"><svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg></div>
   <div class="als-scroll-arrow right" onclick="scrollRow(this,1)"><svg viewBox="0 0 24 24"><polyline points="9 6 15 12 9 18"/></svg></div>
   <div class="als-hscroll">
-    <a href="boutique.html?cat=chaussures" class="als-hcard">
+    <a href="assistant.html" class="als-hcard">
       <div class="als-hcard-img"><img src="givenchy_shark_lock.jpg" alt="Givenchy Shark Lock"></div>
       <div class="als-hcard-info"><span class="als-hcard-name">GIVENCHY SHARK LOCK</span><span class="als-hcard-price">178,00€</span></div>
     </a>
-    <a href="boutique.html?cat=montres" class="als-hcard">
+    <a href="assistant.html" class="als-hcard">
       <div class="als-hcard-img"><img src="cartier_tank.jpg" alt="Cartier Tank"></div>
       <div class="als-hcard-info"><span class="als-hcard-name">CARTIER TANK</span><span class="als-hcard-price">263,00€</span></div>
     </a>
-    <a href="boutique.html?cat=vetements&brand=Miu Miu" class="als-hcard">
+    <a href="assistant.html" class="als-hcard">
       <div class="als-hcard-img"><img src="miumiu_top.jpg" alt="Miu Miu Top"></div>
       <div class="als-hcard-info"><span class="als-hcard-name">MIU MIU TOP LOGO</span><span class="als-hcard-price">50,00€</span></div>
     </a>
-    <a href="boutique.html?cat=chaussures&brand=Loro Piana" class="als-hcard">
+    <a href="assistant.html" class="als-hcard">
       <div class="als-hcard-img"><img src="loropiana_sergio.jpg" alt="Loro Piana Sergio"></div>
       <div class="als-hcard-info"><span class="als-hcard-name">LORO PIANA SERGIO</span><span class="als-hcard-price">128,00€</span></div>
     </a>
-    <a href="boutique.html?cat=sacs&brand=Miu Miu" class="als-hcard">
+    <a href="assistant.html" class="als-hcard">
       <div class="als-hcard-img"><img src="miumiu_wander.jpg" alt="Miu Miu Wander"></div>
       <div class="als-hcard-info"><span class="als-hcard-name">MIU MIU WANDER MINI</span><span class="als-hcard-price">263,00€</span></div>
     </a>
-    <a href="boutique.html?cat=accessoires" class="als-hcard">
+    <a href="assistant.html" class="als-hcard">
       <div class="als-hcard-img"><img src="kaws_companion.jpg" alt="KAWS Companion"></div>
       <div class="als-hcard-info"><span class="als-hcard-name">KAWS COMPANION</span><span class="als-hcard-soon">Bientôt disponible</span></div>
     </a>
-    <a href="boutique.html?cat=lunettes&brand=Prada" class="als-hcard">
+    <a href="assistant.html" class="als-hcard">
       <div class="als-hcard-img"><img src="prada_lunettes_aviator.jpg" alt="Prada Lunettes Aviator"></div>
       <div class="als-hcard-info"><span class="als-hcard-name">PRADA AVIATOR ÉCAILLE</span><span class="als-hcard-price">50,00€</span></div>
     </a>
-    <a href="boutique.html?cat=vetements" class="als-hcard">
+    <a href="assistant.html" class="als-hcard">
       <div class="als-hcard-img"><img src="casablanca_chemise.jpg" alt="Casablanca Casa Way"></div>
       <div class="als-hcard-info"><span class="als-hcard-name">CASABLANCA CASA WAY</span><span class="als-hcard-price">50,00€</span></div>
     </a>
@@ -703,7 +703,7 @@ function filterSel(secId, pill) {
   <div class="amb-scroll">
 
     <!-- Ambassadeur 1 — @lou.mrr_ -->
-    <a href="produit-detail.html?id=burberry-gris" class="amb-card">
+    <a href="assistant.html?product=burberry-gris" class="amb-card">
       <div class="amb-video-wrap">
         <video src="amb_lou_mrr.mp4" loop muted playsinline preload="metadata"></video>
         <span class="amb-username">@lou.mrr_</span>
