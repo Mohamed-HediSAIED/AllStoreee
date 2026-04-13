@@ -71,9 +71,9 @@
   function renderColors(){document.getElementById('pdp-colors').innerHTML=COLORWAYS.map(c=>'<button class="pdp-cw '+(c.id===currentColor.id?'active':'')+'\" onclick="pickColor(\''+c.id+'\')" style="background:'+c.hex+(c.border?';border:1.5px solid #ddd':'')+'" title="'+c.name+'"></button>').join('');document.getElementById('pdp-color-name').textContent=currentColor.name}
   function updateImage(){const img=document.getElementById('pdp-img');img.classList.add('fade');setTimeout(()=>{img.src='lp_casquette_'+currentColor.id+'.jpg';img.alt='Loro Piana Casquette — '+currentColor.name;img.classList.remove('fade')},200)}
   window.pickColor=function(id){currentColor=COLORWAYS.find(c=>c.id===id)||COLORWAYS[0];renderColors();updateImage();updateCartState()};
-  window.pdpAddCart=function(){window.location.href='assistant.html'}};
+  window.pdpAddCart=function(){window.location.href='assistant.html'};
   window.pdpToggleWL=function(){const id='lp_casquette_'+currentColor.id;if(window._wlRemove){let wl=JSON.parse(localStorage.getItem('als_wishlist')||'[]');const exists=wl.some(i=>i.id===id);if(exists){window._wlRemove(id)}else{wl.push({id,brand:'Loro Piana',name:'Casquette — '+currentColor.name,img:'lp_casquette_'+currentColor.id+'.jpg'});localStorage.setItem('als_wishlist',JSON.stringify(wl))}document.getElementById('pdp-wl-btn').classList.toggle('wl-active',!exists)}};
-  function updateCartState(){}else{btn.textContent='Ajouter au panier';btn.classList.remove('in-cart')}const wl=JSON.parse(localStorage.getItem('als_wishlist')||'[]');document.getElementById('pdp-wl-btn').classList.toggle('wl-active',wl.some(i=>i.id===id))}
+  function updateCartState(){const id='lp_casquette_'+currentColor.id;const wl=JSON.parse(localStorage.getItem('als_wishlist')||'[]');document.getElementById('pdp-wl-btn').classList.toggle('wl-active',wl.some(i=>i.id===id))}
   init();
 </script>
 <style>

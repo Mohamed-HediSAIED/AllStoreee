@@ -507,11 +507,8 @@
      FAVORIS — depuis localStorage als_wishlist
   ══════════════════════════════════════════════════════════════ */
   const WL_KEY = 'als_wishlist';
-  const CART_KEY = 'als_cart';
   const getWL = () => { try { return JSON.parse(localStorage.getItem(WL_KEY)) || []; } catch { return []; } };
   const saveWL = items => localStorage.setItem(WL_KEY, JSON.stringify(items));
-  const getCart = () => { try { return JSON.parse(localStorage.getItem(CART_KEY)) || []; } catch { return []; } };
-  const inCart = id => getCart().some(i => i.id === id);
 
   function renderFavoris(){
     const el = document.getElementById('fav-list');
@@ -529,7 +526,6 @@
     wl.forEach(item => {
       const row = document.createElement('div');
       row.className = 'fav-row';
-      const isInCart = inCart(item.id);
       row.innerHTML = `
         <div class="fav-img"><img src="" alt=""></div>
         <div class="fav-info">
@@ -537,21 +533,13 @@
           <span class="fav-name"></span>
         </div>
         <div class="fav-actions">
-          <button class="fav-btn fav-btn-cart">${isInCart ? '&#10003; Panier' : 'Ajouter'}</button>
+          <a href="assistant.html" class="fav-btn fav-btn-cart">Commander</a>
           <button class="fav-btn fav-btn-remove">&#10005;</button>
         </div>`;
       row.querySelector('img').src = item.img;
       row.querySelector('img').alt = item.name;
       row.querySelector('.fav-brand').textContent = item.brand;
       row.querySelector('.fav-name').textContent = item.name;
-
-      // Ajouter au panier
-      row.querySelector('.fav-btn-cart').addEventListener('click', () => {
-        if(typeof window.addToCart === 'function'){
-          window.addToCart(item.id, item.brand, item.name, item.img, item.price || '');
-        }
-        renderFavoris();
-      });
 
       // Retirer des favoris
       row.querySelector('.fav-btn-remove').addEventListener('click', () => {
@@ -560,9 +548,9 @@
         renderFavoris();
         // Mise a jour des coeurs sur les cartes produit
         document.querySelectorAll('.wl-btn').forEach(btn => {
-          const card = btn.closest('.pc') || btn.closest('.b-card');
+          const card = btn.closest('.pc');
           if(card){
-            const bid = ((card.querySelector('.ct,.b-brand') || {textContent:''}).textContent + '_' + (card.querySelector('.cn,.b-name') || {textContent:''}).textContent).trim().replace(/\s+/g,'_').toLowerCase();
+            const bid = ((card.querySelector('.ct') || {textContent:''}).textContent + '_' + (card.querySelector('.cn') || {textContent:''}).textContent).trim().replace(/\s+/g,'_').toLowerCase();
             btn.classList.toggle('wl-active', getWL().some(w => w.id === bid));
           }
         });
