@@ -709,17 +709,6 @@ textarea.form-control{resize:none}
 }
 #account-nav-btn:hover svg{stroke:var(--gold)}
 
-/* ── Bouton Panier dans la nav ── */
-#cart-nav-btn{
-  position:relative;background:none;border:none;
-  cursor:pointer;padding:7px;display:flex;align-items:center;gap:6px;
-  color:var(--noir);text-decoration:none;transition:color .2s;
-}
-#cart-nav-btn svg{
-  width:22px;height:22px;stroke:var(--noir);fill:none;
-  stroke-width:1.8px;transition:stroke .2s;
-}
-#cart-nav-btn:hover svg{stroke:var(--gold)}
 #cart-count{
   position:absolute;top:2px;right:2px;
   background:var(--gold);color:var(--noir);
@@ -1111,11 +1100,9 @@ body.nav-open #ham-btn span:nth-child(3){transform:translateY(-6.5px) rotate(-45
     order:2;margin-left:auto;gap:2px;
   }
   .nav-icons #search-nav-btn svg,
-  .nav-icons #account-nav-btn svg,
-  .nav-icons #cart-nav-btn svg{width:20px;height:20px}
+  .nav-icons #account-nav-btn svg{width:20px;height:20px}
   .nav-icons #search-nav-btn,
-  .nav-icons #account-nav-btn,
-  .nav-icons #cart-nav-btn{padding:5px}
+  .nav-icons #account-nav-btn{padding:5px}
 
   /* ── MENU PLEIN ÉCRAN — Premium Dark ── */
   .nav-links{
@@ -1646,7 +1633,6 @@ body.nav-open #ham-btn span:nth-child(3){transform:translateY(-6.5px) rotate(-45
 .header-dark .logo img { filter: brightness(0) invert(1); }
 .header-dark #search-nav-btn svg { stroke: rgba(255,255,255,.6) !important; }
 .header-dark #account-nav-btn svg { stroke: rgba(255,255,255,.6) !important; }
-.header-dark #cart-nav-btn svg { stroke: rgba(255,255,255,.6) !important; }
 .header-dark #ham-btn span { background: #fff !important; }
 
 /* ── Mobile menu overlay override (must come after header-dark) ── */
@@ -2428,18 +2414,6 @@ footer::before {
   background: linear-gradient(90deg, transparent, rgba(233, 194, 67, 0.3), transparent);
 }
 
-/* ── BOUTIQUE GRID — Stagger animation ready ────────────────── */
-.boutique-grid .b-card {
-  transform-style: preserve-3d;
-  will-change: transform;
-  border: 1px solid rgba(10, 25, 35, 0.04);
-  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1),
-              box-shadow 0.5s ease,
-              border-color 0.3s !important;
-}
-.boutique-grid .b-card:hover {
-  border-color: rgba(233, 194, 67, 0.15);
-}
 
 /* ── FILTER BUTTONS — Luxury pills ──────────────────────────── */
 .filter-btn {
