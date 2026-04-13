@@ -32,6 +32,7 @@
         .chips-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
         .chip{padding:18px 16px;background:var(--bg2);border-radius:16px;text-align:center;cursor:pointer;border:2px solid transparent;transition:all .22s;font-size:15px;font-weight:600;color:var(--noir);display:flex;flex-direction:column;align-items:center;gap:6px}
         .chip .chip-icon{font-size:24px}
+        .apple-emoji{width:24px;height:24px;vertical-align:middle;display:inline-block}
         .chip:hover{background:#e5dccf;transform:translateY(-2px)}
         .chip.selected{border-color:var(--noir);background:var(--noir);color:#fff}
         .opt-list{display:flex;flex-direction:column;gap:10px;max-height:420px;overflow-y:auto;padding-right:4px;scrollbar-width:thin;scrollbar-color:#d4ccc0 transparent}
@@ -97,6 +98,7 @@
           .chips-grid{grid-template-columns:1fr 1fr;gap:8px}
           .chip{padding:14px 12px;font-size:14px}
           .chip .chip-icon{font-size:20px}
+          .apple-emoji{width:20px;height:20px}
           .opt-list{max-height:340px}
           .opt-item{padding:14px 18px;font-size:15px}
           .size-grid{grid-template-columns:repeat(4,1fr);gap:6px}
@@ -171,14 +173,14 @@
         <h2 class="step-title">Quel type d'article ?</h2>
         <p class="step-sub">Sélectionnez la catégorie qui correspond à votre recherche.</p>
         <div class="chips-grid" id="typeGrid">
-            <div class="chip" data-type="Vêtements"><span class="chip-icon">👕</span>Vêtements</div>
-            <div class="chip" data-type="Chaussures"><span class="chip-icon">👟</span>Chaussures</div>
-            <div class="chip" data-type="Sacs"><span class="chip-icon">👜</span>Sacs</div>
-            <div class="chip" data-type="Accessoires"><span class="chip-icon">🕶️</span>Accessoires</div>
-            <div class="chip" data-type="Horlogerie"><span class="chip-icon">⌚</span>Horlogerie</div>
-            <div class="chip" data-type="High-Tech"><span class="chip-icon">🎧</span>High-Tech</div>
-            <div class="chip" data-type="Parfums"><span class="chip-icon">🌸</span>Parfums</div>
-            <div class="chip" data-type="Autre" id="chipAutre"><span class="chip-icon">✨</span>Autre</div>
+            <div class="chip" data-type="Vêtements"><span class="chip-icon"><img src="https://cdn.jsdelivr.net/npm/emoji-datasource-apple/img/apple/64/1f455.png" alt="👕" class="apple-emoji"></span>Vêtements</div>
+            <div class="chip" data-type="Chaussures"><span class="chip-icon"><img src="https://cdn.jsdelivr.net/npm/emoji-datasource-apple/img/apple/64/1f45f.png" alt="👟" class="apple-emoji"></span>Chaussures</div>
+            <div class="chip" data-type="Sacs"><span class="chip-icon"><img src="https://cdn.jsdelivr.net/npm/emoji-datasource-apple/img/apple/64/1f45c.png" alt="👜" class="apple-emoji"></span>Sacs</div>
+            <div class="chip" data-type="Accessoires"><span class="chip-icon"><img src="https://cdn.jsdelivr.net/npm/emoji-datasource-apple/img/apple/64/1f576-fe0f.png" alt="🕶️" class="apple-emoji"></span>Accessoires</div>
+            <div class="chip" data-type="Horlogerie"><span class="chip-icon"><img src="https://cdn.jsdelivr.net/npm/emoji-datasource-apple/img/apple/64/231a.png" alt="⌚" class="apple-emoji"></span>Horlogerie</div>
+            <div class="chip" data-type="High-Tech"><span class="chip-icon"><img src="https://cdn.jsdelivr.net/npm/emoji-datasource-apple/img/apple/64/1f3a7.png" alt="🎧" class="apple-emoji"></span>High-Tech</div>
+            <div class="chip" data-type="Parfums"><span class="chip-icon"><img src="https://cdn.jsdelivr.net/npm/emoji-datasource-apple/img/apple/64/1f338.png" alt="🌸" class="apple-emoji"></span>Parfums</div>
+            <div class="chip" data-type="Autre" id="chipAutre"><span class="chip-icon"><img src="https://cdn.jsdelivr.net/npm/emoji-datasource-apple/img/apple/64/2728.png" alt="✨" class="apple-emoji"></span>Autre</div>
         </div>
     </div>
 
