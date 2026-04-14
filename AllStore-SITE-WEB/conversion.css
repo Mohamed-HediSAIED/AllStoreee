@@ -360,127 +360,118 @@ body.has-promo .trust-bar { top: var(--trust-top, 114px); }
 
 
 /* ── COMMENT ÇA MARCHE — dark variant ─────────────────────── */
-.how-it-works {
-  padding: 80px var(--marge);
-  text-align: center;
-  background: #fff;
+/* ── COMMENT ÇA MARCHE v2 — editorial layout ─────────────── */
+.hiw2 {
+  padding: 100px var(--marge) 90px;
 }
-.how-it-works--dark {
-  background: transparent;
-  border-top: 1px solid rgba(255,255,255,.06);
-  border-bottom: 1px solid rgba(255,255,255,.06);
-}
-.hiw-title {
-  font-size: clamp(28px, 4vw, 42px);
-  font-weight: 600;
-  letter-spacing: -.025em;
-  margin-bottom: 48px;
-}
-.hiw-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 32px;
-  max-width: 1200px;
+.hiw2-inner {
+  max-width: 1100px;
   margin: 0 auto;
+  display: grid;
+  grid-template-columns: .85fr 1fr;
+  gap: 80px;
+  align-items: start;
 }
-.hiw-step {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 16px;
-  text-align: center;
+.hiw2-left {
+  position: sticky;
+  top: 120px;
 }
-.how-it-works--dark .hiw-step {
-  align-items: flex-start;
-  text-align: left;
-  padding: 32px 28px;
-  border: 1px solid rgba(255,255,255,.06);
-  border-radius: 20px;
-  background: rgba(255,255,255,.02);
-  transition: border-color .3s, background .3s;
-}
-.how-it-works--dark .hiw-step:hover {
-  border-color: rgba(233,194,67,.15);
-  background: rgba(233,194,67,.03);
-}
-.hiw-num {
-  width: 56px;
-  height: 56px;
-  border-radius: 50%;
-  background: var(--noir);
-  color: var(--gold);
-  font-size: 22px;
-  font-weight: 700;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+.hiw2-heading {
   font-family: 'Cormorant', serif;
+  font-size: clamp(36px, 5vw, 56px);
+  font-weight: 400;
+  line-height: 1.1;
+  letter-spacing: -.02em;
+  color: #fff;
 }
-.how-it-works--dark .hiw-num {
-  width: auto;
-  height: auto;
-  background: none;
-  border-radius: 0;
-  font-size: 13px;
-  font-weight: 600;
-  font-family: 'DM Sans', 'Poppins', sans-serif;
+.hiw2-heading em {
+  font-style: italic;
   color: var(--gold);
-  letter-spacing: .08em;
 }
-.hiw-step-title {
-  font-size: 17px;
-  font-weight: 600;
+.hiw2-line {
+  width: 48px;
+  height: 1px;
+  background: var(--gold);
+  margin: 28px 0;
+  opacity: .5;
 }
-.how-it-works--dark .hiw-step-title {
-  font-size: 18px;
-  font-family: 'Cormorant', serif;
-  font-weight: 500;
-  font-size: 22px;
-}
-.hiw-step-desc {
-  font-size: 14px;
-  color: var(--gris);
-  line-height: 1.6;
-  max-width: 260px;
-}
-.how-it-works--dark .hiw-step-desc {
-  color: rgba(255,255,255,.45);
-  max-width: none;
-  font-size: 13px;
+.hiw2-intro {
+  font-size: 15px;
+  color: rgba(255,255,255,.4);
   line-height: 1.7;
 }
+
+/* Steps — right column */
+.hiw2-steps {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+.hiw2-step {
+  display: flex;
+  gap: 28px;
+  padding: 36px 0;
+  border-bottom: 1px solid rgba(255,255,255,.06);
+  align-items: baseline;
+}
+.hiw2-step:first-child {
+  padding-top: 0;
+}
+.hiw2-step:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+.hiw2-idx {
+  font-family: 'Cormorant', serif;
+  font-size: 42px;
+  font-weight: 300;
+  font-style: italic;
+  color: rgba(233,194,67,.2);
+  line-height: 1;
+  flex-shrink: 0;
+  min-width: 52px;
+  transition: color .4s;
+}
+.hiw2-step:hover .hiw2-idx {
+  color: rgba(233,194,67,.5);
+}
+.hiw2-content h3 {
+  font-family: 'Poppins', sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  color: #fff;
+  letter-spacing: .01em;
+  margin-bottom: 8px;
+}
+.hiw2-content p {
+  font-size: 14px;
+  color: rgba(255,255,255,.4);
+  line-height: 1.7;
+}
+
 @media(max-width:768px) {
-  .how-it-works { padding: 40px var(--marge) 36px; }
-  .hiw-title { font-size: 22px; margin-bottom: 20px; }
-  .hiw-grid { grid-template-columns: 1fr; gap: 10px; }
-  .how-it-works--dark .hiw-step {
-    display: grid;
-    grid-template-columns: 28px 1fr;
-    grid-template-rows: auto auto;
-    column-gap: 12px;
-    row-gap: 2px;
-    align-items: start;
-    padding: 14px 16px;
-    border-radius: 14px;
+  .hiw2 { padding: 56px var(--marge) 48px; }
+  .hiw2-inner {
+    grid-template-columns: 1fr;
+    gap: 36px;
   }
-  .how-it-works--dark .hiw-num {
-    grid-row: 1 / 3;
-    grid-column: 1;
-    font-size: 11px;
-    padding-top: 2px;
+  .hiw2-left {
+    position: static;
+    text-align: center;
   }
-  .how-it-works--dark .hiw-step-title {
-    grid-column: 2;
-    font-size: 14px;
-    font-family: 'Poppins', sans-serif;
-    font-weight: 600;
+  .hiw2-heading { font-size: 32px; }
+  .hiw2-line { margin: 20px auto; }
+  .hiw2-intro { font-size: 13px; }
+  .hiw2-step {
+    gap: 20px;
+    padding: 24px 0;
   }
-  .how-it-works--dark .hiw-step-desc {
-    grid-column: 2;
-    font-size: 11px;
-    line-height: 1.45;
+  .hiw2-idx {
+    font-size: 32px;
+    min-width: 38px;
   }
-  .how-it-works .ap-edit-eyebrow { font-size: 9px; margin-bottom: 8px; }
+  .hiw2-content h3 { font-size: 15px; }
+  .hiw2-content p { font-size: 13px; }
 }
 
 /* ── TÉMOIGNAGES — dark variant ───────────────────────────── */
