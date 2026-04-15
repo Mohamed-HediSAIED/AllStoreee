@@ -71,7 +71,7 @@ header{
   transition:transform .4s var(--ease),box-shadow .3s;
 }
 header.up{transform:translateY(-100%)}
-header.scrolled{box-shadow:0 1px 12px rgba(10,25,35,.04)}
+header.scrolled{box-shadow:0 1px 12px rgba(0,0,0,.15)}
 
 nav{
   display:flex;align-items:center;height:72px;padding:0 var(--marge);gap:24px;
@@ -700,7 +700,7 @@ textarea.form-control{resize:none}
   color:var(--noir);text-decoration:none;transition:color .2s;
 }
 #search-nav-btn svg{
-  width:22px;height:22px;stroke:var(--noir);fill:none;
+  width:22px;height:22px;stroke:rgba(255,255,255,.6);fill:none;
   stroke-width:1.8px;transition:stroke .2s;
 }
 #search-nav-btn:hover svg{stroke:var(--gold)}
@@ -709,10 +709,10 @@ textarea.form-control{resize:none}
 #account-nav-btn{
   position:relative;background:none;border:none;
   cursor:pointer;padding:7px;display:flex;align-items:center;
-  color:var(--noir);text-decoration:none;transition:color .2s;
+  color:#fff;text-decoration:none;transition:color .2s;
 }
 #account-nav-btn svg{
-  width:22px;height:22px;stroke:var(--noir);fill:none;
+  width:22px;height:22px;stroke:rgba(255,255,255,.6);fill:none;
   stroke-width:1.8px;transition:stroke .2s;
 }
 #account-nav-btn:hover svg{stroke:var(--gold)}
