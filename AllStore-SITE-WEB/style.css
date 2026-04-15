@@ -63,9 +63,7 @@ body::after{
 ═══════════════════════════════════════════ */
 header{
   position:fixed;top:0;width:100%;
-  background:rgba(6,5,8,.75);
-  backdrop-filter:blur(40px) saturate(180%);
-  -webkit-backdrop-filter:blur(40px) saturate(180%);
+  background:#0a1018;
   z-index:1000;
   border-bottom:1px solid rgba(255,255,255,.06);
   transition:transform .4s var(--ease),box-shadow .3s;
@@ -1629,10 +1627,8 @@ body.nav-open #ham-btn span:nth-child(3){transform:translateY(-6.5px) rotate(-45
 
 /* ── DARK HEADER ────────────────────────────────────────────── */
 .header-dark {
-  background: rgba(6,5,8,.75) !important;
+  background: #0a1018 !important;
   border-bottom: 1px solid rgba(255,255,255,.06) !important;
-  backdrop-filter: blur(40px) saturate(180%) !important;
-  -webkit-backdrop-filter: blur(40px) saturate(180%) !important;
 }
 .header-dark .nav-links a { color: rgba(255,255,255,.5) !important; }
 .header-dark .nav-links a:hover,
