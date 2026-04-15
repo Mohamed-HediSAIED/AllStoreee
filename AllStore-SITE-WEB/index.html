@@ -39,7 +39,7 @@
   ============================================================ */
 
   /* ---------- PROMO BANNER ---------- */
-  .promo-banner{background:rgba(10,25,35,.85);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);text-align:center;padding:10px 0;font-family:'Poppins',sans-serif;font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:#e9c243}
+  .promo-banner{background:rgba(10,25,35,.6);backdrop-filter:blur(40px) saturate(180%);-webkit-backdrop-filter:blur(40px) saturate(180%);text-align:center;padding:10px 0;font-family:'Poppins',sans-serif;font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:#e9c243;border-bottom:1px solid rgba(255,255,255,.06)}
 
   /* ---------- HERO ---------- */
   .hero-als{position:relative;width:100%;height:45vh;min-height:260px;max-height:400px;overflow:hidden;display:flex;align-items:center;justify-content:center}
@@ -49,8 +49,8 @@
   .hero-als h1{font-family:'Poppins',sans-serif;font-size:clamp(26px,5vw,48px);font-weight:300;color:#fff;letter-spacing:.01em;line-height:1.2;margin:0 0 16px}
   .hero-als h1 strong{font-weight:700}
   .hero-als .hero-desc{font-family:'Poppins',sans-serif;font-size:clamp(12px,1.5vw,16px);color:rgba(255,255,255,.75);margin:0 0 32px;font-weight:300}
-  .hero-als .hero-btn{display:inline-block;font-family:'Poppins',sans-serif;font-size:12px;font-weight:600;letter-spacing:.15em;text-transform:uppercase;color:#fff;background:rgba(255,255,255,.12);backdrop-filter:blur(15px);-webkit-backdrop-filter:blur(15px);border:1px solid rgba(255,255,255,.25);padding:16px 48px;border-radius:30px;text-decoration:none;transition:all .3s}
-  .hero-als .hero-btn:hover{background:rgba(255,255,255,.25)}
+  .hero-als .hero-btn{display:inline-block;font-family:'Poppins',sans-serif;font-size:12px;font-weight:600;letter-spacing:.15em;text-transform:uppercase;color:#fff;background:rgba(255,255,255,.18);backdrop-filter:blur(40px) saturate(180%);-webkit-backdrop-filter:blur(40px) saturate(180%);border:1px solid rgba(255,255,255,.25);padding:16px 48px;border-radius:30px;text-decoration:none;transition:all .3s;box-shadow:0 8px 24px rgba(0,0,0,.1)}
+  .hero-als .hero-btn:hover{background:rgba(255,255,255,.3);border-color:rgba(255,255,255,.4);box-shadow:0 12px 32px rgba(0,0,0,.15)}
 
   /* ---------- SEARCH BAR ---------- */
   .als-search-sec{padding:20px 20px 10px;background:var(--bg2,#f5f2ec)}
@@ -72,7 +72,8 @@
   .als-search-empty{padding:20px;text-align:center;font-family:'Poppins',sans-serif;font-size:13px;color:var(--gris,#6a7a8a)}
 
   /* ---------- AVIS CLIENTS ---------- */
-  .als-review-card{flex:0 0 300px;background:rgba(255,255,255,.1);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border:1px solid rgba(255,255,255,.12);border-radius:20px;padding:24px 24px 20px;scroll-snap-align:start}
+  .als-review-card{flex:0 0 300px;background:rgba(255,255,255,.15);backdrop-filter:blur(40px) saturate(180%);-webkit-backdrop-filter:blur(40px) saturate(180%);border:1px solid rgba(255,255,255,.22);border-radius:20px;padding:24px 24px 20px;scroll-snap-align:start;box-shadow:0 8px 32px rgba(0,0,0,.12);transition:.3s ease}
+  .als-review-card:hover{background:rgba(255,255,255,.22);transform:translateY(-2px)}
   .als-review-stars{color:#e9c243;font-size:16px;letter-spacing:2px;margin-bottom:12px}
   .als-review-text{font-family:'Poppins',sans-serif;font-size:13px;color:rgba(255,255,255,.6);font-style:italic;line-height:1.6;margin:0 0 16px}
   .als-review-author{font-family:'Poppins',sans-serif;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:#fff;display:block}
@@ -87,13 +88,15 @@
 
   /* ---------- FILTERS ---------- */
   .als-filters{display:flex;gap:8px;padding:0 20px;margin-bottom:20px;flex-wrap:wrap;justify-content:center}
-  .als-pill{font-family:'Poppins',sans-serif;font-size:12px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;padding:10px 24px;border-radius:30px;border:1.5px solid rgba(255,255,255,.2);background:transparent;color:rgba(255,255,255,.7);cursor:pointer;transition:all .2s}
-  .als-pill.active{background:rgba(255,255,255,.15);color:#fff;border-color:rgba(255,255,255,.4)}
+  .als-pill{font-family:'Poppins',sans-serif;font-size:12px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;padding:10px 24px;border-radius:30px;border:1.5px solid rgba(255,255,255,.2);background:rgba(255,255,255,.08);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);color:rgba(255,255,255,.7);cursor:pointer;transition:all .2s}
+  .als-pill:hover{background:rgba(255,255,255,.15);color:#fff}
+  .als-pill.active{background:rgba(255,255,255,.2);backdrop-filter:blur(40px) saturate(180%);-webkit-backdrop-filter:blur(40px) saturate(180%);color:#fff;border-color:rgba(255,255,255,.35)}
 
   /* ---------- LA SÉLECTION — scroll horizontal ---------- */
   .als-hscroll{display:flex;gap:15px;overflow-x:auto;padding:0 20px 8px;scroll-behavior:smooth;-webkit-overflow-scrolling:touch;scrollbar-width:none}
   .als-hscroll::-webkit-scrollbar{display:none}
-  .als-hcard{flex:0 0 190px;scroll-snap-align:start;text-decoration:none;background:rgba(255,255,255,.1);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border:1px solid rgba(255,255,255,.12);border-radius:20px;overflow:hidden;padding:15px;transition:.3s ease}
+  .als-hcard{flex:0 0 190px;scroll-snap-align:start;text-decoration:none;background:rgba(255,255,255,.15);backdrop-filter:blur(40px) saturate(180%);-webkit-backdrop-filter:blur(40px) saturate(180%);border:1px solid rgba(255,255,255,.22);border-radius:20px;overflow:hidden;padding:15px;transition:.3s ease;box-shadow:0 8px 32px rgba(0,0,0,.12)}
+  .als-hcard:hover{background:rgba(255,255,255,.22);transform:translateY(-3px);box-shadow:0 12px 40px rgba(0,0,0,.18)}
   .als-hcard-img{position:relative;width:100%;aspect-ratio:1;display:flex;align-items:center;justify-content:center;margin-bottom:10px}
   .als-hcard-img img{width:100%;height:auto;object-fit:cover;mix-blend-mode:multiply}
   .als-hcard-info{padding:0}
@@ -107,10 +110,11 @@
   /* ---------- NOS COLLECTIONS — cartes avec overlay ---------- */
   .als-coll-grid{display:flex;gap:15px;overflow-x:auto;padding:0 20px 8px;scroll-behavior:smooth;-webkit-overflow-scrolling:touch;scrollbar-width:none}
   .als-coll-grid::-webkit-scrollbar{display:none}
-  .als-coll-card{flex:0 0 220px;scroll-snap-align:start;position:relative;border-radius:25px;overflow:hidden;text-decoration:none;height:320px;background:#1a1a1a;box-shadow:0 15px 35px rgba(0,0,0,.05)}
+  .als-coll-card{flex:0 0 220px;scroll-snap-align:start;position:relative;border-radius:25px;overflow:hidden;text-decoration:none;height:320px;background:rgba(255,255,255,.08);box-shadow:0 15px 35px rgba(0,0,0,.15);border:1px solid rgba(255,255,255,.12);transition:.3s ease}
+  .als-coll-card:hover{transform:translateY(-3px);box-shadow:0 20px 45px rgba(0,0,0,.2)}
   .als-coll-card img{width:100%;height:100%;object-fit:cover}
   .als-coll-card .als-coll-overlay{position:absolute;inset:0;background:linear-gradient(0deg,rgba(0,0,0,.55) 0%,transparent 50%)}
-  .als-coll-card .als-coll-label{position:absolute;bottom:20px;left:18px;right:18px;padding:14px;border-radius:18px;background:rgba(255,255,255,.1);backdrop-filter:blur(15px);border:1px solid rgba(255,255,255,.2);display:flex;align-items:center;justify-content:space-between}
+  .als-coll-card .als-coll-label{position:absolute;bottom:20px;left:18px;right:18px;padding:14px;border-radius:18px;background:rgba(255,255,255,.18);backdrop-filter:blur(40px) saturate(180%);-webkit-backdrop-filter:blur(40px) saturate(180%);border:1px solid rgba(255,255,255,.25);display:flex;align-items:center;justify-content:space-between;box-shadow:0 8px 24px rgba(0,0,0,.1)}
   .als-coll-card .als-coll-name{font-family:'Poppins',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:#fff}
   .als-coll-card .als-coll-btn{font-family:'Poppins',sans-serif;font-size:9px;font-weight:600;text-transform:uppercase;color:#fff;background:rgba(255,255,255,.2);padding:6px 14px;border-radius:20px}
 
@@ -137,7 +141,7 @@
   }
   .als-insta-vid .als-insta-tag{position:absolute;top:14px;left:14px;display:flex;align-items:center;gap:6px}
   .als-insta-vid .als-insta-tag span{font-family:'Poppins',sans-serif;font-size:9px;font-weight:600;letter-spacing:.06em;color:#fff;background:rgba(0,0,0,.45);backdrop-filter:blur(6px);padding:5px 10px;border-radius:20px}
-  .als-insta-pcard{display:flex;flex-direction:column;align-items:center;background:rgba(255,255,255,.1);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-radius:16px;padding:6px 6px 12px;text-decoration:none;border:1px solid rgba(255,255,255,.12)}
+  .als-insta-pcard{display:flex;flex-direction:column;align-items:center;background:rgba(255,255,255,.15);backdrop-filter:blur(40px) saturate(180%);-webkit-backdrop-filter:blur(40px) saturate(180%);border-radius:16px;padding:6px 6px 12px;text-decoration:none;border:1px solid rgba(255,255,255,.22);box-shadow:0 8px 32px rgba(0,0,0,.12)}
   .als-insta-pcard-img{width:100%;aspect-ratio:1;display:flex;align-items:center;justify-content:center;overflow:hidden;padding:8px}
   .als-insta-pcard-img img{max-width:90%;max-height:90%;object-fit:cover;mix-blend-mode:multiply}
   .als-insta-pcard-name{font-family:'Poppins',sans-serif;font-size:11px;font-weight:700;text-transform:uppercase;color:#fff;text-align:center;margin-top:6px}
@@ -196,7 +200,8 @@
   /* ---------- ARTICLES RARES — scroll horizontal ---------- */
   .als-rare-grid{display:flex;gap:15px;overflow-x:auto;padding:0 20px 12px;scroll-behavior:smooth;-webkit-overflow-scrolling:touch;scrollbar-width:none}
   .als-rare-grid::-webkit-scrollbar{display:none}
-  .als-rare-card{flex:0 0 190px;scroll-snap-align:start;text-decoration:none;background:rgba(255,255,255,.1);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border:1px solid rgba(255,255,255,.12);border-radius:20px;overflow:hidden;padding:15px;transition:.3s ease}
+  .als-rare-card{flex:0 0 190px;scroll-snap-align:start;text-decoration:none;background:rgba(255,255,255,.15);backdrop-filter:blur(40px) saturate(180%);-webkit-backdrop-filter:blur(40px) saturate(180%);border:1px solid rgba(255,255,255,.22);border-radius:20px;overflow:hidden;padding:15px;transition:.3s ease;box-shadow:0 8px 32px rgba(0,0,0,.12)}
+  .als-rare-card:hover{background:rgba(255,255,255,.22);transform:translateY(-3px);box-shadow:0 12px 40px rgba(0,0,0,.18)}
   .als-rare-img{width:100%;aspect-ratio:1;display:flex;align-items:center;justify-content:center;margin-bottom:10px}
   .als-rare-img img{width:100%;height:auto;object-fit:cover;mix-blend-mode:multiply}
   .als-rare-info{padding:12px 14px 16px;text-align:left}
@@ -212,8 +217,9 @@
 
   /* ---------- SCROLL ARROWS (desktop) ---------- */
   .als-scroll-wrap{position:relative}
-  .als-scroll-arrow{position:absolute;top:50%;transform:translateY(-50%);z-index:10;width:40px;height:40px;border-radius:50%;background:rgba(255,255,255,.75);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border:1px solid rgba(0,0,0,.08);display:flex;align-items:center;justify-content:center;cursor:pointer;opacity:1;transition:opacity .25s,background .2s;box-shadow:0 2px 12px rgba(0,0,0,.1)}
-  .als-scroll-arrow:hover{background:rgba(255,255,255,.95)}
+  .als-scroll-arrow{position:absolute;top:50%;transform:translateY(-50%);z-index:10;width:40px;height:40px;border-radius:50%;background:rgba(255,255,255,.15);backdrop-filter:blur(40px) saturate(180%);-webkit-backdrop-filter:blur(40px) saturate(180%);border:1px solid rgba(255,255,255,.22);display:flex;align-items:center;justify-content:center;cursor:pointer;opacity:1;transition:all .25s;box-shadow:0 4px 16px rgba(0,0,0,.12)}
+  .als-scroll-arrow:hover{background:rgba(255,255,255,.3);box-shadow:0 6px 20px rgba(0,0,0,.18)}
+  .als-scroll-arrow svg{stroke:#fff!important}
   .als-scroll-arrow.left{left:6px}
   .als-scroll-arrow.right{right:6px}
   .als-scroll-arrow svg{width:16px;height:16px;stroke:var(--noir,#0a1923);stroke-width:2.5;fill:none;stroke-linecap:round;stroke-linejoin:round}
