@@ -109,17 +109,20 @@
 
     /* ── Block card ── */
     .compte-block {
-      background: #fff;
+      background: rgba(255,255,255,.18);
+      backdrop-filter: blur(40px) saturate(180%);
+      -webkit-backdrop-filter: blur(40px) saturate(180%);
+      border: 1px solid rgba(255,255,255,.25);
       border-radius: 28px;
       padding: 28px;
       margin-bottom: 24px;
-      box-shadow: 0 4px 24px rgba(0,0,0,.04);
+      box-shadow: none;
     }
     .compte-block-title {
       font-size: 16px;
       font-weight: 700;
       letter-spacing: -.01em;
-      color: var(--noir);
+      color: #fff;
       margin: 0 0 20px;
       display: flex;
       align-items: center;
@@ -411,10 +414,6 @@
   <!-- ═══════ PANEL FAVORIS ═══════ -->
   <div class="compte-panel active" id="panel-favoris">
     <div class="compte-block">
-      <div class="compte-block-title">
-        <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
-        Mes Favoris
-      </div>
       <div id="fav-list"></div>
     </div>
   </div>
