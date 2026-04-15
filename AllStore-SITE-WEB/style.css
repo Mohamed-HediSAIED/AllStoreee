@@ -2572,15 +2572,6 @@ p,li,span,label,td,th{color:rgba(255,255,255,.7)}
 a{color:rgba(255,255,255,.8)}
 
 /* Cards & containers on all pages: glass style */
-.ap-card,.contact-card,.faq-item,.cgu-card,.suivi-card,
-.card-svc,[class*="-card"]:not(.amb-card):not(.als-hcard):not(.als-rare-card):not(.als-review-card):not(.als-coll-card):not(.als-insta-pcard){
-  background:rgba(255,255,255,.18)!important;
-  backdrop-filter:blur(40px) saturate(180%)!important;
-  -webkit-backdrop-filter:blur(40px) saturate(180%)!important;
-  border:1px solid rgba(255,255,255,.25)!important;
-  box-shadow:none!important;
-  color:#fff!important;
-}
 
 /* Form inputs */
 input,textarea,select{

@@ -47,29 +47,30 @@
       font-family: 'Cormorant', serif;
       font-size: clamp(32px, 5vw, 48px);
       font-weight: 300;
-      color: var(--noir);
+      color: #fff;
       margin: 0 0 12px;
       letter-spacing: -.02em;
     }
     .ap-sub {
       font-size: 14px;
-      color: var(--gris);
+      color: rgba(255,255,255,.6);
       line-height: 1.6;
     }
 
     /* ── Section Card ── */
     .ap-card {
-      background: #fff;
+      background: rgba(255,255,255,.18);
+      backdrop-filter: blur(40px) saturate(180%);
+      -webkit-backdrop-filter: blur(40px) saturate(180%);
       border-radius: 28px;
       padding: 36px 32px;
       margin-bottom: 20px;
-      box-shadow: 0 4px 24px rgba(0,0,0,.04);
-      border: 1px solid rgba(10,25,35,.04);
-      transition: box-shadow .3s, border-color .3s, transform .3s;
+      box-shadow: none;
+      border: 1px solid rgba(255,255,255,.25);
+      transition: border-color .3s, transform .3s;
     }
     .ap-card:hover {
-      box-shadow: 0 8px 32px rgba(0,0,0,.07);
-      border-color: rgba(10,25,35,.08);
+      border-color: rgba(255,255,255,.35);
       transform: translateY(-2px);
     }
 
@@ -104,35 +105,36 @@
       font-family: 'Poppins', sans-serif;
       font-size: 18px;
       font-weight: 700;
-      color: var(--noir);
+      color: #fff;
       margin: 0;
       letter-spacing: -.01em;
     }
 
     .ap-card-body {
       font-size: 14px;
-      color: var(--gris);
+      color: rgba(255,255,255,.65);
       line-height: 1.75;
     }
 
     /* ── Mission card (intro text) ── */
     .ap-mission {
-      background: #fff;
+      background: rgba(255,255,255,.18);
+      backdrop-filter: blur(40px) saturate(180%);
+      -webkit-backdrop-filter: blur(40px) saturate(180%);
       border-radius: 28px;
       padding: 36px 32px;
       margin-bottom: 20px;
-      box-shadow: 0 4px 24px rgba(0,0,0,.04);
-      border: 1px solid rgba(10,25,35,.04);
-      transition: box-shadow .3s, border-color .3s, transform .3s;
+      box-shadow: none;
+      border: 1px solid rgba(255,255,255,.25);
+      transition: border-color .3s, transform .3s;
     }
     .ap-mission:hover {
-      box-shadow: 0 8px 32px rgba(0,0,0,.07);
-      border-color: rgba(10,25,35,.08);
+      border-color: rgba(255,255,255,.35);
       transform: translateY(-2px);
     }
     .ap-mission p {
       font-size: 14px;
-      color: var(--gris);
+      color: rgba(255,255,255,.65);
       line-height: 1.75;
       margin: 0 0 16px;
     }
@@ -142,17 +144,18 @@
 
     /* ── Stats card ── */
     .ap-stats {
-      background: #fff;
+      background: rgba(255,255,255,.18);
+      backdrop-filter: blur(40px) saturate(180%);
+      -webkit-backdrop-filter: blur(40px) saturate(180%);
       border-radius: 28px;
       padding: 36px 32px;
       margin-bottom: 20px;
-      box-shadow: 0 4px 24px rgba(0,0,0,.04);
-      border: 1px solid rgba(10,25,35,.04);
-      transition: box-shadow .3s, border-color .3s, transform .3s;
+      box-shadow: none;
+      border: 1px solid rgba(255,255,255,.25);
+      transition: border-color .3s, transform .3s;
     }
     .ap-stats:hover {
-      box-shadow: 0 8px 32px rgba(0,0,0,.07);
-      border-color: rgba(10,25,35,.08);
+      border-color: rgba(255,255,255,.35);
       transform: translateY(-2px);
     }
     .ap-stats-header {
@@ -170,14 +173,15 @@
     .ap-stat-item {
       padding: 20px 8px;
       border-radius: 20px;
-      background: var(--bg2, #f5f3ee);
+      background: rgba(255,255,255,.1);
+      border: 1px solid rgba(255,255,255,.15);
     }
     .ap-stat-num {
       display: block;
       font-family: 'Cormorant', serif;
       font-size: clamp(28px, 4vw, 40px);
       font-weight: 600;
-      color: var(--noir);
+      color: #fff;
       line-height: 1;
       margin-bottom: 8px;
     }
@@ -187,7 +191,7 @@
     }
     .ap-stat-item p {
       font-size: 12px;
-      color: var(--gris);
+      color: rgba(255,255,255,.5);
       line-height: 1.5;
       margin: 0;
     }
@@ -209,9 +213,12 @@
       text-align: center;
       margin-top: 48px;
       padding: 40px 24px;
-      background: #fff;
+      background: rgba(255,255,255,.18);
+      backdrop-filter: blur(40px) saturate(180%);
+      -webkit-backdrop-filter: blur(40px) saturate(180%);
       border-radius: 28px;
-      box-shadow: 0 4px 24px rgba(0,0,0,.04);
+      border: 1px solid rgba(255,255,255,.25);
+      box-shadow: none;
     }
     .ap-cta-eyebrow {
       font-size: 10px;
@@ -226,7 +233,7 @@
       font-family: 'Cormorant', serif;
       font-size: clamp(28px, 4vw, 44px);
       font-weight: 300;
-      color: var(--noir);
+      color: #fff;
       margin: 0 0 24px;
       letter-spacing: -.02em;
       line-height: 1.1;
@@ -256,10 +263,10 @@
     .ap-cta-btn--primary:hover { background: #1a3040; }
     .ap-cta-btn--secondary {
       background: transparent;
-      color: var(--noir);
-      border: 1.5px solid rgba(10,25,35,.15);
+      color: #fff;
+      border: 1.5px solid rgba(255,255,255,.25);
     }
-    .ap-cta-btn--secondary:hover { border-color: var(--noir); }
+    .ap-cta-btn--secondary:hover { border-color: rgba(255,255,255,.5); }
 
     /* ── Mobile ── */
     @media(max-width:768px) {
@@ -302,7 +309,7 @@
   <!-- HERO -->
   <div class="ap-hero reveal">
     <span class="ap-eyebrow">Notre Histoire</span>
-    <h1 class="ap-title">Allstore — <em style="color:var(--gris)">le style accessible.</em></h1>
+    <h1 class="ap-title">Allstore — <em style="color:rgba(255,255,255,.5)">le style accessible.</em></h1>
     <p class="ap-sub">Notre mission est de rendre le style inspiré du luxe accessible au plus grand nombre.</p>
   </div>
 
@@ -382,7 +389,7 @@
   <!-- ═══════ CTA ═══════ -->
   <div class="ap-cta reveal">
     <span class="ap-cta-eyebrow">Assez cherché ?</span>
-    <h2 class="ap-cta-title">Le luxe à votre portée.<br><em style="color:var(--gris)">Commandez votre réplique dès maintenant.</em></h2>
+    <h2 class="ap-cta-title">Le luxe à votre portée.<br><em style="color:rgba(255,255,255,.5)">Commandez votre réplique dès maintenant.</em></h2>
     <div class="ap-cta-btns">
       <a href="assistant.html" class="ap-cta-btn ap-cta-btn--primary">Démarrer une recherche</a>
       <a href="assistant.html" class="ap-cta-btn ap-cta-btn--secondary">Découvrir la boutique</a>
