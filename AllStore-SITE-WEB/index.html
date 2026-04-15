@@ -72,34 +72,34 @@
   .als-search-empty{padding:20px;text-align:center;font-family:'Poppins',sans-serif;font-size:13px;color:var(--gris,#6a7a8a)}
 
   /* ---------- AVIS CLIENTS ---------- */
-  .als-review-card{flex:0 0 300px;background:#fbfbfd;border-radius:20px;padding:24px 24px 20px;scroll-snap-align:start}
+  .als-review-card{flex:0 0 300px;background:rgba(255,255,255,.1);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border:1px solid rgba(255,255,255,.12);border-radius:20px;padding:24px 24px 20px;scroll-snap-align:start}
   .als-review-stars{color:#e9c243;font-size:16px;letter-spacing:2px;margin-bottom:12px}
-  .als-review-text{font-family:'Poppins',sans-serif;font-size:13px;color:var(--gris,#6a7a8a);font-style:italic;line-height:1.6;margin:0 0 16px}
-  .als-review-author{font-family:'Poppins',sans-serif;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--noir,#0a1923);display:block}
-  .als-review-product{font-family:'Poppins',sans-serif;font-size:11px;color:var(--gris,#6a7a8a);display:block;margin-top:2px}
+  .als-review-text{font-family:'Poppins',sans-serif;font-size:13px;color:rgba(255,255,255,.6);font-style:italic;line-height:1.6;margin:0 0 16px}
+  .als-review-author{font-family:'Poppins',sans-serif;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:#fff;display:block}
+  .als-review-product{font-family:'Poppins',sans-serif;font-size:11px;color:rgba(255,255,255,.5);display:block;margin-top:2px}
   @media(max-width:600px){.als-review-card{flex:0 0 260px;padding:20px}}
 
   /* ---------- SECTIONS ---------- */
-  .als-sec{padding:40px 0 36px;background:var(--bg2,#f5f2ec)}
+  .als-sec{padding:40px 0 36px;background:rgba(0,0,0,.55);backdrop-filter:blur(2px)}
   .als-sec-head{text-align:center;margin-bottom:20px;padding:0 20px}
-  .als-sec-title{font-family:'Poppins',sans-serif;font-size:22px;font-weight:800;text-transform:uppercase;color:var(--noir,#0a1923);margin:0;letter-spacing:.02em}
-  .als-sec-title em{font-family:'Cormorant',serif;font-weight:500;font-style:italic;color:var(--gris,#6a7a8a)}
+  .als-sec-title{font-family:'Poppins',sans-serif;font-size:22px;font-weight:800;text-transform:uppercase;color:#fff;margin:0;letter-spacing:.02em}
+  .als-sec-title em{font-family:'Cormorant',serif;font-weight:500;font-style:italic;color:rgba(255,255,255,.5)}
 
   /* ---------- FILTERS ---------- */
   .als-filters{display:flex;gap:8px;padding:0 20px;margin-bottom:20px;flex-wrap:wrap;justify-content:center}
-  .als-pill{font-family:'Poppins',sans-serif;font-size:12px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;padding:10px 24px;border-radius:30px;border:1.5px solid rgba(10,25,35,.2);background:transparent;color:var(--noir,#0a1923);cursor:pointer;transition:all .2s}
-  .als-pill.active{background:var(--noir,#0a1923);color:#fff;border-color:var(--noir,#0a1923)}
+  .als-pill{font-family:'Poppins',sans-serif;font-size:12px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;padding:10px 24px;border-radius:30px;border:1.5px solid rgba(255,255,255,.2);background:transparent;color:rgba(255,255,255,.7);cursor:pointer;transition:all .2s}
+  .als-pill.active{background:rgba(255,255,255,.15);color:#fff;border-color:rgba(255,255,255,.4)}
 
   /* ---------- LA SÉLECTION — scroll horizontal ---------- */
   .als-hscroll{display:flex;gap:15px;overflow-x:auto;padding:0 20px 8px;scroll-behavior:smooth;-webkit-overflow-scrolling:touch;scrollbar-width:none}
   .als-hscroll::-webkit-scrollbar{display:none}
-  .als-hcard{flex:0 0 190px;scroll-snap-align:start;text-decoration:none;background:#fbfbfd;border-radius:20px;overflow:hidden;padding:15px;transition:.3s ease}
+  .als-hcard{flex:0 0 190px;scroll-snap-align:start;text-decoration:none;background:rgba(255,255,255,.1);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border:1px solid rgba(255,255,255,.12);border-radius:20px;overflow:hidden;padding:15px;transition:.3s ease}
   .als-hcard-img{position:relative;width:100%;aspect-ratio:1;display:flex;align-items:center;justify-content:center;margin-bottom:10px}
   .als-hcard-img img{width:100%;height:auto;object-fit:cover;mix-blend-mode:multiply}
   .als-hcard-info{padding:0}
-  .als-hcard-name{font-family:'Poppins',sans-serif;font-size:12px;font-weight:700;text-transform:uppercase;color:var(--noir,#0a1923);display:block;line-height:1.3}
-  .als-hcard-price{font-family:'Poppins',sans-serif;font-size:13px;color:#86868b;display:block;margin-top:3px;font-weight:400}
-  .als-hcard-soon{font-family:'Poppins',sans-serif;font-size:9px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;color:var(--noir,#0a1923);background:rgba(10,25,35,.06);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border:1px solid rgba(10,25,35,.08);padding:5px 12px;border-radius:20px;display:inline-block;margin-top:6px;font-style:normal}
+  .als-hcard-name{font-family:'Poppins',sans-serif;font-size:12px;font-weight:700;text-transform:uppercase;color:#fff;display:block;line-height:1.3}
+  .als-hcard-price{font-family:'Poppins',sans-serif;font-size:13px;color:rgba(255,255,255,.6);display:block;margin-top:3px;font-weight:400}
+  .als-hcard-soon{font-family:'Poppins',sans-serif;font-size:9px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;color:rgba(255,255,255,.8);background:rgba(255,255,255,.1);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,.15);padding:5px 12px;border-radius:20px;display:inline-block;margin-top:6px;font-style:normal}
   .als-badge{position:absolute;top:8px;right:8px;background:var(--noir,#0a1923);color:#fff;font-family:'Poppins',sans-serif;font-size:8px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:5px 10px;border-radius:12px;z-index:1}
   .als-hcard-desc{font-family:'Poppins',sans-serif;font-size:11px;color:#86868b;display:block;margin-top:2px;font-weight:400}
   .als-scroll-bar{width:60px;height:3px;background:var(--noir,#0a1923);margin:0 auto;border-radius:2px}
@@ -115,7 +115,7 @@
   .als-coll-card .als-coll-btn{font-family:'Poppins',sans-serif;font-size:9px;font-weight:600;text-transform:uppercase;color:#fff;background:rgba(255,255,255,.2);padding:6px 14px;border-radius:20px}
 
   /* ---------- VU SUR INSTAGRAM ---------- */
-  .als-insta-section{padding:0;background:var(--bg2,#f5f2ec)}
+  .als-insta-section{padding:0;background:rgba(0,0,0,.55)}
   .als-insta-row{display:flex;gap:12px;padding:0 20px;max-width:1000px;margin:0 auto}
   @media(min-width:1025px){.als-insta-row{max-width:100%!important;padding:0 40px!important}}
   .als-insta-col{flex:1;display:flex;flex-direction:column;gap:12px}
@@ -137,15 +137,15 @@
   }
   .als-insta-vid .als-insta-tag{position:absolute;top:14px;left:14px;display:flex;align-items:center;gap:6px}
   .als-insta-vid .als-insta-tag span{font-family:'Poppins',sans-serif;font-size:9px;font-weight:600;letter-spacing:.06em;color:#fff;background:rgba(0,0,0,.45);backdrop-filter:blur(6px);padding:5px 10px;border-radius:20px}
-  .als-insta-pcard{display:flex;flex-direction:column;align-items:center;background:#fbfbfd;border-radius:16px;padding:6px 6px 12px;text-decoration:none;border:1px solid rgba(0,0,0,.03)}
+  .als-insta-pcard{display:flex;flex-direction:column;align-items:center;background:rgba(255,255,255,.1);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-radius:16px;padding:6px 6px 12px;text-decoration:none;border:1px solid rgba(255,255,255,.12)}
   .als-insta-pcard-img{width:100%;aspect-ratio:1;display:flex;align-items:center;justify-content:center;overflow:hidden;padding:8px}
   .als-insta-pcard-img img{max-width:90%;max-height:90%;object-fit:cover;mix-blend-mode:multiply}
-  .als-insta-pcard-name{font-family:'Poppins',sans-serif;font-size:11px;font-weight:700;text-transform:uppercase;color:var(--noir,#0a1923);text-align:center;margin-top:6px}
-  .als-insta-pcard-price{font-family:'Poppins',sans-serif;font-size:12px;font-weight:400;color:#86868b;text-align:center;margin-top:4px}
-  .als-insta-pcard-btn{font-family:'Poppins',sans-serif;font-size:9px;font-weight:600;letter-spacing:.05em;text-transform:uppercase;color:var(--noir,#0a1923);background:rgba(10,25,35,.06);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border:1px solid rgba(10,25,35,.08);padding:6px 20px;border-radius:20px;margin-top:8px;display:inline-block}
+  .als-insta-pcard-name{font-family:'Poppins',sans-serif;font-size:11px;font-weight:700;text-transform:uppercase;color:#fff;text-align:center;margin-top:6px}
+  .als-insta-pcard-price{font-family:'Poppins',sans-serif;font-size:12px;font-weight:400;color:rgba(255,255,255,.6);text-align:center;margin-top:4px}
+  .als-insta-pcard-btn{font-family:'Poppins',sans-serif;font-size:9px;font-weight:600;letter-spacing:.05em;text-transform:uppercase;color:rgba(255,255,255,.8);background:rgba(255,255,255,.1);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,.15);padding:6px 20px;border-radius:20px;margin-top:8px;display:inline-block}
 
   /* ---------- NOS AMBASSADEURS — carrousel vidéos ---------- */
-  .amb-sec{padding:40px 0 36px;background:var(--bg,#f7f2e8)}
+  .amb-sec{padding:40px 0 36px;background:rgba(0,0,0,.55)}
   .amb-sec .als-sec-head{text-align:left;padding:0 20px;margin-bottom:20px}
   .amb-sec .als-sec-title{font-size:22px}
   .amb-scroll{display:flex;gap:14px;overflow-x:auto;padding:0 20px 12px;scroll-behavior:smooth;-webkit-overflow-scrolling:touch;scrollbar-width:none}
@@ -162,10 +162,10 @@
   .amb-product-img{width:36px;height:36px;border-radius:10px;background:#f0ece4;overflow:hidden;flex-shrink:0;display:flex;align-items:center;justify-content:center}
   .amb-product-img img{width:90%;height:90%;object-fit:cover}
   .amb-product-info{flex:1;min-width:0}
-  .amb-product-name{font-family:'Poppins',sans-serif;font-size:10px;font-weight:700;text-transform:uppercase;color:var(--noir,#0a1923);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;display:block}
-  .amb-product-price{font-family:'Poppins',sans-serif;font-size:11px;color:#86868b;display:block}
-  .amb-product-add{width:28px;height:28px;border-radius:50%;border:1.5px solid rgba(10,25,35,.12);background:none;display:flex;align-items:center;justify-content:center;cursor:pointer;flex-shrink:0;transition:all .2s}
-  .amb-product-add svg{width:12px;height:12px;stroke:var(--noir,#0a1923);fill:none;stroke-width:2.5}
+  .amb-product-name{font-family:'Poppins',sans-serif;font-size:10px;font-weight:700;text-transform:uppercase;color:#fff;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;display:block}
+  .amb-product-price{font-family:'Poppins',sans-serif;font-size:11px;color:rgba(255,255,255,.6);display:block}
+  .amb-product-add{width:28px;height:28px;border-radius:50%;border:1.5px solid rgba(255,255,255,.2);background:none;display:flex;align-items:center;justify-content:center;cursor:pointer;flex-shrink:0;transition:all .2s}
+  .amb-product-add svg{width:12px;height:12px;stroke:#fff;fill:none;stroke-width:2.5}
   .amb-product-add:hover{border-color:var(--gold);background:var(--gold)}
   @media(max-width:768px){
     .amb-card{flex:0 0 160px}
@@ -196,18 +196,18 @@
   /* ---------- ARTICLES RARES — scroll horizontal ---------- */
   .als-rare-grid{display:flex;gap:15px;overflow-x:auto;padding:0 20px 12px;scroll-behavior:smooth;-webkit-overflow-scrolling:touch;scrollbar-width:none}
   .als-rare-grid::-webkit-scrollbar{display:none}
-  .als-rare-card{flex:0 0 190px;scroll-snap-align:start;text-decoration:none;background:#fbfbfd;border-radius:20px;overflow:hidden;padding:15px;transition:.3s ease}
+  .als-rare-card{flex:0 0 190px;scroll-snap-align:start;text-decoration:none;background:rgba(255,255,255,.1);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border:1px solid rgba(255,255,255,.12);border-radius:20px;overflow:hidden;padding:15px;transition:.3s ease}
   .als-rare-img{width:100%;aspect-ratio:1;display:flex;align-items:center;justify-content:center;margin-bottom:10px}
   .als-rare-img img{width:100%;height:auto;object-fit:cover;mix-blend-mode:multiply}
   .als-rare-info{padding:12px 14px 16px;text-align:left}
-  .als-rare-brand{font-family:'Poppins',sans-serif;font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:.04em;color:var(--noir,#0a1923)}
-  .als-rare-name{font-family:'Poppins',sans-serif;font-size:12px;color:var(--gris,#6a7a8a);display:block;margin-top:2px}
-  .als-rare-price{font-family:'Poppins',sans-serif;font-size:13px;font-weight:700;color:var(--noir,#0a1923);display:block;margin-top:4px}
-  .als-rare-soon{font-family:'Poppins',sans-serif;font-size:9px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;color:var(--noir,#0a1923);background:rgba(10,25,35,.06);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border:1px solid rgba(10,25,35,.08);padding:5px 12px;border-radius:20px;display:inline-block;margin-top:8px;font-style:normal}
+  .als-rare-brand{font-family:'Poppins',sans-serif;font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:.04em;color:#fff}
+  .als-rare-name{font-family:'Poppins',sans-serif;font-size:12px;color:rgba(255,255,255,.5);display:block;margin-top:2px}
+  .als-rare-price{font-family:'Poppins',sans-serif;font-size:13px;font-weight:700;color:#fff;display:block;margin-top:4px}
+  .als-rare-soon{font-family:'Poppins',sans-serif;font-size:9px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;color:rgba(255,255,255,.8);background:rgba(255,255,255,.1);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,.15);padding:5px 12px;border-radius:20px;display:inline-block;margin-top:8px;font-style:normal}
 
   /* ---------- NOS MARQUES ---------- */
   .als-collab-row{display:flex;align-items:center;justify-content:center;gap:40px;flex-wrap:wrap;padding:0 20px}
-  .als-collab-item{font-family:'Cormorant',serif;font-size:clamp(20px,3vw,32px);font-weight:300;color:var(--noir,#0a1923);opacity:.45;transition:opacity .2s;letter-spacing:.04em}
+  .als-collab-item{font-family:'Cormorant',serif;font-size:clamp(20px,3vw,32px);font-weight:300;color:#fff;opacity:.45;transition:opacity .2s;letter-spacing:.04em}
   .als-collab-item:hover{opacity:1}
 
   /* ---------- SCROLL ARROWS (desktop) ---------- */

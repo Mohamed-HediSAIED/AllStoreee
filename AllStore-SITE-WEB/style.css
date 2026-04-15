@@ -1616,7 +1616,7 @@ body.nav-open #ham-btn span:nth-child(3){transform:translateY(-6.5px) rotate(-45
 ═══════════════════════════════════════════════════════════════════ */
 
 /* ── DARK BODY MODE ─────────────────────────────────────────── */
-.body-dark { background: #060508; color: #fff; }
+.body-dark { background: #060508 url('IMG_9440.jpg') center/cover no-repeat fixed; color: #fff; }
 .body-dark::after { opacity: 0.015; }
 
 /* ── DARK HEADER ────────────────────────────────────────────── */
