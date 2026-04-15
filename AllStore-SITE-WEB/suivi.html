@@ -60,37 +60,39 @@
     .suivi-search {
       max-width: 1100px;
       margin: 0 auto;
-      background: #fff;
+      background: rgba(255,255,255,.18);
+      backdrop-filter: blur(40px) saturate(180%);
+      -webkit-backdrop-filter: blur(40px) saturate(180%);
       border-radius: 28px;
       padding: 36px 32px;
-      box-shadow: 0 4px 24px rgba(0,0,0,.04);
-      border: 1px solid rgba(10,25,35,.04);
+      box-shadow: none;
+      border: 1px solid rgba(255,255,255,.25);
     }
     .suivi-form {
       display: flex;
       gap: 0;
-      background: var(--bg2, #f6f5f3);
+      background: rgba(255,255,255,.12);
       border-radius: 60px;
-      border: 2px solid rgba(10,25,35,.08);
+      border: 2px solid rgba(255,255,255,.15);
       padding: 6px;
       transition: border-color .3s, box-shadow .3s;
     }
     .suivi-form:focus-within {
-      border-color: var(--noir);
-      box-shadow: 0 12px 40px rgba(10,25,35,.08);
+      border-color: rgba(255,255,255,.35);
+      box-shadow: 0 12px 40px rgba(0,0,0,.15);
     }
     .suivi-input {
       flex: 1;
-      background: transparent;
-      border: none;
+      background: transparent!important;
+      border: none!important;
       padding: 16px 24px;
       font-size: 15px;
       font-family: 'Poppins', sans-serif;
-      color: var(--noir);
+      color: #fff!important;
       outline: none;
       min-width: 0;
     }
-    .suivi-input::placeholder { color: rgba(90,102,112,.4); }
+    .suivi-input::placeholder { color: rgba(255,255,255,.35)!important; }
     .suivi-btn {
       background: var(--noir);
       color: #fff;
@@ -163,18 +165,20 @@
       transition: color .2s;
       padding: 8px 16px;
       border-radius: 980px;
-      border: 1px solid rgba(10,25,35,.08);
+      border: 1px solid rgba(255,255,255,.15);
     }
-    .suivi-open-ext:hover { color: var(--noir); border-color: var(--noir); }
+    .suivi-open-ext:hover { color: #fff; border-color: rgba(255,255,255,.35); }
     .suivi-open-ext svg { width: 14px; height: 14px; }
 
     /* Timeline container */
     .suivi-timeline-container {
       border-radius: 28px;
       overflow: hidden;
-      border: 1px solid rgba(10,25,35,.04);
-      background: #fff;
-      box-shadow: 0 4px 24px rgba(0,0,0,.04);
+      border: 1px solid rgba(255,255,255,.25);
+      background: rgba(255,255,255,.18);
+      backdrop-filter: blur(40px) saturate(180%);
+      -webkit-backdrop-filter: blur(40px) saturate(180%);
+      box-shadow: none;
       position: relative;
       min-height: 200px;
     }
@@ -187,7 +191,9 @@
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      background: #fff;
+      background: rgba(255,255,255,.18);
+      backdrop-filter: blur(40px) saturate(180%);
+      -webkit-backdrop-filter: blur(40px) saturate(180%);
       z-index: 2;
       gap: 16px;
       transition: opacity .4s;
@@ -229,14 +235,14 @@
       top: 24px;
       bottom: 0;
       width: 1.5px;
-      background: rgba(10,25,35,.08);
+      background: rgba(255,255,255,.12);
     }
     .suivi-tl-item:last-child::before { display: none; }
     .suivi-tl-dot {
       width: 24px; height: 24px;
       border-radius: 50%;
       background: var(--bg2);
-      border: 2px solid rgba(10,25,35,.1);
+      border: 2px solid rgba(255,255,255,.2);
       flex-shrink: 0;
       display: flex;
       align-items: center;
