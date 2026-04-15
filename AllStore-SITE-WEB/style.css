@@ -2440,13 +2440,7 @@ footer::before {
   box-shadow: 0 4px 20px rgba(10, 25, 35, 0.2);
 }
 
-/* ── NAV — Glass morphism upgrade ───────────────────────────── */
-header {
-  background: rgba(247, 242, 232, 0.7) !important;
-  backdrop-filter: blur(32px) saturate(200%) !important;
-  -webkit-backdrop-filter: blur(32px) saturate(200%) !important;
-  border-bottom: 1px solid rgba(233, 194, 67, 0.08) !important;
-}
+/* ── NAV — Dark solid header ───────────────────────────── */
 
 
 /* ── SCROLL SNAP CAROUSELS — 3D perspective ─────────────────── */
