@@ -76,19 +76,22 @@
       text-transform: uppercase;
       padding: 10px 24px;
       border-radius: 30px;
-      border: 1.5px solid rgba(10,25,35,.15);
-      background: transparent;
-      color: var(--noir);
+      border: 1.5px solid rgba(255,255,255,.25);
+      background: rgba(255,255,255,.18);
+      backdrop-filter: blur(40px) saturate(180%);
+      -webkit-backdrop-filter: blur(40px) saturate(180%);
+      color: rgba(255,255,255,.7);
       cursor: pointer;
       transition: all .25s var(--ease);
     }
     .compte-tab:hover {
-      border-color: var(--noir);
+      border-color: rgba(255,255,255,.4);
+      color: #fff;
     }
     .compte-tab.active {
-      background: var(--noir);
+      background: rgba(255,255,255,.3);
       color: #fff;
-      border-color: var(--noir);
+      border-color: rgba(255,255,255,.45);
     }
 
     /* ── Panels ── */
