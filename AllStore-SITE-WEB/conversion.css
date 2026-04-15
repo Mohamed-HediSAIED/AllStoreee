@@ -410,24 +410,16 @@ body.has-promo .trust-bar { top: var(--trust-top, 114px); }
 .hiw2-step {
   display: flex;
   gap: 28px;
-  padding: 28px 24px;
-  margin-bottom: 12px;
-  background: rgba(255,255,255,.04);
-  backdrop-filter: blur(16px) saturate(120%);
-  -webkit-backdrop-filter: blur(16px) saturate(120%);
-  border: 1px solid rgba(255,255,255,.06);
-  border-radius: 20px;
+  padding: 36px 0;
+  border-bottom: 1px solid rgba(255,255,255,.06);
   align-items: baseline;
-  transition: all .3s ease;
 }
-.hiw2-step:hover {
-  background: rgba(255,255,255,.08);
-  border-color: rgba(233,194,67,.15);
-  transform: translateY(-2px);
-  box-shadow: 0 8px 32px rgba(0,0,0,.12);
+.hiw2-step:first-child {
+  padding-top: 0;
 }
 .hiw2-step:last-child {
-  margin-bottom: 0;
+  border-bottom: none;
+  padding-bottom: 0;
 }
 .hiw2-idx {
   font-family: 'Cormorant', serif;
@@ -471,9 +463,8 @@ body.has-promo .trust-bar { top: var(--trust-top, 114px); }
   .hiw2-line { margin: 20px auto; }
   .hiw2-intro { font-size: 13px; }
   .hiw2-step {
-    gap: 16px;
-    padding: 20px 18px;
-    margin-bottom: 10px;
+    gap: 20px;
+    padding: 24px 0;
   }
   .hiw2-idx {
     font-size: 32px;
