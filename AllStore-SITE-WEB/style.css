@@ -2566,10 +2566,6 @@ html {
 }
 
 /* ── GLOBAL DARK THEME OVERRIDES ────────────────────────────── */
-/* All page content: text colors */
-h1,h2,h3,h4,h5,h6{color:#fff!important}
-p,li,span,label,td,th{color:rgba(255,255,255,.7)}
-a{color:rgba(255,255,255,.8)}
 
 /* Cards & containers on all pages: glass style */
 
