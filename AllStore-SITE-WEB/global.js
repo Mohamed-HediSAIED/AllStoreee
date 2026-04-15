@@ -96,11 +96,7 @@
     // Wrapper pour les icônes à droite
     const iconsWrap=document.createElement('div');
     iconsWrap.className='nav-icons';
-    // Bouton recherche
-    const searchBtn=document.createElement('a');
-    searchBtn.id='search-nav-btn';searchBtn.href='index.html';searchBtn.setAttribute('aria-label','Rechercher');
-    searchBtn.innerHTML=`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>`;
-    iconsWrap.appendChild(searchBtn);
+    // Bouton recherche supprimé
     // Bouton compte
     const accountBtn=document.createElement('a');
     accountBtn.id='account-nav-btn';accountBtn.href='compte.html';accountBtn.setAttribute('aria-label','Mon compte');
