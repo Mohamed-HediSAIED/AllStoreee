@@ -42,9 +42,9 @@
   .promo-banner{background:rgba(255,255,255,.18);backdrop-filter:blur(40px) saturate(180%);-webkit-backdrop-filter:blur(40px) saturate(180%);border-bottom:1px solid rgba(255,255,255,.25);text-align:center;padding:10px 0;font-family:'Poppins',sans-serif;font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:#e9c243}
 
   /* ---------- HERO ---------- */
-  .hero-als{position:relative;width:100%;height:45vh;min-height:260px;max-height:400px;overflow:hidden;display:flex;align-items:center;justify-content:center}
-  .hero-als img.hero-bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
-  .hero-als .hero-overlay{position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.35) 0%,rgba(0,0,0,.6) 100%)}
+  .hero-als{position:relative;width:100%;padding:120px 0 60px;display:flex;align-items:center;justify-content:center;background:transparent}
+  .hero-als img.hero-bg{display:none}
+  .hero-als .hero-overlay{display:none}
   .hero-als .hero-content{position:relative;z-index:2;text-align:center;padding:0 24px;max-width:900px}
   .hero-als h1{font-family:'Poppins',sans-serif;font-size:clamp(26px,5vw,48px);font-weight:300;color:#fff;letter-spacing:.01em;line-height:1.2;margin:0 0 16px}
   .hero-als h1 strong{font-weight:700}
@@ -80,7 +80,7 @@
   @media(max-width:600px){.als-review-card{flex:0 0 260px;padding:20px}}
 
   /* ---------- SECTIONS ---------- */
-  .als-sec{padding:40px 0 36px;background:rgba(0,0,0,.65)}
+  .als-sec{padding:40px 0 36px;background:transparent}
   .als-sec-head{text-align:center;margin-bottom:20px;padding:0 20px}
   .als-sec-title{font-family:'Poppins',sans-serif;font-size:22px;font-weight:800;text-transform:uppercase;color:#fff;margin:0;letter-spacing:.02em}
   .als-sec-title em{font-family:'Cormorant',serif;font-weight:500;font-style:italic;color:rgba(255,255,255,.5)}
@@ -116,7 +116,7 @@
   .als-coll-card .als-coll-btn{font-family:'Poppins',sans-serif;font-size:9px;font-weight:600;text-transform:uppercase;color:#fff;background:rgba(255,255,255,.2);padding:6px 14px;border-radius:20px}
 
   /* ---------- VU SUR INSTAGRAM ---------- */
-  .als-insta-section{padding:0;background:rgba(0,0,0,.65)}
+  .als-insta-section{padding:0;background:transparent}
   .als-insta-row{display:flex;gap:12px;padding:0 20px;max-width:1000px;margin:0 auto}
   @media(min-width:1025px){.als-insta-row{max-width:100%!important;padding:0 40px!important}}
   .als-insta-col{flex:1;display:flex;flex-direction:column;gap:12px}
@@ -146,7 +146,7 @@
   .als-insta-pcard-btn{font-family:'Poppins',sans-serif;font-size:9px;font-weight:600;letter-spacing:.05em;text-transform:uppercase;color:rgba(255,255,255,.8);background:rgba(255,255,255,.12);backdrop-filter:blur(40px) saturate(180%);-webkit-backdrop-filter:blur(40px) saturate(180%);border:1px solid rgba(255,255,255,.2);padding:6px 20px;border-radius:20px;margin-top:8px;display:inline-block}
 
   /* ---------- NOS AMBASSADEURS — carrousel vidéos ---------- */
-  .amb-sec{padding:40px 0 36px;background:rgba(0,0,0,.65)}
+  .amb-sec{padding:40px 0 36px;background:transparent}
   .amb-sec .als-sec-head{text-align:left;padding:0 20px;margin-bottom:20px}
   .amb-sec .als-sec-title{font-size:22px}
   .amb-scroll{display:flex;gap:14px;overflow-x:auto;padding:0 20px 12px;scroll-behavior:smooth;-webkit-overflow-scrolling:touch;scrollbar-width:none}
@@ -225,7 +225,7 @@
   /* ---------- MOBILE < 600px ---------- */
   @media(max-width:600px){
     .promo-banner{font-size:9px;padding:8px 12px;letter-spacing:.06em}
-    .hero-als{height:60vh;min-height:320px}
+    .hero-als{padding:100px 0 40px}
     .hero-als h1{font-size:26px;margin-bottom:10px}
     .hero-als .hero-desc{font-size:11px;margin-bottom:20px}
     .hero-als .hero-btn{font-size:10px;padding:14px 32px}
@@ -289,7 +289,7 @@
     .als-rare-brand{font-size:10px}
     .als-rare-name{font-size:11px}
     .als-rare-price{font-size:12px}
-    .hero-als{height:45vh;min-height:280px;max-height:400px}
+    .hero-als{padding:120px 0 60px}
   }
 
   /* ---------- LARGE DESKTOP > 1400px ---------- */
