@@ -4,10 +4,10 @@
    TOKENS
 ═══════════════════════════════════════════ */
 :root {
-  --bg:      #f7f2e8;
-  --bg2:     #f0e9dc;
+  --bg:      transparent;
+  --bg2:     rgba(255,255,255,.08);
   --noir:    #0a1923;
-  --gris:    #5a6670;
+  --gris:    rgba(255,255,255,.5);
   --gold:    #e9c243;
   --gold2:   #c9a832;
   --r:       16px;
@@ -19,13 +19,17 @@
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
 body{
-  background:var(--bg);
+  background:#060508 url('IMG_9440.jpg') center/cover no-repeat fixed;
   font-family:'Poppins',sans-serif;
-  color:var(--noir);
+  color:#fff;
   -webkit-font-smoothing:antialiased;
   overflow-x:hidden;
   cursor:auto;
 }
+body::before{
+  content:'';position:fixed;inset:0;background:rgba(0,0,0,.45);z-index:0;pointer-events:none;
+}
+body>*{position:relative;z-index:1;}
 
 /* ═══════════════════════════════════════════
    GRAIN
@@ -59,11 +63,11 @@ body::after{
 ═══════════════════════════════════════════ */
 header{
   position:fixed;top:0;width:100%;
-  background:rgba(247,242,232,.95);
-  backdrop-filter:blur(16px);
-  -webkit-backdrop-filter:blur(16px);
+  background:rgba(6,5,8,.4);
+  backdrop-filter:blur(40px) saturate(180%);
+  -webkit-backdrop-filter:blur(40px) saturate(180%);
   z-index:1000;
-  border-bottom:1px solid rgba(10,25,35,.04);
+  border-bottom:1px solid rgba(255,255,255,.06);
   transition:transform .4s var(--ease),box-shadow .3s;
 }
 header.up{transform:translateY(-100%)}
@@ -79,10 +83,12 @@ nav{
   display:flex;list-style:none;gap:40px;justify-content:center;flex:1;
 }
 .nav-links a{
-  text-decoration:none;color:var(--noir);font-size:12px;
-  font-weight:400;letter-spacing:.04em;opacity:.5;transition:opacity .25s;
+  text-decoration:none;color:rgba(255,255,255,.5);font-size:12px;
+  font-weight:400;letter-spacing:.04em;transition:opacity .25s;
   position:relative;
 }
+.nav-links a:hover{color:rgba(255,255,255,.9)}
+.nav-links a.active{color:#fff}
 .nav-links a::after{
   content:'';position:absolute;bottom:-3px;left:0;right:100%;
   height:1px;background:var(--gold);transition:right .3s var(--ease);
@@ -292,7 +298,9 @@ nav{
    FOOTER
 ═══════════════════════════════════════════ */
 footer{
-  background:var(--noir);
+  background:rgba(0,0,0,.7);
+  backdrop-filter:blur(40px) saturate(180%);
+  -webkit-backdrop-filter:blur(40px) saturate(180%);
   padding:0;
 }
 
@@ -2566,6 +2574,31 @@ html {
 @media (max-width: 480px) {
   .foot-columns { grid-template-columns: 1fr; gap: 28px; }
 }
+
+/* ── GLOBAL DARK THEME OVERRIDES ────────────────────────────── */
+/* All page content: text colors */
+h1,h2,h3,h4,h5,h6{color:#fff!important}
+p,li,span,label,td,th{color:rgba(255,255,255,.7)}
+a{color:rgba(255,255,255,.8)}
+
+/* Cards & containers on all pages: glass style */
+.ap-card,.contact-card,.faq-item,.cgu-card,.suivi-card,
+.card-svc,[class*="-card"]:not(.amb-card):not(.als-hcard):not(.als-rare-card):not(.als-review-card):not(.als-coll-card):not(.als-insta-pcard){
+  background:rgba(255,255,255,.18)!important;
+  backdrop-filter:blur(40px) saturate(180%)!important;
+  -webkit-backdrop-filter:blur(40px) saturate(180%)!important;
+  border:1px solid rgba(255,255,255,.25)!important;
+  box-shadow:none!important;
+  color:#fff!important;
+}
+
+/* Form inputs */
+input,textarea,select{
+  background:rgba(255,255,255,.1)!important;
+  border-color:rgba(255,255,255,.15)!important;
+  color:#fff!important;
+}
+input::placeholder,textarea::placeholder{color:rgba(255,255,255,.35)!important}
 
 /* ── LUXURY PRINT STYLES ────────────────────────────────────── */
 @media print {
