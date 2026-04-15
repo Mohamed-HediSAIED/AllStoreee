@@ -588,6 +588,15 @@ function submitOrder() {
   goStep(7);
 }
 
+// ── URL category pre-selection ────────────────────────────────
+(function(){
+  var params = new URLSearchParams(window.location.search);
+  var cat = params.get('category');
+  if(!cat) return;
+  var chip = document.querySelector('.chip[data-type="' + cat + '"]');
+  if(chip) chip.click();
+})();
+
 // ── URL product pre-selection ────────────────────────────────
 (function(){
   if(typeof PRODUCTS === 'undefined') return;
