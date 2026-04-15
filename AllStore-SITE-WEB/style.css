@@ -322,10 +322,12 @@ footer{
   display:flex;gap:10px;margin-top:16px;max-width:420px;
 }
 .foot-nl-input{
-  flex:1;padding:14px 18px;border-radius:8px;border:1px solid rgba(255,255,255,.15);
-  background:rgba(255,255,255,.08);color:#fff;font-family:'Poppins',sans-serif;font-size:13px;
-  outline:none;transition:border .2s;
+  flex:1;padding:14px 18px;border-radius:12px;border:1px solid rgba(255,255,255,.15);
+  background:rgba(255,255,255,.08);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
+  color:#fff;font-family:'Poppins',sans-serif;font-size:13px;
+  outline:none;transition:all .25s;
 }
+.foot-nl-input:focus{border-color:rgba(233,194,67,.4);box-shadow:0 0 0 3px rgba(233,194,67,.08)}
 .foot-nl-input:focus{border-color:rgba(255,255,255,.4)}
 .foot-nl-input::placeholder{color:rgba(255,255,255,.35)}
 .foot-nl-msg{font-size:12px;margin-top:8px;min-height:18px}

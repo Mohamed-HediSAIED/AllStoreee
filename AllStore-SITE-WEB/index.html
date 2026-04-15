@@ -45,17 +45,17 @@
   .hero-als{position:relative;width:100%;height:45vh;min-height:260px;max-height:400px;overflow:hidden;display:flex;align-items:center;justify-content:center}
   .hero-als img.hero-bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
   .hero-als .hero-overlay{position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.25) 0%,rgba(0,0,0,.55) 100%)}
-  .hero-als .hero-content{position:relative;z-index:2;text-align:center;padding:0 24px;max-width:900px}
+  .hero-als .hero-content{position:relative;z-index:2;text-align:center;padding:36px 40px;max-width:900px;background:rgba(255,255,255,.08);backdrop-filter:blur(24px) saturate(140%);-webkit-backdrop-filter:blur(24px) saturate(140%);border:1px solid rgba(255,255,255,.12);border-radius:32px}
   .hero-als h1{font-family:'Poppins',sans-serif;font-size:clamp(26px,5vw,48px);font-weight:300;color:#fff;letter-spacing:.01em;line-height:1.2;margin:0 0 16px}
   .hero-als h1 strong{font-weight:700}
   .hero-als .hero-desc{font-family:'Poppins',sans-serif;font-size:clamp(12px,1.5vw,16px);color:rgba(255,255,255,.75);margin:0 0 32px;font-weight:300}
-  .hero-als .hero-btn{display:inline-block;font-family:'Poppins',sans-serif;font-size:12px;font-weight:600;letter-spacing:.15em;text-transform:uppercase;color:#fff;background:rgba(255,255,255,.12);backdrop-filter:blur(15px);-webkit-backdrop-filter:blur(15px);border:1px solid rgba(255,255,255,.25);padding:16px 48px;border-radius:30px;text-decoration:none;transition:all .3s}
-  .hero-als .hero-btn:hover{background:rgba(255,255,255,.25)}
+  .hero-als .hero-btn{display:inline-block;font-family:'Poppins',sans-serif;font-size:12px;font-weight:600;letter-spacing:.15em;text-transform:uppercase;color:#fff;background:rgba(255,255,255,.15);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border:1px solid rgba(255,255,255,.3);padding:16px 48px;border-radius:30px;text-decoration:none;transition:all .3s}
+  .hero-als .hero-btn:hover{background:rgba(255,255,255,.3);border-color:rgba(255,255,255,.45)}
 
   /* ---------- SEARCH BAR ---------- */
   .als-search-sec{padding:20px 20px 10px;background:var(--bg2,#f5f2ec)}
   .als-search-wrap{max-width:100%;margin:0 auto;position:relative}
-  .als-search-input{width:100%;font-family:'Poppins',sans-serif;font-size:14px;background:rgba(255,255,255,.7);backdrop-filter:blur(10px);border:1.5px solid rgba(10,25,35,.1);border-radius:30px;padding:16px 20px 16px 48px;outline:none;transition:all .2s;box-sizing:border-box;color:var(--noir,#0a1923)}
+  .als-search-input{width:100%;font-family:'Poppins',sans-serif;font-size:14px;background:rgba(255,255,255,.55);backdrop-filter:blur(20px) saturate(150%);-webkit-backdrop-filter:blur(20px) saturate(150%);border:1.5px solid rgba(10,25,35,.08);border-radius:30px;padding:16px 20px 16px 48px;outline:none;transition:all .25s;box-sizing:border-box;color:var(--noir,#0a1923);box-shadow:0 4px 24px rgba(0,0,0,.04)}
   .als-search-input::placeholder{color:#aaa;font-weight:300}
   .als-search-input:focus{border-color:var(--gold2,#c5a44e);box-shadow:0 0 0 3px rgba(197,164,78,.12)}
   .als-search-icon{position:absolute;left:18px;top:50%;transform:translateY(-50%);width:18px;height:18px;stroke:var(--gris,#6a7a8a);fill:none;stroke-width:2;pointer-events:none}
@@ -72,7 +72,8 @@
   .als-search-empty{padding:20px;text-align:center;font-family:'Poppins',sans-serif;font-size:13px;color:var(--gris,#6a7a8a)}
 
   /* ---------- AVIS CLIENTS ---------- */
-  .als-review-card{flex:0 0 300px;background:#fbfbfd;border-radius:20px;padding:24px 24px 20px;scroll-snap-align:start}
+  .als-review-card{flex:0 0 300px;background:rgba(251,251,253,.7);backdrop-filter:blur(14px) saturate(130%);-webkit-backdrop-filter:blur(14px) saturate(130%);border:1px solid rgba(255,255,255,.5);border-radius:20px;padding:24px 24px 20px;scroll-snap-align:start;transition:all .3s}
+  .als-review-card:hover{background:rgba(255,255,255,.9);box-shadow:0 8px 28px rgba(0,0,0,.05);transform:translateY(-2px)}
   .als-review-stars{color:#e9c243;font-size:16px;letter-spacing:2px;margin-bottom:12px}
   .als-review-text{font-family:'Poppins',sans-serif;font-size:13px;color:var(--gris,#6a7a8a);font-style:italic;line-height:1.6;margin:0 0 16px}
   .als-review-author{font-family:'Poppins',sans-serif;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--noir,#0a1923);display:block}
@@ -93,7 +94,8 @@
   /* ---------- LA SÉLECTION — scroll horizontal ---------- */
   .als-hscroll{display:flex;gap:15px;overflow-x:auto;padding:0 20px 8px;scroll-behavior:smooth;-webkit-overflow-scrolling:touch;scrollbar-width:none}
   .als-hscroll::-webkit-scrollbar{display:none}
-  .als-hcard{flex:0 0 190px;scroll-snap-align:start;text-decoration:none;background:#fbfbfd;border-radius:20px;overflow:hidden;padding:15px;transition:.3s ease}
+  .als-hcard{flex:0 0 190px;scroll-snap-align:start;text-decoration:none;background:rgba(251,251,253,.75);backdrop-filter:blur(12px) saturate(130%);-webkit-backdrop-filter:blur(12px) saturate(130%);border:1px solid rgba(255,255,255,.6);border-radius:20px;overflow:hidden;padding:15px;transition:.3s ease}
+  .als-hcard:hover{background:rgba(255,255,255,.9);box-shadow:0 8px 32px rgba(0,0,0,.06);transform:translateY(-3px)}
   .als-hcard-img{position:relative;width:100%;aspect-ratio:1;display:flex;align-items:center;justify-content:center;margin-bottom:10px}
   .als-hcard-img img{width:100%;height:auto;object-fit:cover;mix-blend-mode:multiply}
   .als-hcard-info{padding:0}
@@ -196,7 +198,8 @@
   /* ---------- ARTICLES RARES — scroll horizontal ---------- */
   .als-rare-grid{display:flex;gap:15px;overflow-x:auto;padding:0 20px 12px;scroll-behavior:smooth;-webkit-overflow-scrolling:touch;scrollbar-width:none}
   .als-rare-grid::-webkit-scrollbar{display:none}
-  .als-rare-card{flex:0 0 190px;scroll-snap-align:start;text-decoration:none;background:#fbfbfd;border-radius:20px;overflow:hidden;padding:15px;transition:.3s ease}
+  .als-rare-card{flex:0 0 190px;scroll-snap-align:start;text-decoration:none;background:rgba(251,251,253,.75);backdrop-filter:blur(12px) saturate(130%);-webkit-backdrop-filter:blur(12px) saturate(130%);border:1px solid rgba(255,255,255,.6);border-radius:20px;overflow:hidden;padding:15px;transition:.3s ease}
+  .als-rare-card:hover{background:rgba(255,255,255,.9);box-shadow:0 8px 32px rgba(0,0,0,.06);transform:translateY(-3px)}
   .als-rare-img{width:100%;aspect-ratio:1;display:flex;align-items:center;justify-content:center;margin-bottom:10px}
   .als-rare-img img{width:100%;height:auto;object-fit:cover;mix-blend-mode:multiply}
   .als-rare-info{padding:12px 14px 16px;text-align:left}
