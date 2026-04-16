@@ -1623,7 +1623,16 @@ body.nav-open #ham-btn span:nth-child(3){transform:translateY(-6.5px) rotate(-45
 /* ── DARK BODY MODE ─────────────────────────────────────────── */
 .body-dark { background: #060508 url('store_bg.jpeg') center top/cover no-repeat fixed; color: #fff; }
 @media(max-width:768px) {
-  .body-dark { background-attachment: scroll; background-size: cover; background-position: 60% top; }
+  .body-dark { background-image: none; isolation: isolate; }
+  .body-dark::before {
+    content: '';
+    position: fixed;
+    top: 0; left: 0;
+    width: 100vw; height: 100vh;
+    background: url('store_bg.jpeg') 60% top / cover no-repeat;
+    z-index: -1;
+    pointer-events: none;
+  }
 }
 .body-dark::after { opacity: 0.015; }
 
