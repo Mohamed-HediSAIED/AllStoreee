@@ -110,8 +110,9 @@ const FxStage = (() => {
   }
 
   async function mountScenesFromDOM() {
-    const main = document.querySelector('[data-fx-scene]') || document.body;
-    const names = (main.getAttribute('data-fx-scene') || 'ambient-mesh').split(/\s+/).filter(Boolean);
+    const main = document.querySelector('[data-fx-scene]');
+    if (!main) return;
+    const names = (main.getAttribute('data-fx-scene') || '').split(/\s+/).filter(Boolean);
 
     for (const name of names) {
       const factory = state.sceneRegistry.get(name);
@@ -150,6 +151,10 @@ const FxStage = (() => {
     loop();
   }
 
+  function hasSceneRequest() {
+    return !!document.querySelector('[data-fx-scene]');
+  }
+
   async function boot() {
     if (state.booted) return;
     state.booted = true;
@@ -157,9 +162,8 @@ const FxStage = (() => {
     state.enabled = isEnabled();
     detectCapabilities();
 
-    if (!state.enabled) {
-      return;
-    }
+    if (!state.enabled) return;
+    if (!hasSceneRequest()) return;
 
     const shouldRenderWebGL = injectNodes();
     if (!shouldRenderWebGL) return;
@@ -168,6 +172,7 @@ const FxStage = (() => {
       await loadThree();
       initRenderer();
       await mountScenesFromDOM();
+      if (state.activeScenes.size === 0) return;
       state.canvas.classList.add('fx-ready');
       state.fallback && state.fallback.classList.add('fx-ready');
       startLoop();
