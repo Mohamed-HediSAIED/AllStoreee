@@ -35,6 +35,12 @@
         .apple-emoji{width:24px;height:24px;vertical-align:middle;display:inline-block}
         .chip:hover{background:rgba(255,255,255,.22);transform:translateY(-2px)}
         .chip.selected{border-color:rgba(255,255,255,.5);background:rgba(255,255,255,.3);color:#fff}
+        .brand-search-wrap{position:relative;margin-bottom:14px}
+        .brand-search-icon{position:absolute;left:16px;top:50%;transform:translateY(-50%);pointer-events:none}
+        .brand-search-input{width:100%;padding:14px 18px 14px 44px;background:rgba(255,255,255,.1);border:2px solid rgba(255,255,255,.15);border-radius:16px;font-size:15px;font-weight:500;color:#fff;font-family:'Poppins',sans-serif;outline:none;transition:all .22s}
+        .brand-search-input::placeholder{color:rgba(255,255,255,.4);font-weight:400}
+        .brand-search-input:focus{border-color:rgba(255,255,255,.4);background:rgba(255,255,255,.16)}
+        .brand-no-result{text-align:center;padding:24px 16px;color:rgba(255,255,255,.45);font-size:14px;font-weight:500}
         .opt-list{display:flex;flex-direction:column;gap:10px;max-height:420px;overflow-y:auto;padding-right:4px;scrollbar-width:thin;scrollbar-color:#d4ccc0 transparent}
         .opt-list::-webkit-scrollbar{width:4px}
         .opt-list::-webkit-scrollbar-thumb{background:rgba(255,255,255,.25);border-radius:4px}
@@ -202,6 +208,10 @@
         <h2 class="step-title" id="s2title">Quelle marque ?</h2>
         <p class="step-sub" id="s2sub">Choisissez parmi les marques disponibles.</p>
         <div class="recap-pills" id="recap2"></div>
+        <div class="brand-search-wrap">
+            <svg class="brand-search-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,.5)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+            <input type="text" id="brandSearch" class="brand-search-input" placeholder="Rechercher une marque…" autocomplete="off">
+        </div>
         <div class="opt-list" id="brandList"></div>
         <div id="autreDescWrap" style="display:none">
             <div class="form-group">
@@ -437,6 +447,7 @@ document.getElementById('typeGrid').addEventListener('click', function(e) {
 
     // Afficher le textarea au lieu de la liste de marques
     document.getElementById('brandList').style.display = 'none';
+    document.getElementById('brandSearch').parentElement.style.display = 'none';
     document.getElementById('autreDescWrap').style.display = 'block';
     document.getElementById('s2eyebrow').textContent = 'Étape 2 — Votre demande';
     document.getElementById('s2title').textContent = 'Décrivez votre demande';
@@ -454,6 +465,8 @@ document.getElementById('typeGrid').addEventListener('click', function(e) {
 
   // Remettre l'étape 2 en mode normal (liste de marques)
   document.getElementById('brandList').style.display = '';
+  document.getElementById('brandSearch').value = '';
+  document.getElementById('brandSearch').parentElement.style.display = '';
   document.getElementById('autreDescWrap').style.display = 'none';
   document.getElementById('s2eyebrow').textContent = 'Étape 2 — Marque';
   document.getElementById('s2title').textContent = 'Quelle marque ?';
@@ -488,6 +501,29 @@ document.getElementById('btnAutreDesc').addEventListener('click', function() {
   saveCurrentArticle();
   renderCartList();
   goStep(6);
+});
+
+// ── Étape 2 : recherche/filtre de marques ──
+document.getElementById('brandSearch').addEventListener('input', function() {
+  var query = this.value.trim().toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+  var items = document.querySelectorAll('#brandList .opt-item');
+  var hasResult = false;
+  items.forEach(function(el) {
+    var name = el.dataset.brand.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+    var match = !query || name.indexOf(query) !== -1;
+    el.style.display = match ? '' : 'none';
+    if (match) hasResult = true;
+  });
+  // Remove existing no-result msg
+  var noRes = document.getElementById('brandNoResult');
+  if (noRes) noRes.remove();
+  if (!hasResult && query) {
+    var msg = document.createElement('div');
+    msg.id = 'brandNoResult';
+    msg.className = 'brand-no-result';
+    msg.textContent = 'Aucune marque trouvée pour « ' + this.value.trim() + ' »';
+    document.getElementById('brandList').appendChild(msg);
+  }
 });
 
 // ── Étape 2 : délégation d'événement sur la liste des marques ──
