@@ -19,20 +19,34 @@
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
 body{
-  background:#060508 url('IMG_9440.jpg') center/cover no-repeat fixed;
+  background:#060508;
   font-family:'Poppins',sans-serif;
   color:#fff;
   -webkit-font-smoothing:antialiased;
   overflow-x:hidden;
   cursor:auto;
 }
+/* Background image layer — fixed without using background-attachment (iOS fix) */
+body::after{
+  content:'';
+  position:fixed;
+  top:0;left:0;right:0;bottom:0;
+  width:100%;height:100%;
+  background:url('IMG_9440.jpg') center center / cover no-repeat;
+  z-index:-2;
+  pointer-events:none;
+}
 @media(max-width:768px){
-  body{background:#060508 url('IMG_9422.jpg') center/cover no-repeat fixed;}
+  body::after{background-image:url('IMG_9422.jpg')}
 }
 body::before{
-  content:'';position:fixed;inset:0;background:rgba(0,0,0,.45);z-index:0;pointer-events:none;
+  content:'';
+  position:fixed;
+  top:0;left:0;right:0;bottom:0;
+  background:rgba(0,0,0,.45);
+  z-index:-1;
+  pointer-events:none;
 }
-body>*{position:relative;z-index:1;}
 
 /* ═══════════════════════════════════════════
    GRAIN
