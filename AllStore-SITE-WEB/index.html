@@ -314,13 +314,14 @@
   <img src="IMG_9440.jpg" alt="AllStore Hero" class="hero-bg">
   <div class="hero-overlay"></div>
   <div class="hero-content">
-    <h1>Le luxe accessible.<br>Sans compromis.</h1>
-    <p class="hero-desc">Sourcing d'exception, qualité vérifiée, livraison partout en Europe.</p>
-    <a href="assistant.html" class="hero-btn">Découvrir la boutique</a>
+    <h1 data-fx-kinetic>Le luxe accessible.<br>Sans compromis.</h1>
+    <p class="hero-desc fx-reveal" style="transition-delay:350ms">Sourcing d'exception, qualité vérifiée, livraison partout en Europe.</p>
+    <a href="assistant.html" class="hero-btn fx-reveal" style="transition-delay:480ms">Découvrir la boutique</a>
   </div>
 </section>
 
-<!-- Search bar removed -->
+<!-- Marquee iridescent — signature kinetic band -->
+<div data-fx-marquee="SOURCING · EXCEPTION · ARTISANAT · EXCELLENCE" aria-hidden="true"></div>
 
 <!-- ═══════════════════════════════════════════
      1) LA SÉLECTION — Scroll horizontal
@@ -1031,5 +1032,6 @@ function scrollRow(arrow, dir) {
 </script>
 
 <script type="module" src="apple/fx/index.js"></script>
+<script type="module" src="apple/fx/kinetic.js"></script>
 </body>
 </html>

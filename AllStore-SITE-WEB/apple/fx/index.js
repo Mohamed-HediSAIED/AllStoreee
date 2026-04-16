@@ -36,9 +36,8 @@ const FxStage = (() => {
     try {
       const flag = new URLSearchParams(window.location.search).get('fx');
       if (flag === '0') return false;
-      if (flag === '1') return true;
     } catch (_) {}
-    return false;
+    return true;
   }
 
   function injectNodes() {
