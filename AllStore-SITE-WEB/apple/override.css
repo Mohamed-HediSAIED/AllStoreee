@@ -854,3 +854,636 @@ footer, .foot, .footer-dark {
 body::after {
   opacity: 0 !important;
 }
+
+
+/* ════════════════════════════════════════════════════════════════════
+   ASSISTANT TUNNEL (assistant.html) — habillage visuel uniquement
+   ATTENTION : classes HTML inchangées (sélectionnées par JS)
+   Seuls les styles sont transformés
+   ════════════════════════════════════════════════════════════════════ */
+
+/* Container parent */
+.assistant-wrap {
+  background: var(--apple-systemBackground) !important;
+}
+
+/* Grande carte glass du tunnel */
+.assistant-card {
+  background: var(--glass-thick-bg) !important;
+  -webkit-backdrop-filter: var(--glass-thick-blur);
+  backdrop-filter: var(--glass-thick-blur);
+  border: var(--glass-border) !important;
+  border-radius: var(--apple-radius-2xl) !important;
+  box-shadow: var(--glass-highlight), var(--apple-shadow-3) !important;
+  padding: var(--apple-space-8) var(--apple-space-7) !important;
+  max-width: 720px !important;
+}
+
+@media (max-width: 768px) {
+  .assistant-card {
+    padding: var(--apple-space-6) var(--apple-space-5) !important;
+    border-radius: var(--apple-radius-xl) !important;
+  }
+}
+
+/* Progress bar */
+.progress-wrap {
+  margin-bottom: var(--apple-space-8) !important;
+}
+.progress-bar {
+  gap: var(--apple-space-1) !important;
+}
+.progress-step {
+  height: 3px !important;
+  background: var(--apple-quaternarySystemFill) !important;
+  border-radius: var(--apple-radius-full) !important;
+  transition: background-color var(--apple-dur-base) var(--apple-ease-standard);
+}
+.progress-step.active {
+  background: var(--apple-systemBlue) !important;
+}
+.progress-step.done {
+  background: var(--apple-systemBlue) !important;
+}
+.progress-label {
+  font-family: var(--apple-font-text) !important;
+  font-size: var(--apple-t-caption2-size) !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.04em !important;
+  color: var(--apple-secondaryLabel) !important;
+}
+
+/* Step titles */
+.step-eyebrow {
+  font-family: var(--apple-font-text) !important;
+  font-size: var(--apple-t-caption1-size) !important;
+  font-weight: 700 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.04em !important;
+  color: var(--apple-systemBlue) !important;
+}
+.step-title {
+  font-family: var(--apple-font-display) !important;
+  font-size: var(--apple-t-title1-size) !important;
+  font-weight: 700 !important;
+  letter-spacing: -0.02em !important;
+  color: var(--apple-label) !important;
+  line-height: 1.15 !important;
+  margin: var(--apple-space-1) 0 var(--apple-space-2) !important;
+}
+@media (min-width: 768px) {
+  .step-title {
+    font-size: var(--apple-t-largeTitle-size) !important;
+  }
+}
+.step-sub {
+  font-family: var(--apple-font-text) !important;
+  font-size: var(--apple-t-body-size) !important;
+  color: var(--apple-secondaryLabel) !important;
+  line-height: 1.4 !important;
+  margin-bottom: var(--apple-space-7) !important;
+}
+
+/* Recap pills (article type, marque déjà choisis) */
+.recap-pills {
+  gap: var(--apple-space-2) !important;
+  margin-bottom: var(--apple-space-6) !important;
+}
+.recap-pill {
+  background: var(--apple-systemBlue-tint) !important;
+  color: var(--apple-systemBlue) !important;
+  border-radius: var(--apple-radius-full) !important;
+  padding: 4px var(--apple-space-3) !important;
+  font-family: var(--apple-font-text) !important;
+  font-size: var(--apple-t-footnote-size) !important;
+  font-weight: 500 !important;
+}
+
+/* ─── CHIPS (étape 1 : type d'article) ─── */
+.chips-grid {
+  gap: var(--apple-space-3) !important;
+}
+.chip {
+  background: var(--apple-secondarySystemGroupedBackground) !important;
+  border: 1.5px solid transparent !important;
+  border-radius: var(--apple-radius-lg) !important;
+  padding: var(--apple-space-5) var(--apple-space-4) !important;
+  font-family: var(--apple-font-text) !important;
+  font-size: var(--apple-t-headline-size) !important;
+  font-weight: 600 !important;
+  color: var(--apple-label) !important;
+  box-shadow: var(--apple-shadow-1);
+  transition: all var(--apple-dur-fast) var(--apple-ease-standard);
+}
+.chip:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--apple-shadow-2);
+  background: var(--apple-tertiarySystemGroupedBackground) !important;
+}
+.chip:active {
+  transform: scale(var(--apple-tap-scale));
+  transition-duration: var(--apple-dur-instant);
+}
+.chip.selected {
+  background: var(--apple-systemBlue) !important;
+  border-color: var(--apple-systemBlue) !important;
+  color: #fff !important;
+}
+.chip .chip-icon {
+  font-size: 32px !important;
+  margin-bottom: var(--apple-space-1) !important;
+}
+.apple-emoji {
+  width: 32px !important;
+  height: 32px !important;
+}
+
+/* ─── OPT-ITEM (étape 2 : liste des marques) ─── */
+.opt-list {
+  max-height: 420px !important;
+  gap: var(--apple-space-1) !important;
+  background: var(--apple-systemBackground) !important;
+  border-radius: var(--apple-radius-lg) !important;
+  padding: var(--apple-space-1) !important;
+}
+.opt-list::-webkit-scrollbar-thumb {
+  background: var(--apple-systemGray3) !important;
+}
+.opt-item {
+  background: transparent !important;
+  border: none !important;
+  border-bottom: 0.5px solid var(--apple-separator) !important;
+  border-radius: 0 !important;
+  padding: var(--apple-space-4) var(--apple-space-4) !important;
+  font-family: var(--apple-font-text) !important;
+  font-size: var(--apple-t-body-size) !important;
+  font-weight: 500 !important;
+  color: var(--apple-label) !important;
+  transition: background-color var(--apple-dur-fast);
+}
+.opt-item:last-child {
+  border-bottom: none !important;
+}
+.opt-item:hover {
+  background: var(--apple-tertiarySystemFill) !important;
+}
+.opt-item.selected {
+  background: var(--apple-systemBlue-tint) !important;
+  color: var(--apple-systemBlue) !important;
+}
+.opt-item .opt-arrow {
+  color: var(--apple-tertiaryLabel) !important;
+  font-size: 16px !important;
+}
+.opt-item:hover .opt-arrow {
+  color: var(--apple-systemBlue) !important;
+}
+
+/* Brand search wrapper (barre de recherche dans step 2) */
+.brand-search-wrap {
+  position: relative !important;
+  margin-bottom: var(--apple-space-4) !important;
+}
+.brand-search-icon {
+  stroke: var(--apple-tertiaryLabel) !important;
+  left: 16px !important;
+}
+.brand-search-input {
+  background: var(--apple-tertiarySystemFill) !important;
+  border: 1.5px solid transparent !important;
+  border-radius: var(--apple-radius-full) !important;
+  padding: 12px var(--apple-space-5) 12px 44px !important;
+  font-family: var(--apple-font-text) !important;
+  font-size: var(--apple-t-body-size) !important;
+  font-weight: 400 !important;
+  color: var(--apple-label) !important;
+  height: 44px;
+  transition: all var(--apple-dur-fast) var(--apple-ease-standard) !important;
+}
+.brand-search-input::placeholder {
+  color: var(--apple-placeholderText) !important;
+  font-weight: 400 !important;
+}
+.brand-search-input:focus {
+  background: var(--apple-systemBackground) !important;
+  border-color: var(--apple-systemBlue) !important;
+  box-shadow: 0 0 0 3px var(--apple-systemBlue-tint) !important;
+}
+.brand-no-result {
+  color: var(--apple-secondaryLabel) !important;
+  font-family: var(--apple-font-text) !important;
+  font-size: var(--apple-t-footnote-size) !important;
+}
+
+/* ─── SIZE TABS + SIZE CHIPS (étape 3) ─── */
+.size-tabs {
+  background: var(--apple-tertiarySystemFill) !important;
+  border-radius: var(--apple-radius-sm) !important;
+  padding: 2px !important;
+  gap: 2px !important;
+  margin-bottom: var(--apple-space-5) !important;
+}
+.size-tab {
+  background: transparent !important;
+  color: var(--apple-label) !important;
+  font-family: var(--apple-font-text) !important;
+  font-size: var(--apple-t-subheadline-size) !important;
+  font-weight: 500 !important;
+  border-radius: calc(var(--apple-radius-sm) - 2px) !important;
+  padding: 10px !important;
+  transition: all var(--apple-dur-base) var(--apple-ease-standard);
+}
+.size-tab.active {
+  background: var(--apple-systemBackground) !important;
+  color: var(--apple-label) !important;
+  font-weight: 600 !important;
+  box-shadow: var(--apple-shadow-1) !important;
+}
+
+.size-grid {
+  gap: var(--apple-space-2) !important;
+}
+.size-chip {
+  background: var(--apple-tertiarySystemFill) !important;
+  border: 1.5px solid transparent !important;
+  border-radius: var(--apple-radius-md) !important;
+  padding: var(--apple-space-3) var(--apple-space-2) !important;
+  font-family: var(--apple-font-text) !important;
+  font-size: var(--apple-t-subheadline-size) !important;
+  font-weight: 600 !important;
+  color: var(--apple-label) !important;
+  transition: all var(--apple-dur-fast) var(--apple-ease-standard);
+}
+.size-chip:hover {
+  background: var(--apple-secondarySystemFill) !important;
+}
+.size-chip:active {
+  transform: scale(var(--apple-tap-scale));
+}
+.size-chip.selected {
+  background: var(--apple-systemBlue) !important;
+  color: #fff !important;
+  border-color: var(--apple-systemBlue) !important;
+}
+
+/* ─── COLOR CHIPS (étape coloris) ─── */
+.color-chip {
+  border: 2px solid var(--apple-separator) !important;
+  transition: all var(--apple-dur-fast) var(--apple-ease-standard);
+}
+.color-chip.selected {
+  border-color: var(--apple-systemBlue) !important;
+  transform: scale(1.1);
+  box-shadow: 0 0 0 3px var(--apple-systemBlue-tint);
+}
+
+/* ─── FORMS (step 6 coordonnées) ─── */
+.form-group {
+  margin-bottom: var(--apple-space-4) !important;
+}
+.form-group label {
+  font-family: var(--apple-font-text) !important;
+  font-size: var(--apple-t-footnote-size) !important;
+  font-weight: 500 !important;
+  color: var(--apple-secondaryLabel) !important;
+  text-transform: none !important;
+  letter-spacing: 0 !important;
+  display: block !important;
+  margin-bottom: var(--apple-space-2) !important;
+}
+.form-control {
+  background: var(--apple-tertiarySystemFill) !important;
+  border: 1.5px solid transparent !important;
+  border-radius: var(--apple-radius-md) !important;
+  padding: 12px var(--apple-space-4) !important;
+  font-family: var(--apple-font-text) !important;
+  font-size: var(--apple-t-body-size) !important;
+  color: var(--apple-label) !important;
+  min-height: 44px !important;
+  width: 100% !important;
+  transition: all var(--apple-dur-fast) var(--apple-ease-standard) !important;
+}
+.form-control::placeholder {
+  color: var(--apple-placeholderText) !important;
+}
+.form-control:focus {
+  background: var(--apple-systemBackground) !important;
+  border-color: var(--apple-systemBlue) !important;
+  box-shadow: 0 0 0 3px var(--apple-systemBlue-tint) !important;
+  outline: none !important;
+}
+textarea.form-control {
+  min-height: 120px !important;
+  padding: var(--apple-space-3) var(--apple-space-4) !important;
+  resize: vertical !important;
+}
+
+.form-grid {
+  display: grid !important;
+  grid-template-columns: 1fr 1fr !important;
+  gap: var(--apple-space-3) !important;
+}
+@media (max-width: 600px) {
+  .form-grid { grid-template-columns: 1fr !important; }
+}
+
+/* ─── BUTTONS (step nav) ─── */
+.btn-row {
+  display: flex !important;
+  gap: var(--apple-space-3) !important;
+  margin-top: var(--apple-space-6) !important;
+}
+
+.btn-primary {
+  background: var(--apple-systemBlue) !important;
+  color: #fff !important;
+  border: none !important;
+  border-radius: var(--apple-radius-full) !important;
+  padding: 0 var(--apple-space-6) !important;
+  height: 52px !important;
+  font-family: var(--apple-font-text) !important;
+  font-size: var(--apple-t-headline-size) !important;
+  font-weight: 600 !important;
+  letter-spacing: 0 !important;
+  text-transform: none !important;
+  cursor: pointer !important;
+  flex: 1 !important;
+  transition: all var(--apple-dur-fast) var(--apple-ease-standard) !important;
+  box-shadow: var(--apple-shadow-2) !important;
+}
+.btn-primary:hover {
+  background: var(--apple-systemBlue-pressed) !important;
+  box-shadow: var(--apple-shadow-3) !important;
+}
+.btn-primary:active {
+  transform: scale(var(--apple-tap-scale)) !important;
+}
+.btn-primary:disabled {
+  background: var(--apple-systemGray4) !important;
+  color: var(--apple-tertiaryLabel) !important;
+  cursor: not-allowed !important;
+  box-shadow: none !important;
+  transform: none !important;
+}
+
+.btn-back {
+  background: var(--apple-secondarySystemFill) !important;
+  color: var(--apple-label) !important;
+  border: none !important;
+  border-radius: var(--apple-radius-full) !important;
+  padding: 0 var(--apple-space-5) !important;
+  height: 52px !important;
+  font-family: var(--apple-font-text) !important;
+  font-size: var(--apple-t-subheadline-size) !important;
+  font-weight: 500 !important;
+  letter-spacing: 0 !important;
+  text-transform: none !important;
+  cursor: pointer !important;
+  transition: all var(--apple-dur-fast) var(--apple-ease-standard) !important;
+}
+.btn-back:hover {
+  background: var(--apple-systemFill) !important;
+}
+
+/* ─── CART LIST (step 6 récap multi-articles) ─── */
+.cart-list {
+  background: var(--apple-secondarySystemGroupedBackground) !important;
+  border-radius: var(--apple-radius-xl) !important;
+  padding: var(--apple-space-2) !important;
+  margin-bottom: var(--apple-space-4) !important;
+}
+.cart-item {
+  padding: var(--apple-space-4) !important;
+  border-bottom: 0.5px solid var(--apple-separator) !important;
+  border-radius: 0 !important;
+  gap: var(--apple-space-3) !important;
+}
+.cart-item:last-child {
+  border-bottom: none !important;
+}
+.cart-item-num {
+  background: var(--apple-systemBlue) !important;
+  color: #fff !important;
+  border-radius: var(--apple-radius-full) !important;
+  font-family: var(--apple-font-text) !important;
+  font-size: var(--apple-t-subheadline-size) !important;
+  font-weight: 700 !important;
+  min-width: 32px !important;
+  height: 32px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  flex-shrink: 0 !important;
+}
+.cart-item-title {
+  font-family: var(--apple-font-text) !important;
+  font-size: var(--apple-t-headline-size) !important;
+  font-weight: 600 !important;
+  color: var(--apple-label) !important;
+}
+.cart-item-details {
+  font-size: var(--apple-t-footnote-size) !important;
+  color: var(--apple-secondaryLabel) !important;
+  margin-top: 2px !important;
+}
+.cart-item-remove {
+  background: transparent !important;
+  color: var(--apple-systemRed) !important;
+  border: none !important;
+  cursor: pointer !important;
+  font-size: 20px !important;
+  padding: var(--apple-space-2) !important;
+  border-radius: var(--apple-radius-full) !important;
+  transition: background-color var(--apple-dur-fast);
+}
+.cart-item-remove:hover {
+  background: color-mix(in srgb, var(--apple-systemRed) 12%, transparent) !important;
+}
+.cart-count {
+  background: var(--apple-systemBlue) !important;
+  color: #fff !important;
+  border-radius: var(--apple-radius-full) !important;
+  min-width: 24px !important;
+  height: 24px !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  font-size: var(--apple-t-footnote-size) !important;
+  font-weight: 700 !important;
+  padding: 0 var(--apple-space-2) !important;
+  margin-left: var(--apple-space-2) !important;
+}
+
+.btn-add-article {
+  background: var(--apple-systemBlue-tint) !important;
+  color: var(--apple-systemBlue) !important;
+  border: 1.5px dashed var(--apple-systemBlue) !important;
+  border-radius: var(--apple-radius-lg) !important;
+  padding: var(--apple-space-4) !important;
+  font-family: var(--apple-font-text) !important;
+  font-size: var(--apple-t-headline-size) !important;
+  font-weight: 600 !important;
+  cursor: pointer !important;
+  width: 100% !important;
+  margin-bottom: var(--apple-space-5) !important;
+  transition: all var(--apple-dur-fast) var(--apple-ease-standard);
+}
+.btn-add-article:hover {
+  background: color-mix(in srgb, var(--apple-systemBlue) 20%, transparent) !important;
+}
+
+/* ─── STEP 8 (confirmation + WhatsApp) ─── */
+.channel-btn {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: var(--apple-space-2) !important;
+  background: #25D366 !important;  /* WhatsApp brand green — non-Apple exception */
+  color: #fff !important;
+  border-radius: var(--apple-radius-full) !important;
+  padding: 0 var(--apple-space-7) !important;
+  height: 52px !important;
+  font-family: var(--apple-font-text) !important;
+  font-size: var(--apple-t-headline-size) !important;
+  font-weight: 600 !important;
+  text-decoration: none !important;
+  box-shadow: var(--apple-shadow-2);
+  transition: all var(--apple-dur-fast) var(--apple-ease-standard) !important;
+}
+.channel-btn:hover {
+  background: #1eaa54 !important;
+  box-shadow: var(--apple-shadow-3) !important;
+}
+.channel-btn:active {
+  transform: scale(var(--apple-tap-scale));
+}
+
+#summary-box,
+.summary-box {
+  background: var(--apple-secondarySystemGroupedBackground) !important;
+  border-radius: var(--apple-radius-xl) !important;
+  padding: var(--apple-space-5) !important;
+  margin-bottom: var(--apple-space-5) !important;
+}
+
+
+/* ════════════════════════════════════════════════════════════════════
+   PRODUCT DETAIL PAGES (produit*.html)
+   ════════════════════════════════════════════════════════════════════ */
+
+.pdp-container, .pdp-wrap, .pdp {
+  font-family: var(--apple-font-text);
+  color: var(--apple-label);
+}
+.pdp-title, .pdp h1 {
+  font-family: var(--apple-font-display) !important;
+  font-size: var(--apple-t-title1-size) !important;
+  font-weight: 700 !important;
+  letter-spacing: -0.02em !important;
+  color: var(--apple-label) !important;
+}
+.pdp-brand {
+  color: var(--apple-systemBlue) !important;
+  font-family: var(--apple-font-text) !important;
+  font-size: var(--apple-t-caption1-size) !important;
+  font-weight: 700 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.04em !important;
+}
+.pdp-price, .pdp .price {
+  font-family: var(--apple-font-display) !important;
+  font-size: var(--apple-t-title2-size) !important;
+  font-weight: 700 !important;
+  color: var(--apple-label) !important;
+}
+.pdp-btn-cart,
+.pdp-cta,
+button.pdp-buy {
+  background: var(--apple-systemBlue) !important;
+  color: #fff !important;
+  border: none !important;
+  border-radius: var(--apple-radius-full) !important;
+  padding: 0 var(--apple-space-7) !important;
+  height: 52px !important;
+  font-family: var(--apple-font-text) !important;
+  font-size: var(--apple-t-headline-size) !important;
+  font-weight: 600 !important;
+  box-shadow: var(--apple-shadow-2);
+  cursor: pointer !important;
+  transition: all var(--apple-dur-fast) var(--apple-ease-standard) !important;
+}
+.pdp-btn-cart:hover,
+.pdp-cta:hover,
+button.pdp-buy:hover {
+  background: var(--apple-systemBlue-pressed) !important;
+  box-shadow: var(--apple-shadow-3) !important;
+}
+
+
+/* ════════════════════════════════════════════════════════════════════
+   SECONDARY PAGES (FAQ, À propos, Contact, etc.)
+   ════════════════════════════════════════════════════════════════════ */
+
+/* Hero de ces pages → plus sobre Apple Support style */
+.ap-sec-hero,
+.about-hero,
+.contact-hero,
+.faq-hero,
+.veo-hero {
+  padding: clamp(80px, 12vh, 140px) var(--apple-space-5) var(--apple-space-10) !important;
+  text-align: center;
+}
+
+/* FAQ accordéons */
+.faq-item,
+details.faq-q {
+  background: var(--apple-secondarySystemGroupedBackground) !important;
+  border-radius: var(--apple-radius-xl) !important;
+  margin-bottom: var(--apple-space-3) !important;
+  overflow: hidden !important;
+  box-shadow: var(--apple-shadow-1) !important;
+}
+.faq-question,
+.faq-item summary,
+details.faq-q summary {
+  padding: var(--apple-space-4) var(--apple-space-5) !important;
+  font-family: var(--apple-font-text) !important;
+  font-size: var(--apple-t-headline-size) !important;
+  font-weight: 600 !important;
+  color: var(--apple-label) !important;
+  cursor: pointer !important;
+  list-style: none !important;
+}
+.faq-answer,
+.faq-item p,
+details.faq-q .content {
+  padding: 0 var(--apple-space-5) var(--apple-space-4) !important;
+  font-family: var(--apple-font-text) !important;
+  font-size: var(--apple-t-body-size) !important;
+  color: var(--apple-secondaryLabel) !important;
+  line-height: 1.5 !important;
+}
+
+
+/* ════════════════════════════════════════════════════════════════════
+   FORMULAIRES GÉNÉRAUX (contact, compte, etc.)
+   ════════════════════════════════════════════════════════════════════ */
+
+input:not(.ap-input):not(.brand-search-input):not(.als-search-input):not([type="checkbox"]):not([type="radio"]),
+textarea:not(.ap-textarea):not(.form-control),
+select:not(.ap-select) {
+  font-family: var(--apple-font-text);
+}
+
+
+/* ════════════════════════════════════════════════════════════════════
+   SCROLLBARS custom dans dark mode
+   ════════════════════════════════════════════════════════════════════ */
+
+:root[data-theme="dark"] ::-webkit-scrollbar-thumb,
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) ::-webkit-scrollbar-thumb {
+    background: rgba(255,255,255,.2);
+  }
+}
+
