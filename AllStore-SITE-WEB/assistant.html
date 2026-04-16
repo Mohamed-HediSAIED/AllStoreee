@@ -461,8 +461,10 @@ document.getElementById('typeGrid').addEventListener('click', function(e) {
   document.getElementById('s2title').textContent = 'Quelle marque ?';
   document.getElementById('s2sub').textContent = 'Choisissez parmi les marques disponibles.';
 
-  // Construire la liste des marques triées par ordre alphabétique
+  // Construire la liste des marques triées par ordre alphabétique, "Autre" en dernier
   const brands = (brandsByType[type] || []).slice().sort(function(a, b) {
+    if (a === 'Autre') return 1;
+    if (b === 'Autre') return -1;
     return a.localeCompare(b, 'fr', { sensitivity: 'base' });
   });
   const list = document.getElementById('brandList');
