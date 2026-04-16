@@ -26,6 +26,9 @@ body{
   overflow-x:hidden;
   cursor:auto;
 }
+@media(max-width:768px){
+  body{background:#060508 url('IMG_9422.jpg') center/cover no-repeat fixed;}
+}
 body::before{
   content:'';position:fixed;inset:0;background:rgba(0,0,0,.45);z-index:0;pointer-events:none;
 }
