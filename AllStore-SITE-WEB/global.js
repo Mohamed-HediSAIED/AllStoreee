@@ -139,27 +139,8 @@
     dr.innerHTML=`<div class="wl-drawer-inner"><div class="wl-drawer-head"><span>Liste de souhait</span><button class="wl-close" onclick="window._toggleWLDrawer()">\u2715</button></div><div id="wl-items"></div><a href="assistant.html" class="wl-cta-all">Commander \u2192</a></div>`;
     document.body.append(ov,dr);
     updateWLUI();
-    // Bottom nav setup (runs after DOM is ready since bottom-nav is after this script)
-    document.addEventListener('DOMContentLoaded',function(){
-      // Wrap bn-items in a pill div (Apple Store style)
-      const bnav=document.querySelector('.bottom-nav');
-      if(bnav && !bnav.querySelector('.bottom-nav-pill')){
-        const pill=document.createElement('div');
-        pill.className='bottom-nav-pill';
-        const items=Array.from(bnav.querySelectorAll('.bn-item'));
-        items.forEach(function(item){pill.appendChild(item)});
-        bnav.prepend(pill);
-      }
-    });
+    // Bottom nav is now fully defined in HTML (.bnav) — no JS mutation needed.
   })();
-
-  // Injecter le badge "Rare" sur les cartes sombres
-  document.querySelectorAll('.pc.dk').forEach(card=>{
-    const badge=document.createElement('span');
-    badge.className='rare-badge';
-    badge.textContent='Rare';
-    card.appendChild(badge);
-  });
 
   // Injecter les boutons coeur sur chaque carte produit
   function injectWLBtn(card, brandSel, nameSel, imgSel) {

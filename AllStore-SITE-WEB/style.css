@@ -857,17 +857,7 @@ textarea.form-control{resize:none}
   animation:pulse 2s infinite;
 }
 
-/* ═══════════════════════════════════════════
-   PRODUCT CARDS — Badge "Rare" + CTA hover
-═══════════════════════════════════════════ */
-.pc.dk .rare-badge{
-  position:absolute;top:16px;left:16px;z-index:4;
-  background:var(--gold);color:var(--noir);
-  font-size:9px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;
-  padding:5px 11px;border-radius:980px;
-  pointer-events:none;
-}
-/* pc-cta enhancements merged into block at end of file */
+/* Badge "Rare" removed — injected badges no longer generated */
 
 /* ═══════════════════════════════════════════
    ASSISTANCE CARDS — Numéros d'étapes
