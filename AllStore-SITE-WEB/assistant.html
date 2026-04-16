@@ -277,25 +277,14 @@
     <div class="step-panel" id="step5">
         <span class="step-eyebrow" id="s5eyebrow">Étape 5 — Précisions</span>
         <h2 class="step-title">Des précisions ?</h2>
-        <p class="step-sub">Référence exacte, modèle, budget… Plus c'est précis, mieux on cible.</p>
+        <p class="step-sub">Référence exacte, modèle… Plus c'est précis, mieux on cible.</p>
         <div class="recap-pills" id="recap5"></div>
         <div style="display:flex;flex-direction:column;gap:14px">
             <div class="form-group">
                 <label>Référence / Modèle exact (facultatif)</label>
                 <input type="text" class="form-control" id="refInput" placeholder="Ex : Air Force 1 Low 07, réf. CW2288-111">
             </div>
-            <div class="form-group">
-                <label>Budget maximum</label>
-                <select class="form-control" id="budgetInput">
-                    <option value="">Sélectionner…</option>
-                    <option>Moins de 100€</option>
-                    <option>100€ – 300€</option>
-                    <option>300€ – 600€</option>
-                    <option>600€ – 1 500€</option>
-                    <option>1 500€ – 5 000€</option>
-                    <option>Plus de 5 000€</option>
-                </select>
-            </div>
+            <input type="hidden" id="budgetInput" value="">
         </div>
         <div class="btn-row">
             <button class="btn-back" onclick="goStep(4)">← Retour</button>
