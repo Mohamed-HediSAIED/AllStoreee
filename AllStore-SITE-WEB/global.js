@@ -2,26 +2,30 @@
 (function(){
   'use strict';
 
-  /* ── Background image layer (iOS-compatible fixed bg) ──────── */
-  if(!document.getElementById('als-bg')){
+  /* ── Background image as real <img> element (bulletproof) ──── */
+  function setupBg(){
+    if(!document.body){ return setTimeout(setupBg, 10); }
+    if(document.getElementById('als-bg-img')) return;
     const isMobile = window.matchMedia('(max-width:768px)').matches;
-    const bgUrl = isMobile ? 'IMG_9422.jpg' : 'IMG_9440.jpg';
-    const bg = document.createElement('div');
-    bg.id = 'als-bg';
-    bg.style.cssText = 'position:fixed;top:0;left:0;width:100vw;height:100vh;background-image:url('+bgUrl+');background-position:center center;background-size:cover;background-repeat:no-repeat;z-index:-2;pointer-events:none;';
+    const img = document.createElement('img');
+    img.id = 'als-bg-img';
+    img.src = isMobile ? 'IMG_9422.jpg' : 'IMG_9440.jpg';
+    img.alt = '';
+    img.style.cssText = 'position:fixed;top:0;left:0;width:100vw;height:100vh;min-width:100vw;min-height:100vh;object-fit:cover;object-position:center center;z-index:-2;pointer-events:none;user-select:none;';
     const overlay = document.createElement('div');
     overlay.id = 'als-bg-overlay';
     overlay.style.cssText = 'position:fixed;top:0;left:0;width:100vw;height:100vh;background:rgba(0,0,0,.45);z-index:-1;pointer-events:none;';
-    document.documentElement.insertBefore(bg, document.documentElement.firstChild);
-    document.documentElement.insertBefore(overlay, bg.nextSibling);
-    // Update on resize/orientation change
+    document.body.insertBefore(overlay, document.body.firstChild);
+    document.body.insertBefore(img, document.body.firstChild);
     const updateBg = () => {
       const mobile = window.matchMedia('(max-width:768px)').matches;
-      bg.style.backgroundImage = 'url(' + (mobile ? 'IMG_9422.jpg' : 'IMG_9440.jpg') + ')';
+      const newSrc = mobile ? 'IMG_9422.jpg' : 'IMG_9440.jpg';
+      if(!img.src.endsWith(newSrc)) img.src = newSrc;
     };
     window.addEventListener('resize', updateBg);
     window.addEventListener('orientationchange', updateBg);
   }
+  setupBg();
 
   /* ── Nav hide/show ──────────────────────────────────────────── */
   const header=document.querySelector('header');
