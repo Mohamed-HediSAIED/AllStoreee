@@ -133,6 +133,18 @@
         .als-product-recap-brand{font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:.1em;color:var(--gold2);display:block}
         .als-product-recap-name{font-family:'Poppins',sans-serif;font-size:14px;font-weight:600;color:var(--noir);display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
         .als-product-recap-price{font-family:'Poppins',sans-serif;font-size:14px;font-weight:700;color:var(--noir);display:block;margin-top:2px}
+        /* Cart recap step */
+        .cart-list{display:flex;flex-direction:column;gap:10px;margin-bottom:20px}
+        .cart-item{display:flex;align-items:flex-start;gap:14px;padding:16px 18px;background:rgba(255,255,255,.08);border-radius:16px;border:1px solid rgba(255,255,255,.08)}
+        .cart-item-num{width:28px;height:28px;background:rgba(233,194,67,.15);color:var(--gold);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;flex-shrink:0;margin-top:2px}
+        .cart-item-info{flex:1;min-width:0}
+        .cart-item-title{font-size:15px;font-weight:600;color:#fff;margin-bottom:3px}
+        .cart-item-details{font-size:12px;color:rgba(255,255,255,.45);line-height:1.5}
+        .cart-item-remove{background:none;border:none;color:rgba(255,255,255,.25);cursor:pointer;font-size:16px;padding:4px 8px;transition:color .2s;flex-shrink:0}
+        .cart-item-remove:hover{color:#e74c3c}
+        .btn-add-article{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;padding:16px;background:transparent;border:2px dashed rgba(255,255,255,.12);border-radius:16px;color:rgba(255,255,255,.5);font-size:14px;font-weight:600;cursor:pointer;font-family:'Poppins',sans-serif;transition:all .2s;margin-bottom:8px}
+        .btn-add-article:hover{border-color:rgba(233,194,67,.3);color:var(--gold);background:rgba(233,194,67,.04)}
+        .cart-count{display:inline-flex;align-items:center;justify-content:center;background:var(--gold);color:var(--noir);font-size:14px;font-weight:700;width:26px;height:26px;border-radius:50%;margin-left:10px;vertical-align:middle}
     </style>
 </head>
 <body>
@@ -277,15 +289,28 @@
         </div>
         <div class="btn-row">
             <button class="btn-back" onclick="goStep(4)">← Retour</button>
-            <button class="btn-primary" onclick="goStep(6)">Continuer →</button>
+            <button class="btn-primary" onclick="saveArticleAndGoRecap()">Continuer →</button>
         </div>
     </div>
 
-    <!-- ÉTAPE 6 : Livraison -->
+    <!-- ÉTAPE 6 : Récap commande -->
     <div class="step-panel" id="step6">
-        <span class="step-eyebrow">Étape 6 — Livraison</span>
+        <span class="step-eyebrow">Récapitulatif</span>
+        <h2 class="step-title">Votre commande <span class="cart-count" id="cartCount">1</span></h2>
+        <p class="step-sub">Vérifiez vos articles. Vous pouvez en ajouter d'autres.</p>
+        <div class="cart-list" id="cartList"></div>
+        <button class="btn-add-article" onclick="addAnotherArticle()">+ Ajouter un article</button>
+        <div class="btn-row">
+            <button class="btn-back" onclick="backFromRecap()">← Retour</button>
+            <button class="btn-primary" onclick="goStep(7)">Valider la commande →</button>
+        </div>
+    </div>
+
+    <!-- ÉTAPE 7 : Livraison -->
+    <div class="step-panel" id="step7">
+        <span class="step-eyebrow">Étape 7 — Livraison</span>
         <h2 class="step-title">Où livrer ?</h2>
-        <p class="step-sub">Renseignez vos coordonnées pour que notre agent finalise la commande.</p>
+        <p class="step-sub">Renseignez vos coordonnées pour finaliser.</p>
         <div class="form-grid">
             <div class="form-group"><label>Prénom</label><input type="text" class="form-control" id="fPrenom" placeholder="Jean"></div>
             <div class="form-group"><label>Nom</label><input type="text" class="form-control" id="fNom" placeholder="Dupont"></div>
@@ -307,21 +332,22 @@
             <div class="form-group full"><label>Email</label><input type="email" class="form-control" id="fEmail" placeholder="jean.dupont@email.com"></div>
         </div>
         <div class="btn-row">
-            <button class="btn-back" onclick="goStep(5)">← Retour</button>
+            <button class="btn-back" onclick="goStep(6)">← Retour</button>
             <button class="btn-primary" onclick="submitOrder()">Envoyer ma commande →</button>
         </div>
     </div>
 
     <!-- CONFIRMATION -->
-    <div class="step-panel" id="step7">
+    <div class="step-panel" id="step8">
         <div class="confirm-wrap">
             <div class="confirm-icon">✓</div>
             <h2 class="step-title" style="text-align:center">Commande transmise !</h2>
-            <p class="step-sub" style="text-align:center">Un agent privé a reçu votre demande. Récapitulatif :</p>
+            <p class="step-sub" style="text-align:center">Finalisez votre commande sur WhatsApp pour un suivi en direct.</p>
             <div class="summary-box" id="summaryBox"></div>
             <div class="channel-btns">
+                <a id="waLink" href="#" target="_blank" class="channel-btn whatsapp">💬 &nbsp;Finaliser sur WhatsApp</a>
                 <a href="https://www.instagram.com/allstore.tm" target="_blank" class="channel-btn" style="background:linear-gradient(135deg,#f09433,#dc2743,#bc1888);color:#fff">📩 &nbsp;Suivre sur Instagram</a>
-                <a href="mailto:allstore.24.7.tm@gmail.com" class="channel-btn email">✉️ &nbsp;Confirmation par email</a>
+                <a href="mailto:allstore.24.7.tm@gmail.com" class="channel-btn email">✉️ &nbsp;Nous écrire par email</a>
             </div>
             <p class="status-live"><span class="dot-green"></span>Agent disponible · Réponse sous 60 min</p>
         </div>
@@ -332,9 +358,10 @@
 
 <script src="products-data.js"></script>
 <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
-const TOTAL = 6;
+const TOTAL = 7;
 const order = { type:'', brand:'', size:'', color:'', ref:'', budget:'', prenom:'', nom:'', adresse:'', ville:'', cp:'', region:'', pays:'', tel:'', email:'' };
 let skipStep3 = false;
+var items = [];
 
 // ── Données ──────────────────────────────────────────────────
 const brandsByType = {
@@ -456,9 +483,10 @@ document.getElementById('btnAutreDesc').addEventListener('click', function() {
   order.brand = desc;
   order.size = '—';
   order.color = '—';
-  order.ref = '';
-  order.budget = '';
-  // Aller directement aux coordonnées (étape 6)
+  order.ref = '—';
+  order.budget = '—';
+  saveCurrentArticle();
+  renderCartList();
   goStep(6);
 });
 
@@ -530,10 +558,105 @@ function backFromStep4() {
   goStep(skipStep3 ? 2 : 3);
 }
 
+// ── Multi-article ────────────────────────────────────────────
+function getSizeLabelForType(type) {
+  var cfg = step3Config[type];
+  if (!cfg) return 'Taille';
+  if (cfg.mode === 'volume') return 'Contenance';
+  if (cfg.mode === 'diameter') return 'Diamètre';
+  if (cfg.mode === 'format') return 'Format';
+  return 'Taille';
+}
+
+function saveCurrentArticle() {
+  items.push({
+    type: order.type,
+    brand: order.brand,
+    size: order.size,
+    color: order.color,
+    ref: order.ref,
+    budget: order.budget
+  });
+}
+
+function saveArticleAndGoRecap() {
+  order.ref = document.getElementById('refInput').value || '—';
+  order.budget = document.getElementById('budgetInput').value || '—';
+  saveCurrentArticle();
+  renderCartList();
+  goStep(6);
+}
+
+function renderCartList() {
+  var list = document.getElementById('cartList');
+  if (!list) return;
+  list.innerHTML = items.map(function(item, i) {
+    var sl = getSizeLabelForType(item.type);
+    var d = [];
+    if (item.size && item.size !== '—') d.push(sl + ' : ' + item.size);
+    if (item.color && item.color !== '—') d.push(item.color);
+    if (item.ref && item.ref !== '—') d.push(item.ref);
+    if (item.budget && item.budget !== '—') d.push(item.budget);
+    return '<div class="cart-item">' +
+      '<div class="cart-item-num">' + (i + 1) + '</div>' +
+      '<div class="cart-item-info">' +
+        '<div class="cart-item-title">' + item.brand + '</div>' +
+        '<div class="cart-item-details">' + item.type + (d.length ? ' · ' + d.join(' · ') : '') + '</div>' +
+      '</div>' +
+      '<button class="cart-item-remove" onclick="removeArticle(' + i + ')" title="Supprimer">\u2715</button>' +
+    '</div>';
+  }).join('');
+  var badge = document.getElementById('cartCount');
+  if (badge) badge.textContent = items.length;
+}
+
+function removeArticle(i) {
+  items.splice(i, 1);
+  renderCartList();
+  if (!items.length) { resetArticleForm(); goStep(1); }
+}
+
+function addAnotherArticle() {
+  resetArticleForm();
+  goStep(1);
+}
+
+function backFromRecap() {
+  if (items.length > 0) {
+    var last = items.pop();
+    order.type = last.type;
+    order.brand = last.brand;
+    order.size = last.size;
+    order.color = last.color;
+    if (last.type === 'Autre') {
+      document.getElementById('autreDescInput').value = last.brand;
+      document.getElementById('btnAutreDesc').disabled = false;
+      goStep(2);
+    } else {
+      document.getElementById('refInput').value = last.ref === '—' ? '' : last.ref;
+      document.getElementById('budgetInput').value = last.budget === '—' ? '' : last.budget;
+      goStep(5);
+    }
+  } else {
+    goStep(1);
+  }
+}
+
+function resetArticleForm() {
+  order.type = ''; order.brand = ''; order.size = ''; order.color = ''; order.ref = ''; order.budget = '';
+  order._isAutre = false;
+  skipStep3 = false;
+  document.querySelectorAll('.chip.selected, .size-chip.selected, .color-chip.selected, .opt-item.selected').forEach(function(c) { c.classList.remove('selected'); });
+  document.getElementById('refInput').value = '';
+  document.getElementById('budgetInput').value = '';
+  document.getElementById('autreDescInput').value = '';
+  document.getElementById('btnStep3').disabled = true;
+  document.getElementById('btnStep4').disabled = true;
+  document.getElementById('productRecap').style.display = 'none';
+}
+
 // ── Submit ────────────────────────────────────────────────────
 function submitOrder() {
-  order.ref    = document.getElementById('refInput').value || '—';
-  order.budget = document.getElementById('budgetInput').value || '—';
   order.prenom = document.getElementById('fPrenom').value;
   order.nom    = document.getElementById('fNom').value;
   if(order.prenom) localStorage.setItem('als_name', order.prenom);
@@ -545,46 +668,56 @@ function submitOrder() {
   order.tel    = document.getElementById('fTel').value;
   order.email  = document.getElementById('fEmail').value;
 
-  const sl = getSizeLabel();
-  const sizeRow = order.size && order.size !== '—' ? [{ lbl:sl, val:order.size }] : [];
+  // Build summary HTML with ALL articles
+  var html = '';
+  items.forEach(function(item, i) {
+    var sl = getSizeLabelForType(item.type);
+    var sizeRow = item.size && item.size !== '—' ? '<div class="summary-row"><span class="lbl">' + sl + '</span><span class="val">' + item.size + '</span></div>' : '';
+    var colorRow = item.color && item.color !== '—' ? '<div class="summary-row"><span class="lbl">Couleur</span><span class="val">' + item.color + '</span></div>' : '';
+    var refRow = item.ref && item.ref !== '—' ? '<div class="summary-row"><span class="lbl">Référence</span><span class="val">' + item.ref + '</span></div>' : '';
+    var budgetRow = item.budget && item.budget !== '—' ? '<div class="summary-row"><span class="lbl">Budget</span><span class="val">' + item.budget + '</span></div>' : '';
+    html += '<div style="' + (i > 0 ? 'margin-top:14px;padding-top:14px;border-top:1px solid rgba(10,25,35,.08)' : '') + '">' +
+      '<div style="font-size:11px;font-weight:700;color:var(--gold2);text-transform:uppercase;letter-spacing:.1em;margin-bottom:4px">Article ' + (i+1) + '</div>' +
+      '<div class="summary-row"><span class="lbl">Type</span><span class="val">' + item.type + '</span></div>' +
+      '<div class="summary-row"><span class="lbl">Marque</span><span class="val">' + item.brand + '</span></div>' +
+      sizeRow + colorRow + refRow + budgetRow +
+    '</div>';
+  });
+  html += '<div style="margin-top:14px;padding-top:14px;border-top:2px solid rgba(10,25,35,.1)">' +
+    '<div class="summary-row"><span class="lbl">Nom</span><span class="val">' + order.prenom + ' ' + order.nom + '</span></div>' +
+    '<div class="summary-row"><span class="lbl">Adresse</span><span class="val">' + order.adresse + ', ' + order.cp + ' ' + order.ville + '</span></div>' +
+    '<div class="summary-row"><span class="lbl">Pays</span><span class="val">' + order.pays + '</span></div>' +
+    '<div class="summary-row"><span class="lbl">Téléphone</span><span class="val">' + order.tel + '</span></div>' +
+    '<div class="summary-row"><span class="lbl">Email</span><span class="val">' + order.email + '</span></div>' +
+  '</div>';
+  document.getElementById('summaryBox').innerHTML = html;
 
-  const rows = [
-    { lbl:'Article',   val:order.type   },
-    { lbl:'Marque',    val:order.brand  }
-  ].concat(sizeRow).concat([
-    { lbl:'Couleur',   val:order.color  },
-    { lbl:'Référence', val:order.ref    },
-    { lbl:'Budget',    val:order.budget },
-    { lbl:'Nom',       val:order.prenom + ' ' + order.nom },
-    { lbl:'Adresse',   val:order.adresse + ', ' + order.cp + ' ' + order.ville },
-    { lbl:'Région',    val:order.region },
-    { lbl:'Pays',      val:order.pays   },
-    { lbl:'Téléphone', val:order.tel    },
-    { lbl:'Email',     val:order.email  }
-  ]);
-
-  document.getElementById('summaryBox').innerHTML = rows.map(function(r) {
-    return '<div class="summary-row"><span class="lbl">' + r.lbl + '</span><span class="val">' + (r.val || '—') + '</span></div>';
-  }).join('');
-
-  const sizeMsg = order.size && order.size !== '—' ? '\n• ' + sl + ' : ' + order.size : '';
-  const msg = encodeURIComponent(
-    '🛍️ Nouvelle commande AllStore 24/7\n\n' +
-    '• Article : ' + order.type + '\n' +
-    '• Marque : ' + order.brand + sizeMsg + '\n' +
-    '• Couleur : ' + order.color + '\n' +
-    '• Référence : ' + order.ref + '\n' +
-    '• Budget : ' + order.budget + '\n\n' +
-    '📦 Livraison :\n' +
-    '• Nom : ' + order.prenom + ' ' + order.nom + '\n' +
-    '• Adresse : ' + order.adresse + ', ' + order.cp + ' ' + order.ville + '\n' +
-    '• Région : ' + order.region + '\n' +
-    '• Pays : ' + order.pays + '\n' +
-    '• Tél : ' + order.tel + '\n' +
-    '• Email : ' + order.email
+  // Build WhatsApp message with ALL articles
+  var parts = ['\ud83d\udecd\ufe0f Nouvelle commande AllStore 24/7'];
+  items.forEach(function(item, i) {
+    var sl = getSizeLabelForType(item.type);
+    var sizeMsg = item.size && item.size !== '—' ? '\n\u2022 ' + sl + ' : ' + item.size : '';
+    var colorMsg = item.color && item.color !== '—' ? '\n\u2022 Couleur : ' + item.color : '';
+    parts.push(
+      '\ud83d\udce6 Article ' + (i+1) + ' :\n' +
+      '\u2022 Type : ' + item.type + '\n' +
+      '\u2022 Marque : ' + item.brand + sizeMsg + colorMsg +
+      (item.ref && item.ref !== '—' ? '\n\u2022 Réf : ' + item.ref : '') +
+      (item.budget && item.budget !== '—' ? '\n\u2022 Budget : ' + item.budget : '')
+    );
+  });
+  parts.push(
+    '\ud83d\udcec Livraison :\n' +
+    '\u2022 Nom : ' + order.prenom + ' ' + order.nom + '\n' +
+    '\u2022 Adresse : ' + order.adresse + ', ' + order.cp + ' ' + order.ville + '\n' +
+    '\u2022 Pays : ' + order.pays + '\n' +
+    '\u2022 Tél : ' + order.tel + '\n' +
+    '\u2022 Email : ' + order.email
   );
-  // WhatsApp removed - contact via Instagram/email only
-  goStep(7);
+  var waMsg = encodeURIComponent(parts.join('\n\n'));
+  document.getElementById('waLink').href = 'https://wa.me/33626587984?text=' + waMsg;
+
+  goStep(8);
 }
 
 // ── URL category pre-selection ────────────────────────────────
@@ -689,18 +822,10 @@ function submitOrder() {
       Accueil
     </a>
     <a href="assistant.html" class="bnav-item active" data-nav="1">
-      <svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+      <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
       Boutique
     </a>
-    <a href="assistant.html" class="bnav-item" data-nav="2">
-      <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
-      Assistant
-    </a>
-    <a href="assistant.html" class="bnav-item" data-nav="3">
-      <svg viewBox="0 0 24 24"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
-      Panier
-    </a>
-    <a href="suivi.html" class="bnav-item" data-nav="4">
+    <a href="suivi.html" class="bnav-item" data-nav="2">
       <svg viewBox="0 0 24 24"><path d="M12 22s-8-4.5-8-11.8A8 8 0 0112 2a8 8 0 018 8.2c0 7.3-8 11.8-8 11.8z"/><circle cx="12" cy="10" r="3"/></svg>
       Suivi
     </a>
