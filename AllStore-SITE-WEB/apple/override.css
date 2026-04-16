@@ -299,6 +299,30 @@ nav .nav-links {
   transition-duration: var(--apple-dur-instant) !important;
 }
 
+/* Light mode — deeper shadow so white cards lift off the white page */
+@media (prefers-color-scheme: light) {
+  :root:not([data-theme="dark"]) .als-hcard,
+  :root:not([data-theme="dark"]) .als-rare-card,
+  :root:not([data-theme="dark"]) .als-insta-pcard {
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08), 0 1px 3px rgba(0, 0, 0, 0.06) !important;
+  }
+  :root:not([data-theme="dark"]) .als-hcard:hover,
+  :root:not([data-theme="dark"]) .als-rare-card:hover,
+  :root:not([data-theme="dark"]) .als-insta-pcard:hover {
+    box-shadow: 0 14px 36px rgba(0, 0, 0, 0.12), 0 4px 10px rgba(0, 0, 0, 0.08) !important;
+  }
+}
+:root[data-theme="light"] .als-hcard,
+:root[data-theme="light"] .als-rare-card,
+:root[data-theme="light"] .als-insta-pcard {
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08), 0 1px 3px rgba(0, 0, 0, 0.06) !important;
+}
+:root[data-theme="light"] .als-hcard:hover,
+:root[data-theme="light"] .als-rare-card:hover,
+:root[data-theme="light"] .als-insta-pcard:hover {
+  box-shadow: 0 14px 36px rgba(0, 0, 0, 0.12), 0 4px 10px rgba(0, 0, 0, 0.08) !important;
+}
+
 .als-hcard-img,
 .als-rare-img {
   aspect-ratio: 3 / 4 !important;
