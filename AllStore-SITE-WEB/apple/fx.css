@@ -260,6 +260,102 @@ body.fx-active > *:not(#fx-stage):not(script):not(style):not(link) {
 .pdp [data-fx-kinetic] { will-change: opacity, transform; }
 
 /* ─────────────────────────────────────────────────────────
+   Secondary pages (contact / suivi / faq / livraison / about / legal)
+   Subtle iridescent focus + shimmer CTAs. No WebGL.
+   ───────────────────────────────────────────────────────── */
+
+/* Form inputs — iridescent focus underline (contact + suivi) */
+.ct-fgrp input,
+.ct-fgrp textarea,
+.suivi-input {
+  position: relative;
+  transition: border-color 250ms ease, box-shadow 250ms ease, background 250ms ease !important;
+}
+.ct-fgrp input:focus,
+.ct-fgrp textarea:focus,
+.suivi-input:focus {
+  border-color: transparent !important;
+  outline: none !important;
+  box-shadow:
+    0 0 0 1px rgba(var(--fx-accent-rgb, 122,108,255), .35),
+    0 0 0 4px rgba(var(--fx-accent-rgb, 122,108,255), .12),
+    0 6px 18px rgba(var(--fx-accent-rgb, 122,108,255), .18) !important;
+}
+
+/* Primary CTAs — shared shimmer (apropos / contact / suivi / faq / livraison) */
+.ap-cta-btn--primary,
+.ct-submit,
+.suivi-btn,
+.faq-cta-btn--primary,
+.livraison-cta-btn--primary {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+}
+.ap-cta-btn--primary::before,
+.ct-submit::before,
+.suivi-btn::before,
+.faq-cta-btn--primary::before,
+.livraison-cta-btn--primary::before {
+  content: '';
+  position: absolute;
+  inset: -2px;
+  background: linear-gradient(
+    110deg,
+    transparent 40%,
+    rgba(255,255,255,.18) 48%,
+    rgba(var(--fx-accent-rgb, 122,108,255), .35) 52%,
+    transparent 60%
+  );
+  transform: translateX(-110%);
+  transition: transform 700ms cubic-bezier(.2,.8,.2,1);
+  pointer-events: none;
+  z-index: 0;
+}
+.ap-cta-btn--primary > *,
+.ct-submit > *,
+.suivi-btn > *,
+.faq-cta-btn--primary > *,
+.livraison-cta-btn--primary > * {
+  position: relative;
+  z-index: 1;
+}
+.ap-cta-btn--primary:hover::before,
+.ct-submit:hover::before,
+.suivi-btn:hover::before,
+.faq-cta-btn--primary:hover::before,
+.livraison-cta-btn--primary:hover::before {
+  transform: translateX(110%);
+}
+
+/* Suivi timeline — iridescent accent on active dot */
+.suivi-tl-item.active .suivi-tl-dot,
+.suivi-status-dot {
+  background: linear-gradient(135deg, var(--fx-iri-1, #1fb6ff), var(--fx-iri-2, #6a4cff)) !important;
+  box-shadow:
+    0 0 0 3px rgba(var(--fx-accent-rgb, 122,108,255), .22),
+    0 0 16px rgba(var(--fx-accent-rgb, 122,108,255), .35) !important;
+}
+
+/* FAQ — iridescent left border on open accordion item */
+.faq-item.open,
+.faq-item[open] {
+  position: relative;
+}
+.faq-item.open::before,
+.faq-item[open]::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 10%;
+  bottom: 10%;
+  width: 2px;
+  border-radius: 2px;
+  background: linear-gradient(180deg, var(--fx-iri-1, #1fb6ff), var(--fx-iri-2, #6a4cff), var(--fx-iri-3, #ff6a9c));
+  pointer-events: none;
+}
+
+/* ─────────────────────────────────────────────────────────
    Assistant tunnel — ritual pulse on order submit
    ───────────────────────────────────────────────────────── */
 .fx-ritual {
