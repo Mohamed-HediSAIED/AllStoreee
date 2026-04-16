@@ -203,6 +203,63 @@ body.fx-active > *:not(#fx-stage):not(script):not(style):not(link) {
 }
 
 /* ─────────────────────────────────────────────────────────
+   Product pages (.pdp) — subtle iridescent accents
+   Selected color / size / CTA inherit the FX palette without
+   changing any DOM IDs or JS behavior.
+   ───────────────────────────────────────────────────────── */
+.pdp .pdp-cw.active {
+  box-shadow:
+    0 0 0 2px #fff,
+    0 0 0 4px var(--fx-iri-2, #6a4cff),
+    0 6px 18px rgba(var(--fx-accent-rgb, 122,108,255), .28) !important;
+  transform: scale(1.12) !important;
+}
+.pdp .pdp-size {
+  position: relative;
+  transition: border-color 220ms ease, background 220ms ease, color 220ms ease, box-shadow 220ms ease !important;
+}
+.pdp .pdp-size.active {
+  background: linear-gradient(135deg, #0a1923 0%, #1a2e3a 100%) !important;
+  color: #fff !important;
+  border-color: transparent !important;
+  box-shadow:
+    0 0 0 1px rgba(var(--fx-accent-rgb, 122,108,255), .35),
+    0 6px 20px rgba(var(--fx-accent-rgb, 122,108,255), .22) !important;
+}
+.pdp .pdp-btn-cart {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+  transition: transform 220ms cubic-bezier(.2,.8,.2,1), box-shadow 300ms ease, background 220ms ease !important;
+}
+.pdp .pdp-btn-cart::before {
+  content: '';
+  position: absolute;
+  inset: -2px;
+  background: linear-gradient(
+    110deg,
+    transparent 40%,
+    rgba(255,255,255,.18) 48%,
+    rgba(var(--fx-accent-rgb, 122,108,255), .35) 52%,
+    transparent 60%
+  );
+  transform: translateX(-110%);
+  transition: transform 700ms cubic-bezier(.2,.8,.2,1);
+  pointer-events: none;
+  z-index: 0;
+}
+.pdp .pdp-btn-cart > * {
+  position: relative;
+  z-index: 1;
+}
+.pdp .pdp-btn-cart:hover::before {
+  transform: translateX(110%);
+}
+
+/* Kinetic reveal target — product title */
+.pdp [data-fx-kinetic] { will-change: opacity, transform; }
+
+/* ─────────────────────────────────────────────────────────
    Assistant tunnel — ritual pulse on order submit
    ───────────────────────────────────────────────────────── */
 .fx-ritual {
