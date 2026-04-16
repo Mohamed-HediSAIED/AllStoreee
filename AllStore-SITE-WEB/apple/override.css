@@ -767,10 +767,10 @@ nav .nav-links {
    ══════════════════════════════════════ */
 
 .als-scroll-arrow {
-  background: var(--glass-thick-bg) !important;
-  -webkit-backdrop-filter: var(--glass-thick-blur);
-  backdrop-filter: var(--glass-thick-blur);
-  border: var(--glass-border) !important;
+  background: var(--apple-systemBackground) !important;
+  -webkit-backdrop-filter: none !important;
+  backdrop-filter: none !important;
+  border: 1px solid var(--apple-separator) !important;
   box-shadow: var(--apple-shadow-2) !important;
 }
 .als-scroll-arrow svg {
