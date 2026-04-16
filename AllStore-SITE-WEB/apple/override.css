@@ -301,7 +301,7 @@ nav .nav-links {
 
 .als-hcard-img,
 .als-rare-img {
-  aspect-ratio: 1 / 1 !important;
+  aspect-ratio: 3 / 4 !important;
   background: #ffffff !important;
   margin-bottom: 0 !important;
   border-radius: 0 !important;
@@ -318,7 +318,7 @@ nav .nav-links {
   height: 100% !important;
   max-width: none !important;
   max-height: none !important;
-  object-fit: cover !important;
+  object-fit: contain !important;
   object-position: center !important;
   mix-blend-mode: normal !important;
   transition: transform var(--apple-dur-slow) var(--apple-ease-decelerate);
