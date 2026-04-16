@@ -1,0 +1,931 @@
+/* ════════════════════════════════════════════════════════════════════
+   APPLE COMPONENTS — iOS 26 Liquid Glass
+   Toutes les classes préfixées .ap-* pour éviter collision avec legacy
+   ════════════════════════════════════════════════════════════════════ */
+
+
+/* ══════════════════════════════════════
+   BUTTONS
+   ══════════════════════════════════════ */
+
+.ap-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--apple-space-2);
+  height: var(--apple-touch-target);
+  padding: 0 var(--apple-space-5);
+  font-family: var(--apple-font-text);
+  font-size: var(--apple-t-headline-size);
+  font-weight: var(--apple-t-headline-weight);
+  letter-spacing: var(--apple-t-headline-tracking);
+  line-height: 1;
+  border: none;
+  border-radius: var(--apple-radius-full);
+  background: var(--apple-systemFill);
+  color: var(--apple-label);
+  cursor: pointer;
+  user-select: none;
+  text-decoration: none;
+  transition:
+    transform var(--apple-dur-fast) var(--apple-ease-decelerate),
+    background-color var(--apple-dur-fast) var(--apple-ease-standard),
+    box-shadow var(--apple-dur-fast) var(--apple-ease-standard),
+    color var(--apple-dur-fast) var(--apple-ease-standard);
+  -webkit-tap-highlight-color: transparent;
+  will-change: transform;
+}
+.ap-btn:active {
+  transform: scale(var(--apple-tap-scale));
+  transition-duration: var(--apple-dur-instant);
+}
+.ap-btn:disabled,
+.ap-btn[aria-disabled="true"] {
+  opacity: 0.4;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+/* Variants */
+.ap-btn--primary {
+  background: var(--apple-systemBlue);
+  color: #fff;
+}
+.ap-btn--primary:hover {
+  background: var(--apple-systemBlue-pressed);
+}
+
+.ap-btn--secondary {
+  background: var(--apple-secondarySystemFill);
+  color: var(--apple-label);
+}
+.ap-btn--secondary:hover {
+  background: var(--apple-systemFill);
+}
+
+.ap-btn--tinted {
+  background: var(--apple-systemBlue-tint);
+  color: var(--apple-systemBlue);
+}
+.ap-btn--tinted:hover {
+  background: color-mix(in srgb, var(--apple-systemBlue) 22%, transparent);
+}
+
+.ap-btn--plain {
+  background: transparent;
+  color: var(--apple-systemBlue);
+  padding-left: var(--apple-space-2);
+  padding-right: var(--apple-space-2);
+}
+.ap-btn--plain:hover {
+  opacity: 0.7;
+}
+
+.ap-btn--destructive {
+  background: var(--apple-systemRed);
+  color: #fff;
+}
+
+.ap-btn--glass {
+  background: var(--glass-regular-bg);
+  -webkit-backdrop-filter: var(--glass-regular-blur);
+  backdrop-filter: var(--glass-regular-blur);
+  border: var(--glass-border);
+  box-shadow: var(--glass-highlight), var(--apple-shadow-2);
+  color: var(--apple-label);
+}
+
+/* Sizes */
+.ap-btn--sm {
+  height: 32px;
+  padding: 0 var(--apple-space-4);
+  font-size: var(--apple-t-subheadline-size);
+}
+.ap-btn--lg {
+  height: 52px;
+  padding: 0 var(--apple-space-7);
+  font-size: var(--apple-t-body-size);
+}
+.ap-btn--xl {
+  height: 60px;
+  padding: 0 var(--apple-space-8);
+  font-size: var(--apple-t-title3-size);
+}
+
+.ap-btn--full {
+  width: 100%;
+}
+
+/* Icon-only button */
+.ap-btn--icon {
+  width: var(--apple-touch-target);
+  height: var(--apple-touch-target);
+  padding: 0;
+  border-radius: var(--apple-radius-full);
+}
+.ap-btn--icon.ap-btn--sm { width: 32px; height: 32px; }
+.ap-btn--icon.ap-btn--lg { width: 52px; height: 52px; }
+
+
+/* ══════════════════════════════════════
+   CARDS
+   ══════════════════════════════════════ */
+
+.ap-card {
+  background: var(--apple-secondarySystemGroupedBackground);
+  border-radius: var(--apple-radius-xl);
+  padding: var(--apple-space-5);
+  box-shadow: var(--apple-shadow-1);
+  transition:
+    transform var(--apple-dur-base) var(--apple-ease-decelerate),
+    box-shadow var(--apple-dur-base) var(--apple-ease-standard),
+    background-color var(--apple-dur-base) var(--apple-ease-standard);
+}
+
+.ap-card--elevated {
+  box-shadow: var(--apple-shadow-3);
+}
+
+.ap-card--glass {
+  background: var(--glass-regular-bg);
+  -webkit-backdrop-filter: var(--glass-regular-blur);
+  backdrop-filter: var(--glass-regular-blur);
+  border: var(--glass-border);
+  box-shadow: var(--glass-highlight), var(--glass-shadow);
+}
+
+.ap-card--glass-thick {
+  background: var(--glass-thick-bg);
+  -webkit-backdrop-filter: var(--glass-thick-blur);
+  backdrop-filter: var(--glass-thick-blur);
+  border: var(--glass-border);
+  box-shadow: var(--glass-highlight), var(--apple-shadow-3);
+}
+
+.ap-card--interactive {
+  cursor: pointer;
+  user-select: none;
+}
+.ap-card--interactive:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--apple-shadow-3);
+}
+.ap-card--interactive:active {
+  transform: scale(0.99);
+  transition-duration: var(--apple-dur-instant);
+}
+
+.ap-card--grouped {
+  padding: 0;
+  overflow: hidden;
+}
+.ap-card--padded { padding: var(--apple-space-6); }
+.ap-card--padded-lg { padding: var(--apple-space-8); }
+
+
+/* ══════════════════════════════════════
+   TILES (cartes produit style App Store)
+   ══════════════════════════════════════ */
+
+.ap-tile {
+  display: flex;
+  flex-direction: column;
+  background: var(--apple-secondarySystemGroupedBackground);
+  border-radius: var(--apple-radius-lg);
+  overflow: hidden;
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
+  transition:
+    transform var(--apple-dur-base) var(--apple-ease-decelerate),
+    box-shadow var(--apple-dur-base) var(--apple-ease-standard);
+  box-shadow: var(--apple-shadow-1);
+}
+.ap-tile:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--apple-shadow-3);
+}
+.ap-tile:active {
+  transform: scale(0.99);
+  transition-duration: var(--apple-dur-instant);
+}
+
+.ap-tile-media {
+  position: relative;
+  aspect-ratio: 1 / 1;
+  background: var(--apple-systemGray6);
+  overflow: hidden;
+}
+.ap-tile-media img,
+.ap-tile-media video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform var(--apple-dur-slow) var(--apple-ease-decelerate);
+}
+.ap-tile:hover .ap-tile-media img { transform: scale(1.04); }
+
+.ap-tile-body {
+  padding: var(--apple-space-4) var(--apple-space-4) var(--apple-space-5);
+}
+.ap-tile-title {
+  font-family: var(--apple-font-text);
+  font-size: var(--apple-t-headline-size);
+  font-weight: var(--apple-t-headline-weight);
+  letter-spacing: var(--apple-t-headline-tracking);
+  color: var(--apple-label);
+  margin: 0 0 var(--apple-space-1);
+}
+.ap-tile-subtitle {
+  font-size: var(--apple-t-footnote-size);
+  color: var(--apple-secondaryLabel);
+  margin: 0 0 var(--apple-space-2);
+}
+.ap-tile-price {
+  font-size: var(--apple-t-headline-size);
+  font-weight: 600;
+  color: var(--apple-label);
+}
+
+/* Variant : glass tile (pour overlays sur images) */
+.ap-tile--glass {
+  background: var(--glass-regular-bg);
+  -webkit-backdrop-filter: var(--glass-regular-blur);
+  backdrop-filter: var(--glass-regular-blur);
+  border: var(--glass-border);
+}
+
+
+/* ══════════════════════════════════════
+   INPUTS / FORMS
+   ══════════════════════════════════════ */
+
+.ap-field {
+  display: flex;
+  flex-direction: column;
+  gap: var(--apple-space-2);
+  margin-bottom: var(--apple-space-4);
+}
+.ap-field-label {
+  font-size: var(--apple-t-footnote-size);
+  font-weight: 500;
+  color: var(--apple-secondaryLabel);
+  letter-spacing: 0;
+}
+.ap-field-hint {
+  font-size: var(--apple-t-caption1-size);
+  color: var(--apple-tertiaryLabel);
+  margin-top: var(--apple-space-1);
+}
+.ap-field-error {
+  font-size: var(--apple-t-footnote-size);
+  color: var(--apple-systemRed);
+  margin-top: var(--apple-space-1);
+}
+
+.ap-input {
+  height: var(--apple-touch-target);
+  padding: 0 var(--apple-space-4);
+  width: 100%;
+  font-family: var(--apple-font-text);
+  font-size: var(--apple-t-body-size);
+  color: var(--apple-label);
+  background: var(--apple-tertiarySystemFill);
+  border: 1.5px solid transparent;
+  border-radius: var(--apple-radius-md);
+  outline: none;
+  transition:
+    background-color var(--apple-dur-fast) var(--apple-ease-standard),
+    border-color var(--apple-dur-fast) var(--apple-ease-standard),
+    box-shadow var(--apple-dur-fast) var(--apple-ease-standard);
+}
+.ap-input::placeholder {
+  color: var(--apple-placeholderText);
+}
+.ap-input:focus {
+  background: var(--apple-systemBackground);
+  border-color: var(--apple-systemBlue);
+  box-shadow: 0 0 0 3px var(--apple-systemBlue-tint);
+}
+.ap-input:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.ap-input--lg { height: 52px; padding: 0 var(--apple-space-5); font-size: var(--apple-t-title3-size); }
+.ap-input--sm { height: 36px; padding: 0 var(--apple-space-3); font-size: var(--apple-t-subheadline-size); }
+
+.ap-textarea {
+  min-height: 120px;
+  padding: var(--apple-space-3) var(--apple-space-4);
+  font-family: var(--apple-font-text);
+  font-size: var(--apple-t-body-size);
+  color: var(--apple-label);
+  background: var(--apple-tertiarySystemFill);
+  border: 1.5px solid transparent;
+  border-radius: var(--apple-radius-md);
+  outline: none;
+  resize: vertical;
+  width: 100%;
+  transition:
+    background-color var(--apple-dur-fast) var(--apple-ease-standard),
+    border-color var(--apple-dur-fast) var(--apple-ease-standard),
+    box-shadow var(--apple-dur-fast) var(--apple-ease-standard);
+}
+.ap-textarea::placeholder { color: var(--apple-placeholderText); }
+.ap-textarea:focus {
+  background: var(--apple-systemBackground);
+  border-color: var(--apple-systemBlue);
+  box-shadow: 0 0 0 3px var(--apple-systemBlue-tint);
+}
+
+.ap-select {
+  appearance: none;
+  -webkit-appearance: none;
+  height: var(--apple-touch-target);
+  padding: 0 40px 0 var(--apple-space-4);
+  font-family: var(--apple-font-text);
+  font-size: var(--apple-t-body-size);
+  color: var(--apple-label);
+  background: var(--apple-tertiarySystemFill) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath fill='none' stroke='%238E8E93' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round' d='M1 1l5 5 5-5'/%3E%3C/svg%3E") no-repeat right 16px center;
+  border: 1.5px solid transparent;
+  border-radius: var(--apple-radius-md);
+  outline: none;
+  cursor: pointer;
+  width: 100%;
+}
+.ap-select:focus {
+  background-color: var(--apple-systemBackground);
+  border-color: var(--apple-systemBlue);
+  box-shadow: 0 0 0 3px var(--apple-systemBlue-tint);
+}
+
+/* Search input with icon */
+.ap-search {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+.ap-search .ap-input {
+  padding-left: 44px;
+  border-radius: var(--apple-radius-full);
+}
+.ap-search::before {
+  content: '';
+  position: absolute;
+  left: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 18px;
+  height: 18px;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='18' height='18' viewBox='0 0 24 24' fill='none' stroke='%238E8E93' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='11' cy='11' r='8'/%3E%3Cline x1='21' y1='21' x2='16.65' y2='16.65'/%3E%3C/svg%3E") no-repeat center;
+  pointer-events: none;
+}
+
+
+/* ══════════════════════════════════════
+   SEGMENTED CONTROL (iOS)
+   ══════════════════════════════════════ */
+
+.ap-segmented {
+  display: inline-flex;
+  align-items: stretch;
+  padding: 2px;
+  background: var(--apple-tertiarySystemFill);
+  border-radius: var(--apple-radius-sm);
+  gap: 2px;
+  position: relative;
+}
+.ap-segmented-item {
+  flex: 1;
+  min-width: 0;
+  padding: var(--apple-space-2) var(--apple-space-3);
+  font-family: var(--apple-font-text);
+  font-size: var(--apple-t-subheadline-size);
+  font-weight: 500;
+  color: var(--apple-label);
+  background: transparent;
+  border: none;
+  border-radius: calc(var(--apple-radius-sm) - 2px);
+  cursor: pointer;
+  text-align: center;
+  white-space: nowrap;
+  transition:
+    background-color var(--apple-dur-base) var(--apple-ease-standard),
+    color var(--apple-dur-base) var(--apple-ease-standard),
+    box-shadow var(--apple-dur-base) var(--apple-ease-standard);
+}
+.ap-segmented-item.active {
+  background: var(--apple-systemBackground);
+  box-shadow: var(--apple-shadow-1);
+  font-weight: 600;
+}
+.ap-segmented-item:not(.active):hover {
+  color: var(--apple-label);
+}
+
+
+/* ══════════════════════════════════════
+   CHIPS / TAGS
+   ══════════════════════════════════════ */
+
+.ap-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--apple-space-1);
+  height: 32px;
+  padding: 0 var(--apple-space-3);
+  font-family: var(--apple-font-text);
+  font-size: var(--apple-t-footnote-size);
+  font-weight: 500;
+  color: var(--apple-label);
+  background: var(--apple-quaternarySystemFill);
+  border: 1.5px solid transparent;
+  border-radius: var(--apple-radius-full);
+  cursor: pointer;
+  user-select: none;
+  transition: all var(--apple-dur-fast) var(--apple-ease-standard);
+  -webkit-tap-highlight-color: transparent;
+}
+.ap-chip:hover {
+  background: var(--apple-tertiarySystemFill);
+}
+.ap-chip:active {
+  transform: scale(var(--apple-tap-scale));
+}
+.ap-chip--selected,
+.ap-chip.selected {
+  background: var(--apple-systemBlue);
+  color: #fff;
+  border-color: var(--apple-systemBlue);
+}
+.ap-chip--outline {
+  background: transparent;
+  border-color: var(--apple-separator);
+}
+.ap-chip--lg {
+  height: 40px;
+  padding: 0 var(--apple-space-4);
+  font-size: var(--apple-t-subheadline-size);
+}
+
+
+/* ══════════════════════════════════════
+   NAVBAR (top)
+   ══════════════════════════════════════ */
+
+.ap-navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: var(--apple-z-navbar);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: calc(var(--safe-top) + var(--apple-space-2)) var(--apple-space-5) var(--apple-space-2);
+  min-height: calc(52px + var(--safe-top));
+  background: var(--glass-regular-bg);
+  -webkit-backdrop-filter: var(--glass-regular-blur);
+  backdrop-filter: var(--glass-regular-blur);
+  border-bottom: 0.5px solid var(--apple-opaqueSeparator);
+  transition:
+    background-color var(--apple-dur-base) var(--apple-ease-standard),
+    border-color var(--apple-dur-base) var(--apple-ease-standard);
+}
+.ap-navbar--transparent {
+  background: transparent;
+  border-bottom-color: transparent;
+  -webkit-backdrop-filter: none;
+  backdrop-filter: none;
+}
+.ap-navbar-logo {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--apple-space-2);
+  font-family: var(--apple-font-display);
+  font-size: var(--apple-t-headline-size);
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  color: var(--apple-label);
+  text-decoration: none;
+}
+.ap-navbar-logo img { height: 28px; width: auto; }
+.ap-navbar-links {
+  display: flex;
+  gap: var(--apple-space-6);
+  align-items: center;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.ap-navbar-links a {
+  font-family: var(--apple-font-text);
+  font-size: var(--apple-t-subheadline-size);
+  font-weight: 500;
+  color: var(--apple-secondaryLabel);
+  text-decoration: none;
+  transition: color var(--apple-dur-fast);
+  padding: var(--apple-space-2) 0;
+}
+.ap-navbar-links a:hover,
+.ap-navbar-links a.active {
+  color: var(--apple-label);
+}
+.ap-navbar-actions {
+  display: flex;
+  align-items: center;
+  gap: var(--apple-space-2);
+}
+@media (max-width: 768px) {
+  .ap-navbar-links { display: none; }
+}
+
+
+/* ══════════════════════════════════════
+   TABBAR (bottom, mobile)
+   ══════════════════════════════════════ */
+
+.ap-tabbar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: var(--apple-z-tabbar);
+  display: flex;
+  align-items: stretch;
+  padding: var(--apple-space-1) var(--apple-space-2) calc(var(--safe-bottom) + var(--apple-space-1));
+  background: var(--glass-thick-bg);
+  -webkit-backdrop-filter: var(--glass-thick-blur);
+  backdrop-filter: var(--glass-thick-blur);
+  border-top: 0.5px solid var(--apple-opaqueSeparator);
+  box-shadow: 0 -1px 20px rgba(0,0,0,.04);
+}
+.ap-tabbar-item {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+  padding: var(--apple-space-2) var(--apple-space-1);
+  font-family: var(--apple-font-text);
+  font-size: 10px;
+  font-weight: 500;
+  color: var(--apple-tertiaryLabel);
+  text-decoration: none;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  transition: color var(--apple-dur-fast) var(--apple-ease-standard);
+  -webkit-tap-highlight-color: transparent;
+}
+.ap-tabbar-item:active {
+  transform: scale(0.96);
+}
+.ap-tabbar-item.active {
+  color: var(--apple-systemBlue);
+}
+.ap-tabbar-icon {
+  width: 26px;
+  height: 26px;
+  stroke: currentColor;
+  fill: none;
+  stroke-width: 2;
+}
+.ap-tabbar-label {
+  font-size: 10px;
+  letter-spacing: 0;
+  line-height: 1;
+}
+@media (min-width: 1025px) {
+  .ap-tabbar { display: none; }
+}
+
+
+/* ══════════════════════════════════════
+   LIST / ROWS (iOS grouped list)
+   ══════════════════════════════════════ */
+
+.ap-list {
+  background: var(--apple-secondarySystemGroupedBackground);
+  border-radius: var(--apple-radius-xl);
+  overflow: hidden;
+  box-shadow: var(--apple-shadow-1);
+}
+.ap-list-row {
+  display: flex;
+  align-items: center;
+  gap: var(--apple-space-3);
+  min-height: 52px;
+  padding: var(--apple-space-3) var(--apple-space-4);
+  background: transparent;
+  border: none;
+  width: 100%;
+  font-family: var(--apple-font-text);
+  font-size: var(--apple-t-body-size);
+  color: var(--apple-label);
+  text-align: left;
+  cursor: pointer;
+  border-bottom: 0.5px solid var(--apple-separator);
+  transition: background-color var(--apple-dur-fast) var(--apple-ease-standard);
+  text-decoration: none;
+}
+.ap-list-row:last-child {
+  border-bottom: none;
+}
+.ap-list-row:hover,
+.ap-list-row:focus-visible {
+  background: var(--apple-tertiarySystemFill);
+}
+.ap-list-row:active {
+  background: var(--apple-secondarySystemFill);
+}
+.ap-list-row-title {
+  flex: 1;
+  min-width: 0;
+  font-weight: 500;
+}
+.ap-list-row-detail {
+  color: var(--apple-secondaryLabel);
+  font-size: var(--apple-t-subheadline-size);
+}
+.ap-list-row--chevron::after {
+  content: '';
+  width: 12px;
+  height: 12px;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%23C7C7CC' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='9 18 15 12 9 6'/%3E%3C/svg%3E") no-repeat center;
+}
+
+
+/* ══════════════════════════════════════
+   TOGGLE (iOS switch)
+   ══════════════════════════════════════ */
+
+.ap-toggle {
+  position: relative;
+  width: 51px;
+  height: 31px;
+  border-radius: var(--apple-radius-full);
+  background: var(--apple-systemGray4);
+  border: none;
+  cursor: pointer;
+  transition: background-color var(--apple-dur-base) var(--apple-ease-standard);
+  padding: 0;
+  -webkit-tap-highlight-color: transparent;
+}
+.ap-toggle::after {
+  content: '';
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 27px;
+  height: 27px;
+  border-radius: 50%;
+  background: #fff;
+  box-shadow: 0 3px 8px rgba(0,0,0,.15), 0 1px 3px rgba(0,0,0,.1);
+  transition: transform var(--apple-dur-base) var(--apple-ease-spring-soft);
+}
+.ap-toggle.on {
+  background: var(--apple-systemGreen);
+}
+.ap-toggle.on::after {
+  transform: translateX(20px);
+}
+
+
+/* ══════════════════════════════════════
+   SHEET (bottom modal)
+   ══════════════════════════════════════ */
+
+.ap-sheet-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: var(--apple-z-modal);
+  background: rgba(0,0,0,.4);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity var(--apple-dur-base) var(--apple-ease-standard);
+}
+.ap-sheet-backdrop.visible {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.ap-sheet {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: calc(var(--apple-z-modal) + 1);
+  max-height: 90vh;
+  background: var(--apple-secondarySystemGroupedBackground);
+  border-radius: var(--apple-radius-2xl) var(--apple-radius-2xl) 0 0;
+  padding: var(--apple-space-6) var(--apple-space-5) calc(var(--safe-bottom) + var(--apple-space-5));
+  box-shadow: var(--apple-shadow-5);
+  transform: translateY(100%);
+  transition: transform var(--apple-dur-slow) var(--apple-ease-spring-soft);
+  overflow-y: auto;
+}
+.ap-sheet.visible {
+  transform: translateY(0);
+}
+.ap-sheet-handle {
+  width: 36px;
+  height: 5px;
+  background: var(--apple-tertiaryLabel);
+  border-radius: var(--apple-radius-full);
+  margin: 0 auto var(--apple-space-4);
+}
+.ap-sheet-title {
+  font-family: var(--apple-font-display);
+  font-size: var(--apple-t-title2-size);
+  font-weight: 700;
+  margin: 0 0 var(--apple-space-2);
+}
+
+
+/* ══════════════════════════════════════
+   BADGES
+   ══════════════════════════════════════ */
+
+.ap-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 20px;
+  height: 20px;
+  padding: 0 6px;
+  font-family: var(--apple-font-text);
+  font-size: var(--apple-t-caption2-size);
+  font-weight: 700;
+  color: #fff;
+  background: var(--apple-systemRed);
+  border-radius: var(--apple-radius-full);
+  letter-spacing: 0;
+  text-transform: none;
+}
+.ap-badge--dot {
+  min-width: 8px;
+  width: 8px;
+  height: 8px;
+  padding: 0;
+}
+.ap-badge--blue { background: var(--apple-systemBlue); }
+.ap-badge--green { background: var(--apple-systemGreen); }
+.ap-badge--orange { background: var(--apple-systemOrange); }
+
+
+/* ══════════════════════════════════════
+   ICON TILES (gros carrés colorés type iOS apps)
+   ══════════════════════════════════════ */
+
+.ap-icon-tile {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 56px;
+  height: 56px;
+  border-radius: var(--apple-radius-lg);
+  background: var(--apple-systemBlue-tint);
+  color: var(--apple-systemBlue);
+  flex-shrink: 0;
+}
+.ap-icon-tile svg {
+  width: 28px;
+  height: 28px;
+}
+.ap-icon-tile--lg { width: 72px; height: 72px; border-radius: var(--apple-radius-xl); }
+.ap-icon-tile--lg svg { width: 36px; height: 36px; }
+.ap-icon-tile--xl { width: 88px; height: 88px; border-radius: var(--apple-radius-xl); }
+.ap-icon-tile--xl svg { width: 44px; height: 44px; }
+
+.ap-icon-tile--green { background: color-mix(in srgb, var(--apple-systemGreen) 18%, transparent); color: var(--apple-systemGreen); }
+.ap-icon-tile--red { background: color-mix(in srgb, var(--apple-systemRed) 18%, transparent); color: var(--apple-systemRed); }
+.ap-icon-tile--orange { background: color-mix(in srgb, var(--apple-systemOrange) 18%, transparent); color: var(--apple-systemOrange); }
+.ap-icon-tile--purple { background: color-mix(in srgb, var(--apple-systemPurple) 18%, transparent); color: var(--apple-systemPurple); }
+.ap-icon-tile--pink { background: color-mix(in srgb, var(--apple-systemPink) 18%, transparent); color: var(--apple-systemPink); }
+.ap-icon-tile--indigo { background: color-mix(in srgb, var(--apple-systemIndigo) 18%, transparent); color: var(--apple-systemIndigo); }
+.ap-icon-tile--teal { background: color-mix(in srgb, var(--apple-systemTeal) 18%, transparent); color: var(--apple-systemTeal); }
+.ap-icon-tile--yellow { background: color-mix(in srgb, var(--apple-systemYellow) 22%, transparent); color: var(--apple-systemYellow); }
+
+/* Solid variants (plus Apple apps grid feel) */
+.ap-icon-tile--solid-blue { background: var(--apple-systemBlue); color: #fff; }
+.ap-icon-tile--solid-green { background: var(--apple-systemGreen); color: #fff; }
+.ap-icon-tile--solid-red { background: var(--apple-systemRed); color: #fff; }
+.ap-icon-tile--solid-orange { background: var(--apple-systemOrange); color: #fff; }
+
+
+/* ══════════════════════════════════════
+   HORIZONTAL SCROLLERS
+   ══════════════════════════════════════ */
+
+.ap-hscroll {
+  display: flex;
+  gap: var(--apple-space-4);
+  overflow-x: auto;
+  padding-bottom: var(--apple-space-2);
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  -webkit-overflow-scrolling: touch;
+}
+.ap-hscroll::-webkit-scrollbar { display: none; }
+.ap-hscroll > * {
+  flex: 0 0 auto;
+  scroll-snap-align: start;
+}
+
+/* Helper : padding latéral pour aligner au container */
+.ap-hscroll--padded {
+  padding-left: var(--apple-space-5);
+  padding-right: var(--apple-space-5);
+  margin-left: calc(var(--apple-space-5) * -1);
+  margin-right: calc(var(--apple-space-5) * -1);
+}
+
+
+/* ══════════════════════════════════════
+   SECTION HEADERS (style Apple News / App Store)
+   ══════════════════════════════════════ */
+
+.ap-section-header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  margin-bottom: var(--apple-space-4);
+  padding: 0;
+}
+.ap-section-header h2,
+.ap-section-header .ap-section-title {
+  font-family: var(--apple-font-display);
+  font-size: var(--apple-t-title1-size);
+  line-height: var(--apple-t-title1-lh);
+  font-weight: 700;
+  letter-spacing: var(--apple-t-title1-tracking);
+  color: var(--apple-label);
+  margin: 0;
+}
+.ap-section-eyebrow {
+  font-size: var(--apple-t-caption1-size);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--apple-systemBlue);
+  margin-bottom: var(--apple-space-1);
+  display: block;
+}
+.ap-section-link {
+  font-family: var(--apple-font-text);
+  font-size: var(--apple-t-subheadline-size);
+  color: var(--apple-systemBlue);
+  text-decoration: none;
+  font-weight: 500;
+  transition: opacity var(--apple-dur-fast);
+}
+.ap-section-link:hover { opacity: 0.7; }
+
+.ap-section {
+  padding: var(--apple-space-10) 0;
+}
+@media (min-width: 768px) {
+  .ap-section { padding: var(--apple-space-16) 0; }
+}
+
+
+/* ══════════════════════════════════════
+   DIVIDERS
+   ══════════════════════════════════════ */
+
+.ap-divider {
+  height: 0.5px;
+  background: var(--apple-separator);
+  border: none;
+  margin: var(--apple-space-4) 0;
+}
+
+
+/* ══════════════════════════════════════
+   UTILITIES
+   ══════════════════════════════════════ */
+
+.ap-stack { display: flex; flex-direction: column; gap: var(--apple-space-3); }
+.ap-stack-2 { gap: var(--apple-space-2); }
+.ap-stack-4 { gap: var(--apple-space-4); }
+.ap-stack-6 { gap: var(--apple-space-6); }
+.ap-stack-8 { gap: var(--apple-space-8); }
+
+.ap-row { display: flex; align-items: center; gap: var(--apple-space-3); }
+.ap-row-between { display: flex; align-items: center; justify-content: space-between; gap: var(--apple-space-3); }
+.ap-row-6 { gap: var(--apple-space-6); }
+
+.ap-grid-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--apple-space-4); }
+.ap-grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--apple-space-4); }
+.ap-grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--apple-space-4); }
+@media (max-width: 768px) {
+  .ap-grid-2 { grid-template-columns: 1fr; }
+  .ap-grid-3 { grid-template-columns: repeat(2, 1fr); }
+  .ap-grid-4 { grid-template-columns: repeat(2, 1fr); }
+}

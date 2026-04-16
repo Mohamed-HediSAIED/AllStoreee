@@ -14,6 +14,5 @@
 @import url('apple/typography.css');
 @import url('apple/base.css');
 @import url('apple/theme.css');
-/* Phase 2 : décommenter après création */
-/* @import url('apple/components.css'); */
-/* @import url('apple/motion.css'); */
+@import url('apple/components.css');
+@import url('apple/motion.css');
