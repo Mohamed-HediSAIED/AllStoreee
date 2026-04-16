@@ -222,6 +222,7 @@
         </div>
         <div class="btn-row">
             <button class="btn-back" onclick="goStep(1)">← Retour</button>
+            <button class="btn-primary" id="btnStep2" onclick="confirmBrand()" disabled>Continuer →</button>
         </div>
     </div>
 
@@ -471,6 +472,9 @@ document.getElementById('typeGrid').addEventListener('click', function(e) {
   list.innerHTML = brands.map(function(b) {
     return '<div class="opt-item" data-brand="' + b.replace(/"/g, '&quot;') + '">' + b + '<span class="opt-arrow">→</span></div>';
   }).join('');
+  // Reset brand selection when entering step 2
+  order.brand = '';
+  document.getElementById('btnStep2').disabled = true;
 
   buildRecap('recap2', [{ l:'Article', v:type }]);
   goStep(2);
@@ -517,13 +521,20 @@ document.getElementById('brandSearch').addEventListener('input', function() {
   }
 });
 
-// ── Étape 2 : délégation d'événement sur la liste des marques ──
+// ── Étape 2 : sélection marque (simple clic pour sélectionner) ──
 document.getElementById('brandList').addEventListener('click', function(e) {
   const item = e.target.closest('.opt-item');
   if (!item) return;
-  const brand = item.dataset.brand;
-  order.brand = brand;
+  document.querySelectorAll('#brandList .opt-item.selected').forEach(function(c) { c.classList.remove('selected'); });
+  item.classList.add('selected');
+  order.brand = item.dataset.brand;
+  document.getElementById('btnStep2').disabled = false;
+});
 
+// Validation avec le bouton Continuer
+function confirmBrand() {
+  if (!order.brand) return;
+  const brand = order.brand;
   const cfg = step3Config[order.type] || { mode:'skip' };
 
   if (cfg.mode === 'skip') {
@@ -533,7 +544,6 @@ document.getElementById('brandList').addEventListener('click', function(e) {
     goStep(4);
   } else {
     skipStep3 = false;
-    // Configurer l'étape 3
     document.getElementById('s3eyebrow').textContent = cfg.eyebrow;
     document.getElementById('s3title').textContent = cfg.title;
     document.getElementById('s3sub').textContent = cfg.sub;
@@ -549,7 +559,7 @@ document.getElementById('brandList').addEventListener('click', function(e) {
     buildRecap('recap3', [{ l:'Article', v:order.type }, { l:'Marque', v:brand }]);
     goStep(3);
   }
-});
+}
 
 // ── Étape 3 : délégation d'événement sur la grille des tailles ──
 document.getElementById('sizeGrid').addEventListener('click', function(e) {
