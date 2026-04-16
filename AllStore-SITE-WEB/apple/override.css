@@ -551,12 +551,14 @@ nav .nav-links {
    ══════════════════════════════════════ */
 
 .bnav {
+  position: fixed !important;
   bottom: 0 !important;
   left: 0 !important;
   right: 0 !important;
   transform: none !important;
   width: 100% !important;
   max-width: none !important;
+  z-index: 9000 !important;
   background: var(--glass-thick-bg) !important;
   -webkit-backdrop-filter: var(--glass-thick-blur) !important;
   backdrop-filter: var(--glass-thick-blur) !important;
