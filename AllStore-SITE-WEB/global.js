@@ -2,6 +2,27 @@
 (function(){
   'use strict';
 
+  /* ── Background image layer (iOS-compatible fixed bg) ──────── */
+  if(!document.getElementById('als-bg')){
+    const isMobile = window.matchMedia('(max-width:768px)').matches;
+    const bgUrl = isMobile ? 'IMG_9422.jpg' : 'IMG_9440.jpg';
+    const bg = document.createElement('div');
+    bg.id = 'als-bg';
+    bg.style.cssText = 'position:fixed;top:0;left:0;width:100vw;height:100vh;background-image:url('+bgUrl+');background-position:center center;background-size:cover;background-repeat:no-repeat;z-index:-2;pointer-events:none;';
+    const overlay = document.createElement('div');
+    overlay.id = 'als-bg-overlay';
+    overlay.style.cssText = 'position:fixed;top:0;left:0;width:100vw;height:100vh;background:rgba(0,0,0,.45);z-index:-1;pointer-events:none;';
+    document.documentElement.insertBefore(bg, document.documentElement.firstChild);
+    document.documentElement.insertBefore(overlay, bg.nextSibling);
+    // Update on resize/orientation change
+    const updateBg = () => {
+      const mobile = window.matchMedia('(max-width:768px)').matches;
+      bg.style.backgroundImage = 'url(' + (mobile ? 'IMG_9422.jpg' : 'IMG_9440.jpg') + ')';
+    };
+    window.addEventListener('resize', updateBg);
+    window.addEventListener('orientationchange', updateBg);
+  }
+
   /* ── Nav hide/show ──────────────────────────────────────────── */
   const header=document.querySelector('header');
   let last=0;
