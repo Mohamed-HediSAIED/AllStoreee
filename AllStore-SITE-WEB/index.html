@@ -43,16 +43,17 @@
   /* ---------- PROMO BANNER ---------- */
   .promo-banner{background:rgba(255,255,255,.18);backdrop-filter:blur(40px) saturate(180%);-webkit-backdrop-filter:blur(40px) saturate(180%);border-bottom:1px solid rgba(255,255,255,.25);text-align:center;padding:10px 0;font-family:'Poppins',sans-serif;font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:#e9c243}
 
-  /* ---------- HERO ---------- */
-  .hero-als{position:relative;width:100%;padding:120px 0 60px;display:flex;align-items:center;justify-content:center;background:transparent}
+  /* ---------- HERO — Apple.com style ---------- */
+  .hero-als{position:relative;width:100%;min-height:80vh;padding:clamp(80px,15vh,160px) 24px 60px;display:flex;flex-direction:column;align-items:center;justify-content:center;background:transparent}
   .hero-als img.hero-bg{display:none}
   .hero-als .hero-overlay{display:none}
-  .hero-als .hero-content{position:relative;z-index:2;text-align:center;padding:0 24px;max-width:900px}
-  .hero-als h1{font-family:'Poppins',sans-serif;font-size:clamp(26px,5vw,48px);font-weight:300;color:#fff;letter-spacing:.01em;line-height:1.2;margin:0 0 16px}
-  .hero-als h1 strong{font-weight:700}
-  .hero-als .hero-desc{font-family:'Poppins',sans-serif;font-size:clamp(12px,1.5vw,16px);color:rgba(255,255,255,.75);margin:0 0 32px;font-weight:300}
-  .hero-als .hero-btn{display:inline-block;font-family:'Poppins',sans-serif;font-size:12px;font-weight:600;letter-spacing:.15em;text-transform:uppercase;color:#fff;background:rgba(255,255,255,.18);backdrop-filter:blur(40px) saturate(180%);-webkit-backdrop-filter:blur(40px) saturate(180%);border:1px solid rgba(255,255,255,.25);padding:16px 48px;border-radius:30px;text-decoration:none;transition:all .3s;box-shadow:none}
-  .hero-als .hero-btn:hover{background:rgba(255,255,255,.28);border-color:rgba(255,255,255,.35)}
+  .hero-als .hero-content{position:relative;z-index:2;text-align:center;max-width:900px}
+  .hero-als h1{font-family:-apple-system,BlinkMacSystemFont,'SF Pro Display','Inter',sans-serif;font-size:clamp(44px,9vw,88px);font-weight:700;color:#fff;letter-spacing:-0.03em;line-height:1.05;margin:0 0 20px}
+  .hero-als h1 strong{font-weight:700;color:#fff;background:none;-webkit-background-clip:initial;-webkit-text-fill-color:initial}
+  .hero-als .hero-desc{font-family:-apple-system,BlinkMacSystemFont,'SF Pro Text','Inter',sans-serif;font-size:clamp(17px,2vw,22px);color:rgba(255,255,255,.8);letter-spacing:-0.01em;line-height:1.4;margin:0 auto 40px;font-weight:400;max-width:640px}
+  .hero-als .hero-btn{display:inline-flex;align-items:center;justify-content:center;font-family:-apple-system,BlinkMacSystemFont,'SF Pro Text','Inter',sans-serif;font-size:17px;font-weight:600;letter-spacing:-0.01em;text-transform:none;color:#fff;background:#007AFF;border:none;padding:14px 32px;border-radius:980px;text-decoration:none;min-height:48px;transition:background 200ms cubic-bezier(.4,0,.2,1);box-shadow:none}
+  .hero-als .hero-btn:hover{background:#0051D5}
+  .hero-als .hero-btn:active{transform:scale(.97);transition-duration:100ms}
 
   /* ---------- SEARCH BAR ---------- */
   .als-search-sec{padding:20px 20px 10px;background:var(--bg2,#f5f2ec)}
@@ -313,9 +314,9 @@
   <img src="IMG_9440.jpg" alt="AllStore Hero" class="hero-bg">
   <div class="hero-overlay"></div>
   <div class="hero-content">
-    <h1>Le <strong>luxe</strong> accessible,<br>sans <strong>compromis.</strong></h1>
+    <h1>Le luxe accessible.<br>Sans compromis.</h1>
     <p class="hero-desc">Sourcing d'exception, qualité vérifiée, livraison partout en Europe.</p>
-    <a href="assistant.html" class="hero-btn">DÉCOUVRIR LA BOUTIQUE</a>
+    <a href="assistant.html" class="hero-btn">Découvrir la boutique</a>
   </div>
 </section>
 
@@ -326,7 +327,7 @@
 ═══════════════════════════════════════════ -->
 <section class="als-sec">
   <div class="als-sec-head">
-    <h2 class="als-sec-title">VENDU <em>RÉCEMMENT</em></h2>
+    <h2 class="als-sec-title">La <em>Sélection</em></h2>
   </div>
   <div class="als-scroll-wrap">
   <div class="als-scroll-arrow left" onclick="scrollRow(this,-1)"><svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg></div>
@@ -368,184 +369,12 @@
 <!-- ═══════════════════════════════════════════
      2) NOS COLLECTIONS
 ═══════════════════════════════════════════ -->
-<section class="als-sec">
-  <div class="als-sec-head">
-    <h2 class="als-sec-title">NOS <em>COLLECTIONS</em></h2>
-  </div>
-  <div class="als-scroll-wrap">
-  <div class="als-scroll-arrow left" onclick="scrollRow(this,-1)"><svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg></div>
-  <div class="als-scroll-arrow right" onclick="scrollRow(this,1)"><svg viewBox="0 0 24 24"><polyline points="9 6 15 12 9 18"/></svg></div>
-  <div class="als-coll-grid">
-    <a href="assistant.html?category=Sacs" class="als-coll-card">
-      <img src="sac_chloe.png" alt="Chloé">
-      <div class="als-coll-overlay"></div>
-      <div class="als-coll-label"><span class="als-coll-name">SACS</span><span class="als-coll-btn">VOIR</span></div>
-    </a>
-    <a href="assistant.html?category=Accessoires" class="als-coll-card">
-      <img src="adidas_samba.png" alt="Giorgio Armani">
-      <div class="als-coll-overlay"></div>
-      <div class="als-coll-label"><span class="als-coll-name">ACCESSOIRES</span><span class="als-coll-btn">VOIR</span></div>
-    </a>
-    <a href="assistant.html?category=Chaussures" class="als-coll-card">
-      <img src="isabelmarant.png" alt="Isabel Marant">
-      <div class="als-coll-overlay"></div>
-      <div class="als-coll-label"><span class="als-coll-name">CHAUSSURES</span><span class="als-coll-btn">VOIR</span></div>
-    </a>
-    <a href="assistant.html?category=Vêtements" class="als-coll-card">
-      <img src="miumiu_top.png" alt="Miu Miu">
-      <div class="als-coll-overlay"></div>
-      <div class="als-coll-label"><span class="als-coll-name">VÊTEMENTS</span><span class="als-coll-btn">VOIR</span></div>
-    </a>
-    <a href="assistant.html?category=Horlogerie" class="als-coll-card">
-      <img src="rolex_daytona.png" alt="Rolex Daytona">
-      <div class="als-coll-overlay"></div>
-      <div class="als-coll-label"><span class="als-coll-name">MONTRES</span><span class="als-coll-btn">VOIR</span></div>
-    </a>
-  </div>
-  </div>
-</section>
 
 <!-- ═══════════════════════════════════════════
      3) VU SUR INSTAGRAM — Featured + Produits
 ═══════════════════════════════════════════ -->
-<section class="als-sec als-insta-section">
-  <div class="als-sec-head">
-    <h2 class="als-sec-title">VU SUR <em>INSTAGRAM</em></h2>
-  </div>
-  <div class="als-insta-row">
-    <div class="als-insta-col">
-      <a href="https://www.instagram.com/reel/DT04-k2jAIT/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==" target="_blank" class="als-insta-vid">
-        <video src="allstore_insta.mp4" autoplay muted loop playsinline></video>
-        <div class="als-insta-tag"><span>@ALLSTORE.TM</span></div>
-      </a>
-      <a href="produit-burberry-hoodie.html?color=gris" class="als-insta-pcard">
-        <div class="als-insta-pcard-img"><img src="burberry_hoodie_gris.jpg" alt="Burberry Hoodie Gris"></div>
-        <span class="als-insta-pcard-name">VESTE BURBERRY GRIS</span>
-        <span class="als-insta-pcard-price">65,00€</span>
-        <span class="als-insta-pcard-btn">VOIR</span>
-      </a>
-    </div>
-    <div class="als-insta-col">
-      <a href="https://www.instagram.com/reel/DTOCiNXjO-x/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==" target="_blank" class="als-insta-vid">
-        <video src="allstore_insta2.mov" autoplay muted loop playsinline></video>
-        <div class="als-insta-tag"><span>@ALLSTORE.TM</span></div>
-      </a>
-      <a href="produit-airpods-max.html" class="als-insta-pcard">
-        <div class="als-insta-pcard-img"><img src="airpods_max_insta.jpg" alt="AirPods Max"></div>
-        <span class="als-insta-pcard-name">AIRPODS MAX</span>
-        <span class="als-insta-pcard-price">185,00€</span>
-        <span class="als-insta-pcard-btn">VOIR</span>
-      </a>
-    </div>
-  </div>
-  <script>
-  (function(){
-    var vids = document.querySelectorAll('.als-insta-vid video');
-    if(!vids.length) return;
-    var io = new IntersectionObserver(function(entries){
-      entries.forEach(function(e){
-        if(e.isIntersecting){ e.target.play().catch(function(){}); }
-      });
-    },{threshold:0.2});
-    vids.forEach(function(v){ io.observe(v); });
-  })();
-  </script>
-</section>
-
-<!-- ═══════════════════════════════════════════
-     SÉLECTIONS CHAUSSURES
-═══════════════════════════════════════════ -->
-<div id="selections-chaussures"></div>
-
-<!-- ═══════════════════════════════════════════
-     SÉLECTIONS VÊTEMENTS
-═══════════════════════════════════════════ -->
-<div id="selections-vetements"></div>
-
-<!-- ═══════════════════════════════════════════
-     SÉLECTIONS ACCESSOIRES
-═══════════════════════════════════════════ -->
-<div id="selections-accessoires"></div>
 
 <script src="products-data.js"></script>
-<script>
-function filterSel(secId, pill) {
-  var sec = document.getElementById(secId);
-  var val = pill.dataset.brand;
-  sec.querySelectorAll('.als-pill').forEach(function(p){ p.classList.remove('active'); });
-  pill.classList.add('active');
-  sec.querySelectorAll('.als-hcard').forEach(function(card){
-    card.style.display = (card.dataset.brand === val) ? '' : 'none';
-  });
-  var t = sec.querySelector('.als-sec-title');
-  if(t) t.innerHTML = pill.textContent+' <em>SELECTION</em>';
-}
-
-(function(){
-  var brandLabels = {'A Bathing Ape':'BAPE'};
-  var cats = [
-    {id:'selections-chaussures', cat:'chaussures',
-     brands:[{n:'Maison Margiela'},{n:'Prada'},{n:'On'},{n:'Nike'}]},
-    {id:'selections-vetements', cat:'vetements',
-     brands:[{n:'Casablanca'},{n:'Burberry',filter:function(p){return p.name.indexOf('Pull')!==-1}},{n:'A Bathing Ape'}]},
-    {id:'selections-accessoires', cat:'accessoires',
-     brands:[{n:'Loro Piana'},{n:'Alo Yoga'},{n:'Miu Miu',filter:function(p){return p.name==='Porte-Cartes'}},{n:'Gerard Darel'}]}
-  ];
-
-  function buildCard(id, p) {
-    var priceHtml = p.price==='0'
-      ? '<span class="als-hcard-soon">Bientôt disponible</span>'
-      : '<span class="als-hcard-price">'+p.price+',00€</span>';
-    return '<a href="assistant.html?product='+id+'" class="als-hcard" data-brand="'+p.brand.replace(/"/g,'&quot;')+'">'
-      +'<div class="als-hcard-img"><span class="als-badge">TOP VENTES</span><img src="'+p.img+'" alt="'+p.brand+' '+p.name+' '+p.color+'" loading="lazy"></div>'
-      +'<div class="als-hcard-info"><span class="als-hcard-name">'+p.brand.toUpperCase()+' '+p.name.toUpperCase()+'</span>'
-      +'<span class="als-hcard-desc">'+p.name+' '+p.color+'</span>'
-      +priceHtml+'</div></a>';
-  }
-
-  cats.forEach(function(c, ci){
-    var container = document.getElementById(c.id);
-    var sid = 'sel-'+ci;
-    var cards = '', activeBrands = [], firstLabel = '';
-    c.brands.forEach(function(b){
-      var has = false;
-      Object.keys(PRODUCTS).forEach(function(id){
-        var p = PRODUCTS[id];
-        var catOk = p.cat===c.cat||(typeof CAT_MAP!=='undefined'&&CAT_MAP[p.cat]===c.cat);
-        if(p.brand===b.n && catOk && (!b.filter||b.filter(p))){ cards += buildCard(id, p); has = true; }
-      });
-      if(has) activeBrands.push(b.n);
-    });
-    if(!activeBrands.length) return;
-    firstLabel = brandLabels[activeBrands[0]] || activeBrands[0].toUpperCase();
-    var pills = '<div class="als-filters">';
-    activeBrands.forEach(function(b, i){
-      var label = brandLabels[b] || b.toUpperCase();
-      pills += '<button class="als-pill'+(i===0?' active':'')+'" data-brand="'+b.replace(/"/g,'&quot;')+'" onclick="filterSel(\''+sid+'\',this)">'+label+'</button>';
-    });
-    pills += '</div>';
-    container.innerHTML = '<section class="als-sec" id="'+sid+'">'
-      +'<div class="als-sec-head"><h2 class="als-sec-title">'+firstLabel+' <em>SELECTION</em></h2></div>'
-      +pills
-      +'<div class="als-scroll-wrap">'
-      +'<div class="als-scroll-arrow left" onclick="scrollRow(this,-1)"><svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg></div>'
-      +'<div class="als-scroll-arrow right" onclick="scrollRow(this,1)"><svg viewBox="0 0 24 24"><polyline points="9 6 15 12 9 18"/></svg></div>'
-      +'<div class="als-hscroll">'+cards+'</div>'
-      +'</div></section>';
-  });
-
-  // Initial filter: show only first brand
-  document.querySelectorAll('.als-sec[id^="sel-"]').forEach(function(sec){
-    var ap = sec.querySelector('.als-pill.active');
-    if(ap){
-      var val = ap.dataset.brand;
-      sec.querySelectorAll('.als-hcard').forEach(function(c){
-        c.style.display = (c.dataset.brand===val)?'':'none';
-      });
-    }
-  });
-})();
-</script>
 
 <!-- Search bar logic -->
 <script>
@@ -593,49 +422,6 @@ function filterSel(secId, pill) {
 <!-- ═══════════════════════════════════════════
      4) ARTICLES RARES
 ═══════════════════════════════════════════ -->
-<section class="als-sec">
-  <div class="als-sec-head">
-    <h2 class="als-sec-title">ARTICLES <em>RARES</em></h2>
-  </div>
-  <div class="als-scroll-wrap">
-  <div class="als-scroll-arrow left" onclick="scrollRow(this,-1)"><svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg></div>
-  <div class="als-scroll-arrow right" onclick="scrollRow(this,1)"><svg viewBox="0 0 24 24"><polyline points="9 6 15 12 9 18"/></svg></div>
-  <div class="als-hscroll">
-    <a href="assistant.html" class="als-hcard">
-      <div class="als-hcard-img"><img src="givenchy_shark_lock.jpg" alt="Givenchy Shark Lock"></div>
-      <div class="als-hcard-info"><span class="als-hcard-name">GIVENCHY SHARK LOCK</span><span class="als-hcard-price">178,00€</span></div>
-    </a>
-    <a href="assistant.html" class="als-hcard">
-      <div class="als-hcard-img"><img src="cartier_tank.jpg" alt="Cartier Tank"></div>
-      <div class="als-hcard-info"><span class="als-hcard-name">CARTIER TANK</span><span class="als-hcard-price">263,00€</span></div>
-    </a>
-    <a href="assistant.html" class="als-hcard">
-      <div class="als-hcard-img"><img src="miumiu_top.jpg" alt="Miu Miu Top"></div>
-      <div class="als-hcard-info"><span class="als-hcard-name">MIU MIU TOP LOGO</span><span class="als-hcard-price">50,00€</span></div>
-    </a>
-    <a href="assistant.html" class="als-hcard">
-      <div class="als-hcard-img"><img src="loropiana_sergio.jpg" alt="Loro Piana Sergio"></div>
-      <div class="als-hcard-info"><span class="als-hcard-name">LORO PIANA SERGIO</span><span class="als-hcard-price">128,00€</span></div>
-    </a>
-    <a href="assistant.html" class="als-hcard">
-      <div class="als-hcard-img"><img src="miumiu_wander.jpg" alt="Miu Miu Wander"></div>
-      <div class="als-hcard-info"><span class="als-hcard-name">MIU MIU WANDER MINI</span><span class="als-hcard-price">263,00€</span></div>
-    </a>
-    <a href="assistant.html" class="als-hcard">
-      <div class="als-hcard-img"><img src="kaws_companion.jpg" alt="KAWS Companion"></div>
-      <div class="als-hcard-info"><span class="als-hcard-name">KAWS COMPANION</span><span class="als-hcard-soon">Bientôt disponible</span></div>
-    </a>
-    <a href="assistant.html" class="als-hcard">
-      <div class="als-hcard-img"><img src="prada_lunettes_aviator.jpg" alt="Prada Lunettes Aviator"></div>
-      <div class="als-hcard-info"><span class="als-hcard-name">PRADA AVIATOR ÉCAILLE</span><span class="als-hcard-price">50,00€</span></div>
-    </a>
-    <a href="assistant.html" class="als-hcard">
-      <div class="als-hcard-img"><img src="casablanca_chemise.jpg" alt="Casablanca Casa Way"></div>
-      <div class="als-hcard-info"><span class="als-hcard-name">CASABLANCA CASA WAY</span><span class="als-hcard-price">50,00€</span></div>
-    </a>
-  </div>
-  </div>
-</section>
 
 <!-- ═══════════════════════════════════════════
      AVIS CLIENTS
@@ -691,41 +477,6 @@ function filterSel(secId, pill) {
 <!-- ═══════════════════════════════════════════
      5) NOS AMBASSADEURS — Carrousel vidéos
 ═══════════════════════════════════════════ -->
-<section class="amb-sec">
-  <div class="als-sec-head">
-    <h2 class="als-sec-title">NOS <em>COLLABORATEURS</em></h2>
-  </div>
-  <div class="amb-scroll">
-
-    <!-- Ambassadeur 1 — @lou.mrr_ -->
-    <a href="assistant.html?product=burberry-gris" class="amb-card">
-      <div class="amb-video-wrap">
-        <video src="amb_lou_mrr.mp4" loop muted playsinline preload="metadata"></video>
-        <span class="amb-username">@lou.mrr_</span>
-        <button class="amb-mute" onclick="event.preventDefault();this.closest('.amb-video-wrap').querySelector('video').muted=!this.closest('.amb-video-wrap').querySelector('video').muted"><svg viewBox="0 0 24 24"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><line x1="23" y1="9" x2="17" y2="15"/><line x1="17" y1="9" x2="23" y2="15"/></svg></button>
-      </div>
-      <div class="amb-product">
-        <div class="amb-product-img"><img src="vesteblouson-burberry-en-coton-gris-40310052-1_2.webp" alt="Veste Burberry Gris"></div>
-        <div class="amb-product-info">
-          <span class="amb-product-name">VESTE BURBERRY GRIS</span>
-          <span class="amb-product-price">65,00&euro;</span>
-        </div>
-        <button class="amb-product-add" onclick="event.preventDefault()"><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button>
-      </div>
-    </a>
-
-    <!-- CTA Collaborer -->
-    <a href="contact.html" class="amb-cta-card">
-      <div class="amb-cta-wrap">
-        <div class="amb-cta-icon"><svg viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="8.5" cy="7" r="4"/><line x1="20" y1="8" x2="20" y2="14"/><line x1="23" y1="11" x2="17" y2="11"/></svg></div>
-        <div class="amb-cta-title">Tu veux aussi <span>collaborer</span> ?</div>
-        <div class="amb-cta-sub">Rejoins l'aventure AllStore et partage tes looks.</div>
-        <div class="amb-cta-btn">On en parle ?</div>
-      </div>
-    </a>
-
-  </div>
-</section>
 <script>
 // Autoplay ambassador videos when visible
 (function(){
@@ -744,38 +495,6 @@ function filterSel(secId, pill) {
 <!-- ═══════════════════════════════════════════
      COMMENT ÇA MARCHE — 3 étapes
 ═══════════════════════════════════════════ -->
-<section class="hiw2">
-  <div class="hiw2-inner">
-    <div class="hiw2-left reveal">
-      <h2 class="hiw2-heading">Comment<br><em>ça marche</em></h2>
-      <div class="hiw2-line"></div>
-      <p class="hiw2-intro">Du choix à la livraison,<br>on s'occupe de tout.</p>
-    </div>
-    <div class="hiw2-steps">
-      <div class="hiw2-step reveal">
-        <span class="hiw2-idx">I</span>
-        <div class="hiw2-content">
-          <h3>Choisissez</h3>
-          <p>Parcourez nos pièces ou faites une demande spécifique. Vous nous dites ce que vous cherchez, on le trouve.</p>
-        </div>
-      </div>
-      <div class="hiw2-step reveal d1">
-        <span class="hiw2-idx">II</span>
-        <div class="hiw2-content">
-          <h3>On source</h3>
-          <p>Nos experts localisent la pièce, vérifient chaque détail et vous envoient les photos avant expédition.</p>
-        </div>
-      </div>
-      <div class="hiw2-step reveal d2">
-        <span class="hiw2-idx">III</span>
-        <div class="hiw2-content">
-          <h3>Livré chez vous</h3>
-          <p>Expédition sous 3 jours. Chez vous en 7 à 15 jours ouvrés, emballage soigné.</p>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
 
 
 <!-- ═══════════════════════════════════════════

@@ -162,11 +162,11 @@ nav .nav-links {
 }
 .hero-als h1 strong {
   font-weight: 700 !important;
-  background: linear-gradient(135deg, var(--apple-systemBlue) 0%, var(--apple-systemPurple) 100%);
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-  color: transparent;
+  color: inherit !important;
+  background: none !important;
+  -webkit-background-clip: initial !important;
+  background-clip: initial !important;
+  -webkit-text-fill-color: inherit !important;
 }
 
 .hero-als .hero-desc {
@@ -183,7 +183,7 @@ nav .nav-links {
   font-family: var(--apple-font-text) !important;
   font-size: var(--apple-t-headline-size) !important;
   font-weight: 600 !important;
-  letter-spacing: 0 !important;
+  letter-spacing: -0.01em !important;
   text-transform: none !important;
   color: #fff !important;
   background: var(--apple-systemBlue) !important;
@@ -191,23 +191,22 @@ nav .nav-links {
   -webkit-backdrop-filter: none !important;
   border: none !important;
   padding: 0 var(--apple-space-7) !important;
-  height: 52px !important;
+  height: 48px !important;
   display: inline-flex !important;
   align-items: center;
   justify-content: center;
   border-radius: var(--apple-radius-full) !important;
-  box-shadow: var(--apple-shadow-2) !important;
+  box-shadow: none !important;
   transition:
     background-color var(--apple-dur-fast) var(--apple-ease-standard),
-    transform var(--apple-dur-fast) var(--apple-ease-decelerate),
-    box-shadow var(--apple-dur-fast) var(--apple-ease-standard) !important;
+    transform var(--apple-dur-fast) var(--apple-ease-decelerate) !important;
 }
 .hero-als .hero-btn:hover {
   background: var(--apple-systemBlue-pressed) !important;
-  box-shadow: var(--apple-shadow-3) !important;
 }
 .hero-als .hero-btn:active {
   transform: scale(0.97);
+  transition-duration: 100ms !important;
 }
 
 
@@ -291,12 +290,12 @@ nav .nav-links {
 }
 .als-hcard:hover,
 .als-rare-card:hover {
-  transform: translateY(-4px);
-  box-shadow: var(--apple-shadow-3) !important;
+  transform: translateY(-2px);
+  box-shadow: var(--apple-shadow-2) !important;
 }
 .als-hcard:active,
 .als-rare-card:active {
-  transform: scale(0.99);
+  transform: scale(0.98);
   transition-duration: var(--apple-dur-instant) !important;
 }
 
@@ -438,13 +437,13 @@ nav .nav-links {
    ══════════════════════════════════════ */
 
 .als-review-card {
-  background: var(--glass-regular-bg) !important;
-  -webkit-backdrop-filter: var(--glass-regular-blur);
-  backdrop-filter: var(--glass-regular-blur);
-  border: var(--glass-border) !important;
+  background: var(--apple-secondarySystemGroupedBackground) !important;
+  -webkit-backdrop-filter: none !important;
+  backdrop-filter: none !important;
+  border: 1px solid var(--apple-separator) !important;
   border-radius: var(--apple-radius-xl) !important;
-  box-shadow: var(--glass-highlight), var(--apple-shadow-1) !important;
-  padding: var(--apple-space-5) !important;
+  box-shadow: var(--apple-shadow-1) !important;
+  padding: var(--apple-space-6) var(--apple-space-5) !important;
 }
 .als-review-stars {
   color: var(--apple-systemOrange) !important;
