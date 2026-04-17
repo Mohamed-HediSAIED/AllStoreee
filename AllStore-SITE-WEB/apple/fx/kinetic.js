@@ -99,10 +99,39 @@ function initMarquee() {
   });
 }
 
+function initBackToTop() {
+  if (document.getElementById('fx-back-to-top')) return;
+
+  const btn = document.createElement('button');
+  btn.id = 'fx-back-to-top';
+  btn.type = 'button';
+  btn.setAttribute('aria-label', 'Retour en haut de la page');
+  btn.innerHTML = '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"/></svg>';
+  document.body.appendChild(btn);
+
+  const SHOW_AT = 500;
+  let visible = false;
+
+  const update = () => {
+    const show = window.scrollY > SHOW_AT;
+    if (show === visible) return;
+    visible = show;
+    btn.classList.toggle('fx-btt-visible', show);
+  };
+
+  btn.addEventListener('click', () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+
+  window.addEventListener('scroll', update, { passive: true });
+  update();
+}
+
 function boot() {
   initKineticHeadings();
   initRevealObserver();
   initMarquee();
+  initBackToTop();
 }
 
 if (document.readyState === 'loading') {
@@ -111,4 +140,4 @@ if (document.readyState === 'loading') {
   boot();
 }
 
-export { initKineticHeadings, initRevealObserver, initMarquee };
+export { initKineticHeadings, initRevealObserver, initMarquee, initBackToTop };
