@@ -2,7 +2,7 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <meta name="description" content="ALLSTORE 24/7 — Répliques de luxe haut de gamme. Sourcing d'exception, qualité vérifiée, livraison partout en Europe.">
   <meta property="og:title" content="ALLSTORE 24/7 — Sourcing d'Exception">
   <meta property="og:description" content="ALLSTORE 24/7 — Répliques de luxe haut de gamme. Sourcing d'exception, qualité vérifiée, livraison partout en Europe.">
@@ -12,7 +12,9 @@
   <title>ALLSTORE 24/7 — Sourcing d'Exception</title>
   <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="conversion.css">
-</head>
+    <link rel="stylesheet" href="apple.css">
+    <script defer src="apple-switch.js"></script>
+  </head>
 <body class="body-dark">
 
 
@@ -40,18 +42,19 @@
   ============================================================ */
 
   /* ---------- PROMO BANNER ---------- */
-  .promo-banner{background:rgba(10,25,35,.85);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);text-align:center;padding:10px 0;font-family:'Poppins',sans-serif;font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:#e9c243}
+  .promo-banner{background:rgba(255,255,255,.08);backdrop-filter:blur(20px) saturate(180%);-webkit-backdrop-filter:blur(20px) saturate(180%);border-bottom:1px solid rgba(255,255,255,.1);text-align:center;padding:10px 16px;font-family:-apple-system,BlinkMacSystemFont,'SF Pro Text','Inter',sans-serif;font-size:13px;font-weight:500;letter-spacing:-0.01em;text-transform:none;color:rgba(255,255,255,.85)}
 
-  /* ---------- HERO ---------- */
-  .hero-als{position:relative;width:100%;height:45vh;min-height:260px;max-height:400px;overflow:hidden;display:flex;align-items:center;justify-content:center}
-  .hero-als img.hero-bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
-  .hero-als .hero-overlay{position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.25) 0%,rgba(0,0,0,.55) 100%)}
-  .hero-als .hero-content{position:relative;z-index:2;text-align:center;padding:0 24px;max-width:900px}
-  .hero-als h1{font-family:'Poppins',sans-serif;font-size:clamp(26px,5vw,48px);font-weight:300;color:#fff;letter-spacing:.01em;line-height:1.2;margin:0 0 16px}
-  .hero-als h1 strong{font-weight:700}
-  .hero-als .hero-desc{font-family:'Poppins',sans-serif;font-size:clamp(12px,1.5vw,16px);color:rgba(255,255,255,.75);margin:0 0 32px;font-weight:300}
-  .hero-als .hero-btn{display:inline-block;font-family:'Poppins',sans-serif;font-size:12px;font-weight:600;letter-spacing:.15em;text-transform:uppercase;color:#fff;background:rgba(255,255,255,.12);backdrop-filter:blur(15px);-webkit-backdrop-filter:blur(15px);border:1px solid rgba(255,255,255,.25);padding:16px 48px;border-radius:30px;text-decoration:none;transition:all .3s}
-  .hero-als .hero-btn:hover{background:rgba(255,255,255,.25)}
+  /* ---------- HERO — Apple.com style ---------- */
+  .hero-als{position:relative;width:100%;min-height:80vh;padding:clamp(80px,15vh,160px) 24px 60px;display:flex;flex-direction:column;align-items:center;justify-content:center;background:transparent}
+  .hero-als img.hero-bg{display:none}
+  .hero-als .hero-overlay{display:none}
+  .hero-als .hero-content{position:relative;z-index:2;text-align:center;max-width:900px}
+  .hero-als h1{font-family:-apple-system,BlinkMacSystemFont,'SF Pro Display','Inter',sans-serif;font-size:clamp(44px,9vw,88px);font-weight:700;color:#fff;letter-spacing:-0.03em;line-height:1.05;margin:0 0 20px}
+  .hero-als h1 strong{font-weight:700;color:#fff;background:none;-webkit-background-clip:initial;-webkit-text-fill-color:initial}
+  .hero-als .hero-desc{font-family:-apple-system,BlinkMacSystemFont,'SF Pro Text','Inter',sans-serif;font-size:clamp(17px,2vw,22px);color:rgba(255,255,255,.8);letter-spacing:-0.01em;line-height:1.4;margin:0 auto 40px;font-weight:400;max-width:640px}
+  .hero-als .hero-btn{display:inline-flex;align-items:center;justify-content:center;font-family:-apple-system,BlinkMacSystemFont,'SF Pro Text','Inter',sans-serif;font-size:17px;font-weight:600;letter-spacing:-0.01em;text-transform:none;color:#fff;background:#007AFF;border:none;padding:14px 32px;border-radius:980px;text-decoration:none;min-height:48px;transition:background 200ms cubic-bezier(.4,0,.2,1);box-shadow:none}
+  .hero-als .hero-btn:hover{background:#0051D5}
+  .hero-als .hero-btn:active{transform:scale(.97);transition-duration:100ms}
 
   /* ---------- SEARCH BAR ---------- */
   .als-search-sec{padding:20px 20px 10px;background:var(--bg2,#f5f2ec)}
@@ -68,41 +71,42 @@
   .als-search-item-img img{width:100%;height:100%;object-fit:cover;mix-blend-mode:multiply}
   .als-search-item-info{flex:1;min-width:0}
   .als-search-item-brand{font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:.08em;color:var(--gold2,#c5a44e)}
-  .als-search-item-name{font-family:'Poppins',sans-serif;font-size:13px;font-weight:600;color:var(--noir,#0a1923);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-  .als-search-item-price{font-family:'Poppins',sans-serif;font-size:13px;font-weight:700;flex-shrink:0}
-  .als-search-empty{padding:20px;text-align:center;font-family:'Poppins',sans-serif;font-size:13px;color:var(--gris,#6a7a8a)}
+  .als-search-item-name{font-family:-apple-system,BlinkMacSystemFont,'SF Pro Text','Inter',sans-serif;font-size:13px;font-weight:600;color:var(--noir,#0a1923);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .als-search-item-price{font-family:-apple-system,BlinkMacSystemFont,'SF Pro Text','Inter',sans-serif;font-size:13px;font-weight:700;flex-shrink:0}
+  .als-search-empty{padding:20px;text-align:center;font-family:-apple-system,BlinkMacSystemFont,'SF Pro Text','Inter',sans-serif;font-size:13px;color:var(--gris,#6a7a8a)}
 
   /* ---------- AVIS CLIENTS ---------- */
-  .als-review-card{flex:0 0 300px;background:#fbfbfd;border-radius:20px;padding:24px 24px 20px;scroll-snap-align:start}
+  .als-review-card{flex:0 0 300px;background:rgba(255,255,255,.18);backdrop-filter:blur(40px) saturate(180%);-webkit-backdrop-filter:blur(40px) saturate(180%);border:1px solid rgba(255,255,255,.25);border-radius:20px;padding:24px 24px 20px;scroll-snap-align:start;box-shadow:none}
   .als-review-stars{color:#e9c243;font-size:16px;letter-spacing:2px;margin-bottom:12px}
-  .als-review-text{font-family:'Poppins',sans-serif;font-size:13px;color:var(--gris,#6a7a8a);font-style:italic;line-height:1.6;margin:0 0 16px}
-  .als-review-author{font-family:'Poppins',sans-serif;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--noir,#0a1923);display:block}
-  .als-review-product{font-family:'Poppins',sans-serif;font-size:11px;color:var(--gris,#6a7a8a);display:block;margin-top:2px}
+  .als-review-text{font-family:-apple-system,BlinkMacSystemFont,'SF Pro Text','Inter',sans-serif;font-size:13px;color:rgba(255,255,255,.6);font-style:italic;line-height:1.6;margin:0 0 16px}
+  .als-review-author{font-family:-apple-system,BlinkMacSystemFont,'SF Pro Text','Inter',sans-serif;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:#fff;display:block}
+  .als-review-product{font-family:-apple-system,BlinkMacSystemFont,'SF Pro Text','Inter',sans-serif;font-size:11px;color:rgba(255,255,255,.5);display:block;margin-top:2px}
   @media(max-width:600px){.als-review-card{flex:0 0 260px;padding:20px}}
 
   /* ---------- SECTIONS ---------- */
-  .als-sec{padding:40px 0 36px;background:var(--bg2,#f5f2ec)}
+  .als-sec{padding:40px 0 36px;background:transparent}
   .als-sec-head{text-align:center;margin-bottom:20px;padding:0 20px}
-  .als-sec-title{font-family:'Poppins',sans-serif;font-size:22px;font-weight:800;text-transform:uppercase;color:var(--noir,#0a1923);margin:0;letter-spacing:.02em}
-  .als-sec-title em{font-family:'Cormorant',serif;font-weight:500;font-style:italic;color:var(--gris,#6a7a8a)}
+  .als-sec-title{font-family:-apple-system,BlinkMacSystemFont,'SF Pro Text','Inter',sans-serif;font-size:22px;font-weight:800;text-transform:uppercase;color:#fff;margin:0;letter-spacing:.02em}
+  .als-sec-title em{font-family:-apple-system,BlinkMacSystemFont,'SF Pro Display','Inter',sans-serif;font-weight:500;font-style:italic;color:rgba(255,255,255,.5)}
 
   /* ---------- FILTERS ---------- */
   .als-filters{display:flex;gap:8px;padding:0 20px;margin-bottom:20px;flex-wrap:wrap;justify-content:center}
-  .als-pill{font-family:'Poppins',sans-serif;font-size:12px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;padding:10px 24px;border-radius:30px;border:1.5px solid rgba(10,25,35,.2);background:transparent;color:var(--noir,#0a1923);cursor:pointer;transition:all .2s}
-  .als-pill.active{background:var(--noir,#0a1923);color:#fff;border-color:var(--noir,#0a1923)}
+  .als-pill{font-family:-apple-system,BlinkMacSystemFont,'SF Pro Text','Inter',sans-serif;font-size:12px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;padding:10px 24px;border-radius:30px;border:1.5px solid rgba(255,255,255,.2);background:rgba(255,255,255,.12);backdrop-filter:blur(40px) saturate(180%);-webkit-backdrop-filter:blur(40px) saturate(180%);color:rgba(255,255,255,.7);cursor:pointer;transition:all .2s}
+  .als-pill:hover{background:rgba(255,255,255,.22);color:#fff}
+  .als-pill.active{background:rgba(255,255,255,.25);color:#fff;border-color:rgba(255,255,255,.35)}
 
   /* ---------- LA SÉLECTION — scroll horizontal ---------- */
   .als-hscroll{display:flex;gap:15px;overflow-x:auto;padding:0 20px 8px;scroll-behavior:smooth;-webkit-overflow-scrolling:touch;scrollbar-width:none}
   .als-hscroll::-webkit-scrollbar{display:none}
-  .als-hcard{flex:0 0 190px;scroll-snap-align:start;text-decoration:none;background:#fbfbfd;border-radius:20px;overflow:hidden;padding:15px;transition:.3s ease}
-  .als-hcard-img{position:relative;width:100%;aspect-ratio:1;display:flex;align-items:center;justify-content:center;margin-bottom:10px}
+  .als-hcard{flex:0 0 190px;scroll-snap-align:start;text-decoration:none;background:rgba(255,255,255,.18);backdrop-filter:blur(40px) saturate(180%);-webkit-backdrop-filter:blur(40px) saturate(180%);border:1px solid rgba(255,255,255,.25);border-radius:20px;overflow:hidden;padding:15px;transition:.3s ease;box-shadow:none}
+  .als-hcard-img{position:relative;width:100%;aspect-ratio:1;display:flex;align-items:center;justify-content:center;margin-bottom:10px;border-radius:20px;overflow:hidden}
   .als-hcard-img img{width:100%;height:auto;object-fit:cover;mix-blend-mode:multiply}
   .als-hcard-info{padding:0}
-  .als-hcard-name{font-family:'Poppins',sans-serif;font-size:12px;font-weight:700;text-transform:uppercase;color:var(--noir,#0a1923);display:block;line-height:1.3}
-  .als-hcard-price{font-family:'Poppins',sans-serif;font-size:13px;color:#86868b;display:block;margin-top:3px;font-weight:400}
-  .als-hcard-soon{font-family:'Poppins',sans-serif;font-size:9px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;color:var(--noir,#0a1923);background:rgba(10,25,35,.06);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border:1px solid rgba(10,25,35,.08);padding:5px 12px;border-radius:20px;display:inline-block;margin-top:6px;font-style:normal}
-  .als-badge{position:absolute;top:8px;right:8px;background:var(--noir,#0a1923);color:#fff;font-family:'Poppins',sans-serif;font-size:8px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:5px 10px;border-radius:12px;z-index:1}
-  .als-hcard-desc{font-family:'Poppins',sans-serif;font-size:11px;color:#86868b;display:block;margin-top:2px;font-weight:400}
+  .als-hcard-name{font-family:-apple-system,BlinkMacSystemFont,'SF Pro Text','Inter',sans-serif;font-size:12px;font-weight:700;text-transform:uppercase;color:#fff;display:block;line-height:1.3}
+  .als-hcard-price{font-family:-apple-system,BlinkMacSystemFont,'SF Pro Text','Inter',sans-serif;font-size:13px;color:rgba(255,255,255,.6);display:block;margin-top:3px;font-weight:400}
+  .als-hcard-soon{font-family:-apple-system,BlinkMacSystemFont,'SF Pro Text','Inter',sans-serif;font-size:9px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;color:rgba(255,255,255,.8);background:rgba(255,255,255,.12);backdrop-filter:blur(40px) saturate(180%);-webkit-backdrop-filter:blur(40px) saturate(180%);border:1px solid rgba(255,255,255,.2);padding:5px 12px;border-radius:20px;display:inline-block;margin-top:6px;font-style:normal}
+  .als-badge{position:absolute;top:8px;right:8px;background:var(--noir,#0a1923);color:#fff;font-family:-apple-system,BlinkMacSystemFont,'SF Pro Text','Inter',sans-serif;font-size:8px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:5px 10px;border-radius:12px;z-index:1}
+  .als-hcard-desc{font-family:-apple-system,BlinkMacSystemFont,'SF Pro Text','Inter',sans-serif;font-size:11px;color:#86868b;display:block;margin-top:2px;font-weight:400}
   .als-scroll-bar{width:60px;height:3px;background:var(--noir,#0a1923);margin:0 auto;border-radius:2px}
 
   /* ---------- NOS COLLECTIONS — cartes avec overlay ---------- */
@@ -111,12 +115,12 @@
   .als-coll-card{flex:0 0 220px;scroll-snap-align:start;position:relative;border-radius:25px;overflow:hidden;text-decoration:none;height:320px;background:#1a1a1a;box-shadow:0 15px 35px rgba(0,0,0,.05)}
   .als-coll-card img{width:100%;height:100%;object-fit:cover}
   .als-coll-card .als-coll-overlay{position:absolute;inset:0;background:linear-gradient(0deg,rgba(0,0,0,.55) 0%,transparent 50%)}
-  .als-coll-card .als-coll-label{position:absolute;bottom:20px;left:18px;right:18px;padding:14px;border-radius:18px;background:rgba(255,255,255,.1);backdrop-filter:blur(15px);border:1px solid rgba(255,255,255,.2);display:flex;align-items:center;justify-content:space-between}
-  .als-coll-card .als-coll-name{font-family:'Poppins',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:#fff}
-  .als-coll-card .als-coll-btn{font-family:'Poppins',sans-serif;font-size:9px;font-weight:600;text-transform:uppercase;color:#fff;background:rgba(255,255,255,.2);padding:6px 14px;border-radius:20px}
+  .als-coll-card .als-coll-label{position:absolute;bottom:20px;left:18px;right:18px;padding:14px;border-radius:18px;background:rgba(255,255,255,.18);backdrop-filter:blur(40px) saturate(180%);-webkit-backdrop-filter:blur(40px) saturate(180%);border:1px solid rgba(255,255,255,.25);display:flex;align-items:center;justify-content:space-between;box-shadow:none}
+  .als-coll-card .als-coll-name{font-family:-apple-system,BlinkMacSystemFont,'SF Pro Text','Inter',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:#fff}
+  .als-coll-card .als-coll-btn{font-family:-apple-system,BlinkMacSystemFont,'SF Pro Text','Inter',sans-serif;font-size:9px;font-weight:600;text-transform:uppercase;color:#fff;background:rgba(255,255,255,.2);padding:6px 14px;border-radius:20px}
 
   /* ---------- VU SUR INSTAGRAM ---------- */
-  .als-insta-section{padding:0;background:var(--bg2,#f5f2ec)}
+  .als-insta-section{padding:0;background:transparent}
   .als-insta-row{display:flex;gap:12px;padding:0 20px;max-width:1000px;margin:0 auto}
   @media(min-width:1025px){.als-insta-row{max-width:100%!important;padding:0 40px!important}}
   .als-insta-col{flex:1;display:flex;flex-direction:column;gap:12px}
@@ -137,16 +141,17 @@
     .als-insta-pcard-btn{margin-top:14px;padding:10px 28px;font-size:11px}
   }
   .als-insta-vid .als-insta-tag{position:absolute;top:14px;left:14px;display:flex;align-items:center;gap:6px}
-  .als-insta-vid .als-insta-tag span{font-family:'Poppins',sans-serif;font-size:9px;font-weight:600;letter-spacing:.06em;color:#fff;background:rgba(0,0,0,.45);backdrop-filter:blur(6px);padding:5px 10px;border-radius:20px}
-  .als-insta-pcard{display:flex;flex-direction:column;align-items:center;background:#fbfbfd;border-radius:16px;padding:6px 6px 12px;text-decoration:none;border:1px solid rgba(0,0,0,.03)}
+  .als-insta-vid .als-insta-tag span{font-family:-apple-system,BlinkMacSystemFont,'SF Pro Text','Inter',sans-serif;font-size:9px;font-weight:600;letter-spacing:.06em;color:#fff;background:rgba(255,255,255,.18);backdrop-filter:blur(40px) saturate(180%);-webkit-backdrop-filter:blur(40px) saturate(180%);border:1px solid rgba(255,255,255,.25);padding:5px 10px;border-radius:20px}
+  .als-insta-pcard{display:flex;flex-direction:column;align-items:center;background:rgba(255,255,255,.18);backdrop-filter:blur(40px) saturate(180%);-webkit-backdrop-filter:blur(40px) saturate(180%);border-radius:16px;padding:6px 6px 12px;text-decoration:none;border:1px solid rgba(255,255,255,.25);box-shadow:none}
   .als-insta-pcard-img{width:100%;aspect-ratio:1;display:flex;align-items:center;justify-content:center;overflow:hidden;padding:8px}
+  .als-insta-pcard-img{border-radius:20px;overflow:hidden}
   .als-insta-pcard-img img{max-width:90%;max-height:90%;object-fit:cover;mix-blend-mode:multiply}
-  .als-insta-pcard-name{font-family:'Poppins',sans-serif;font-size:11px;font-weight:700;text-transform:uppercase;color:var(--noir,#0a1923);text-align:center;margin-top:6px}
-  .als-insta-pcard-price{font-family:'Poppins',sans-serif;font-size:12px;font-weight:400;color:#86868b;text-align:center;margin-top:4px}
-  .als-insta-pcard-btn{font-family:'Poppins',sans-serif;font-size:9px;font-weight:600;letter-spacing:.05em;text-transform:uppercase;color:var(--noir,#0a1923);background:rgba(10,25,35,.06);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border:1px solid rgba(10,25,35,.08);padding:6px 20px;border-radius:20px;margin-top:8px;display:inline-block}
+  .als-insta-pcard-name{font-family:-apple-system,BlinkMacSystemFont,'SF Pro Text','Inter',sans-serif;font-size:11px;font-weight:700;text-transform:uppercase;color:#fff;text-align:center;margin-top:6px}
+  .als-insta-pcard-price{font-family:-apple-system,BlinkMacSystemFont,'SF Pro Text','Inter',sans-serif;font-size:12px;font-weight:400;color:rgba(255,255,255,.6);text-align:center;margin-top:4px}
+  .als-insta-pcard-btn{font-family:-apple-system,BlinkMacSystemFont,'SF Pro Text','Inter',sans-serif;font-size:9px;font-weight:600;letter-spacing:.05em;text-transform:uppercase;color:rgba(255,255,255,.8);background:rgba(255,255,255,.12);backdrop-filter:blur(40px) saturate(180%);-webkit-backdrop-filter:blur(40px) saturate(180%);border:1px solid rgba(255,255,255,.2);padding:6px 20px;border-radius:20px;margin-top:8px;display:inline-block}
 
   /* ---------- NOS AMBASSADEURS — carrousel vidéos ---------- */
-  .amb-sec{padding:40px 0 36px;background:var(--bg,#f7f2e8)}
+  .amb-sec{padding:40px 0 36px;background:transparent}
   .amb-sec .als-sec-head{text-align:left;padding:0 20px;margin-bottom:20px}
   .amb-sec .als-sec-title{font-size:22px}
   .amb-scroll{display:flex;gap:14px;overflow-x:auto;padding:0 20px 12px;scroll-behavior:smooth;-webkit-overflow-scrolling:touch;scrollbar-width:none}
@@ -156,17 +161,17 @@
   .amb-video-wrap video,.amb-video-wrap img{width:100%;height:100%;object-fit:cover}
   .amb-placeholder{width:100%;height:100%;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,#1a1a1a 0%,#2a2a2a 100%)}
   .amb-placeholder svg{width:40px;height:40px;stroke:rgba(255,255,255,.2);fill:none;stroke-width:1.5}
-  .amb-username{position:absolute;top:12px;left:12px;font-family:'Poppins',sans-serif;font-size:10px;font-weight:600;color:#fff;background:rgba(0,0,0,.45);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);padding:5px 12px;border-radius:20px;letter-spacing:.02em}
-  .amb-mute{position:absolute;top:12px;right:12px;width:28px;height:28px;border-radius:50%;background:rgba(0,0,0,.4);backdrop-filter:blur(6px);display:flex;align-items:center;justify-content:center;border:none;cursor:pointer}
+  .amb-username{position:absolute;top:12px;left:12px;font-family:-apple-system,BlinkMacSystemFont,'SF Pro Text','Inter',sans-serif;font-size:10px;font-weight:600;color:#fff;background:rgba(255,255,255,.18);backdrop-filter:blur(40px) saturate(180%);-webkit-backdrop-filter:blur(40px) saturate(180%);border:1px solid rgba(255,255,255,.25);padding:5px 12px;border-radius:20px;letter-spacing:.02em}
+  .amb-mute{position:absolute;top:12px;right:12px;width:28px;height:28px;border-radius:50%;background:rgba(255,255,255,.18);backdrop-filter:blur(40px) saturate(180%);-webkit-backdrop-filter:blur(40px) saturate(180%);border:1px solid rgba(255,255,255,.25);display:flex;align-items:center;justify-content:center;border:none;cursor:pointer}
   .amb-mute svg{width:14px;height:14px;stroke:#fff;fill:none;stroke-width:2}
   .amb-product{display:flex;align-items:center;gap:10px;padding:0 2px}
   .amb-product-img{width:36px;height:36px;border-radius:10px;background:#f0ece4;overflow:hidden;flex-shrink:0;display:flex;align-items:center;justify-content:center}
   .amb-product-img img{width:90%;height:90%;object-fit:cover}
   .amb-product-info{flex:1;min-width:0}
-  .amb-product-name{font-family:'Poppins',sans-serif;font-size:10px;font-weight:700;text-transform:uppercase;color:var(--noir,#0a1923);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;display:block}
-  .amb-product-price{font-family:'Poppins',sans-serif;font-size:11px;color:#86868b;display:block}
-  .amb-product-add{width:28px;height:28px;border-radius:50%;border:1.5px solid rgba(10,25,35,.12);background:none;display:flex;align-items:center;justify-content:center;cursor:pointer;flex-shrink:0;transition:all .2s}
-  .amb-product-add svg{width:12px;height:12px;stroke:var(--noir,#0a1923);fill:none;stroke-width:2.5}
+  .amb-product-name{font-family:-apple-system,BlinkMacSystemFont,'SF Pro Text','Inter',sans-serif;font-size:10px;font-weight:700;text-transform:uppercase;color:#fff;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;display:block}
+  .amb-product-price{font-family:-apple-system,BlinkMacSystemFont,'SF Pro Text','Inter',sans-serif;font-size:11px;color:rgba(255,255,255,.6);display:block}
+  .amb-product-add{width:28px;height:28px;border-radius:50%;border:1.5px solid rgba(255,255,255,.2);background:none;display:flex;align-items:center;justify-content:center;cursor:pointer;flex-shrink:0;transition:all .2s}
+  .amb-product-add svg{width:12px;height:12px;stroke:#fff;fill:none;stroke-width:2.5}
   .amb-product-add:hover{border-color:var(--gold);background:var(--gold)}
   @media(max-width:768px){
     .amb-card{flex:0 0 160px}
@@ -181,10 +186,10 @@
   .amb-cta-card:hover .amb-cta-wrap{border-color:var(--gold);background:linear-gradient(135deg,#0d1b26 0%,#1a2e3a 100%)}
   .amb-cta-icon{width:48px;height:48px;border-radius:50%;background:rgba(233,194,67,.1);display:flex;align-items:center;justify-content:center}
   .amb-cta-icon svg{width:22px;height:22px;stroke:var(--gold);fill:none;stroke-width:1.8}
-  .amb-cta-title{font-family:'Poppins',sans-serif;font-size:14px;font-weight:700;color:#fff;line-height:1.3}
+  .amb-cta-title{font-family:-apple-system,BlinkMacSystemFont,'SF Pro Text','Inter',sans-serif;font-size:14px;font-weight:700;color:#fff;line-height:1.3}
   .amb-cta-title span{color:var(--gold)}
-  .amb-cta-sub{font-family:'Poppins',sans-serif;font-size:10px;color:rgba(255,255,255,.45);line-height:1.5}
-  .amb-cta-btn{font-family:'Poppins',sans-serif;font-size:9px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--noir);background:var(--gold);padding:10px 22px;border-radius:30px;transition:background .2s,transform .2s}
+  .amb-cta-sub{font-family:-apple-system,BlinkMacSystemFont,'SF Pro Text','Inter',sans-serif;font-size:10px;color:rgba(255,255,255,.45);line-height:1.5}
+  .amb-cta-btn{font-family:-apple-system,BlinkMacSystemFont,'SF Pro Text','Inter',sans-serif;font-size:9px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--noir);background:var(--gold);padding:10px 22px;border-radius:30px;transition:background .2s,transform .2s}
   .amb-cta-card:hover .amb-cta-btn{background:var(--gold2);transform:scale(1.03)}
   @media(max-width:768px){
     .amb-cta-card{flex:0 0 160px}
@@ -197,24 +202,50 @@
   /* ---------- ARTICLES RARES — scroll horizontal ---------- */
   .als-rare-grid{display:flex;gap:15px;overflow-x:auto;padding:0 20px 12px;scroll-behavior:smooth;-webkit-overflow-scrolling:touch;scrollbar-width:none}
   .als-rare-grid::-webkit-scrollbar{display:none}
-  .als-rare-card{flex:0 0 190px;scroll-snap-align:start;text-decoration:none;background:#fbfbfd;border-radius:20px;overflow:hidden;padding:15px;transition:.3s ease}
-  .als-rare-img{width:100%;aspect-ratio:1;display:flex;align-items:center;justify-content:center;margin-bottom:10px}
+  .als-rare-card{flex:0 0 190px;scroll-snap-align:start;text-decoration:none;background:rgba(255,255,255,.18);backdrop-filter:blur(40px) saturate(180%);-webkit-backdrop-filter:blur(40px) saturate(180%);border:1px solid rgba(255,255,255,.25);border-radius:20px;overflow:hidden;padding:15px;transition:.3s ease;box-shadow:none}
+  .als-rare-img{width:100%;aspect-ratio:1;display:flex;align-items:center;justify-content:center;margin-bottom:10px;border-radius:20px;overflow:hidden}
   .als-rare-img img{width:100%;height:auto;object-fit:cover;mix-blend-mode:multiply}
   .als-rare-info{padding:12px 14px 16px;text-align:left}
-  .als-rare-brand{font-family:'Poppins',sans-serif;font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:.04em;color:var(--noir,#0a1923)}
-  .als-rare-name{font-family:'Poppins',sans-serif;font-size:12px;color:var(--gris,#6a7a8a);display:block;margin-top:2px}
-  .als-rare-price{font-family:'Poppins',sans-serif;font-size:13px;font-weight:700;color:var(--noir,#0a1923);display:block;margin-top:4px}
-  .als-rare-soon{font-family:'Poppins',sans-serif;font-size:9px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;color:var(--noir,#0a1923);background:rgba(10,25,35,.06);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border:1px solid rgba(10,25,35,.08);padding:5px 12px;border-radius:20px;display:inline-block;margin-top:8px;font-style:normal}
+  .als-rare-brand{font-family:-apple-system,BlinkMacSystemFont,'SF Pro Text','Inter',sans-serif;font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:.04em;color:#fff}
+  .als-rare-name{font-family:-apple-system,BlinkMacSystemFont,'SF Pro Text','Inter',sans-serif;font-size:12px;color:rgba(255,255,255,.5);display:block;margin-top:2px}
+  .als-rare-price{font-family:-apple-system,BlinkMacSystemFont,'SF Pro Text','Inter',sans-serif;font-size:13px;font-weight:700;color:#fff;display:block;margin-top:4px}
+  .als-rare-soon{font-family:-apple-system,BlinkMacSystemFont,'SF Pro Text','Inter',sans-serif;font-size:9px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;color:rgba(255,255,255,.8);background:rgba(255,255,255,.12);backdrop-filter:blur(40px) saturate(180%);-webkit-backdrop-filter:blur(40px) saturate(180%);border:1px solid rgba(255,255,255,.2);padding:5px 12px;border-radius:20px;display:inline-block;margin-top:8px;font-style:normal}
+
+  /* ---------- TOUTES LES PIECES — grille vitrine ---------- */
+  .als-all-sec{padding:48px 0 24px}
+  .als-all-search{display:flex;align-items:center;gap:10px;max-width:520px;margin:0 auto 16px;padding:0 clamp(20px,4vw,60px);position:relative}
+  .als-all-search-input{flex:1;padding:14px 18px 14px 44px;border-radius:999px;border:1px solid var(--fx-border-subtle,rgba(255,255,255,.12));background:var(--fx-border-subtle,rgba(255,255,255,.04));color:var(--fx-text-primary,#fff);font-family:-apple-system,BlinkMacSystemFont,'SF Pro Text','Inter',sans-serif;font-size:14px;outline:none;transition:border-color .2s,box-shadow .2s}
+  .als-all-search-input::placeholder{color:var(--fx-text-tertiary,rgba(255,255,255,.45))}
+  .als-all-search-input:focus{border-color:rgba(var(--fx-accent-rgb,122,108,255),.45);box-shadow:0 0 0 3px rgba(var(--fx-accent-rgb,122,108,255),.12)}
+  .als-all-search-icon{position:absolute;left:calc(clamp(20px,4vw,60px) + 16px);top:50%;transform:translateY(-50%);pointer-events:none;opacity:.55;color:var(--fx-text-secondary,rgba(255,255,255,.72))}
+  .als-all-filters{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;padding:0 20px;margin:8px 0 14px}
+  .als-all-pill{font-family:-apple-system,BlinkMacSystemFont,'SF Pro Text','Inter',sans-serif;font-size:13px;font-weight:600;letter-spacing:.02em;padding:9px 16px;border-radius:999px;border:1px solid var(--fx-border-subtle,rgba(255,255,255,.12));background:transparent;color:var(--fx-text-secondary,rgba(255,255,255,.72));cursor:pointer;transition:all .25s cubic-bezier(.2,.8,.2,1);text-transform:capitalize;display:inline-flex;align-items:center;gap:7px}
+  .als-all-pill:hover{border-color:var(--fx-border-strong,rgba(255,255,255,.28));color:var(--fx-text-primary,#fff)}
+  .als-all-pill.active{background:var(--fx-text-primary,#fff);color:var(--fx-bg-raised,#0a1923);border-color:transparent}
+  .als-all-pill-count{font-size:10px;font-weight:700;padding:2px 7px;border-radius:999px;background:var(--fx-border-subtle,rgba(255,255,255,.1));color:inherit;opacity:.75}
+  .als-all-pill.active .als-all-pill-count{background:rgba(var(--fx-accent-rgb,122,108,255),.2);color:var(--fx-bg-raised,#0a1923);opacity:.6}
+  .als-all-meta{text-align:center;font-size:12px;color:var(--fx-text-tertiary,rgba(255,255,255,.45));margin:8px 0 20px;letter-spacing:.04em;text-transform:uppercase;font-weight:600}
+  .als-all-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;padding:0 clamp(20px,4vw,60px) 20px}
+  .als-all-grid .als-hcard{flex:none;min-width:0}
+  @media(max-width:960px){.als-all-grid{grid-template-columns:repeat(3,1fr)}}
+  @media(max-width:640px){.als-all-grid{grid-template-columns:repeat(2,1fr);gap:12px;padding:0 16px 16px}}
+  .als-all-card-hidden{display:none !important}
+  .als-all-loadmore-wrap{display:flex;justify-content:center;padding:16px 20px 24px}
+  .als-all-loadmore{font-family:-apple-system,BlinkMacSystemFont,'SF Pro Text','Inter',sans-serif;font-size:13px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;padding:14px 32px;border-radius:999px;border:1px solid var(--fx-border-strong,rgba(255,255,255,.18));background:transparent;color:var(--fx-text-primary,#fff);cursor:pointer;transition:all .25s cubic-bezier(.2,.8,.2,1)}
+  .als-all-loadmore:hover{background:var(--fx-text-primary,#fff);color:var(--fx-bg-raised,#0a1923);border-color:transparent}
+  .als-all-loadmore:disabled{opacity:.4;cursor:default}
+  .als-all-empty{text-align:center;padding:40px 20px;color:var(--fx-text-tertiary,rgba(255,255,255,.45));font-size:14px;grid-column:1/-1}
 
   /* ---------- NOS MARQUES ---------- */
   .als-collab-row{display:flex;align-items:center;justify-content:center;gap:40px;flex-wrap:wrap;padding:0 20px}
-  .als-collab-item{font-family:'Cormorant',serif;font-size:clamp(20px,3vw,32px);font-weight:300;color:var(--noir,#0a1923);opacity:.45;transition:opacity .2s;letter-spacing:.04em}
+  .als-collab-item{font-family:-apple-system,BlinkMacSystemFont,'SF Pro Display','Inter',sans-serif;font-size:clamp(20px,3vw,32px);font-weight:300;color:#fff;opacity:.45;transition:opacity .2s;letter-spacing:.04em}
   .als-collab-item:hover{opacity:1}
 
   /* ---------- SCROLL ARROWS (desktop) ---------- */
   .als-scroll-wrap{position:relative}
-  .als-scroll-arrow{position:absolute;top:50%;transform:translateY(-50%);z-index:10;width:40px;height:40px;border-radius:50%;background:rgba(255,255,255,.75);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border:1px solid rgba(0,0,0,.08);display:flex;align-items:center;justify-content:center;cursor:pointer;opacity:1;transition:opacity .25s,background .2s;box-shadow:0 2px 12px rgba(0,0,0,.1)}
-  .als-scroll-arrow:hover{background:rgba(255,255,255,.95)}
+  .als-scroll-arrow{position:absolute;top:50%;transform:translateY(-50%);z-index:10;width:40px;height:40px;border-radius:50%;background:rgba(255,255,255,.18);backdrop-filter:blur(40px) saturate(180%);-webkit-backdrop-filter:blur(40px) saturate(180%);border:1px solid rgba(255,255,255,.25);display:flex;align-items:center;justify-content:center;cursor:pointer;opacity:1;transition:all .25s;box-shadow:none}
+  .als-scroll-arrow:hover{background:rgba(255,255,255,.3)}
+  .als-scroll-arrow svg{width:16px;height:16px;stroke:#fff;stroke-width:2.5;fill:none;stroke-linecap:round;stroke-linejoin:round}
   .als-scroll-arrow.left{left:6px}
   .als-scroll-arrow.right{right:6px}
   .als-scroll-arrow svg{width:16px;height:16px;stroke:var(--noir,#0a1923);stroke-width:2.5;fill:none;stroke-linecap:round;stroke-linejoin:round}
@@ -224,7 +255,7 @@
   /* ---------- MOBILE < 600px ---------- */
   @media(max-width:600px){
     .promo-banner{font-size:9px;padding:8px 12px;letter-spacing:.06em}
-    .hero-als{height:60vh;min-height:320px}
+    .hero-als{padding:100px 0 40px}
     .hero-als h1{font-size:26px;margin-bottom:10px}
     .hero-als .hero-desc{font-size:11px;margin-bottom:20px}
     .hero-als .hero-btn{font-size:10px;padding:14px 32px}
@@ -288,25 +319,34 @@
     .als-rare-brand{font-size:10px}
     .als-rare-name{font-size:11px}
     .als-rare-price{font-size:12px}
-    .hero-als{height:45vh;min-height:280px;max-height:400px}
+    .hero-als{padding:120px 0 60px}
   }
 
   /* ---------- LARGE DESKTOP > 1400px ---------- */
   @media(min-width:1400px){
     .als-insta-row{max-width:700px;margin-left:auto;margin-right:auto}
   }
+
+  /* ---------- TRUST BAND — sous le hero ---------- */
+  .trust-band{display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:clamp(16px,4vw,56px);padding:22px clamp(16px,4vw,40px);margin:0 auto clamp(16px,4vh,32px);max-width:1200px;border-top:1px solid var(--fx-border-subtle,rgba(255,255,255,.08));border-bottom:1px solid var(--fx-border-subtle,rgba(255,255,255,.08))}
+  .trust-item{display:inline-flex;align-items:center;gap:10px;color:var(--fx-text-secondary,rgba(255,255,255,.72));font-family:-apple-system,BlinkMacSystemFont,'SF Pro Text','Inter',sans-serif;font-size:13px;font-weight:500;letter-spacing:.01em;line-height:1.2}
+  .trust-item strong{color:var(--fx-text-primary,#fff);font-weight:700}
+  .trust-item svg{flex-shrink:0;opacity:.85}
+  .trust-item-sep{width:1px;height:20px;background:var(--fx-border-subtle,rgba(255,255,255,.12));display:none}
+  @media(min-width:720px){.trust-item-sep{display:block}}
+  @media(max-width:520px){.trust-band{gap:14px;padding:18px 16px}.trust-item{font-size:12px}}
 </style>
 
 <!-- ═══════════════════════════════════════════
      PROMO BANNER
 ═══════════════════════════════════════════ -->
-<div class="promo-banner">LIVRAISON OFFERTE</div>
+<div class="promo-banner">Livraison offerte en Europe</div>
 
 <!-- ═══════════════════════════════════════════
      HERO
 ═══════════════════════════════════════════ -->
 <section class="hero-als">
-  <img src="audemars_piguet_cover.jpg" alt="AllStore Hero" class="hero-bg">
+  <img src="IMG_9440.jpg" alt="AllStore Hero" class="hero-bg">
   <div class="hero-overlay"></div>
   <div class="hero-content">
     <h1>Le <strong>luxe</strong> accessible,<br>sans <strong>compromis.</strong></h1>
@@ -316,13 +356,22 @@
 </section>
 
 <!-- ═══════════════════════════════════════════
-     SEARCH BAR
+     TRUST BAND — 3 rassurances sous le hero
 ═══════════════════════════════════════════ -->
-<div class="als-search-sec">
-  <div class="als-search-wrap">
-    <svg class="als-search-icon" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-    <input class="als-search-input" id="als-search" type="text" placeholder="Rechercher un article..." autocomplete="off">
-    <div class="als-search-results" id="als-search-results"></div>
+<div class="trust-band" aria-label="Rassurances">
+  <div class="trust-item">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+    <span><strong>+10 000 clients</strong> satisfaits</span>
+  </div>
+  <span class="trust-item-sep"></span>
+  <div class="trust-item">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+    <span><strong>Chez toi en 48h</strong> partout en Europe</span>
+  </div>
+  <span class="trust-item-sep"></span>
+  <div class="trust-item">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12l2 2 4-4"/><path d="M12 2l3 2h4v4l2 3-2 3v4h-4l-3 2-3-2H5v-4l-2-3 2-3V4h4z"/></svg>
+    <span><strong>Satisfait</strong> ou remboursé</span>
   </div>
 </div>
 
@@ -331,7 +380,7 @@
 ═══════════════════════════════════════════ -->
 <section class="als-sec">
   <div class="als-sec-head">
-    <h2 class="als-sec-title">VENDU <em>RÉCEMMENT</em></h2>
+    <h2 class="als-sec-title">La <em>Sélection</em></h2>
   </div>
   <div class="als-scroll-wrap">
   <div class="als-scroll-arrow left" onclick="scrollRow(this,-1)"><svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg></div>
@@ -458,18 +507,10 @@
 </section>
 
 <!-- ═══════════════════════════════════════════
-     SÉLECTIONS CHAUSSURES
+     SÉLECTIONS CHAUSSURES / VÊTEMENTS / ACCESSOIRES (dynamic)
 ═══════════════════════════════════════════ -->
 <div id="selections-chaussures"></div>
-
-<!-- ═══════════════════════════════════════════
-     SÉLECTIONS VÊTEMENTS
-═══════════════════════════════════════════ -->
 <div id="selections-vetements"></div>
-
-<!-- ═══════════════════════════════════════════
-     SÉLECTIONS ACCESSOIRES
-═══════════════════════════════════════════ -->
 <div id="selections-accessoires"></div>
 
 <script src="products-data.js"></script>
@@ -483,7 +524,7 @@ function filterSel(secId, pill) {
     card.style.display = (card.dataset.brand === val) ? '' : 'none';
   });
   var t = sec.querySelector('.als-sec-title');
-  if(t) t.innerHTML = pill.textContent+' <em>SELECTION</em>';
+  if(t) t.innerHTML = pill.textContent+' <em>Sélection</em>';
 }
 
 (function(){
@@ -502,7 +543,7 @@ function filterSel(secId, pill) {
       ? '<span class="als-hcard-soon">Bientôt disponible</span>'
       : '<span class="als-hcard-price">'+p.price+',00€</span>';
     return '<a href="assistant.html?product='+id+'" class="als-hcard" data-brand="'+p.brand.replace(/"/g,'&quot;')+'">'
-      +'<div class="als-hcard-img"><span class="als-badge">TOP VENTES</span><img src="'+p.img+'" alt="'+p.brand+' '+p.name+' '+p.color+'" loading="lazy"></div>'
+      +'<div class="als-hcard-img"><img src="'+p.img+'" alt="'+p.brand+' '+p.name+' '+p.color+'" loading="lazy"></div>'
       +'<div class="als-hcard-info"><span class="als-hcard-name">'+p.brand.toUpperCase()+' '+p.name.toUpperCase()+'</span>'
       +'<span class="als-hcard-desc">'+p.name+' '+p.color+'</span>'
       +priceHtml+'</div></a>';
@@ -530,7 +571,7 @@ function filterSel(secId, pill) {
     });
     pills += '</div>';
     container.innerHTML = '<section class="als-sec" id="'+sid+'">'
-      +'<div class="als-sec-head"><h2 class="als-sec-title">'+firstLabel+' <em>SELECTION</em></h2></div>'
+      +'<div class="als-sec-head"><h2 class="als-sec-title">'+firstLabel+' <em>Sélection</em></h2></div>'
       +pills
       +'<div class="als-scroll-wrap">'
       +'<div class="als-scroll-arrow left" onclick="scrollRow(this,-1)"><svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg></div>'
@@ -605,42 +646,189 @@ function filterSel(secId, pill) {
   <div class="als-scroll-wrap">
   <div class="als-scroll-arrow left" onclick="scrollRow(this,-1)"><svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg></div>
   <div class="als-scroll-arrow right" onclick="scrollRow(this,1)"><svg viewBox="0 0 24 24"><polyline points="9 6 15 12 9 18"/></svg></div>
-  <div class="als-hscroll">
-    <a href="assistant.html" class="als-hcard">
-      <div class="als-hcard-img"><img src="givenchy_shark_lock.jpg" alt="Givenchy Shark Lock"></div>
-      <div class="als-hcard-info"><span class="als-hcard-name">GIVENCHY SHARK LOCK</span><span class="als-hcard-price">178,00€</span></div>
-    </a>
-    <a href="assistant.html" class="als-hcard">
-      <div class="als-hcard-img"><img src="cartier_tank.jpg" alt="Cartier Tank"></div>
-      <div class="als-hcard-info"><span class="als-hcard-name">CARTIER TANK</span><span class="als-hcard-price">263,00€</span></div>
-    </a>
-    <a href="assistant.html" class="als-hcard">
-      <div class="als-hcard-img"><img src="miumiu_top.jpg" alt="Miu Miu Top"></div>
-      <div class="als-hcard-info"><span class="als-hcard-name">MIU MIU TOP LOGO</span><span class="als-hcard-price">50,00€</span></div>
-    </a>
-    <a href="assistant.html" class="als-hcard">
-      <div class="als-hcard-img"><img src="loropiana_sergio.jpg" alt="Loro Piana Sergio"></div>
-      <div class="als-hcard-info"><span class="als-hcard-name">LORO PIANA SERGIO</span><span class="als-hcard-price">128,00€</span></div>
-    </a>
-    <a href="assistant.html" class="als-hcard">
-      <div class="als-hcard-img"><img src="miumiu_wander.jpg" alt="Miu Miu Wander"></div>
-      <div class="als-hcard-info"><span class="als-hcard-name">MIU MIU WANDER MINI</span><span class="als-hcard-price">263,00€</span></div>
-    </a>
-    <a href="assistant.html" class="als-hcard">
-      <div class="als-hcard-img"><img src="kaws_companion.jpg" alt="KAWS Companion"></div>
-      <div class="als-hcard-info"><span class="als-hcard-name">KAWS COMPANION</span><span class="als-hcard-soon">Bientôt disponible</span></div>
-    </a>
-    <a href="assistant.html" class="als-hcard">
-      <div class="als-hcard-img"><img src="prada_lunettes_aviator.jpg" alt="Prada Lunettes Aviator"></div>
-      <div class="als-hcard-info"><span class="als-hcard-name">PRADA AVIATOR ÉCAILLE</span><span class="als-hcard-price">50,00€</span></div>
-    </a>
-    <a href="assistant.html" class="als-hcard">
-      <div class="als-hcard-img"><img src="casablanca_chemise.jpg" alt="Casablanca Casa Way"></div>
-      <div class="als-hcard-info"><span class="als-hcard-name">CASABLANCA CASA WAY</span><span class="als-hcard-price">50,00€</span></div>
-    </a>
-  </div>
+  <div class="als-hscroll" id="rare-grid"></div>
   </div>
 </section>
+
+<script>
+(function(){
+  if (typeof PRODUCTS === 'undefined' || typeof BRAND_TIER === 'undefined') return;
+  var grid = document.getElementById('rare-grid');
+  if (!grid) return;
+
+  // Select luxe-tier products sorted by price desc (top of the pyramid),
+  // then take a sample of 12 so the row feels curated.
+  var items = Object.keys(PRODUCTS)
+    .map(function(id){ return { id: id, p: PRODUCTS[id] }; })
+    .filter(function(x){ return BRAND_TIER[x.p.brand] === 'luxe'; })
+    .sort(function(a, b){
+      var pa = parseInt(a.p.price, 10) || 0;
+      var pb = parseInt(b.p.price, 10) || 0;
+      return pb - pa;
+    })
+    .slice(0, 12);
+
+  var html = '';
+  items.forEach(function(it){
+    var p = it.p;
+    var priceHtml = p.price === '0'
+      ? '<span class="als-hcard-soon">Bientôt disponible</span>'
+      : '<span class="als-hcard-price">' + p.price + ',00€</span>';
+    html += '<a href="assistant.html?product=' + it.id + '" class="als-hcard">'
+      + '<div class="als-hcard-img"><img src="' + p.img + '" alt="' + p.brand + ' ' + p.name + '" loading="lazy"></div>'
+      + '<div class="als-hcard-info"><span class="als-hcard-name">' + p.brand.toUpperCase() + ' ' + p.name.toUpperCase() + '</span>'
+      + priceHtml + '</div></a>';
+  });
+  grid.innerHTML = html;
+})();
+</script>
+
+<!-- ═══════════════════════════════════════════
+     TOUTES LES PIECES — grille vitrine dynamique
+═══════════════════════════════════════════ -->
+<section class="als-sec als-all-sec">
+  <div class="als-sec-head">
+    <h2 class="als-sec-title">TOUTES <em>les pièces</em></h2>
+  </div>
+  <div class="als-all-search">
+    <svg class="als-all-search-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+    <input type="search" class="als-all-search-input" id="als-all-search-input" placeholder="Marque, modèle, coloris…" autocomplete="off">
+  </div>
+  <div class="als-all-filters" id="als-all-filters"></div>
+  <div class="als-all-filters" id="als-all-brands"></div>
+  <p class="als-all-meta" id="als-all-meta"></p>
+  <div class="als-all-grid" id="als-all-grid"></div>
+  <div class="als-all-loadmore-wrap" id="als-all-loadmore-wrap" style="display:none">
+    <button class="als-all-loadmore" id="als-all-loadmore" type="button">Voir plus</button>
+  </div>
+</section>
+
+<script>
+(function(){
+  if (typeof PRODUCTS === 'undefined') return;
+  var grid = document.getElementById('als-all-grid');
+  var filters = document.getElementById('als-all-filters');
+  var brandFilters = document.getElementById('als-all-brands');
+  var search = document.getElementById('als-all-search-input');
+  var meta = document.getElementById('als-all-meta');
+  var loadMoreWrap = document.getElementById('als-all-loadmore-wrap');
+  var loadMoreBtn = document.getElementById('als-all-loadmore');
+  if (!grid || !filters) return;
+
+  var BATCH_SIZE = 24;
+  var labels = {
+    chaussures: 'Chaussures', vetements: 'Vêtements', accessoires: 'Accessoires',
+    sacs: 'Sacs', horlogerie: 'Horlogerie', hightech: 'High-Tech',
+    parfums: 'Parfums', lunettes: 'Lunettes'
+  };
+
+  // Build product list + counts
+  var products = [];
+  var catCounts = { all: 0 };
+  var brandCounts = {};
+  Object.keys(PRODUCTS).forEach(function(id){
+    var p = PRODUCTS[id];
+    var cat = (typeof CAT_MAP !== 'undefined' && CAT_MAP[p.cat]) ? CAT_MAP[p.cat] : p.cat;
+    var brand = p.brand || '';
+    products.push({ id: id, p: p, cat: cat, brand: brand, haystack: (brand + ' ' + (p.name||'') + ' ' + (p.color||'')).toLowerCase() });
+    catCounts.all++;
+    catCounts[cat] = (catCounts[cat] || 0) + 1;
+    brandCounts[brand] = (brandCounts[brand] || 0) + 1;
+  });
+
+  function cardHtml(item){
+    var p = item.p;
+    var priceHtml = p.price === '0'
+      ? '<span class="als-hcard-soon">Bientôt disponible</span>'
+      : '<span class="als-hcard-price">' + p.price + ',00€</span>';
+    return '<a href="assistant.html?product=' + item.id + '" class="als-hcard als-all-card" data-cat="' + item.cat + '" data-brand="' + item.brand.replace(/"/g,'&quot;') + '">'
+      + '<div class="als-hcard-img"><img src="' + p.img + '" alt="' + p.brand + ' ' + p.name + '" loading="lazy"></div>'
+      + '<div class="als-hcard-info"><span class="als-hcard-name">' + p.brand.toUpperCase() + ' ' + p.name.toUpperCase() + '</span>'
+      + '<span class="als-hcard-desc">' + (p.color || '') + '</span>'
+      + priceHtml + '</div></a>';
+  }
+
+  // Category pills
+  var pillsHtml = '<button class="als-all-pill active" data-cat="all">Tout <span class="als-all-pill-count">' + catCounts.all + '</span></button>';
+  Object.keys(catCounts).filter(function(c){ return c !== 'all'; }).sort().forEach(function(c){
+    pillsHtml += '<button class="als-all-pill" data-cat="' + c + '">' + (labels[c] || c) + ' <span class="als-all-pill-count">' + catCounts[c] + '</span></button>';
+  });
+  filters.innerHTML = pillsHtml;
+
+  // Brand pills — top 10 by count, alphabetised after
+  var topBrands = Object.keys(brandCounts)
+    .sort(function(a,b){ return brandCounts[b] - brandCounts[a] || a.localeCompare(b); })
+    .slice(0, 10);
+  var brandsHtml = '<button class="als-all-pill active" data-brand="all">Toutes les marques</button>';
+  topBrands.forEach(function(b){
+    brandsHtml += '<button class="als-all-pill" data-brand="' + b.replace(/"/g,'&quot;') + '">' + b + ' <span class="als-all-pill-count">' + brandCounts[b] + '</span></button>';
+  });
+  brandFilters.innerHTML = brandsHtml;
+
+  // State + rendering
+  var state = { cat: 'all', brand: 'all', q: '', shown: BATCH_SIZE };
+  var filtered = products.slice();
+
+  function applyFilters(){
+    var q = state.q.trim().toLowerCase();
+    filtered = products.filter(function(item){
+      if (state.cat !== 'all' && item.cat !== state.cat) return false;
+      if (state.brand !== 'all' && item.brand !== state.brand) return false;
+      if (q && item.haystack.indexOf(q) === -1) return false;
+      return true;
+    });
+    state.shown = BATCH_SIZE;
+    renderGrid();
+  }
+
+  function renderGrid(){
+    if (!filtered.length) {
+      grid.innerHTML = '<div class="als-all-empty">Aucun résultat pour cette sélection.</div>';
+      meta.textContent = '0 pièce';
+      loadMoreWrap.style.display = 'none';
+      return;
+    }
+    var slice = filtered.slice(0, state.shown);
+    grid.innerHTML = slice.map(cardHtml).join('');
+    meta.textContent = slice.length + ' / ' + filtered.length + ' pièce' + (filtered.length > 1 ? 's' : '');
+    loadMoreWrap.style.display = state.shown < filtered.length ? 'flex' : 'none';
+  }
+
+  filters.addEventListener('click', function(ev){
+    var pill = ev.target.closest('.als-all-pill');
+    if (!pill) return;
+    filters.querySelectorAll('.als-all-pill').forEach(function(p){ p.classList.remove('active'); });
+    pill.classList.add('active');
+    state.cat = pill.dataset.cat;
+    applyFilters();
+  });
+
+  brandFilters.addEventListener('click', function(ev){
+    var pill = ev.target.closest('.als-all-pill');
+    if (!pill) return;
+    brandFilters.querySelectorAll('.als-all-pill').forEach(function(p){ p.classList.remove('active'); });
+    pill.classList.add('active');
+    state.brand = pill.dataset.brand;
+    applyFilters();
+  });
+
+  var searchTimer;
+  search.addEventListener('input', function(){
+    clearTimeout(searchTimer);
+    searchTimer = setTimeout(function(){
+      state.q = search.value;
+      applyFilters();
+    }, 120);
+  });
+
+  loadMoreBtn.addEventListener('click', function(){
+    state.shown = Math.min(state.shown + BATCH_SIZE, filtered.length);
+    renderGrid();
+  });
+
+  applyFilters();
+})();
+</script>
 
 <!-- ═══════════════════════════════════════════
      AVIS CLIENTS
@@ -749,27 +937,6 @@ function filterSel(secId, pill) {
 <!-- ═══════════════════════════════════════════
      COMMENT ÇA MARCHE — 3 étapes
 ═══════════════════════════════════════════ -->
-<section class="how-it-works how-it-works--dark">
-  <span class="ap-edit-eyebrow reveal" style="color:var(--gold2)">Notre processus</span>
-  <h2 class="hiw-title reveal d1">Comment ça marche</h2>
-  <div class="hiw-grid">
-    <div class="hiw-step reveal">
-      <div class="hiw-num">01</div>
-      <div class="hiw-step-title">Choisissez votre pièce</div>
-      <p class="hiw-step-desc">Parcourez le catalogue ou faites une demande spécifique via l'assistant.</p>
-    </div>
-    <div class="hiw-step reveal d1">
-      <div class="hiw-num">02</div>
-      <div class="hiw-step-title">On sourcing pour vous</div>
-      <p class="hiw-step-desc">Nos experts sélectionnent les pièces les plus fidèles et vérifient chaque détail.</p>
-    </div>
-    <div class="hiw-step reveal d2">
-      <div class="hiw-num">03</div>
-      <div class="hiw-step-title">Livraison soignée</div>
-      <p class="hiw-step-desc">Expédition sous 3 jours, livrée chez vous en 7 à 15 jours ouvrés après expédition.</p>
-    </div>
-  </div>
-</section>
 
 <!-- ═══════════════════════════════════════════
      CTA FINAL
@@ -1041,29 +1208,11 @@ function scrollRow(arrow, dir) {
 })();
 </script>
 
-<!-- BOTTOM NAV — Redesigned -->
-<style>
-  .bnav{position:fixed;bottom:16px;left:50%;transform:translateX(-50%);z-index:9000;display:flex;align-items:center;background:rgba(255,255,255,.12);backdrop-filter:blur(20px) saturate(150%);-webkit-backdrop-filter:blur(20px) saturate(150%);border-radius:50px;padding:6px 8px;border:1px solid rgba(255,255,255,.25);box-shadow:0 4px 24px rgba(0,0,0,.15);position:fixed}
-  .bnav-pill{position:relative;display:flex;align-items:center}
-  .bnav-blob{position:absolute;height:100%;background:rgba(255,255,255,.45);border-radius:40px;transition:left .4s cubic-bezier(.4,.0,.2,1), width .4s cubic-bezier(.4,.0,.2,1);z-index:0;pointer-events:none}
-  .bnav-blob.slime{transition:left .35s cubic-bezier(.5,.0,.2,1.3), width .35s cubic-bezier(.5,.0,.2,1.3)}
-  .bnav-item{display:flex;flex-direction:column;align-items:center;gap:3px;padding:8px 16px;border-radius:40px;text-decoration:none;color:rgba(0,0,0,.5);font-family:'Poppins',sans-serif;font-size:9px;font-weight:500;letter-spacing:.03em;transition:color .2s;cursor:pointer;white-space:nowrap;position:relative;z-index:1;background:transparent}
-  .bnav-item svg{width:20px;height:20px;stroke:currentColor;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;transition:all .2s}
-  .bnav-item:hover{color:rgba(0,0,0,.8)}
-  .bnav-item.active{color:var(--noir,#0a1923)}
-  .bnav-item.active svg{stroke:var(--noir,#0a1923);fill:none;stroke-width:2}
-  .bnav-badge{position:absolute;top:2px;right:8px;background:#e9c243;color:#0a1923;font-size:8px;font-weight:700;min-width:15px;height:15px;border-radius:8px;display:none;align-items:center;justify-content:center;padding:0 4px;line-height:1}
-  @media(min-width:1025px){.bnav{display:none!important}}
-  @media(max-width:400px){
-    .bnav{bottom:10px;padding:4px 6px}
-    .bnav-item{padding:6px 10px;font-size:8px;gap:2px}
-    .bnav-item svg{width:18px;height:18px}
-  }
-</style>
-<nav class="bnav">
+<!-- BOTTOM NAV — styles moved to apple/override.css -->
+<nav class="bnav" aria-label="Navigation principale">
   <div class="bnav-pill">
     <div class="bnav-blob" id="bnav-blob"></div>
-    <a href="index.html" class="bnav-item active" data-nav="0">
+    <a href="index.html" class="bnav-item" data-nav="0">
       <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
       Accueil
     </a>
@@ -1088,11 +1237,20 @@ function scrollRow(arrow, dir) {
 </nav>
 <script>
 (function(){
+  var path = window.location.pathname.split('/').pop() || 'index.html';
+  var activeHref = null;
+  if(path === 'index.html' || path === '') activeHref = 'index.html';
+  else if(path === 'assistant.html' || path === 'boutique.html' || path.indexOf('produit') === 0) activeHref = 'assistant.html';
+  else if(path === 'suivi.html') activeHref = 'suivi.html';
+  if(activeHref){
+    document.querySelectorAll('.bnav-item').forEach(function(item){
+      if(item.getAttribute('href') === activeHref) item.classList.add('active');
+    });
+  }
   var blob = document.getElementById('bnav-blob');
   var items = document.querySelectorAll('.bnav-item');
   var pill = document.querySelector('.bnav-pill');
   if(!blob || !pill || !items.length) return;
-
   function positionBlob(el, animate){
     var pr = pill.getBoundingClientRect();
     var er = el.getBoundingClientRect();
@@ -1102,34 +1260,24 @@ function scrollRow(arrow, dir) {
     blob.style.width = er.width + 'px';
     blob.style.height = er.height + 'px';
   }
-
-  // Position blob directly on active item (no animation on load)
   var activeEl = document.querySelector('.bnav-item.active');
   if(activeEl){ positionBlob(activeEl, false); }
-  sessionStorage.removeItem('bnav_from');
-
-  // Click handler — animate then navigate
   items.forEach(function(item){
     item.addEventListener('click', function(e){
       if(item.classList.contains('active')) return;
       e.preventDefault();
       var href = item.getAttribute('href');
-      var currentActive = document.querySelector('.bnav-item.active');
-      var currentIdx = currentActive ? currentActive.dataset.nav : '0';
-      sessionStorage.setItem('bnav_from', currentIdx);
-
-      // Animate blob to target
       positionBlob(item, true);
-      // Update active state
       items.forEach(function(i){ i.classList.remove('active'); });
       item.classList.add('active');
-
-      // Navigate after animation
       setTimeout(function(){ window.location.href = href; }, 350);
     });
   });
 })();
 </script>
 
+<script type="module" src="apple/fx/index.js"></script>
+<script type="module" src="apple/fx/kinetic.js"></script>
+<script type="module" src="apple/fx/scroll-drift.js"></script>
 </body>
 </html>

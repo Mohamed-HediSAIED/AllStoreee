@@ -1,0 +1,377 @@
+/* ═══════════════════════════════════════════════════════════════
+   theme-fixes.css — light/dark mode coherence
+   Imported last in apple.css. Selectors use enough class specificity
+   to beat the !important rules in apple/override.css.
+   ═══════════════════════════════════════════════════════════════ */
+
+/* ── Semantic text + surface variables (dark defaults) ─────────── */
+:root {
+  --fx-text-primary:    #ffffff;
+  --fx-text-secondary:  rgba(255,255,255,.72);
+  --fx-text-tertiary:   rgba(255,255,255,.5);
+  --fx-text-quaternary: rgba(255,255,255,.28);
+  --fx-bg-raised:       rgba(28,28,30,.72);
+  --fx-bg-surface:      #0a1018;
+  --fx-border-subtle:   rgba(255,255,255,.08);
+  --fx-border-strong:   rgba(255,255,255,.18);
+}
+
+/* Auto light mode — OS says light, user hasn't forced dark */
+@media (prefers-color-scheme: light) {
+  :root:not([data-theme="dark"]) {
+    --fx-text-primary:    #0a1923;
+    --fx-text-secondary:  rgba(10,25,35,.7);
+    --fx-text-tertiary:   rgba(10,25,35,.55);
+    --fx-text-quaternary: rgba(10,25,35,.32);
+    --fx-bg-raised:       #ffffff;
+    --fx-bg-surface:      #fafafa;
+    --fx-border-subtle:   rgba(10,25,35,.08);
+    --fx-border-strong:   rgba(10,25,35,.18);
+  }
+}
+
+/* Forced light via toggle */
+:root[data-theme="light"] {
+  --fx-text-primary:    #0a1923;
+  --fx-text-secondary:  rgba(10,25,35,.7);
+  --fx-text-tertiary:   rgba(10,25,35,.55);
+  --fx-text-quaternary: rgba(10,25,35,.32);
+  --fx-bg-raised:       #ffffff;
+  --fx-bg-surface:      #fafafa;
+  --fx-border-subtle:   rgba(10,25,35,.08);
+  --fx-border-strong:   rgba(10,25,35,.18);
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   HEADER / NAV — matches .header-dark .nav-links a specificity
+   ═══════════════════════════════════════════════════════════════ */
+html .header-dark .nav-links a {
+  color: var(--fx-text-tertiary) !important;
+  opacity: 1 !important;
+}
+html .header-dark .nav-links a:hover {
+  color: var(--fx-text-primary) !important;
+}
+html .header-dark .nav-links a.active {
+  color: var(--fx-text-primary) !important;
+}
+html .tab-btn,
+html .header-dark .tab-btn {
+  color: var(--fx-text-primary) !important;
+}
+
+/* Logo — keep white on dark, original on light */
+@media (prefers-color-scheme: light) {
+  :root:not([data-theme="dark"]) .logo img {
+    filter: none !important;
+  }
+}
+:root[data-theme="light"] .logo img {
+  filter: none !important;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   FOOTER — target .foot-ap and .foot-* descendants
+   ═══════════════════════════════════════════════════════════════ */
+html .foot-ap .foot-nl-title,
+html .foot-ap .foot-col-title,
+html .foot-ap .foot-title,
+html .foot-ap .foot-links-title,
+html .footer .footer-title,
+html .foot-ap .footer-title {
+  color: var(--fx-text-primary) !important;
+}
+
+html .foot-ap .foot-nl-desc,
+html .foot-ap .foot-desc,
+html .footer .footer-desc {
+  color: var(--fx-text-tertiary) !important;
+}
+
+html .foot-ap .foot-col a,
+html .foot-ap .foot-links a,
+html .foot-ap .foot-nl-title em {
+  color: var(--fx-text-tertiary) !important;
+}
+html .foot-ap .foot-col a:hover,
+html .foot-ap .foot-links a:hover {
+  color: var(--fx-text-primary) !important;
+}
+
+html .foot-ap .foot-copy,
+html .foot-ap .foot-bottom-text {
+  color: var(--fx-text-quaternary) !important;
+}
+
+html .foot-ap .foot-divider {
+  color: var(--fx-border-subtle) !important;
+}
+html .foot-ap .foot-brand {
+  color: var(--fx-text-quaternary) !important;
+}
+html .foot-ap .foot-columns {
+  border-bottom-color: var(--fx-border-subtle) !important;
+}
+html .foot-ap .foot-inner {
+  border-top-color: var(--fx-border-subtle) !important;
+}
+
+/* Newsletter input */
+html .foot-ap .foot-nl-input {
+  color: var(--fx-text-primary) !important;
+  background: var(--fx-border-subtle) !important;
+  border: 1px solid var(--fx-border-subtle) !important;
+}
+html .foot-ap .foot-nl-input::placeholder {
+  color: var(--fx-text-tertiary) !important;
+}
+html .foot-ap .foot-nl-input:focus {
+  border-color: var(--fx-border-strong) !important;
+}
+
+/* Newsletter submit button — invert between themes */
+html .foot-ap .foot-nl-btn {
+  background: var(--fx-text-primary) !important;
+  color: var(--fx-bg-raised) !important;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   CTA BAND (homepage)
+   ═══════════════════════════════════════════════════════════════ */
+html body .cta-band h2 {
+  color: var(--fx-text-primary) !important;
+}
+html body .cta-band p {
+  color: var(--fx-text-tertiary) !important;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   PROMO BANNER / WELCOME POPUP
+   ═══════════════════════════════════════════════════════════════ */
+html body .promo-banner {
+  color: var(--fx-text-primary) !important;
+}
+html body .promo-close {
+  color: var(--fx-text-tertiary) !important;
+}
+html body .promo-close:hover {
+  color: var(--fx-text-primary) !important;
+}
+html body .welcome-popup-title {
+  color: var(--fx-text-primary) !important;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   PDP descriptions
+   ═══════════════════════════════════════════════════════════════ */
+html body .pdp-description {
+  color: var(--fx-text-secondary) !important;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   Apple components — text on neutral backgrounds
+   (Keep #fff on .ap-icon-tile--solid-* opaque tiles — untouched.)
+   ═══════════════════════════════════════════════════════════════ */
+html body .ap-card .ap-card-title {
+  color: var(--fx-text-primary) !important;
+}
+html body .ap-tab {
+  color: var(--fx-text-secondary) !important;
+}
+html body .ap-tab.ap-tab--active,
+html body .ap-tab[aria-selected="true"] {
+  color: var(--fx-text-primary) !important;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   Breadcrumb separator, small text bits
+   ═══════════════════════════════════════════════════════════════ */
+html body .breadcrumb-sep {
+  color: var(--fx-text-quaternary) !important;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   Reviews
+   ═══════════════════════════════════════════════════════════════ */
+html body .review-author,
+html body .review-text,
+html body .review-name {
+  color: var(--fx-text-primary) !important;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   Section titles on the homepage
+   ═══════════════════════════════════════════════════════════════ */
+html body .als-sec-title,
+html body .als-sec-subtitle {
+  color: var(--fx-text-primary) !important;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   Hero — text stays legible in light mode (hero-bg img is hidden,
+   hero-overlay is display:none, so the hero sits on the page bg).
+   ═══════════════════════════════════════════════════════════════ */
+@media (prefers-color-scheme: light) {
+  :root:not([data-theme="dark"]) .hero-als h1 {
+    color: var(--fx-text-primary) !important;
+    text-shadow: none !important;
+  }
+  :root:not([data-theme="dark"]) .hero-als .hero-desc {
+    color: var(--fx-text-secondary) !important;
+    text-shadow: none !important;
+  }
+}
+:root[data-theme="light"] .hero-als h1 {
+  color: var(--fx-text-primary) !important;
+  text-shadow: none !important;
+}
+:root[data-theme="light"] .hero-als .hero-desc {
+  color: var(--fx-text-secondary) !important;
+  text-shadow: none !important;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   Bottom nav (.bnav) — restore floating pill with slime blob
+   Overrides the flat full-width Apple-tabbar in override.css.
+   Uses enough specificity (html.body) to win.
+   ═══════════════════════════════════════════════════════════════ */
+@media (max-width: 1024px) {
+  html body .bnav {
+    display: flex !important;
+    position: fixed !important;
+    bottom: calc(16px + env(safe-area-inset-bottom, 0px)) !important;
+    left: 50% !important;
+    right: auto !important;
+    transform: translateX(-50%) !important;
+    width: auto !important;
+    max-width: calc(100vw - 24px) !important;
+    align-items: center !important;
+    justify-content: center !important;
+    padding: 6px 8px !important;
+    background: rgba(255,255,255,.12) !important;
+    backdrop-filter: blur(24px) saturate(150%) !important;
+    -webkit-backdrop-filter: blur(24px) saturate(150%) !important;
+    border: 1px solid rgba(255,255,255,.25) !important;
+    border-top: 1px solid rgba(255,255,255,.25) !important;
+    border-radius: 50px !important;
+    box-shadow: 0 8px 28px rgba(0,0,0,.18), 0 2px 6px rgba(0,0,0,.08) !important;
+    z-index: 9000 !important;
+  }
+  @media (prefers-color-scheme: light) {
+    :root:not([data-theme="dark"]) body .bnav {
+      background: rgba(255,255,255,.7) !important;
+      border-color: rgba(10,25,35,.08) !important;
+      box-shadow: 0 8px 28px rgba(10,25,35,.1), 0 2px 6px rgba(10,25,35,.04) !important;
+    }
+  }
+  html[data-theme="light"] body .bnav {
+    background: rgba(255,255,255,.7) !important;
+    border-color: rgba(10,25,35,.08) !important;
+    box-shadow: 0 8px 28px rgba(10,25,35,.1), 0 2px 6px rgba(10,25,35,.04) !important;
+  }
+}
+
+html body .bnav-pill {
+  position: relative !important;
+  flex: 1 1 auto !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-around !important;
+  width: auto !important;
+  gap: 2px !important;
+}
+
+html body .bnav-blob {
+  display: block !important;
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  height: 100% !important;
+  width: 0;
+  background: rgba(255,255,255,.45) !important;
+  border-radius: 40px !important;
+  transition: left .4s cubic-bezier(.4,0,.2,1), width .4s cubic-bezier(.4,0,.2,1) !important;
+  z-index: 0 !important;
+  pointer-events: none !important;
+}
+html body .bnav-blob.slime {
+  transition: left .35s cubic-bezier(.5,0,.2,1.3), width .35s cubic-bezier(.5,0,.2,1.3) !important;
+}
+@media (prefers-color-scheme: light) {
+  :root:not([data-theme="dark"]) body .bnav-blob {
+    background: rgba(10,25,35,.12) !important;
+  }
+}
+html[data-theme="light"] body .bnav-blob {
+  background: rgba(10,25,35,.12) !important;
+}
+
+html body .bnav-item {
+  position: relative !important;
+  z-index: 1 !important;
+  flex: 1 1 auto !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 3px !important;
+  padding: 9px 14px !important;
+  border-radius: 40px !important;
+  background: transparent !important;
+  font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Inter', sans-serif !important;
+  font-size: 10px !important;
+  font-weight: 500 !important;
+  letter-spacing: .03em !important;
+  color: var(--fx-text-tertiary, rgba(255,255,255,.6)) !important;
+  text-decoration: none !important;
+  transition: color .25s ease !important;
+  white-space: nowrap !important;
+}
+html body .bnav-item svg {
+  width: 22px !important;
+  height: 22px !important;
+  stroke: currentColor !important;
+  stroke-width: 1.9 !important;
+  fill: none !important;
+  stroke-linecap: round !important;
+  stroke-linejoin: round !important;
+}
+html body .bnav-item:hover {
+  color: var(--fx-text-secondary, rgba(255,255,255,.9)) !important;
+  background: transparent !important;
+}
+html body .bnav-item.active {
+  color: var(--fx-text-primary, #fff) !important;
+  background: transparent !important;
+}
+html body .bnav-item.active svg {
+  stroke: currentColor !important;
+  stroke-width: 2 !important;
+}
+
+@media (max-width: 400px) {
+  html body .bnav { bottom: calc(10px + env(safe-area-inset-bottom, 0px)) !important; padding: 4px 6px !important; }
+  html body .bnav-item { padding: 7px 11px !important; font-size: 9px !important; gap: 2px !important; }
+  html body .bnav-item svg { width: 20px !important; height: 20px !important; }
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   Page surface background — keep dark base for dark mode, light
+   for light mode. Global body background.
+   ═══════════════════════════════════════════════════════════════ */
+@media (prefers-color-scheme: light) {
+  :root:not([data-theme="dark"]) {
+    background: var(--fx-bg-surface);
+  }
+  :root:not([data-theme="dark"]) body {
+    background: transparent;
+    color: var(--fx-text-primary);
+  }
+}
+:root[data-theme="light"] {
+  background: var(--fx-bg-surface);
+}
+:root[data-theme="light"] body {
+  background: transparent;
+  color: var(--fx-text-primary);
+}

@@ -12,6 +12,7 @@
     <title>Assistant | ALLSTORE 24/7</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="conversion.css">
+    <link rel="stylesheet" href="apple.css">
     <style>
         .assistant-wrap{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:100px var(--marge) 60px}
         .assistant-card{background:rgba(255,255,255,.55);backdrop-filter:blur(40px) saturate(180%);-webkit-backdrop-filter:blur(40px) saturate(180%);border:1px solid rgba(255,255,255,.45);border-radius:32px;padding:56px 52px;width:100%;max-width:640px;box-shadow:0 16px 50px rgba(0,0,0,.06)}
@@ -43,7 +44,7 @@
         .opt-item .opt-arrow{opacity:.3;font-size:14px;transition:opacity .2s}
         .opt-item:hover .opt-arrow{opacity:1}
         .size-tabs{display:flex;background:var(--bg2);border-radius:14px;padding:4px;gap:4px;margin-bottom:20px}
-        .size-tab{flex:1;padding:11px;border:none;border-radius:10px;background:transparent;font-size:13px;font-weight:600;color:var(--gris);cursor:pointer;font-family:'Poppins',sans-serif;transition:all .2s}
+        .size-tab{flex:1;padding:11px;border:none;border-radius:10px;background:transparent;font-size:13px;font-weight:600;color:var(--gris);cursor:pointer;font-family:-apple-system,BlinkMacSystemFont,'SF Pro Text','Inter',sans-serif;transition:all .2s}
         .size-tab.active{background:#fff;color:var(--noir);box-shadow:0 2px 8px rgba(0,0,0,.08)}
         .size-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:8px}
         .size-chip{padding:14px 8px;background:var(--bg2);border-radius:12px;text-align:center;cursor:pointer;border:2px solid transparent;font-size:14px;font-weight:600;transition:all .2s}
@@ -128,10 +129,23 @@
         .als-product-recap img{width:64px;height:64px;border-radius:12px;object-fit:cover;background:#fff;flex-shrink:0}
         .als-product-recap-info{flex:1;min-width:0}
         .als-product-recap-brand{font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:.1em;color:var(--gold2);display:block}
-        .als-product-recap-name{font-family:'Poppins',sans-serif;font-size:14px;font-weight:600;color:var(--noir);display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-        .als-product-recap-price{font-family:'Poppins',sans-serif;font-size:14px;font-weight:700;color:var(--noir);display:block;margin-top:2px}
+        .als-product-recap-name{font-family:-apple-system,BlinkMacSystemFont,'SF Pro Text','Inter',sans-serif;font-size:14px;font-weight:600;color:var(--noir);display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+        .als-product-recap-price{font-family:-apple-system,BlinkMacSystemFont,'SF Pro Text','Inter',sans-serif;font-size:14px;font-weight:700;color:var(--noir);display:block;margin-top:2px}
+        /* Cart recap step */
+        .cart-list{display:flex;flex-direction:column;gap:10px;margin-bottom:20px}
+        .cart-item{display:flex;align-items:flex-start;gap:14px;padding:16px 18px;background:rgba(255,255,255,.08);border-radius:16px;border:1px solid rgba(255,255,255,.08)}
+        .cart-item-num{width:28px;height:28px;background:rgba(233,194,67,.15);color:var(--gold);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;flex-shrink:0;margin-top:2px}
+        .cart-item-info{flex:1;min-width:0}
+        .cart-item-title{font-size:15px;font-weight:600;color:#fff;margin-bottom:3px}
+        .cart-item-details{font-size:12px;color:rgba(255,255,255,.45);line-height:1.5}
+        .cart-item-remove{background:none;border:none;color:rgba(255,255,255,.25);cursor:pointer;font-size:16px;padding:4px 8px;transition:color .2s;flex-shrink:0}
+        .cart-item-remove:hover{color:#e74c3c}
+        .btn-add-article{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;padding:16px;background:transparent;border:2px dashed rgba(255,255,255,.12);border-radius:16px;color:rgba(255,255,255,.5);font-size:14px;font-weight:600;cursor:pointer;font-family:-apple-system,BlinkMacSystemFont,'SF Pro Text','Inter',sans-serif;transition:all .2s;margin-bottom:8px}
+        .btn-add-article:hover{border-color:rgba(233,194,67,.3);color:var(--gold);background:rgba(233,194,67,.04)}
+        .cart-count{display:inline-flex;align-items:center;justify-content:center;background:var(--gold);color:var(--noir);font-size:14px;font-weight:700;width:26px;height:26px;border-radius:50%;margin-left:10px;vertical-align:middle}
     </style>
-</head>
+    <script defer src="apple-switch.js"></script>
+  </head>
 <body>
 
 <header>
@@ -165,6 +179,23 @@
         <span class="progress-label" id="progressLabel">Étape 1 sur 6</span>
     </div>
 
+    <div class="assistant-trust" aria-hidden="true">
+        <span class="assistant-trust-item">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+            Chez toi en 48h
+        </span>
+        <span class="assistant-trust-dot">·</span>
+        <span class="assistant-trust-item">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12l2 2 4-4"/><path d="M12 2l3 2h4v4l2 3-2 3v4h-4l-3 2-3-2H5v-4l-2-3 2-3V4h4z"/></svg>
+            Satisfait ou remboursé
+        </span>
+        <span class="assistant-trust-dot">·</span>
+        <span class="assistant-trust-item">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            Réponse sous 24h
+        </span>
+    </div>
+
     <!-- ÉTAPE 1 -->
     <div class="step-panel visible" id="step1">
         <span class="step-eyebrow">Étape 1 — Article</span>
@@ -188,6 +219,10 @@
         <h2 class="step-title" id="s2title">Quelle marque ?</h2>
         <p class="step-sub" id="s2sub">Choisissez parmi les marques disponibles.</p>
         <div class="recap-pills" id="recap2"></div>
+        <div class="brand-search-wrap">
+            <svg class="brand-search-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,.5)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+            <input type="text" id="brandSearch" class="brand-search-input" placeholder="Rechercher une marque…" autocomplete="off">
+        </div>
         <div class="opt-list" id="brandList"></div>
         <div id="autreDescWrap" style="display:none">
             <div class="form-group">
@@ -198,6 +233,7 @@
         </div>
         <div class="btn-row">
             <button class="btn-back" onclick="goStep(1)">← Retour</button>
+            <button class="btn-primary" id="btnStep2" onclick="confirmBrand()" disabled>Continuer →</button>
         </div>
     </div>
 
@@ -253,37 +289,39 @@
     <div class="step-panel" id="step5">
         <span class="step-eyebrow" id="s5eyebrow">Étape 5 — Précisions</span>
         <h2 class="step-title">Des précisions ?</h2>
-        <p class="step-sub">Référence exacte, modèle, budget… Plus c'est précis, mieux on cible.</p>
+        <p class="step-sub">Référence exacte, modèle… Plus c'est précis, mieux on cible.</p>
         <div class="recap-pills" id="recap5"></div>
         <div style="display:flex;flex-direction:column;gap:14px">
             <div class="form-group">
                 <label>Référence / Modèle exact (facultatif)</label>
                 <input type="text" class="form-control" id="refInput" placeholder="Ex : Air Force 1 Low 07, réf. CW2288-111">
             </div>
-            <div class="form-group">
-                <label>Budget maximum</label>
-                <select class="form-control" id="budgetInput">
-                    <option value="">Sélectionner…</option>
-                    <option>Moins de 100€</option>
-                    <option>100€ – 300€</option>
-                    <option>300€ – 600€</option>
-                    <option>600€ – 1 500€</option>
-                    <option>1 500€ – 5 000€</option>
-                    <option>Plus de 5 000€</option>
-                </select>
-            </div>
+            <input type="hidden" id="budgetInput" value="">
         </div>
         <div class="btn-row">
             <button class="btn-back" onclick="goStep(4)">← Retour</button>
-            <button class="btn-primary" onclick="goStep(6)">Continuer →</button>
+            <button class="btn-primary" onclick="saveArticleAndGoRecap()">Continuer →</button>
         </div>
     </div>
 
-    <!-- ÉTAPE 6 : Livraison -->
+    <!-- ÉTAPE 6 : Récap commande -->
     <div class="step-panel" id="step6">
-        <span class="step-eyebrow">Étape 6 — Livraison</span>
+        <span class="step-eyebrow">Récapitulatif</span>
+        <h2 class="step-title">Votre commande <span class="cart-count" id="cartCount">1</span></h2>
+        <p class="step-sub">Vérifiez vos articles. Vous pouvez en ajouter d'autres.</p>
+        <div class="cart-list" id="cartList"></div>
+        <button class="btn-add-article" onclick="addAnotherArticle()">+ Ajouter un article</button>
+        <div class="btn-row">
+            <button class="btn-back" onclick="backFromRecap()">← Retour</button>
+            <button class="btn-primary" onclick="goStep(7)">Valider la commande →</button>
+        </div>
+    </div>
+
+    <!-- ÉTAPE 7 : Livraison -->
+    <div class="step-panel" id="step7">
+        <span class="step-eyebrow">Étape 7 — Livraison</span>
         <h2 class="step-title">Où livrer ?</h2>
-        <p class="step-sub">Renseignez vos coordonnées pour que notre agent finalise la commande.</p>
+        <p class="step-sub">Renseignez vos coordonnées pour finaliser.</p>
         <div class="form-grid">
             <div class="form-group"><label>Prénom</label><input type="text" class="form-control" id="fPrenom" placeholder="Jean"></div>
             <div class="form-group"><label>Nom</label><input type="text" class="form-control" id="fNom" placeholder="Dupont"></div>
@@ -305,21 +343,22 @@
             <div class="form-group full"><label>Email</label><input type="email" class="form-control" id="fEmail" placeholder="jean.dupont@email.com"></div>
         </div>
         <div class="btn-row">
-            <button class="btn-back" onclick="goStep(5)">← Retour</button>
+            <button class="btn-back" onclick="goStep(6)">← Retour</button>
             <button class="btn-primary" onclick="submitOrder()">Envoyer ma commande →</button>
         </div>
     </div>
 
     <!-- CONFIRMATION -->
-    <div class="step-panel" id="step7">
+    <div class="step-panel" id="step8">
         <div class="confirm-wrap">
             <div class="confirm-icon">✓</div>
             <h2 class="step-title" style="text-align:center">Commande transmise !</h2>
-            <p class="step-sub" style="text-align:center">Un agent privé a reçu votre demande. Récapitulatif :</p>
+            <p class="step-sub" style="text-align:center">Finalisez votre commande sur WhatsApp pour un suivi en direct.</p>
             <div class="summary-box" id="summaryBox"></div>
             <div class="channel-btns">
+                <a id="waLink" href="#" target="_blank" class="channel-btn whatsapp">💬 &nbsp;Finaliser sur WhatsApp</a>
                 <a href="https://www.instagram.com/allstore.tm" target="_blank" class="channel-btn" style="background:linear-gradient(135deg,#f09433,#dc2743,#bc1888);color:#fff">📩 &nbsp;Suivre sur Instagram</a>
-                <a href="mailto:allstore.24.7.tm@gmail.com" class="channel-btn email">✉️ &nbsp;Confirmation par email</a>
+                <a href="mailto:allstore.24.7.tm@gmail.com" class="channel-btn email">✉️ &nbsp;Nous écrire par email</a>
             </div>
             <p class="status-live"><span class="dot-green"></span>Agent disponible · Réponse sous 60 min</p>
         </div>
@@ -330,9 +369,10 @@
 
 <script src="products-data.js"></script>
 <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
-const TOTAL = 6;
+const TOTAL = 7;
 const order = { type:'', brand:'', size:'', color:'', ref:'', budget:'', prenom:'', nom:'', adresse:'', ville:'', cp:'', region:'', pays:'', tel:'', email:'' };
 let skipStep3 = false;
+var items = [];
 
 // ── Données ──────────────────────────────────────────────────
 const brandsByType = {
@@ -408,6 +448,7 @@ document.getElementById('typeGrid').addEventListener('click', function(e) {
 
     // Afficher le textarea au lieu de la liste de marques
     document.getElementById('brandList').style.display = 'none';
+    document.getElementById('brandSearch').parentElement.style.display = 'none';
     document.getElementById('autreDescWrap').style.display = 'block';
     document.getElementById('s2eyebrow').textContent = 'Étape 2 — Votre demande';
     document.getElementById('s2title').textContent = 'Décrivez votre demande';
@@ -425,19 +466,26 @@ document.getElementById('typeGrid').addEventListener('click', function(e) {
 
   // Remettre l'étape 2 en mode normal (liste de marques)
   document.getElementById('brandList').style.display = '';
+  document.getElementById('brandSearch').value = '';
+  document.getElementById('brandSearch').parentElement.style.display = '';
   document.getElementById('autreDescWrap').style.display = 'none';
   document.getElementById('s2eyebrow').textContent = 'Étape 2 — Marque';
   document.getElementById('s2title').textContent = 'Quelle marque ?';
   document.getElementById('s2sub').textContent = 'Choisissez parmi les marques disponibles.';
 
-  // Construire la liste des marques triées par ordre alphabétique
+  // Construire la liste des marques triées par ordre alphabétique, "Autre" en dernier
   const brands = (brandsByType[type] || []).slice().sort(function(a, b) {
+    if (a === 'Autre') return 1;
+    if (b === 'Autre') return -1;
     return a.localeCompare(b, 'fr', { sensitivity: 'base' });
   });
   const list = document.getElementById('brandList');
   list.innerHTML = brands.map(function(b) {
     return '<div class="opt-item" data-brand="' + b.replace(/"/g, '&quot;') + '">' + b + '<span class="opt-arrow">→</span></div>';
   }).join('');
+  // Reset brand selection when entering step 2
+  order.brand = '';
+  document.getElementById('btnStep2').disabled = true;
 
   buildRecap('recap2', [{ l:'Article', v:type }]);
   goStep(2);
@@ -454,19 +502,50 @@ document.getElementById('btnAutreDesc').addEventListener('click', function() {
   order.brand = desc;
   order.size = '—';
   order.color = '—';
-  order.ref = '';
-  order.budget = '';
-  // Aller directement aux coordonnées (étape 6)
+  order.ref = '—';
+  order.budget = '—';
+  saveCurrentArticle();
+  renderCartList();
   goStep(6);
 });
 
-// ── Étape 2 : délégation d'événement sur la liste des marques ──
+// ── Étape 2 : recherche/filtre de marques ──
+document.getElementById('brandSearch').addEventListener('input', function() {
+  var query = this.value.trim().toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+  var items = document.querySelectorAll('#brandList .opt-item');
+  var hasResult = false;
+  items.forEach(function(el) {
+    var name = el.dataset.brand.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+    var match = !query || name.indexOf(query) !== -1;
+    el.style.display = match ? '' : 'none';
+    if (match) hasResult = true;
+  });
+  // Remove existing no-result msg
+  var noRes = document.getElementById('brandNoResult');
+  if (noRes) noRes.remove();
+  if (!hasResult && query) {
+    var msg = document.createElement('div');
+    msg.id = 'brandNoResult';
+    msg.className = 'brand-no-result';
+    msg.textContent = 'Aucune marque trouvée pour « ' + this.value.trim() + ' »';
+    document.getElementById('brandList').appendChild(msg);
+  }
+});
+
+// ── Étape 2 : sélection marque (simple clic pour sélectionner) ──
 document.getElementById('brandList').addEventListener('click', function(e) {
   const item = e.target.closest('.opt-item');
   if (!item) return;
-  const brand = item.dataset.brand;
-  order.brand = brand;
+  document.querySelectorAll('#brandList .opt-item.selected').forEach(function(c) { c.classList.remove('selected'); });
+  item.classList.add('selected');
+  order.brand = item.dataset.brand;
+  document.getElementById('btnStep2').disabled = false;
+});
 
+// Validation avec le bouton Continuer
+function confirmBrand() {
+  if (!order.brand) return;
+  const brand = order.brand;
   const cfg = step3Config[order.type] || { mode:'skip' };
 
   if (cfg.mode === 'skip') {
@@ -476,7 +555,6 @@ document.getElementById('brandList').addEventListener('click', function(e) {
     goStep(4);
   } else {
     skipStep3 = false;
-    // Configurer l'étape 3
     document.getElementById('s3eyebrow').textContent = cfg.eyebrow;
     document.getElementById('s3title').textContent = cfg.title;
     document.getElementById('s3sub').textContent = cfg.sub;
@@ -492,7 +570,7 @@ document.getElementById('brandList').addEventListener('click', function(e) {
     buildRecap('recap3', [{ l:'Article', v:order.type }, { l:'Marque', v:brand }]);
     goStep(3);
   }
-});
+}
 
 // ── Étape 3 : délégation d'événement sur la grille des tailles ──
 document.getElementById('sizeGrid').addEventListener('click', function(e) {
@@ -528,10 +606,105 @@ function backFromStep4() {
   goStep(skipStep3 ? 2 : 3);
 }
 
+// ── Multi-article ────────────────────────────────────────────
+function getSizeLabelForType(type) {
+  var cfg = step3Config[type];
+  if (!cfg) return 'Taille';
+  if (cfg.mode === 'volume') return 'Contenance';
+  if (cfg.mode === 'diameter') return 'Diamètre';
+  if (cfg.mode === 'format') return 'Format';
+  return 'Taille';
+}
+
+function saveCurrentArticle() {
+  items.push({
+    type: order.type,
+    brand: order.brand,
+    size: order.size,
+    color: order.color,
+    ref: order.ref,
+    budget: order.budget
+  });
+}
+
+function saveArticleAndGoRecap() {
+  order.ref = document.getElementById('refInput').value || '—';
+  order.budget = document.getElementById('budgetInput').value || '—';
+  saveCurrentArticle();
+  renderCartList();
+  goStep(6);
+}
+
+function renderCartList() {
+  var list = document.getElementById('cartList');
+  if (!list) return;
+  list.innerHTML = items.map(function(item, i) {
+    var sl = getSizeLabelForType(item.type);
+    var d = [];
+    if (item.size && item.size !== '—') d.push(sl + ' : ' + item.size);
+    if (item.color && item.color !== '—') d.push(item.color);
+    if (item.ref && item.ref !== '—') d.push(item.ref);
+    if (item.budget && item.budget !== '—') d.push(item.budget);
+    return '<div class="cart-item">' +
+      '<div class="cart-item-num">' + (i + 1) + '</div>' +
+      '<div class="cart-item-info">' +
+        '<div class="cart-item-title">' + item.brand + '</div>' +
+        '<div class="cart-item-details">' + item.type + (d.length ? ' · ' + d.join(' · ') : '') + '</div>' +
+      '</div>' +
+      '<button class="cart-item-remove" onclick="removeArticle(' + i + ')" title="Supprimer">\u2715</button>' +
+    '</div>';
+  }).join('');
+  var badge = document.getElementById('cartCount');
+  if (badge) badge.textContent = items.length;
+}
+
+function removeArticle(i) {
+  items.splice(i, 1);
+  renderCartList();
+  if (!items.length) { resetArticleForm(); goStep(1); }
+}
+
+function addAnotherArticle() {
+  resetArticleForm();
+  goStep(1);
+}
+
+function backFromRecap() {
+  if (items.length > 0) {
+    var last = items.pop();
+    order.type = last.type;
+    order.brand = last.brand;
+    order.size = last.size;
+    order.color = last.color;
+    if (last.type === 'Autre') {
+      document.getElementById('autreDescInput').value = last.brand;
+      document.getElementById('btnAutreDesc').disabled = false;
+      goStep(2);
+    } else {
+      document.getElementById('refInput').value = last.ref === '—' ? '' : last.ref;
+      document.getElementById('budgetInput').value = last.budget === '—' ? '' : last.budget;
+      goStep(5);
+    }
+  } else {
+    goStep(1);
+  }
+}
+
+function resetArticleForm() {
+  order.type = ''; order.brand = ''; order.size = ''; order.color = ''; order.ref = ''; order.budget = '';
+  order._isAutre = false;
+  skipStep3 = false;
+  document.querySelectorAll('.chip.selected, .size-chip.selected, .color-chip.selected, .opt-item.selected').forEach(function(c) { c.classList.remove('selected'); });
+  document.getElementById('refInput').value = '';
+  document.getElementById('budgetInput').value = '';
+  document.getElementById('autreDescInput').value = '';
+  document.getElementById('btnStep3').disabled = true;
+  document.getElementById('btnStep4').disabled = true;
+  document.getElementById('productRecap').style.display = 'none';
+}
+
 // ── Submit ────────────────────────────────────────────────────
 function submitOrder() {
-  order.ref    = document.getElementById('refInput').value || '—';
-  order.budget = document.getElementById('budgetInput').value || '—';
   order.prenom = document.getElementById('fPrenom').value;
   order.nom    = document.getElementById('fNom').value;
   if(order.prenom) localStorage.setItem('als_name', order.prenom);
@@ -543,47 +716,66 @@ function submitOrder() {
   order.tel    = document.getElementById('fTel').value;
   order.email  = document.getElementById('fEmail').value;
 
-  const sl = getSizeLabel();
-  const sizeRow = order.size && order.size !== '—' ? [{ lbl:sl, val:order.size }] : [];
+  // Build summary HTML with ALL articles
+  var html = '';
+  items.forEach(function(item, i) {
+    var sl = getSizeLabelForType(item.type);
+    var sizeRow = item.size && item.size !== '—' ? '<div class="summary-row"><span class="lbl">' + sl + '</span><span class="val">' + item.size + '</span></div>' : '';
+    var colorRow = item.color && item.color !== '—' ? '<div class="summary-row"><span class="lbl">Couleur</span><span class="val">' + item.color + '</span></div>' : '';
+    var refRow = item.ref && item.ref !== '—' ? '<div class="summary-row"><span class="lbl">Référence</span><span class="val">' + item.ref + '</span></div>' : '';
+    var budgetRow = item.budget && item.budget !== '—' ? '<div class="summary-row"><span class="lbl">Budget</span><span class="val">' + item.budget + '</span></div>' : '';
+    html += '<div style="' + (i > 0 ? 'margin-top:14px;padding-top:14px;border-top:1px solid rgba(10,25,35,.08)' : '') + '">' +
+      '<div style="font-size:11px;font-weight:700;color:var(--gold2);text-transform:uppercase;letter-spacing:.1em;margin-bottom:4px">Article ' + (i+1) + '</div>' +
+      '<div class="summary-row"><span class="lbl">Type</span><span class="val">' + item.type + '</span></div>' +
+      '<div class="summary-row"><span class="lbl">Marque</span><span class="val">' + item.brand + '</span></div>' +
+      sizeRow + colorRow + refRow + budgetRow +
+    '</div>';
+  });
+  html += '<div style="margin-top:14px;padding-top:14px;border-top:2px solid rgba(10,25,35,.1)">' +
+    '<div class="summary-row"><span class="lbl">Nom</span><span class="val">' + order.prenom + ' ' + order.nom + '</span></div>' +
+    '<div class="summary-row"><span class="lbl">Adresse</span><span class="val">' + order.adresse + ', ' + order.cp + ' ' + order.ville + '</span></div>' +
+    '<div class="summary-row"><span class="lbl">Pays</span><span class="val">' + order.pays + '</span></div>' +
+    '<div class="summary-row"><span class="lbl">Téléphone</span><span class="val">' + order.tel + '</span></div>' +
+    '<div class="summary-row"><span class="lbl">Email</span><span class="val">' + order.email + '</span></div>' +
+  '</div>';
+  document.getElementById('summaryBox').innerHTML = html;
 
-  const rows = [
-    { lbl:'Article',   val:order.type   },
-    { lbl:'Marque',    val:order.brand  }
-  ].concat(sizeRow).concat([
-    { lbl:'Couleur',   val:order.color  },
-    { lbl:'Référence', val:order.ref    },
-    { lbl:'Budget',    val:order.budget },
-    { lbl:'Nom',       val:order.prenom + ' ' + order.nom },
-    { lbl:'Adresse',   val:order.adresse + ', ' + order.cp + ' ' + order.ville },
-    { lbl:'Région',    val:order.region },
-    { lbl:'Pays',      val:order.pays   },
-    { lbl:'Téléphone', val:order.tel    },
-    { lbl:'Email',     val:order.email  }
-  ]);
-
-  document.getElementById('summaryBox').innerHTML = rows.map(function(r) {
-    return '<div class="summary-row"><span class="lbl">' + r.lbl + '</span><span class="val">' + (r.val || '—') + '</span></div>';
-  }).join('');
-
-  const sizeMsg = order.size && order.size !== '—' ? '\n• ' + sl + ' : ' + order.size : '';
-  const msg = encodeURIComponent(
-    '🛍️ Nouvelle commande AllStore 24/7\n\n' +
-    '• Article : ' + order.type + '\n' +
-    '• Marque : ' + order.brand + sizeMsg + '\n' +
-    '• Couleur : ' + order.color + '\n' +
-    '• Référence : ' + order.ref + '\n' +
-    '• Budget : ' + order.budget + '\n\n' +
-    '📦 Livraison :\n' +
-    '• Nom : ' + order.prenom + ' ' + order.nom + '\n' +
-    '• Adresse : ' + order.adresse + ', ' + order.cp + ' ' + order.ville + '\n' +
-    '• Région : ' + order.region + '\n' +
-    '• Pays : ' + order.pays + '\n' +
-    '• Tél : ' + order.tel + '\n' +
-    '• Email : ' + order.email
+  // Build WhatsApp message with ALL articles
+  var parts = ['\ud83d\udecd\ufe0f Nouvelle commande AllStore 24/7'];
+  items.forEach(function(item, i) {
+    var sl = getSizeLabelForType(item.type);
+    var sizeMsg = item.size && item.size !== '—' ? '\n\u2022 ' + sl + ' : ' + item.size : '';
+    var colorMsg = item.color && item.color !== '—' ? '\n\u2022 Couleur : ' + item.color : '';
+    parts.push(
+      '\ud83d\udce6 Article ' + (i+1) + ' :\n' +
+      '\u2022 Type : ' + item.type + '\n' +
+      '\u2022 Marque : ' + item.brand + sizeMsg + colorMsg +
+      (item.ref && item.ref !== '—' ? '\n\u2022 Réf : ' + item.ref : '') +
+      (item.budget && item.budget !== '—' ? '\n\u2022 Budget : ' + item.budget : '')
+    );
+  });
+  parts.push(
+    '\ud83d\udcec Livraison :\n' +
+    '\u2022 Nom : ' + order.prenom + ' ' + order.nom + '\n' +
+    '\u2022 Adresse : ' + order.adresse + ', ' + order.cp + ' ' + order.ville + '\n' +
+    '\u2022 Pays : ' + order.pays + '\n' +
+    '\u2022 Tél : ' + order.tel + '\n' +
+    '\u2022 Email : ' + order.email
   );
-  // WhatsApp removed - contact via Instagram/email only
-  goStep(7);
+  var waMsg = encodeURIComponent(parts.join('\n\n'));
+  document.getElementById('waLink').href = 'https://wa.me/33626587984?text=' + waMsg;
+
+  goStep(8);
 }
+
+// ── URL category pre-selection ────────────────────────────────
+(function(){
+  var params = new URLSearchParams(window.location.search);
+  var cat = params.get('category');
+  if(!cat) return;
+  var chip = document.querySelector('.chip[data-type="' + cat + '"]');
+  if(chip) chip.click();
+})();
 
 // ── URL product pre-selection ────────────────────────────────
 (function(){
@@ -661,7 +853,7 @@ function submitOrder() {
   .bnav-pill{position:relative;display:flex;align-items:center}
   .bnav-blob{position:absolute;height:100%;background:rgba(255,255,255,.45);border-radius:40px;transition:left .4s cubic-bezier(.4,.0,.2,1), width .4s cubic-bezier(.4,.0,.2,1);z-index:0;pointer-events:none}
   .bnav-blob.slime{transition:left .35s cubic-bezier(.5,.0,.2,1.3), width .35s cubic-bezier(.5,.0,.2,1.3)}
-  .bnav-item{display:flex;flex-direction:column;align-items:center;gap:3px;padding:8px 16px;border-radius:40px;text-decoration:none;color:rgba(0,0,0,.5);font-family:'Poppins',sans-serif;font-size:9px;font-weight:500;letter-spacing:.03em;transition:color .2s;cursor:pointer;white-space:nowrap;position:relative;z-index:1;background:transparent}
+  .bnav-item{display:flex;flex-direction:column;align-items:center;gap:3px;padding:8px 16px;border-radius:40px;text-decoration:none;color:rgba(0,0,0,.5);font-family:-apple-system,BlinkMacSystemFont,'SF Pro Text','Inter',sans-serif;font-size:9px;font-weight:500;letter-spacing:.03em;transition:color .2s;cursor:pointer;white-space:nowrap;position:relative;z-index:1;background:transparent}
   .bnav-item svg{width:20px;height:20px;stroke:currentColor;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;transition:all .2s}
   .bnav-item:hover{color:rgba(0,0,0,.8)}
   .bnav-item.active{color:var(--noir,#0a1923)}
@@ -670,7 +862,7 @@ function submitOrder() {
   @media(min-width:1025px){.bnav{display:none!important}}
   @media(max-width:400px){.bnav{bottom:10px;padding:4px 6px}.bnav-item{padding:6px 10px;font-size:8px;gap:2px}.bnav-item svg{width:18px;height:18px}}
 </style>
-<nav class="bnav">
+<nav class="bnav" aria-label="Navigation principale">
   <div class="bnav-pill">
     <div class="bnav-blob" id="bnav-blob"></div>
     <a href="index.html" class="bnav-item" data-nav="0">
@@ -698,6 +890,16 @@ function submitOrder() {
 </nav>
 <script>
 (function(){
+  var path = window.location.pathname.split('/').pop() || 'index.html';
+  var activeHref = null;
+  if(path === 'index.html' || path === '') activeHref = 'index.html';
+  else if(path === 'assistant.html' || path === 'boutique.html' || path.indexOf('produit') === 0) activeHref = 'assistant.html';
+  else if(path === 'suivi.html') activeHref = 'suivi.html';
+  if(activeHref){
+    document.querySelectorAll('.bnav-item').forEach(function(item){
+      if(item.getAttribute('href') === activeHref) item.classList.add('active');
+    });
+  }
   var blob = document.getElementById('bnav-blob');
   var items = document.querySelectorAll('.bnav-item');
   var pill = document.querySelector('.bnav-pill');
@@ -711,16 +913,13 @@ function submitOrder() {
     blob.style.width = er.width + 'px';
     blob.style.height = er.height + 'px';
   }
-  var activeEl = document.querySelector(".bnav-item.active");
+  var activeEl = document.querySelector('.bnav-item.active');
   if(activeEl){ positionBlob(activeEl, false); }
-  sessionStorage.removeItem("bnav_from");
   items.forEach(function(item){
     item.addEventListener('click', function(e){
       if(item.classList.contains('active')) return;
       e.preventDefault();
       var href = item.getAttribute('href');
-      var currentActive = document.querySelector('.bnav-item.active');
-      sessionStorage.setItem('bnav_from', currentActive ? currentActive.dataset.nav : '0');
       positionBlob(item, true);
       items.forEach(function(i){ i.classList.remove('active'); });
       item.classList.add('active');
@@ -730,5 +929,8 @@ function submitOrder() {
 })();
 </script>
 
+<script type="module" src="apple/fx/index.js"></script>
+<script type="module" src="apple/fx/kinetic.js"></script>
+<script type="module" src="apple/fx/assistant-ritual.js"></script>
 </body>
 </html>

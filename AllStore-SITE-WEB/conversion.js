@@ -83,17 +83,14 @@
   function recalcBars(){
     var promo=document.getElementById('promo-bar');
     var header=document.querySelector('header');
-    var trust=document.getElementById('trust-bar');
     if(!header)return;
 
     var promoH=promo?promo.offsetHeight:0;
     var headerH=header.offsetHeight;
-    var trustH=trust?trust.offsetHeight:0;
 
     // Set CSS variables for positioning
     document.documentElement.style.setProperty('--promo-h',promoH+'px');
-    document.documentElement.style.setProperty('--trust-top',(promoH+headerH)+'px');
-    document.documentElement.style.setProperty('--bars-total-h',(promoH+headerH+trustH)+'px');
+    document.documentElement.style.setProperty('--bars-total-h',(promoH+headerH)+'px');
 
     // Create spacer to push content below fixed bars
     // Skip on fullscreen hero pages (homepage) — hero is 100vh and sits behind bars
@@ -104,16 +101,16 @@
         _spacer.className='fixed-bars-spacer';
         // Find first flow content after header
         var sib=header.nextElementSibling;
-        while(sib&&(sib.id==='promo-bar'||sib.id==='trust-bar'||sib.id==='lux-transition'||sib.classList.contains('fixed-bars-spacer'))){
+        while(sib&&(sib.id==='promo-bar'||sib.id==='lux-transition'||sib.classList.contains('fixed-bars-spacer'))){
           sib=sib.nextElementSibling;
         }
         if(sib)sib.parentNode.insertBefore(_spacer,sib);
       }
-      if(_spacer)_spacer.style.height=(promoH+headerH+trustH)+'px';
+      if(_spacer)_spacer.style.height=(promoH+headerH)+'px';
     }
   }
 
-  // Sync trust bar and promo bar visibility with header scroll hide/show
+  // Sync promo bar visibility with header scroll hide/show
   (function(){
     var header=document.querySelector('header');
     if(!header)return;
@@ -123,9 +120,7 @@
       if(isUp===lastUp)return;
       lastUp=isUp;
       var promo=document.getElementById('promo-bar');
-      var trust=document.getElementById('trust-bar');
       if(promo)promo.classList.toggle('promo-hidden',isUp);
-      if(trust)trust.classList.toggle('trust-hidden',isUp);
     });
     observer.observe(header,{attributes:true,attributeFilter:['class']});
   })();
@@ -145,20 +140,6 @@
     for (var i = 0; i < str.length; i++) { hash = ((hash << 5) - hash) + str.charCodeAt(i); hash |= 0; }
     return min + (Math.abs(hash) % (max - min + 1));
   }
-
-  /* ── STOCK INDICATOR (page produit) ─────────────────────── */
-  (function(){
-    var priceRow=document.querySelector('.pdp-price-row');
-    if(!priceRow)return;
-    var cartBtn=document.getElementById('pdp-cart-btn')||document.querySelector('.pdp-btn-cart');
-    if(cartBtn && cartBtn.disabled)return;
-    var productId = document.querySelector('.pdp-brand')?.textContent || 'product';
-    var stock=document.createElement('div');
-    stock.className='pdp-stock-alert';
-    var qty = stableNum(productId + '_stock', 2, 6);
-    stock.innerHTML='<span class="stock-dot"></span> Plus que '+qty+' en stock';
-    priceRow.parentNode.insertBefore(stock,priceRow.nextSibling);
-  })();
 
   /* ── SOCIAL PROOF (page produit) ────────────────────────── */
   (function(){

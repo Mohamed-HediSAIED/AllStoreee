@@ -1,0 +1,22 @@
+/* ════════════════════════════════════════════════════════════════════
+   APPLE.CSS — Entrée unique du design system Apple iOS 26 Liquid Glass
+
+   Ordre d'import critique :
+   1. tokens       — variables CSS (couleurs, spacing, radius, motion)
+   2. typography   — SF Pro @font-face + classes .t-*
+   3. base         — reset additionnel + utilitaires
+   4. theme        — dark mode (surcharge les tokens light)
+   5. components   — classes .ap-* (ajouté en Phase 2)
+   6. motion       — keyframes + animations (ajouté en Phase 2)
+   ════════════════════════════════════════════════════════════════════ */
+
+@import url('apple/tokens.css');
+@import url('apple/typography.css');
+@import url('apple/base.css');
+@import url('apple/theme.css');
+@import url('apple/components.css');
+@import url('apple/motion.css');
+@import url('apple/override.css');
+@import url('apple/fx-tokens.css');
+@import url('apple/fx.css');
+@import url('apple/theme-fixes.css');

@@ -2,7 +2,7 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <meta name="description" content="Mon espace client ALLSTORE 24/7. Retrouvez vos favoris, commandes et informations personnelles.">
   <meta property="og:title" content="Mon Compte | ALLSTORE 24/7">
   <meta property="og:description" content="Mon espace client ALLSTORE 24/7. Retrouvez vos favoris, commandes et informations personnelles.">
@@ -12,6 +12,7 @@
   <title>Mon Compte | ALLSTORE 24/7</title>
   <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="conversion.css">
+    <link rel="stylesheet" href="apple.css">
   <style>
     /* ============================================================
        COMPTE CLIENT — Espace personnel
@@ -42,20 +43,20 @@
       stroke-width: 1.5;
     }
     .compte-greeting {
-      font-family: 'Cormorant', serif;
+      font-family: -apple-system,BlinkMacSystemFont,'SF Pro Display','Inter',sans-serif;
       font-size: clamp(26px, 4vw, 36px);
       font-weight: 300;
-      color: var(--noir);
+      color: #fff;
       margin: 0 0 6px;
     }
     .compte-greeting strong {
-      font-family: 'Poppins', sans-serif;
+      font-family: -apple-system,BlinkMacSystemFont,'SF Pro Text','Inter',sans-serif;
       font-weight: 700;
       font-size: .85em;
     }
     .compte-sub {
       font-size: 13px;
-      color: var(--gris);
+      color: rgba(255,255,255,.6);
       font-weight: 400;
     }
 
@@ -69,26 +70,29 @@
       padding: 0 8px;
     }
     .compte-tab {
-      font-family: 'Poppins', sans-serif;
+      font-family: -apple-system,BlinkMacSystemFont,'SF Pro Text','Inter',sans-serif;
       font-size: 12px;
       font-weight: 600;
       letter-spacing: .04em;
       text-transform: uppercase;
       padding: 10px 24px;
       border-radius: 30px;
-      border: 1.5px solid rgba(10,25,35,.15);
-      background: transparent;
-      color: var(--noir);
+      border: 1.5px solid rgba(255,255,255,.25);
+      background: rgba(255,255,255,.18);
+      backdrop-filter: blur(40px) saturate(180%);
+      -webkit-backdrop-filter: blur(40px) saturate(180%);
+      color: rgba(255,255,255,.7);
       cursor: pointer;
       transition: all .25s var(--ease);
     }
     .compte-tab:hover {
-      border-color: var(--noir);
+      border-color: rgba(255,255,255,.4);
+      color: #fff;
     }
     .compte-tab.active {
-      background: var(--noir);
+      background: rgba(255,255,255,.3);
       color: #fff;
-      border-color: var(--noir);
+      border-color: rgba(255,255,255,.45);
     }
 
     /* ── Panels ── */
@@ -106,17 +110,20 @@
 
     /* ── Block card ── */
     .compte-block {
-      background: #fff;
+      background: rgba(255,255,255,.18);
+      backdrop-filter: blur(40px) saturate(180%);
+      -webkit-backdrop-filter: blur(40px) saturate(180%);
+      border: 1px solid rgba(255,255,255,.25);
       border-radius: 28px;
       padding: 28px;
       margin-bottom: 24px;
-      box-shadow: 0 4px 24px rgba(0,0,0,.04);
+      box-shadow: none;
     }
     .compte-block-title {
       font-size: 16px;
       font-weight: 700;
       letter-spacing: -.01em;
-      color: var(--noir);
+      color: #fff;
       margin: 0 0 20px;
       display: flex;
       align-items: center;
@@ -178,7 +185,7 @@
       flex-shrink: 0;
     }
     .fav-btn {
-      font-family: 'Poppins', sans-serif;
+      font-family: -apple-system,BlinkMacSystemFont,'SF Pro Text','Inter',sans-serif;
       font-size: 11px;
       font-weight: 600;
       padding: 8px 16px;
@@ -239,7 +246,7 @@
       color: var(--gris);
     }
     .order-status {
-      font-family: 'Poppins', sans-serif;
+      font-family: -apple-system,BlinkMacSystemFont,'SF Pro Text','Inter',sans-serif;
       font-size: 10px;
       font-weight: 700;
       letter-spacing: .04em;
@@ -284,7 +291,7 @@
       color: var(--gris);
     }
     .profil-input {
-      font-family: 'Poppins', sans-serif;
+      font-family: -apple-system,BlinkMacSystemFont,'SF Pro Text','Inter',sans-serif;
       font-size: 14px;
       font-weight: 500;
       color: var(--noir);
@@ -304,7 +311,7 @@
     }
     .profil-save {
       grid-column: 1 / -1;
-      font-family: 'Poppins', sans-serif;
+      font-family: -apple-system,BlinkMacSystemFont,'SF Pro Text','Inter',sans-serif;
       font-size: 14px;
       font-weight: 700;
       color: var(--noir);
@@ -324,36 +331,77 @@
     /* ── Empty state ── */
     .compte-empty {
       text-align: center;
-      padding: 40px 20px;
-      color: var(--gris);
+      padding: 48px 24px;
     }
     .compte-empty svg {
       width: 48px; height: 48px;
-      stroke: rgba(10,25,35,.15);
+      stroke: rgba(255,255,255,.25);
       fill: none;
       stroke-width: 1.5;
       margin-bottom: 16px;
     }
-    .compte-empty p {
-      font-size: 15px;
-      line-height: 1.6;
-      margin: 0 0 20px;
+    .compte-empty h3 {
+      font-family: -apple-system,BlinkMacSystemFont,'SF Pro Display','Inter',sans-serif;
+      font-size: clamp(22px, 3vw, 30px);
+      font-weight: 300;
+      color: #fff;
+      margin: 0 0 8px;
     }
-    .compte-empty a {
-      display: inline-block;
-      font-family: 'Poppins', sans-serif;
+    .compte-empty p {
+      font-size: 14px;
+      line-height: 1.6;
+      margin: 0 0 24px;
+      color: rgba(255,255,255,.55);
+    }
+    .compte-join-form {
+      display: flex;
+      gap: 8px;
+      max-width: 420px;
+      margin: 0 auto 16px;
+    }
+    .compte-join-input {
+      flex: 1;
+      padding: 14px 18px;
+      border-radius: 30px;
+      border: 1px solid rgba(255,255,255,.2);
+      background: rgba(255,255,255,.1);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      color: #fff;
+      font-family: -apple-system,BlinkMacSystemFont,'SF Pro Text','Inter',sans-serif;
+      font-size: 13px;
+      outline: none;
+      transition: border-color .2s;
+    }
+    .compte-join-input::placeholder { color: rgba(255,255,255,.35); }
+    .compte-join-input:focus { border-color: var(--gold); }
+    .compte-join-btn {
+      font-family: -apple-system,BlinkMacSystemFont,'SF Pro Text','Inter',sans-serif;
       font-size: 12px;
       font-weight: 600;
       letter-spacing: .06em;
       text-transform: uppercase;
-      color: #fff;
-      background: var(--noir);
-      padding: 12px 28px;
+      color: var(--noir);
+      background: var(--gold);
+      padding: 14px 24px;
       border-radius: 30px;
-      text-decoration: none;
+      border: none;
+      cursor: pointer;
       transition: background .2s, transform .2s;
+      white-space: nowrap;
     }
-    .compte-empty a:hover { background: #1a3040; transform: scale(1.03); }
+    .compte-join-btn:hover { background: var(--gold2); transform: scale(1.03); }
+    .compte-join-note {
+      font-size: 11px;
+      color: rgba(255,255,255,.35);
+      margin: 0;
+    }
+    .compte-join-msg {
+      font-size: 13px;
+      color: var(--gold);
+      margin-top: 12px;
+      min-height: 20px;
+    }
 
     /* ── Mobile ── */
     @media(max-width:768px){
@@ -371,7 +419,8 @@
       .compte-tab { padding: 8px 16px; font-size: 11px; }
     }
   </style>
-</head>
+    <script defer src="apple-switch.js"></script>
+  </head>
 <body>
 
 <header>
@@ -409,10 +458,6 @@
   <!-- ═══════ PANEL FAVORIS ═══════ -->
   <div class="compte-panel active" id="panel-favoris">
     <div class="compte-block">
-      <div class="compte-block-title">
-        <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
-        Mes Favoris
-      </div>
       <div id="fav-list"></div>
     </div>
   </div>
@@ -657,6 +702,23 @@
     }
   });
 
+  /* ── Rejoindre la communauté ── */
+  window.compteJoin = function(){
+    const input = document.getElementById('compte-join-email');
+    const msg = document.getElementById('compte-join-msg');
+    if(!input || !msg) return;
+    const email = input.value.trim();
+    if(!email || !email.includes('@')){
+      msg.textContent = 'Entre une adresse email valide.';
+      msg.style.color = '#ff6b6b';
+      return;
+    }
+    localStorage.setItem('als_vip_email', email);
+    msg.textContent = 'Bienvenue dans le club ! 🎉';
+    msg.style.color = 'var(--gold)';
+    input.value = '';
+  };
+
   /* ── Init ── */
   renderFavoris();
   renderCommandes();
@@ -670,7 +732,7 @@
   .bnav-pill{position:relative;display:flex;align-items:center}
   .bnav-blob{position:absolute;height:100%;background:rgba(255,255,255,.45);border-radius:40px;transition:left .4s cubic-bezier(.4,.0,.2,1), width .4s cubic-bezier(.4,.0,.2,1);z-index:0;pointer-events:none}
   .bnav-blob.slime{transition:left .35s cubic-bezier(.5,.0,.2,1.3), width .35s cubic-bezier(.5,.0,.2,1.3)}
-  .bnav-item{display:flex;flex-direction:column;align-items:center;gap:3px;padding:8px 16px;border-radius:40px;text-decoration:none;color:rgba(0,0,0,.5);font-family:'Poppins',sans-serif;font-size:9px;font-weight:500;letter-spacing:.03em;transition:color .2s;cursor:pointer;white-space:nowrap;position:relative;z-index:1;background:transparent}
+  .bnav-item{display:flex;flex-direction:column;align-items:center;gap:3px;padding:8px 16px;border-radius:40px;text-decoration:none;color:rgba(0,0,0,.5);font-family:-apple-system,BlinkMacSystemFont,'SF Pro Text','Inter',sans-serif;font-size:9px;font-weight:500;letter-spacing:.03em;transition:color .2s;cursor:pointer;white-space:nowrap;position:relative;z-index:1;background:transparent}
   .bnav-item svg{width:20px;height:20px;stroke:currentColor;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;transition:all .2s}
   .bnav-item:hover{color:rgba(0,0,0,.8)}
   .bnav-item.active{color:var(--noir,#0a1923)}
@@ -679,7 +741,7 @@
   @media(min-width:1025px){.bnav{display:none!important}}
   @media(max-width:400px){.bnav{bottom:10px;padding:4px 6px}.bnav-item{padding:6px 10px;font-size:8px;gap:2px}.bnav-item svg{width:18px;height:18px}}
 </style>
-<nav class="bnav">
+<nav class="bnav" aria-label="Navigation principale">
   <div class="bnav-pill">
     <div class="bnav-blob" id="bnav-blob"></div>
     <a href="index.html" class="bnav-item" data-nav="0">
@@ -707,6 +769,16 @@
 </nav>
 <script>
 (function(){
+  var path = window.location.pathname.split('/').pop() || 'index.html';
+  var activeHref = null;
+  if(path === 'index.html' || path === '') activeHref = 'index.html';
+  else if(path === 'assistant.html' || path === 'boutique.html' || path.indexOf('produit') === 0) activeHref = 'assistant.html';
+  else if(path === 'suivi.html') activeHref = 'suivi.html';
+  if(activeHref){
+    document.querySelectorAll('.bnav-item').forEach(function(item){
+      if(item.getAttribute('href') === activeHref) item.classList.add('active');
+    });
+  }
   var blob = document.getElementById('bnav-blob');
   var items = document.querySelectorAll('.bnav-item');
   var pill = document.querySelector('.bnav-pill');
@@ -720,16 +792,13 @@
     blob.style.width = er.width + 'px';
     blob.style.height = er.height + 'px';
   }
-  var activeEl = document.querySelector(".bnav-item.active");
+  var activeEl = document.querySelector('.bnav-item.active');
   if(activeEl){ positionBlob(activeEl, false); }
-  sessionStorage.removeItem("bnav_from");
   items.forEach(function(item){
     item.addEventListener('click', function(e){
       if(item.classList.contains('active')) return;
       e.preventDefault();
       var href = item.getAttribute('href');
-      var currentActive = document.querySelector('.bnav-item.active');
-      sessionStorage.setItem('bnav_from', currentActive ? currentActive.dataset.nav : '0');
       positionBlob(item, true);
       items.forEach(function(i){ i.classList.remove('active'); });
       item.classList.add('active');
@@ -739,5 +808,7 @@
 })();
 </script>
 
+<script type="module" src="apple/fx/kinetic.js"></script>
+<script type="module" src="apple/fx/page-polish.js"></script>
 </body>
 </html>

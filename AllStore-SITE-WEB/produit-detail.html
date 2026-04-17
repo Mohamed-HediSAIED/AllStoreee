@@ -2,12 +2,13 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <meta name="description" content="ALLSTORE 24/7 — Produit Premium">
   <link rel="icon" type="image/png" href="shopping_bag_icon.png">
   <title>Produit | ALLSTORE 24/7</title>
   <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="conversion.css">
+    <link rel="stylesheet" href="apple.css">
   <style>
     .pdp{padding:90px 0 60px;margin:0 auto}
     .pdp-grid{display:grid;grid-template-columns:1fr .45fr;gap:0;align-items:start;min-height:calc(100vh - 90px)}
@@ -20,19 +21,19 @@
     .pdp-back{display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:500;color:var(--gris);text-decoration:none;margin-bottom:20px;transition:color .2s}
     .pdp-back:hover{color:var(--noir)}
     .pdp-brand{font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:.15em;color:var(--gold2)}
-    .pdp-name{font-family:'Poppins',sans-serif;font-size:clamp(28px,4vw,42px);font-weight:600;letter-spacing:-.02em;line-height:1.15;margin:8px 0 6px}
-    .pdp-color{font-family:'Poppins',sans-serif;font-size:14px;color:var(--gris);margin-bottom:20px}
+    .pdp-name{font-family:-apple-system,BlinkMacSystemFont,'SF Pro Text','Inter',sans-serif;font-size:clamp(28px,4vw,42px);font-weight:600;letter-spacing:-.02em;line-height:1.15;margin:8px 0 6px}
+    .pdp-color{font-family:-apple-system,BlinkMacSystemFont,'SF Pro Text','Inter',sans-serif;font-size:14px;color:var(--gris);margin-bottom:20px}
     .pdp-price-row{display:flex;align-items:baseline;gap:12px;margin-bottom:24px}
-    .pdp-price{font-size:32px;font-weight:700;font-family:'Poppins',sans-serif}
+    .pdp-price{font-size:32px;font-weight:700;font-family:-apple-system,BlinkMacSystemFont,'SF Pro Text','Inter',sans-serif}
     .pdp-price-tag{font-size:12px;color:var(--gris)}
     .pdp-badges{display:flex;gap:8px;margin-bottom:28px}
     .pdp-badge{font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:.06em;padding:5px 14px;border-radius:980px;background:var(--bg2);color:var(--gris)}
     .pdp-badge--gold{background:var(--gold);color:var(--noir)}
     .pdp-actions{display:flex;gap:10px;margin-bottom:12px}
-    .pdp-buy-now{width:100%;background:var(--gold);color:var(--noir);border:none;border-radius:14px;padding:18px;font-size:14px;font-weight:700;cursor:pointer;font-family:'Poppins',sans-serif;letter-spacing:.04em;text-transform:uppercase;transition:all .25s;margin-bottom:28px}
+    .pdp-buy-now{width:100%;background:var(--gold);color:var(--noir);border:none;border-radius:14px;padding:18px;font-size:14px;font-weight:700;cursor:pointer;font-family:-apple-system,BlinkMacSystemFont,'SF Pro Text','Inter',sans-serif;letter-spacing:.04em;text-transform:uppercase;transition:all .25s;margin-bottom:28px}
     .pdp-buy-now:hover{background:#d4af37;transform:translateY(-1px);box-shadow:0 4px 16px rgba(233,194,67,.35)}
     .pdp-buy-now:disabled{opacity:.4;cursor:not-allowed;transform:none;box-shadow:none}
-    .pdp-btn-cart{flex:1;background:var(--noir);color:#fff;border:none;border-radius:14px;padding:20px;font-size:15px;font-weight:600;cursor:pointer;font-family:'Poppins',sans-serif;transition:background .2s}
+    .pdp-btn-cart{flex:1;background:var(--noir);color:#fff;border:none;border-radius:14px;padding:20px;font-size:15px;font-weight:600;cursor:pointer;font-family:-apple-system,BlinkMacSystemFont,'SF Pro Text','Inter',sans-serif;transition:background .2s}
     .pdp-btn-cart:hover{background:#1a3040}
     .pdp-btn-cart:disabled{opacity:.5;cursor:not-allowed}
     .pdp-btn-cart.in-cart{background:#1a5c3a}
@@ -51,7 +52,7 @@
     @media(max-width:600px){.pdp{padding-top:50px}.pdp-gallery{grid-template-columns:1fr}.pdp-gallery-item{aspect-ratio:auto;min-height:280px}.pdp-name{font-size:24px}.pdp-price{font-size:26px}.pdp-btn-cart{padding:18px;font-size:16px}.pdp-btn-wl{width:56px;height:56px}.pdp-info{padding:20px 18px 120px}}
     /* Vous aimerez aussi */
     .als-reco{padding:40px 20px 60px;max-width:1200px;margin:0 auto}
-    .als-reco-title{font-family:'Poppins',sans-serif;font-size:22px;font-weight:700;letter-spacing:.08em;text-align:center;margin-bottom:24px}
+    .als-reco-title{font-family:-apple-system,BlinkMacSystemFont,'SF Pro Text','Inter',sans-serif;font-size:22px;font-weight:700;letter-spacing:.08em;text-align:center;margin-bottom:24px}
     .als-reco-title em{font-style:italic;color:var(--gold2)}
     .als-reco-wrap{position:relative}
     .als-reco-scroll{display:flex;gap:16px;overflow-x:auto;scroll-behavior:smooth;-ms-overflow-style:none;scrollbar-width:none;padding:4px 0}
@@ -65,12 +66,13 @@
     .als-reco-card-img{width:200px;height:200px;border-radius:14px;overflow:hidden;background:var(--bg2,#f5f2ec);display:flex;align-items:center;justify-content:center;margin-bottom:10px}
     .als-reco-card-img img{width:100%;height:100%;object-fit:cover;mix-blend-mode:multiply}
     .als-reco-card-brand{font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:.1em;color:var(--gold2)}
-    .als-reco-card-name{font-family:'Poppins',sans-serif;font-size:13px;font-weight:600;margin:2px 0}
+    .als-reco-card-name{font-family:-apple-system,BlinkMacSystemFont,'SF Pro Text','Inter',sans-serif;font-size:13px;font-weight:600;margin:2px 0}
     .als-reco-card-color{font-size:11px;color:var(--gris)}
-    .als-reco-card-price{font-family:'Poppins',sans-serif;font-size:14px;font-weight:700;margin-top:4px}
+    .als-reco-card-price{font-family:-apple-system,BlinkMacSystemFont,'SF Pro Text','Inter',sans-serif;font-size:14px;font-weight:700;margin-top:4px}
     @media(max-width:600px){.als-reco{padding:30px 16px 50px}.als-reco-card{flex:0 0 160px}.als-reco-card-img{width:160px;height:160px}.als-reco-arrow{display:none}}
   </style>
-</head>
+    <script defer src="apple-switch.js"></script>
+  </head>
 <body>
 <header><nav><a href="index.html" class="logo"><img src="shopping_bag_icon.png" alt="ALLSTORE"></a><ul class="nav-links"><li><a href="index.html">Accueil</a></li><li><a href="boutique.html">Boutique</a></li><li><a href="assistant.html">Assistant</a></li><li><a href="suivi.html">Suivi</a></li><li><a href="apropos.html">À Propos</a></li><li><a href="contact.html">Contact</a></li></ul></nav></header>
 <main>
@@ -112,7 +114,7 @@
   .bnav-pill{position:relative;display:flex;align-items:center}
   .bnav-blob{position:absolute;height:100%;background:rgba(255,255,255,.45);border-radius:40px;transition:left .4s cubic-bezier(.4,.0,.2,1), width .4s cubic-bezier(.4,.0,.2,1);z-index:0;pointer-events:none}
   .bnav-blob.slime{transition:left .35s cubic-bezier(.5,.0,.2,1.3), width .35s cubic-bezier(.5,.0,.2,1.3)}
-  .bnav-item{display:flex;flex-direction:column;align-items:center;gap:3px;padding:8px 16px;border-radius:40px;text-decoration:none;color:rgba(0,0,0,.5);font-family:'Poppins',sans-serif;font-size:9px;font-weight:500;letter-spacing:.03em;transition:color .2s;cursor:pointer;white-space:nowrap;position:relative;z-index:1;background:transparent}
+  .bnav-item{display:flex;flex-direction:column;align-items:center;gap:3px;padding:8px 16px;border-radius:40px;text-decoration:none;color:rgba(0,0,0,.5);font-family:-apple-system,BlinkMacSystemFont,'SF Pro Text','Inter',sans-serif;font-size:9px;font-weight:500;letter-spacing:.03em;transition:color .2s;cursor:pointer;white-space:nowrap;position:relative;z-index:1;background:transparent}
   .bnav-item svg{width:20px;height:20px;stroke:currentColor;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;transition:all .2s}
   .bnav-item:hover{color:rgba(0,0,0,.8)}
   .bnav-item.active{color:var(--noir,#0a1923)}
@@ -121,7 +123,7 @@
   @media(min-width:1025px){.bnav{display:none!important}}
   @media(max-width:400px){.bnav{bottom:10px;padding:4px 6px}.bnav-item{padding:6px 10px;font-size:8px;gap:2px}.bnav-item svg{width:18px;height:18px}}
 </style>
-<nav class="bnav">
+<nav class="bnav" aria-label="Navigation principale">
   <div class="bnav-pill">
     <div class="bnav-blob" id="bnav-blob"></div>
     <a href="index.html" class="bnav-item" data-nav="0">
@@ -149,6 +151,16 @@
 </nav>
 <script>
 (function(){
+  var path = window.location.pathname.split('/').pop() || 'index.html';
+  var activeHref = null;
+  if(path === 'index.html' || path === '') activeHref = 'index.html';
+  else if(path === 'assistant.html' || path === 'boutique.html' || path.indexOf('produit') === 0) activeHref = 'assistant.html';
+  else if(path === 'suivi.html') activeHref = 'suivi.html';
+  if(activeHref){
+    document.querySelectorAll('.bnav-item').forEach(function(item){
+      if(item.getAttribute('href') === activeHref) item.classList.add('active');
+    });
+  }
   var blob = document.getElementById('bnav-blob');
   var items = document.querySelectorAll('.bnav-item');
   var pill = document.querySelector('.bnav-pill');
@@ -164,14 +176,11 @@
   }
   var activeEl = document.querySelector('.bnav-item.active');
   if(activeEl){ positionBlob(activeEl, false); }
-  sessionStorage.removeItem('bnav_from');
   items.forEach(function(item){
     item.addEventListener('click', function(e){
       if(item.classList.contains('active')) return;
       e.preventDefault();
       var href = item.getAttribute('href');
-      var currentActive = document.querySelector('.bnav-item.active');
-      sessionStorage.setItem('bnav_from', currentActive ? currentActive.dataset.nav : '0');
       positionBlob(item, true);
       items.forEach(function(i){ i.classList.remove('active'); });
       item.classList.add('active');
@@ -332,5 +341,7 @@
   }
 })();
 </script>
+<script type="module" src="apple/fx/kinetic.js"></script>
+<script type="module" src="apple/fx/pdp-polish.js"></script>
 </body>
 </html>

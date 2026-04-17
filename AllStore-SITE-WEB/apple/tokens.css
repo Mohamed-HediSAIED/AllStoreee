@@ -1,0 +1,200 @@
+/* ════════════════════════════════════════════════════════════════════
+   APPLE DESIGN TOKENS — iOS 26 Liquid Glass
+   Source: Apple Human Interface Guidelines 2026
+   All values in LIGHT MODE. Dark mode overrides in theme.css
+   ════════════════════════════════════════════════════════════════════ */
+
+:root {
+  /* ═══ COULEURS SYSTÈME (tinted accents) ═══ */
+  --apple-systemBlue: #007AFF;
+  --apple-systemBlue-pressed: #0051D5;
+  --apple-systemBlue-tint: rgba(0,122,255,.15);
+  --apple-systemGreen: #34C759;
+  --apple-systemIndigo: #5856D6;
+  --apple-systemOrange: #FF9500;
+  --apple-systemPink: #FF2D55;
+  --apple-systemPurple: #AF52DE;
+  --apple-systemRed: #FF3B30;
+  --apple-systemTeal: #5AC8FA;
+  --apple-systemYellow: #FFCC00;
+  --apple-systemMint: #00C7BE;
+  --apple-systemCyan: #32ADE6;
+  --apple-systemBrown: #A2845E;
+
+  /* ═══ GRAYSCALE ═══ */
+  --apple-systemGray: #8E8E93;
+  --apple-systemGray2: #AEAEB2;
+  --apple-systemGray3: #C7C7CC;
+  --apple-systemGray4: #D1D1D6;
+  --apple-systemGray5: #E5E5EA;
+  --apple-systemGray6: #F2F2F7;
+
+  /* ═══ BACKGROUNDS ═══ */
+  --apple-systemBackground: #FFFFFF;
+  --apple-secondarySystemBackground: #F2F2F7;
+  --apple-tertiarySystemBackground: #FFFFFF;
+  --apple-systemGroupedBackground: #F2F2F7;
+  --apple-secondarySystemGroupedBackground: #FFFFFF;
+  --apple-tertiarySystemGroupedBackground: #F2F2F7;
+
+  /* ═══ FILLS (pour contrôles UI) ═══ */
+  --apple-systemFill: rgba(120,120,128,.2);
+  --apple-secondarySystemFill: rgba(120,120,128,.16);
+  --apple-tertiarySystemFill: rgba(118,118,128,.12);
+  --apple-quaternarySystemFill: rgba(116,116,128,.08);
+
+  /* ═══ LABELS ═══ */
+  --apple-label: #000000;
+  --apple-secondaryLabel: rgba(60,60,67,.6);
+  --apple-tertiaryLabel: rgba(60,60,67,.3);
+  --apple-quaternaryLabel: rgba(60,60,67,.18);
+  --apple-placeholderText: rgba(60,60,67,.3);
+
+  /* ═══ SEPARATORS ═══ */
+  --apple-separator: rgba(60,60,67,.29);
+  --apple-opaqueSeparator: #C6C6C8;
+  --apple-link: #007AFF;
+
+  /* ═══ LIQUID GLASS (3 matériaux iOS 26) ═══ */
+  --glass-thin-bg: rgba(255,255,255,.5);
+  --glass-thin-blur: saturate(180%) blur(20px);
+  --glass-regular-bg: rgba(255,255,255,.72);
+  --glass-regular-blur: saturate(180%) blur(30px);
+  --glass-thick-bg: rgba(255,255,255,.85);
+  --glass-thick-blur: saturate(200%) blur(40px);
+  --glass-border: 1px solid rgba(255,255,255,.4);
+  --glass-highlight: inset 0 1px 0 rgba(255,255,255,.6);
+  --glass-shadow: 0 8px 32px rgba(0,0,0,.08), 0 2px 6px rgba(0,0,0,.04);
+
+  /* ═══ RADIUS (squircle feel) ═══ */
+  --apple-radius-xs: 6px;
+  --apple-radius-sm: 10px;
+  --apple-radius-md: 14px;
+  --apple-radius-lg: 18px;
+  --apple-radius-xl: 22px;
+  --apple-radius-2xl: 28px;
+  --apple-radius-3xl: 36px;
+  --apple-radius-full: 9999px;
+
+  /* ═══ SPACING (grille 4pt Apple) ═══ */
+  --apple-space-0: 0;
+  --apple-space-1: 4px;
+  --apple-space-2: 8px;
+  --apple-space-3: 12px;
+  --apple-space-4: 16px;
+  --apple-space-5: 20px;
+  --apple-space-6: 24px;
+  --apple-space-7: 28px;
+  --apple-space-8: 32px;
+  --apple-space-10: 40px;
+  --apple-space-12: 48px;
+  --apple-space-14: 56px;
+  --apple-space-16: 64px;
+  --apple-space-20: 80px;
+  --apple-space-24: 96px;
+
+  /* ═══ TYPOGRAPHY SCALE (SF Pro — iOS 26) ═══ */
+  /* taille / line-height / weight / letter-spacing */
+  --apple-t-largeTitle-size: 34px;
+  --apple-t-largeTitle-lh: 41px;
+  --apple-t-largeTitle-weight: 700;
+  --apple-t-largeTitle-tracking: -0.022em;
+
+  --apple-t-title1-size: 28px;
+  --apple-t-title1-lh: 34px;
+  --apple-t-title1-weight: 700;
+  --apple-t-title1-tracking: -0.02em;
+
+  --apple-t-title2-size: 22px;
+  --apple-t-title2-lh: 28px;
+  --apple-t-title2-weight: 700;
+  --apple-t-title2-tracking: -0.018em;
+
+  --apple-t-title3-size: 20px;
+  --apple-t-title3-lh: 25px;
+  --apple-t-title3-weight: 600;
+  --apple-t-title3-tracking: -0.01em;
+
+  --apple-t-headline-size: 17px;
+  --apple-t-headline-lh: 22px;
+  --apple-t-headline-weight: 600;
+  --apple-t-headline-tracking: -0.01em;
+
+  --apple-t-body-size: 17px;
+  --apple-t-body-lh: 22px;
+  --apple-t-body-weight: 400;
+  --apple-t-body-tracking: -0.01em;
+
+  --apple-t-callout-size: 16px;
+  --apple-t-callout-lh: 21px;
+  --apple-t-callout-weight: 400;
+  --apple-t-callout-tracking: 0;
+
+  --apple-t-subheadline-size: 15px;
+  --apple-t-subheadline-lh: 20px;
+  --apple-t-subheadline-weight: 400;
+  --apple-t-subheadline-tracking: 0;
+
+  --apple-t-footnote-size: 13px;
+  --apple-t-footnote-lh: 18px;
+  --apple-t-footnote-weight: 400;
+  --apple-t-footnote-tracking: 0;
+
+  --apple-t-caption1-size: 12px;
+  --apple-t-caption1-lh: 16px;
+  --apple-t-caption1-weight: 400;
+  --apple-t-caption1-tracking: 0;
+
+  --apple-t-caption2-size: 11px;
+  --apple-t-caption2-lh: 13px;
+  --apple-t-caption2-weight: 500;
+  --apple-t-caption2-tracking: 0.04em;
+
+  /* Hero display (pour titres géants type Apple.com) */
+  --apple-t-hero-size: clamp(40px, 8vw, 88px);
+  --apple-t-hero-lh: 1.04;
+  --apple-t-hero-weight: 700;
+  --apple-t-hero-tracking: -0.03em;
+
+  /* ═══ MOTION (Apple springs) ═══ */
+  --apple-ease-standard: cubic-bezier(.4, 0, .2, 1);
+  --apple-ease-decelerate: cubic-bezier(0, 0, .2, 1);
+  --apple-ease-accelerate: cubic-bezier(.4, 0, 1, 1);
+  --apple-ease-spring: cubic-bezier(.5, 1.5, .5, 1);
+  --apple-ease-spring-soft: cubic-bezier(.32, .72, 0, 1);
+
+  --apple-dur-instant: 100ms;
+  --apple-dur-fast: 200ms;
+  --apple-dur-base: 300ms;
+  --apple-dur-slow: 500ms;
+  --apple-dur-slower: 800ms;
+
+  /* ═══ INTERACTION ═══ */
+  --apple-tap-scale: 0.97;
+  --apple-hover-scale: 1.02;
+  --apple-touch-target: 44px;
+
+  /* ═══ SHADOWS (elevation) ═══ */
+  --apple-shadow-1: 0 1px 2px rgba(0,0,0,.04), 0 1px 1px rgba(0,0,0,.02);
+  --apple-shadow-2: 0 4px 12px rgba(0,0,0,.06), 0 2px 4px rgba(0,0,0,.04);
+  --apple-shadow-3: 0 12px 32px rgba(0,0,0,.08), 0 4px 8px rgba(0,0,0,.04);
+  --apple-shadow-4: 0 24px 64px rgba(0,0,0,.12), 0 8px 16px rgba(0,0,0,.06);
+  --apple-shadow-5: 0 48px 96px rgba(0,0,0,.16), 0 16px 32px rgba(0,0,0,.08);
+
+  /* ═══ Z-INDEX SCALE ═══ */
+  --apple-z-base: 0;
+  --apple-z-raised: 1;
+  --apple-z-dropdown: 100;
+  --apple-z-sticky: 200;
+  --apple-z-navbar: 300;
+  --apple-z-tabbar: 400;
+  --apple-z-sheet: 500;
+  --apple-z-modal: 600;
+  --apple-z-popover: 700;
+  --apple-z-toast: 800;
+
+  /* ═══ ALIASES LEGACY (compat transition AllStore) ═══ */
+  /* Permettent au CSS actuel de continuer à fonctionner pendant la migration */
+  --gold: var(--apple-systemBlue);
+  --gold2: var(--apple-systemBlue-pressed);
+}

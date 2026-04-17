@@ -1,0 +1,213 @@
+/* ════════════════════════════════════════════════════════════════════
+   APPLE MOTION — Animations + micro-interactions Apple style
+   ════════════════════════════════════════════════════════════════════ */
+
+
+/* ══════════════════════════════════════
+   KEYFRAMES
+   ══════════════════════════════════════ */
+
+/* Entrée par le bas avec fade — style iOS reveal */
+@keyframes ap-enter-up {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes ap-enter-down {
+  from {
+    opacity: 0;
+    transform: translateY(-12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes ap-enter-fade {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes ap-enter-scale {
+  from {
+    opacity: 0;
+    transform: scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes ap-enter-blur {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+    filter: blur(4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
+  }
+}
+
+/* Spring bounce — pour arrivées de boutons CTA */
+@keyframes ap-spring-in {
+  0% {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  60% {
+    opacity: 1;
+    transform: scale(1.04);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Sheet slide-up (modal bottom) */
+@keyframes ap-sheet-in {
+  from { transform: translateY(100%); }
+  to { transform: translateY(0); }
+}
+
+/* Shimmer (loading skeletons) */
+@keyframes ap-shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+/* Pulse (notification badge) */
+@keyframes ap-pulse {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.08); opacity: 0.85; }
+}
+
+/* Rotate (loaders) */
+@keyframes ap-rotate {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+
+/* ══════════════════════════════════════
+   ANIMATION CLASSES
+   ══════════════════════════════════════ */
+
+.ap-enter-up {
+  animation: ap-enter-up var(--apple-dur-slow) var(--apple-ease-decelerate) both;
+}
+.ap-enter-down {
+  animation: ap-enter-down var(--apple-dur-slow) var(--apple-ease-decelerate) both;
+}
+.ap-enter-fade {
+  animation: ap-enter-fade var(--apple-dur-base) var(--apple-ease-standard) both;
+}
+.ap-enter-scale {
+  animation: ap-enter-scale var(--apple-dur-base) var(--apple-ease-decelerate) both;
+}
+.ap-enter-blur {
+  animation: ap-enter-blur var(--apple-dur-slow) var(--apple-ease-decelerate) both;
+}
+.ap-spring-in {
+  animation: ap-spring-in var(--apple-dur-slow) var(--apple-ease-spring) both;
+}
+
+/* Stagger delays — appliquer avec style="--i:N" */
+.ap-stagger { animation-delay: calc(var(--i, 0) * 80ms); }
+
+/* Delays fixes pour séquences simples */
+.ap-d1 { animation-delay: 80ms; }
+.ap-d2 { animation-delay: 160ms; }
+.ap-d3 { animation-delay: 240ms; }
+.ap-d4 { animation-delay: 320ms; }
+.ap-d5 { animation-delay: 400ms; }
+.ap-d6 { animation-delay: 480ms; }
+.ap-d7 { animation-delay: 560ms; }
+.ap-d8 { animation-delay: 640ms; }
+
+
+/* ══════════════════════════════════════
+   LOADERS
+   ══════════════════════════════════════ */
+
+.ap-loader {
+  width: 22px;
+  height: 22px;
+  border: 2.5px solid var(--apple-tertiarySystemFill);
+  border-top-color: var(--apple-systemBlue);
+  border-radius: 50%;
+  animation: ap-rotate 0.8s linear infinite;
+  display: inline-block;
+}
+.ap-loader--sm { width: 16px; height: 16px; border-width: 2px; }
+.ap-loader--lg { width: 32px; height: 32px; border-width: 3px; }
+.ap-loader--white { border-color: rgba(255,255,255,.3); border-top-color: #fff; }
+
+.ap-skeleton {
+  background: linear-gradient(
+    90deg,
+    var(--apple-tertiarySystemFill) 0%,
+    var(--apple-quaternarySystemFill) 50%,
+    var(--apple-tertiarySystemFill) 100%
+  );
+  background-size: 200% 100%;
+  animation: ap-shimmer 1.8s var(--apple-ease-standard) infinite;
+  border-radius: var(--apple-radius-sm);
+}
+
+
+/* ══════════════════════════════════════
+   HOVER & INTERACTION HELPERS
+   ══════════════════════════════════════ */
+
+.ap-press {
+  transition: transform var(--apple-dur-fast) var(--apple-ease-decelerate);
+}
+.ap-press:active {
+  transform: scale(var(--apple-tap-scale));
+  transition-duration: var(--apple-dur-instant);
+}
+
+.ap-lift {
+  transition:
+    transform var(--apple-dur-base) var(--apple-ease-decelerate),
+    box-shadow var(--apple-dur-base) var(--apple-ease-standard);
+}
+.ap-lift:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--apple-shadow-3);
+}
+
+
+/* ══════════════════════════════════════
+   RESPECT USER PREFERENCE
+   ══════════════════════════════════════ */
+
+@media (prefers-reduced-motion: reduce) {
+  .ap-enter-up,
+  .ap-enter-down,
+  .ap-enter-fade,
+  .ap-enter-scale,
+  .ap-enter-blur,
+  .ap-spring-in {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+    filter: none !important;
+  }
+  .ap-loader,
+  .ap-skeleton {
+    animation: none !important;
+  }
+}
