@@ -1,7 +1,6 @@
 :root {
-  --fx-obsidian: #06050a;
-  --fx-obsidian-soft: #0d0b14;
-
+  /* Iridescent palette — used by progress bar, swatches, CTA shimmer,
+     form focus rings, timeline dots, FAQ accent, ritual pulses. */
   --fx-iri-1: #1fb6ff;
   --fx-iri-2: #6a4cff;
   --fx-iri-3: #ff6a9c;
@@ -10,16 +9,5 @@
   --fx-accent: #7a6cff;
   --fx-accent-rgb: 122, 108, 255;
 
-  --fx-grain-opacity: 0.04;
-  --fx-mesh-opacity: 0.55;
-  --fx-mesh-opacity-mobile: 0.35;
-
-  --fx-transition-wipe-ms: 450;
   --fx-ritual-ms: 600;
-}
-
-:root[data-theme="light"],
-:root:not([data-theme="dark"]) {
-  --fx-mesh-opacity: 0.22;
-  --fx-mesh-opacity-mobile: 0.14;
 }
