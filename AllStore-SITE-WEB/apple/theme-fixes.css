@@ -1,0 +1,252 @@
+/* ═══════════════════════════════════════════════════════════════
+   theme-fixes.css — light/dark mode coherence
+   Imported last in apple.css. Selectors use enough class specificity
+   to beat the !important rules in apple/override.css.
+   ═══════════════════════════════════════════════════════════════ */
+
+/* ── Semantic text + surface variables (dark defaults) ─────────── */
+:root {
+  --fx-text-primary:    #ffffff;
+  --fx-text-secondary:  rgba(255,255,255,.72);
+  --fx-text-tertiary:   rgba(255,255,255,.5);
+  --fx-text-quaternary: rgba(255,255,255,.28);
+  --fx-bg-raised:       rgba(28,28,30,.72);
+  --fx-bg-surface:      #0a1018;
+  --fx-border-subtle:   rgba(255,255,255,.08);
+  --fx-border-strong:   rgba(255,255,255,.18);
+}
+
+/* Auto light mode — OS says light, user hasn't forced dark */
+@media (prefers-color-scheme: light) {
+  :root:not([data-theme="dark"]) {
+    --fx-text-primary:    #0a1923;
+    --fx-text-secondary:  rgba(10,25,35,.7);
+    --fx-text-tertiary:   rgba(10,25,35,.55);
+    --fx-text-quaternary: rgba(10,25,35,.32);
+    --fx-bg-raised:       #ffffff;
+    --fx-bg-surface:      #fafafa;
+    --fx-border-subtle:   rgba(10,25,35,.08);
+    --fx-border-strong:   rgba(10,25,35,.18);
+  }
+}
+
+/* Forced light via toggle */
+:root[data-theme="light"] {
+  --fx-text-primary:    #0a1923;
+  --fx-text-secondary:  rgba(10,25,35,.7);
+  --fx-text-tertiary:   rgba(10,25,35,.55);
+  --fx-text-quaternary: rgba(10,25,35,.32);
+  --fx-bg-raised:       #ffffff;
+  --fx-bg-surface:      #fafafa;
+  --fx-border-subtle:   rgba(10,25,35,.08);
+  --fx-border-strong:   rgba(10,25,35,.18);
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   HEADER / NAV — matches .header-dark .nav-links a specificity
+   ═══════════════════════════════════════════════════════════════ */
+html .header-dark .nav-links a {
+  color: var(--fx-text-tertiary) !important;
+  opacity: 1 !important;
+}
+html .header-dark .nav-links a:hover {
+  color: var(--fx-text-primary) !important;
+}
+html .header-dark .nav-links a.active {
+  color: var(--fx-text-primary) !important;
+}
+html .tab-btn,
+html .header-dark .tab-btn {
+  color: var(--fx-text-primary) !important;
+}
+
+/* Logo — keep white on dark, original on light */
+@media (prefers-color-scheme: light) {
+  :root:not([data-theme="dark"]) .logo img {
+    filter: none !important;
+  }
+}
+:root[data-theme="light"] .logo img {
+  filter: none !important;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   FOOTER — target .foot-ap and .foot-* descendants
+   ═══════════════════════════════════════════════════════════════ */
+html .foot-ap .foot-nl-title,
+html .foot-ap .foot-col-title,
+html .foot-ap .foot-title,
+html .foot-ap .foot-links-title,
+html .footer .footer-title,
+html .foot-ap .footer-title {
+  color: var(--fx-text-primary) !important;
+}
+
+html .foot-ap .foot-nl-desc,
+html .foot-ap .foot-desc,
+html .footer .footer-desc {
+  color: var(--fx-text-tertiary) !important;
+}
+
+html .foot-ap .foot-col a,
+html .foot-ap .foot-links a,
+html .foot-ap .foot-nl-title em {
+  color: var(--fx-text-tertiary) !important;
+}
+html .foot-ap .foot-col a:hover,
+html .foot-ap .foot-links a:hover {
+  color: var(--fx-text-primary) !important;
+}
+
+html .foot-ap .foot-copy,
+html .foot-ap .foot-bottom-text {
+  color: var(--fx-text-quaternary) !important;
+}
+
+html .foot-ap .foot-divider {
+  color: var(--fx-border-subtle) !important;
+}
+html .foot-ap .foot-brand {
+  color: var(--fx-text-quaternary) !important;
+}
+html .foot-ap .foot-columns {
+  border-bottom-color: var(--fx-border-subtle) !important;
+}
+html .foot-ap .foot-inner {
+  border-top-color: var(--fx-border-subtle) !important;
+}
+
+/* Newsletter input */
+html .foot-ap .foot-nl-input {
+  color: var(--fx-text-primary) !important;
+  background: var(--fx-border-subtle) !important;
+  border: 1px solid var(--fx-border-subtle) !important;
+}
+html .foot-ap .foot-nl-input::placeholder {
+  color: var(--fx-text-tertiary) !important;
+}
+html .foot-ap .foot-nl-input:focus {
+  border-color: var(--fx-border-strong) !important;
+}
+
+/* Newsletter submit button — invert between themes */
+html .foot-ap .foot-nl-btn {
+  background: var(--fx-text-primary) !important;
+  color: var(--fx-bg-raised) !important;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   CTA BAND (homepage)
+   ═══════════════════════════════════════════════════════════════ */
+html body .cta-band h2 {
+  color: var(--fx-text-primary) !important;
+}
+html body .cta-band p {
+  color: var(--fx-text-tertiary) !important;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   PROMO BANNER / WELCOME POPUP
+   ═══════════════════════════════════════════════════════════════ */
+html body .promo-banner {
+  color: var(--fx-text-primary) !important;
+}
+html body .promo-close {
+  color: var(--fx-text-tertiary) !important;
+}
+html body .promo-close:hover {
+  color: var(--fx-text-primary) !important;
+}
+html body .welcome-popup-title {
+  color: var(--fx-text-primary) !important;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   PDP descriptions
+   ═══════════════════════════════════════════════════════════════ */
+html body .pdp-description {
+  color: var(--fx-text-secondary) !important;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   Apple components — text on neutral backgrounds
+   (Keep #fff on .ap-icon-tile--solid-* opaque tiles — untouched.)
+   ═══════════════════════════════════════════════════════════════ */
+html body .ap-card .ap-card-title {
+  color: var(--fx-text-primary) !important;
+}
+html body .ap-tab {
+  color: var(--fx-text-secondary) !important;
+}
+html body .ap-tab.ap-tab--active,
+html body .ap-tab[aria-selected="true"] {
+  color: var(--fx-text-primary) !important;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   Breadcrumb separator, small text bits
+   ═══════════════════════════════════════════════════════════════ */
+html body .breadcrumb-sep {
+  color: var(--fx-text-quaternary) !important;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   Reviews
+   ═══════════════════════════════════════════════════════════════ */
+html body .review-author,
+html body .review-text,
+html body .review-name {
+  color: var(--fx-text-primary) !important;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   Section titles on the homepage
+   ═══════════════════════════════════════════════════════════════ */
+html body .als-sec-title,
+html body .als-sec-subtitle {
+  color: var(--fx-text-primary) !important;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   Hero — text stays legible in light mode (hero-bg img is hidden,
+   hero-overlay is display:none, so the hero sits on the page bg).
+   ═══════════════════════════════════════════════════════════════ */
+@media (prefers-color-scheme: light) {
+  :root:not([data-theme="dark"]) .hero-als h1 {
+    color: var(--fx-text-primary) !important;
+    text-shadow: none !important;
+  }
+  :root:not([data-theme="dark"]) .hero-als .hero-desc {
+    color: var(--fx-text-secondary) !important;
+    text-shadow: none !important;
+  }
+}
+:root[data-theme="light"] .hero-als h1 {
+  color: var(--fx-text-primary) !important;
+  text-shadow: none !important;
+}
+:root[data-theme="light"] .hero-als .hero-desc {
+  color: var(--fx-text-secondary) !important;
+  text-shadow: none !important;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   Page surface background — keep dark base for dark mode, light
+   for light mode. Global body background.
+   ═══════════════════════════════════════════════════════════════ */
+@media (prefers-color-scheme: light) {
+  :root:not([data-theme="dark"]) {
+    background: var(--fx-bg-surface);
+  }
+  :root:not([data-theme="dark"]) body {
+    background: transparent;
+    color: var(--fx-text-primary);
+  }
+}
+:root[data-theme="light"] {
+  background: var(--fx-bg-surface);
+}
+:root[data-theme="light"] body {
+  background: transparent;
+  color: var(--fx-text-primary);
+}
