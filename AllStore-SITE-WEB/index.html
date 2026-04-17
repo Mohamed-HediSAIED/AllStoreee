@@ -212,15 +212,28 @@
 
   /* ---------- TOUTES LES PIECES — grille vitrine ---------- */
   .als-all-sec{padding:48px 0 24px}
-  .als-all-filters{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;padding:0 20px;margin:8px 0 28px}
-  .als-all-pill{font-family:-apple-system,BlinkMacSystemFont,'SF Pro Text','Inter',sans-serif;font-size:13px;font-weight:600;letter-spacing:.02em;padding:10px 18px;border-radius:999px;border:1px solid var(--fx-border-subtle,rgba(255,255,255,.12));background:transparent;color:var(--fx-text-secondary,rgba(255,255,255,.72));cursor:pointer;transition:all .25s cubic-bezier(.2,.8,.2,1);text-transform:capitalize}
+  .als-all-search{display:flex;align-items:center;gap:10px;max-width:520px;margin:0 auto 16px;padding:0 clamp(20px,4vw,60px);position:relative}
+  .als-all-search-input{flex:1;padding:14px 18px 14px 44px;border-radius:999px;border:1px solid var(--fx-border-subtle,rgba(255,255,255,.12));background:var(--fx-border-subtle,rgba(255,255,255,.04));color:var(--fx-text-primary,#fff);font-family:-apple-system,BlinkMacSystemFont,'SF Pro Text','Inter',sans-serif;font-size:14px;outline:none;transition:border-color .2s,box-shadow .2s}
+  .als-all-search-input::placeholder{color:var(--fx-text-tertiary,rgba(255,255,255,.45))}
+  .als-all-search-input:focus{border-color:rgba(var(--fx-accent-rgb,122,108,255),.45);box-shadow:0 0 0 3px rgba(var(--fx-accent-rgb,122,108,255),.12)}
+  .als-all-search-icon{position:absolute;left:calc(clamp(20px,4vw,60px) + 16px);top:50%;transform:translateY(-50%);pointer-events:none;opacity:.55;color:var(--fx-text-secondary,rgba(255,255,255,.72))}
+  .als-all-filters{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;padding:0 20px;margin:8px 0 14px}
+  .als-all-pill{font-family:-apple-system,BlinkMacSystemFont,'SF Pro Text','Inter',sans-serif;font-size:13px;font-weight:600;letter-spacing:.02em;padding:9px 16px;border-radius:999px;border:1px solid var(--fx-border-subtle,rgba(255,255,255,.12));background:transparent;color:var(--fx-text-secondary,rgba(255,255,255,.72));cursor:pointer;transition:all .25s cubic-bezier(.2,.8,.2,1);text-transform:capitalize;display:inline-flex;align-items:center;gap:7px}
   .als-all-pill:hover{border-color:var(--fx-border-strong,rgba(255,255,255,.28));color:var(--fx-text-primary,#fff)}
   .als-all-pill.active{background:var(--fx-text-primary,#fff);color:var(--fx-bg-raised,#0a1923);border-color:transparent}
+  .als-all-pill-count{font-size:10px;font-weight:700;padding:2px 7px;border-radius:999px;background:var(--fx-border-subtle,rgba(255,255,255,.1));color:inherit;opacity:.75}
+  .als-all-pill.active .als-all-pill-count{background:rgba(var(--fx-accent-rgb,122,108,255),.2);color:var(--fx-bg-raised,#0a1923);opacity:.6}
+  .als-all-meta{text-align:center;font-size:12px;color:var(--fx-text-tertiary,rgba(255,255,255,.45));margin:8px 0 20px;letter-spacing:.04em;text-transform:uppercase;font-weight:600}
   .als-all-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;padding:0 clamp(20px,4vw,60px) 20px}
   .als-all-grid .als-hcard{flex:none;min-width:0}
   @media(max-width:960px){.als-all-grid{grid-template-columns:repeat(3,1fr)}}
   @media(max-width:640px){.als-all-grid{grid-template-columns:repeat(2,1fr);gap:12px;padding:0 16px 16px}}
   .als-all-card-hidden{display:none !important}
+  .als-all-loadmore-wrap{display:flex;justify-content:center;padding:16px 20px 24px}
+  .als-all-loadmore{font-family:-apple-system,BlinkMacSystemFont,'SF Pro Text','Inter',sans-serif;font-size:13px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;padding:14px 32px;border-radius:999px;border:1px solid var(--fx-border-strong,rgba(255,255,255,.18));background:transparent;color:var(--fx-text-primary,#fff);cursor:pointer;transition:all .25s cubic-bezier(.2,.8,.2,1)}
+  .als-all-loadmore:hover{background:var(--fx-text-primary,#fff);color:var(--fx-bg-raised,#0a1923);border-color:transparent}
+  .als-all-loadmore:disabled{opacity:.4;cursor:default}
+  .als-all-empty{text-align:center;padding:40px 20px;color:var(--fx-text-tertiary,rgba(255,255,255,.45));font-size:14px;grid-column:1/-1}
 
   /* ---------- NOS MARQUES ---------- */
   .als-collab-row{display:flex;align-items:center;justify-content:center;gap:40px;flex-wrap:wrap;padding:0 20px}
@@ -647,8 +660,17 @@ function filterSel(secId, pill) {
   <div class="als-sec-head">
     <h2 class="als-sec-title">TOUTES <em>les pièces</em></h2>
   </div>
+  <div class="als-all-search">
+    <svg class="als-all-search-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+    <input type="search" class="als-all-search-input" id="als-all-search-input" placeholder="Marque, modèle, coloris…" autocomplete="off">
+  </div>
   <div class="als-all-filters" id="als-all-filters"></div>
+  <div class="als-all-filters" id="als-all-brands"></div>
+  <p class="als-all-meta" id="als-all-meta"></p>
   <div class="als-all-grid" id="als-all-grid"></div>
+  <div class="als-all-loadmore-wrap" id="als-all-loadmore-wrap" style="display:none">
+    <button class="als-all-loadmore" id="als-all-loadmore" type="button">Voir plus</button>
+  </div>
 </section>
 
 <script>
@@ -656,61 +678,125 @@ function filterSel(secId, pill) {
   if (typeof PRODUCTS === 'undefined') return;
   var grid = document.getElementById('als-all-grid');
   var filters = document.getElementById('als-all-filters');
+  var brandFilters = document.getElementById('als-all-brands');
+  var search = document.getElementById('als-all-search-input');
+  var meta = document.getElementById('als-all-meta');
+  var loadMoreWrap = document.getElementById('als-all-loadmore-wrap');
+  var loadMoreBtn = document.getElementById('als-all-loadmore');
   if (!grid || !filters) return;
 
+  var BATCH_SIZE = 24;
   var labels = {
-    chaussures: 'Chaussures',
-    vetements: 'Vêtements',
-    accessoires: 'Accessoires',
-    sacs: 'Sacs',
-    horlogerie: 'Horlogerie',
-    hightech: 'High-Tech',
-    parfums: 'Parfums',
-    lunettes: 'Lunettes'
+    chaussures: 'Chaussures', vetements: 'Vêtements', accessoires: 'Accessoires',
+    sacs: 'Sacs', horlogerie: 'Horlogerie', hightech: 'High-Tech',
+    parfums: 'Parfums', lunettes: 'Lunettes'
   };
 
-  function buildCard(id, p){
-    var cat = (typeof CAT_MAP !== 'undefined' && CAT_MAP[p.cat]) ? CAT_MAP[p.cat] : p.cat;
-    var priceHtml = p.price === '0'
-      ? '<span class="als-hcard-soon">Bientôt disponible</span>'
-      : '<span class="als-hcard-price">' + p.price + ',00€</span>';
-    return '<a href="assistant.html?product=' + id + '" class="als-hcard als-all-card" data-cat="' + cat + '">'
-      + '<div class="als-hcard-img"><img src="' + p.img + '" alt="' + p.brand + ' ' + p.name + '" loading="lazy"></div>'
-      + '<div class="als-hcard-info"><span class="als-hcard-name">' + p.brand.toUpperCase() + ' ' + p.name.toUpperCase() + '</span>'
-      + '<span class="als-hcard-desc">' + p.color + '</span>'
-      + priceHtml + '</div></a>';
-  }
-
-  var cats = {};
-  var cards = '';
+  // Build product list + counts
+  var products = [];
+  var catCounts = { all: 0 };
+  var brandCounts = {};
   Object.keys(PRODUCTS).forEach(function(id){
     var p = PRODUCTS[id];
     var cat = (typeof CAT_MAP !== 'undefined' && CAT_MAP[p.cat]) ? CAT_MAP[p.cat] : p.cat;
-    cats[cat] = (cats[cat] || 0) + 1;
-    cards += buildCard(id, p);
+    var brand = p.brand || '';
+    products.push({ id: id, p: p, cat: cat, brand: brand, haystack: (brand + ' ' + (p.name||'') + ' ' + (p.color||'')).toLowerCase() });
+    catCounts.all++;
+    catCounts[cat] = (catCounts[cat] || 0) + 1;
+    brandCounts[brand] = (brandCounts[brand] || 0) + 1;
   });
-  grid.innerHTML = cards;
 
-  var pillsHtml = '<button class="als-all-pill active" data-cat="all">Tout</button>';
-  Object.keys(cats).sort().forEach(function(c){
-    pillsHtml += '<button class="als-all-pill" data-cat="' + c + '">' + (labels[c] || c) + '</button>';
+  function cardHtml(item){
+    var p = item.p;
+    var priceHtml = p.price === '0'
+      ? '<span class="als-hcard-soon">Bientôt disponible</span>'
+      : '<span class="als-hcard-price">' + p.price + ',00€</span>';
+    return '<a href="assistant.html?product=' + item.id + '" class="als-hcard als-all-card" data-cat="' + item.cat + '" data-brand="' + item.brand.replace(/"/g,'&quot;') + '">'
+      + '<div class="als-hcard-img"><img src="' + p.img + '" alt="' + p.brand + ' ' + p.name + '" loading="lazy"></div>'
+      + '<div class="als-hcard-info"><span class="als-hcard-name">' + p.brand.toUpperCase() + ' ' + p.name.toUpperCase() + '</span>'
+      + '<span class="als-hcard-desc">' + (p.color || '') + '</span>'
+      + priceHtml + '</div></a>';
+  }
+
+  // Category pills
+  var pillsHtml = '<button class="als-all-pill active" data-cat="all">Tout <span class="als-all-pill-count">' + catCounts.all + '</span></button>';
+  Object.keys(catCounts).filter(function(c){ return c !== 'all'; }).sort().forEach(function(c){
+    pillsHtml += '<button class="als-all-pill" data-cat="' + c + '">' + (labels[c] || c) + ' <span class="als-all-pill-count">' + catCounts[c] + '</span></button>';
   });
   filters.innerHTML = pillsHtml;
+
+  // Brand pills — top 10 by count, alphabetised after
+  var topBrands = Object.keys(brandCounts)
+    .sort(function(a,b){ return brandCounts[b] - brandCounts[a] || a.localeCompare(b); })
+    .slice(0, 10);
+  var brandsHtml = '<button class="als-all-pill active" data-brand="all">Toutes les marques</button>';
+  topBrands.forEach(function(b){
+    brandsHtml += '<button class="als-all-pill" data-brand="' + b.replace(/"/g,'&quot;') + '">' + b + ' <span class="als-all-pill-count">' + brandCounts[b] + '</span></button>';
+  });
+  brandFilters.innerHTML = brandsHtml;
+
+  // State + rendering
+  var state = { cat: 'all', brand: 'all', q: '', shown: BATCH_SIZE };
+  var filtered = products.slice();
+
+  function applyFilters(){
+    var q = state.q.trim().toLowerCase();
+    filtered = products.filter(function(item){
+      if (state.cat !== 'all' && item.cat !== state.cat) return false;
+      if (state.brand !== 'all' && item.brand !== state.brand) return false;
+      if (q && item.haystack.indexOf(q) === -1) return false;
+      return true;
+    });
+    state.shown = BATCH_SIZE;
+    renderGrid();
+  }
+
+  function renderGrid(){
+    if (!filtered.length) {
+      grid.innerHTML = '<div class="als-all-empty">Aucun résultat pour cette sélection.</div>';
+      meta.textContent = '0 pièce';
+      loadMoreWrap.style.display = 'none';
+      return;
+    }
+    var slice = filtered.slice(0, state.shown);
+    grid.innerHTML = slice.map(cardHtml).join('');
+    meta.textContent = slice.length + ' / ' + filtered.length + ' pièce' + (filtered.length > 1 ? 's' : '');
+    loadMoreWrap.style.display = state.shown < filtered.length ? 'flex' : 'none';
+  }
 
   filters.addEventListener('click', function(ev){
     var pill = ev.target.closest('.als-all-pill');
     if (!pill) return;
-    var target = pill.dataset.cat;
     filters.querySelectorAll('.als-all-pill').forEach(function(p){ p.classList.remove('active'); });
     pill.classList.add('active');
-    grid.querySelectorAll('.als-all-card').forEach(function(card){
-      if (target === 'all' || card.dataset.cat === target) {
-        card.classList.remove('als-all-card-hidden');
-      } else {
-        card.classList.add('als-all-card-hidden');
-      }
-    });
+    state.cat = pill.dataset.cat;
+    applyFilters();
   });
+
+  brandFilters.addEventListener('click', function(ev){
+    var pill = ev.target.closest('.als-all-pill');
+    if (!pill) return;
+    brandFilters.querySelectorAll('.als-all-pill').forEach(function(p){ p.classList.remove('active'); });
+    pill.classList.add('active');
+    state.brand = pill.dataset.brand;
+    applyFilters();
+  });
+
+  var searchTimer;
+  search.addEventListener('input', function(){
+    clearTimeout(searchTimer);
+    searchTimer = setTimeout(function(){
+      state.q = search.value;
+      applyFilters();
+    }, 120);
+  });
+
+  loadMoreBtn.addEventListener('click', function(){
+    state.shown = Math.min(state.shown + BATCH_SIZE, filtered.length);
+    renderGrid();
+  });
+
+  applyFilters();
 })();
 </script>
 
