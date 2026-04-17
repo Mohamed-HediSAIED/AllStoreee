@@ -72,21 +72,22 @@
   </style>
   </head>
 <body>
-<header><nav><a href="index.html" class="logo"><img src="shopping_bag_icon.png" alt="ALLSTORE"></a><ul class="nav-links"><li><a href="index.html">Accueil</a></li><li><a href="assistant.html">Boutique</a></li><li><a href="suivi.html">Suivi</a></li><li><a href="apropos.html">À Propos</a></li><li><a href="contact.html">Contact</a></li></ul></nav></header>
+<header><nav><a href="index.html" class="logo"><img src="shopping_bag_icon.png" alt="ALLSTORE"></a><ul class="nav-links"><li><a href="index.html">Accueil</a></li><li><a href="boutique.html">Boutique</a></li><li><a href="assistant.html">Assistant</a></li><li><a href="suivi.html">Suivi</a></li><li><a href="apropos.html">À Propos</a></li><li><a href="contact.html">Contact</a></li></ul></nav></header>
 <main>
   <div class="pdp"><div class="pdp-grid">
     <div class="pdp-gallery" id="pdp-gallery"><div class="pdp-gallery-item"><img id="pdp-img" src="" alt=""></div></div>
     <div class="pdp-info">
-      <a href="index.html" class="pdp-back" id="pdp-back">&#8592; Accueil</a>
+      <a href="boutique.html" class="pdp-back" id="pdp-back">&#8592; Boutique</a>
       <span class="pdp-brand" id="pdp-brand"></span>
       <h1 class="pdp-name" id="pdp-name"></h1>
       <p class="pdp-color" id="pdp-color"></p>
       <div class="pdp-price-row"><span class="pdp-price" id="pdp-price"></span><span class="pdp-price-tag" id="pdp-tag"></span></div>
       <div class="pdp-badges"></div>
       <div class="pdp-actions">
-        <button class="pdp-btn-cart" id="pdp-cart-btn">Commander</button>
+        <button class="pdp-btn-cart" id="pdp-cart-btn">Ajouter au panier</button>
         <button class="pdp-btn-wl" id="pdp-wl-btn">&#9825;</button>
       </div>
+      <button class="pdp-buy-now" id="pdp-buy-now">Commander maintenant</button>
       <div class="pdp-details" id="pdp-details"></div>
       <div class="pdp-guarantee">
         <div class="pdp-guarantee-item"><svg viewBox="0 0 24 24"><path d="M5 12l5 5L20 7"/></svg>Qualité vérifiée par nos experts</div>
@@ -104,7 +105,7 @@
     </div>
   </section>
 </main>
-<footer><div class="foot-inner"><div class="foot-brand">ALLSTORE</div><div class="foot-links"><a href="apropos.html">À Propos</a><a href="contact.html">Contact</a><a href="assistant.html">Boutique</a></div><div class="foot-tagline">L'introuvable, enfin trouvé.</div><div class="foot-copy">ALLSTORE 24/7 &mdash; Sourcing d'Exception &mdash; 2025</div></div></footer>
+<footer><div class="foot-inner"><div class="foot-brand">ALLSTORE</div><div class="foot-links"><a href="apropos.html">À Propos</a><a href="contact.html">Contact</a><a href="assistant.html">Assistant</a></div><div class="foot-tagline">L'introuvable, enfin trouvé.</div><div class="foot-copy">ALLSTORE 24/7 &mdash; Sourcing d'Exception &mdash; 2025</div></div></footer>
 
 <style>
   .bnav{position:fixed;bottom:16px;left:50%;transform:translateX(-50%);z-index:9000;display:flex;align-items:center;background:rgba(255,255,255,.12);backdrop-filter:blur(20px) saturate(150%);-webkit-backdrop-filter:blur(20px) saturate(150%);border-radius:50px;padding:6px 8px;border:1px solid rgba(255,255,255,.25);box-shadow:0 4px 24px rgba(0,0,0,.15)}
@@ -127,11 +128,20 @@
       <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
       Accueil
     </a>
-    <a href="assistant.html" class="bnav-item" data-nav="1">
-      <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+    <a href="boutique.html" class="bnav-item" data-nav="1">
+      <svg viewBox="0 0 24 24"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
       Boutique
     </a>
-    <a href="suivi.html" class="bnav-item" data-nav="2">
+    <a href="assistant.html" class="bnav-item" data-nav="2">
+      <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+      Assistant
+    </a>
+    <a href="panier.html" class="bnav-item" data-nav="3" id="bn-panier">
+      <svg viewBox="0 0 24 24"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 001.99 1.61h9.72a2 2 0 001.99-1.61L23 6H6"/></svg>
+      Panier
+      <span class="bnav-badge" id="bnav-badge"></span>
+    </a>
+    <a href="suivi.html" class="bnav-item" data-nav="4">
       <svg viewBox="0 0 24 24"><path d="M12 22s-8-4.5-8-11.8A8 8 0 0112 2a8 8 0 018 8.2c0 7.3-8 11.8-8 11.8z"/><circle cx="12" cy="10" r="3"/></svg>
       Suivi
     </a>
@@ -221,7 +231,7 @@
   document.getElementById('pdp-color').textContent = 'Coloris : ' + (p.color || '');
   document.getElementById('pdp-price').textContent = hasPrice ? p.price + ' €' : '— €';
   document.getElementById('pdp-tag').textContent = hasPrice ? '' : 'Prix bientôt disponible';
-  document.getElementById('pdp-back').href = 'index.html';
+  document.getElementById('pdp-back').href = 'boutique.html?cat=' + p.cat + (p.brand ? '&brand=' + encodeURIComponent(p.brand) : '');
 
   // Details
   var details = document.getElementById('pdp-details');
@@ -230,14 +240,48 @@
     + '<div class="pdp-detail-row"><span class="pdp-detail-label">Coloris</span><span class="pdp-detail-value">' + (p.color || 'Unique') + '</span></div>'
 ;
 
-  // Commander button → redirect to assistant
+  // Cart button
   var cartBtn = document.getElementById('pdp-cart-btn');
   if (!hasPrice) {
     cartBtn.textContent = 'Nous contacter';
     cartBtn.addEventListener('click', function(){ window.location.href = 'contact.html'; });
   } else {
+    var cart = JSON.parse(localStorage.getItem('als_cart') || '[]');
+    var inCart = cart.some(function(i){ return i.id === id; });
+    if (inCart) {
+      cartBtn.textContent = '✓ Dans le panier';
+      cartBtn.classList.add('in-cart');
+    }
     cartBtn.addEventListener('click', function(){
-      window.location.href = 'assistant.html?product=' + id;
+      var cart = JSON.parse(localStorage.getItem('als_cart') || '[]');
+      var exists = cart.some(function(i){ return i.id === id; });
+      if (exists) {
+        window.location.href = 'panier.html';
+      } else {
+        cart.push({id: id, brand: p.brand, name: fullName, img: p.img, price: p.price + ' €'});
+        localStorage.setItem('als_cart', JSON.stringify(cart));
+        cartBtn.textContent = '✓ Dans le panier';
+        cartBtn.classList.add('in-cart');
+        if (window.updateCartUI) updateCartUI();
+        if (window.showToast) showToast(fullName + ' ajouté au panier');
+      }
+    });
+  }
+
+  // Buy now button
+  var buyNowBtn = document.getElementById('pdp-buy-now');
+  if (!hasPrice) {
+    buyNowBtn.style.display = 'none';
+  } else {
+    buyNowBtn.addEventListener('click', function(){
+      var cart = JSON.parse(localStorage.getItem('als_cart') || '[]');
+      var exists = cart.some(function(i){ return i.id === id; });
+      if (!exists) {
+        cart.push({id: id, brand: p.brand, name: fullName, img: p.img, price: p.price + ' €'});
+        localStorage.setItem('als_cart', JSON.stringify(cart));
+        if (window.updateCartUI) updateCartUI();
+      }
+      window.location.href = 'checkout.html';
     });
   }
 
