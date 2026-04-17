@@ -34,6 +34,74 @@
   };
 
   /* ══════════════════════════════════════════════════════════════
+     PANIER — Cart persistant (localStorage)
+  ══════════════════════════════════════════════════════════════ */
+  const CART_KEY='als_cart';
+  const getCart=()=>{try{return JSON.parse(localStorage.getItem(CART_KEY))||[]}catch{return[]}};
+  const saveCart=items=>localStorage.setItem(CART_KEY,JSON.stringify(items));
+  const inCart=id=>getCart().some(i=>i.id===id);
+
+  window.addToCart=function(id,brand,name,img,price){
+    let cart=getCart();
+    if(!inCart(id)){cart.push({id,brand,name,img,price});saveCart(cart)}
+    updateCartUI();
+    showToast(name+' ajouté au panier');
+  };
+
+  window.removeFromCart=function(id){
+    saveCart(getCart().filter(i=>i.id!==id));
+    updateCartUI();
+    if(document.getElementById('cart-items'))renderCartPage();
+  };
+
+  window.updateCartUI=function(){
+    const c=getCart();
+    // Header badge
+    const cnt=document.getElementById('cart-count');
+    if(cnt){cnt.textContent=c.length;cnt.style.display=c.length?'flex':'none'}
+    // Bottom nav badge
+    const bnCnt=document.getElementById('bn-cart-count');
+    if(bnCnt){bnCnt.textContent=c.length;bnCnt.style.display=c.length?'flex':'none'}
+  }
+
+  window.renderCartPage=function(){
+    const wlEl=document.getElementById('wishlist-on-cart');
+    const cartEl=document.getElementById('cart-items');
+    if(wlEl){
+      const wl=getWL();
+      if(!wl.length){wlEl.innerHTML='<p class="wl-empty">Votre liste de souhait est vide.</p>';}else{
+      wlEl.innerHTML='';
+      wl.forEach(i=>{
+        const row=document.createElement('div');row.className='cart-row';
+        row.innerHTML=`<div class="cart-img"><img src="" alt=""></div><div class="cart-info"><span class="cart-brand"></span><span class="cart-name"></span></div>`;
+        row.querySelector('img').src=i.img;row.querySelector('img').alt=i.name;
+        row.querySelector('.cart-brand').textContent=i.brand;
+        row.querySelector('.cart-name').textContent=i.name;
+        const btn=document.createElement('button');btn.className='btn-add-cart';
+        btn.textContent=inCart(i.id)?'✓ Dans le panier':'Ajouter au panier';
+        btn.addEventListener('click',()=>addToCart(i.id,i.brand,i.name,i.img,i.price||''));
+        row.appendChild(btn);wlEl.appendChild(row);
+      });
+    }}
+    if(cartEl){
+      const cart=getCart();
+      if(!cart.length){cartEl.innerHTML='<p class="wl-empty">Votre panier est vide.</p>';return;}
+      cartEl.innerHTML='';
+      cart.forEach(i=>{
+        const row=document.createElement('div');row.className='cart-row';
+        row.innerHTML=`<div class="cart-img"><img src="" alt=""></div><div class="cart-info"><span class="cart-brand"></span><span class="cart-name"></span></div>`;
+        row.querySelector('img').src=i.img;row.querySelector('img').alt=i.name;
+        row.querySelector('.cart-brand').textContent=i.brand;
+        row.querySelector('.cart-name').textContent=i.name;
+        if(i.price){const pr=document.createElement('span');pr.className='cart-price';pr.textContent=i.price;row.querySelector('.cart-info').appendChild(pr);}
+        const btn=document.createElement('button');btn.className='btn-remove-cart';btn.innerHTML='&#x2715; Retirer';
+        btn.addEventListener('click',()=>removeFromCart(i.id));
+        row.appendChild(btn);cartEl.appendChild(row);
+      });
+    }
+  };
+
+  /* ══════════════════════════════════════════════════════════════
      WISHLIST — Liste de souhait persistante (localStorage)
   ══════════════════════════════════════════════════════════════ */
   const WL_KEY='als_wishlist';
@@ -98,7 +166,7 @@
     iconsWrap.className='nav-icons';
     // Bouton recherche
     const searchBtn=document.createElement('a');
-    searchBtn.id='search-nav-btn';searchBtn.href='index.html';searchBtn.setAttribute('aria-label','Rechercher');
+    searchBtn.id='search-nav-btn';searchBtn.href='boutique.html';searchBtn.setAttribute('aria-label','Rechercher');
     searchBtn.innerHTML=`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>`;
     iconsWrap.appendChild(searchBtn);
     // Bouton compte
@@ -106,6 +174,11 @@
     accountBtn.id='account-nav-btn';accountBtn.href='compte.html';accountBtn.setAttribute('aria-label','Mon compte');
     accountBtn.innerHTML=`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>`;
     iconsWrap.appendChild(accountBtn);
+    // Bouton panier (icône sac shopping)
+    const cartBtn=document.createElement('a');
+    cartBtn.id='cart-nav-btn';cartBtn.href='panier.html';cartBtn.setAttribute('aria-label','Mon panier');
+    cartBtn.innerHTML=`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg><span id="cart-count" style="display:none">0</span>`;
+    iconsWrap.appendChild(cartBtn);
     nav.appendChild(iconsWrap);
     // Bouton favoris caché (gardé pour le drawer)
     const wlBtn=document.createElement('button');
@@ -115,9 +188,10 @@
     nav.appendChild(wlBtn);
     const ov=document.createElement('div');ov.id='wl-overlay';ov.onclick=window._toggleWLDrawer;
     const dr=document.createElement('div');dr.id='wl-drawer';
-    dr.innerHTML=`<div class="wl-drawer-inner"><div class="wl-drawer-head"><span>Liste de souhait</span><button class="wl-close" onclick="window._toggleWLDrawer()">\u2715</button></div><div id="wl-items"></div><a href="assistant.html" class="wl-cta-all">Commander \u2192</a></div>`;
+    dr.innerHTML=`<div class="wl-drawer-inner"><div class="wl-drawer-head"><span>Liste de souhait</span><button class="wl-close" onclick="window._toggleWLDrawer()">\u2715</button></div><div id="wl-items"></div><a href="panier.html" class="wl-cta-all">Voir le panier \u2192</a></div>`;
     document.body.append(ov,dr);
     updateWLUI();
+    updateCartUI();
     // Bottom nav setup (runs after DOM is ready since bottom-nav is after this script)
     document.addEventListener('DOMContentLoaded',function(){
       // Wrap bn-items in a pill div (Apple Store style)
@@ -129,6 +203,15 @@
         items.forEach(function(item){pill.appendChild(item)});
         bnav.prepend(pill);
       }
+      // Inject cart badge
+      const bnPanier=document.getElementById('bn-panier');
+      if(bnPanier && !document.getElementById('bn-cart-count')){
+        const badge=document.createElement('span');
+        badge.id='bn-cart-count';badge.className='bn-badge';
+        badge.style.display='none';badge.textContent='0';
+        bnPanier.appendChild(badge);
+      }
+      updateCartUI();
     });
   })();
 
@@ -160,6 +243,8 @@
   }
   // Page accueil (.pc)
   document.querySelectorAll('.pc').forEach(card=>injectWLBtn(card,'.ct','.cn','.ci img'));
+  // Boutique (.b-card)
+  document.querySelectorAll('.b-card').forEach(card=>injectWLBtn(card,'.b-brand','.b-name','.b-img img'));
 
   /* ── Toast notification ─────────────────────────────────────── */
   function showToast(msg){
@@ -354,9 +439,9 @@ window.submitNewsletter = function() {
   if(!('connection' in navigator) || !navigator.connection.saveData){
     // Pages principales a precharger
     var pages = [
-      'index.html','assistant.html','suivi.html',
-      'apropos.html','contact.html','produit-detail.html',
-      'comment.html','faq.html','livraison.html'
+      'index.html','boutique.html','assistant.html','suivi.html',
+      'apropos.html','contact.html','panier.html','produit-detail.html',
+      'comment.html','faq.html','livraison.html','checkout.html'
     ];
     var current = location.pathname.split('/').pop() || 'index.html';
 

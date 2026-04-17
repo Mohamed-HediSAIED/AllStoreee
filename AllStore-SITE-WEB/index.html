@@ -21,7 +21,8 @@
     <a href="index.html" class="logo"><img src="shopping_bag_icon.png" alt="ALLSTORE"></a>
     <ul class="nav-links">
       <li><a href="index.html" class="active">Accueil</a></li>
-      <li><a href="assistant.html">Boutique</a></li>
+      <li><a href="boutique.html">Boutique</a></li>
+      <li><a href="assistant.html">Assistant</a></li>
       <li><a href="suivi.html">Suivi</a></li>
       <li><a href="apropos.html">À Propos</a></li>
       <li><a href="contact.html">Contact</a></li>
@@ -54,7 +55,7 @@
 
   /* ---------- SEARCH BAR ---------- */
   .als-search-sec{padding:20px 20px 10px;background:var(--bg2,#f5f2ec)}
-  .als-search-wrap{max-width:100%;margin:0 auto;position:relative}
+  .als-search-wrap{max-width:600px;margin:0 auto;position:relative}
   .als-search-input{width:100%;font-family:'Poppins',sans-serif;font-size:14px;background:rgba(255,255,255,.7);backdrop-filter:blur(10px);border:1.5px solid rgba(10,25,35,.1);border-radius:30px;padding:16px 20px 16px 48px;outline:none;transition:all .2s;box-sizing:border-box;color:var(--noir,#0a1923)}
   .als-search-input::placeholder{color:#aaa;font-weight:300}
   .als-search-input:focus{border-color:var(--gold2,#c5a44e);box-shadow:0 0 0 3px rgba(197,164,78,.12)}
@@ -310,7 +311,7 @@
   <div class="hero-content">
     <h1>Le <strong>luxe</strong> accessible,<br>sans <strong>compromis.</strong></h1>
     <p class="hero-desc">Sourcing d'exception, qualité vérifiée, livraison partout en Europe.</p>
-    <a href="assistant.html" class="hero-btn">CONTACTER NOTRE ASSISTANT</a>
+    <a href="boutique.html" class="hero-btn">DÉCOUVRIR LA BOUTIQUE</a>
   </div>
 </section>
 
@@ -380,27 +381,27 @@
   <div class="als-scroll-arrow left" onclick="scrollRow(this,-1)"><svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg></div>
   <div class="als-scroll-arrow right" onclick="scrollRow(this,1)"><svg viewBox="0 0 24 24"><polyline points="9 6 15 12 9 18"/></svg></div>
   <div class="als-coll-grid">
-    <a href="assistant.html" class="als-coll-card">
+    <a href="boutique.html?cat=sacs" class="als-coll-card">
       <img src="sac_chloe.png" alt="Chloé">
       <div class="als-coll-overlay"></div>
       <div class="als-coll-label"><span class="als-coll-name">SACS</span><span class="als-coll-btn">VOIR</span></div>
     </a>
-    <a href="assistant.html" class="als-coll-card">
+    <a href="boutique.html?cat=accessoires" class="als-coll-card">
       <img src="adidas_samba.png" alt="Giorgio Armani">
       <div class="als-coll-overlay"></div>
       <div class="als-coll-label"><span class="als-coll-name">ACCESSOIRES</span><span class="als-coll-btn">VOIR</span></div>
     </a>
-    <a href="assistant.html" class="als-coll-card">
+    <a href="boutique.html?cat=chaussures" class="als-coll-card">
       <img src="isabelmarant.png" alt="Isabel Marant">
       <div class="als-coll-overlay"></div>
       <div class="als-coll-label"><span class="als-coll-name">CHAUSSURES</span><span class="als-coll-btn">VOIR</span></div>
     </a>
-    <a href="assistant.html" class="als-coll-card">
+    <a href="boutique.html?cat=vetements" class="als-coll-card">
       <img src="miumiu_top.png" alt="Miu Miu">
       <div class="als-coll-overlay"></div>
       <div class="als-coll-label"><span class="als-coll-name">VÊTEMENTS</span><span class="als-coll-btn">VOIR</span></div>
     </a>
-    <a href="assistant.html" class="als-coll-card">
+    <a href="boutique.html?cat=montres" class="als-coll-card">
       <img src="rolex_daytona.png" alt="Rolex Daytona">
       <div class="als-coll-overlay"></div>
       <div class="als-coll-label"><span class="als-coll-name">MONTRES</span><span class="als-coll-btn">VOIR</span></div>
@@ -779,6 +780,7 @@ function filterSel(secId, pill) {
     <p class="ap-cta-sub">Accès à +500 références. Livraison offerte en Europe.</p>
     <div class="ap-cta-actions">
       <a href="assistant.html" class="ap-cta-btn">Contactez notre assistant <span class="ap-arrow">&rarr;</span></a>
+      <a href="assistant.html" class="ap-cta-btn ap-cta-btn--outline">Demande sur-mesure</a>
     </div>
   </div>
 </section>
@@ -814,9 +816,12 @@ function filterSel(secId, pill) {
   <!-- Footer columns -->
   <div class="foot-columns">
     <div class="foot-col">
-      <h4 class="foot-col-title">Catalogue</h4>
-      <a href="assistant.html">Commander un article</a>
-      <a href="assistant.html">Sourcing sur-mesure</a>
+      <h4 class="foot-col-title">Boutique</h4>
+      <a href="boutique.html">Tous les articles</a>
+      <a href="boutique.html?cat=montres">Montres</a>
+      <a href="boutique.html?cat=sacs">Sacs</a>
+      <a href="boutique.html?cat=chaussures">Chaussures</a>
+      <a href="boutique.html?cat=lunettes">Lunettes</a>
     </div>
     <div class="foot-col">
       <h4 class="foot-col-title">Notre Monde</h4>
@@ -825,7 +830,7 @@ function filterSel(secId, pill) {
     </div>
     <div class="foot-col">
       <h4 class="foot-col-title">Services</h4>
-      <a href="assistant.html">Sourcing sur-mesure</a>
+      <a href="assistant.html">Assistant sourcing</a>
       <a href="suivi.html">Suivi de commande</a>
       <a href="contact.html">Nous contacter</a>
       <a href="faq.html">FAQ</a>
@@ -1014,6 +1019,27 @@ function scrollRow(arrow, dir) {
 })();
 </script>
 
+<!-- FILTER JS FOR LA SÉLECTION -->
+<script>
+(function(){
+  var btns = document.querySelectorAll('.als-pill');
+  var cards = document.querySelectorAll('.selec-card');
+  btns.forEach(function(btn){
+    btn.addEventListener('click', function(){
+      btns.forEach(function(b){ b.classList.remove('active'); });
+      btn.classList.add('active');
+      var f = btn.getAttribute('data-filter');
+      cards.forEach(function(c){
+        if(f==='all' || c.getAttribute('data-cat')===f){
+          c.style.display='';
+        } else {
+          c.style.display='none';
+        }
+      });
+    });
+  });
+})();
+</script>
 
 <!-- BOTTOM NAV — Redesigned -->
 <style>
@@ -1041,17 +1067,18 @@ function scrollRow(arrow, dir) {
       <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
       Accueil
     </a>
-    <a href="assistant.html" class="bnav-item" data-nav="1">
-      <svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+    <a href="boutique.html" class="bnav-item" data-nav="1">
+      <svg viewBox="0 0 24 24"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
       Boutique
     </a>
     <a href="assistant.html" class="bnav-item" data-nav="2">
       <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
       Assistant
     </a>
-    <a href="assistant.html" class="bnav-item" data-nav="3">
-      <svg viewBox="0 0 24 24"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
+    <a href="panier.html" class="bnav-item" data-nav="3" id="bn-panier">
+      <svg viewBox="0 0 24 24"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 001.99 1.61h9.72a2 2 0 001.99-1.61L23 6H6"/></svg>
       Panier
+      <span class="bnav-badge" id="bnav-badge"></span>
     </a>
     <a href="suivi.html" class="bnav-item" data-nav="4">
       <svg viewBox="0 0 24 24"><path d="M12 22s-8-4.5-8-11.8A8 8 0 0112 2a8 8 0 018 8.2c0 7.3-8 11.8-8 11.8z"/><circle cx="12" cy="10" r="3"/></svg>

@@ -379,7 +379,8 @@
     <a href="index.html" class="logo"><img src="shopping_bag_icon.png" alt="ALLSTORE"></a>
     <ul class="nav-links">
       <li><a href="index.html">Accueil</a></li>
-      <li><a href="assistant.html">Boutique</a></li>
+      <li><a href="boutique.html">Boutique</a></li>
+      <li><a href="assistant.html">Assistant</a></li>
       <li><a href="suivi.html">Suivi</a></li>
       <li><a href="apropos.html">À Propos</a></li>
       <li><a href="contact.html">Contact</a></li>
@@ -468,7 +469,7 @@
     <div class="foot-links">
       <a href="apropos.html">A Propos</a>
       <a href="contact.html">Contact</a>
-      <a href="assistant.html">Boutique</a>
+      <a href="assistant.html">Assistant</a>
     </div>
     <div class="foot-tagline">L'introuvable, enfin trouve.</div>
     <div class="foot-copy">ALLSTORE 24/7 — Sourcing d'Exception — 2025</div>
@@ -507,8 +508,11 @@
      FAVORIS — depuis localStorage als_wishlist
   ══════════════════════════════════════════════════════════════ */
   const WL_KEY = 'als_wishlist';
+  const CART_KEY = 'als_cart';
   const getWL = () => { try { return JSON.parse(localStorage.getItem(WL_KEY)) || []; } catch { return []; } };
   const saveWL = items => localStorage.setItem(WL_KEY, JSON.stringify(items));
+  const getCart = () => { try { return JSON.parse(localStorage.getItem(CART_KEY)) || []; } catch { return []; } };
+  const inCart = id => getCart().some(i => i.id === id);
 
   function renderFavoris(){
     const el = document.getElementById('fav-list');
@@ -518,7 +522,7 @@
         <div class="compte-empty">
           <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
           <p>Aucun favori pour le moment.<br>Explorez notre boutique et ajoutez vos coups de coeur.</p>
-          <a href="assistant.html">Découvrir le catalogue</a>
+          <a href="boutique.html">Decouvrir la boutique</a>
         </div>`;
       return;
     }
@@ -526,6 +530,7 @@
     wl.forEach(item => {
       const row = document.createElement('div');
       row.className = 'fav-row';
+      const isInCart = inCart(item.id);
       row.innerHTML = `
         <div class="fav-img"><img src="" alt=""></div>
         <div class="fav-info">
@@ -533,13 +538,21 @@
           <span class="fav-name"></span>
         </div>
         <div class="fav-actions">
-          <a href="assistant.html" class="fav-btn fav-btn-cart">Commander</a>
+          <button class="fav-btn fav-btn-cart">${isInCart ? '&#10003; Panier' : 'Ajouter'}</button>
           <button class="fav-btn fav-btn-remove">&#10005;</button>
         </div>`;
       row.querySelector('img').src = item.img;
       row.querySelector('img').alt = item.name;
       row.querySelector('.fav-brand').textContent = item.brand;
       row.querySelector('.fav-name').textContent = item.name;
+
+      // Ajouter au panier
+      row.querySelector('.fav-btn-cart').addEventListener('click', () => {
+        if(typeof window.addToCart === 'function'){
+          window.addToCart(item.id, item.brand, item.name, item.img, item.price || '');
+        }
+        renderFavoris();
+      });
 
       // Retirer des favoris
       row.querySelector('.fav-btn-remove').addEventListener('click', () => {
@@ -548,9 +561,9 @@
         renderFavoris();
         // Mise a jour des coeurs sur les cartes produit
         document.querySelectorAll('.wl-btn').forEach(btn => {
-          const card = btn.closest('.pc');
+          const card = btn.closest('.pc') || btn.closest('.b-card');
           if(card){
-            const bid = ((card.querySelector('.ct') || {textContent:''}).textContent + '_' + (card.querySelector('.cn') || {textContent:''}).textContent).trim().replace(/\s+/g,'_').toLowerCase();
+            const bid = ((card.querySelector('.ct,.b-brand') || {textContent:''}).textContent + '_' + (card.querySelector('.cn,.b-name') || {textContent:''}).textContent).trim().replace(/\s+/g,'_').toLowerCase();
             btn.classList.toggle('wl-active', getWL().some(w => w.id === bid));
           }
         });
@@ -574,7 +587,7 @@
         <div class="compte-empty">
           <svg viewBox="0 0 24 24"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
           <p>Aucune commande pour le moment.<br>Vos commandes apparaitront ici apres votre premier achat.</p>
-          <a href="assistant.html">Commander via l'assistant</a>
+          <a href="boutique.html">Commencer mes achats</a>
         </div>`;
       return;
     }
@@ -673,17 +686,18 @@
       <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
       Accueil
     </a>
-    <a href="assistant.html" class="bnav-item" data-nav="1">
-      <svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+    <a href="boutique.html" class="bnav-item" data-nav="1">
+      <svg viewBox="0 0 24 24"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
       Boutique
     </a>
     <a href="assistant.html" class="bnav-item" data-nav="2">
       <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
       Assistant
     </a>
-    <a href="assistant.html" class="bnav-item" data-nav="3">
-      <svg viewBox="0 0 24 24"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
+    <a href="panier.html" class="bnav-item" data-nav="3" id="bn-panier">
+      <svg viewBox="0 0 24 24"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 001.99 1.61h9.72a2 2 0 001.99-1.61L23 6H6"/></svg>
       Panier
+      <span class="bnav-badge" id="bnav-badge"></span>
     </a>
     <a href="suivi.html" class="bnav-item" data-nav="4">
       <svg viewBox="0 0 24 24"><path d="M12 22s-8-4.5-8-11.8A8 8 0 0112 2a8 8 0 018 8.2c0 7.3-8 11.8-8 11.8z"/><circle cx="12" cy="10" r="3"/></svg>

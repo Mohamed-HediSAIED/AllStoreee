@@ -72,7 +72,7 @@
     bar.innerHTML=
       '<div class="trust-item"><svg viewBox="0 0 24 24"><path d="M5 12l5 5L20 7"/></svg>Qualit\u00e9 v\u00e9rifi\u00e9e</div>'+
       '<div class="trust-item"><svg viewBox="0 0 24 24"><rect x="1" y="3" width="15" height="13" rx="2"/><path d="M16 8h4l3 3v5h-3"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>Livraison 7\u201315 jours</div>'+
-      '<div class="trust-item"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>Commande s\u00e9curis\u00e9e</div>'+
+      '<div class="trust-item"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>Paiement s\u00e9curis\u00e9</div>'+
       '<div class="trust-item"><svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>Support 24/7</div>';
     // Insert into body (fixed positioning handles placement)
     document.body.appendChild(bar);
@@ -181,7 +181,7 @@
     g.innerHTML=`
       <div class="pdp-guarantee-item"><svg viewBox="0 0 24 24"><path d="M5 12l5 5L20 7"/></svg>Qualité vérifiée par nos experts</div>
       <div class="pdp-guarantee-item"><svg viewBox="0 0 24 24"><path d="M5 12l5 5L20 7"/></svg>Livraison offerte en Europe</div>
-      <div class="pdp-guarantee-item"><svg viewBox="0 0 24 24"><path d="M5 12l5 5L20 7"/></svg>Commande 100% sécurisée</div>
+      <div class="pdp-guarantee-item"><svg viewBox="0 0 24 24"><path d="M5 12l5 5L20 7"/></svg>Paiement 100% sécurisé</div>
     `;
     actions.parentNode.insertBefore(g,actions.nextSibling);
   })();
@@ -218,10 +218,10 @@
     var pdp=document.querySelector('.pdp');
     if(!pdp)return;
     var products=[
-      {brand:'Adidas',name:'Samba OG',price:'95 €',img:'adidas_samba.png',href:'assistant.html'},
-      {brand:'Louis Vuitton',name:'Bracelet cuir',price:'85 €',img:'bracelet_lv.png',href:'assistant.html'},
-      {brand:'Prada',name:'Lunettes SPR',price:'120 €',img:'lunette_prada.jpg',href:'assistant.html'},
-      {brand:'Dyson',name:'Airwrap',price:'180 €',img:'lisseur_dyson.png',href:'assistant.html'},
+      {brand:'Adidas',name:'Samba OG',price:'95 €',img:'adidas_samba.png',href:'boutique.html'},
+      {brand:'Louis Vuitton',name:'Bracelet cuir',price:'85 €',img:'bracelet_lv.png',href:'boutique.html'},
+      {brand:'Prada',name:'Lunettes SPR',price:'120 €',img:'lunette_prada.jpg',href:'boutique.html'},
+      {brand:'Dyson',name:'Airwrap',price:'180 €',img:'lisseur_dyson.png',href:'boutique.html'},
     ];
     var section=document.createElement('div');
     section.className='cross-sell';
@@ -229,6 +229,70 @@
       return '<a href="'+p.href+'" class="cross-sell-card"><div class="cross-sell-img"><img src="'+p.img+'" alt="'+p.name+'"></div><div class="cross-sell-body"><span class="cross-sell-brand">'+p.brand+'</span><div class="cross-sell-name">'+p.name+'</div><div class="cross-sell-price">'+p.price+'</div></div></a>';
     }).join('')+'</div>';
     pdp.parentNode.insertBefore(section,pdp.nextSibling);
+  })();
+
+  /* ── PANIER: Récapitulatif + barre progression ──────────── */
+  (function(){
+    var checkoutBtn=document.getElementById('checkout-btn');
+    if(!checkoutBtn)return;
+
+    // Étapes de commande
+    var steps=document.createElement('div');
+    steps.className='checkout-steps';
+    steps.innerHTML=`
+      <div class="checkout-step active"><span class="checkout-step-num">1</span>Panier</div>
+      <div class="checkout-step-line"></div>
+      <div class="checkout-step"><span class="checkout-step-num">2</span>Infos</div>
+      <div class="checkout-step-line"></div>
+      <div class="checkout-step"><span class="checkout-step-num">3</span>Paiement</div>
+      <div class="checkout-step-line"></div>
+      <div class="checkout-step"><span class="checkout-step-num">4</span>Confirmation</div>
+    `;
+    var panierWrap=document.querySelector('.panier-wrap');
+    if(panierWrap)panierWrap.insertBefore(steps,panierWrap.firstChild);
+
+    // Barre de progression livraison gratuite
+    var FREE_THRESHOLD=150;
+    function updateCartSummary(){
+      var cart=[];
+      try{cart=JSON.parse(localStorage.getItem('als_cart'))||[];}catch{}
+      // Remove old summary
+      var old=document.getElementById('cart-summary-block');
+      if(old)old.remove();
+      if(!cart.length){checkoutBtn.style.display='none';return;}
+      checkoutBtn.style.display='block';
+
+      var total=0;
+      cart.forEach(function(item){
+        var p=item.price?parseInt(item.price.replace(/[^\d]/g,'')):0;
+        total+=p;
+      });
+      var remaining=Math.max(0,FREE_THRESHOLD-total);
+      var pct=Math.min(100,Math.round(total/FREE_THRESHOLD*100));
+
+      var summary=document.createElement('div');
+      summary.id='cart-summary-block';
+      summary.className='cart-summary';
+      summary.innerHTML='<div class="cart-progress-text" style="color:#27ae60;font-weight:700">Livraison offerte</div>'
+      +'<div class="cart-summary-row"><span>Sous-total</span><span>'+total+' €</span></div>'
+      +'<div class="cart-summary-row"><span>Livraison</span><span>Offerte</span></div>'
+      +'<div class="cart-summary-row total"><span>Total</span><span>'+total+' €</span></div>';
+
+      checkoutBtn.parentNode.insertBefore(summary,checkoutBtn);
+    }
+    updateCartSummary();
+
+    // Patch removeFromCart to update summary
+    var origRemove=window.removeFromCart;
+    window.removeFromCart=function(id){
+      origRemove(id);
+      updateCartSummary();
+    };
+    var origAdd=window.addToCart;
+    window.addToCart=function(id,brand,name,img,price){
+      origAdd(id,brand,name,img,price);
+      updateCartSummary();
+    };
   })();
 
   /* ── POPUP BIENVENUE ────────────────────────────────────── */
@@ -249,7 +313,7 @@
             ALLSTORE10
             <small>Cliquer pour copier</small>
           </div>
-          <a href="assistant.html" class="welcome-popup-btn">Découvrir nos pièces</a>
+          <a href="boutique.html" class="welcome-popup-btn">Découvrir la boutique</a>
         </div>
       `;
       document.body.appendChild(overlay);
@@ -267,6 +331,19 @@
         setTimeout(function(){overlay.remove()},350);
       };
     },5000);
+  })();
+
+  /* ── MOYENS DE PAIEMENT (footer) ────────────────────────── */
+  (function(){
+    var footers=document.querySelectorAll('.foot-legal,.foot-copy');
+    var last=footers[footers.length-1];
+    if(!last)return;
+    // Check if already injected
+    if(document.querySelector('.payment-methods'))return;
+    var pm=document.createElement('div');
+    pm.className='payment-methods';
+    pm.innerHTML='<span>Visa</span><span>Mastercard</span><span>Apple Pay</span>';
+    last.parentNode.insertBefore(pm,last);
   })();
 
 })();
