@@ -645,42 +645,42 @@ function filterSel(secId, pill) {
   <div class="als-scroll-wrap">
   <div class="als-scroll-arrow left" onclick="scrollRow(this,-1)"><svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg></div>
   <div class="als-scroll-arrow right" onclick="scrollRow(this,1)"><svg viewBox="0 0 24 24"><polyline points="9 6 15 12 9 18"/></svg></div>
-  <div class="als-hscroll">
-    <a href="assistant.html" class="als-hcard">
-      <div class="als-hcard-img"><img src="givenchy_shark_lock.jpg" alt="Givenchy Shark Lock"></div>
-      <div class="als-hcard-info"><span class="als-hcard-name">GIVENCHY SHARK LOCK</span><span class="als-hcard-price">178,00€</span></div>
-    </a>
-    <a href="assistant.html" class="als-hcard">
-      <div class="als-hcard-img"><img src="cartier_tank.jpg" alt="Cartier Tank"></div>
-      <div class="als-hcard-info"><span class="als-hcard-name">CARTIER TANK</span><span class="als-hcard-price">263,00€</span></div>
-    </a>
-    <a href="assistant.html" class="als-hcard">
-      <div class="als-hcard-img"><img src="miumiu_top.jpg" alt="Miu Miu Top"></div>
-      <div class="als-hcard-info"><span class="als-hcard-name">MIU MIU TOP LOGO</span><span class="als-hcard-price">50,00€</span></div>
-    </a>
-    <a href="assistant.html" class="als-hcard">
-      <div class="als-hcard-img"><img src="loropiana_sergio.jpg" alt="Loro Piana Sergio"></div>
-      <div class="als-hcard-info"><span class="als-hcard-name">LORO PIANA SERGIO</span><span class="als-hcard-price">128,00€</span></div>
-    </a>
-    <a href="assistant.html" class="als-hcard">
-      <div class="als-hcard-img"><img src="miumiu_wander.jpg" alt="Miu Miu Wander"></div>
-      <div class="als-hcard-info"><span class="als-hcard-name">MIU MIU WANDER MINI</span><span class="als-hcard-price">263,00€</span></div>
-    </a>
-    <a href="assistant.html" class="als-hcard">
-      <div class="als-hcard-img"><img src="kaws_companion.jpg" alt="KAWS Companion"></div>
-      <div class="als-hcard-info"><span class="als-hcard-name">KAWS COMPANION</span><span class="als-hcard-soon">Bientôt disponible</span></div>
-    </a>
-    <a href="assistant.html" class="als-hcard">
-      <div class="als-hcard-img"><img src="prada_lunettes_aviator.jpg" alt="Prada Lunettes Aviator"></div>
-      <div class="als-hcard-info"><span class="als-hcard-name">PRADA AVIATOR ÉCAILLE</span><span class="als-hcard-price">50,00€</span></div>
-    </a>
-    <a href="assistant.html" class="als-hcard">
-      <div class="als-hcard-img"><img src="casablanca_chemise.jpg" alt="Casablanca Casa Way"></div>
-      <div class="als-hcard-info"><span class="als-hcard-name">CASABLANCA CASA WAY</span><span class="als-hcard-price">50,00€</span></div>
-    </a>
-  </div>
+  <div class="als-hscroll" id="rare-grid"></div>
   </div>
 </section>
+
+<script>
+(function(){
+  if (typeof PRODUCTS === 'undefined' || typeof BRAND_TIER === 'undefined') return;
+  var grid = document.getElementById('rare-grid');
+  if (!grid) return;
+
+  // Select luxe-tier products sorted by price desc (top of the pyramid),
+  // then take a sample of 12 so the row feels curated.
+  var items = Object.keys(PRODUCTS)
+    .map(function(id){ return { id: id, p: PRODUCTS[id] }; })
+    .filter(function(x){ return BRAND_TIER[x.p.brand] === 'luxe'; })
+    .sort(function(a, b){
+      var pa = parseInt(a.p.price, 10) || 0;
+      var pb = parseInt(b.p.price, 10) || 0;
+      return pb - pa;
+    })
+    .slice(0, 12);
+
+  var html = '';
+  items.forEach(function(it){
+    var p = it.p;
+    var priceHtml = p.price === '0'
+      ? '<span class="als-hcard-soon">Bientôt disponible</span>'
+      : '<span class="als-hcard-price">' + p.price + ',00€</span>';
+    html += '<a href="assistant.html?product=' + it.id + '" class="als-hcard">'
+      + '<div class="als-hcard-img"><img src="' + p.img + '" alt="' + p.brand + ' ' + p.name + '" loading="lazy"></div>'
+      + '<div class="als-hcard-info"><span class="als-hcard-name">' + p.brand.toUpperCase() + ' ' + p.name.toUpperCase() + '</span>'
+      + priceHtml + '</div></a>';
+  });
+  grid.innerHTML = html;
+})();
+</script>
 
 <!-- ═══════════════════════════════════════════
      TOUTES LES PIECES — grille vitrine dynamique
