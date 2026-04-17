@@ -17,7 +17,7 @@
   left: 0;
   right: 0;
   z-index: 1002;
-  font-family: -apple-system,BlinkMacSystemFont,'SF Pro Text','Inter',sans-serif;
+  font-family: 'Poppins',sans-serif;
   overflow: hidden;
 }
 /* Push the header down when promo bar is present */
@@ -330,7 +330,7 @@ body.has-promo .header-dark { top: var(--promo-h, 42px); }
   top: 120px;
 }
 .hiw2-heading {
-  font-family: -apple-system,BlinkMacSystemFont,'SF Pro Display','Inter',sans-serif;
+  font-family: 'Poppins',sans-serif;
   font-size: clamp(36px, 5vw, 56px);
   font-weight: 400;
   line-height: 1.1;
@@ -375,7 +375,7 @@ body.has-promo .header-dark { top: var(--promo-h, 42px); }
   padding-bottom: 0;
 }
 .hiw2-idx {
-  font-family: -apple-system,BlinkMacSystemFont,'SF Pro Display','Inter',sans-serif;
+  font-family: 'Poppins',sans-serif;
   font-size: 42px;
   font-weight: 300;
   font-style: italic;
@@ -389,7 +389,7 @@ body.has-promo .header-dark { top: var(--promo-h, 42px); }
   color: rgba(233,194,67,.5);
 }
 .hiw2-content h3 {
-  font-family: -apple-system,BlinkMacSystemFont,'SF Pro Text','Inter',sans-serif;
+  font-family: 'Poppins',sans-serif;
   font-size: 16px;
   font-weight: 600;
   color: #fff;
@@ -454,7 +454,7 @@ body.has-promo .header-dark { top: var(--promo-h, 42px); }
 }
 .testimonials-header-right { text-align: right; }
 .testimonials-rating-big {
-  font-family: -apple-system,BlinkMacSystemFont,'SF Pro Display','Inter',sans-serif;
+  font-family: 'Poppins',sans-serif;
   font-size: 48px;
   font-weight: 300;
   color: var(--gold);
@@ -504,7 +504,7 @@ body.has-promo .header-dark { top: var(--promo-h, 42px); }
   background: rgba(255,255,255,.04);
 }
 .testimonial-quote {
-  font-family: -apple-system,BlinkMacSystemFont,'SF Pro Display','Inter',sans-serif;
+  font-family: 'Poppins',sans-serif;
   font-size: 56px;
   line-height: 1;
   color: rgba(233,194,67,.2);
@@ -668,7 +668,7 @@ body.has-promo .header-dark { top: var(--promo-h, 42px); }
   font-size: 15px;
   font-weight: 600;
   cursor: pointer;
-  font-family: -apple-system,BlinkMacSystemFont,'SF Pro Text','Inter',sans-serif;
+  font-family: 'Poppins',sans-serif;
   text-decoration: none;
   transition: background .2s, transform .15s;
 }
