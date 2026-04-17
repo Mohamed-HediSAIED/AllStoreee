@@ -210,6 +210,18 @@
   .als-rare-price{font-family:-apple-system,BlinkMacSystemFont,'SF Pro Text','Inter',sans-serif;font-size:13px;font-weight:700;color:#fff;display:block;margin-top:4px}
   .als-rare-soon{font-family:-apple-system,BlinkMacSystemFont,'SF Pro Text','Inter',sans-serif;font-size:9px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;color:rgba(255,255,255,.8);background:rgba(255,255,255,.12);backdrop-filter:blur(40px) saturate(180%);-webkit-backdrop-filter:blur(40px) saturate(180%);border:1px solid rgba(255,255,255,.2);padding:5px 12px;border-radius:20px;display:inline-block;margin-top:8px;font-style:normal}
 
+  /* ---------- TOUTES LES PIECES — grille vitrine ---------- */
+  .als-all-sec{padding:48px 0 24px}
+  .als-all-filters{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;padding:0 20px;margin:8px 0 28px}
+  .als-all-pill{font-family:-apple-system,BlinkMacSystemFont,'SF Pro Text','Inter',sans-serif;font-size:13px;font-weight:600;letter-spacing:.02em;padding:10px 18px;border-radius:999px;border:1px solid var(--fx-border-subtle,rgba(255,255,255,.12));background:transparent;color:var(--fx-text-secondary,rgba(255,255,255,.72));cursor:pointer;transition:all .25s cubic-bezier(.2,.8,.2,1);text-transform:capitalize}
+  .als-all-pill:hover{border-color:var(--fx-border-strong,rgba(255,255,255,.28));color:var(--fx-text-primary,#fff)}
+  .als-all-pill.active{background:var(--fx-text-primary,#fff);color:var(--fx-bg-raised,#0a1923);border-color:transparent}
+  .als-all-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;padding:0 clamp(20px,4vw,60px) 20px}
+  .als-all-grid .als-hcard{flex:none;min-width:0}
+  @media(max-width:960px){.als-all-grid{grid-template-columns:repeat(3,1fr)}}
+  @media(max-width:640px){.als-all-grid{grid-template-columns:repeat(2,1fr);gap:12px;padding:0 16px 16px}}
+  .als-all-card-hidden{display:none !important}
+
   /* ---------- NOS MARQUES ---------- */
   .als-collab-row{display:flex;align-items:center;justify-content:center;gap:40px;flex-wrap:wrap;padding:0 20px}
   .als-collab-item{font-family:-apple-system,BlinkMacSystemFont,'SF Pro Display','Inter',sans-serif;font-size:clamp(20px,3vw,32px);font-weight:300;color:#fff;opacity:.45;transition:opacity .2s;letter-spacing:.04em}
@@ -627,6 +639,80 @@ function filterSel(secId, pill) {
   </div>
   </div>
 </section>
+
+<!-- ═══════════════════════════════════════════
+     TOUTES LES PIECES — grille vitrine dynamique
+═══════════════════════════════════════════ -->
+<section class="als-sec als-all-sec">
+  <div class="als-sec-head">
+    <h2 class="als-sec-title">TOUTES <em>les pièces</em></h2>
+  </div>
+  <div class="als-all-filters" id="als-all-filters"></div>
+  <div class="als-all-grid" id="als-all-grid"></div>
+</section>
+
+<script>
+(function(){
+  if (typeof PRODUCTS === 'undefined') return;
+  var grid = document.getElementById('als-all-grid');
+  var filters = document.getElementById('als-all-filters');
+  if (!grid || !filters) return;
+
+  var labels = {
+    chaussures: 'Chaussures',
+    vetements: 'Vêtements',
+    accessoires: 'Accessoires',
+    sacs: 'Sacs',
+    horlogerie: 'Horlogerie',
+    hightech: 'High-Tech',
+    parfums: 'Parfums',
+    lunettes: 'Lunettes'
+  };
+
+  function buildCard(id, p){
+    var cat = (typeof CAT_MAP !== 'undefined' && CAT_MAP[p.cat]) ? CAT_MAP[p.cat] : p.cat;
+    var priceHtml = p.price === '0'
+      ? '<span class="als-hcard-soon">Bientôt disponible</span>'
+      : '<span class="als-hcard-price">' + p.price + ',00€</span>';
+    return '<a href="assistant.html?product=' + id + '" class="als-hcard als-all-card" data-cat="' + cat + '">'
+      + '<div class="als-hcard-img"><img src="' + p.img + '" alt="' + p.brand + ' ' + p.name + '" loading="lazy"></div>'
+      + '<div class="als-hcard-info"><span class="als-hcard-name">' + p.brand.toUpperCase() + ' ' + p.name.toUpperCase() + '</span>'
+      + '<span class="als-hcard-desc">' + p.color + '</span>'
+      + priceHtml + '</div></a>';
+  }
+
+  var cats = {};
+  var cards = '';
+  Object.keys(PRODUCTS).forEach(function(id){
+    var p = PRODUCTS[id];
+    var cat = (typeof CAT_MAP !== 'undefined' && CAT_MAP[p.cat]) ? CAT_MAP[p.cat] : p.cat;
+    cats[cat] = (cats[cat] || 0) + 1;
+    cards += buildCard(id, p);
+  });
+  grid.innerHTML = cards;
+
+  var pillsHtml = '<button class="als-all-pill active" data-cat="all">Tout</button>';
+  Object.keys(cats).sort().forEach(function(c){
+    pillsHtml += '<button class="als-all-pill" data-cat="' + c + '">' + (labels[c] || c) + '</button>';
+  });
+  filters.innerHTML = pillsHtml;
+
+  filters.addEventListener('click', function(ev){
+    var pill = ev.target.closest('.als-all-pill');
+    if (!pill) return;
+    var target = pill.dataset.cat;
+    filters.querySelectorAll('.als-all-pill').forEach(function(p){ p.classList.remove('active'); });
+    pill.classList.add('active');
+    grid.querySelectorAll('.als-all-card').forEach(function(card){
+      if (target === 'all' || card.dataset.cat === target) {
+        card.classList.remove('als-all-card-hidden');
+      } else {
+        card.classList.add('als-all-card-hidden');
+      }
+    });
+  });
+})();
+</script>
 
 <!-- ═══════════════════════════════════════════
      AVIS CLIENTS
