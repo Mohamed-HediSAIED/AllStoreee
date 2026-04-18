@@ -1,0 +1,1773 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AllStore — Aperçu du parcours final · Reseller authentique</title>
+  <meta name="description" content="Mockup du parcours utilisateur AllStore après pivot reseller authentique.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&family=Poppins:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    /* ─────────────────────────────────────────────
+       BASE & RESET
+    ───────────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg-dark: #0a1923;
+      --bg-darker: #050d14;
+      --bg-deep: #020608;
+      --gold: #e9c243;
+      --gold-soft: #f3cf5a;
+      --gold-faint: rgba(233, 194, 67, 0.08);
+      --white: #ffffff;
+      --white-muted: rgba(255, 255, 255, 0.65);
+      --white-subtle: rgba(255, 255, 255, 0.4);
+      --white-faint: rgba(255, 255, 255, 0.18);
+      --glass-bg: rgba(255, 255, 255, 0.05);
+      --glass-bg-strong: rgba(255, 255, 255, 0.10);
+      --glass-border: rgba(255, 255, 255, 0.10);
+      --glass-border-strong: rgba(255, 255, 255, 0.22);
+      --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+      --ease-spring: cubic-bezier(0.2, 0.8, 0.2, 1);
+    }
+
+    html { scroll-behavior: smooth; scroll-padding-top: 60px; }
+    body {
+      font-family: 'Poppins', system-ui, sans-serif;
+      font-weight: 300;
+      background: var(--bg-dark);
+      color: var(--white);
+      min-height: 100vh;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      letter-spacing: -0.005em;
+      padding-top: 36px;
+    }
+
+    /* Showroom atmosphere — radial gradients + grain */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 80% 60% at 50% 0%, rgba(233, 194, 67, 0.06), transparent 65%),
+        radial-gradient(ellipse 50% 40% at 15% 75%, rgba(255, 255, 255, 0.025), transparent 70%),
+        radial-gradient(ellipse 60% 40% at 85% 50%, rgba(233, 194, 67, 0.025), transparent 70%),
+        radial-gradient(ellipse 60% 40% at 50% 100%, rgba(255, 255, 255, 0.02), transparent 70%),
+        linear-gradient(180deg, var(--bg-dark) 0%, var(--bg-darker) 50%, var(--bg-deep) 100%);
+      z-index: -2;
+      pointer-events: none;
+    }
+    body::after {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.6'/%3E%3C/svg%3E");
+      opacity: 0.035;
+      mix-blend-mode: overlay;
+      z-index: -1;
+      pointer-events: none;
+    }
+
+    /* ─────────────────────────────────────────────
+       MOCKUP BANNER
+    ───────────────────────────────────────────── */
+    .mockup-banner {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      background: linear-gradient(90deg, transparent 0%, var(--gold) 30%, var(--gold-soft) 50%, var(--gold) 70%, transparent 100%);
+      padding: 10px 24px;
+      text-align: center;
+      font-family: 'Poppins', sans-serif;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.35em;
+      text-transform: uppercase;
+      color: var(--bg-deep);
+      z-index: 1000;
+      box-shadow: 0 4px 30px rgba(233, 194, 67, 0.15);
+    }
+    .mockup-banner span {
+      display: inline-block;
+      padding: 0 18px;
+    }
+    .mockup-banner .pulse {
+      display: inline-block;
+      width: 6px;
+      height: 6px;
+      background: var(--bg-deep);
+      border-radius: 50%;
+      vertical-align: middle;
+      margin: 0 8px;
+      animation: blink 2.5s ease-in-out infinite;
+    }
+    @keyframes blink {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.3; }
+    }
+
+    /* ─────────────────────────────────────────────
+       STEP DIVIDERS
+    ───────────────────────────────────────────── */
+    .step-divider {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 28px;
+      padding: 80px 48px 24px;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+    .step-divider::before,
+    .step-divider::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--glass-border-strong), transparent);
+      max-width: 240px;
+    }
+    .step-label {
+      font-family: 'Cormorant', serif;
+      font-style: italic;
+      font-size: 16px;
+      font-weight: 400;
+      letter-spacing: 0.32em;
+      text-transform: uppercase;
+      color: var(--white-muted);
+      white-space: nowrap;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+    .step-label-num {
+      font-family: 'Poppins', sans-serif;
+      font-style: normal;
+      font-size: 10px;
+      font-weight: 700;
+      color: var(--bg-deep);
+      background: var(--gold);
+      padding: 5px 12px;
+      border-radius: 980px;
+      letter-spacing: 0.18em;
+      box-shadow: 0 0 24px rgba(233, 194, 67, 0.25);
+    }
+
+    /* ─────────────────────────────────────────────
+       SECTIONS
+    ───────────────────────────────────────────── */
+    section {
+      min-height: 92vh;
+      padding: 40px 48px 80px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      position: relative;
+    }
+
+    /* ─────────────────────────────────────────────
+       SECTION 1 — HOMEPAGE
+    ───────────────────────────────────────────── */
+    .hero {
+      max-width: 1200px;
+      margin: 0 auto;
+      text-align: center;
+      padding-top: 60px;
+    }
+    .hero h1 {
+      font-family: 'Poppins', sans-serif;
+      font-size: clamp(38px, 6.5vw, 84px);
+      font-weight: 200;
+      line-height: 1.04;
+      letter-spacing: -0.025em;
+      margin-bottom: 28px;
+    }
+    .hero h1 strong {
+      font-family: 'Cormorant', serif;
+      font-weight: 500;
+      font-style: italic;
+      color: var(--gold);
+      letter-spacing: -0.01em;
+    }
+    .hero-sub {
+      font-size: 17px;
+      font-weight: 300;
+      color: var(--white-muted);
+      max-width: 540px;
+      margin: 0 auto 44px;
+      letter-spacing: 0.005em;
+      line-height: 1.5;
+    }
+    .hero-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 14px;
+      padding: 18px 44px;
+      background: var(--glass-bg-strong);
+      backdrop-filter: blur(40px) saturate(180%);
+      -webkit-backdrop-filter: blur(40px) saturate(180%);
+      border: 1px solid var(--glass-border-strong);
+      color: var(--white);
+      font-family: 'Poppins', sans-serif;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      text-decoration: none;
+      border-radius: 980px;
+      cursor: pointer;
+      transition: all 0.5s var(--ease-spring);
+    }
+    .hero-cta:hover {
+      transform: translateY(-2px);
+      border-color: var(--gold);
+      box-shadow: 0 12px 40px rgba(233, 194, 67, 0.15);
+    }
+    .hero-cta svg {
+      width: 12px;
+      height: 12px;
+      transition: transform 0.4s var(--ease-spring);
+    }
+    .hero-cta:hover svg { transform: translateX(6px); }
+
+    /* Trust band */
+    .trust-band {
+      max-width: 1200px;
+      width: 100%;
+      margin: 88px auto 0;
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      padding: 28px 0;
+      border-top: 1px solid var(--glass-border);
+      border-bottom: 1px solid var(--glass-border);
+    }
+    .trust-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+      padding: 6px 14px;
+      text-align: center;
+      border-right: 1px solid var(--glass-border);
+    }
+    .trust-item:last-child { border-right: none; }
+    .trust-icon {
+      width: 22px;
+      height: 22px;
+      stroke: var(--gold);
+      fill: none;
+      stroke-width: 1.4;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+    .trust-text {
+      font-size: 11px;
+      font-weight: 400;
+      color: var(--white-muted);
+      letter-spacing: 0.02em;
+      line-height: 1.4;
+    }
+    .trust-text strong {
+      color: var(--white);
+      font-weight: 600;
+    }
+
+    /* Vitrine */
+    .vitrine {
+      max-width: 1200px;
+      width: 100%;
+      margin: 80px auto 0;
+    }
+    .vitrine-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: 36px;
+      padding: 0 4px;
+    }
+    .vitrine-title {
+      font-family: 'Poppins', sans-serif;
+      font-size: 32px;
+      font-weight: 200;
+      letter-spacing: -0.02em;
+    }
+    .vitrine-title em {
+      font-family: 'Cormorant', serif;
+      font-style: italic;
+      font-weight: 500;
+      color: var(--gold);
+    }
+    .vitrine-meta {
+      font-family: 'Cormorant', serif;
+      font-style: italic;
+      font-size: 14px;
+      color: var(--white-subtle);
+      margin-left: 12px;
+      letter-spacing: 0.05em;
+    }
+    .vitrine-link {
+      font-size: 11px;
+      color: var(--white-muted);
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: color 0.3s;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .vitrine-link:hover { color: var(--gold); }
+    .vitrine-link svg { width: 12px; height: 12px; transition: transform 0.3s; }
+    .vitrine-link:hover svg { transform: translateX(4px); }
+
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+    }
+    .product-card {
+      background: var(--glass-bg);
+      backdrop-filter: blur(20px) saturate(180%);
+      -webkit-backdrop-filter: blur(20px) saturate(180%);
+      border: 1px solid var(--glass-border);
+      border-radius: 22px;
+      overflow: hidden;
+      cursor: pointer;
+      transition: all 0.5s var(--ease-spring);
+      text-decoration: none;
+      color: var(--white);
+      display: block;
+    }
+    .product-card:hover {
+      transform: translateY(-8px);
+      border-color: var(--glass-border-strong);
+      background: var(--glass-bg-strong);
+      box-shadow: 0 24px 50px rgba(0, 0, 0, 0.3);
+    }
+    .product-img {
+      aspect-ratio: 1;
+      background: linear-gradient(135deg, #1a2530 0%, #0a1923 100%);
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+    .product-img::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at 30% 25%, rgba(255, 255, 255, 0.10), transparent 55%);
+    }
+    .product-img::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at 75% 80%, rgba(233, 194, 67, 0.04), transparent 60%);
+    }
+    .product-img-placeholder {
+      font-family: 'Cormorant', serif;
+      font-style: italic;
+      font-size: 13px;
+      color: var(--white-subtle);
+      z-index: 1;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      text-align: center;
+    }
+    .product-info {
+      padding: 18px 20px 22px;
+    }
+    .product-brand {
+      font-size: 9px;
+      font-weight: 700;
+      color: var(--gold);
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+    .product-name {
+      font-size: 13px;
+      font-weight: 400;
+      color: var(--white);
+      letter-spacing: 0.005em;
+      margin-bottom: 12px;
+      line-height: 1.3;
+    }
+    .product-price {
+      font-family: 'Cormorant', serif;
+      font-size: 22px;
+      font-weight: 500;
+      color: var(--white);
+      letter-spacing: 0.01em;
+    }
+
+    /* ─────────────────────────────────────────────
+       SECTION 2 — PAGE PRODUIT
+    ───────────────────────────────────────────── */
+    .pdp {
+      max-width: 1200px;
+      width: 100%;
+      margin: 40px auto 0;
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 60px;
+      align-items: center;
+    }
+    .pdp-image {
+      aspect-ratio: 4/5;
+      background: linear-gradient(135deg, #1a2530 0%, #050d14 100%);
+      border: 1px solid var(--glass-border);
+      border-radius: 28px;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+    .pdp-image::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(circle at 25% 20%, rgba(255, 255, 255, 0.10), transparent 50%),
+        radial-gradient(circle at 80% 80%, rgba(233, 194, 67, 0.05), transparent 55%);
+    }
+    .pdp-image-label {
+      font-family: 'Cormorant', serif;
+      font-style: italic;
+      font-size: 22px;
+      color: var(--white-subtle);
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      z-index: 1;
+    }
+    .pdp-image-tag {
+      position: absolute;
+      top: 24px;
+      left: 24px;
+      background: var(--glass-bg-strong);
+      backdrop-filter: blur(20px);
+      border: 1px solid var(--glass-border-strong);
+      padding: 6px 14px;
+      border-radius: 980px;
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--gold);
+      z-index: 2;
+    }
+    .pdp-info { padding: 20px 0; }
+    .pdp-brand {
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--gold);
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      margin-bottom: 18px;
+    }
+    .pdp-title {
+      font-family: 'Poppins', sans-serif;
+      font-size: 56px;
+      font-weight: 200;
+      letter-spacing: -0.03em;
+      line-height: 1;
+      margin-bottom: 16px;
+    }
+    .pdp-title em {
+      font-family: 'Cormorant', serif;
+      font-style: italic;
+      font-weight: 500;
+      color: var(--gold);
+    }
+    .pdp-price-row {
+      display: flex;
+      align-items: baseline;
+      gap: 12px;
+      margin-bottom: 36px;
+    }
+    .pdp-price {
+      font-family: 'Cormorant', serif;
+      font-size: 36px;
+      font-weight: 500;
+      color: var(--white);
+      letter-spacing: 0.01em;
+    }
+    .pdp-price-sub {
+      font-size: 11px;
+      color: var(--white-subtle);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+    .pdp-section-label {
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--white-subtle);
+      margin-bottom: 14px;
+    }
+    .pdp-section-label .active-name {
+      color: var(--gold);
+      margin-left: 10px;
+      font-style: normal;
+    }
+    .pdp-colors {
+      display: flex;
+      gap: 12px;
+      margin-bottom: 36px;
+    }
+    .color-swatch {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      cursor: pointer;
+      border: 2px solid transparent;
+      transition: all 0.3s var(--ease-spring);
+      box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.15);
+      position: relative;
+    }
+    .color-swatch:hover { transform: scale(1.12); }
+    .color-swatch.active {
+      border-color: var(--gold);
+      transform: scale(1.1);
+      box-shadow:
+        inset 0 0 0 1px rgba(255, 255, 255, 0.15),
+        0 0 0 2px var(--bg-dark),
+        0 0 16px rgba(233, 194, 67, 0.4);
+    }
+    .pdp-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 14px;
+      padding: 20px 40px;
+      background: var(--glass-bg-strong);
+      backdrop-filter: blur(40px) saturate(180%);
+      -webkit-backdrop-filter: blur(40px) saturate(180%);
+      border: 1px solid var(--glass-border-strong);
+      color: var(--white);
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      border-radius: 980px;
+      cursor: pointer;
+      transition: all 0.5s var(--ease-spring);
+      text-decoration: none;
+      margin-bottom: 32px;
+    }
+    .pdp-cta:hover {
+      transform: translateY(-2px);
+      border-color: var(--gold);
+      box-shadow: 0 12px 40px rgba(233, 194, 67, 0.15);
+    }
+    .pdp-cta svg {
+      width: 14px;
+      height: 14px;
+      transition: transform 0.4s var(--ease-spring);
+    }
+    .pdp-cta:hover svg { transform: translateX(8px); }
+    .pdp-trust {
+      display: flex;
+      gap: 28px;
+      flex-wrap: wrap;
+      padding-top: 24px;
+      border-top: 1px solid var(--glass-border);
+    }
+    .pdp-trust-badge {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 11px;
+      color: var(--white-muted);
+      letter-spacing: 0.04em;
+    }
+    .pdp-trust-badge svg {
+      width: 16px;
+      height: 16px;
+      stroke: var(--gold);
+      fill: none;
+      stroke-width: 1.6;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    /* ─────────────────────────────────────────────
+       SECTION 3 — ASSISTANT PRÉ-REMPLI
+    ───────────────────────────────────────────── */
+    .assistant-card {
+      max-width: 640px;
+      width: 100%;
+      margin: 40px auto 0;
+      background: var(--glass-bg);
+      backdrop-filter: blur(40px) saturate(180%);
+      -webkit-backdrop-filter: blur(40px) saturate(180%);
+      border: 1px solid var(--glass-border);
+      border-radius: 32px;
+      padding: 44px;
+      box-shadow: 0 20px 80px rgba(0, 0, 0, 0.3);
+    }
+    .product-chip {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding: 16px;
+      background: rgba(0, 0, 0, 0.25);
+      border: 1px solid var(--glass-border);
+      border-radius: 18px;
+      margin-bottom: 32px;
+    }
+    .chip-thumb {
+      width: 56px;
+      height: 56px;
+      border-radius: 12px;
+      background: linear-gradient(135deg, #1a2530, #050d14);
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .chip-thumb::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.12), transparent 60%);
+    }
+    .chip-thumb-text {
+      font-family: 'Cormorant', serif;
+      font-style: italic;
+      font-size: 14px;
+      color: var(--white-subtle);
+      letter-spacing: 0.05em;
+      z-index: 1;
+    }
+    .chip-info { flex: 1; min-width: 0; }
+    .chip-brand {
+      font-size: 9px;
+      font-weight: 700;
+      color: var(--gold);
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      margin-bottom: 4px;
+    }
+    .chip-name {
+      font-size: 13px;
+      font-weight: 400;
+      color: var(--white);
+      letter-spacing: 0.005em;
+    }
+    .chip-change {
+      font-size: 10px;
+      color: var(--white-subtle);
+      cursor: pointer;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      padding: 8px 14px;
+      border: 1px solid var(--glass-border);
+      border-radius: 980px;
+      transition: all 0.3s;
+      flex-shrink: 0;
+    }
+    .chip-change:hover {
+      border-color: var(--gold);
+      color: var(--gold);
+    }
+
+    .progress-wrap { margin-bottom: 36px; }
+    .progress-bar {
+      display: flex;
+      gap: 5px;
+      margin-bottom: 12px;
+    }
+    .progress-step {
+      flex: 1;
+      height: 3px;
+      border-radius: 2px;
+      background: var(--glass-border);
+      transition: all 0.4s;
+    }
+    .progress-step.done { background: var(--gold); opacity: 0.5; }
+    .progress-step.active {
+      background: var(--gold);
+      box-shadow: 0 0 12px rgba(233, 194, 67, 0.6);
+    }
+    .progress-label {
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--white-subtle);
+    }
+    .progress-label .current {
+      color: var(--gold);
+    }
+
+    .form-eyebrow {
+      font-family: 'Cormorant', serif;
+      font-style: italic;
+      color: var(--gold);
+      font-size: 16px;
+      letter-spacing: 0.05em;
+      margin-bottom: 8px;
+    }
+    .form-title {
+      font-family: 'Poppins', sans-serif;
+      font-size: 32px;
+      font-weight: 200;
+      letter-spacing: -0.02em;
+      margin-bottom: 8px;
+    }
+    .form-sub {
+      font-size: 13px;
+      color: var(--white-muted);
+      margin-bottom: 28px;
+    }
+
+    .form-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-bottom: 28px;
+    }
+    .form-grid .full { grid-column: 1 / -1; }
+    .form-input {
+      width: 100%;
+      padding: 16px 18px;
+      background: rgba(0, 0, 0, 0.3);
+      border: 1px solid var(--glass-border);
+      border-radius: 14px;
+      font-family: 'Poppins', sans-serif;
+      font-weight: 400;
+      font-size: 14px;
+      color: var(--white);
+      outline: none;
+      transition: all 0.3s;
+    }
+    .form-input::placeholder {
+      color: var(--white-subtle);
+      font-weight: 300;
+    }
+    .form-input:focus {
+      border-color: var(--gold);
+      background: rgba(0, 0, 0, 0.5);
+      box-shadow: 0 0 0 3px rgba(233, 194, 67, 0.1);
+    }
+
+    .gold-cta {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      width: 100%;
+      padding: 19px 32px;
+      background: var(--gold);
+      color: var(--bg-deep);
+      font-family: 'Poppins', sans-serif;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      border: none;
+      border-radius: 980px;
+      cursor: pointer;
+      transition: all 0.4s var(--ease-spring);
+      text-decoration: none;
+      box-shadow: 0 8px 30px rgba(233, 194, 67, 0.2);
+    }
+    .gold-cta:hover {
+      background: var(--gold-soft);
+      transform: translateY(-2px);
+      box-shadow: 0 14px 40px rgba(233, 194, 67, 0.35);
+    }
+    .gold-cta svg {
+      width: 14px;
+      height: 14px;
+      transition: transform 0.3s;
+    }
+    .gold-cta:hover svg { transform: translateX(6px); }
+
+    .trust-line {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 28px;
+      margin-top: 22px;
+      font-size: 11px;
+      color: var(--white-subtle);
+      letter-spacing: 0.04em;
+      flex-wrap: wrap;
+    }
+    .trust-line span {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .trust-line svg {
+      width: 13px;
+      height: 13px;
+      stroke: var(--gold);
+      fill: none;
+      stroke-width: 1.6;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    /* ─────────────────────────────────────────────
+       SECTION 4 — STRIPE CHECKOUT
+    ───────────────────────────────────────────── */
+    .checkout {
+      max-width: 1100px;
+      width: 100%;
+      margin: 40px auto 0;
+      display: grid;
+      grid-template-columns: 1fr 1.2fr;
+      gap: 32px;
+    }
+    .checkout-panel {
+      background: var(--glass-bg);
+      backdrop-filter: blur(40px) saturate(180%);
+      -webkit-backdrop-filter: blur(40px) saturate(180%);
+      border: 1px solid var(--glass-border);
+      border-radius: 28px;
+      padding: 36px;
+      box-shadow: 0 20px 80px rgba(0, 0, 0, 0.3);
+    }
+    .checkout-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 28px;
+      padding-bottom: 22px;
+      border-bottom: 1px solid var(--glass-border);
+    }
+    .checkout-title {
+      font-family: 'Poppins', sans-serif;
+      font-size: 22px;
+      font-weight: 200;
+      letter-spacing: -0.01em;
+    }
+    .stripe-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--white-muted);
+      padding: 8px 14px;
+      border: 1px solid var(--glass-border);
+      border-radius: 980px;
+      background: rgba(0, 0, 0, 0.2);
+    }
+    .stripe-badge svg {
+      width: 12px;
+      height: 12px;
+      stroke: var(--gold);
+      fill: none;
+      stroke-width: 2;
+    }
+
+    .order-line {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding: 16px 0;
+      border-bottom: 1px solid var(--glass-border);
+    }
+    .order-thumb {
+      width: 64px;
+      height: 64px;
+      border-radius: 14px;
+      background: linear-gradient(135deg, #1a2530, #050d14);
+      flex-shrink: 0;
+      position: relative;
+      overflow: hidden;
+    }
+    .order-thumb::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.10), transparent 60%);
+    }
+    .order-info { flex: 1; min-width: 0; }
+    .order-brand {
+      font-size: 9px;
+      font-weight: 700;
+      color: var(--gold);
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+    }
+    .order-name {
+      font-size: 13px;
+      color: var(--white);
+      margin-top: 4px;
+    }
+    .order-meta {
+      font-size: 11px;
+      color: var(--white-subtle);
+      margin-top: 3px;
+      letter-spacing: 0.02em;
+    }
+    .order-price {
+      font-family: 'Cormorant', serif;
+      font-size: 20px;
+      font-weight: 500;
+    }
+
+    .order-totals {
+      margin-top: 18px;
+    }
+    .total-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 9px 0;
+      font-size: 13px;
+      color: var(--white-muted);
+    }
+    .total-row.grand {
+      padding-top: 16px;
+      margin-top: 8px;
+      border-top: 1px solid var(--glass-border);
+      color: var(--white);
+      align-items: baseline;
+    }
+    .total-row.grand .label {
+      font-size: 11px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--white-muted);
+    }
+    .total-row.grand .value {
+      font-family: 'Cormorant', serif;
+      font-size: 28px;
+      font-weight: 500;
+    }
+    .free-tag {
+      color: var(--gold);
+      font-weight: 600;
+      font-size: 10px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+    }
+
+    .pay-form {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+    .pay-form .full { grid-column: 1 / -1; }
+    .pay-input-wrap { position: relative; }
+    .pay-input {
+      width: 100%;
+      padding: 16px 18px;
+      background: rgba(0, 0, 0, 0.3);
+      border: 1px solid var(--glass-border);
+      border-radius: 14px;
+      font-family: 'Poppins', sans-serif;
+      font-size: 14px;
+      color: var(--white);
+      outline: none;
+      letter-spacing: 0.04em;
+    }
+    .pay-input::placeholder { color: var(--white-subtle); }
+    .pay-input:focus {
+      border-color: var(--gold);
+      background: rgba(0, 0, 0, 0.5);
+    }
+    .card-icons {
+      position: absolute;
+      right: 14px;
+      top: 50%;
+      transform: translateY(-50%);
+      display: flex;
+      gap: 5px;
+    }
+    .card-icon {
+      width: 32px;
+      height: 20px;
+      border-radius: 4px;
+      background: var(--glass-border);
+      border: 1px solid var(--glass-border-strong);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 8px;
+      font-weight: 700;
+      color: var(--white-subtle);
+      letter-spacing: 0.05em;
+    }
+    .card-icon.visa { background: linear-gradient(135deg, #1a3a8a, #0a2470); color: white; }
+    .card-icon.mc { background: linear-gradient(135deg, #eb001b, #f79e1b); color: white; }
+    .card-icon.amex { background: linear-gradient(135deg, #006fcf, #003d7e); color: white; }
+
+    .checkout-trust {
+      display: grid;
+      gap: 10px;
+      margin-top: 22px;
+      padding-top: 22px;
+      border-top: 1px solid var(--glass-border);
+    }
+    .checkout-trust-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 11px;
+      color: var(--white-muted);
+      letter-spacing: 0.01em;
+    }
+    .checkout-trust-item svg {
+      width: 14px;
+      height: 14px;
+      stroke: var(--gold);
+      fill: none;
+      stroke-width: 1.6;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      flex-shrink: 0;
+    }
+
+    .pay-cta { margin-top: 26px; }
+
+    /* ─────────────────────────────────────────────
+       SECTION 5 — CONFIRMATION
+    ───────────────────────────────────────────── */
+    .confirm {
+      max-width: 600px;
+      width: 100%;
+      margin: 40px auto 0;
+      text-align: center;
+    }
+    .check-circle {
+      width: 110px;
+      height: 110px;
+      margin: 0 auto 36px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--gold) 0%, var(--gold-soft) 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 0 60px rgba(233, 194, 67, 0.35);
+      animation: pulseGlow 2.8s ease-in-out infinite;
+      position: relative;
+    }
+    .check-circle::before {
+      content: '';
+      position: absolute;
+      inset: -8px;
+      border-radius: 50%;
+      border: 1px solid rgba(233, 194, 67, 0.2);
+      animation: ringExpand 2.8s ease-out infinite;
+    }
+    @keyframes ringExpand {
+      0% { transform: scale(1); opacity: 0.6; }
+      100% { transform: scale(1.4); opacity: 0; }
+    }
+    @keyframes pulseGlow {
+      0%, 100% { box-shadow: 0 0 60px rgba(233, 194, 67, 0.3); }
+      50% { box-shadow: 0 0 90px rgba(233, 194, 67, 0.55); }
+    }
+    .check-circle svg {
+      width: 48px;
+      height: 48px;
+      stroke: var(--bg-deep);
+      fill: none;
+      stroke-width: 3;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .confirm-eyebrow {
+      font-family: 'Cormorant', serif;
+      font-style: italic;
+      font-size: 16px;
+      color: var(--gold);
+      letter-spacing: 0.18em;
+      margin-bottom: 12px;
+      text-transform: uppercase;
+    }
+    .confirm-title {
+      font-family: 'Poppins', sans-serif;
+      font-size: 52px;
+      font-weight: 200;
+      letter-spacing: -0.025em;
+      line-height: 1;
+      margin-bottom: 20px;
+    }
+    .confirm-title em {
+      font-family: 'Cormorant', serif;
+      font-style: italic;
+      color: var(--gold);
+      font-weight: 500;
+    }
+    .confirm-num {
+      display: inline-block;
+      font-family: 'Poppins', sans-serif;
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--white-muted);
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      padding: 8px 18px;
+      border: 1px solid var(--glass-border-strong);
+      border-radius: 980px;
+      margin-bottom: 36px;
+      background: rgba(0, 0, 0, 0.25);
+    }
+    .confirm-num strong {
+      color: var(--gold);
+      font-weight: 700;
+    }
+
+    .recap-card {
+      background: var(--glass-bg);
+      backdrop-filter: blur(40px) saturate(180%);
+      -webkit-backdrop-filter: blur(40px) saturate(180%);
+      border: 1px solid var(--glass-border);
+      border-radius: 22px;
+      padding: 28px 32px;
+      text-align: left;
+      margin-bottom: 32px;
+      box-shadow: 0 12px 40px rgba(0, 0, 0, 0.2);
+    }
+    .recap-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 13px 0;
+      border-bottom: 1px solid var(--glass-border);
+      font-size: 13px;
+    }
+    .recap-row:last-child { border-bottom: none; }
+    .recap-label {
+      color: var(--white-subtle);
+      letter-spacing: 0.04em;
+    }
+    .recap-value {
+      color: var(--white);
+      font-weight: 400;
+      text-align: right;
+    }
+    .recap-value strong { color: var(--gold); }
+
+    .confirm-ctas {
+      display: flex;
+      gap: 12px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    .secondary-cta {
+      padding: 16px 28px;
+      background: transparent;
+      border: 1px solid var(--glass-border-strong);
+      color: var(--white);
+      font-family: 'Poppins', sans-serif;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      border-radius: 980px;
+      cursor: pointer;
+      transition: all 0.4s var(--ease-spring);
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .secondary-cta:hover {
+      border-color: var(--gold);
+      color: var(--gold);
+      transform: translateY(-2px);
+    }
+    .secondary-cta svg {
+      width: 12px;
+      height: 12px;
+      transition: transform 0.3s;
+    }
+    .secondary-cta:hover svg { transform: translateX(4px); }
+
+    /* ─────────────────────────────────────────────
+       FLOATING WIDGETS
+    ───────────────────────────────────────────── */
+    .crisp-widget {
+      position: fixed;
+      bottom: 26px;
+      right: 26px;
+      width: 62px;
+      height: 62px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #2da76f 0%, #1a6b50 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5), 0 0 30px rgba(45, 167, 111, 0.25);
+      z-index: 100;
+      transition: all 0.4s var(--ease-spring);
+    }
+    .crisp-widget:hover {
+      transform: scale(1.08) translateY(-2px);
+      box-shadow: 0 14px 50px rgba(0, 0, 0, 0.6), 0 0 40px rgba(45, 167, 111, 0.4);
+    }
+    .crisp-widget svg {
+      width: 28px;
+      height: 28px;
+      stroke: white;
+      fill: none;
+      stroke-width: 2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+    .crisp-widget::after {
+      content: 'En ligne · Réponse < 24h';
+      position: absolute;
+      right: 74px;
+      top: 50%;
+      transform: translateY(-50%);
+      font-family: 'Poppins', sans-serif;
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--white);
+      background: var(--bg-deep);
+      backdrop-filter: blur(20px);
+      padding: 8px 14px;
+      border-radius: 980px;
+      border: 1px solid var(--glass-border-strong);
+      white-space: nowrap;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s, transform 0.3s;
+      transform: translate(10px, -50%);
+    }
+    .crisp-widget:hover::after {
+      opacity: 1;
+      transform: translate(0, -50%);
+    }
+    .pulse-dot {
+      position: absolute;
+      top: 8px;
+      right: 8px;
+      width: 11px;
+      height: 11px;
+      background: #4ade80;
+      border-radius: 50%;
+      border: 2px solid #1a6b50;
+      box-shadow: 0 0 10px rgba(74, 222, 128, 0.6);
+      animation: pulseDot 2s ease-in-out infinite;
+    }
+    @keyframes pulseDot {
+      0%, 100% { box-shadow: 0 0 10px rgba(74, 222, 128, 0.6); }
+      50% { box-shadow: 0 0 18px rgba(74, 222, 128, 0.9); }
+    }
+
+    .whatsapp-option {
+      position: fixed;
+      bottom: 28px;
+      left: 26px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 9px 18px 9px 10px;
+      background: var(--glass-bg-strong);
+      backdrop-filter: blur(30px);
+      -webkit-backdrop-filter: blur(30px);
+      border: 1px solid var(--glass-border);
+      border-radius: 980px;
+      cursor: pointer;
+      z-index: 100;
+      transition: all 0.4s var(--ease-spring);
+      text-decoration: none;
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+    }
+    .whatsapp-option:hover {
+      border-color: var(--glass-border-strong);
+      transform: translateY(-2px);
+    }
+    .wa-icon {
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      background: #25d366;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      box-shadow: 0 2px 12px rgba(37, 211, 102, 0.3);
+    }
+    .wa-icon svg {
+      width: 16px;
+      height: 16px;
+      fill: white;
+    }
+    .wa-text {
+      font-family: 'Poppins', sans-serif;
+      font-size: 11px;
+      color: var(--white-muted);
+      letter-spacing: 0.02em;
+      font-weight: 400;
+    }
+    .wa-text em {
+      font-family: 'Cormorant', serif;
+      font-style: italic;
+      color: var(--white);
+    }
+
+    /* ─────────────────────────────────────────────
+       SCROLL-IN ANIMATIONS
+    ───────────────────────────────────────────── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(40px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+    .reveal {
+      animation: fadeUp 0.9s var(--ease-out-expo) both;
+    }
+    .reveal.d1 { animation-delay: 0.15s; }
+    .reveal.d2 { animation-delay: 0.3s; }
+    .reveal.d3 { animation-delay: 0.45s; }
+    .reveal.d4 { animation-delay: 0.6s; }
+    .reveal.d5 { animation-delay: 0.75s; }
+
+    .in-view { animation: fadeUp 0.9s var(--ease-out-expo) both; }
+    .scroll-reveal { opacity: 0; }
+    .scroll-reveal.in-view { opacity: 1; }
+
+    /* ─────────────────────────────────────────────
+       RESPONSIVE
+    ───────────────────────────────────────────── */
+    @media (max-width: 1024px) {
+      .pdp { grid-template-columns: 1fr; gap: 32px; }
+      .checkout { grid-template-columns: 1fr; }
+      .product-grid { grid-template-columns: repeat(2, 1fr); }
+      .trust-band { grid-template-columns: 1fr 1fr 1fr; }
+      .trust-item:nth-child(4), .trust-item:nth-child(5) { border-bottom: none; }
+      .hero h1 { font-size: 56px; }
+      .pdp-title { font-size: 48px; }
+    }
+    @media (max-width: 640px) {
+      body { padding-top: 32px; }
+      .mockup-banner { font-size: 9px; padding: 8px 16px; }
+      section { padding: 30px 18px 60px; min-height: auto; }
+      .form-grid, .pay-form { grid-template-columns: 1fr; }
+      .step-divider { padding: 50px 18px 18px; gap: 16px; }
+      .step-divider::before, .step-divider::after { display: none; }
+      .step-label { font-size: 10px; letter-spacing: 0.22em; }
+      .pdp-title { font-size: 38px; }
+      .confirm-title { font-size: 36px; }
+      .whatsapp-option .wa-text { display: none; }
+      .whatsapp-option { padding: 8px; }
+      .trust-band { grid-template-columns: 1fr 1fr; }
+      .trust-item { border-right: none; border-bottom: 1px solid var(--glass-border); padding: 14px; }
+      .trust-item:nth-child(2n) { border-right: none; }
+      .trust-item:nth-last-child(-n+2) { border-bottom: none; }
+      .vitrine-head { flex-direction: column; align-items: flex-start; gap: 16px; }
+      .pdp-trust { flex-direction: column; gap: 14px; }
+      .trust-line { gap: 14px; }
+      .checkout-panel { padding: 26px; }
+      .assistant-card { padding: 28px; }
+      .recap-card { padding: 22px; }
+      .check-circle { width: 90px; height: 90px; }
+      .check-circle svg { width: 38px; height: 38px; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="mockup-banner">
+  <span><span class="pulse"></span>Mockup<span class="pulse"></span>Aperçu du parcours final<span class="pulse"></span>Reseller authentique<span class="pulse"></span></span>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════
+     ÉTAPE 1 — DÉCOUVERTE
+═══════════════════════════════════════════════════════════ -->
+<div class="step-divider">
+  <span class="step-label">
+    <span class="step-label-num">01</span>
+    Découverte — Homepage
+  </span>
+</div>
+
+<section id="discovery">
+  <div class="hero">
+    <h1 class="reveal">Le <strong>luxe</strong> accessible,<br>sans <strong>compromis.</strong></h1>
+    <p class="hero-sub reveal d1">Reseller authentique. Sourcing officiel marques, livraison partout en Europe.</p>
+    <a href="#product" class="hero-cta reveal d2">
+      Découvrir la boutique
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+    </a>
+  </div>
+
+  <div class="trust-band">
+    <div class="trust-item">
+      <svg class="trust-icon" viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+      <span class="trust-text"><strong>+10 000 clients</strong> satisfaits</span>
+    </div>
+    <div class="trust-item">
+      <svg class="trust-icon" viewBox="0 0 24 24"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+      <span class="trust-text"><strong>Chez toi en 48h</strong><br>partout en Europe</span>
+    </div>
+    <div class="trust-item">
+      <svg class="trust-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M9 12l2 2 4-4"/></svg>
+      <span class="trust-text"><strong>Satisfait</strong><br>ou remboursé</span>
+    </div>
+    <div class="trust-item">
+      <svg class="trust-icon" viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+      <span class="trust-text"><strong>100% authentique</strong><br>garanti</span>
+    </div>
+    <div class="trust-item">
+      <svg class="trust-icon" viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+      <span class="trust-text"><strong>Sourcing officiel</strong><br>marques</span>
+    </div>
+  </div>
+
+  <div class="vitrine">
+    <div class="vitrine-head">
+      <h2 class="vitrine-title">La <em>Sélection</em><span class="vitrine-meta">Avril 2026</span></h2>
+      <a href="#" class="vitrine-link">
+        Tout voir
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+      </a>
+    </div>
+    <div class="product-grid">
+      <a href="#product" class="product-card">
+        <div class="product-img"><span class="product-img-placeholder">Margiela<br>Replica</span></div>
+        <div class="product-info">
+          <div class="product-brand">Maison Margiela</div>
+          <div class="product-name">Replica Bleu Marine</div>
+          <div class="product-price">129,00 €</div>
+        </div>
+      </a>
+      <a href="#product" class="product-card">
+        <div class="product-img"><span class="product-img-placeholder">LV<br>Keepall</span></div>
+        <div class="product-info">
+          <div class="product-brand">Louis Vuitton</div>
+          <div class="product-name">Keepall Damier 50</div>
+          <div class="product-price">142,00 €</div>
+        </div>
+      </a>
+      <a href="#product" class="product-card">
+        <div class="product-img"><span class="product-img-placeholder">Casablanca<br>Veste</span></div>
+        <div class="product-info">
+          <div class="product-brand">Casablanca</div>
+          <div class="product-name">Veste cuir cropped</div>
+          <div class="product-price">327,00 €</div>
+        </div>
+      </a>
+      <a href="#product" class="product-card">
+        <div class="product-img"><span class="product-img-placeholder">Loro Piana<br>Casquette</span></div>
+        <div class="product-info">
+          <div class="product-brand">Loro Piana</div>
+          <div class="product-name">Casquette baseball</div>
+          <div class="product-price">43,00 €</div>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════
+     ÉTAPE 2 — CHOIX PRODUIT
+═══════════════════════════════════════════════════════════ -->
+<div class="step-divider">
+  <span class="step-label">
+    <span class="step-label-num">02</span>
+    Choix produit — Page Produit dynamique
+  </span>
+</div>
+
+<section id="product">
+  <div class="pdp">
+    <div class="pdp-image">
+      <span class="pdp-image-tag">Authentique</span>
+      <span class="pdp-image-label">Margiela<br>Replica</span>
+    </div>
+    <div class="pdp-info">
+      <div class="pdp-brand">Maison Margiela</div>
+      <h2 class="pdp-title">Replica<br><em>Sneakers</em></h2>
+      <div class="pdp-price-row">
+        <span class="pdp-price">129,00 €</span>
+        <span class="pdp-price-sub">Livraison offerte</span>
+      </div>
+
+      <div class="pdp-section-label">Coloris<span class="active-name">Bleu Marine</span></div>
+      <div class="pdp-colors">
+        <div class="color-swatch active" style="background:#1a3040" title="Bleu Marine"></div>
+        <div class="color-swatch" style="background:#f5f2ec" title="Crème"></div>
+        <div class="color-swatch" style="background:#1a1a1a" title="Noir"></div>
+        <div class="color-swatch" style="background:#8b6f47" title="Camel"></div>
+        <div class="color-swatch" style="background:#a83232" title="Rouge"></div>
+      </div>
+
+      <a href="#assistant" class="pdp-cta">
+        Recevoir cette pièce
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+      </a>
+
+      <div class="pdp-trust">
+        <div class="pdp-trust-badge">
+          <svg viewBox="0 0 24 24"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+          100% authentique
+        </div>
+        <div class="pdp-trust-badge">
+          <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+          Sourcing officiel
+        </div>
+        <div class="pdp-trust-badge">
+          <svg viewBox="0 0 24 24"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/></svg>
+          48h en Europe
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════
+     ÉTAPE 3 — COORDONNÉES
+═══════════════════════════════════════════════════════════ -->
+<div class="step-divider">
+  <span class="step-label">
+    <span class="step-label-num">03</span>
+    Coordonnées — Assistant pré-rempli
+  </span>
+</div>
+
+<section id="assistant">
+  <div class="assistant-card">
+    <div class="product-chip">
+      <div class="chip-thumb"><span class="chip-thumb-text">M·R</span></div>
+      <div class="chip-info">
+        <div class="chip-brand">Maison Margiela</div>
+        <div class="chip-name">Replica · Bleu Marine · 129 €</div>
+      </div>
+      <div class="chip-change">Changer</div>
+    </div>
+
+    <div class="progress-wrap">
+      <div class="progress-bar">
+        <div class="progress-step done"></div>
+        <div class="progress-step done"></div>
+        <div class="progress-step done"></div>
+        <div class="progress-step done"></div>
+        <div class="progress-step active"></div>
+        <div class="progress-step"></div>
+        <div class="progress-step"></div>
+      </div>
+      <div class="progress-label">Étape 5 sur 7 · <span class="current">Coordonnées</span></div>
+    </div>
+
+    <div class="form-eyebrow">Presque fini</div>
+    <h3 class="form-title">Tes coordonnées</h3>
+    <p class="form-sub">On les utilise uniquement pour la livraison et le suivi de commande.</p>
+
+    <div class="form-grid">
+      <input class="form-input" placeholder="Prénom" value="Mohamed-Hedi">
+      <input class="form-input" placeholder="Nom" value="Saied">
+      <input class="form-input full" placeholder="Email" type="email" value="deddys121gamer@gmail.com">
+      <input class="form-input full" placeholder="Téléphone" type="tel" value="+33 6 ── ── ── ──">
+      <input class="form-input full" placeholder="Adresse de livraison">
+      <input class="form-input" placeholder="Code postal">
+      <input class="form-input" placeholder="Ville">
+    </div>
+
+    <a href="#payment" class="gold-cta">
+      Continuer vers le paiement
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+    </a>
+
+    <div class="trust-line">
+      <span><svg viewBox="0 0 24 24"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/></svg> Chez toi en 48h</span>
+      <span><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M9 12l2 2 4-4"/></svg> Satisfait ou remboursé</span>
+      <span><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg> Réponse sous 24h</span>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════
+     ÉTAPE 4 — PAIEMENT SÉCURISÉ
+═══════════════════════════════════════════════════════════ -->
+<div class="step-divider">
+  <span class="step-label">
+    <span class="step-label-num">04</span>
+    Paiement — Stripe Checkout
+  </span>
+</div>
+
+<section id="payment">
+  <div class="checkout">
+    <div class="checkout-panel">
+      <div class="checkout-header">
+        <h3 class="checkout-title">Récapitulatif</h3>
+      </div>
+
+      <div class="order-line">
+        <div class="order-thumb"></div>
+        <div class="order-info">
+          <div class="order-brand">Maison Margiela</div>
+          <div class="order-name">Replica Sneakers</div>
+          <div class="order-meta">Bleu Marine · Pointure 42</div>
+        </div>
+        <div class="order-price">129 €</div>
+      </div>
+
+      <div class="order-totals">
+        <div class="total-row">
+          <span>Sous-total</span>
+          <span>129,00 €</span>
+        </div>
+        <div class="total-row">
+          <span>Livraison Europe</span>
+          <span class="free-tag">Offerte</span>
+        </div>
+        <div class="total-row grand">
+          <span class="label">Total à payer</span>
+          <span class="value">129,00 €</span>
+        </div>
+      </div>
+
+      <div class="checkout-trust">
+        <div class="checkout-trust-item">
+          <svg viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+          Paiement sécurisé via Stripe
+        </div>
+        <div class="checkout-trust-item">
+          <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          Vos données ne sont jamais stockées
+        </div>
+        <div class="checkout-trust-item">
+          <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+          Conforme PCI DSS niveau 1
+        </div>
+      </div>
+    </div>
+
+    <div class="checkout-panel">
+      <div class="checkout-header">
+        <h3 class="checkout-title">Paiement par carte</h3>
+        <div class="stripe-badge">
+          <svg viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+          Stripe
+        </div>
+      </div>
+
+      <div class="pay-form">
+        <div class="pay-input-wrap full">
+          <input class="pay-input" placeholder="Numéro de carte" value="4242 4242 4242 4242" readonly>
+          <div class="card-icons">
+            <div class="card-icon visa">VISA</div>
+            <div class="card-icon mc">MC</div>
+            <div class="card-icon amex">AMEX</div>
+          </div>
+        </div>
+        <input class="pay-input" placeholder="MM / AA" value="12 / 28" readonly>
+        <input class="pay-input" placeholder="CVV" value="123" readonly>
+        <input class="pay-input full" placeholder="Nom sur la carte" value="MOHAMED-HEDI SAIED" readonly>
+      </div>
+
+      <a href="#confirmation" class="gold-cta pay-cta">
+        Payer 129,00 €
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════
+     ÉTAPE 5 — CONFIRMATION
+═══════════════════════════════════════════════════════════ -->
+<div class="step-divider">
+  <span class="step-label">
+    <span class="step-label-num">05</span>
+    Confirmation — Commande validée
+  </span>
+</div>
+
+<section id="confirmation">
+  <div class="confirm">
+    <div class="check-circle">
+      <svg viewBox="0 0 24 24"><polyline points="5 12 10 17 19 8"/></svg>
+    </div>
+
+    <div class="confirm-eyebrow">Merci pour ta commande</div>
+    <h2 class="confirm-title">Commande <em>confirmée</em></h2>
+    <div class="confirm-num">Numéro de suivi · <strong>ALL-2026-0042</strong></div>
+
+    <div class="recap-card">
+      <div class="recap-row">
+        <span class="recap-label">Article</span>
+        <span class="recap-value">Maison Margiela Replica · Bleu Marine</span>
+      </div>
+      <div class="recap-row">
+        <span class="recap-label">Pointure</span>
+        <span class="recap-value">42</span>
+      </div>
+      <div class="recap-row">
+        <span class="recap-label">Total payé</span>
+        <span class="recap-value"><strong>129,00 €</strong></span>
+      </div>
+      <div class="recap-row">
+        <span class="recap-label">Livraison estimée</span>
+        <span class="recap-value">Mardi 21 avril</span>
+      </div>
+      <div class="recap-row">
+        <span class="recap-label">Confirmation envoyée à</span>
+        <span class="recap-value">deddys121gamer@gmail.com</span>
+      </div>
+    </div>
+
+    <div class="confirm-ctas">
+      <a href="#" class="secondary-cta">
+        Suivre ma commande
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+      </a>
+      <a href="#discovery" class="secondary-cta">Continuer mes achats</a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════
+     FLOATING WIDGETS
+═══════════════════════════════════════════════════════════ -->
+<a href="#" class="whatsapp-option" title="Préfères WhatsApp ?">
+  <div class="wa-icon">
+    <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
+  </div>
+  <span class="wa-text">Préfères <em>WhatsApp</em> ?</span>
+</a>
+
+<div class="crisp-widget" title="Chat en ligne">
+  <span class="pulse-dot"></span>
+  <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+</div>
+
+<script>
+  // Subtle scroll-triggered reveals
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('in-view');
+      }
+    });
+  }, { threshold: 0.1, rootMargin: '0px 0px -10% 0px' });
+
+  document.querySelectorAll('section > *, .step-divider').forEach(el => {
+    el.classList.add('scroll-reveal');
+    observer.observe(el);
+  });
+</script>
+
+</body>
+</html>
