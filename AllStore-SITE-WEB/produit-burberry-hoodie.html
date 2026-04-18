@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Burberry Letter Graphic Cotton Blend Zip Hoodie — Réplique premium. Livraison offerte.">
+  <meta name="description" content="Burberry Letter Graphic Cotton Blend Zip Hoodie — Pièce authentique sourcée officiellement. Livraison offerte.">
   <link rel="icon" type="image/png" href="shopping_bag_icon.png">
   <title>Burberry Zip Hoodie | ALLSTORE 24/7</title>
   <link rel="stylesheet" href="style.css">
@@ -110,7 +110,7 @@
         <div class="pdp-section-title">Taille</div>
         <div class="pdp-sizes" id="pdp-sizes"></div>
         <div class="pdp-actions">
-          <button class="pdp-btn-cart" id="pdp-cart-btn" onclick="pdpAddCart()">Ajouter au panier</button>
+          <button class="pdp-btn-cart" id="pdp-cart-btn" onclick="window.location.href='assistant.html?product=burberry-gris'">Recevoir cette pièce</button>
           <button class="pdp-btn-wl" id="pdp-wl-btn" onclick="pdpToggleWL()">
             <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
           </button>
@@ -195,7 +195,7 @@
     var id='burberry_hoodie_'+currentColor.id;
     var cart=JSON.parse(localStorage.getItem('als_cart')||'[]');
     var btn=document.getElementById('pdp-cart-btn');
-    if(cart.some(function(i){return i.id===id})){btn.textContent='✓ Dans le panier';btn.classList.add('in-cart')}else{btn.textContent='Ajouter au panier';btn.classList.remove('in-cart')}
+    if(cart.some(function(i){return i.id===id})){btn.textContent='✓ Sélectionné';btn.classList.add('in-cart')}else{btn.textContent='Recevoir cette pièce';btn.classList.remove('in-cart')}
     var wl=JSON.parse(localStorage.getItem('als_wishlist')||'[]');
     document.getElementById('pdp-wl-btn').classList.toggle('wl-active',wl.some(function(i){return i.id===id}));
   }

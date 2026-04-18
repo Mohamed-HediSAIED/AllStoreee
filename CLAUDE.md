@@ -80,3 +80,16 @@ Ces règles s'appliquent à TOUT texte visible par les clients (site, réseaux, 
 | Dépêchez-vous | Plus que X places |
 | Abonnez-vous | Rejoins la communauté |
 | Contactez-nous | On en parle ? |
+| Réplique / Replica | Pièce authentique / Sourcé officiellement (sauf "Maison Margiela Replica" = nom de modèle) |
+| Sourcing d'exception | Sourcing officiel marques |
+| Luxe accessible | Reseller authentique luxe + streetwear |
+| Imitation / Copie | Pièce authentique sourcée officiellement |
+| Style inspiré | Pièce officielle |
+
+## Positionnement business
+
+ALLSTORE est un **reseller authentique** : on achète neuf chez les marques officielles (lv.com, burberry.com, casablancaparis.com, etc.) et on revend avec marge. Modèle StockX / GOAT / Vestiaire Collective. **100% légal**.
+
+- JAMAIS dire "réplique", "copie", "dupe", "imitation", "qualité 1:1", "grade miroir"
+- TOUJOURS dire "authentique", "sourcing officiel", "neuf en boutique"
+- Exception unique : "Maison Margiela Replica" = vrai nom du modèle Margiela (la sneaker s'appelle "Replica")
