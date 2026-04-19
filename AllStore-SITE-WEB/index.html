@@ -47,11 +47,13 @@
   .hero-als img.hero-bg{display:none}
   .hero-als .hero-overlay{display:none}
   .hero-als .hero-content{position:relative;z-index:2;text-align:center;padding:0 24px;max-width:900px}
-  .hero-als h1{font-family:'Poppins',sans-serif;font-size:clamp(26px,5vw,48px);font-weight:300;color:#fff;letter-spacing:.01em;line-height:1.2;margin:0 0 16px}
-  .hero-als h1 strong{font-weight:700}
+  .hero-als h1{font-family:'Poppins',sans-serif;font-size:clamp(30px,5.5vw,72px);font-weight:200;color:#fff;letter-spacing:-.02em;line-height:1.05;margin:0 0 22px}
+  .hero-als h1 strong{font-family:'Cormorant',serif;font-weight:500;font-style:italic;color:#e9c243;letter-spacing:-.005em}
   .hero-als .hero-desc{font-family:'Poppins',sans-serif;font-size:clamp(12px,1.5vw,16px);color:rgba(255,255,255,.75);margin:0 0 32px;font-weight:300}
-  .hero-als .hero-btn{display:inline-block;font-family:'Poppins',sans-serif;font-size:12px;font-weight:600;letter-spacing:.15em;text-transform:uppercase;color:#fff;background:rgba(255,255,255,.18);backdrop-filter:blur(40px) saturate(180%);-webkit-backdrop-filter:blur(40px) saturate(180%);border:1px solid rgba(255,255,255,.25);padding:16px 48px;border-radius:30px;text-decoration:none;transition:all .3s;box-shadow:none}
-  .hero-als .hero-btn:hover{background:rgba(255,255,255,.28);border-color:rgba(255,255,255,.35)}
+  .hero-als .hero-btn{display:inline-flex;align-items:center;gap:14px;font-family:'Poppins',sans-serif;font-size:11px;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:#fff;background:rgba(255,255,255,.10);backdrop-filter:blur(40px) saturate(180%);-webkit-backdrop-filter:blur(40px) saturate(180%);border:1px solid rgba(255,255,255,.22);padding:18px 44px;border-radius:980px;text-decoration:none;transition:all .5s cubic-bezier(.2,.8,.2,1);box-shadow:none}
+  .hero-als .hero-btn:hover{transform:translateY(-2px);border-color:#e9c243;box-shadow:0 12px 40px rgba(233,194,67,.15)}
+  .hero-als .hero-btn svg{width:12px;height:12px;transition:transform .4s cubic-bezier(.2,.8,.2,1)}
+  .hero-als .hero-btn:hover svg{transform:translateX(6px)}
 
   /* ---------- SEARCH BAR ---------- */
   .als-search-sec{padding:20px 20px 10px;background:var(--bg2,#f5f2ec)}
@@ -83,8 +85,8 @@
   /* ---------- SECTIONS ---------- */
   .als-sec{padding:40px 0 36px;background:transparent}
   .als-sec-head{text-align:center;margin-bottom:20px;padding:0 20px}
-  .als-sec-title{font-family:'Poppins',sans-serif;font-size:22px;font-weight:800;text-transform:uppercase;color:#fff;margin:0;letter-spacing:.02em}
-  .als-sec-title em{font-family:'Poppins',sans-serif;font-weight:500;font-style:italic;color:rgba(255,255,255,.5)}
+  .als-sec-title{font-family:'Poppins',sans-serif;font-size:28px;font-weight:200;text-transform:none;color:#fff;margin:0;letter-spacing:-.02em}
+  .als-sec-title em{font-family:'Cormorant',serif;font-weight:500;font-style:italic;color:#e9c243;letter-spacing:.005em}
 
   /* ---------- FILTERS ---------- */
   .als-filters{display:flex;gap:8px;padding:0 20px;margin-bottom:20px;flex-wrap:wrap;justify-content:center}
@@ -326,9 +328,9 @@
 
   /* ---------- TRUST BAND — sous le hero ---------- */
   .trust-band{display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:clamp(16px,4vw,56px);padding:22px clamp(16px,4vw,40px);margin:0 auto clamp(16px,4vh,32px);max-width:1200px;border-top:1px solid var(--fx-border-subtle,rgba(255,255,255,.08));border-bottom:1px solid var(--fx-border-subtle,rgba(255,255,255,.08))}
-  .trust-item{display:inline-flex;align-items:center;gap:10px;color:var(--fx-text-secondary,rgba(255,255,255,.72));font-family:'Poppins',sans-serif;font-size:13px;font-weight:500;letter-spacing:.01em;line-height:1.2}
-  .trust-item strong{color:var(--fx-text-primary,#fff);font-weight:700}
-  .trust-item svg{flex-shrink:0;opacity:.85}
+  .trust-item{display:inline-flex;align-items:center;gap:10px;color:var(--fx-text-secondary,rgba(255,255,255,.72));font-family:'Poppins',sans-serif;font-size:13px;font-weight:400;letter-spacing:.01em;line-height:1.2}
+  .trust-item strong{color:var(--fx-text-primary,#fff);font-weight:600}
+  .trust-item svg{flex-shrink:0;stroke:#e9c243;opacity:1}
   .trust-item-sep{width:1px;height:20px;background:var(--fx-border-subtle,rgba(255,255,255,.12));display:none}
   @media(min-width:720px){.trust-item-sep{display:block}}
   @media(max-width:520px){.trust-band{gap:14px;padding:18px 16px}.trust-item{font-size:12px}}
@@ -348,7 +350,7 @@
   <div class="hero-content">
     <h1>Le <strong>luxe</strong> accessible,<br>sans <strong>compromis.</strong></h1>
     <p class="hero-desc">Reseller authentique. Sourcing officiel marques, livraison partout en Europe.</p>
-    <a href="boutique.html" class="hero-btn">DÉCOUVRIR LA BOUTIQUE</a>
+    <a href="boutique.html" class="hero-btn">Découvrir la boutique<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
   </div>
 </section>
 
@@ -388,6 +390,7 @@
 <section class="als-sec">
   <div class="als-sec-head">
     <h2 class="als-sec-title">La <em>Sélection</em></h2>
+    <div style="font-family:'Cormorant',serif;font-style:italic;font-size:13px;color:rgba(255,255,255,.4);letter-spacing:.05em;margin-top:4px">Avril 2026</div>
   </div>
   <div class="als-scroll-wrap">
   <div class="als-scroll-arrow left" onclick="scrollRow(this,-1)"><svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg></div>

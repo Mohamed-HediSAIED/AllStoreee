@@ -132,12 +132,14 @@
           .size-grid{grid-template-columns:repeat(3,1fr)}
         }
         /* Product recap card */
-        .als-product-recap{display:flex;align-items:center;gap:16px;background:var(--bg2);border-radius:18px;padding:14px 18px;margin-bottom:24px}
-        .als-product-recap img{width:64px;height:64px;border-radius:12px;object-fit:cover;background:#fff;flex-shrink:0}
+        .als-product-recap{display:flex;align-items:center;gap:14px;background:rgba(0,0,0,.25);border:1px solid rgba(255,255,255,.10);border-radius:18px;padding:14px;margin-bottom:28px}
+        .als-product-recap img{width:56px;height:56px;border-radius:12px;object-fit:cover;background:#fff;flex-shrink:0}
         .als-product-recap-info{flex:1;min-width:0}
-        .als-product-recap-brand{font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:.1em;color:var(--gold2);display:block}
-        .als-product-recap-name{font-family:'Poppins',sans-serif;font-size:14px;font-weight:600;color:var(--noir);display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-        .als-product-recap-price{font-family:'Poppins',sans-serif;font-size:14px;font-weight:700;color:var(--noir);display:block;margin-top:2px}
+        .als-product-recap-brand{font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:.22em;color:#e9c243;display:block;margin-bottom:4px}
+        .als-product-recap-name{font-family:'Poppins',sans-serif;font-size:13px;font-weight:400;color:#fff;display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;letter-spacing:.005em}
+        .als-product-recap-price{display:none}
+        .als-product-recap-change{font-family:'Poppins',sans-serif;font-size:10px;font-weight:500;color:rgba(255,255,255,.5);cursor:pointer;letter-spacing:.15em;text-transform:uppercase;padding:8px 14px;border:1px solid rgba(255,255,255,.10);border-radius:980px;transition:all .3s;flex-shrink:0;text-decoration:none;background:transparent}
+        .als-product-recap-change:hover{border-color:#e9c243;color:#e9c243}
         /* Cart recap step */
         .cart-list{display:flex;flex-direction:column;gap:10px;margin-bottom:20px}
         .cart-item{display:flex;align-items:flex-start;gap:14px;padding:16px 18px;background:rgba(255,255,255,.08);border-radius:16px;border:1px solid rgba(255,255,255,.08)}
@@ -178,6 +180,7 @@
             <span class="als-product-recap-name" id="recapName"></span>
             <span class="als-product-recap-price" id="recapPrice"></span>
         </div>
+        <a href="boutique.html" class="als-product-recap-change" id="recapChange">Changer</a>
     </div>
 
     <div class="progress-wrap">
@@ -811,30 +814,37 @@ function submitOrder() {
   order.ref = p.name;
   document.getElementById('refInput').value = p.name;
 
+  // Pre-match color from product
+  if(p.color){
+    var pc = p.color.toLowerCase();
+    var matched = false;
+    document.querySelectorAll('#colorGrid .color-chip').forEach(function(chip){
+      var cc = chip.dataset.color.toLowerCase();
+      if(!matched && (pc.indexOf(cc) !== -1 || cc.indexOf(pc) !== -1)){
+        chip.classList.add('selected');
+        order.color = chip.dataset.color;
+        document.getElementById('btnStep4').disabled = false;
+        matched = true;
+      }
+    });
+    if(!matched) order.color = p.color;
+  }
+
   var cfg = step3Config[type] || { mode:'skip' };
 
   if(cfg.mode === 'skip'){
+    // Article + Marque + Couleur pré-remplis → skip directement aux coordonnées
     skipStep3 = true;
     order.size = '—';
-    // Try to match color
-    var matched = false;
-    if(p.color){
-      var pc = p.color.toLowerCase();
-      document.querySelectorAll('#colorGrid .color-chip').forEach(function(chip){
-        var cc = chip.dataset.color.toLowerCase();
-        if(!matched && (pc.indexOf(cc) !== -1 || cc.indexOf(pc) !== -1)){
-          chip.classList.add('selected');
-          order.color = chip.dataset.color;
-          document.getElementById('btnStep4').disabled = false;
-          matched = true;
-        }
-      });
-    }
-    buildRecap('recap4', [{ l:'Article', v:type }, { l:'Marque', v:p.brand }]);
-    buildRecap('recap5', [{ l:'Article', v:type }, { l:'Marque', v:p.brand }]);
-    goStep(4);
+    if(!order.color) order.color = '—';
+    order.budget = '—';
+    saveCurrentArticle();
+    renderCartList();
+    goStep(7);
   } else {
+    // Il faut encore la taille/pointure — passe à l'étape 3 puis saut direct
     skipStep3 = false;
+    window.__fromPDP = true;
     document.getElementById('s3eyebrow').textContent = cfg.eyebrow;
     document.getElementById('s3title').textContent = cfg.title;
     document.getElementById('s3sub').textContent = cfg.sub;
@@ -846,6 +856,16 @@ function submitOrder() {
       return '<div class="size-chip" data-size="' + s + '">' + s + '</div>';
     }).join('');
     buildRecap('recap3', [{ l:'Article', v:type }, { l:'Marque', v:p.brand }]);
+    // Intercept step 3 continue button: bypass color/precisions, save & go to coordonnées
+    var btn3 = document.getElementById('btnStep3');
+    btn3.onclick = function(){
+      if(!order.size) return;
+      if(!order.color) order.color = '—';
+      order.budget = '—';
+      saveCurrentArticle();
+      renderCartList();
+      goStep(7);
+    };
     goStep(3);
   }
 })();

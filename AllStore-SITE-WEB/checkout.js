@@ -425,8 +425,10 @@
   /* ── Post-payment ── */
   function handlePaymentSuccess(method, paymentId) {
     // Save order to session
+    var _year = new Date().getFullYear();
+    var _num = (Date.now() % 10000).toString().padStart(4, '0');
     var order = {
-      id: 'ALS-' + Date.now().toString(36).toUpperCase(),
+      id: 'ALL-' + _year + '-' + _num,
       items: cart,
       subtotal: subtotal,
       shipping: shipping,
