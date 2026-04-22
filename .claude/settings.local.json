@@ -5,7 +5,9 @@
       "WebFetch(domain:la-saperie.fr)",
       "mcp__8585bd2f-2704-4421-ab82-2f2d78b35c21__get_project",
       "Bash(vercel --prod --yes)",
-      "Bash(npx vercel:*)"
+      "Bash(npx vercel:*)",
+      "Bash(node -e \"const f=require\\('fs'\\);const c=f.readFileSync\\('products-data.js','utf8'\\);const m=c.match\\(/const PRODUCTS\\\\s*=\\\\s*\\({[\\\\s\\\\S]*?}\\);/\\);const p=eval\\('\\('+m[1]+'\\)'\\);const ids=Object.keys\\(p\\);console.log\\('Ganni:',ids.filter\\(i=>i.includes\\('ganni'\\)||p[i].brand.toLowerCase\\(\\).includes\\('ganni'\\)\\).slice\\(0,5\\)\\);console.log\\('Louboutin:',ids.filter\\(i=>i.includes\\('louboutin'\\)||p[i].brand.toLowerCase\\(\\).includes\\('louboutin'\\)\\).slice\\(0,5\\)\\);\")",
+      "Bash(node -e ' *)"
     ]
   }
 }

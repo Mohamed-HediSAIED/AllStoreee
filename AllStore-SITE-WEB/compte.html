@@ -426,7 +426,7 @@
     <a href="index.html" class="logo"><img src="shopping_bag_icon.png" alt="ALLSTORE"></a>
     <ul class="nav-links">
       <li><a href="index.html">Accueil</a></li>
-      <li><a href="boutique.html">Boutique</a></li>
+      
       <li><a href="assistant.html">Assistant</a></li>
       <li><a href="suivi.html">Suivi</a></li>
       <li><a href="apropos.html">À Propos</a></li>
@@ -564,8 +564,8 @@
       el.innerHTML = `
         <div class="compte-empty">
           <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
-          <p>Aucun favori pour le moment.<br>Explorez notre boutique et ajoutez vos coups de coeur.</p>
-          <a href="boutique.html">Decouvrir la boutique</a>
+          <p>Aucun favori pour le moment.<br>Explorez la sélection et ajoutez vos coups de coeur.</p>
+          <a href="index.html">Découvrir la sélection</a>
         </div>`;
       return;
     }
@@ -630,7 +630,7 @@
         <div class="compte-empty">
           <svg viewBox="0 0 24 24"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
           <p>Aucune commande pour le moment.<br>Vos commandes apparaitront ici apres votre premier achat.</p>
-          <a href="boutique.html">Commencer mes achats</a>
+          <a href="index.html">Commencer mes achats</a>
         </div>`;
       return;
     }
@@ -746,10 +746,6 @@
       <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
       Accueil
     </a>
-    <a href="boutique.html" class="bnav-item" data-nav="1">
-      <svg viewBox="0 0 24 24"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
-      Boutique
-    </a>
     <a href="assistant.html" class="bnav-item" data-nav="2">
       <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
       Assistant
@@ -770,7 +766,7 @@
   var path = window.location.pathname.split('/').pop() || 'index.html';
   var activeHref = null;
   if(path === 'index.html' || path === '') activeHref = 'index.html';
-  else if(path === 'assistant.html' || path === 'boutique.html' || path.indexOf('produit') === 0) activeHref = 'assistant.html';
+  else if(path === 'assistant.html' || path === 'index.html' || path.indexOf('produit') === 0) activeHref = 'assistant.html';
   else if(path === 'suivi.html') activeHref = 'suivi.html';
   if(activeHref){
     document.querySelectorAll('.bnav-item').forEach(function(item){

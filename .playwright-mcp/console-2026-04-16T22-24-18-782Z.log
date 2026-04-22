@@ -1,0 +1,7 @@
+[     199ms] [ERROR] Failed to load resource: the server responded with a status of 404 (File not found) @ http://localhost:8765/assets/fonts/SF-Pro-Text-Medium.woff2:0
+[     199ms] [ERROR] Failed to load resource: the server responded with a status of 404 (File not found) @ http://localhost:8765/assets/fonts/SF-Pro-Text-Semibold.woff2:0
+[     200ms] [ERROR] Failed to load resource: the server responded with a status of 404 (File not found) @ http://localhost:8765/assets/fonts/SF-Pro-Text-Regular.woff2:0
+[     200ms] [ERROR] Failed to load resource: the server responded with a status of 404 (File not found) @ http://localhost:8765/assets/fonts/SF-Pro-Display-Bold.woff2:0
+[     200ms] [ERROR] Failed to load resource: the server responded with a status of 404 (File not found) @ http://localhost:8765/assets/fonts/SF-Pro-Display-Regular.woff2:0
+[     200ms] [ERROR] Failed to load resource: the server responded with a status of 404 (File not found) @ http://localhost:8765/assets/fonts/SF-Pro-Text-Bold.woff2:0
+[     226ms] Unexpected identifier 'une'

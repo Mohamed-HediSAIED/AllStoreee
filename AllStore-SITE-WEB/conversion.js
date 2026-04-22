@@ -199,10 +199,10 @@
     var pdp=document.querySelector('.pdp');
     if(!pdp)return;
     var products=[
-      {brand:'Adidas',name:'Samba OG',price:'95 €',img:'adidas_samba.png',href:'boutique.html'},
-      {brand:'Louis Vuitton',name:'Bracelet cuir',price:'85 €',img:'bracelet_lv.png',href:'boutique.html'},
-      {brand:'Prada',name:'Lunettes SPR',price:'120 €',img:'lunette_prada.jpg',href:'boutique.html'},
-      {brand:'Dyson',name:'Airwrap',price:'180 €',img:'lisseur_dyson.png',href:'boutique.html'},
+      {brand:'Adidas',name:'Samba OG',price:'95 €',img:'adidas_samba.png',href:'index.html'},
+      {brand:'Louis Vuitton',name:'Bracelet cuir',price:'85 €',img:'bracelet_lv.png',href:'index.html'},
+      {brand:'Prada',name:'Lunettes SPR',price:'120 €',img:'lunette_prada.jpg',href:'index.html'},
+      {brand:'Dyson',name:'Airwrap',price:'180 €',img:'lisseur_dyson.png',href:'index.html'},
     ];
     var section=document.createElement('div');
     section.className='cross-sell';
@@ -294,7 +294,7 @@
             ALLSTORE10
             <small>Cliquer pour copier</small>
           </div>
-          <a href="boutique.html" class="welcome-popup-btn">Découvrir la boutique</a>
+          <a href="index.html" class="welcome-popup-btn">Découvrir la sélection</a>
         </div>
       `;
       document.body.appendChild(overlay);

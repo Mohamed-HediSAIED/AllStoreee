@@ -191,7 +191,7 @@
     iconsWrap.className='nav-icons';
     // Bouton recherche
     const searchBtn=document.createElement('a');
-    searchBtn.id='search-nav-btn';searchBtn.href='boutique.html';searchBtn.setAttribute('aria-label','Rechercher');
+    searchBtn.id='search-nav-btn';searchBtn.href='index.html#selec-grid';searchBtn.setAttribute('aria-label','Rechercher');
     searchBtn.innerHTML=`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>`;
     iconsWrap.appendChild(searchBtn);
     // Bouton compte
@@ -456,7 +456,7 @@ window.submitNewsletter = function() {
   if(!('connection' in navigator) || !navigator.connection.saveData){
     // Pages principales a precharger
     var pages = [
-      'index.html','boutique.html','assistant.html','suivi.html',
+      'index.html','assistant.html','suivi.html',
       'apropos.html','contact.html','panier.html','produit-detail.html',
       'comment.html','faq.html','livraison.html','checkout.html'
     ];

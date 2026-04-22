@@ -1,0 +1,191 @@
+- generic [active] [ref=e1]:
+  - banner [ref=e2]:
+    - navigation [ref=e3]:
+      - link "ALLSTORE" [ref=e4] [cursor=pointer]:
+        - /url: index.html
+        - img "ALLSTORE" [ref=e5]
+      - link "Mon compte" [ref=e7] [cursor=pointer]:
+        - /url: compte.html
+        - img [ref=e8]
+      - button "Ouvrir le menu" [ref=e11] [cursor=pointer]
+  - generic [ref=e15]: Livraison offerte en Europe
+  - generic [ref=e17]:
+    - heading "Le luxe accessible. Sans compromis." [level=1] [ref=e18]:
+      - text: Le luxe accessible.
+      - text: Sans compromis.
+    - paragraph [ref=e19]: Sourcing d'exception, qualité vérifiée, livraison partout en Europe.
+    - link "Découvrir la boutique" [ref=e20] [cursor=pointer]:
+      - /url: assistant.html
+  - generic [ref=e21]:
+    - heading "La Sélection" [level=2] [ref=e23]:
+      - text: La
+      - emphasis [ref=e24]: Sélection
+    - generic [ref=e25]:
+      - img [ref=e27] [cursor=pointer]
+      - img [ref=e30] [cursor=pointer]
+      - generic [ref=e32]:
+        - link "Margiela Replica MARGIELA REPLICA 129,00€" [ref=e33] [cursor=pointer]:
+          - /url: assistant.html?product=margiela-1
+          - img "Margiela Replica" [ref=e35]
+          - generic [ref=e36]:
+            - generic [ref=e37]: MARGIELA REPLICA
+            - generic [ref=e38]: 129,00€
+        - link "Ganni Bou GANNI BOU 121,00€" [ref=e39] [cursor=pointer]:
+          - /url: assistant.html
+          - img "Ganni Bou" [ref=e41]
+          - generic [ref=e42]:
+            - generic [ref=e43]: GANNI BOU
+            - generic [ref=e44]: 121,00€
+        - link "Courrèges Veste COURRÈGES VESTE 327,00€" [ref=e45] [cursor=pointer]:
+          - /url: assistant.html?product=courreges-veste-1
+          - img "Courrèges Veste" [ref=e47]
+          - generic [ref=e48]:
+            - generic [ref=e49]: COURRÈGES VESTE
+            - generic [ref=e50]: 327,00€
+        - link "Nike Mind 001 NIKE MIND 001 92,00€" [ref=e51] [cursor=pointer]:
+          - /url: assistant.html?product=nike-mind-1
+          - img "Nike Mind 001" [ref=e53]
+          - generic [ref=e54]:
+            - generic [ref=e55]: NIKE MIND 001
+            - generic [ref=e56]: 92,00€
+        - link "Louis Vuitton Keepall LV KEEPALL PRE-OWNED 142,00€" [ref=e57] [cursor=pointer]:
+          - /url: assistant.html?product=lv-keepall-1
+          - img "Louis Vuitton Keepall" [ref=e59]
+          - generic [ref=e60]:
+            - generic [ref=e61]: LV KEEPALL PRE-OWNED
+            - generic [ref=e62]: 142,00€
+        - link "Casquette Loro Piana CASQUETTE LORO PIANA 43,00€" [ref=e63] [cursor=pointer]:
+          - /url: assistant.html?product=lp-casquette-noir
+          - img "Casquette Loro Piana" [ref=e65]
+          - generic [ref=e66]:
+            - generic [ref=e67]: CASQUETTE LORO PIANA
+            - generic [ref=e68]: 43,00€
+        - link "Louboutin Kate LOUBOUTIN KATE 107,00€" [ref=e69] [cursor=pointer]:
+          - /url: assistant.html
+          - img "Louboutin Kate" [ref=e71]
+          - generic [ref=e72]:
+            - generic [ref=e73]: LOUBOUTIN KATE
+            - generic [ref=e74]: 107,00€
+  - generic [ref=e76]:
+    - heading "AVIS CLIENTS" [level=2] [ref=e78]:
+      - text: AVIS
+      - emphasis [ref=e79]: CLIENTS
+    - generic [ref=e80]:
+      - img [ref=e82] [cursor=pointer]
+      - img [ref=e85] [cursor=pointer]
+      - generic [ref=e87]:
+        - generic [ref=e88]:
+          - generic [ref=e89]: ★★★★★
+          - paragraph [ref=e90]: "\"Replica Margiela reçues en 3 jours, qualité irréprochable. Je ne m'attendais pas à ce niveau de finition à ce prix.\""
+          - generic [ref=e91]: ALEXANDRE T.
+          - generic [ref=e92]: Maison Margiela Replica
+        - generic [ref=e93]:
+          - generic [ref=e94]: ★★★★★
+          - paragraph [ref=e95]: "\"Mon pull Burberry EKD est magnifique, la laine est douce et le logo parfaitement brodé. Chez moi en 48h, service au top.\""
+          - generic [ref=e96]: SARAH M.
+          - generic [ref=e97]: Burberry Pull EKD
+        - generic [ref=e98]:
+          - generic [ref=e99]: ★★★★★
+          - paragraph [ref=e100]: "\"Casquette Loro Piana Summer Walk, c'est exactement comme sur les photos. L'assistant m'a guidé pour la bonne taille.\""
+          - generic [ref=e101]: MEHDI B.
+          - generic [ref=e102]: Loro Piana Summer Walk Cap
+        - generic [ref=e103]:
+          - generic [ref=e104]: ★★★★★
+          - paragraph [ref=e105]: "\"Deuxième commande chez AllStore, cette fois un t-shirt Casablanca. Toujours satisfait, les couleurs sont éclatantes.\""
+          - generic [ref=e106]: LÉNA D.
+          - generic [ref=e107]: Casablanca T-Shirt Casa Way
+        - generic [ref=e108]:
+          - generic [ref=e109]: ★★★★★
+          - paragraph [ref=e110]: "\"Prada Cup reçues hier, le cuir est souple et la boîte impeccable. Livraison offerte en Europe, rien à redire.\""
+          - generic [ref=e111]: JULIEN R.
+          - generic [ref=e112]: Prada Cup
+        - generic [ref=e113]:
+          - generic [ref=e114]: ★★★★★
+          - paragraph [ref=e115]: "\"Le porte-cartes Miu Miu est sublime. Compact, élégant, et l'emballage était soigné. Je recommande à 100%.\""
+          - generic [ref=e116]: CAMILLE P.
+          - generic [ref=e117]: Miu Miu Porte-Cartes
+  - contentinfo [ref=e118]:
+    - generic [ref=e119]:
+      - heading "Accès VIP aux drops exclusifs" [level=3] [ref=e121]:
+        - text: Accès VIP
+        - emphasis [ref=e122]: aux drops exclusifs
+      - generic [ref=e123]:
+        - paragraph [ref=e124]: Sois le premier à découvrir nos nouvelles pièces et offres exclusives.
+        - generic [ref=e125]:
+          - textbox "Ton adresse email" [ref=e126]
+          - button "Rejoindre le club" [ref=e127] [cursor=pointer]
+        - paragraph
+    - generic [ref=e128]:
+      - generic [ref=e129]: ALLSTORE 24/7
+      - generic [ref=e131]: Sourcing d'Exception
+      - generic [ref=e133]: Depuis 2025
+    - generic [ref=e134]:
+      - generic [ref=e135]:
+        - heading "Catalogue" [level=4] [ref=e136]
+        - link "Commander un article" [ref=e137] [cursor=pointer]:
+          - /url: assistant.html
+        - link "Sourcing sur-mesure" [ref=e138] [cursor=pointer]:
+          - /url: assistant.html
+      - generic [ref=e139]:
+        - heading "Notre Monde" [level=4] [ref=e140]
+        - link "Notre histoire" [ref=e141] [cursor=pointer]:
+          - /url: apropos.html
+        - link "Comment ça marche" [ref=e142] [cursor=pointer]:
+          - /url: comment.html
+      - generic [ref=e143]:
+        - heading "Services" [level=4] [ref=e144]
+        - link "Sourcing sur-mesure" [ref=e145] [cursor=pointer]:
+          - /url: assistant.html
+        - link "Suivi de commande" [ref=e146] [cursor=pointer]:
+          - /url: suivi.html
+        - link "Nous contacter" [ref=e147] [cursor=pointer]:
+          - /url: contact.html
+        - link "FAQ" [ref=e148] [cursor=pointer]:
+          - /url: faq.html
+      - generic [ref=e149]:
+        - heading "Informations" [level=4] [ref=e150]
+        - link "Livraison" [ref=e151] [cursor=pointer]:
+          - /url: livraison.html
+        - link "Conditions générales" [ref=e152] [cursor=pointer]:
+          - /url: cgu.html
+        - link "Politique de confidentialité" [ref=e153] [cursor=pointer]:
+          - /url: confidentialite.html
+    - generic [ref=e155]:
+      - link "Instagram" [ref=e156] [cursor=pointer]:
+        - /url: https://instagram.com
+        - img [ref=e157]
+      - link "TikTok" [ref=e161] [cursor=pointer]:
+        - /url: https://tiktok.com
+        - img [ref=e162]
+    - generic [ref=e164]:
+      - generic [ref=e165]:
+        - link "Conditions d'utilisation" [ref=e166] [cursor=pointer]:
+          - /url: cgu.html
+        - link "Politique de confidentialité" [ref=e167] [cursor=pointer]:
+          - /url: confidentialite.html
+        - link "Politique de cookies" [ref=e168] [cursor=pointer]:
+          - /url: cookies.html
+      - generic [ref=e169]: © 2025 ALLSTORE 24/7 — Tous droits réservés
+  - generic [ref=e171]:
+    - generic [ref=e172]:
+      - generic [ref=e173]: Liste de souhait
+      - button "✕" [ref=e174]
+    - paragraph [ref=e176]:
+      - text: Votre liste de souhait est vide.
+      - text: Cliquez sur ❤ sur une pièce pour l'ajouter.
+    - link "Commander →" [ref=e177] [cursor=pointer]:
+      - /url: assistant.html
+  - navigation "Navigation principale" [ref=e178]:
+    - generic [ref=e179]:
+      - link "Accueil" [ref=e180] [cursor=pointer]:
+        - /url: index.html
+        - img [ref=e181]
+        - text: Accueil
+      - link "Boutique" [ref=e184] [cursor=pointer]:
+        - /url: assistant.html
+        - img [ref=e185]
+        - text: Boutique
+      - link "Suivi" [ref=e187] [cursor=pointer]:
+        - /url: suivi.html
+        - img [ref=e188]
+        - text: Suivi

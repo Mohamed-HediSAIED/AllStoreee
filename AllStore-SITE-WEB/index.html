@@ -21,7 +21,7 @@
     <a href="index.html" class="logo"><img src="shopping_bag_icon.png" alt="ALLSTORE"></a>
     <ul class="nav-links">
       <li><a href="index.html" class="active">Accueil</a></li>
-      <li><a href="boutique.html">Boutique</a></li>
+      
       <li><a href="assistant.html">Assistant</a></li>
       <li><a href="suivi.html">Suivi</a></li>
       <li><a href="apropos.html">À Propos</a></li>
@@ -348,7 +348,7 @@
   <div class="hero-content">
     <h1>Le <strong>luxe</strong> accessible,<br>sans <strong>compromis.</strong></h1>
     <p class="hero-desc">Reseller authentique. Sourcing officiel marques, livraison partout en Europe.</p>
-    <a href="boutique.html" class="hero-btn">DÉCOUVRIR LA BOUTIQUE</a>
+    <a href="index.html" class="hero-btn">DÉCOUVRIR LA SÉLECTION</a>
   </div>
 </section>
 
@@ -437,27 +437,27 @@
   <div class="als-scroll-arrow left" onclick="scrollRow(this,-1)"><svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg></div>
   <div class="als-scroll-arrow right" onclick="scrollRow(this,1)"><svg viewBox="0 0 24 24"><polyline points="9 6 15 12 9 18"/></svg></div>
   <div class="als-coll-grid">
-    <a href="boutique.html?cat=sacs" class="als-coll-card">
+    <a href="index.html?cat=sacs" class="als-coll-card">
       <img src="sac_chloe.png" alt="Chloé">
       <div class="als-coll-overlay"></div>
       <div class="als-coll-label"><span class="als-coll-name">SACS</span><span class="als-coll-btn">VOIR</span></div>
     </a>
-    <a href="boutique.html?cat=accessoires" class="als-coll-card">
+    <a href="index.html?cat=accessoires" class="als-coll-card">
       <img src="adidas_samba.png" alt="Giorgio Armani">
       <div class="als-coll-overlay"></div>
       <div class="als-coll-label"><span class="als-coll-name">ACCESSOIRES</span><span class="als-coll-btn">VOIR</span></div>
     </a>
-    <a href="boutique.html?cat=chaussures" class="als-coll-card">
+    <a href="index.html?cat=chaussures" class="als-coll-card">
       <img src="isabelmarant.png" alt="Isabel Marant">
       <div class="als-coll-overlay"></div>
       <div class="als-coll-label"><span class="als-coll-name">CHAUSSURES</span><span class="als-coll-btn">VOIR</span></div>
     </a>
-    <a href="boutique.html?cat=vetements" class="als-coll-card">
+    <a href="index.html?cat=vetements" class="als-coll-card">
       <img src="miumiu_top.png" alt="Miu Miu">
       <div class="als-coll-overlay"></div>
       <div class="als-coll-label"><span class="als-coll-name">VÊTEMENTS</span><span class="als-coll-btn">VOIR</span></div>
     </a>
-    <a href="boutique.html?cat=montres" class="als-coll-card">
+    <a href="index.html?cat=montres" class="als-coll-card">
       <img src="rolex_daytona.png" alt="Rolex Daytona">
       <div class="als-coll-overlay"></div>
       <div class="als-coll-label"><span class="als-coll-name">MONTRES</span><span class="als-coll-btn">VOIR</span></div>
@@ -990,12 +990,12 @@ function filterSel(secId, pill) {
   <!-- Footer columns -->
   <div class="foot-columns">
     <div class="foot-col">
-      <h4 class="foot-col-title">Boutique</h4>
-      <a href="boutique.html">Tous les articles</a>
-      <a href="boutique.html?cat=montres">Montres</a>
-      <a href="boutique.html?cat=sacs">Sacs</a>
-      <a href="boutique.html?cat=chaussures">Chaussures</a>
-      <a href="boutique.html?cat=lunettes">Lunettes</a>
+      <h4 class="foot-col-title">Sélection</h4>
+      <a href="index.html">Tous les articles</a>
+      <a href="index.html?cat=montres">Montres</a>
+      <a href="index.html?cat=sacs">Sacs</a>
+      <a href="index.html?cat=chaussures">Chaussures</a>
+      <a href="index.html?cat=lunettes">Lunettes</a>
     </div>
     <div class="foot-col">
       <h4 class="foot-col-title">Notre Monde</h4>
@@ -1223,10 +1223,6 @@ function scrollRow(arrow, dir) {
       <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
       Accueil
     </a>
-    <a href="boutique.html" class="bnav-item" data-nav="1">
-      <svg viewBox="0 0 24 24"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
-      Boutique
-    </a>
     <a href="assistant.html" class="bnav-item" data-nav="2">
       <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
       Assistant
@@ -1247,7 +1243,7 @@ function scrollRow(arrow, dir) {
   var path = window.location.pathname.split('/').pop() || 'index.html';
   var activeHref = null;
   if(path === 'index.html' || path === '') activeHref = 'index.html';
-  else if(path === 'assistant.html' || path === 'boutique.html' || path.indexOf('produit') === 0) activeHref = 'assistant.html';
+  else if(path === 'assistant.html' || path === 'index.html' || path.indexOf('produit') === 0) activeHref = 'assistant.html';
   else if(path === 'suivi.html') activeHref = 'suivi.html';
   if(activeHref){
     document.querySelectorAll('.bnav-item').forEach(function(item){

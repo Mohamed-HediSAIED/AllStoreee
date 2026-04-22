@@ -72,12 +72,12 @@
   </style>
   </head>
 <body>
-<header><nav><a href="index.html" class="logo"><img src="shopping_bag_icon.png" alt="ALLSTORE"></a><ul class="nav-links"><li><a href="index.html">Accueil</a></li><li><a href="boutique.html">Boutique</a></li><li><a href="assistant.html">Assistant</a></li><li><a href="suivi.html">Suivi</a></li><li><a href="apropos.html">À Propos</a></li><li><a href="contact.html">Contact</a></li></ul></nav></header>
+<header><nav><a href="index.html" class="logo"><img src="shopping_bag_icon.png" alt="ALLSTORE"></a><ul class="nav-links"><li><a href="index.html">Accueil</a></li><li><a href="assistant.html">Assistant</a></li><li><a href="suivi.html">Suivi</a></li><li><a href="apropos.html">À Propos</a></li><li><a href="contact.html">Contact</a></li></ul></nav></header>
 <main>
   <div class="pdp"><div class="pdp-grid">
     <div class="pdp-gallery" id="pdp-gallery"><div class="pdp-gallery-item"><img id="pdp-img" src="" alt=""></div></div>
     <div class="pdp-info">
-      <a href="boutique.html" class="pdp-back" id="pdp-back">&#8592; Boutique</a>
+      <a href="index.html" class="pdp-back" id="pdp-back">&#8592; Accueil</a>
       <span class="pdp-brand" id="pdp-brand"></span>
       <h1 class="pdp-name" id="pdp-name"></h1>
       <p class="pdp-color" id="pdp-color"></p>
@@ -128,10 +128,6 @@
       <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
       Accueil
     </a>
-    <a href="boutique.html" class="bnav-item" data-nav="1">
-      <svg viewBox="0 0 24 24"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
-      Boutique
-    </a>
     <a href="assistant.html" class="bnav-item" data-nav="2">
       <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
       Assistant
@@ -152,7 +148,7 @@
   var path = window.location.pathname.split('/').pop() || 'index.html';
   var activeHref = null;
   if(path === 'index.html' || path === '') activeHref = 'index.html';
-  else if(path === 'assistant.html' || path === 'boutique.html' || path.indexOf('produit') === 0) activeHref = 'assistant.html';
+  else if(path === 'assistant.html' || path === 'index.html' || path.indexOf('produit') === 0) activeHref = 'assistant.html';
   else if(path === 'suivi.html') activeHref = 'suivi.html';
   if(activeHref){
     document.querySelectorAll('.bnav-item').forEach(function(item){
@@ -231,7 +227,7 @@
   document.getElementById('pdp-color').textContent = 'Coloris : ' + (p.color || '');
   document.getElementById('pdp-price').textContent = hasPrice ? p.price + ' €' : '— €';
   document.getElementById('pdp-tag').textContent = hasPrice ? '' : 'Prix bientôt disponible';
-  document.getElementById('pdp-back').href = 'boutique.html?cat=' + p.cat + (p.brand ? '&brand=' + encodeURIComponent(p.brand) : '');
+  document.getElementById('pdp-back').href = 'index.html?cat=' + p.cat + (p.brand ? '&brand=' + encodeURIComponent(p.brand) : '');
 
   // Details
   var details = document.getElementById('pdp-details');

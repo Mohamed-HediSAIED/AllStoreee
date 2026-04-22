@@ -1,0 +1,85 @@
+- generic [active] [ref=e1]:
+  - banner [ref=e2]:
+    - navigation [ref=e3]:
+      - link "ALLSTORE" [ref=e4] [cursor=pointer]:
+        - /url: index.html
+        - img "ALLSTORE" [ref=e5]
+      - link "Mon compte" [ref=e7] [cursor=pointer]:
+        - /url: compte.html
+        - img [ref=e8]
+      - button "Ouvrir le menu" [ref=e11] [cursor=pointer]
+  - generic [ref=e15]:
+    - generic [ref=e16]: —Suivi en temps réel
+    - heading "Où est mon colis ?" [level=1] [ref=e17]:
+      - text: Où est
+      - emphasis [ref=e18]: mon colis ?
+    - paragraph [ref=e19]: Entrez votre numéro de suivi pour voir l'état de votre livraison en temps réel, 24h/24, 7j/7.
+    - generic [ref=e21]:
+      - textbox "Entrez votre numéro de suivi..." [ref=e22]
+      - button "Suivre" [ref=e23] [cursor=pointer]:
+        - img [ref=e24]
+        - text: Suivre
+    - paragraph [ref=e27]:
+      - text: Tracking disponible 24h/24 — Besoin d'aide ?
+      - link "On en parle ?" [ref=e29] [cursor=pointer]:
+        - /url: contact.html
+  - generic [ref=e30]:
+    - generic [ref=e31]:
+      - img [ref=e33]
+      - heading "Suivi en temps réel" [level=3] [ref=e36]
+      - paragraph [ref=e37]: Suivez votre colis à chaque étape, de l'expédition jusqu'à votre porte. Mis à jour automatiquement.
+    - generic [ref=e38]:
+      - img [ref=e40]
+      - heading "Disponible 24h/24" [level=3] [ref=e43]
+      - paragraph [ref=e44]: Consultez le statut de votre livraison à n'importe quelle heure du jour et de la nuit, sans interruption.
+    - generic [ref=e45]:
+      - img [ref=e47]
+      - heading "Sécurisé & fiable" [level=3] [ref=e49]
+      - paragraph [ref=e50]: Vos informations de suivi sont sécurisées. Compatible avec tous les transporteurs internationaux.
+  - generic [ref=e52]:
+    - heading "Transporteurs compatibles" [level=4] [ref=e53]:
+      - text: Transporteurs
+      - text: compatibles
+    - paragraph [ref=e54]: China Post · SF Express · 4PX · Yun Express · Cainiao · DHL · FedEx · UPS · La Poste · Colissimo · Chronopost · DPD · GLS · Royal Mail · et 1 000+ transporteurs mondiaux.
+  - contentinfo [ref=e55]:
+    - generic [ref=e56]:
+      - generic [ref=e57]: ALLSTORE
+      - generic [ref=e58]:
+        - link "À Propos" [ref=e59] [cursor=pointer]:
+          - /url: apropos.html
+        - link "Contact" [ref=e60] [cursor=pointer]:
+          - /url: contact.html
+        - link "Boutique" [ref=e61] [cursor=pointer]:
+          - /url: assistant.html
+      - generic [ref=e62]: L'introuvable, enfin trouvé.
+      - generic [ref=e63]: ALLSTORE 24/7 — Sourcing d'Exception — 2025
+      - generic [ref=e64]:
+        - link "Instagram" [ref=e65] [cursor=pointer]:
+          - /url: https://www.instagram.com/allstore.tm
+          - img [ref=e66]
+        - link "TikTok" [ref=e69] [cursor=pointer]:
+          - /url: https://www.tiktok.com/@allstore247.co
+          - img [ref=e70]
+  - generic [ref=e73]:
+    - generic [ref=e74]:
+      - generic [ref=e75]: Liste de souhait
+      - button "✕" [ref=e76]
+    - paragraph [ref=e78]:
+      - text: Votre liste de souhait est vide.
+      - text: Cliquez sur ❤ sur une pièce pour l'ajouter.
+    - link "Commander →" [ref=e79] [cursor=pointer]:
+      - /url: assistant.html
+  - navigation "Navigation principale" [ref=e80]:
+    - generic [ref=e81]:
+      - link "Accueil" [ref=e82] [cursor=pointer]:
+        - /url: index.html
+        - img [ref=e83]
+        - text: Accueil
+      - link "Boutique" [ref=e86] [cursor=pointer]:
+        - /url: assistant.html
+        - img [ref=e87]
+        - text: Boutique
+      - link "Suivi" [ref=e89] [cursor=pointer]:
+        - /url: suivi.html
+        - img [ref=e90]
+        - text: Suivi

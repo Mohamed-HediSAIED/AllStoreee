@@ -1,0 +1,703 @@
+- generic [active] [ref=e1]:
+  - banner [ref=e2]:
+    - navigation [ref=e3]:
+      - link "ALLSTORE" [ref=e4] [cursor=pointer]:
+        - /url: index.html
+        - img "ALLSTORE" [ref=e5]
+      - list [ref=e6]:
+        - listitem [ref=e7]:
+          - link "Accueil" [ref=e8] [cursor=pointer]:
+            - /url: index.html
+        - listitem [ref=e9]:
+          - link "Boutique" [ref=e10] [cursor=pointer]:
+            - /url: assistant.html
+        - listitem [ref=e11]:
+          - link "Suivi" [ref=e12] [cursor=pointer]:
+            - /url: suivi.html
+        - listitem [ref=e13]:
+          - link "À Propos" [ref=e14] [cursor=pointer]:
+            - /url: apropos.html
+        - listitem [ref=e15]:
+          - link "Contact" [ref=e16] [cursor=pointer]:
+            - /url: contact.html
+      - link "Mon compte" [ref=e18] [cursor=pointer]:
+        - /url: compte.html
+        - img [ref=e19]
+  - generic [ref=e22]: Livraison offerte en Europe
+  - generic [ref=e24]:
+    - heading "Le luxe accessible. Sans compromis." [level=1] [ref=e25]:
+      - text: Le luxe accessible.
+      - text: Sans compromis.
+    - paragraph [ref=e26]: Sourcing d'exception, qualité vérifiée, livraison partout en Europe.
+    - link "Découvrir la boutique" [ref=e27] [cursor=pointer]:
+      - /url: assistant.html
+  - generic [ref=e28]:
+    - heading "La Sélection" [level=2] [ref=e30]:
+      - text: La
+      - emphasis [ref=e31]: Sélection
+    - generic [ref=e32]:
+      - img [ref=e34] [cursor=pointer]
+      - img [ref=e37] [cursor=pointer]
+      - generic [ref=e39]:
+        - link "Margiela Replica MARGIELA REPLICA 129,00€" [ref=e40] [cursor=pointer]:
+          - /url: assistant.html?product=margiela-1
+          - img "Margiela Replica" [ref=e42]
+          - generic [ref=e43]:
+            - generic [ref=e44]: MARGIELA REPLICA
+            - generic [ref=e45]: 129,00€
+        - link "Ganni Bou GANNI BOU 121,00€" [ref=e46] [cursor=pointer]:
+          - /url: assistant.html
+          - img "Ganni Bou" [ref=e48]
+          - generic [ref=e49]:
+            - generic [ref=e50]: GANNI BOU
+            - generic [ref=e51]: 121,00€
+        - link "Courrèges Veste COURRÈGES VESTE 327,00€" [ref=e52] [cursor=pointer]:
+          - /url: assistant.html?product=courreges-veste-1
+          - img "Courrèges Veste" [ref=e54]
+          - generic [ref=e55]:
+            - generic [ref=e56]: COURRÈGES VESTE
+            - generic [ref=e57]: 327,00€
+        - link "Nike Mind 001 NIKE MIND 001 92,00€" [ref=e58] [cursor=pointer]:
+          - /url: assistant.html?product=nike-mind-1
+          - img "Nike Mind 001" [ref=e60]
+          - generic [ref=e61]:
+            - generic [ref=e62]: NIKE MIND 001
+            - generic [ref=e63]: 92,00€
+        - link "Louis Vuitton Keepall LV KEEPALL PRE-OWNED 142,00€" [ref=e64] [cursor=pointer]:
+          - /url: assistant.html?product=lv-keepall-1
+          - img "Louis Vuitton Keepall" [ref=e66]
+          - generic [ref=e67]:
+            - generic [ref=e68]: LV KEEPALL PRE-OWNED
+            - generic [ref=e69]: 142,00€
+        - link "Casquette Loro Piana CASQUETTE LORO PIANA 43,00€" [ref=e70] [cursor=pointer]:
+          - /url: assistant.html?product=lp-casquette-noir
+          - img "Casquette Loro Piana" [ref=e72]
+          - generic [ref=e73]:
+            - generic [ref=e74]: CASQUETTE LORO PIANA
+            - generic [ref=e75]: 43,00€
+        - link "Louboutin Kate LOUBOUTIN KATE 107,00€" [ref=e76] [cursor=pointer]:
+          - /url: assistant.html
+          - img "Louboutin Kate" [ref=e78]
+          - generic [ref=e79]:
+            - generic [ref=e80]: LOUBOUTIN KATE
+            - generic [ref=e81]: 107,00€
+  - generic [ref=e83]:
+    - heading "NOS COLLECTIONS" [level=2] [ref=e85]:
+      - text: NOS
+      - emphasis [ref=e86]: COLLECTIONS
+    - generic [ref=e87]:
+      - img [ref=e89] [cursor=pointer]
+      - img [ref=e92] [cursor=pointer]
+      - generic [ref=e94]:
+        - link "Chloé SACS VOIR" [ref=e95] [cursor=pointer]:
+          - /url: assistant.html?category=Sacs
+          - img "Chloé" [ref=e96]
+          - generic [ref=e98]:
+            - generic [ref=e99]: SACS
+            - generic [ref=e100]: VOIR
+        - link "Giorgio Armani ACCESSOIRES VOIR" [ref=e101] [cursor=pointer]:
+          - /url: assistant.html?category=Accessoires
+          - img "Giorgio Armani" [ref=e102]
+          - generic [ref=e104]:
+            - generic [ref=e105]: ACCESSOIRES
+            - generic [ref=e106]: VOIR
+        - link "Isabel Marant CHAUSSURES VOIR" [ref=e107] [cursor=pointer]:
+          - /url: assistant.html?category=Chaussures
+          - img "Isabel Marant" [ref=e108]
+          - generic [ref=e110]:
+            - generic [ref=e111]: CHAUSSURES
+            - generic [ref=e112]: VOIR
+        - link "Miu Miu VÊTEMENTS VOIR" [ref=e113] [cursor=pointer]:
+          - /url: assistant.html?category=Vêtements
+          - img "Miu Miu" [ref=e114]
+          - generic [ref=e116]:
+            - generic [ref=e117]: VÊTEMENTS
+            - generic [ref=e118]: VOIR
+        - link "Rolex Daytona MONTRES VOIR" [ref=e119] [cursor=pointer]:
+          - /url: assistant.html?category=Horlogerie
+          - img "Rolex Daytona" [ref=e120]
+          - generic [ref=e122]:
+            - generic [ref=e123]: MONTRES
+            - generic [ref=e124]: VOIR
+  - generic [ref=e125]:
+    - heading "VU SUR INSTAGRAM" [level=2] [ref=e127]:
+      - text: VU SUR
+      - emphasis [ref=e128]: INSTAGRAM
+    - generic [ref=e129]:
+      - generic [ref=e130]:
+        - link "@ALLSTORE.TM" [ref=e131] [cursor=pointer]:
+          - /url: https://www.instagram.com/reel/DT04-k2jAIT/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==
+          - generic [ref=e134]: "@ALLSTORE.TM"
+        - link "Burberry Hoodie Gris VESTE BURBERRY GRIS 65,00€ VOIR" [ref=e135] [cursor=pointer]:
+          - /url: produit-burberry-hoodie.html?color=gris
+          - img "Burberry Hoodie Gris" [ref=e137]
+          - generic [ref=e138]: VESTE BURBERRY GRIS
+          - generic [ref=e139]: 65,00€
+          - generic [ref=e140]: VOIR
+      - generic [ref=e141]:
+        - link "@ALLSTORE.TM" [ref=e142] [cursor=pointer]:
+          - /url: https://www.instagram.com/reel/DTOCiNXjO-x/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==
+          - generic [ref=e145]: "@ALLSTORE.TM"
+        - link "AirPods Max AIRPODS MAX 185,00€ VOIR" [ref=e146] [cursor=pointer]:
+          - /url: produit-airpods-max.html
+          - img "AirPods Max" [ref=e148]
+          - generic [ref=e149]: AIRPODS MAX
+          - generic [ref=e150]: 185,00€
+          - generic [ref=e151]: VOIR
+  - generic [ref=e153]:
+    - heading "MAISON MARGIELA Sélection" [level=2] [ref=e155]:
+      - text: MAISON MARGIELA
+      - emphasis [ref=e156]: Sélection
+    - generic [ref=e157]:
+      - button "MAISON MARGIELA" [ref=e158] [cursor=pointer]
+      - button "PRADA" [ref=e159] [cursor=pointer]
+      - button "ON" [ref=e160] [cursor=pointer]
+      - button "NIKE" [ref=e161] [cursor=pointer]
+    - generic [ref=e162]:
+      - img [ref=e164] [cursor=pointer]
+      - img [ref=e167] [cursor=pointer]
+      - generic [ref=e169]:
+        - link "Maison Margiela Replica Blanc MAISON MARGIELA REPLICA Replica Blanc 129,00€" [ref=e170] [cursor=pointer]:
+          - /url: assistant.html?product=margiela-1
+          - img "Maison Margiela Replica Blanc" [ref=e172]
+          - generic [ref=e173]:
+            - generic [ref=e174]: MAISON MARGIELA REPLICA
+            - generic [ref=e175]: Replica Blanc
+            - generic [ref=e176]: 129,00€
+        - link "Maison Margiela Replica Noir Paint Splatter MAISON MARGIELA REPLICA Replica Noir Paint Splatter 129,00€" [ref=e177] [cursor=pointer]:
+          - /url: assistant.html?product=margiela-2
+          - img "Maison Margiela Replica Noir Paint Splatter" [ref=e179]
+          - generic [ref=e180]:
+            - generic [ref=e181]: MAISON MARGIELA REPLICA
+            - generic [ref=e182]: Replica Noir Paint Splatter
+            - generic [ref=e183]: 129,00€
+        - link "Maison Margiela Replica Noir MAISON MARGIELA REPLICA Replica Noir 129,00€" [ref=e184] [cursor=pointer]:
+          - /url: assistant.html?product=margiela-3
+          - img "Maison Margiela Replica Noir" [ref=e186]
+          - generic [ref=e187]:
+            - generic [ref=e188]: MAISON MARGIELA REPLICA
+            - generic [ref=e189]: Replica Noir
+            - generic [ref=e190]: 129,00€
+        - link "Maison Margiela Replica Noir Total MAISON MARGIELA REPLICA Replica Noir Total 129,00€" [ref=e191] [cursor=pointer]:
+          - /url: assistant.html?product=margiela-4
+          - img "Maison Margiela Replica Noir Total" [ref=e193]
+          - generic [ref=e194]:
+            - generic [ref=e195]: MAISON MARGIELA REPLICA
+            - generic [ref=e196]: Replica Noir Total
+            - generic [ref=e197]: 129,00€
+        - link "Maison Margiela Replica Marron MAISON MARGIELA REPLICA Replica Marron 129,00€" [ref=e198] [cursor=pointer]:
+          - /url: assistant.html?product=margiela-5
+          - img "Maison Margiela Replica Marron" [ref=e200]
+          - generic [ref=e201]:
+            - generic [ref=e202]: MAISON MARGIELA REPLICA
+            - generic [ref=e203]: Replica Marron
+            - generic [ref=e204]: 129,00€
+        - link "Maison Margiela Replica Bleu Ciel MAISON MARGIELA REPLICA Replica Bleu Ciel 129,00€" [ref=e205] [cursor=pointer]:
+          - /url: assistant.html?product=margiela-6
+          - img "Maison Margiela Replica Bleu Ciel" [ref=e207]
+          - generic [ref=e208]:
+            - generic [ref=e209]: MAISON MARGIELA REPLICA
+            - generic [ref=e210]: Replica Bleu Ciel
+            - generic [ref=e211]: 129,00€
+        - link "Maison Margiela Replica Rose Poudré MAISON MARGIELA REPLICA Replica Rose Poudré 129,00€" [ref=e212] [cursor=pointer]:
+          - /url: assistant.html?product=margiela-7
+          - img "Maison Margiela Replica Rose Poudré" [ref=e214]
+          - generic [ref=e215]:
+            - generic [ref=e216]: MAISON MARGIELA REPLICA
+            - generic [ref=e217]: Replica Rose Poudré
+            - generic [ref=e218]: 129,00€
+        - link "Maison Margiela Replica Marron Foncé MAISON MARGIELA REPLICA Replica Marron Foncé 129,00€" [ref=e219] [cursor=pointer]:
+          - /url: assistant.html?product=margiela-8
+          - img "Maison Margiela Replica Marron Foncé" [ref=e221]
+          - generic [ref=e222]:
+            - generic [ref=e223]: MAISON MARGIELA REPLICA
+            - generic [ref=e224]: Replica Marron Foncé
+            - generic [ref=e225]: 129,00€
+        - link "Maison Margiela Replica Gris MAISON MARGIELA REPLICA Replica Gris 129,00€" [ref=e226] [cursor=pointer]:
+          - /url: assistant.html?product=margiela-9
+          - img "Maison Margiela Replica Gris" [ref=e228]
+          - generic [ref=e229]:
+            - generic [ref=e230]: MAISON MARGIELA REPLICA
+            - generic [ref=e231]: Replica Gris
+            - generic [ref=e232]: 129,00€
+        - link "Maison Margiela Replica Crème MAISON MARGIELA REPLICA Replica Crème 129,00€" [ref=e233] [cursor=pointer]:
+          - /url: assistant.html?product=margiela-10
+          - img "Maison Margiela Replica Crème" [ref=e235]
+          - generic [ref=e236]:
+            - generic [ref=e237]: MAISON MARGIELA REPLICA
+            - generic [ref=e238]: Replica Crème
+            - generic [ref=e239]: 129,00€
+        - link "Maison Margiela Replica Blanc Paint Splatter MAISON MARGIELA REPLICA Replica Blanc Paint Splatter 129,00€" [ref=e240] [cursor=pointer]:
+          - /url: assistant.html?product=margiela-11
+          - img "Maison Margiela Replica Blanc Paint Splatter" [ref=e242]
+          - generic [ref=e243]:
+            - generic [ref=e244]: MAISON MARGIELA REPLICA
+            - generic [ref=e245]: Replica Blanc Paint Splatter
+            - generic [ref=e246]: 129,00€
+        - link "Maison Margiela Replica Camel MAISON MARGIELA REPLICA Replica Camel 129,00€" [ref=e247] [cursor=pointer]:
+          - /url: assistant.html?product=margiela-12
+          - img "Maison Margiela Replica Camel" [ref=e249]
+          - generic [ref=e250]:
+            - generic [ref=e251]: MAISON MARGIELA REPLICA
+            - generic [ref=e252]: Replica Camel
+            - generic [ref=e253]: 129,00€
+        - link "Maison Margiela Replica Bleu Marine MAISON MARGIELA REPLICA Replica Bleu Marine 129,00€" [ref=e254] [cursor=pointer]:
+          - /url: assistant.html?product=margiela-13
+          - img "Maison Margiela Replica Bleu Marine" [ref=e256]
+          - generic [ref=e257]:
+            - generic [ref=e258]: MAISON MARGIELA REPLICA
+            - generic [ref=e259]: Replica Bleu Marine
+            - generic [ref=e260]: 129,00€
+        - link "Maison Margiela Replica Noir Craquelé MAISON MARGIELA REPLICA Replica Noir Craquelé 129,00€" [ref=e261] [cursor=pointer]:
+          - /url: assistant.html?product=margiela-14
+          - img "Maison Margiela Replica Noir Craquelé" [ref=e263]
+          - generic [ref=e264]:
+            - generic [ref=e265]: MAISON MARGIELA REPLICA
+            - generic [ref=e266]: Replica Noir Craquelé
+            - generic [ref=e267]: 129,00€
+        - link "Maison Margiela Replica Bleu Verni MAISON MARGIELA REPLICA Replica Bleu Verni 129,00€" [ref=e268] [cursor=pointer]:
+          - /url: assistant.html?product=margiela-16
+          - img "Maison Margiela Replica Bleu Verni" [ref=e270]
+          - generic [ref=e271]:
+            - generic [ref=e272]: MAISON MARGIELA REPLICA
+            - generic [ref=e273]: Replica Bleu Verni
+            - generic [ref=e274]: 129,00€
+        - link "Maison Margiela Replica Rouge Verni MAISON MARGIELA REPLICA Replica Rouge Verni 129,00€" [ref=e275] [cursor=pointer]:
+          - /url: assistant.html?product=margiela-15
+          - img "Maison Margiela Replica Rouge Verni" [ref=e277]
+          - generic [ref=e278]:
+            - generic [ref=e279]: MAISON MARGIELA REPLICA
+            - generic [ref=e280]: Replica Rouge Verni
+            - generic [ref=e281]: 129,00€
+  - generic [ref=e283]:
+    - heading "CASABLANCA Sélection" [level=2] [ref=e285]:
+      - text: CASABLANCA
+      - emphasis [ref=e286]: Sélection
+    - generic [ref=e287]:
+      - button "CASABLANCA" [ref=e288] [cursor=pointer]
+      - button "BURBERRY" [ref=e289] [cursor=pointer]
+      - button "BAPE" [ref=e290] [cursor=pointer]
+    - generic [ref=e291]:
+      - img [ref=e293] [cursor=pointer]
+      - img [ref=e296] [cursor=pointer]
+      - generic [ref=e298]:
+        - link "Casablanca Tee-shirt Blanc CASABLANCA TEE-SHIRT Tee-shirt Blanc Bientôt disponible" [ref=e299] [cursor=pointer]:
+          - /url: assistant.html?product=casa-tshirt-1
+          - img "Casablanca Tee-shirt Blanc" [ref=e301]
+          - generic [ref=e302]:
+            - generic [ref=e303]: CASABLANCA TEE-SHIRT
+            - generic [ref=e304]: Tee-shirt Blanc
+            - generic [ref=e305]: Bientôt disponible
+        - link "Casablanca Tee-shirt Noir CASABLANCA TEE-SHIRT Tee-shirt Noir Bientôt disponible" [ref=e306] [cursor=pointer]:
+          - /url: assistant.html?product=casa-tshirt-2
+          - img "Casablanca Tee-shirt Noir" [ref=e308]
+          - generic [ref=e309]:
+            - generic [ref=e310]: CASABLANCA TEE-SHIRT
+            - generic [ref=e311]: Tee-shirt Noir
+            - generic [ref=e312]: Bientôt disponible
+        - link "Casablanca Tee-shirt Blanc CASABLANCA TEE-SHIRT Tee-shirt Blanc Bientôt disponible" [ref=e313] [cursor=pointer]:
+          - /url: assistant.html?product=casa-tshirt-3
+          - img "Casablanca Tee-shirt Blanc" [ref=e315]
+          - generic [ref=e316]:
+            - generic [ref=e317]: CASABLANCA TEE-SHIRT
+            - generic [ref=e318]: Tee-shirt Blanc
+            - generic [ref=e319]: Bientôt disponible
+        - link "Casablanca Tee-shirt Blanc CASABLANCA TEE-SHIRT Tee-shirt Blanc Bientôt disponible" [ref=e320] [cursor=pointer]:
+          - /url: assistant.html?product=casa-tshirt-4
+          - img "Casablanca Tee-shirt Blanc" [ref=e322]
+          - generic [ref=e323]:
+            - generic [ref=e324]: CASABLANCA TEE-SHIRT
+            - generic [ref=e325]: Tee-shirt Blanc
+            - generic [ref=e326]: Bientôt disponible
+        - link "Casablanca Tee-shirt Noir CASABLANCA TEE-SHIRT Tee-shirt Noir Bientôt disponible" [ref=e327] [cursor=pointer]:
+          - /url: assistant.html?product=casa-tshirt-5
+          - img "Casablanca Tee-shirt Noir" [ref=e329]
+          - generic [ref=e330]:
+            - generic [ref=e331]: CASABLANCA TEE-SHIRT
+            - generic [ref=e332]: Tee-shirt Noir
+            - generic [ref=e333]: Bientôt disponible
+        - link "Casablanca Tee-shirt Blanc CASABLANCA TEE-SHIRT Tee-shirt Blanc Bientôt disponible" [ref=e334] [cursor=pointer]:
+          - /url: assistant.html?product=casa-tshirt-6
+          - img "Casablanca Tee-shirt Blanc" [ref=e336]
+          - generic [ref=e337]:
+            - generic [ref=e338]: CASABLANCA TEE-SHIRT
+            - generic [ref=e339]: Tee-shirt Blanc
+            - generic [ref=e340]: Bientôt disponible
+        - link "Casablanca Tee-shirt Blanc CASABLANCA TEE-SHIRT Tee-shirt Blanc Bientôt disponible" [ref=e341] [cursor=pointer]:
+          - /url: assistant.html?product=casa-tshirt-7
+          - img "Casablanca Tee-shirt Blanc" [ref=e343]
+          - generic [ref=e344]:
+            - generic [ref=e345]: CASABLANCA TEE-SHIRT
+            - generic [ref=e346]: Tee-shirt Blanc
+            - generic [ref=e347]: Bientôt disponible
+        - link "Casablanca Tee-shirt Blanc CASABLANCA TEE-SHIRT Tee-shirt Blanc Bientôt disponible" [ref=e348] [cursor=pointer]:
+          - /url: assistant.html?product=casa-tshirt-8
+          - img "Casablanca Tee-shirt Blanc" [ref=e350]
+          - generic [ref=e351]:
+            - generic [ref=e352]: CASABLANCA TEE-SHIRT
+            - generic [ref=e353]: Tee-shirt Blanc
+            - generic [ref=e354]: Bientôt disponible
+        - link "Casablanca Tee-shirt Blanc CASABLANCA TEE-SHIRT Tee-shirt Blanc Bientôt disponible" [ref=e355] [cursor=pointer]:
+          - /url: assistant.html?product=casa-tshirt-9
+          - img "Casablanca Tee-shirt Blanc" [ref=e357]
+          - generic [ref=e358]:
+            - generic [ref=e359]: CASABLANCA TEE-SHIRT
+            - generic [ref=e360]: Tee-shirt Blanc
+            - generic [ref=e361]: Bientôt disponible
+        - link "Casablanca Tee-shirt Blanc CASABLANCA TEE-SHIRT Tee-shirt Blanc Bientôt disponible" [ref=e362] [cursor=pointer]:
+          - /url: assistant.html?product=casa-tshirt-10
+          - img "Casablanca Tee-shirt Blanc" [ref=e364]
+          - generic [ref=e365]:
+            - generic [ref=e366]: CASABLANCA TEE-SHIRT
+            - generic [ref=e367]: Tee-shirt Blanc
+            - generic [ref=e368]: Bientôt disponible
+        - link "Casablanca Tee-shirt Noir CASABLANCA TEE-SHIRT Tee-shirt Noir Bientôt disponible" [ref=e369] [cursor=pointer]:
+          - /url: assistant.html?product=casa-tshirt-11
+          - img "Casablanca Tee-shirt Noir" [ref=e371]
+          - generic [ref=e372]:
+            - generic [ref=e373]: CASABLANCA TEE-SHIRT
+            - generic [ref=e374]: Tee-shirt Noir
+            - generic [ref=e375]: Bientôt disponible
+        - link "Casablanca Tee-shirt Blanc CASABLANCA TEE-SHIRT Tee-shirt Blanc Bientôt disponible" [ref=e376] [cursor=pointer]:
+          - /url: assistant.html?product=casa-tshirt-12
+          - img "Casablanca Tee-shirt Blanc" [ref=e378]
+          - generic [ref=e379]:
+            - generic [ref=e380]: CASABLANCA TEE-SHIRT
+            - generic [ref=e381]: Tee-shirt Blanc
+            - generic [ref=e382]: Bientôt disponible
+  - generic [ref=e384]:
+    - heading "LORO PIANA Sélection" [level=2] [ref=e386]:
+      - text: LORO PIANA
+      - emphasis [ref=e387]: Sélection
+    - generic [ref=e388]:
+      - button "LORO PIANA" [ref=e389] [cursor=pointer]
+      - button "ALO YOGA" [ref=e390] [cursor=pointer]
+      - button "MIU MIU" [ref=e391] [cursor=pointer]
+      - button "GERARD DAREL" [ref=e392] [cursor=pointer]
+    - generic [ref=e393]:
+      - img [ref=e395] [cursor=pointer]
+      - img [ref=e398] [cursor=pointer]
+      - generic [ref=e400]:
+        - link "Loro Piana Casquette Baseball Noir LORO PIANA CASQUETTE BASEBALL Casquette Baseball Noir 45,00€" [ref=e401] [cursor=pointer]:
+          - /url: assistant.html?product=lp-casquette-noir
+          - img "Loro Piana Casquette Baseball Noir" [ref=e403]
+          - generic [ref=e404]:
+            - generic [ref=e405]: LORO PIANA CASQUETTE BASEBALL
+            - generic [ref=e406]: Casquette Baseball Noir
+            - generic [ref=e407]: 45,00€
+        - link "Loro Piana Casquette Baseball Creme LORO PIANA CASQUETTE BASEBALL Casquette Baseball Creme 45,00€" [ref=e408] [cursor=pointer]:
+          - /url: assistant.html?product=lp-casquette-creme
+          - img "Loro Piana Casquette Baseball Creme" [ref=e410]
+          - generic [ref=e411]:
+            - generic [ref=e412]: LORO PIANA CASQUETTE BASEBALL
+            - generic [ref=e413]: Casquette Baseball Creme
+            - generic [ref=e414]: 45,00€
+        - link "Loro Piana Casquette Baseball Sable LORO PIANA CASQUETTE BASEBALL Casquette Baseball Sable 45,00€" [ref=e415] [cursor=pointer]:
+          - /url: assistant.html?product=lp-casquette-sable
+          - img "Loro Piana Casquette Baseball Sable" [ref=e417]
+          - generic [ref=e418]:
+            - generic [ref=e419]: LORO PIANA CASQUETTE BASEBALL
+            - generic [ref=e420]: Casquette Baseball Sable
+            - generic [ref=e421]: 45,00€
+        - link "Loro Piana Casquette Baseball Beige LORO PIANA CASQUETTE BASEBALL Casquette Baseball Beige 45,00€" [ref=e422] [cursor=pointer]:
+          - /url: assistant.html?product=lp-casquette-beige
+          - img "Loro Piana Casquette Baseball Beige" [ref=e424]
+          - generic [ref=e425]:
+            - generic [ref=e426]: LORO PIANA CASQUETTE BASEBALL
+            - generic [ref=e427]: Casquette Baseball Beige
+            - generic [ref=e428]: 45,00€
+        - link "Loro Piana Casquette Baseball Camel LORO PIANA CASQUETTE BASEBALL Casquette Baseball Camel 45,00€" [ref=e429] [cursor=pointer]:
+          - /url: assistant.html?product=lp-casquette-camel
+          - img "Loro Piana Casquette Baseball Camel" [ref=e431]
+          - generic [ref=e432]:
+            - generic [ref=e433]: LORO PIANA CASQUETTE BASEBALL
+            - generic [ref=e434]: Casquette Baseball Camel
+            - generic [ref=e435]: 45,00€
+        - link "Loro Piana Casquette Baseball Cognac LORO PIANA CASQUETTE BASEBALL Casquette Baseball Cognac 45,00€" [ref=e436] [cursor=pointer]:
+          - /url: assistant.html?product=lp-casquette-cognac
+          - img "Loro Piana Casquette Baseball Cognac" [ref=e438]
+          - generic [ref=e439]:
+            - generic [ref=e440]: LORO PIANA CASQUETTE BASEBALL
+            - generic [ref=e441]: Casquette Baseball Cognac
+            - generic [ref=e442]: 45,00€
+        - link "Loro Piana Casquette Baseball Taupe LORO PIANA CASQUETTE BASEBALL Casquette Baseball Taupe 45,00€" [ref=e443] [cursor=pointer]:
+          - /url: assistant.html?product=lp-casquette-taupe
+          - img "Loro Piana Casquette Baseball Taupe" [ref=e445]
+          - generic [ref=e446]:
+            - generic [ref=e447]: LORO PIANA CASQUETTE BASEBALL
+            - generic [ref=e448]: Casquette Baseball Taupe
+            - generic [ref=e449]: 45,00€
+        - link "Loro Piana Casquette Baseball Marron LORO PIANA CASQUETTE BASEBALL Casquette Baseball Marron 45,00€" [ref=e450] [cursor=pointer]:
+          - /url: assistant.html?product=lp-casquette-marron
+          - img "Loro Piana Casquette Baseball Marron" [ref=e452]
+          - generic [ref=e453]:
+            - generic [ref=e454]: LORO PIANA CASQUETTE BASEBALL
+            - generic [ref=e455]: Casquette Baseball Marron
+            - generic [ref=e456]: 45,00€
+        - link "Loro Piana Casquette Baseball Brun LORO PIANA CASQUETTE BASEBALL Casquette Baseball Brun 45,00€" [ref=e457] [cursor=pointer]:
+          - /url: assistant.html?product=lp-casquette-brun
+          - img "Loro Piana Casquette Baseball Brun" [ref=e459]
+          - generic [ref=e460]:
+            - generic [ref=e461]: LORO PIANA CASQUETTE BASEBALL
+            - generic [ref=e462]: Casquette Baseball Brun
+            - generic [ref=e463]: 45,00€
+        - link "Loro Piana Casquette Baseball Brique LORO PIANA CASQUETTE BASEBALL Casquette Baseball Brique 45,00€" [ref=e464] [cursor=pointer]:
+          - /url: assistant.html?product=lp-casquette-brique
+          - img "Loro Piana Casquette Baseball Brique" [ref=e466]
+          - generic [ref=e467]:
+            - generic [ref=e468]: LORO PIANA CASQUETTE BASEBALL
+            - generic [ref=e469]: Casquette Baseball Brique
+            - generic [ref=e470]: 45,00€
+        - link "Loro Piana Casquette Baseball Bordeaux LORO PIANA CASQUETTE BASEBALL Casquette Baseball Bordeaux 45,00€" [ref=e471] [cursor=pointer]:
+          - /url: assistant.html?product=lp-casquette-bordeaux
+          - img "Loro Piana Casquette Baseball Bordeaux" [ref=e473]
+          - generic [ref=e474]:
+            - generic [ref=e475]: LORO PIANA CASQUETTE BASEBALL
+            - generic [ref=e476]: Casquette Baseball Bordeaux
+            - generic [ref=e477]: 45,00€
+        - link "Loro Piana Casquette Baseball Olive LORO PIANA CASQUETTE BASEBALL Casquette Baseball Olive 45,00€" [ref=e478] [cursor=pointer]:
+          - /url: assistant.html?product=lp-casquette-olive
+          - img "Loro Piana Casquette Baseball Olive" [ref=e480]
+          - generic [ref=e481]:
+            - generic [ref=e482]: LORO PIANA CASQUETTE BASEBALL
+            - generic [ref=e483]: Casquette Baseball Olive
+            - generic [ref=e484]: 45,00€
+        - link "Loro Piana Casquette Baseball Vert Foret LORO PIANA CASQUETTE BASEBALL Casquette Baseball Vert Foret 45,00€" [ref=e485] [cursor=pointer]:
+          - /url: assistant.html?product=lp-casquette-vert_foret
+          - img "Loro Piana Casquette Baseball Vert Foret" [ref=e487]
+          - generic [ref=e488]:
+            - generic [ref=e489]: LORO PIANA CASQUETTE BASEBALL
+            - generic [ref=e490]: Casquette Baseball Vert Foret
+            - generic [ref=e491]: 45,00€
+        - link "Loro Piana Casquette Baseball Bleu Marine LORO PIANA CASQUETTE BASEBALL Casquette Baseball Bleu Marine 45,00€" [ref=e492] [cursor=pointer]:
+          - /url: assistant.html?product=lp-casquette-bleu_marine
+          - img "Loro Piana Casquette Baseball Bleu Marine" [ref=e494]
+          - generic [ref=e495]:
+            - generic [ref=e496]: LORO PIANA CASQUETTE BASEBALL
+            - generic [ref=e497]: Casquette Baseball Bleu Marine
+            - generic [ref=e498]: 45,00€
+        - link "Loro Piana Casquette Baseball Bleu Gris LORO PIANA CASQUETTE BASEBALL Casquette Baseball Bleu Gris 45,00€" [ref=e499] [cursor=pointer]:
+          - /url: assistant.html?product=lp-casquette-bleu_gris
+          - img "Loro Piana Casquette Baseball Bleu Gris" [ref=e501]
+          - generic [ref=e502]:
+            - generic [ref=e503]: LORO PIANA CASQUETTE BASEBALL
+            - generic [ref=e504]: Casquette Baseball Bleu Gris
+            - generic [ref=e505]: 45,00€
+        - link "Loro Piana Casquette Baseball Bleu Ciel LORO PIANA CASQUETTE BASEBALL Casquette Baseball Bleu Ciel 45,00€" [ref=e506] [cursor=pointer]:
+          - /url: assistant.html?product=lp-casquette-bleu_ciel
+          - img "Loro Piana Casquette Baseball Bleu Ciel" [ref=e508]
+          - generic [ref=e509]:
+            - generic [ref=e510]: LORO PIANA CASQUETTE BASEBALL
+            - generic [ref=e511]: Casquette Baseball Bleu Ciel
+            - generic [ref=e512]: 45,00€
+        - link "Loro Piana Casquette Baseball Anthracite LORO PIANA CASQUETTE BASEBALL Casquette Baseball Anthracite 45,00€" [ref=e513] [cursor=pointer]:
+          - /url: assistant.html?product=lp-casquette-anthracite
+          - img "Loro Piana Casquette Baseball Anthracite" [ref=e515]
+          - generic [ref=e516]:
+            - generic [ref=e517]: LORO PIANA CASQUETTE BASEBALL
+            - generic [ref=e518]: Casquette Baseball Anthracite
+            - generic [ref=e519]: 45,00€
+  - generic [ref=e520]:
+    - heading "ARTICLES RARES" [level=2] [ref=e522]:
+      - text: ARTICLES
+      - emphasis [ref=e523]: RARES
+    - generic [ref=e524]:
+      - img [ref=e526] [cursor=pointer]
+      - img [ref=e529] [cursor=pointer]
+      - generic [ref=e531]:
+        - link "Givenchy Shark Lock GIVENCHY SHARK LOCK 178,00€" [ref=e532] [cursor=pointer]:
+          - /url: assistant.html
+          - img "Givenchy Shark Lock" [ref=e534]
+          - generic [ref=e535]:
+            - generic [ref=e536]: GIVENCHY SHARK LOCK
+            - generic [ref=e537]: 178,00€
+        - link "Cartier Tank CARTIER TANK 263,00€" [ref=e538] [cursor=pointer]:
+          - /url: assistant.html
+          - img "Cartier Tank" [ref=e540]
+          - generic [ref=e541]:
+            - generic [ref=e542]: CARTIER TANK
+            - generic [ref=e543]: 263,00€
+        - link "Miu Miu Top MIU MIU TOP LOGO 50,00€" [ref=e544] [cursor=pointer]:
+          - /url: assistant.html
+          - img "Miu Miu Top" [ref=e546]
+          - generic [ref=e547]:
+            - generic [ref=e548]: MIU MIU TOP LOGO
+            - generic [ref=e549]: 50,00€
+        - link "Loro Piana Sergio LORO PIANA SERGIO 128,00€" [ref=e550] [cursor=pointer]:
+          - /url: assistant.html
+          - img "Loro Piana Sergio" [ref=e552]
+          - generic [ref=e553]:
+            - generic [ref=e554]: LORO PIANA SERGIO
+            - generic [ref=e555]: 128,00€
+        - link "Miu Miu Wander MIU MIU WANDER MINI 263,00€" [ref=e556] [cursor=pointer]:
+          - /url: assistant.html
+          - img "Miu Miu Wander" [ref=e558]
+          - generic [ref=e559]:
+            - generic [ref=e560]: MIU MIU WANDER MINI
+            - generic [ref=e561]: 263,00€
+        - link "KAWS Companion KAWS COMPANION Bientôt disponible" [ref=e562] [cursor=pointer]:
+          - /url: assistant.html
+          - img "KAWS Companion" [ref=e564]
+          - generic [ref=e565]:
+            - generic [ref=e566]: KAWS COMPANION
+            - generic [ref=e567]: Bientôt disponible
+        - link "Prada Lunettes Aviator PRADA AVIATOR ÉCAILLE 50,00€" [ref=e568] [cursor=pointer]:
+          - /url: assistant.html
+          - img "Prada Lunettes Aviator" [ref=e570]
+          - generic [ref=e571]:
+            - generic [ref=e572]: PRADA AVIATOR ÉCAILLE
+            - generic [ref=e573]: 50,00€
+        - link "Casablanca Casa Way CASABLANCA CASA WAY 50,00€" [ref=e574] [cursor=pointer]:
+          - /url: assistant.html
+          - img "Casablanca Casa Way" [ref=e576]
+          - generic [ref=e577]:
+            - generic [ref=e578]: CASABLANCA CASA WAY
+            - generic [ref=e579]: 50,00€
+  - generic [ref=e580]:
+    - heading "AVIS CLIENTS" [level=2] [ref=e582]:
+      - text: AVIS
+      - emphasis [ref=e583]: CLIENTS
+    - generic [ref=e584]:
+      - img [ref=e586] [cursor=pointer]
+      - img [ref=e589] [cursor=pointer]
+      - generic [ref=e591]:
+        - generic [ref=e592]:
+          - generic [ref=e593]: ★★★★★
+          - paragraph [ref=e594]: "\"Replica Margiela reçues en 3 jours, qualité irréprochable. Je ne m'attendais pas à ce niveau de finition à ce prix.\""
+          - generic [ref=e595]: ALEXANDRE T.
+          - generic [ref=e596]: Maison Margiela Replica
+        - generic [ref=e597]:
+          - generic [ref=e598]: ★★★★★
+          - paragraph [ref=e599]: "\"Mon pull Burberry EKD est magnifique, la laine est douce et le logo parfaitement brodé. Chez moi en 48h, service au top.\""
+          - generic [ref=e600]: SARAH M.
+          - generic [ref=e601]: Burberry Pull EKD
+        - generic [ref=e602]:
+          - generic [ref=e603]: ★★★★★
+          - paragraph [ref=e604]: "\"Casquette Loro Piana Summer Walk, c'est exactement comme sur les photos. L'assistant m'a guidé pour la bonne taille.\""
+          - generic [ref=e605]: MEHDI B.
+          - generic [ref=e606]: Loro Piana Summer Walk Cap
+        - generic [ref=e607]:
+          - generic [ref=e608]: ★★★★★
+          - paragraph [ref=e609]: "\"Deuxième commande chez AllStore, cette fois un t-shirt Casablanca. Toujours satisfait, les couleurs sont éclatantes.\""
+          - generic [ref=e610]: LÉNA D.
+          - generic [ref=e611]: Casablanca T-Shirt Casa Way
+        - generic [ref=e612]:
+          - generic [ref=e613]: ★★★★★
+          - paragraph [ref=e614]: "\"Prada Cup reçues hier, le cuir est souple et la boîte impeccable. Livraison offerte en Europe, rien à redire.\""
+          - generic [ref=e615]: JULIEN R.
+          - generic [ref=e616]: Prada Cup
+        - generic [ref=e617]:
+          - generic [ref=e618]: ★★★★★
+          - paragraph [ref=e619]: "\"Le porte-cartes Miu Miu est sublime. Compact, élégant, et l'emballage était soigné. Je recommande à 100%.\""
+          - generic [ref=e620]: CAMILLE P.
+          - generic [ref=e621]: Miu Miu Porte-Cartes
+  - generic [ref=e622]:
+    - heading "NOS COLLABORATEURS" [level=2] [ref=e624]:
+      - text: NOS
+      - emphasis [ref=e625]: COLLABORATEURS
+    - generic [ref=e626]:
+      - link "@lou.mrr_ Veste Burberry Gris VESTE BURBERRY GRIS 65,00€" [ref=e627] [cursor=pointer]:
+        - /url: assistant.html?product=burberry-gris
+        - generic [ref=e628]:
+          - generic [ref=e630]: "@lou.mrr_"
+          - button [ref=e631]:
+            - img [ref=e632]
+        - generic [ref=e636]:
+          - img "Veste Burberry Gris" [ref=e638]
+          - generic [ref=e639]:
+            - generic [ref=e640]: VESTE BURBERRY GRIS
+            - generic [ref=e641]: 65,00€
+          - button [ref=e642]:
+            - img [ref=e643]
+      - link "Tu veux aussi collaborer ? Rejoins l'aventure AllStore et partage tes looks. On en parle ?" [ref=e644] [cursor=pointer]:
+        - /url: contact.html
+        - generic [ref=e645]:
+          - img [ref=e647]
+          - generic [ref=e650]: Tu veux aussi collaborer ?
+          - generic [ref=e651]: Rejoins l'aventure AllStore et partage tes looks.
+          - generic [ref=e652]: On en parle ?
+  - contentinfo [ref=e653]:
+    - generic [ref=e654]:
+      - heading "Accès VIP aux drops exclusifs" [level=3] [ref=e656]:
+        - text: Accès VIP
+        - emphasis [ref=e657]: aux drops exclusifs
+      - generic [ref=e658]:
+        - paragraph [ref=e659]: Sois le premier à découvrir nos nouvelles pièces et offres exclusives.
+        - generic [ref=e660]:
+          - textbox "Ton adresse email" [ref=e661]
+          - button "Rejoindre le club" [ref=e662] [cursor=pointer]
+        - paragraph
+    - generic [ref=e663]:
+      - generic [ref=e664]: ALLSTORE 24/7
+      - generic [ref=e666]: Sourcing d'Exception
+      - generic [ref=e668]: Depuis 2025
+    - generic [ref=e669]:
+      - generic [ref=e670]:
+        - heading "Catalogue" [level=4] [ref=e671]
+        - link "Commander un article" [ref=e672] [cursor=pointer]:
+          - /url: assistant.html
+        - link "Sourcing sur-mesure" [ref=e673] [cursor=pointer]:
+          - /url: assistant.html
+      - generic [ref=e674]:
+        - heading "Notre Monde" [level=4] [ref=e675]
+        - link "Notre histoire" [ref=e676] [cursor=pointer]:
+          - /url: apropos.html
+        - link "Comment ça marche" [ref=e677] [cursor=pointer]:
+          - /url: comment.html
+      - generic [ref=e678]:
+        - heading "Services" [level=4] [ref=e679]
+        - link "Sourcing sur-mesure" [ref=e680] [cursor=pointer]:
+          - /url: assistant.html
+        - link "Suivi de commande" [ref=e681] [cursor=pointer]:
+          - /url: suivi.html
+        - link "Nous contacter" [ref=e682] [cursor=pointer]:
+          - /url: contact.html
+        - link "FAQ" [ref=e683] [cursor=pointer]:
+          - /url: faq.html
+      - generic [ref=e684]:
+        - heading "Informations" [level=4] [ref=e685]
+        - link "Livraison" [ref=e686] [cursor=pointer]:
+          - /url: livraison.html
+        - link "Conditions générales" [ref=e687] [cursor=pointer]:
+          - /url: cgu.html
+        - link "Politique de confidentialité" [ref=e688] [cursor=pointer]:
+          - /url: confidentialite.html
+    - generic [ref=e690]:
+      - link "Instagram" [ref=e691] [cursor=pointer]:
+        - /url: https://instagram.com
+        - img [ref=e692]
+      - link "TikTok" [ref=e696] [cursor=pointer]:
+        - /url: https://tiktok.com
+        - img [ref=e697]
+    - generic [ref=e699]:
+      - generic [ref=e700]:
+        - link "Conditions d'utilisation" [ref=e701] [cursor=pointer]:
+          - /url: cgu.html
+        - link "Politique de confidentialité" [ref=e702] [cursor=pointer]:
+          - /url: confidentialite.html
+        - link "Politique de cookies" [ref=e703] [cursor=pointer]:
+          - /url: cookies.html
+      - generic [ref=e704]: © 2025 ALLSTORE 24/7 — Tous droits réservés
+  - generic [ref=e706]:
+    - generic [ref=e707]:
+      - generic [ref=e708]: Liste de souhait
+      - button "✕" [ref=e709]
+    - paragraph [ref=e711]:
+      - text: Votre liste de souhait est vide.
+      - text: Cliquez sur ❤ sur une pièce pour l'ajouter.
+    - link "Commander →" [ref=e712] [cursor=pointer]:
+      - /url: assistant.html
+  - navigation "Navigation principale" [ref=e713]:
+    - generic [ref=e714]:
+      - link "Accueil" [ref=e715] [cursor=pointer]:
+        - /url: index.html
+        - img [ref=e716]
+        - text: Accueil
+      - link "Boutique" [ref=e719] [cursor=pointer]:
+        - /url: assistant.html
+        - img [ref=e720]
+        - text: Boutique
+      - link "Suivi" [ref=e722] [cursor=pointer]:
+        - /url: suivi.html
+        - img [ref=e723]
+        - text: Suivi
