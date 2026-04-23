@@ -276,7 +276,7 @@
 
     <!-- ÉTAPE 5 : Précisions -->
     <div class="step-panel" id="step5">
-        <span class="step-eyebrow" id="s5eyebrow">Étape 5 — Précisions</span>
+        <span class="step-eyebrow" id="s5eyebrow">Étape 4 — Précisions</span>
         <h2 class="step-title">Des précisions ?</h2>
         <p class="step-sub">Référence exacte, modèle… Plus c'est précis, mieux on cible.</p>
         <div class="recap-pills" id="recap5"></div>
@@ -288,8 +288,8 @@
             <input type="hidden" id="budgetInput" value="">
         </div>
         <div class="btn-row">
-            <button class="btn-back" onclick="goStep(4)">← Retour</button>
-            <button class="btn-primary" onclick="saveArticleAndGoRecap()">Continuer →</button>
+            <button class="btn-back" onclick="backFromStep4()">← Retour</button>
+            <button class="btn-primary" id="btnStep5" onclick="saveArticleAndGoRecap()" disabled>Continuer →</button>
         </div>
     </div>
 
@@ -308,7 +308,7 @@
 
     <!-- ÉTAPE 7 : Livraison -->
     <div class="step-panel" id="step7">
-        <span class="step-eyebrow">Étape 7 — Livraison</span>
+        <span class="step-eyebrow">Étape 6 — Livraison</span>
         <h2 class="step-title">Où livrer ?</h2>
         <p class="step-sub">Renseignez vos coordonnées pour finaliser.</p>
         <div class="form-grid">
@@ -393,9 +393,11 @@ function getSizeLabel() {
 }
 
 // ── Progress bar ─────────────────────────────────────────────
+const VISIBLE_TOTAL = TOTAL - 1; // step 4 (couleur) is hidden
 (function() {
   const bar = document.getElementById('progressBar');
   for (let i = 1; i <= TOTAL; i++) {
+    if (i === 4) continue;
     const el = document.createElement('div');
     el.className = 'progress-step' + (i === 1 ? ' active' : '');
     el.id = 'pb' + i;
@@ -409,14 +411,25 @@ function updateProgress(n) {
     if (!el) continue;
     el.className = 'progress-step' + (i < n ? ' done' : i === n ? ' active' : '');
   }
+  const display = n < 4 ? n : n - 1;
   document.getElementById('progressLabel').textContent =
-    n <= TOTAL ? 'Étape ' + n + ' sur ' + TOTAL : 'Commande transmise ✓';
+    n <= TOTAL ? 'Étape ' + display + ' sur ' + VISIBLE_TOTAL : 'Commande transmise ✓';
 }
 
 function goStep(n) {
+  if (n === 4) {
+    order.color = '—';
+    var sizeEntry = order.size && order.size !== '—' ? [{ l:getSizeLabel(), v:order.size }] : [];
+    buildRecap('recap5', [
+      { l:'Article', v:order.type },
+      { l:'Marque', v:order.brand }
+    ].concat(sizeEntry));
+    n = 5;
+  }
   document.querySelectorAll('.step-panel').forEach(function(p) { p.classList.remove('visible'); });
   document.getElementById('step' + n).classList.add('visible');
   updateProgress(n);
+  if (n === 5 && typeof syncBtnStep5 === 'function') syncBtnStep5();
   window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
@@ -624,6 +637,20 @@ function saveArticleAndGoRecap() {
   goStep(6);
 }
 
+function syncBtnStep5(){
+  var ri = document.getElementById('refInput');
+  var bt = document.getElementById('btnStep5');
+  if(!ri || !bt) return;
+  bt.disabled = ri.value.trim() === '';
+}
+(function(){
+  var ri = document.getElementById('refInput');
+  if(!ri) return;
+  ri.addEventListener('input', syncBtnStep5);
+  ri.addEventListener('change', syncBtnStep5);
+  syncBtnStep5();
+})();
+
 function renderCartList() {
   var list = document.getElementById('cartList');
   if (!list) return;
@@ -672,6 +699,7 @@ function backFromRecap() {
     } else {
       document.getElementById('refInput').value = last.ref === '—' ? '' : last.ref;
       document.getElementById('budgetInput').value = last.budget === '—' ? '' : last.budget;
+      syncBtnStep5();
       goStep(5);
     }
   } else {
@@ -687,6 +715,7 @@ function resetArticleForm() {
   document.getElementById('refInput').value = '';
   document.getElementById('budgetInput').value = '';
   document.getElementById('autreDescInput').value = '';
+  syncBtnStep5();
   document.getElementById('btnStep3').disabled = true;
   document.getElementById('btnStep4').disabled = true;
   document.getElementById('productRecap').style.display = 'none';
@@ -793,6 +822,7 @@ function submitOrder() {
   order.brand = p.brand;
   order.ref = p.name;
   document.getElementById('refInput').value = p.name;
+  syncBtnStep5();
 
   var cfg = step3Config[type] || { mode:'skip' };
 
