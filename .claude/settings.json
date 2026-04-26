@@ -11,6 +11,17 @@
           }
         ]
       }
+    ],
+    "UserPromptSubmit": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "printf '{\"hookSpecificOutput\":{\"hookEventName\":\"UserPromptSubmit\",\"additionalContext\":\"Heure actuelle (Paris): %s\"}}' \"$(TZ='Europe/Paris' date '+%Y-%m-%d %H:%M %Z (%A)')\"",
+            "timeout": 5
+          }
+        ]
+      }
     ]
   }
 }
