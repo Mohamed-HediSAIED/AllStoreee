@@ -174,7 +174,7 @@
     var starSVG='<svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>';
     var fiveStars=starSVG.repeat(5);
     var reviews=[
-      {name:'Sarah M.',initials:'SM',date:'Il y a 3 jours',stars:5,text:'Qualité incroyable, impossible de faire la différence. Reçu en moins d'une semaine, emballage soigné. Je recommande à 100% !'},
+      {name:'Sarah M.',initials:'SM',date:'Il y a 3 jours',stars:5,text:'Qualité incroyable, finitions impeccables. Reçu en moins d\'une semaine, emballage soigné. Je recommande à 100% !'},
       {name:'Karim B.',initials:'KB',date:'Il y a 1 semaine',stars:5,text:'Ma 3ème commande chez AllStore. Toujours au top. Le modèle est identique à l\'original, finitions parfaites.'},
       {name:'Emma L.',initials:'EL',date:'Il y a 2 semaines',stars:4,text:'Très satisfaite de mon achat. La qualité est vraiment premium. Seul bémol : les délais un peu longs, mais ça vaut le coup d\'attendre.'},
     ];
