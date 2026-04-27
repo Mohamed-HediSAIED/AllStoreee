@@ -33,7 +33,8 @@ Au début d'une nouvelle conversation, Claude DOIT :
 ### Chantiers en cours / à faire
 - 🔴 **Bannière Consent Mode v2 RGPD** — bloquant légal CNIL avant scaling EU. → Thomas.
 - 🟠 **API Conversions Meta + Events API TikTok** côté serveur. → Thomas.
-- 🟠 **Événements custom** (AddToCart, BeginCheckout, Purchase, Lead). → Thomas.
+- 🟠 **Événements custom** restants : AddToCart, BeginCheckout, Purchase. → Thomas.
+  - ✅ Lead (clic WhatsApp/Insta/TikTok) — fait 2026-04-27 via event delegation dans `global.js`.
 - 🟡 **Feed Google Shopping** XML/CSV depuis `products-data.js`. → Thomas.
 - 🟢 **Widget Trustpilot** + étoiles PDPs + email invitation J+1. → Thomas.
 - 🌞 **Édition Été** — refonte home (catégories saisonnières, hide hivernaux, mood été). → Mohamed (créa/visuels/contenu) + Thomas (code/data/JS). Décidé 2026-04-27, deadline ~10 mai.

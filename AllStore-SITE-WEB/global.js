@@ -379,6 +379,26 @@
   })();
 
   /* ══════════════════════════════════════════════════════════════
+     LEAD TRACKING — clic WhatsApp/Insta/TikTok = event Lead
+     Remonte aux 3 pixels (Meta, TikTok, GA4) pour nourrir les algos.
+  ══════════════════════════════════════════════════════════════ */
+  (function(){
+    document.addEventListener('click', function(e){
+      const a = e.target.closest && e.target.closest('a[href]');
+      if(!a) return;
+      const href = a.getAttribute('href') || '';
+      let source = null;
+      if(/wa\.me\/|api\.whatsapp\.com\//i.test(href)) source = 'whatsapp';
+      else if(/ig\.me\/|instagram\.com\/allstore/i.test(href)) source = 'instagram';
+      else if(/tiktok\.com\/@allstore/i.test(href)) source = 'tiktok';
+      if(!source) return;
+      try { if(typeof fbq === 'function') fbq('track', 'Lead', { content_name: source }); } catch(_){}
+      try { if(typeof ttq !== 'undefined' && ttq && typeof ttq.track === 'function') ttq.track('Lead', { content_name: source }); } catch(_){}
+      try { if(typeof gtag === 'function') gtag('event', 'generate_lead', { method: source }); } catch(_){}
+    }, true);
+  })();
+
+  /* ══════════════════════════════════════════════════════════════
      COUNTER ANIMATION — .stats-band et .foot-stats-band
   ══════════════════════════════════════════════════════════════ */
   (function(){
