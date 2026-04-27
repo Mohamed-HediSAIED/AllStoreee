@@ -79,11 +79,24 @@ TRUSTPILOT_BU_URL     = https://www.trustpilot.com/review/allstore-tm.fr
 
 ## Identifiants comptes (pour accès Thomas)
 
-- **Email business AllStore** : `allstore.24.7.tm@gmail.com` (utilisé pour Meta Business, TikTok Ads, Google Merchant, Trustpilot)
-- **Email perso Mohamed** (pour GA4 v2 ancien compte) : `deddys121gamer@gmail.com`
+- **Email business AllStore** : `allstore.24.7.tm@gmail.com` (utilisé pour Meta Business, TikTok Ads, Google Merchant, Trustpilot — Thomas a aussi le login)
+- **Email perso Mohamed** (compte Google créateur de GA4 sur authuser=2) : `deddys121gamer@gmail.com`
+- **Email Thomas** (invité Admin GA4) : `thomas.dergarabedian@gmail.com`
 - **Comptes sociaux ALLSTORE** :
   - Instagram : [@allstore.tm](https://www.instagram.com/allstore.tm)
   - TikTok : [@allstore.tm](https://www.tiktok.com/@allstore.tm) (renommé depuis `@allstore247.co`)
+
+### Matrice d'accès Thomas (qui peut faire quoi sur quoi)
+
+| Compte | Mode d'accès Thomas | Statut |
+|---|---|---|
+| GA4 (`G-JDM113THEQ`) | Invité comme **Admin** sur la propriété (email Thomas) | ✅ 2026-04-27 |
+| Meta Business Manager | Login partagé `allstore.24.7.tm@gmail.com` | ✅ partagé |
+| TikTok Ads Manager | Login partagé `allstore.24.7.tm@gmail.com` | ✅ partagé |
+| Google Merchant Center | Login partagé `allstore.24.7.tm@gmail.com` | ✅ partagé |
+| Trustpilot Business | Login partagé `allstore.24.7.tm@gmail.com` | ✅ partagé |
+
+**Note sécurité** : à terme, pour audit/révocation propre, idéal serait d'inviter le compte personnel de Thomas comme co-admin sur Meta/TikTok/Merchant/Trustpilot (au lieu du login partagé). Pas urgent — à faire si rotation d'équipe ou suspicion compromission.
 
 ## Notes & gotchas
 
