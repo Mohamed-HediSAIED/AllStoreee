@@ -65,9 +65,9 @@ MES CHANTIERS (par ordre de priorité)
 
 [ ] Compléter Stripe KYC une fois le SIRET reçu
 
-[ ] Donner accès Admin GA4 à Thomas
+[x] Donner accès Admin GA4 à Thomas ✅ 2026-04-27
     GA4 sur authuser=2 (compte Google différent du Merchant).
-    Property → Admin → Property Access Management → Add user → email Thomas → Admin
+    Thomas (thomas.dergarabedian@gmail.com) ajouté en Admin sur la propriété.
 
 💰 PRICING & CATALOGUE
 ─────────────────────────────────────────
