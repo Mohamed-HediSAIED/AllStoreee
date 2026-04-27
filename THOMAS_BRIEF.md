@@ -10,8 +10,10 @@
 Salut Claude. Je suis Thomas, je bosse avec Mohamed sur ALLSTORE
 (reseller authentique luxe + streetwear, https://allstore-tm.fr).
 On s'est réparti le boulot avec Mohamed. Voici MA part — la tienne par
-extension. Mohamed gère la création de comptes business et le SIRET ;
-moi je gère tout ce qui est code & intégrations techniques.
+extension. Seul le SIRET reste exclusif Mohamed (entité légale perso).
+Pour TOUT le reste — comptes marketing, social, code, créa, validation —
+on a tous les 2 les accès et on s'arbitre selon dispo. La répartition
+ci-dessous reflète qui PILOTE par défaut, pas qui a le droit.
 
 ═══════════════════════════════════════════════════════════════════
 CONTEXTE PARTAGÉ
@@ -187,15 +189,21 @@ pour aligner avec Mohamed, puis data structure (season/subcat), puis
 filtre JS, puis réordonnancement HTML, puis pills + bandeau.
 
 ═══════════════════════════════════════════════════════════════════
-CE QUE MOHAMED FAIT (pas toi, ne touche pas à ça)
+CE QUE MOHAMED PILOTE (toi t'as accès aussi, mais c'est lui qui drive)
 ═══════════════════════════════════════════════════════════════════
-- Stripe KYC + déclaration micro-entreprise (SIRET)
-- Remplir les 123 prix dans pricing-gabarit.csv
-- Donner accès admin GA4 à mon email (le compte GA4 est sur authuser=2) ✅ FAIT 2026-04-27
-- Création/admin comptes : Meta Business, TikTok Ads, Merchant, Trustpilot
+RAPPEL : tous les comptes boutique sont PARTAGÉS (vous avez tous les 2
+les accès). Seul le SIRET est exclusivement Mohamed (entité légale).
+Pour le reste, "Mohamed pilote" veut dire "il drive par défaut" —
+si t'es dispo et lui pas, fais-le.
+
+- Stripe KYC + déclaration micro-entreprise (SIRET) — exclusif Mohamed
+- Remplir les 123 prix dans pricing-gabarit.csv (validation business)
+- Validation founder : merge des PRs sensibles, validation visuels/taglines
+- Sourcing produits & images (lui décide quoi acheter / quel shooting)
 - Édition Été : valider mood/tagline/liste hivernaux que tu lui proposes,
   fournir les assets visuels (hero + photos), recharger les contenus Insta
-  en mood été, merger ta PR après review preview Vercel
+  en mood été (toi tu peux aussi si tu veux, vous avez les 2 les accès),
+  merger ta PR après review preview Vercel
 
 ═══════════════════════════════════════════════════════════════════
 RÉFÉRENCES

@@ -122,7 +122,8 @@ TES tâches :
 [ ] Recharger contenus "VU SUR INSTAGRAM" en mood été
     Stories clients en casquette, sneakers blanches au soleil, sac de plage…
     Pas de hoodie ni d'écharpe en arrière-plan.
-    C'est toi qui a les accès Insta @allstore.tm, donc c'est toi qui post.
+    Toi OU Thomas (vous avez tous les 2 les accès @allstore.tm) — à arbitrer
+    entre vous selon dispo.
 
 [ ] Décider la date de revert édition automne (planning éditorial)
     Suggestion : mi-septembre 2026.
@@ -132,15 +133,19 @@ TES tâches :
     Thomas code en branche claude/thomas-edition-ete-home, ouvre une PR,
     tu reviews le visuel sur le preview Vercel et tu mergues si OK.
 
-📞 RELATIONS COMPTES & SOCIAL
+📞 RELATIONS COMPTES & SOCIAL (partagé avec Thomas — vous avez tous les 2 les accès)
 ─────────────────────────────────────────
-[ ] Maintenir l'accès aux comptes business :
-    Email : allstore.24.7.tm@gmail.com
-    Insta : @allstore.tm  |  TikTok : @allstore.tm
+RAPPEL : tous les comptes boutique sont partagés (email business, Meta,
+TikTok, Merchant, Trustpilot, Vercel, GitHub, Insta @allstore.tm,
+TikTok @allstore.tm, WhatsApp). Seul le SIRET est exclusivement à toi.
+Donc les tâches ci-dessous : toi OU Thomas, à arbitrer entre vous.
 
 [ ] Trustpilot — répondre aux premiers avis quand ils arrivent.
 
 [ ] Suivre l'arrivée des emails de validation (Merchant, Trustpilot).
+
+[ ] Garder à jour les credentials partagés si rotation de mot de passe
+    (prévenir Thomas par message/Insta DM si tu changes un mot de passe).
 
 ═══════════════════════════════════════════════════════════════════
 CE QUE THOMAS FAIT (pas toi, ne touche pas à ça)

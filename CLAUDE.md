@@ -84,8 +84,17 @@ Les deux peuvent lancer des sessions Claude en parallèle sur le même repo —
 risque de collisions si on ne respecte pas les règles ci-dessous.
 
 ### Répartition des chantiers
-- **Mohamed** : business (SIRET, Stripe KYC), création/admin comptes marketing, prix produits (`pricing-gabarit.csv`), produits & images, design.
-- **Thomas** : code & intégrations techniques (Consent Mode RGPD, CAPI Meta, Events API TikTok, événements custom, feed Google Shopping, widget Trustpilot, email post-achat). Détail dans `THOMAS_BRIEF.md`.
+- **Mohamed** : business (SIRET, Stripe KYC), prix produits (`pricing-gabarit.csv`), validation founder, sourcing produits & images.
+- **Thomas** : code & intégrations techniques (Consent Mode RGPD, CAPI Meta, Events API TikTok, événements custom, feed Google Shopping, widget Trustpilot, email post-achat) + direction créa (tendances vestimentaires). Détail dans `THOMAS_BRIEF.md`.
+
+### ⚠️ Accès comptes — TOUT est partagé entre Mohamed et Thomas
+Mohamed et Thomas ont tous les 2 accès à TOUS les comptes de la boutique :
+email business `allstore.24.7.tm@gmail.com`, Meta Business, TikTok Ads,
+Google Merchant, Trustpilot, GA4 (Thomas Admin invité), Vercel, GitHub,
+Instagram `@allstore.tm`, TikTok `@allstore.tm`, WhatsApp business, Stripe (à venir).
+**Seul le SIRET reste exclusif Mohamed** (entité légale perso).
+La "répartition" ci-dessus reflète qui PILOTE par défaut — pas qui a le droit.
+Si l'un est dispo et l'autre non → l'un fait, sans demander.
 
 ### Règles de branches (impératif)
 1. **Toujours** bosser sur une branche dédiée — JAMAIS push direct sur `main`.
