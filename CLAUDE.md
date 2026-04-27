@@ -36,6 +36,7 @@ Au début d'une nouvelle conversation, Claude DOIT :
 - 🟠 **Événements custom** (AddToCart, BeginCheckout, Purchase, Lead). → Thomas.
 - 🟡 **Feed Google Shopping** XML/CSV depuis `products-data.js`. → Thomas.
 - 🟢 **Widget Trustpilot** + étoiles PDPs + email invitation J+1. → Thomas.
+- 🌞 **Édition Été** — refonte home (catégories saisonnières, hide hivernaux, mood été). → Mohamed (créa/visuels/contenu) + Thomas (code/data/JS). Décidé 2026-04-27, deadline ~10 mai.
 - 💰 **Remplir 123 prix** dans `pricing-gabarit.csv`. → Mohamed.
 - 🏛️ **Stripe KYC + SIRET micro-entreprise** (bloque pubs payantes). → Mohamed.
 

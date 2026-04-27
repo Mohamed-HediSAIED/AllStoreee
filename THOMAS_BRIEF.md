@@ -110,13 +110,92 @@ MES CHANTIERS (par ordre de priorité)
     Trigger : webhook Stripe payment_succeeded → cron J+1
     Bonus : API Trustpilot Generate Review Link pour personnaliser
 
+🌞 ÉDITION ÉTÉ — refonte home (en cours, deadline ~10 mai)
+─────────────────────────────────────────
+Pivot saisonnier décidé avec Mohamed le 2026-04-27.
+Constat : la home actuelle pousse écharpes/pulls fin avril → on bascule
+sur une "édition été" qui met en avant casquettes / lunettes / tees /
+sneakers basses / sacs week-end.
+RÉPARTITION : tu pilotes la direction créa + le code (Mohamed reconnaît
+que t'as la main sur les tendances vestimentaires). Mohamed valide en
+tant que founder + fournit les assets visuels (images, contenu social).
+
+PARTIE CRÉA (à proposer à Mohamed pour validation) :
+
+[ ] Soumettre 2-3 directions de mood + tagline
+    Exemples de directions : preppy / beach lux / festival / club / outdoor
+    technique. Pour chaque direction : tagline courte (langage marketing
+    AllStore — voir CLAUDE.md) + 3-5 références visuelles (mood-board).
+    Mohamed choisit celle qui colle à la marque.
+
+[ ] Pré-proposer la liste des produits hivernaux à hide
+    Tu as la main fashion → tu décides quoi sortir.
+    Catégories candidates : écharpes, doudounes, pulls cachemire/laine.
+    Mi-saison à arbitrer avec Mohamed : Hoodies Burberry, Crewneck Stone Island.
+    Livrable : liste IDs produits par statut (winter / summer / all).
+
+[ ] Brief asset visuel pour Mohamed (une fois mood validé)
+    Lui dire exactement ce qu'il faut : hero desktop 16:9, hero mobile 9:16,
+    photos catégories en mood été, contenu Insta à recharger, etc.
+
+PARTIE CODE :
+
+[ ] Ajouter champ season + subcat dans products-data.js
+    Schéma proposé :
+      season: "summer" | "winter" | "all"  (filtre saisonnier home)
+      subcat: "casquette" | "lunettes" | "tee" | "polo" | "sneaker_basse"
+              | "sneaker_haute" | "sac_we" | "echarpe" | "pull" | "hoodie"
+              | "doudoune" | "veste" | "lifestyle" | etc.
+    ATTENTION : ne pas casser BRAND_TIER, CAT_MAP, FEATURED_IDS
+    (voir CLAUDE.md règle critique).
+
+[ ] Logique JS de filtrage côté home
+    Si édition été active → ne pas afficher les produits season:"winter".
+    Possibilité : flag global SUMMER_EDITION = true en haut du file ou
+    toggle date-based (auto-revert mi-septembre par exemple).
+
+[ ] Réordonner les cartes "NOS COLLECTIONS" dans index.html
+    Ordre actuel : SACS → ACCESSOIRES → CHAUSSURES → VÊTEMENTS → MONTRES
+    Ordre cible été (priorité conversion, intent tête→pieds) :
+      1. CASQUETTES   (10+ modèles luxe = arme n°1 été)
+      2. LUNETTES
+      3. TEES & POLOS
+      4. SNEAKERS BASSES
+      5. SACS WEEK-END
+      6. (optionnel) LIFESTYLE / MI-SAISON en bas
+    NB : sous-cats plus granulaires que les cats actuelles (chaussures /
+    vetements / sacs / accessoires) — cf. tâche subcat ci-dessus.
+
+[ ] Pills/filtres "Édition Été" au-dessus de "La Sélection"
+    Pills suggérées : Tout · Casquettes · Lunettes · Tees · Sneakers · Sacs week-end
+    Clic pill = filtre la sélection sans recharger la page.
+
+[ ] Bandeau promo top édition été
+    Texte type : "Édition Été — Livraison 48h offerte sur ta première casquette".
+    Wording final : à valider par Mohamed (langage marketing AllStore).
+
+[ ] Renommer titres sections home pour cohérence
+    "La Sélection" → "La Sélection Été" (ou ce que vous décidez).
+
+WORKFLOW :
+- Coder en branche claude/thomas-edition-ete-home
+- Push regulier, ouvrir une PR pour preview Vercel
+- Mohamed review le visuel sur le preview avant merge
+
+ORDRE DE PRIO SUGGÉRÉ : créa (mood+tagline+liste hivernaux) en premier
+pour aligner avec Mohamed, puis data structure (season/subcat), puis
+filtre JS, puis réordonnancement HTML, puis pills + bandeau.
+
 ═══════════════════════════════════════════════════════════════════
 CE QUE MOHAMED FAIT (pas toi, ne touche pas à ça)
 ═══════════════════════════════════════════════════════════════════
 - Stripe KYC + déclaration micro-entreprise (SIRET)
 - Remplir les 123 prix dans pricing-gabarit.csv
-- Donner accès admin GA4 à mon email (le compte GA4 est sur authuser=2)
+- Donner accès admin GA4 à mon email (le compte GA4 est sur authuser=2) ✅ FAIT 2026-04-27
 - Création/admin comptes : Meta Business, TikTok Ads, Merchant, Trustpilot
+- Édition Été : valider mood/tagline/liste hivernaux que tu lui proposes,
+  fournir les assets visuels (hero + photos), recharger les contenus Insta
+  en mood été, merger ta PR après review preview Vercel
 
 ═══════════════════════════════════════════════════════════════════
 RÉFÉRENCES
