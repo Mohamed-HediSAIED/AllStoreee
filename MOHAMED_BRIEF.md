@@ -1,0 +1,128 @@
+# Brief pour le Claude de Mohamed
+
+> Brief chargé automatiquement par Claude quand la branche commence par `claude/mohamed-*`,
+> ou à coller en premier message sinon.
+> Mis à jour le 2026-04-27.
+> Source de vérité business : `MARKETING_IDS.md`. Règles projet : `CLAUDE.md`.
+
+---
+
+```
+Salut Claude. Je suis Mohamed, fondateur d'ALLSTORE
+(reseller authentique luxe + streetwear, https://allstore-tm.fr).
+Je bosse avec Thomas — il gère le code & intégrations techniques.
+Moi je gère le business, les produits, les images, le design, et les
+relations avec les comptes marketing.
+
+═══════════════════════════════════════════════════════════════════
+CONTEXTE PARTAGÉ
+═══════════════════════════════════════════════════════════════════
+
+Thomas et moi partageons le MÊME compte Claude et le MÊME dossier
+AllStoreee/. Donc TON instance et la SIENNE peuvent tourner en parallèle
+sur le même repo. Risque réel = collisions, écrasement de commits,
+divergences sur main. Lis la section "Coordination" ci-dessous AVANT
+de toucher quoi que ce soit.
+
+═══════════════════════════════════════════════════════════════════
+RÈGLES ABSOLUES (lire avant de toucher au repo)
+═══════════════════════════════════════════════════════════════════
+
+1. boutique.html : NE PAS TOUCHER (rendu dynamique depuis products-data.js)
+2. products-data.js : ne JAMAIS supprimer BRAND_TIER, CAT_MAP, FEATURED_IDS
+   (sinon page blanche). Modifier UNIQUEMENT l'objet PRODUCTS.
+3. Langage marketing AllStore (table dans CLAUDE.md à la racine) :
+   - JAMAIS "réplique", "copie", "dupe", "imitation"
+   - TOUJOURS "authentique", "sourcing officiel", "neuf en boutique"
+   - Exception : "Maison Margiela Replica" (vrai nom du modèle)
+4. Déploiement : push sur main → Vercel auto-deploy sur allstore-tm.fr
+
+═══════════════════════════════════════════════════════════════════
+COORDINATION AVEC THOMAS (impératif)
+═══════════════════════════════════════════════════════════════════
+
+1. Toujours bosser sur une branche dédiée — JAMAIS push direct sur main.
+2. Préfixe MES branches par "mohamed" : claude/mohamed-<feature>.
+   Thomas utilise claude/thomas-* pour les siennes.
+3. NE TOUCHE JAMAIS aux branches de Thomas (ne checkout, ne merge,
+   ne rebase, ne supprime). Si t'as besoin de son taf : demande-moi.
+4. git pull origin main au démarrage (le hook SessionStart le fait déjà).
+5. Avant un push qui semble proche d'un conflit :
+   git fetch && git rebase origin/main sur ma branche.
+6. Si tu vois des modifs locales non commitées que TU n'as pas faites :
+   c'est le taf en cours de Thomas. NE COMMIT PAS, NE STASH PAS,
+   NE RESET PAS. Demande-moi quoi faire.
+
+═══════════════════════════════════════════════════════════════════
+MES CHANTIERS (par ordre de priorité)
+═══════════════════════════════════════════════════════════════════
+
+🏛️ ADMINISTRATIF — débloque le reste
+─────────────────────────────────────────
+[ ] Déclaration micro-entreprise (SIRET) sur autoentrepreneur.urssaf.fr
+    Tant que pas fait → Stripe KYC bloqué → pas de pubs Meta/TikTok payantes,
+    pas de Shopping Ads. Free listings Merchant marchent quand même.
+
+[ ] Compléter Stripe KYC une fois le SIRET reçu
+
+[ ] Donner accès Admin GA4 à Thomas
+    GA4 sur authuser=2 (compte Google différent du Merchant).
+    Property → Admin → Property Access Management → Add user → email Thomas → Admin
+
+💰 PRICING & CATALOGUE
+─────────────────────────────────────────
+[ ] Remplir les 123 prix manquants dans pricing-gabarit.csv
+    Ces produits affichent "Prix bientôt disponible" et un bouton désactivé
+    tant que price=0 dans products-data.js.
+    Une fois rempli → demander à Claude d'injecter les prix dans products-data.js.
+
+[ ] Vérifier les coloris : noms de vraies couleurs (pas "Coloris 1"),
+    photos de profil latéral (vue de côté), même direction par modèle.
+
+[ ] Sources d'images : dossier ALLSTORE 2 IMAGES/ → copier dans AllStore-SITE-WEB/
+    avant utilisation.
+
+🎨 DESIGN / CONTENU SITE
+─────────────────────────────────────────
+[ ] Arbitrer les branches design en attente :
+    - claude/resume-work-aCjkY (cartes homepage 9:16 + mix-blend-mode)
+    - claude/share-website-link-45TKy (catégories style Nike, ajouts produits)
+    Décider lesquelles merger sur main.
+
+[ ] Suivi régulier du parcours client (homepage → boutique → PDP → assistant)
+    pour détecter les friction points.
+
+📞 RELATIONS COMPTES & SOCIAL
+─────────────────────────────────────────
+[ ] Maintenir l'accès aux comptes business :
+    Email : allstore.24.7.tm@gmail.com
+    Insta : @allstore.tm  |  TikTok : @allstore.tm
+
+[ ] Trustpilot — répondre aux premiers avis quand ils arrivent.
+
+[ ] Suivre l'arrivée des emails de validation (Merchant, Trustpilot).
+
+═══════════════════════════════════════════════════════════════════
+CE QUE THOMAS FAIT (pas toi, ne touche pas à ça)
+═══════════════════════════════════════════════════════════════════
+- Bannière Consent Mode v2 RGPD
+- API Conversions Meta + Events API TikTok côté serveur
+- Événements custom (AddToCart, BeginCheckout, Purchase, Lead)
+- Feed Google Shopping (XML/CSV)
+- Widget Trustpilot + étoiles PDPs
+- Email invitation Trustpilot J+1 post-achat
+- Branchement Catalogue Merchant ↔ Boutique Insta/Facebook
+Détails dans THOMAS_BRIEF.md.
+
+═══════════════════════════════════════════════════════════════════
+RÉFÉRENCES
+═══════════════════════════════════════════════════════════════════
+- État global du projet : CLAUDE.md (section "État du projet")
+- IDs marketing complets : MARKETING_IDS.md
+- Règles projet : CLAUDE.md
+- Branche de dev : claude/mohamed-<feature> (jamais push direct main)
+
+Quand un chantier est terminé : METS À JOUR CLAUDE.md (section
+"État du projet") dans le même commit que le livrable. C'est ça qui
+maintient la mémoire vivante du projet entre sessions.
+```

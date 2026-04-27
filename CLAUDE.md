@@ -1,5 +1,56 @@
 # AllStore - Instructions pour Claude
 
+> Ce fichier est la **mémoire vivante du projet**. Il est lu automatiquement
+> par Claude au démarrage de chaque session (Mohamed ou Thomas, sur ce repo).
+> Tout ce qui est écrit ici est "déjà su" sans avoir à être rappelé.
+> **Mettre à jour à chaque jalon** (chantier terminé, nouvelle règle, etc.).
+
+---
+
+## DÉMARRAGE DE SESSION — checklist Claude
+
+Au début d'une nouvelle conversation, Claude DOIT :
+
+1. **Identifier l'utilisateur** :
+   - Branche `claude/thomas-*` → c'est Thomas, charger `THOMAS_BRIEF.md`.
+   - Branche `claude/mohamed-*` → c'est Mohamed, charger `MOHAMED_BRIEF.md`.
+   - Branche `main` ou autre → demander une fois "Mohamed ou Thomas ?".
+2. **Lire l'état du projet** ci-dessous (section "État du projet").
+3. **Ne pas redemander à l'utilisateur** ce qui est déjà documenté ici ou dans les briefs.
+4. **Mettre à jour ce fichier** (et `MARKETING_IDS.md` si besoin) quand un chantier est terminé, sans demander la permission, dans le même commit que le boulot livré.
+
+## État du projet (snapshot — 2026-04-27)
+
+**Site en prod** : https://allstore-tm.fr (Vercel auto-deploy depuis `main`).
+**Stack** : HTML statique + JS vanilla, pas de framework, déploiement Vercel.
+**Catalogue** : 189 produits dans `AllStore-SITE-WEB/products-data.js`.
+
+### Sprints terminés
+- ✅ **Marketing 5/5** — GA4, Meta Pixel, TikTok Pixel, Merchant verif, Trustpilot verif sur 35 pages. Détails : `MARKETING_IDS.md`.
+- ✅ **Hooks Claude** — SessionStart (git pull auto), UserPromptSubmit (heure Paris).
+- ✅ **Refonte boutique** — catégories style Nike (bandeaux horizontaux pleine largeur).
+
+### Chantiers en cours / à faire
+- 🔴 **Bannière Consent Mode v2 RGPD** — bloquant légal CNIL avant scaling EU. → Thomas.
+- 🟠 **API Conversions Meta + Events API TikTok** côté serveur. → Thomas.
+- 🟠 **Événements custom** (AddToCart, BeginCheckout, Purchase, Lead). → Thomas.
+- 🟡 **Feed Google Shopping** XML/CSV depuis `products-data.js`. → Thomas.
+- 🟢 **Widget Trustpilot** + étoiles PDPs + email invitation J+1. → Thomas.
+- 💰 **Remplir 123 prix** dans `pricing-gabarit.csv`. → Mohamed.
+- 🏛️ **Stripe KYC + SIRET micro-entreprise** (bloque pubs payantes). → Mohamed.
+
+### Branches en attente (à arbitrer / merger)
+- `claude/resume-work-aCjkY` — refonte cartes homepage (ratio 9:16, mix-blend-mode).
+- `claude/share-website-link-45TKy` — refonte catégories boutique style Nike (probablement déjà appliquée).
+- `claude/cool-jennings`, `claude/marketing-accounts-clarification-1AwIb`, `design/pre-apple-revert` — à trier.
+
+### Documents de référence (à charger selon le besoin)
+- `THOMAS_BRIEF.md` — chantiers techniques de Thomas (RGPD, CAPI, feed, Trustpilot…).
+- `MARKETING_IDS.md` — IDs marketing (GA4, Meta, TikTok, Merchant, Trustpilot) + état détaillé.
+- `MOHAMED_BRIEF.md` — chantiers business/produits/design de Mohamed.
+
+---
+
 ## RÈGLE CRITIQUE — LIRE EN PREMIER
 
 ### boutique.html = NE PAS TOUCHER
