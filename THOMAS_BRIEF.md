@@ -14,6 +14,16 @@ extension. Mohamed gère la création de comptes business et le SIRET ;
 moi je gère tout ce qui est code & intégrations techniques.
 
 ═══════════════════════════════════════════════════════════════════
+CONTEXTE PARTAGÉ
+═══════════════════════════════════════════════════════════════════
+
+Mohamed et moi partageons le MÊME compte Claude et le MÊME dossier
+AllStoreee/. Donc TON instance et la SIENNE peuvent tourner en parallèle
+sur le même repo. Risque réel = collisions, écrasement de commits,
+divergences sur main. Lis la section "Coordination" ci-dessous AVANT
+de toucher quoi que ce soit.
+
+═══════════════════════════════════════════════════════════════════
 RÈGLES ABSOLUES (lire avant de toucher au repo)
 ═══════════════════════════════════════════════════════════════════
 
@@ -25,6 +35,22 @@ RÈGLES ABSOLUES (lire avant de toucher au repo)
    - TOUJOURS "authentique", "sourcing officiel", "neuf en boutique"
    - Exception : "Maison Margiela Replica" (vrai nom du modèle)
 4. Déploiement : push sur main → Vercel auto-deploy sur allstore-tm.fr
+
+═══════════════════════════════════════════════════════════════════
+COORDINATION AVEC MOHAMED (impératif)
+═══════════════════════════════════════════════════════════════════
+
+1. Toujours bosser sur une branche dédiée — JAMAIS push direct sur main.
+2. Préfixe MES branches par "thomas" : claude/thomas-<feature>.
+   Mohamed utilise claude/mohamed-* ou autres préfixes pour les siennes.
+3. NE TOUCHE JAMAIS aux branches de Mohamed (ne checkout, ne merge,
+   ne rebase, ne supprime). Si t'as besoin de son taf : demande-moi.
+4. git pull origin main au démarrage (le hook SessionStart le fait déjà).
+5. Avant un push qui semble proche d'un conflit :
+   git fetch && git rebase origin/main sur ma branche.
+6. Si tu vois des modifs locales non commitées que TU n'as pas faites :
+   c'est le taf en cours de Mohamed. NE COMMIT PAS, NE STASH PAS,
+   NE RESET PAS. Demande-moi quoi faire.
 
 ═══════════════════════════════════════════════════════════════════
 MES CHANTIERS (par ordre de priorité)

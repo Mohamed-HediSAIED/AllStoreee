@@ -25,6 +25,24 @@ Pour modifier des produits, modifier UNIQUEMENT l'objet `PRODUCTS`.
 - `AllStore-SITE-WEB/boutique.html` — page boutique SPA avec rendu dynamique (NE PAS MODIFIER les cartes)
 - Déploiement : push sur `main` → Vercel auto-deploy sur allstore-tm.fr
 
+## Coordination Mohamed / Thomas
+
+**Compte Claude et dossier `AllStoreee/` partagés entre Mohamed et Thomas.**
+Les deux peuvent lancer des sessions Claude en parallèle sur le même repo —
+risque de collisions si on ne respecte pas les règles ci-dessous.
+
+### Répartition des chantiers
+- **Mohamed** : business (SIRET, Stripe KYC), création/admin comptes marketing, prix produits (`pricing-gabarit.csv`), produits & images, design.
+- **Thomas** : code & intégrations techniques (Consent Mode RGPD, CAPI Meta, Events API TikTok, événements custom, feed Google Shopping, widget Trustpilot, email post-achat). Détail dans `THOMAS_BRIEF.md`.
+
+### Règles de branches (impératif)
+1. **Toujours** bosser sur une branche dédiée — JAMAIS push direct sur `main`.
+2. Préfixe les branches par ton nom : `claude/mohamed-<feature>` ou `claude/thomas-<feature>`.
+3. **Ne touche jamais aux branches de l'autre** (ne checkout, ne merge, ne rebase, ne supprime). Si tu as besoin de leur taf, demande à l'humain.
+4. `git pull origin main` au démarrage de chaque session (le hook SessionStart le fait déjà).
+5. Avant un push qui semble proche d'un conflit : `git fetch && git rebase origin/main` sur ta branche.
+6. Si tu vois des modifs locales non commitées que tu n'as pas faites → c'est probablement le taf en cours de l'autre. **Ne commit pas, ne stash pas, ne reset pas. Demande à l'humain.**
+
 ## Comment ajouter/supprimer un produit
 1. Ouvrir `products-data.js`
 2. Ajouter ou supprimer l'entrée dans l'objet `PRODUCTS` uniquement
