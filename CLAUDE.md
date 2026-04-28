@@ -16,8 +16,26 @@ Au début d'une nouvelle conversation, Claude DOIT :
    - Branche `claude/mohamed-*` → c'est Mohamed, charger `MOHAMED_BRIEF.md`.
    - Branche `main` ou autre → demander une fois "Mohamed ou Thomas ?".
 2. **Lire l'état du projet** ci-dessous (section "État du projet").
-3. **Ne pas redemander à l'utilisateur** ce qui est déjà documenté ici ou dans les briefs.
-4. **Mettre à jour ce fichier** (et `MARKETING_IDS.md` si besoin) quand un chantier est terminé, sans demander la permission, dans le même commit que le boulot livré.
+3. **Lire les 20 dernières entrées de `SESSION_LOG.md`** (déjà injectées par le hook SessionStart) — c'est la mémoire continue inter-sessions.
+4. **Ne pas redemander à l'utilisateur** ce qui est déjà documenté ici, dans les briefs, ou dans le journal.
+5. **Mettre à jour ce fichier** (et `MARKETING_IDS.md` si besoin) quand un chantier est terminé, sans demander la permission, dans le même commit que le boulot livré.
+
+## RÈGLE MÉMOIRE CONTINUE — `SESSION_LOG.md`
+
+**À chaque échange utilisateur qui contient un fait, une décision, une préférence, un blocker, ou un apprentissage durable, Claude DOIT append une ligne dans `SESSION_LOG.md` avant de finir son tour.**
+
+Format strict :
+```
+[YYYY-MM-DD HH:MM] [WHO] [TYPE] message court (1 ligne max ~200 chars)
+```
+- WHO = `MOHAMED` | `THOMAS` | `CLAUDE` | `SYSTEM`
+- TYPE = `DECISION` | `INFO` | `PREFERENCE` | `BUG` | `LEARN` | `BLOCKER`
+
+**Logger** : décisions actées, faits établis, préférences exprimées, contraintes business, infos techniques apprises, blockers identifiés, déclarations factuelles de l'utilisateur (statut SIRET, comptes, prix, etc.).
+
+**Ne PAS logger** : bavardage, questions sans réponse, hésitations, brainstorming pur.
+
+Le fichier est append-only — **ne jamais supprimer ou éditer une entrée existante**.
 
 ## État du projet (snapshot — 2026-04-28)
 
