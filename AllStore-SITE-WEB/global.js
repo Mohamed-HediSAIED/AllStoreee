@@ -9,7 +9,7 @@
     const isMobile = window.matchMedia('(max-width:768px)').matches;
     const img = document.createElement('img');
     img.id = 'als-bg-img';
-    img.src = isMobile ? 'IMG_9422.jpg' : 'IMG_9440.jpg';
+    img.src = isMobile ? 'assets/ete/hero-mobile-riviera.jpg' : 'assets/ete/hero-desktop-riviera.jpg';
     img.alt = '';
     img.style.cssText = 'position:fixed;top:0;left:0;width:100vw;height:100vh;min-width:100vw;min-height:100vh;object-fit:cover;object-position:center center;z-index:-2;pointer-events:none;user-select:none;';
     const overlay = document.createElement('div');
@@ -19,7 +19,7 @@
     document.body.insertBefore(img, document.body.firstChild);
     const updateBg = () => {
       const mobile = window.matchMedia('(max-width:768px)').matches;
-      const newSrc = mobile ? 'IMG_9422.jpg' : 'IMG_9440.jpg';
+      const newSrc = mobile ? 'assets/ete/hero-mobile-riviera.jpg' : 'assets/ete/hero-desktop-riviera.jpg';
       if(!img.src.endsWith(newSrc)) img.src = newSrc;
     };
     window.addEventListener('resize', updateBg);
@@ -376,6 +376,26 @@
 `;
       fi.appendChild(s);
     });
+  })();
+
+  /* ══════════════════════════════════════════════════════════════
+     LEAD TRACKING — clic WhatsApp/Insta/TikTok = event Lead
+     Remonte aux 3 pixels (Meta, TikTok, GA4) pour nourrir les algos.
+  ══════════════════════════════════════════════════════════════ */
+  (function(){
+    document.addEventListener('click', function(e){
+      const a = e.target.closest && e.target.closest('a[href]');
+      if(!a) return;
+      const href = a.getAttribute('href') || '';
+      let source = null;
+      if(/wa\.me\/|api\.whatsapp\.com\//i.test(href)) source = 'whatsapp';
+      else if(/ig\.me\/|instagram\.com\/allstore/i.test(href)) source = 'instagram';
+      else if(/tiktok\.com\/@allstore/i.test(href)) source = 'tiktok';
+      if(!source) return;
+      try { if(typeof fbq === 'function') fbq('track', 'Lead', { content_name: source }); } catch(_){}
+      try { if(typeof ttq !== 'undefined' && ttq && typeof ttq.track === 'function') ttq.track('Lead', { content_name: source }); } catch(_){}
+      try { if(typeof gtag === 'function') gtag('event', 'generate_lead', { method: source }); } catch(_){}
+    }, true);
   })();
 
   /* ══════════════════════════════════════════════════════════════

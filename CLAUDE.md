@@ -39,11 +39,11 @@ Au début d'une nouvelle conversation, Claude DOIT :
 ### Chantiers en cours / à faire
 - 🔴 **Bannière Consent Mode v2 RGPD** — bloquant légal CNIL avant scaling EU. → Thomas.
 - 🟠 **API Conversions Meta + Events API TikTok** côté serveur. → Thomas.
-- 🟠 **Événements custom** (AddToCart, BeginCheckout, Purchase). Lead déjà fait via PR #3. → Thomas.
+- 🟠 **Événements custom** (AddToCart, BeginCheckout, Purchase). Lead déjà fait via PR #3 mergée 2026-04-28. → Thomas.
 - 🟡 **Feed Google Shopping** XML/CSV depuis `products-data.js`. → Thomas.
 - 🟢 **Widget Trustpilot** + étoiles PDPs + email invitation J+1. → Thomas.
-- 🟢 **Intégrer les 3 photos catégories** déjà déposées (`assets/ete/cat-*.jpg`) dans les sections home (sections "Sélection Été" / "Vu sur Insta" / blocs catégories). → Thomas.
-- 💰 **Remplir 123 prix** dans `pricing-gabarit.csv` selon formule `PV = (PF × 2) + 15`. → Mohamed.
+- 🟢 **Intégrer les 3 photos catégories** déjà déposées (`assets/ete/cat-*.jpg` : yacht-amis, couple-yacht, streetstyle-veste-blanche) dans les sections home (sections "Sélection Été" / "Vu sur Insta" / blocs catégories). → Thomas.
+- 💰 **Remplir 123 prix** dans `pricing-gabarit.csv` selon formule `PV = (PF × 2) + 15`. Détails : `PRICING_GUIDE.md`. → Mohamed.
 - 🏛️ **Ajouter activité commerce détail (APE 47.91A)** sur SIRET Uber Eats existant via `formalites.entreprises.gouv.fr` (~15 min, gratuit, confirmation 1-7j). → Mohamed. **Pas besoin de créer un nouveau SIRET.** Débloque Stripe KYC → débloque pubs payantes Meta/TikTok + Shopping Ads.
 
 ### Branches en attente (à arbitrer / merger)
