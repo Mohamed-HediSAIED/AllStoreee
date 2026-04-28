@@ -16,51 +16,35 @@ Au début d'une nouvelle conversation, Claude DOIT :
    - Branche `claude/mohamed-*` → c'est Mohamed, charger `MOHAMED_BRIEF.md`.
    - Branche `main` ou autre → demander une fois "Mohamed ou Thomas ?".
 2. **Lire l'état du projet** ci-dessous (section "État du projet").
-3. **Lire les 20 dernières entrées de `SESSION_LOG.md`** (déjà injectées par le hook SessionStart) — c'est la mémoire continue inter-sessions.
-4. **Ne pas redemander à l'utilisateur** ce qui est déjà documenté ici, dans les briefs, ou dans le journal.
-5. **Mettre à jour ce fichier** (et `MARKETING_IDS.md` si besoin) quand un chantier est terminé, sans demander la permission, dans le même commit que le boulot livré.
+3. **Ne pas redemander à l'utilisateur** ce qui est déjà documenté ici ou dans les briefs.
+4. **Mettre à jour ce fichier** (et `MARKETING_IDS.md` si besoin) quand un chantier est terminé, sans demander la permission, dans le même commit que le boulot livré.
 
-## RÈGLE MÉMOIRE CONTINUE — `SESSION_LOG.md`
-
-**À chaque échange utilisateur qui contient un fait, une décision, une préférence, un blocker, ou un apprentissage durable, Claude DOIT append une ligne dans `SESSION_LOG.md` avant de finir son tour.**
-
-Format strict :
-```
-[YYYY-MM-DD HH:MM] [WHO] [TYPE] message court (1 ligne max ~200 chars)
-```
-- WHO = `MOHAMED` | `THOMAS` | `CLAUDE` | `SYSTEM`
-- TYPE = `DECISION` | `INFO` | `PREFERENCE` | `BUG` | `LEARN` | `BLOCKER`
-
-**Logger** : décisions actées, faits établis, préférences exprimées, contraintes business, infos techniques apprises, blockers identifiés, déclarations factuelles de l'utilisateur (statut SIRET, comptes, prix, etc.).
-
-**Ne PAS logger** : bavardage, questions sans réponse, hésitations, brainstorming pur.
-
-Le fichier est append-only — **ne jamais supprimer ou éditer une entrée existante**.
-
-## État du projet (snapshot — 2026-04-28)
+## État du projet (snapshot — 2026-04-28 23:00)
 
 **Site en prod** : https://allstore-tm.fr (Vercel auto-deploy depuis `main`).
 **Stack** : HTML statique + JS vanilla, pas de framework, déploiement Vercel.
-**Catalogue** : 326 entrées (variantes incluses) dans `AllStore-SITE-WEB/products-data.js`.
+**Catalogue** : 189 produits dans `AllStore-SITE-WEB/products-data.js`.
 
 ### Sprints terminés
 - ✅ **Marketing 5/5** — GA4, Meta Pixel, TikTok Pixel, Merchant verif, Trustpilot verif sur 35 pages. Détails : `MARKETING_IDS.md`.
-- ✅ **Hooks Claude** — SessionStart (git pull auto), UserPromptSubmit (heure Paris).
+- ✅ **Hooks Claude** — SessionStart (git pull auto + injection 20 dernières entrées SESSION_LOG), UserPromptSubmit (heure Paris).
 - ✅ **Refonte boutique** — catégories style Nike (bandeaux horizontaux pleine largeur).
-- ✅ **Édition Été — décisions founder** (2026-04-28) — mood "Riviera Quiet Luxury" validé, tagline *« L'été se porte authentique. »*, hide complet 20 produits hivernaux. Détails : `EDITION_ETE_DECISIONS.md`.
-- ✅ **Guide pricing AllStore** (2026-04-28) — formule `PV = (PF × 2) + 15`, plancher `PF × 1.6 + 10`, marge nette ~30-35%. Détails : `PRICING_GUIDE.md`.
+- ✅ **Mémoire continue** — `SESSION_LOG.md` append-only ajouté 2026-04-28, partagé via repo entre tous les PCs/sessions.
+- ✅ **Pricing strategy** — formule `PV = (PF × 2) + 15` actée, donne ~30-35% net après URSSAF/Stripe/livraison. Détails : `PRICING_GUIDE.md`.
+- ✅ **Édition Été** — livrée complètement 2026-04-28 (PRs #3 + #4 + #5) :
+  - PR #3 : event Lead WhatsApp/Insta/TikTok sur 3 pixels (Meta + TikTok + GA4) actif sur 35 pages.
+  - PR #4 : refonte home mood Riviera Quiet Luxury (bandeau "Édition Été", h1 "L'été se porte authentique.", Sélection Été 7 cartes, ordre collections priorité été, filtre Burberry Pull→Polo, "Vu sur Insta" updated, FEATURED_IDS sans burberry-gris + avec lunettes-miumiu).
+  - PR #5 : hero Riviera (superyacht desktop + patio Santorini mobile) sourcés sur Unsplash, déposés dans `AllStore-SITE-WEB/assets/ete/` + 3 photos catégories pré-déposées (yacht-amis, couple-yacht, streetstyle-veste-blanche) prêtes pour intégration UI future.
 
 ### Chantiers en cours / à faire
 - 🔴 **Bannière Consent Mode v2 RGPD** — bloquant légal CNIL avant scaling EU. → Thomas.
-- 🟠 **Édition Été — code accueil** (deadline 10 mai 2026) — branche `claude/thomas-edition-ete-home`. → Thomas (Mohamed valide preview Vercel + merge final).
 - 🟠 **API Conversions Meta + Events API TikTok** côté serveur. → Thomas.
-- 🟠 **Événements custom** (AddToCart, BeginCheckout, Purchase, Lead). → Thomas.
+- 🟠 **Événements custom** (AddToCart, BeginCheckout, Purchase). Lead déjà fait via PR #3. → Thomas.
 - 🟡 **Feed Google Shopping** XML/CSV depuis `products-data.js`. → Thomas.
 - 🟢 **Widget Trustpilot** + étoiles PDPs + email invitation J+1. → Thomas.
-- 💰 **Remplir 123 prix** dans `pricing-gabarit.csv` (Mohamed obtient prix fournisseurs → applique formule `PRICING_GUIDE.md` → Claude injecte dans `products-data.js`). → Mohamed.
-- 🏛️ **SIRET — extension activité commerce** : Mohamed a déjà un SIRET actif (Uber Eats, prestation services). Doit ajouter activité secondaire commerce de détail (code APE 47.91A) sur formalites.entreprises.gouv.fr (~15 min, gratuit). Une fois reçu → Stripe KYC débloqué → pubs Meta/TikTok possibles. → Mohamed.
-- 🌞 **Édition Été — assets visuels** : sourcer hero desktop 16:9 + hero mobile 9:16 + 4-6 photos catégories été (mood Riviera Quiet Luxury). → Mohamed.
-- 🌞 **Édition Été — VU SUR INSTAGRAM** : recharger 6-8 stories mood été. → Mohamed OU Thomas.
+- 🟢 **Intégrer les 3 photos catégories** déjà déposées (`assets/ete/cat-*.jpg`) dans les sections home (sections "Sélection Été" / "Vu sur Insta" / blocs catégories). → Thomas.
+- 💰 **Remplir 123 prix** dans `pricing-gabarit.csv` selon formule `PV = (PF × 2) + 15`. → Mohamed.
+- 🏛️ **Ajouter activité commerce détail (APE 47.91A)** sur SIRET Uber Eats existant via `formalites.entreprises.gouv.fr` (~15 min, gratuit, confirmation 1-7j). → Mohamed. **Pas besoin de créer un nouveau SIRET.** Débloque Stripe KYC → débloque pubs payantes Meta/TikTok + Shopping Ads.
 
 ### Branches en attente (à arbitrer / merger)
 - `claude/resume-work-aCjkY` — refonte cartes homepage (ratio 9:16, mix-blend-mode).
@@ -69,19 +53,8 @@ Le fichier est append-only — **ne jamais supprimer ou éditer une entrée exis
 
 ### Documents de référence (à charger selon le besoin)
 - `THOMAS_BRIEF.md` — chantiers techniques de Thomas (RGPD, CAPI, feed, Trustpilot…).
-- `MOHAMED_BRIEF.md` — chantiers business/produits/design de Mohamed.
 - `MARKETING_IDS.md` — IDs marketing (GA4, Meta, TikTok, Merchant, Trustpilot) + état détaillé.
-- `EDITION_ETE_DECISIONS.md` — décisions founder Édition Été 2026 (mood, tagline, produits à hide, hand-off Thomas).
-- `PRICING_GUIDE.md` — formule de fixation des prix de vente AllStore (URSSAF + Stripe + livraison inclus).
-
-### Contexte fiscal & légal (Mohamed founder)
-- **Statut** : micro-entrepreneur actif (SIRET pré-existant pour livraison Uber Eats, prestation de services BIC ~21,2%).
-- **Action en cours** : ajouter activité secondaire "Commerce de détail d'habillement et chaussures via internet" (code APE 47.91A) → cotisations URSSAF AllStore = 12,3% du CA (vente marchandises) au lieu de 21,2%.
-- **TVA** : franchise en base tant que CA marchandises < 85 800 €/an.
-- **Plafond micro vente** : 188 700 €/an.
-- **Versement libératoire IR** : 1% si éligible (à vérifier).
-- **Stripe** : à activer en business dès réception confirmation extension activité (1-7 jours).
-- **Coût pour AllStore** : ~13,3% du CA (URSSAF 12,3% + impôt 1%) prélevé sur **CA brut** (pas sur la marge), d'où la nécessité d'une marge brute ≥ 35% (formule `PRICING_GUIDE.md`).
+- `MOHAMED_BRIEF.md` — chantiers business/produits/design de Mohamed.
 
 ---
 
@@ -117,8 +90,17 @@ Les deux peuvent lancer des sessions Claude en parallèle sur le même repo —
 risque de collisions si on ne respecte pas les règles ci-dessous.
 
 ### Répartition des chantiers
-- **Mohamed** : business (SIRET, Stripe KYC), création/admin comptes marketing, prix produits (`pricing-gabarit.csv`), produits & images, design.
-- **Thomas** : code & intégrations techniques (Consent Mode RGPD, CAPI Meta, Events API TikTok, événements custom, feed Google Shopping, widget Trustpilot, email post-achat). Détail dans `THOMAS_BRIEF.md`.
+- **Mohamed** : business (SIRET, Stripe KYC), prix produits (`pricing-gabarit.csv`), validation founder, sourcing produits & images.
+- **Thomas** : code & intégrations techniques (Consent Mode RGPD, CAPI Meta, Events API TikTok, événements custom, feed Google Shopping, widget Trustpilot, email post-achat) + direction créa (tendances vestimentaires). Détail dans `THOMAS_BRIEF.md`.
+
+### ⚠️ Accès comptes — TOUT est partagé entre Mohamed et Thomas
+Mohamed et Thomas ont tous les 2 accès à TOUS les comptes de la boutique :
+email business `allstore.24.7.tm@gmail.com`, Meta Business, TikTok Ads,
+Google Merchant, Trustpilot, GA4 (Thomas Admin invité), Vercel, GitHub,
+Instagram `@allstore.tm`, TikTok `@allstore.tm`, WhatsApp business, Stripe (à venir).
+**Seul le SIRET reste exclusif Mohamed** (entité légale perso).
+La "répartition" ci-dessus reflète qui PILOTE par défaut — pas qui a le droit.
+Si l'un est dispo et l'autre non → l'un fait, sans demander.
 
 ### Règles de branches (impératif)
 1. **Toujours** bosser sur une branche dédiée — JAMAIS push direct sur `main`.
