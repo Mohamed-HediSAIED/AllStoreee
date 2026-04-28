@@ -19,7 +19,7 @@ Au début d'une nouvelle conversation, Claude DOIT :
 3. **Ne pas redemander à l'utilisateur** ce qui est déjà documenté ici ou dans les briefs.
 4. **Mettre à jour ce fichier** (et `MARKETING_IDS.md` si besoin) quand un chantier est terminé, sans demander la permission, dans le même commit que le boulot livré.
 
-## État du projet (snapshot — 2026-04-27)
+## État du projet (snapshot — 2026-04-28 23:00)
 
 **Site en prod** : https://allstore-tm.fr (Vercel auto-deploy depuis `main`).
 **Stack** : HTML statique + JS vanilla, pas de framework, déploiement Vercel.
@@ -27,19 +27,24 @@ Au début d'une nouvelle conversation, Claude DOIT :
 
 ### Sprints terminés
 - ✅ **Marketing 5/5** — GA4, Meta Pixel, TikTok Pixel, Merchant verif, Trustpilot verif sur 35 pages. Détails : `MARKETING_IDS.md`.
-- ✅ **Hooks Claude** — SessionStart (git pull auto), UserPromptSubmit (heure Paris).
+- ✅ **Hooks Claude** — SessionStart (git pull auto + injection 20 dernières entrées SESSION_LOG), UserPromptSubmit (heure Paris).
 - ✅ **Refonte boutique** — catégories style Nike (bandeaux horizontaux pleine largeur).
+- ✅ **Mémoire continue** — `SESSION_LOG.md` append-only ajouté 2026-04-28, partagé via repo entre tous les PCs/sessions.
+- ✅ **Pricing strategy** — formule `PV = (PF × 2) + 15` actée, donne ~30-35% net après URSSAF/Stripe/livraison. Détails : `PRICING_GUIDE.md`.
+- ✅ **Édition Été** — livrée complètement 2026-04-28 (PRs #3 + #4 + #5) :
+  - PR #3 : event Lead WhatsApp/Insta/TikTok sur 3 pixels (Meta + TikTok + GA4) actif sur 35 pages.
+  - PR #4 : refonte home mood Riviera Quiet Luxury (bandeau "Édition Été", h1 "L'été se porte authentique.", Sélection Été 7 cartes, ordre collections priorité été, filtre Burberry Pull→Polo, "Vu sur Insta" updated, FEATURED_IDS sans burberry-gris + avec lunettes-miumiu).
+  - PR #5 : hero Riviera (superyacht desktop + patio Santorini mobile) sourcés sur Unsplash, déposés dans `AllStore-SITE-WEB/assets/ete/` + 3 photos catégories pré-déposées (yacht-amis, couple-yacht, streetstyle-veste-blanche) prêtes pour intégration UI future.
 
 ### Chantiers en cours / à faire
 - 🔴 **Bannière Consent Mode v2 RGPD** — bloquant légal CNIL avant scaling EU. → Thomas.
 - 🟠 **API Conversions Meta + Events API TikTok** côté serveur. → Thomas.
-- 🟠 **Événements custom** restants : AddToCart, BeginCheckout, Purchase. → Thomas.
-  - ✅ Lead (clic WhatsApp/Insta/TikTok) — fait 2026-04-27 via event delegation dans `global.js`.
+- 🟠 **Événements custom** (AddToCart, BeginCheckout, Purchase). Lead déjà fait via PR #3 mergée 2026-04-28. → Thomas.
 - 🟡 **Feed Google Shopping** XML/CSV depuis `products-data.js`. → Thomas.
 - 🟢 **Widget Trustpilot** + étoiles PDPs + email invitation J+1. → Thomas.
-- 🌞 **Édition Été** — refonte home. Mood Riviera Quiet Luxury validé par Mohamed 2026-04-28. Code home livré 2026-04-28 (tagline, sélection, sections dynamiques, NOS COLLECTIONS réordonné, FEATURED_IDS, hide hoodie burberry de "Vu sur Insta"). RESTE : hero asset visuel + photos catégories été (Mohamed) — voir `EDITION_ETE_DECISIONS.md`. Deadline live ~10 mai.
-- 💰 **Remplir 123 prix** dans `pricing-gabarit.csv`. → Mohamed.
-- 🏛️ **Stripe KYC + SIRET micro-entreprise** (bloque pubs payantes). → Mohamed.
+- 🟢 **Intégrer les 3 photos catégories** déjà déposées (`assets/ete/cat-*.jpg` : yacht-amis, couple-yacht, streetstyle-veste-blanche) dans les sections home (sections "Sélection Été" / "Vu sur Insta" / blocs catégories). → Thomas.
+- 💰 **Remplir 123 prix** dans `pricing-gabarit.csv` selon formule `PV = (PF × 2) + 15`. Détails : `PRICING_GUIDE.md`. → Mohamed.
+- 🏛️ **Ajouter activité commerce détail (APE 47.91A)** sur SIRET Uber Eats existant via `formalites.entreprises.gouv.fr` (~15 min, gratuit, confirmation 1-7j). → Mohamed. **Pas besoin de créer un nouveau SIRET.** Débloque Stripe KYC → débloque pubs payantes Meta/TikTok + Shopping Ads.
 
 ### Branches en attente (à arbitrer / merger)
 - `claude/resume-work-aCjkY` — refonte cartes homepage (ratio 9:16, mix-blend-mode).

@@ -1,0 +1,42 @@
+# Journal de session AllStore — mémoire continue Mohamed/Thomas/Claude
+
+> **Append-only.** Ne jamais éditer ou supprimer une entrée existante.
+> Chaque entrée = un fait, une décision, une préférence, ou un apprentissage qui doit
+> survivre entre sessions Claude. Format : `[YYYY-MM-DD HH:MM] [WHO] [TYPE] message`.
+>
+> WHO = `MOHAMED` | `THOMAS` | `CLAUDE` | `SYSTEM`
+> TYPE = `DECISION` | `INFO` | `PREFERENCE` | `BUG` | `LEARN` | `BLOCKER`
+>
+> Les ~20 dernières entrées sont injectées au démarrage de chaque session par le hook SessionStart.
+> Pour les détails complets, voir les fichiers de référence (CLAUDE.md, MOHAMED_BRIEF.md, etc.)
+
+---
+
+## 2026-04-28
+
+[2026-04-28 08:42] [MOHAMED] [DECISION] Lance le chantier Édition Été côté Mohamed (validation founder + sourcing assets). Thomas pilote la créa+code.
+[2026-04-28 09:30] [MOHAMED] [DECISION] Édition Été — hide complet 20 produits hivernaux en home (17 clear + 3 hoodies Burberry, dont burberry-gris à retirer aussi de FEATURED_IDS). Stone Island + On All-Day restent visibles.
+[2026-04-28 09:32] [MOHAMED] [DECISION] Édition Été — mood retenu = "A. Riviera Quiet Luxury" (rejette B Club House et C Festival). Tagline : « L'été se porte authentique. ». Détails : EDITION_ETE_DECISIONS.md.
+[2026-04-28 09:38] [CLAUDE] [INFO] Catalogue products-data.js = 326 entrées (variantes incluses), 6 catégories, pas de champ `season` (à ajouter par Thomas). 11 produits dans FEATURED_IDS.
+[2026-04-28 09:46] [MOHAMED] [LEARN] URSSAF micro-entrepreneur prélève 12,3% sur le **CA brut** (vente marchandises), pas sur la marge. C'est le défaut majeur du régime micro pour resellers à faible marge.
+[2026-04-28 10:00] [MOHAMED] [LEARN] La marge brute reseller AllStore actuelle (~25%) est trop faible : il reste ~6 €/vente net après URSSAF/Stripe/livraison. Cible saine = 40-60% de marge brute.
+[2026-04-28 10:13] [CLAUDE] [DECISION] Formule pricing AllStore officielle : `PV = (PF × 2) + 15` (prix vente cible) et `Plancher = (PF × 1,6) + 10` (limite absolue). Donne ~30-35% bénéfice net après tous frais. Détails : PRICING_GUIDE.md.
+[2026-04-28 10:25] [MOHAMED] [INFO] A déjà un SIRET actif pour Uber Eats (livraison, prestation services BIC ~21,2%). PAS besoin d'en créer un nouveau pour AllStore — il faut juste ajouter activité secondaire commerce détail (APE 47.91A) sur formalites.entreprises.gouv.fr (~15 min, gratuit, confirmation 1-7 jours).
+[2026-04-28 17:23] [MOHAMED] [PREFERENCE] Veut que TOUS les échanges (même les plus minimes) soient persistants entre sessions. Mise en place de SESSION_LOG.md + hook qui inject au démarrage.
+[2026-04-28 17:28] [SYSTEM] [INFO] Création initiale de SESSION_LOG.md + modification hook SessionStart pour charger les 20 dernières entrées.
+[2026-04-28 21:36] [CLAUDE] [INFO] PR #3 (claude/thomas-event-lead, event Lead WhatsApp/Insta/TikTok) testée end-to-end sur preview Vercel via Playwright. 4 events Lead réels capturés côté réseau (Insta footer, TikTok footer, ig.me, wa.me simulé) sur les 3 pixels (Meta `ev=Lead`, TikTok `pixel/act`, GA4 `generate_lead`) + 0 faux positif sur lien interne et mailto. Mergeable sur main.
+[2026-04-28 21:55] [MOHAMED] [PREFERENCE] N'est pas dev. Préfère explications sans jargon technique (squash, branch, merge, etc.). Toujours expliquer en langage business/concret, avec analogies si besoin, et donner l'effet visible côté site/utilisateur plutôt que les détails Git.
+[2026-04-28 21:56] [CLAUDE] [DECISION] PR #3 mergée sur main (commit f69d380, squash). Vercel auto-redeploy en cours. À partir de maintenant, allstore-tm.fr fire l'event Lead aux 3 pixels (Meta `Lead`, TikTok `pixel/act`, GA4 `generate_lead`) sur chaque clic WhatsApp/Insta/TikTok du site.
+[2026-04-28 22:02] [MOHAMED] [INFO] A entendu parler du montage LLC US (Wyoming/Delaware) + Mercury + Stripe US, vendu comme "société anonyme, pas de remontée auto vers France". Veut savoir si valable pour AllStore.
+[2026-04-28 22:02] [CLAUDE] [DECISION] Montage LLC US REJETÉ pour AllStore en l'état. Raisons : (1) FATCA + IGA France-USA = échange d'infos existe (moins auto que CRS mais demande sur soupçon possible). (2) Corporate Transparency Act 2024 = beneficial owners déclarés au FinCEN, plus d'anonymat. (3) Surtout : Mohamed est résident fiscal France et pilote depuis la France → établissement stable / siège de direction effective en France → la LLC est imposable en France comme société française + fraude fiscale art. 1741 CGI (jusqu'à 7 ans prison + 3M€). (4) TVA EU due quand même sur ventes EU. (5) Mercury/Stripe gel régulier des comptes EU. Vraie solution : appliquer la formule pricing PV = (PF × 2) + 15 (~30-35% net légal), puis basculer SASU à l'IS quand CA dépasse seuils micro.
+[2026-04-28 22:24] [MOHAMED] [DECISION] OK pour mettre la home Édition Été en ligne maintenant avec les anciennes photos (IMG_9440 desktop + IMG_9422 mobile), photos Riviera ajoutées plus tard quand sourcing fait. Principe : avancer en parallèle, pas perdre de temps.
+[2026-04-28 22:24] [CLAUDE] [DECISION] PR #4 mergée sur main (commit 41e97b5, squash). Refonte home mood Riviera Quiet Luxury active sur allstore-tm.fr (bandeau "Édition Été — Livraison offerte en Europe", h1 "L'été se porte authentique.", Sélection Été 7 cartes, FEATURED_IDS sans burberry-gris + avec lunettes-miumiu, filtre Burberry Pull→Polo). Hero photos restent les anciennes (à remplacer dans une PR ultérieure).
+[2026-04-28 22:25] [CLAUDE] [INFO] Vérif prod allstore-tm.fr post-merge PR #4 : déploiement Vercel commit 41e97b5 actif (22:24:36 UTC). HTML contient bandeau "Édition Été" + h1 "L'été se porte authentique." + section "La Sélection Été". Refonte mood Riviera live. Hero photos = anciennes (à remplacer par photos Riviera quand sourcées par Mohamed).
+[2026-04-28 22:38] [CLAUDE] [INFO] Shortlist photos Riviera générée à partir d'Unsplash (gratuit + license commerciale) : 4 candidats hero desktop, 4 candidats hero mobile, 6 candidats catégories. Page de visualisation locale créée à `.scratch/photos-shortlist.html` (non-versionné). Mohamed valide ses choix → je télécharge dans `AllStore-SITE-WEB/assets/ete/` + PR pour remplacer hero IMG_9440 (desktop) et IMG_9422 (mobile).
+[2026-04-28 22:48] [MOHAMED] [PREFERENCE] Pour les photos AllStore, rejette les visuels qui font "fake/stock" (chaises longues figées, salons posés, flatlay studio). Préfère le candid / lifestyle authentique / streetstyle / vrai vécu. Validé : photos avec gens qui font quelque chose de réel (yacht avec amis, streetstyle rue).
+[2026-04-28 22:51] [MOHAMED] [DECISION] Photos finales validées pour Édition Été : 2 hero (HERO-DESKTOP-4 = homme chemise lin dos océan, HERO-MOBILE-1 = patio Santorini) + 3 catégories (CAT-V2-5 = yacht avec amis, V3-7 = couple yacht champagne, V3-1 = homme streetstyle veste blanche casquette).
+[2026-04-28 22:56] [MOHAMED] [DECISION] Hero desktop final validé : V4-6 (superyacht majestueux, skyline arrière-plan, eau turquoise — `DHh-_b8ia9M`). Shortlist photos Édition Été FINALE = 5 photos (V4-6 hero desktop + HERO-MOBILE-1 + CAT-V2-5 + V3-7 + V3-1).
+[2026-04-28 23:00] [CLAUDE] [DECISION] PR #5 (claude/mohamed-edition-ete-photos) mergée sur main (commit 3b1bb17, squash). Vercel auto-redeploy en cours. Hero allstore-tm.fr passe de IMG_9440/9422 (ancien) à assets/ete/hero-{desktop,mobile}-riviera.jpg (Quiet Luxury Riviera). 3 photos catégories également déposées dans assets/ete/ pour intégration future (yacht-amis, couple-yacht, streetstyle-veste-blanche).
+[2026-04-28 23:01] [CLAUDE] [INFO] Vérif prod allstore-tm.fr post-merge PR #5 : déploiement Vercel commit 3b1bb17 actif. Le hero-desktop-riviera.jpg est servi en 200 OK depuis le bon path. La home charge les nouveaux assets/ete/. Édition Été FINALE livrée.
+[2026-04-28 23:03] [MOHAMED] [INFO] Fin de session ce soir. Reprend demain depuis un AUTRE PC. Important : SESSION_LOG + CLAUDE.md + MOHAMED_BRIEF.md doivent être commités + pushés + mergés sur main pour que demain le hook SessionStart sur l'autre PC charge tout le contexte de cette session via git pull.
+[2026-04-28 23:03] [CLAUDE] [INFO] Bilan session 21:36-23:03 (1h27) : 3 PRs livrées et mergées sur main = (1) PR #3 tracking event Lead WhatsApp/Insta/TikTok sur 3 pixels (Meta+TikTok+GA4), (2) PR #4 refonte home Édition Été mood Riviera Quiet Luxury (bandeau + h1 + Sélection Été 7 cartes + collections réordonnées + filtre Burberry Pull→Polo), (3) PR #5 hero photos Riviera (superyacht desktop + patio Santorini mobile) + 3 photos catégories pré-déposées dans assets/ete/ pour intégration future.

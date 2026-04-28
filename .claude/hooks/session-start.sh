@@ -26,12 +26,17 @@ case "$BRANCH" in
     *) WHO="? (branche ne suit pas la convention claude/<nom>-*)" ;;
 esac
 
-# 5. Construction du message — heredoc puis jq -Rs pour echaper en JSON-safe
+# 5. Dernieres entrees du journal de session (memoire continue)
+LOG_ENTRIES=$(grep -E '^\[20[0-9]{2}-' SESSION_LOG.md 2>/dev/null | tail -20)
+[ -z "$LOG_ENTRIES" ] && LOG_ENTRIES="(SESSION_LOG.md vide ou absent)"
+
+# 6. Construction du message — heredoc puis jq -Rs pour echaper en JSON-safe
 CTX=$(cat <<EOF
 === ALLSTORE — contexte projet (injecte automatiquement par SessionStart hook) ===
 
 Tu reprends une session sur le dossier AllStoreee. Le projet a une memoire
-continue : CLAUDE.md a la racine + ce contexte = tout ce qu'il faut savoir.
+continue : CLAUDE.md a la racine + SESSION_LOG.md (journal append-only) +
+ce contexte = tout ce qu'il faut savoir.
 
 Branche actuelle : $BRANCH
 Utilisateur probable : $WHO
@@ -45,9 +50,21 @@ $DIRTY
 TODOs ouvertes dans CLAUDE.md :
 $TODOS
 
+20 dernieres entrees du journal de session (SESSION_LOG.md) :
+$LOG_ENTRIES
+
+REGLE MEMOIRE CONTINUE (importante) :
+A chaque echange utilisateur qui contient un fait, une decision, une preference,
+un blocker, ou un apprentissage durable, tu DOIS append une ligne dans
+SESSION_LOG.md AVANT de finir ton tour. Format :
+[YYYY-MM-DD HH:MM] [MOHAMED|THOMAS|CLAUDE|SYSTEM] [DECISION|INFO|PREFERENCE|BUG|LEARN|BLOCKER] message court (1 ligne)
+
+Ne PAS logger : bavardage, questions sans reponse, hesitations, brainstorming pur.
+Logger : decisions actees, faits etablis, preferences exprimees, contraintes business,
+infos techniques apprises, blockers identifies.
+
 Rappel : a la fin de chaque jalon, mets a jour la section "Etat du projet"
-de CLAUDE.md dans le meme commit que le livrable. C'est ce qui maintient
-la memoire vivante entre sessions.
+de CLAUDE.md dans le meme commit que le livrable.
 EOF
 )
 
