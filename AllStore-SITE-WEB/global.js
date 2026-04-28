@@ -9,7 +9,7 @@
     const isMobile = window.matchMedia('(max-width:768px)').matches;
     const img = document.createElement('img');
     img.id = 'als-bg-img';
-    img.src = isMobile ? 'IMG_9422.jpg' : 'IMG_9440.jpg';
+    img.src = isMobile ? 'assets/ete/hero-mobile-riviera.jpg' : 'assets/ete/hero-desktop-riviera.jpg';
     img.alt = '';
     img.style.cssText = 'position:fixed;top:0;left:0;width:100vw;height:100vh;min-width:100vw;min-height:100vh;object-fit:cover;object-position:center center;z-index:-2;pointer-events:none;user-select:none;';
     const overlay = document.createElement('div');
@@ -19,7 +19,7 @@
     document.body.insertBefore(img, document.body.firstChild);
     const updateBg = () => {
       const mobile = window.matchMedia('(max-width:768px)').matches;
-      const newSrc = mobile ? 'IMG_9422.jpg' : 'IMG_9440.jpg';
+      const newSrc = mobile ? 'assets/ete/hero-mobile-riviera.jpg' : 'assets/ete/hero-desktop-riviera.jpg';
       if(!img.src.endsWith(newSrc)) img.src = newSrc;
     };
     window.addEventListener('resize', updateBg);
