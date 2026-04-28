@@ -59,22 +59,49 @@ MES CHANTIERS (par ordre de priorité)
 
 🏛️ ADMINISTRATIF — débloque le reste
 ─────────────────────────────────────────
-[ ] Déclaration micro-entreprise (SIRET) sur autoentrepreneur.urssaf.fr
-    Tant que pas fait → Stripe KYC bloqué → pas de pubs Meta/TikTok payantes,
-    pas de Shopping Ads. Free listings Merchant marchent quand même.
+CONTEXTE (acté 2026-04-28) : Mohamed a DÉJÀ un SIRET actif (utilisé pour
+livraison Uber Eats, en prestation de services BIC ~21,2% URSSAF).
+Donc PAS besoin de créer un nouveau SIRET — il faut juste ÉTENDRE l'activité
+existante au commerce de détail (vente marchandises BIC ~12,3%).
 
-[ ] Compléter Stripe KYC une fois le SIRET reçu
+[ ] Vérifier le SIRET actuel sur annuaire-entreprises.data.gouv.fr
+    Voir si un code APE commerce (47.xx) est déjà présent.
+
+[ ] Ajouter activité secondaire commerce sur formalites.entreprises.gouv.fr
+    "Modification d'entreprise" → "Modification d'activité"
+    Libellé : "Commerce de détail d'habillement et chaussures via internet"
+    Code APE : 47.91A (vente à distance)
+    Durée : ~15 min en ligne, gratuit. Confirmation reçue 1-7 jours après.
+
+[ ] Compléter Stripe KYC dès réception confirmation extension d'activité
+    Une fois Stripe live → encaissement OK → Thomas peut activer pubs Meta/TikTok.
+
+[ ] Vérifier éligibilité versement libératoire IR à 1%
+    Sur impots.gouv.fr ou simulateur autoentrepreneur.urssaf.fr.
 
 [x] Donner accès Admin GA4 à Thomas ✅ 2026-04-27
     GA4 sur authuser=2 (compte Google différent du Merchant).
     Thomas (thomas.dergarabedian@gmail.com) ajouté en Admin sur la propriété.
 
+[x] Direction Édition Été — mood + tagline ✅ 2026-04-28
+    Mood "Riviera Quiet Luxury" + tagline « L'été se porte authentique. »
+    Hide complet 20 produits hivernaux. Détail : EDITION_ETE_DECISIONS.md.
+
+[x] Formule de pricing AllStore actée ✅ 2026-04-28
+    PV = (PF × 2) + 15  | Plancher = (PF × 1.6) + 10  | Marge nette ~30-35%.
+    Détail : PRICING_GUIDE.md (calcul URSSAF 12,3% + Stripe + livraison inclus).
+
 💰 PRICING & CATALOGUE
 ─────────────────────────────────────────
 [ ] Remplir les 123 prix manquants dans pricing-gabarit.csv
-    Ces produits affichent "Prix bientôt disponible" et un bouton désactivé
-    tant que price=0 dans products-data.js.
-    Une fois rempli → demander à Claude d'injecter les prix dans products-data.js.
+    Workflow :
+    1. Demander prix d'achat au fournisseur (colonne prix_sourcing_eur).
+    2. Calculer prix_vente_eur avec la formule du PRICING_GUIDE.md :
+       PV = (PF × 2) + 15, arrondi au 5€ supérieur.
+    3. Remplir aussi marge_eur et marge_pct (calculs simples).
+    4. Quand 20-30 lignes prêtes → demander à Claude d'injecter dans
+       products-data.js (5 min).
+    Référence formule complète : PRICING_GUIDE.md.
 
 [ ] Vérifier les coloris : noms de vraies couleurs (pas "Coloris 1"),
     photos de profil latéral (vue de côté), même direction par modèle.
@@ -92,60 +119,15 @@ MES CHANTIERS (par ordre de priorité)
 [ ] Suivi régulier du parcours client (homepage → boutique → PDP → assistant)
     pour détecter les friction points.
 
-🌞 ÉDITION ÉTÉ — refonte home (en cours, deadline ~10 mai)
+📞 RELATIONS COMPTES & SOCIAL
 ─────────────────────────────────────────
-Pivot saisonnier : sortir l'écharpe et les pulls cachemire de la home,
-mettre en avant casquettes, lunettes, tees, sneakers basses, sacs week-end.
-Stratégie complète discutée 2026-04-27 dans la session Claude.
-RÉPARTITION : Thomas pilote la direction créa + le code (il a la main
-sur les tendances). Toi tu valides en tant que founder + tu fournis
-les assets (images, contenu social, validation business).
-
-TES tâches :
-
-[ ] Valider la tagline + le mood proposés par Thomas
-    Thomas te soumet 2-3 directions (preppy / beach lux / festival /
-    club…) avec mood-board. Tu valides celle qui colle à la marque
-    et au langage marketing AllStore (table dans CLAUDE.md).
-
-[ ] Fournir / sourcer les assets visuels de l'édition été
-    Une fois le mood validé, Thomas te dit ce qu'il faut comme images
-    (hero desktop 16:9 + hero mobile 9:16, photos catégories, etc.).
-    Toi tu sources : libre de droits / shooting perso / images marques.
-
-[ ] Valider la liste des produits hivernaux à hide en home
-    Thomas pré-propose la liste (il a la main fashion).
-    Toi tu valides au regard du stock réel et des ventes en cours.
-    Catégories candidates : écharpes, doudounes, pulls cachemire/laine.
-    Mi-saison à arbitrer ensemble : Hoodies Burberry, Crewneck Stone Island.
-
-[ ] Recharger contenus "VU SUR INSTAGRAM" en mood été
-    Stories clients en casquette, sneakers blanches au soleil, sac de plage…
-    Pas de hoodie ni d'écharpe en arrière-plan.
-    Toi OU Thomas (vous avez tous les 2 les accès @allstore.tm) — à arbitrer
-    entre vous selon dispo.
-
-[ ] Décider la date de revert édition automne (planning éditorial)
-    Suggestion : mi-septembre 2026.
-    Programmer un rappel calendrier (ou demander à Claude une routine planifiée).
-
-[ ] Validation finale + merge de la PR Thomas
-    Thomas code en branche claude/thomas-edition-ete-home, ouvre une PR,
-    tu reviews le visuel sur le preview Vercel et tu mergues si OK.
-
-📞 RELATIONS COMPTES & SOCIAL (partagé avec Thomas — vous avez tous les 2 les accès)
-─────────────────────────────────────────
-RAPPEL : tous les comptes boutique sont partagés (email business, Meta,
-TikTok, Merchant, Trustpilot, Vercel, GitHub, Insta @allstore.tm,
-TikTok @allstore.tm, WhatsApp). Seul le SIRET est exclusivement à toi.
-Donc les tâches ci-dessous : toi OU Thomas, à arbitrer entre vous.
+[ ] Maintenir l'accès aux comptes business :
+    Email : allstore.24.7.tm@gmail.com
+    Insta : @allstore.tm  |  TikTok : @allstore.tm
 
 [ ] Trustpilot — répondre aux premiers avis quand ils arrivent.
 
 [ ] Suivre l'arrivée des emails de validation (Merchant, Trustpilot).
-
-[ ] Garder à jour les credentials partagés si rotation de mot de passe
-    (prévenir Thomas par message/Insta DM si tu changes un mot de passe).
 
 ═══════════════════════════════════════════════════════════════════
 CE QUE THOMAS FAIT (pas toi, ne touche pas à ça)
@@ -157,10 +139,6 @@ CE QUE THOMAS FAIT (pas toi, ne touche pas à ça)
 - Widget Trustpilot + étoiles PDPs
 - Email invitation Trustpilot J+1 post-achat
 - Branchement Catalogue Merchant ↔ Boutique Insta/Facebook
-- Édition Été — direction créa (mood, tagline, sélection produits) +
-  code (HTML/JS/data) : réordonner cartes catégories, pills filtres saison,
-  bandeau promo top, champ season+subcat dans products-data.js, filtre JS
-  pour cacher les hivernaux. Toi tu valides le visuel + fournis les images.
 Détails dans THOMAS_BRIEF.md.
 
 ═══════════════════════════════════════════════════════════════════
@@ -169,6 +147,8 @@ RÉFÉRENCES
 - État global du projet : CLAUDE.md (section "État du projet")
 - IDs marketing complets : MARKETING_IDS.md
 - Règles projet : CLAUDE.md
+- Décisions Édition Été 2026 : EDITION_ETE_DECISIONS.md
+- Formule pricing AllStore : PRICING_GUIDE.md
 - Branche de dev : claude/mohamed-<feature> (jamais push direct main)
 
 Quand un chantier est terminé : METS À JOUR CLAUDE.md (section
