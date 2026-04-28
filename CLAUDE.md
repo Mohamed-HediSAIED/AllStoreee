@@ -33,7 +33,7 @@ Au début d'une nouvelle conversation, Claude DOIT :
 - ✅ **Pricing strategy** — formule `PV = (PF × 2) + 15` actée, donne ~30-35% net après URSSAF/Stripe/livraison. Détails : `PRICING_GUIDE.md`.
 - ✅ **Édition Été** — livrée complètement 2026-04-28 (PRs #3 + #4 + #5) :
   - PR #3 : event Lead WhatsApp/Insta/TikTok sur 3 pixels (Meta + TikTok + GA4) actif sur 35 pages.
-  - PR #4 : refonte home mood Riviera Quiet Luxury (bandeau "Édition Été", h1 "L'été se porte authentique.", Sélection Été 7 cartes, ordre collections priorité été, filtre Burberry Pull→Polo, "Vu sur Insta" updated, FEATURED_IDS sans burberry-gris + avec lunettes-miumiu).
+  - PR #4 : refonte home mood Riviera Quiet Luxury (bandeau "Édition Été", h1 "L'été tel qu'il devrait être." [maj 2026-04-29 — anciennement "L'été se porte authentique."], Sélection Été 7 cartes, ordre collections priorité été, filtre Burberry Pull→Polo, "Vu sur Insta" updated, FEATURED_IDS sans burberry-gris + avec lunettes-miumiu).
   - PR #5 : hero Riviera (superyacht desktop + patio Santorini mobile) sourcés sur Unsplash, déposés dans `AllStore-SITE-WEB/assets/ete/` + 3 photos catégories pré-déposées (yacht-amis, couple-yacht, streetstyle-veste-blanche) prêtes pour intégration UI future.
 
 ### Chantiers en cours / à faire
