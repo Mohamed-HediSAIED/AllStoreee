@@ -83,7 +83,10 @@ MES CHANTIERS (par ordre de priorité)
     - AddToCart    (clic bouton ajouter panier)
     - BeginCheckout (entrée tunnel)
     - Purchase     (confirmation Stripe — webhook côté serveur)
-    - Lead         (clic WhatsApp / Insta DM)
+    [x] Lead       (clic WhatsApp / Insta / TikTok) — fait 2026-04-27,
+                   event delegation dans global.js, ciblé sur wa.me,
+                   api.whatsapp.com, ig.me, instagram.com/allstore,
+                   tiktok.com/@allstore
 
 🟡 GOOGLE SHOPPING (free listings)
 ─────────────────────────────────────────

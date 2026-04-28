@@ -40,7 +40,8 @@ TRUSTPILOT_BU_URL     = https://www.trustpilot.com/review/allstore-tm.fr
 **À faire** (Thomas) :
 - [ ] Brancher l'**API Conversions** Meta côté serveur (déjà activée côté Meta, juste l'endpoint serveur à câbler)
 - [ ] Brancher l'**Events API** TikTok côté serveur (gain attribution iOS)
-- [ ] Configurer les **événements custom** : `AddToCart`, `Purchase`, `BeginCheckout`, `Lead` (clic WhatsApp/Insta), etc. Aujourd'hui seul `PageView` remonte
+- [x] Event `Lead` — clic WhatsApp / Insta / TikTok (fait 2026-04-27, event delegation dans `global.js`)
+- [ ] Events custom restants : `AddToCart`, `BeginCheckout`, `Purchase`
 - [ ] Bannière **Consent Mode v2 RGPD** (CNIL) — aujourd'hui les Pixels firent sans consentement explicite, à régulariser
 
 ### Chantier 6 — Catalogue Google Shopping & Merchant Center
