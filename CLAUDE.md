@@ -36,7 +36,7 @@ Au début d'une nouvelle conversation, Claude DOIT :
 - 🟠 **Événements custom** (AddToCart, BeginCheckout, Purchase, Lead). → Thomas.
 - 🟡 **Feed Google Shopping** XML/CSV depuis `products-data.js`. → Thomas.
 - 🟢 **Widget Trustpilot** + étoiles PDPs + email invitation J+1. → Thomas.
-- 🌞 **Édition Été** — refonte home (catégories saisonnières, hide hivernaux, mood été). → Mohamed (créa/visuels/contenu) + Thomas (code/data/JS). Décidé 2026-04-27, deadline ~10 mai.
+- 🌞 **Édition Été** — refonte home. Mood Riviera Quiet Luxury validé par Mohamed 2026-04-28. Code home livré 2026-04-28 (tagline, sélection, sections dynamiques, NOS COLLECTIONS réordonné, FEATURED_IDS, hide hoodie burberry de "Vu sur Insta"). RESTE : hero asset visuel + photos catégories été (Mohamed) — voir `EDITION_ETE_DECISIONS.md`. Deadline live ~10 mai.
 - 💰 **Remplir 123 prix** dans `pricing-gabarit.csv`. → Mohamed.
 - 🏛️ **Stripe KYC + SIRET micro-entreprise** (bloque pubs payantes). → Mohamed.
 
