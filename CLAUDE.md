@@ -19,7 +19,7 @@ Au début d'une nouvelle conversation, Claude DOIT :
 3. **Ne pas redemander à l'utilisateur** ce qui est déjà documenté ici ou dans les briefs.
 4. **Mettre à jour ce fichier** (et `MARKETING_IDS.md` si besoin) quand un chantier est terminé, sans demander la permission, dans le même commit que le boulot livré.
 
-## État du projet (snapshot — 2026-04-28 23:00)
+## État du projet (snapshot — 2026-04-29 18:30)
 
 **Site en prod** : https://allstore-tm.fr (Vercel auto-deploy depuis `main`).
 **Stack** : HTML statique + JS vanilla, pas de framework, déploiement Vercel.
@@ -31,10 +31,13 @@ Au début d'une nouvelle conversation, Claude DOIT :
 - ✅ **Refonte boutique** — catégories style Nike (bandeaux horizontaux pleine largeur).
 - ✅ **Mémoire continue** — `SESSION_LOG.md` append-only ajouté 2026-04-28, partagé via repo entre tous les PCs/sessions.
 - ✅ **Pricing strategy** — formule `PV = (PF × 2) + 15` actée, donne ~30-35% net après URSSAF/Stripe/livraison. Détails : `PRICING_GUIDE.md`.
-- ✅ **Édition Été** — livrée complètement 2026-04-28 (PRs #3 + #4 + #5) :
+- ✅ **Édition Été** — livrée complètement 2026-04-28/29 (PRs #3 + #4 + #5 + #7 + #8 + #9) :
   - PR #3 : event Lead WhatsApp/Insta/TikTok sur 3 pixels (Meta + TikTok + GA4) actif sur 35 pages.
-  - PR #4 : refonte home mood Riviera Quiet Luxury (bandeau "Édition Été", h1 "L'été tel qu'il devrait être." [maj 2026-04-29 — anciennement "L'été se porte authentique."], Sélection Été 7 cartes, ordre collections priorité été, filtre Burberry Pull→Polo, "Vu sur Insta" updated, FEATURED_IDS sans burberry-gris + avec lunettes-miumiu).
-  - PR #5 : hero Riviera (superyacht desktop + patio Santorini mobile) sourcés sur Unsplash, déposés dans `AllStore-SITE-WEB/assets/ete/` + 3 photos catégories pré-déposées (yacht-amis, couple-yacht, streetstyle-veste-blanche) prêtes pour intégration UI future.
+  - PR #4 : refonte home mood Riviera Quiet Luxury (bandeau "Édition Été", h1, Sélection Été 7 cartes, ordre collections priorité été, filtre Burberry Pull→Polo, "Vu sur Insta" updated, FEATURED_IDS sans burberry-gris + avec lunettes-miumiu).
+  - PR #5 : hero Riviera (superyacht desktop + patio Santorini mobile) sourcés sur Unsplash, déposés dans `AllStore-SITE-WEB/assets/ete/` + 3 photos catégories pré-déposées.
+  - PR #7 : h1 home "L'été tel qu'il devrait être." (remplace "L'été se porte authentique.").
+  - PR #8 : nouvelle section "L'été en images" (triptyque éditorial cliquable vers boutique par catégorie) entre "Nos Collections" et "Vu sur Instagram".
+  - PR #9 : photos lifestyle dans NOS COLLECTIONS (5 mood photos Riviera + sac LV monogram visible remplacent les packshot adidas_samba/isabelmarant/miumiu_top/sac_chloe/rolex_daytona ; logos marques AUTORISÉS sur covers SACS).
 
 ### Chantiers en cours / à faire
 - 🔴 **Bannière Consent Mode v2 RGPD** — bloquant légal CNIL avant scaling EU. → Thomas.
@@ -42,7 +45,6 @@ Au début d'une nouvelle conversation, Claude DOIT :
 - 🟠 **Événements custom** (AddToCart, BeginCheckout, Purchase). Lead déjà fait via PR #3 mergée 2026-04-28. → Thomas.
 - 🟡 **Feed Google Shopping** XML/CSV depuis `products-data.js`. → Thomas.
 - 🟢 **Widget Trustpilot** + étoiles PDPs + email invitation J+1. → Thomas.
-- ✅ ~~Intégrer les 3 photos catégories~~ — livré 2026-04-29 via PR #8 : nouvelle section "L'été en images" (triptyque éditorial cliquable vers boutique par catégorie) entre "Nos Collections" et "Vu sur Instagram".
 - 💰 **Remplir 123 prix** dans `pricing-gabarit.csv` selon formule `PV = (PF × 2) + 15`. Détails : `PRICING_GUIDE.md`. → Mohamed.
 - 🏛️ **Ajouter activité commerce détail (APE 47.91A)** sur SIRET Uber Eats existant via `formalites.entreprises.gouv.fr` (~15 min, gratuit, confirmation 1-7j). → Mohamed. **Pas besoin de créer un nouveau SIRET.** Débloque Stripe KYC → débloque pubs payantes Meta/TikTok + Shopping Ads.
 
