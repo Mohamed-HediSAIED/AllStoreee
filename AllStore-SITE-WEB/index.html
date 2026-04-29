@@ -344,6 +344,23 @@
   .trust-item-sep{width:1px;height:20px;background:var(--fx-border-subtle,rgba(255,255,255,.12));display:none}
   @media(min-width:720px){.trust-item-sep{display:block}}
   @media(max-width:520px){.trust-band{gap:14px;padding:18px 16px}.trust-item{font-size:12px}}
+
+  /* ---------- L'ÉTÉ EN IMAGES — triptyque éditorial Édition Été ---------- */
+  /* TEMP HIDE — en attente des nouvelles photos centre+droite (29/04 19:04) */
+  .als-edito{display:none}
+  .als-edito-grid{display:flex;gap:10px;overflow-x:auto;padding:0 16px 8px;scroll-snap-type:x mandatory;scroll-behavior:smooth;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+  .als-edito-grid::-webkit-scrollbar{display:none}
+  .als-edito-card{flex:0 0 78vw;scroll-snap-align:start;display:block;text-decoration:none;border-radius:20px;overflow:hidden;aspect-ratio:4/5;background:#1a1a1a;position:relative}
+  .als-edito-card img{width:100%;height:100%;object-fit:cover;transition:transform .5s ease;display:block}
+  .als-edito-card:hover img{transform:scale(1.03)}
+  @media(min-width:601px) and (max-width:900px){
+    .als-edito-grid{padding:0 24px 8px;gap:12px}
+    .als-edito-card{flex:0 0 calc((100% - 24px)/3)}
+  }
+  @media(min-width:901px){
+    .als-edito-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;padding:0 80px;overflow:visible;max-width:1360px;margin:0 auto;scroll-snap-type:none}
+    .als-edito-card{border-radius:28px}
+  }
 </style>
 
 <!-- ═══════════════════════════════════════════
@@ -443,6 +460,26 @@
       <div class="als-coll-label"><span class="als-coll-name">MONTRES</span><span class="als-coll-btn">VOIR</span></div>
     </a>
   </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     L'ÉTÉ EN IMAGES — Triptyque éditorial Édition Été
+═══════════════════════════════════════════ -->
+<section class="als-sec als-edito">
+  <div class="als-sec-head">
+    <h2 class="als-sec-title">L'<em>été</em> en images</h2>
+  </div>
+  <div class="als-edito-grid">
+    <a href="index.html?cat=vetements" class="als-edito-card" aria-label="Voir les vêtements">
+      <img src="assets/ete/cat-vetements-streetstyle.jpg" alt="Streetstyle veste blanche" loading="lazy">
+    </a>
+    <a href="index.html?cat=accessoires" class="als-edito-card" aria-label="Voir les accessoires">
+      <img src="assets/ete/cat-couple-yacht.jpg" alt="Pause champagne" loading="lazy">
+    </a>
+    <a href="index.html?cat=chaussures" class="als-edito-card" aria-label="Voir les chaussures">
+      <img src="assets/ete/cat-yacht-amis.jpg" alt="Été entre amis" loading="lazy">
+    </a>
   </div>
 </section>
 
