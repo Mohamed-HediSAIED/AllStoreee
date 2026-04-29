@@ -45,3 +45,10 @@
 [2026-04-29 01:45] [MOHAMED] [DECISION] Finalistes h1 home Edition Ete : (1) "L'élégance change de saison." et (2) "L'été tel qu'il devrait être." — autres rejetées. Choix final à venir.
 [2026-04-29 01:48] [MOHAMED] [DECISION] H1 home Edition Ete validé : "L'été tel qu'il devrait être." (remplace "L'été se porte authentique."). Raison : ne plus se justifier sur l'authenticité, poser AllStore comme celui qui définit le bon été.
 [2026-04-29 05:10] [CLAUDE] [DECISION] PR #7 mergée sur main (commit cef89f0, squash). Vercel auto-redeploy en cours. Hero home allstore-tm.fr passe de "L'été se porte authentique." à "L'été tel qu'il devrait être.".
+
+## 2026-04-29 (suite — soir)
+
+[2026-04-29 18:25] [MOHAMED] [DECISION] Sur la branche `claude/mohamed-photos-categories-ete`, demande l'intégration des photos lifestyle de `assets/ete/` dans la home Édition Été. Cible retenue : remplacer les 5 packshot de NOS COLLECTIONS (adidas_samba / isabelmarant / miumiu_top / sac_chloe / rolex_daytona) par 5 mood photos Riviera. 6 photos disponibles dans `assets/ete/` (3 cat-*.jpg + 3 nouvelles Unsplash brandon-hoogenboom / hamza-nouasria / ilyuza-mingazova).
+[2026-04-29 18:30] [CLAUDE] [DECISION] Mapping photo → catégorie validé : ACCESSOIRES = ilyuza (femme dos voilier), CHAUSSURES = brandon (crew voilier), VÊTEMENTS = streetstyle veste blanche, SACS = yacht-amis (femme paréo), MONTRES = hamza (homme voiture). Réserve : `cat-couple-yacht.jpg`.
+[2026-04-29 18:35] [CLAUDE] [INFO] Compression Pillow appliquée sur les 3 ex-Unsplash : brandon 3626 KB → 191 KB (-95%), hamza 3150 KB → 182 KB (-94%), ilyuza 1499 KB → 168 KB (-89%). Cible <500 KB largement battue. Max 1600 px côté large, qualité 80, JPEG progressif.
+[2026-04-29 18:40] [CLAUDE] [DECISION] PR #9 ouverte sur `claude/mohamed-photos-categories-ete` → `main` : photos lifestyle dans NOS COLLECTIONS (5 catégories). Vérification locale OK : 5 photos en HTTP 200, 0 erreur console, mobile 375px et desktop 1440px tous propres, label lisible avec overlay. URL : https://github.com/Mohamed-HediSAIED/AllStoreee/pull/9.
