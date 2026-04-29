@@ -42,7 +42,7 @@ Au début d'une nouvelle conversation, Claude DOIT :
 - 🟠 **Événements custom** (AddToCart, BeginCheckout, Purchase). Lead déjà fait via PR #3 mergée 2026-04-28. → Thomas.
 - 🟡 **Feed Google Shopping** XML/CSV depuis `products-data.js`. → Thomas.
 - 🟢 **Widget Trustpilot** + étoiles PDPs + email invitation J+1. → Thomas.
-- 🟢 **Intégrer les 3 photos catégories** déjà déposées (`assets/ete/cat-*.jpg` : yacht-amis, couple-yacht, streetstyle-veste-blanche) dans les sections home (sections "Sélection Été" / "Vu sur Insta" / blocs catégories). → Thomas.
+- ✅ ~~Intégrer les 3 photos catégories~~ — livré 2026-04-29 via PR #8 : nouvelle section "L'été en images" (triptyque éditorial cliquable vers boutique par catégorie) entre "Nos Collections" et "Vu sur Instagram".
 - 💰 **Remplir 123 prix** dans `pricing-gabarit.csv` selon formule `PV = (PF × 2) + 15`. Détails : `PRICING_GUIDE.md`. → Mohamed.
 - 🏛️ **Ajouter activité commerce détail (APE 47.91A)** sur SIRET Uber Eats existant via `formalites.entreprises.gouv.fr` (~15 min, gratuit, confirmation 1-7j). → Mohamed. **Pas besoin de créer un nouveau SIRET.** Débloque Stripe KYC → débloque pubs payantes Meta/TikTok + Shopping Ads.
 
