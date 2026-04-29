@@ -44,3 +44,4 @@
 [2026-04-29 01:45] [MOHAMED] [PREFERENCE] Phrases marketing AllStore : ne PAS exclure géographiquement les clients (ex: "Direction Riviera" exclut Paris). Le hero parle à toute la France/Europe. Règle générale : éviter ancrage géographique exclusif dans les phrases hero.
 [2026-04-29 01:45] [MOHAMED] [DECISION] Finalistes h1 home Edition Ete : (1) "L'élégance change de saison." et (2) "L'été tel qu'il devrait être." — autres rejetées. Choix final à venir.
 [2026-04-29 01:48] [MOHAMED] [DECISION] H1 home Edition Ete validé : "L'été tel qu'il devrait être." (remplace "L'été se porte authentique."). Raison : ne plus se justifier sur l'authenticité, poser AllStore comme celui qui définit le bon été.
+[2026-04-29 05:10] [CLAUDE] [DECISION] PR #7 mergée sur main (commit cef89f0, squash). Vercel auto-redeploy en cours. Hero home allstore-tm.fr passe de "L'été se porte authentique." à "L'été tel qu'il devrait être.".
