@@ -108,15 +108,20 @@
   .als-search-item-price{font-family:'Poppins',sans-serif;font-size:13px;font-weight:700;flex-shrink:0}
   .als-search-empty{padding:20px;text-align:center;font-family:'Poppins',sans-serif;font-size:13px;color:var(--gris,#6a7a8a)}
 
-  /* ---------- AVIS CLIENTS — carrousel images auto-scroll ---------- */
-  .als-avis-marquee{position:relative;overflow:hidden;padding:8px 0;-webkit-mask-image:linear-gradient(90deg,transparent 0,#000 6%,#000 94%,transparent 100%);mask-image:linear-gradient(90deg,transparent 0,#000 6%,#000 94%,transparent 100%)}
-  .als-avis-track{display:flex;gap:15px;width:max-content;animation:als-avis-scroll 60s linear infinite;will-change:transform}
-  .als-avis-marquee:hover .als-avis-track{animation-play-state:paused}
-  .als-avis-card{flex:0 0 240px;aspect-ratio:9/16;border-radius:20px;overflow:hidden;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.18);box-shadow:0 12px 28px rgba(0,0,0,.18)}
-  .als-avis-card img{width:100%;height:100%;object-fit:cover;display:block}
-  @keyframes als-avis-scroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
-  @media(max-width:600px){.als-avis-card{flex:0 0 200px;border-radius:18px}.als-avis-track{animation-duration:50s}}
-  @media(prefers-reduced-motion:reduce){.als-avis-track{animation:none}}
+  /* ---------- AVIS CLIENTS — 1 cadre = 1 avis = N images en fondu enchaine ---------- */
+  .als-avis-row{display:flex;gap:18px;justify-content:center;flex-wrap:wrap;padding:8px 20px}
+  .als-avis-frame{flex:0 0 320px;aspect-ratio:9/16;position:relative;border-radius:22px;overflow:hidden;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.18);box-shadow:0 16px 36px rgba(0,0,0,.22)}
+  .als-avis-stack{position:absolute;inset:0}
+  .als-avis-stack img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;opacity:0;animation:als-avis-fade 20s infinite ease-in-out;will-change:opacity}
+  .als-avis-stack img:nth-child(1){animation-delay:0s}
+  .als-avis-stack img:nth-child(2){animation-delay:-16s}
+  .als-avis-stack img:nth-child(3){animation-delay:-12s}
+  .als-avis-stack img:nth-child(4){animation-delay:-8s}
+  .als-avis-stack img:nth-child(5){animation-delay:-4s}
+  .als-avis-frame:hover .als-avis-stack img{animation-play-state:paused}
+  @keyframes als-avis-fade{0%{opacity:0}5%{opacity:1}20%{opacity:1}25%{opacity:0}100%{opacity:0}}
+  @media(max-width:600px){.als-avis-frame{flex:0 0 280px;border-radius:20px}}
+  @media(prefers-reduced-motion:reduce){.als-avis-stack img{animation:none}.als-avis-stack img:nth-child(1){opacity:1}}
 
   /* ---------- SECTIONS ---------- */
   .als-sec{padding:40px 0 36px;background:transparent}
@@ -711,32 +716,34 @@ function filterSel(secId, pill) {
 
 
 <!-- ═══════════════════════════════════════════
-     AVIS CLIENTS — carrousel photos commandes reçues
-     Auto-scroll fluide en boucle infinie. Pour ajouter une
-     image : déposer le JPG dans assets/avis/ puis ajouter
-     DEUX <div class="als-avis-card"> identiques (set 1 +
-     set 2 dupliqué — la duplication permet la boucle sans
-     saut). Convention de nommage dans assets/avis/.gitkeep.
+     AVIS CLIENTS — 1 cadre = 1 commande client.
+     Plusieurs images du meme produit defilent en fondu
+     enchaine dans le meme cadre. Cycle 20s, chaque image
+     visible ~3s + 1s fade in/out. Pause au survol.
+
+     Pour ajouter un nouvel avis client (autre commande,
+     autre produit) : ajouter un nouveau bloc
+     <div class="als-avis-frame"> ... </div> dans .als-avis-row,
+     avec les images du nouveau produit. La row se met
+     automatiquement en wrap si plusieurs cadres.
 ═══════════════════════════════════════════ -->
 <section class="als-sec">
   <div class="als-sec-head">
     <h2 class="als-sec-title">AVIS <em>CLIENTS</em></h2>
   </div>
-  <div class="als-avis-marquee">
-    <div class="als-avis-track">
-      <!-- ===== Set 1 ===== -->
-      <div class="als-avis-card"><img src="assets/avis/avis-tomford-belt-01.jpg" alt="Avis client - colis Tom Ford ferme et scotche, livre" loading="lazy"></div>
-      <div class="als-avis-card"><img src="assets/avis/avis-tomford-belt-02.jpg" alt="Avis client - ceinture Tom Ford T noire posee sur sa boite avec le sac shopping officiel" loading="lazy"></div>
-      <div class="als-avis-card"><img src="assets/avis/avis-tomford-belt-03.jpg" alt="Avis client - boite Tom Ford ouverte avec dust bag et carte d'authenticite" loading="lazy"></div>
-      <div class="als-avis-card"><img src="assets/avis/avis-tomford-belt-04.jpg" alt="Avis client - carton de livraison ouvert sur la boite Tom Ford" loading="lazy"></div>
-      <div class="als-avis-card"><img src="assets/avis/avis-tomford-belt-05.jpg" alt="Avis client - carte d'authenticite Tom Ford tenue en main" loading="lazy"></div>
-      <!-- ===== Set 2 (duplicata pour scroll infini sans saut) ===== -->
-      <div class="als-avis-card" aria-hidden="true"><img src="assets/avis/avis-tomford-belt-01.jpg" alt="" loading="lazy"></div>
-      <div class="als-avis-card" aria-hidden="true"><img src="assets/avis/avis-tomford-belt-02.jpg" alt="" loading="lazy"></div>
-      <div class="als-avis-card" aria-hidden="true"><img src="assets/avis/avis-tomford-belt-03.jpg" alt="" loading="lazy"></div>
-      <div class="als-avis-card" aria-hidden="true"><img src="assets/avis/avis-tomford-belt-04.jpg" alt="" loading="lazy"></div>
-      <div class="als-avis-card" aria-hidden="true"><img src="assets/avis/avis-tomford-belt-05.jpg" alt="" loading="lazy"></div>
+  <div class="als-avis-row">
+
+    <!-- Avis #1 — Ceinture Tom Ford T noire (5 photos deballage) -->
+    <div class="als-avis-frame">
+      <div class="als-avis-stack">
+        <img src="assets/avis/avis-tomford-belt-02.jpg" alt="Avis client - ceinture Tom Ford T noire posee sur sa boite avec le sac shopping officiel" loading="lazy">
+        <img src="assets/avis/avis-tomford-belt-01.jpg" alt="" loading="lazy" aria-hidden="true">
+        <img src="assets/avis/avis-tomford-belt-04.jpg" alt="" loading="lazy" aria-hidden="true">
+        <img src="assets/avis/avis-tomford-belt-03.jpg" alt="" loading="lazy" aria-hidden="true">
+        <img src="assets/avis/avis-tomford-belt-05.jpg" alt="" loading="lazy" aria-hidden="true">
+      </div>
     </div>
+
   </div>
 </section>
 
