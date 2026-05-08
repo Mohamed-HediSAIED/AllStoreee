@@ -1,0 +1,7 @@
+Photos d'avis clients (commandes déballées). Convention de nommage :
+  avis-<marque>-<produit>-<NN>.jpg
+
+Ex: avis-tomford-belt-01.jpg, avis-tomford-belt-02.jpg, ...
+
+Format conseillé : portrait ratio 9:16 (photo téléphone), JPG optimisé < 250 Ko.
+Le carrousel auto-scroll dans index.html lit la liste depuis le HTML directement.
