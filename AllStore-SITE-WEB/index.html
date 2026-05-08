@@ -108,13 +108,15 @@
   .als-search-item-price{font-family:'Poppins',sans-serif;font-size:13px;font-weight:700;flex-shrink:0}
   .als-search-empty{padding:20px;text-align:center;font-family:'Poppins',sans-serif;font-size:13px;color:var(--gris,#6a7a8a)}
 
-  /* ---------- AVIS CLIENTS ---------- */
-  .als-review-card{flex:0 0 300px;background:rgba(255,255,255,.18);backdrop-filter:blur(40px) saturate(180%);-webkit-backdrop-filter:blur(40px) saturate(180%);border:1px solid rgba(255,255,255,.25);border-radius:20px;padding:24px 24px 20px;scroll-snap-align:start;box-shadow:none}
-  .als-review-stars{color:#e9c243;font-size:16px;letter-spacing:2px;margin-bottom:12px}
-  .als-review-text{font-family:'Poppins',sans-serif;font-size:13px;color:rgba(255,255,255,.6);font-style:italic;line-height:1.6;margin:0 0 16px}
-  .als-review-author{font-family:'Poppins',sans-serif;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:#fff;display:block}
-  .als-review-product{font-family:'Poppins',sans-serif;font-size:11px;color:rgba(255,255,255,.5);display:block;margin-top:2px}
-  @media(max-width:600px){.als-review-card{flex:0 0 260px;padding:20px}}
+  /* ---------- AVIS CLIENTS — carrousel images auto-scroll ---------- */
+  .als-avis-marquee{position:relative;overflow:hidden;padding:8px 0;-webkit-mask-image:linear-gradient(90deg,transparent 0,#000 6%,#000 94%,transparent 100%);mask-image:linear-gradient(90deg,transparent 0,#000 6%,#000 94%,transparent 100%)}
+  .als-avis-track{display:flex;gap:15px;width:max-content;animation:als-avis-scroll 60s linear infinite;will-change:transform}
+  .als-avis-marquee:hover .als-avis-track{animation-play-state:paused}
+  .als-avis-card{flex:0 0 240px;aspect-ratio:9/16;border-radius:20px;overflow:hidden;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.18);box-shadow:0 12px 28px rgba(0,0,0,.18)}
+  .als-avis-card img{width:100%;height:100%;object-fit:cover;display:block}
+  @keyframes als-avis-scroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+  @media(max-width:600px){.als-avis-card{flex:0 0 200px;border-radius:18px}.als-avis-track{animation-duration:50s}}
+  @media(prefers-reduced-motion:reduce){.als-avis-track{animation:none}}
 
   /* ---------- SECTIONS ---------- */
   .als-sec{padding:40px 0 36px;background:transparent}
@@ -709,53 +711,32 @@ function filterSel(secId, pill) {
 
 
 <!-- ═══════════════════════════════════════════
-     AVIS CLIENTS
+     AVIS CLIENTS — carrousel photos commandes reçues
+     Auto-scroll fluide en boucle infinie. Pour ajouter une
+     image : déposer le JPG dans assets/avis/ puis ajouter
+     DEUX <div class="als-avis-card"> identiques (set 1 +
+     set 2 dupliqué — la duplication permet la boucle sans
+     saut). Convention de nommage dans assets/avis/.gitkeep.
 ═══════════════════════════════════════════ -->
 <section class="als-sec">
   <div class="als-sec-head">
     <h2 class="als-sec-title">AVIS <em>CLIENTS</em></h2>
   </div>
-  <div class="als-scroll-wrap">
-  <div class="als-scroll-arrow left" onclick="scrollRow(this,-1)"><svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg></div>
-  <div class="als-scroll-arrow right" onclick="scrollRow(this,1)"><svg viewBox="0 0 24 24"><polyline points="9 6 15 12 9 18"/></svg></div>
-  <div class="als-hscroll">
-    <div class="als-review-card">
-      <div class="als-review-stars">★★★★★</div>
-      <p class="als-review-text">"Replica Margiela reçues en 3 jours, qualité irréprochable. Je ne m'attendais pas à ce niveau de finition à ce prix."</p>
-      <span class="als-review-author">ALEXANDRE T.</span>
-      <span class="als-review-product">Maison Margiela Replica</span>
+  <div class="als-avis-marquee">
+    <div class="als-avis-track">
+      <!-- ===== Set 1 ===== -->
+      <div class="als-avis-card"><img src="assets/avis/avis-tomford-belt-01.jpg" alt="Avis client - colis Tom Ford ferme et scotche, livre" loading="lazy"></div>
+      <div class="als-avis-card"><img src="assets/avis/avis-tomford-belt-02.jpg" alt="Avis client - ceinture Tom Ford T noire posee sur sa boite avec le sac shopping officiel" loading="lazy"></div>
+      <div class="als-avis-card"><img src="assets/avis/avis-tomford-belt-03.jpg" alt="Avis client - boite Tom Ford ouverte avec dust bag et carte d'authenticite" loading="lazy"></div>
+      <div class="als-avis-card"><img src="assets/avis/avis-tomford-belt-04.jpg" alt="Avis client - carton de livraison ouvert sur la boite Tom Ford" loading="lazy"></div>
+      <div class="als-avis-card"><img src="assets/avis/avis-tomford-belt-05.jpg" alt="Avis client - carte d'authenticite Tom Ford tenue en main" loading="lazy"></div>
+      <!-- ===== Set 2 (duplicata pour scroll infini sans saut) ===== -->
+      <div class="als-avis-card" aria-hidden="true"><img src="assets/avis/avis-tomford-belt-01.jpg" alt="" loading="lazy"></div>
+      <div class="als-avis-card" aria-hidden="true"><img src="assets/avis/avis-tomford-belt-02.jpg" alt="" loading="lazy"></div>
+      <div class="als-avis-card" aria-hidden="true"><img src="assets/avis/avis-tomford-belt-03.jpg" alt="" loading="lazy"></div>
+      <div class="als-avis-card" aria-hidden="true"><img src="assets/avis/avis-tomford-belt-04.jpg" alt="" loading="lazy"></div>
+      <div class="als-avis-card" aria-hidden="true"><img src="assets/avis/avis-tomford-belt-05.jpg" alt="" loading="lazy"></div>
     </div>
-    <div class="als-review-card">
-      <div class="als-review-stars">★★★★★</div>
-      <p class="als-review-text">"Mon pull Burberry EKD est magnifique, la laine est douce et le logo parfaitement brodé. Chez moi en 48h, service au top."</p>
-      <span class="als-review-author">SARAH M.</span>
-      <span class="als-review-product">Burberry Pull EKD</span>
-    </div>
-    <div class="als-review-card">
-      <div class="als-review-stars">★★★★★</div>
-      <p class="als-review-text">"Casquette Loro Piana Summer Walk, c'est exactement comme sur les photos. L'assistant m'a guidé pour la bonne taille."</p>
-      <span class="als-review-author">MEHDI B.</span>
-      <span class="als-review-product">Loro Piana Summer Walk Cap</span>
-    </div>
-    <div class="als-review-card">
-      <div class="als-review-stars">★★★★★</div>
-      <p class="als-review-text">"Deuxième commande chez AllStore, cette fois un t-shirt Casablanca. Toujours satisfait, les couleurs sont éclatantes."</p>
-      <span class="als-review-author">LÉNA D.</span>
-      <span class="als-review-product">Casablanca T-Shirt Casa Way</span>
-    </div>
-    <div class="als-review-card">
-      <div class="als-review-stars">★★★★★</div>
-      <p class="als-review-text">"Prada Cup reçues hier, le cuir est souple et la boîte impeccable. Livraison offerte en Europe, rien à redire."</p>
-      <span class="als-review-author">JULIEN R.</span>
-      <span class="als-review-product">Prada Cup</span>
-    </div>
-    <div class="als-review-card">
-      <div class="als-review-stars">★★★★★</div>
-      <p class="als-review-text">"Le porte-cartes Miu Miu est sublime. Compact, élégant, et l'emballage était soigné. Je recommande à 100%."</p>
-      <span class="als-review-author">CAMILLE P.</span>
-      <span class="als-review-product">Miu Miu Porte-Cartes</span>
-    </div>
-  </div>
   </div>
 </section>
 
