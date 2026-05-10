@@ -108,15 +108,17 @@
   .als-search-item-price{font-family:'Poppins',sans-serif;font-size:13px;font-weight:700;flex-shrink:0}
   .als-search-empty{padding:20px;text-align:center;font-family:'Poppins',sans-serif;font-size:13px;color:var(--gris,#6a7a8a)}
 
-  /* ---------- AVIS CLIENTS — 1 cadre = 1 avis = N images qui defilent dedans ---------- */
-  /* Taille calee sur les cadres NOS COLLABORATEURS (200/160px) avec un */
-  /* leger surplus visuel — le cadre 9:16 fait 220px desktop / 180px mobile. */
-  .als-avis-row{display:flex;gap:18px;justify-content:center;flex-wrap:wrap;padding:8px 20px}
-  .als-avis-frame{--frame-w:220px;flex:0 0 var(--frame-w);aspect-ratio:9/16;position:relative;border-radius:18px;overflow:hidden;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.18);box-shadow:0 12px 28px rgba(0,0,0,.2)}
+  /* ---------- AVIS CLIENTS — ligne swipable de cadres (1 cadre = 1 commande) ---------- */
+  /* Pattern aligne sur amb-scroll / als-rare-grid : flex overflow-x auto + scroll-snap. */
+  /* Cadre 220px desktop / 180px mobile (~10% plus grand que NOS COLLABORATEURS). */
+  /* A l'interieur de chaque cadre, les photos de la commande defilent en boucle. */
+  .als-avis-row{display:flex;gap:18px;overflow-x:auto;padding:8px 20px 12px;scroll-behavior:smooth;-webkit-overflow-scrolling:touch;scrollbar-width:none;scroll-snap-type:x mandatory}
+  .als-avis-row::-webkit-scrollbar{display:none}
+  .als-avis-frame{--frame-w:220px;flex:0 0 var(--frame-w);aspect-ratio:9/16;position:relative;border-radius:18px;overflow:hidden;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.18);box-shadow:0 12px 28px rgba(0,0,0,.2);scroll-snap-align:start}
   .als-avis-stack{display:flex;height:100%;width:max-content;animation:als-avis-slide 30s linear infinite;will-change:transform}
   .als-avis-stack img{flex:0 0 var(--frame-w);width:var(--frame-w);height:100%;object-fit:cover;display:block}
   @keyframes als-avis-slide{from{transform:translateX(0)}to{transform:translateX(-50%)}}
-  @media(max-width:768px){.als-avis-frame{--frame-w:180px;border-radius:16px}}
+  @media(max-width:768px){.als-avis-frame{--frame-w:180px;border-radius:16px}.als-avis-row{padding:8px 16px 12px;gap:12px}}
   @media(prefers-reduced-motion:reduce){.als-avis-stack{animation:none}}
 
   /* ---------- SECTIONS ---------- */
@@ -712,24 +714,15 @@ function filterSel(secId, pill) {
 
 
 <!-- ═══════════════════════════════════════════
-     AVIS CLIENTS — 1 cadre = 1 commande client.
-     Les images du meme produit defilent EN CONTINU dans
-     le cadre (slide horizontal infini, cycle 30s, lineaire).
-     Le cadre fait overflow hidden — on ne voit qu'une image
-     a la fois pendant qu'elle traverse. Defile sans pause
-     meme au touch / hover.
+     AVIS CLIENTS — ligne swipable horizontale de cadres
+     (pattern aligne sur "Nos Collaborateurs" / "Articles
+     rares"). Chaque cadre = UNE commande client. A l'interieur
+     d'un cadre, les photos du deballage defilent en boucle.
 
-     IMPORTANT : pour boucle infinie sans saut, le set
-     d'images est duplique (set 1 + set 2) et l'animation
-     va de translateX(0) a translateX(-50%) = exactement
-     5 images, donc le loop est visuellement invisible.
-
-     Pour ajouter un nouvel avis client (autre commande,
-     autre produit) : ajouter un nouveau bloc
+     Pour ajouter un nouvel avis client : ajouter un bloc
      <div class="als-avis-frame"> ... </div> dans .als-avis-row,
-     avec les images du nouveau produit (sans oublier la
-     duplication set 1 + set 2). La row se met automatiquement
-     en wrap si plusieurs cadres.
+     avec les photos de la nouvelle commande (set duplique
+     set 1 + set 2 pour boucle invisible si plus d'1 photo).
 ═══════════════════════════════════════════ -->
 <section class="als-sec">
   <div class="als-sec-head">
