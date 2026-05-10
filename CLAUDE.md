@@ -112,6 +112,15 @@ Si l'un est dispo et l'autre non → l'un fait, sans demander.
 5. Avant un push qui semble proche d'un conflit : `git fetch && git rebase origin/main` sur ta branche.
 6. Si tu vois des modifs locales non commitées que tu n'as pas faites → c'est probablement le taf en cours de l'autre. **Ne commit pas, ne stash pas, ne reset pas. Demande à l'humain.**
 
+### Merge des PR — autorisation permanente (Mohamed)
+**Mohamed t'autorise à merger automatiquement les PR que tu crées sur ses chantiers (branches `claude/mohamed-*`, `claude/push-*`, etc.) sans lui redemander à chaque fois.** Règle posée 2026-05-10. Concrètement, après avoir créé une PR sur le repo `Mohamed-HediSAIED/AllStoreee` :
+
+1. Vérifier que la PR est mergeable (pas de conflit, CI verte si applicable).
+2. Merger directement via `mcp__github__merge_pull_request` (méthode `squash` par défaut sauf cas spécial).
+3. Annoncer le merge dans la réponse + l'URL de la PR.
+
+Cette règle ne s'applique PAS aux PR de Thomas (`claude/thomas-*`) ni aux PR avec changements destructifs (suppression de fichiers majeurs, refonte de stack, modifs `.env` / config CI). Pour ces cas, demander avant.
+
 ## Comment ajouter/supprimer un produit
 1. Ouvrir `products-data.js`
 2. Ajouter ou supprimer l'entrée dans l'objet `PRODUCTS` uniquement
