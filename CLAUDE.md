@@ -56,6 +56,7 @@ Au début d'une nouvelle conversation, Claude DOIT :
 
 ### Documents de référence (à charger selon le besoin)
 - `ROADMAP.md` — **plan d'action global** (phases 0 à 8) avec checklist persistante du chemin vers "profit récurrent automatisé". À consulter en premier sur toute question "où on en est / quoi faire ensuite".
+- `BUDGET_2026.md` — investissements, coûts fixes/variables, break-even, 3 scénarios (min/raisonnable/ambitieux), template de suivi mensuel. À consulter pour toute question d'argent.
 - `THOMAS_BRIEF.md` — chantiers techniques de Thomas (RGPD, CAPI, feed, Trustpilot…).
 - `MARKETING_IDS.md` — IDs marketing (GA4, Meta, TikTok, Merchant, Trustpilot) + état détaillé.
 - `MOHAMED_BRIEF.md` — chantiers business/produits/design de Mohamed.
