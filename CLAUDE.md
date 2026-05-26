@@ -16,8 +16,9 @@ Au début d'une nouvelle conversation, Claude DOIT :
    - Branche `claude/mohamed-*` → c'est Mohamed, charger `MOHAMED_BRIEF.md`.
    - Branche `main` ou autre → demander une fois "Mohamed ou Thomas ?".
 2. **Lire l'état du projet** ci-dessous (section "État du projet").
-3. **Ne pas redemander à l'utilisateur** ce qui est déjà documenté ici ou dans les briefs.
-4. **Mettre à jour ce fichier** (et `MARKETING_IDS.md` si besoin) quand un chantier est terminé, sans demander la permission, dans le même commit que le boulot livré.
+3. **Lire `ROADMAP.md`** à la racine — c'est le plan d'action global avec checklist des phases 0 à 8 vers "profit récurrent automatisé". Référence systématique quand l'utilisateur demande "où on en est" ou "qu'est-ce qui reste à faire".
+4. **Ne pas redemander à l'utilisateur** ce qui est déjà documenté ici ou dans les briefs.
+5. **Mettre à jour ce fichier** (et `MARKETING_IDS.md` + `ROADMAP.md` si besoin) quand un chantier est terminé, sans demander la permission, dans le même commit que le boulot livré.
 
 ## État du projet (snapshot — 2026-04-29 18:30)
 
@@ -54,9 +55,12 @@ Au début d'une nouvelle conversation, Claude DOIT :
 - `claude/cool-jennings`, `claude/marketing-accounts-clarification-1AwIb`, `design/pre-apple-revert` — à trier.
 
 ### Documents de référence (à charger selon le besoin)
+- `ROADMAP.md` — **plan d'action global** (phases 0 à 8) avec checklist persistante du chemin vers "profit récurrent automatisé". À consulter en premier sur toute question "où on en est / quoi faire ensuite".
 - `THOMAS_BRIEF.md` — chantiers techniques de Thomas (RGPD, CAPI, feed, Trustpilot…).
 - `MARKETING_IDS.md` — IDs marketing (GA4, Meta, TikTok, Merchant, Trustpilot) + état détaillé.
 - `MOHAMED_BRIEF.md` — chantiers business/produits/design de Mohamed.
+- `PRICING_GUIDE.md` — formules de prix détaillées (luxe vs streetwear).
+- `EDITION_ETE_DECISIONS.md` — décisions saisonnières été 2026.
 
 ---
 
